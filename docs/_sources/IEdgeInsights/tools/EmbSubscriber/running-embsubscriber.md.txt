@@ -1,0 +1,4 @@
+## Running EmbSubscriber
+
+1. Refer [provision/README.md](../../README.md) to provision, build and run the tool along with the EII time-series recipe/stack.
+

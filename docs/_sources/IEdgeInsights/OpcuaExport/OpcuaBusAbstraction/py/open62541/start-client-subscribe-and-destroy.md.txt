@@ -1,0 +1,6 @@
+# Start client, subscribe and destroy
+
+```sh
+make client
+```
+

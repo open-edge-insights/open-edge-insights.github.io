@@ -1,0 +1,7 @@
+
+Start server, publish and destroy
+=================================
+
+.. code-block:: sh
+
+   make server

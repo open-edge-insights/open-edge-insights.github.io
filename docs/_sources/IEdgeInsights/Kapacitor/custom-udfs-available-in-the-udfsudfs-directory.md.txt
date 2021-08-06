@@ -1,0 +1,18 @@
+## Custom UDFs available in the [udfs](udfs) directory
+
+  * UNIX Socket based UDFs
+
+    1. go_classifier.go: Filter the points based on temperature (data > 20 and < 25 filtered out).
+
+    2. py_classifier.py: Filter the points based on temperature (data > 20 and < 25 filtered out).
+
+    3. profiling_udf.go: Add the profiling (time taken to process the data) data in the points.
+
+    4. temperature_classifier.go: Filter the points based on temperature (data < 25 filtered out).
+
+    5. humidity_classifier.py: Filter the points based on humidity (data < 25 filtered out).
+
+  * Process based UDFs
+
+    1. rfc_classifier.py: Random Forest Classification algo sample. This UDF can be used as profiling udf as well.
+

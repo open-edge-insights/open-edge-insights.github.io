@@ -1,0 +1,203 @@
+
+Running Examples
+----------------
+
+The ConfigMgr library also supports Cpp APIs and Python & Go bindings. These APIs/bindings can be used in Cpp and Python/Go services in the EII stack to fetch required config/interfaces/msgbus config. 
+
+Examples will only be compiled if the ``WITH_EXAMPLES=ON`` option is specified while running CMake.
+Please refer `Examples installation <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-install-configMgr-with-examples,-test-suits-and-debug-build-enabled.>`_ 
+
+Refer the interfaces of publisher and server in `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-core/blob/master/examples/configs/VideoAnalytics_interfaces.json>`_ and for subscriber and client, refer `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-core/blob/master/examples/configs/VideoAnalytics_interfaces.json>`_
+
+Examples on demonstrating the usage of these APIs in the bindings have been given in respective sections below.
+
+
+* `CPP Examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-cpp-examples>`_
+* `Python Examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-python-examples>`_
+* `Go Examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-go-examples>`_
+
+CPP Examples
+^^^^^^^^^^^^
+
+.. code-block:: sh
+
+   $ Navigate to [WORKDIR]/IEdgeInsights/common/libs/ConfigMgr
+   $ sudo rm -rf build
+   $ mkdir build
+   $ cd build
+   $ cmake -DCMAKE_INSTALL_INCLUDEDIR=$CMAKE_INSTALL_PREFIX/include -DCMAKE_INSTALL_PREFIX=$CMAKE_INSTALL_PREFIX -DWITH_EXAMPLES=ON ..
+   $ make
+   $ sudo make install
+
+There are currently 5 CPP examples:
+
+
+#. ``examples/sample_pub.cpp``
+#. ``examples/sample_sub.cpp``
+#. ``examples/sample_server.cpp``
+#. ``examples/sample_client.cpp``
+#. ``examples/sample_getvalue.cpp``
+
+All of the Cpp example executables are in the ``build/examples/`` directory. To run
+them, execute the following command:
+
+Before executing any of the examples, please run below command from ``build/examples/``
+
+.. code-block:: sh
+
+    cd ../../examples/ && source ./env.sh && cd -
+
+Publisher example.
+
+.. code-block:: sh
+
+   $ ./pub
+
+Subscriber example.
+
+.. code-block:: sh
+
+   $ ./sub
+
+Server example.
+
+.. code-block:: sh
+
+   $ ./server
+
+Client example.
+
+.. code-block:: sh
+
+   $ ./client
+
+Sample_getvalue used to get the values from application's config
+
+.. code-block:: sh
+
+   $ ./sample_app
+
+Python Examples
+^^^^^^^^^^^^^^^
+
+.. code-block:: sh
+
+   $ Navigate to [WORKDIR]/IEdgeInsights/common/libs/ConfigMgr
+   $ sudo rm -rf build
+   $ mkdir build
+   $ cd build
+   $ cmake -DCMAKE_INSTALL_INCLUDEDIR=$CMAKE_INSTALL_PREFIX/include -DCMAKE_INSTALL_PREFIX=$CMAKE_INSTALL_PREFIX -DWITH_PYTHON=ON ..
+   $ make
+   $ sudo make install
+
+There are currently 5 Python examples:
+
+
+#. ``examples/publisher.py``
+#. ``examples/subscriber.py``
+#. ``examples/echo_service.py``
+#. ``examples/echo_client.py``
+#. ``examples/sample_get_value.py``
+
+All of the py examples are in ``python/examples/`` directory. To run
+them, execute the following command:
+
+Before executing any of the examples, please run below command from ``python/examples/``
+
+.. code-block:: sh
+
+    cd ../../examples/ && source ./env.sh && cd -
+
+Publisher example.
+
+.. code-block:: sh
+
+   $ python3 publisher.py
+
+Subscriber example.
+
+.. code-block:: sh
+
+   $ python3 subscriber.py
+
+Server example.
+
+.. code-block:: sh
+
+   $ python3 echo_service.py
+
+Client example.
+
+.. code-block:: sh
+
+   $ python3 echo_client.py
+
+sample_get_value used to get the values from application's config
+
+.. code-block:: sh
+
+   $ python3 sample_get_value.py
+
+Go Examples
+^^^^^^^^^^^
+
+.. code-block:: sh
+
+   $ Navigate to [WORKDIR]/IEdgeInsights/common/libs/ConfigMgr/go
+   $ cp -r ConfigMgr/ $GOPATH/src
+   $ cd ConfigMgr/examples
+   $ source go_env.sh
+
+There are currently 5 Go examples:
+
+
+#. ``publisher.go``
+#. ``subscriber.go``
+#. ``echo_service.go``
+#. ``echo_client.go``
+#. ``app_config.go``
+
+All of the go examples are in ``go/examples/`` directory. To run
+them, execute the following command:
+
+Before executing any of the examples, please run below command from ``go/ConfigMgr/examples/``
+
+.. code-block:: sh
+
+    cd ../../../examples/ && source ./env.sh && cd -
+    source ./go_env.sh
+
+Publisher example.
+
+.. code-block:: sh
+
+   $ go build publisher.go
+   $ ./publisher
+
+Subscriber example.
+
+.. code-block:: sh
+
+   $ go build subscriber.go
+   $ ./subscriber
+
+Server example.
+
+.. code-block:: sh
+
+   $ go build echo_service.go
+   $ ./echo_service
+
+Client example.
+
+.. code-block:: sh
+
+   $ go build echo_client.go
+   $ ./echo_client
+
+app_config used to get the values from application's config
+
+.. code-block:: sh
+
+   $ go build app_config.go
+   $ ./app_config

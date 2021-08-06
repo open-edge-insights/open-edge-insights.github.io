@@ -1,0 +1,8 @@
+# EII Video Profiler
+
+This tool can be used to determine the complete metrics involved in the entire Video pipeline by
+measuring the time difference between every component of the pipeline and checking for Queue blockages
+at every component thereby determining the fast or slow components of the whole pipeline.
+It can also be used to calculate the FPS of any EII modules based on the stream published by that respective
+module.
+

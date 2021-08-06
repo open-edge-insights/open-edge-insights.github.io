@@ -1,0 +1,14 @@
+## 2. Testing with security enabled
+
+* Start publisher, publish and destroy
+
+```sh
+make pub
+```
+
+* Start subscriber, subscribe and destroy
+
+```sh
+make sub
+```
+

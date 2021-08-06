@@ -1,0 +1,203 @@
+
+Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes
+-----------------------------------------------------------------------------------------------------------------------------------
+
+.. note:: 
+
+
+   * Updating messagebus endpoints to connect to interfaces is still the manual process. Make sure to update Application specific endpoints in ``[AppName]/config.json``
+   * After ``pre-requisites`` are successfully installed, please do logout and login to apply the changes
+
+
+**For Single Point of Execution**
+
+.. note:: \ : 
+   This will execute all the steps of EII as prequisite, build, provision, deploy & setup leader node for multinode deployement usecase in one shot sequentialy.
+
+
+.. code-block::
+
+   ```sh
+   $ ansible-playbook eii.yml
+   ```
+
+
+ **Below steps are the individual execution of setups.**
+
+
+* 
+  Load ``.env`` values from template
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "load_env"
+
+* 
+  For EII Prequisite Setup
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "prerequisites"
+
+  ..
+
+     **Note**
+     After ``pre-requisites`` are successfully installed, please do logout and login to apply the changes
+
+
+* 
+  To generate builder and config files, build images and push to registry
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "build"
+
+* 
+  To generate Certificates in control node
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "gen_certs"
+
+* 
+  To generate provision bundle for leader
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "gen_leader_provision_bundle"
+
+* 
+  To generate provision bundle for worker nodes
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "gen_worker_provision_bundle"
+
+* 
+  To generate eii bundles for leader, worker nodes
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "gen_bundles"
+
+* 
+  Provision leader and bring up ETCD server
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "leader_provision"
+
+* 
+  Provision worker node
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "worker_provsion"
+
+* 
+  Provision EIS Config values to etcd
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "etcd_provision"
+
+* 
+  To generate deploy selected services to leader, worker nodes
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "deploy"
+
+Deploying EII Using Helm in Kubernetes (k8s) environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: 
+
+
+   #. To Deploy EII using helm in k8s aenvironment, ``k8s`` setup is a prerequisite.
+   #. You need update the ``k8s`` leader machine as leader node in ``hosts`` file.
+   #. Non ``k8s`` leader machine the ``helm`` deployment will fail.
+   #. For ``helm`` deployment ``ansible-multinode`` parameters will not applicable, Since
+      node selection & pod selection will be done by ``k8s`` orchestrator.
+   #. Make sure you are deleting ``/opt/intel/eii/data`` when switch from ``prod`` mode to
+      ``dev`` mode in all your ``k8s`` ``worker`` nodes.
+
+
+
+* 
+  Update the ``DEPLOYMENT_MODE`` flag as ``k8s`` in ``group_vars/all.yml`` file:
+
+
+  * Open ``group_vars/all.yml`` file
+    .. code-block:: sh
+
+       $ vi group_vars/all.yml
+
+  * 
+    Update the ``DEPLOYMENT_MODE`` flag as ``k8s``
+
+    .. code-block:: yml
+
+       ## Deploy in k8s mode using helm
+       DEPLOYMENT_MODE: "k8s"
+
+  * 
+    Save & Close
+
+* 
+  For Single Point of Execution
+
+  ..
+
+     **Note**
+     This will execute all the steps of EII as prequisite, build, provision, deploy for a usecase in one shot sequentialy.
+
+
+  .. code-block:: sh
+
+      $ ansible-playbook eii.yml
+
+.. note:: 
+   Below steps are the individual execution of setups.
+
+
+
+* 
+  Load ``.env`` values from template
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "load_env"
+
+* 
+  For EII Prequisite Setup
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "prerequisites"
+
+* 
+  For building EII containers
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "build"
+
+* 
+  To generate Certificates in control node
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "gen_certs"
+
+* 
+  Prerequisites for deploy EII using Ansible helm environment.
+
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "helm_k8s_prerequisites"
+
+* Provision & Deploy EII Using Ansible helm environment
+  .. code-block:: sh
+
+       $ ansible-playbook eii.yml --tags "helm_k8s_deploy"

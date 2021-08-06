@@ -1,0 +1,171 @@
+## `Sample UDFs`
+
+> **NOTE**: The UDF config of these go as json objects in the `udfs` key in
+> the overall UDF configuration object
+
+### `Native UDFs`
+
+* **Dummy UDF**
+
+  Accepts the frame and forwards the same without doing any processing. It's a
+  do-nothing UDF.
+
+  `UDF config`:
+
+  ```javascript
+  {
+      "name": "dummy",
+      "type": "native"
+  }
+  ```
+
+* **Resize UDF**
+
+  Accepts the frame, resizes it based on the `width` and `height` params.
+
+  `UDF config`:
+
+  ```javascript
+  {
+      "name": "resize",
+      "type": "native",
+      "width": 600,
+      "height": 600
+  }
+  ```
+
+* **FPS UDF**
+
+  FPS udf can be used to measure the total number of frames received every second. It can be used in VideoIngestion and VideoAnalytics
+  application by adding the below configuration in the udf configuration. It can also be chained with other udfs in which case the FPS result will be affected depending on the other udfs used.
+
+  `UDF config`:
+
+  ```javascript
+  {
+      "name": "fps",
+      "type": "native"
+  }
+  ```
+
+  `Config for chaining fps udf with other udfs`:
+
+  ```javascript
+  "udfs": [{
+	      "name": "dummy",
+	      "type": "native"
+	  },
+	  {
+	      "name": "fps",
+	      "type": "native"
+	  }]
+  ```
+
+  > **Note** The fps results will be logged in `DEBUG` LOG_LEVEL, added to the metadata with the AppName as the key and will be
+  > displayed in the visualizer.
+
+* **Sample Realsense UDF**
+
+  Accepts the color and depth frame, converts to rs2::frame type by using rs2::software_device simulation, enables a color filter on the depth frame using rs2::colorizer.
+
+  `UDF config`:
+
+  ```javascript
+  {
+      "name": "sample_realsense",
+      "type": "raw_native",
+  }
+  ```
+
+  ----
+### `Python UDFs`
+
+> **NOTE**: Additional properties/keys other than `name` and `type` in the UDF
+> config are the parameters of the python UDF constructor
+
+* **Dummy UDF**
+
+  Accepts the frame and forwards the same without doing any processing. It's a
+  do-nothing UDF.
+
+  `UDF config`:
+
+  ```javascript
+  {
+      "name": "dummy",
+      "type": "python"
+  }
+  ```
+
+* **Jupyter Connector UDF**
+
+  Accepts the frame and publishes it to the EII JupyterNotebook service which processes the frame and publishes it back to the jupyter_connector UDF.
+
+  `UDF config`:
+
+  ```javascript
+  {
+      "name": "jupyter_connector",
+      "type": "python"
+  }
+  ```
+
+* **PCB Filter UDF**
+
+  Accepts the frame and based on if `pcb` board is at the center in the frame or not,
+  it forwards or drops the frame. It basically sends out only the key frames forward
+  for further processing and not all frames it receives.
+
+
+  `UDF config`:
+
+  ```javascript
+  {
+      "name": "pcb.pcb_filter",
+      "type": "python",
+      "training_mode": "false",
+      "scale_ratio": 4,
+      "n_total_px": 300000,
+      "n_left_px": 1000,
+      "n_right_px": 1000
+  }
+  ```
+  Refer [python/pcb/README.md](./python/pcb/README.md) for more information.
+
+* **PCB Classifier UDF**
+
+  Accepts the frame, uses openvino inference engine APIs to determine whether it's
+  a `good` pcb with no defects or `bad` pcb with defects. Metadata associated with
+  the frame is populated accordingly.
+
+  `UDF config`:
+
+  ```javascript
+  {
+      "name": "pcb.pcb_classifier",
+      "type": "python",
+      "device": "CPU",
+      "ref_img": "common/video/udfs/python/pcb/ref/ref.png",
+      "ref_config_roi": "common/video/udfs/python/pcb/ref/roi_2.json",
+      "model_xml": "common/video/udfs/python/pcb/ref/model_2.xml",
+      "model_bin": "common/video/udfs/python/pcb/ref/model_2.bin"
+  }
+  ```
+
+  Refer [python/pcb/README.md](./python/pcb/README.md) for more information.
+
+  **NOTE**:
+  The above config works for both "CPU" and "GPU" devices after setting appropriate `device` value.
+  Please set the "device" value appropriately based on the device used for inferencing.
+
+* **Sample ONNX UDF**
+
+  This UDF mainly demonstrates the model deployment on edge devices via AzureBridge service only.
+
+  Please follow the below steps:
+  * Configure the sample ONNX UDF by following [Sample ONNX UDF configuration guide](../../../AzureBridge/README.md#sample-eii-onnx-udf)
+  * Follow [Single-Node Azure IOT Edge Deployment](../../../AzureBridge/README.md#single-node-azure-iot-edge-deployment) to deploy the required modules
+
+  For more details on AzureBridge setup, please refer [AzureBridge README.md](../../../AzureBridge/README.md)
+----
+

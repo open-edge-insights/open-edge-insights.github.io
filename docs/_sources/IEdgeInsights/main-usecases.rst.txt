@@ -1,0 +1,16 @@
+
+Main usecases
+-------------
+
+.. list-table::
+   :header-rows: 1
+
+   * - Usecase
+     - yaml file
+   * - Video + Timeseries
+     - `build/usecases/video-timeseries.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/video-timeseries.yml>`_
+   * - Video
+     - `build/usecases/video.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/video.yml>`_
+   * - Timeseries
+     - `build/usecases/time-series.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/time-series.yml>`_
+

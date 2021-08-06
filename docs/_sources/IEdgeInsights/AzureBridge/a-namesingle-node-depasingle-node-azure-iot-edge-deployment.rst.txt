@@ -1,0 +1,326 @@
+.. role:: raw-html-m2r(raw)
+   :format: html
+
+
+:raw-html-m2r:`<a name="single-node-dep"></a>`\ Single-Node Azure IoT Edge Deployment
+---------------------------------------------------------------------------------------
+
+.. note::  Outside of the Azure ecosystem, EII can be deployed and communicate
+   across nodes. In the Azure IoT Edge ecosystem this is not possible with EII.
+   All EII services must be running on the same edge node. However, you can
+   deploy EII on multiple nodes, but intercommunication between the nodes will
+   not work.
+
+   **IMPORTANT NOTE:**
+   If you are using TCP communication between VI or VA and the Azure Bridge,
+   then you must modify the ``AllowedClients`` list under the ``Publishers`` section
+   of the interfaces configuration of VI or VA to include ``AzureBridge``.
+   This must be done prior to provisioning to that the proper certificates will
+   be generated to encrypt/authenticate connections.
+
+
+In the Azure IoT ecosystem you can deploy to single-nodes and you can do bulk
+deployments. This section will cover how to deploy the Azure Bridge and
+associated EII services to a single Linux edge node. For more details on deploying
+modules at scale with the Azure IoT Edge Runtime, see
+`this guide <https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-monitor>`_
+
+Note that this section will give a high-level overview of how to deploy the
+modules with the Azure CLI. For more information on developing and deploying
+Azure modules, see `this guide <https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-develop-for-linux>`_.
+
+The deloyment of the Azure IoT Edge and the EII modules can be broken down into
+the following steps:
+
+
+#. Provisioning
+#. Configuring EII
+#. Configuring Azure IoT Deployment Manifest
+#. Deployment
+
+Prior to deploying a single Azure IoT Edge node you must have already
+configured your Azure cloud instance (see instructions in the `Azure Cloud Setup <http://localhost:7645/IEdgeInsights/AzureBridge/#az-cloud-setup>`_
+section). Additionally, you need to have already built and pushed the EII services to your
+Azure Container Registry (follow the instructions in the `Build and Push EII Containers <http://localhost:7645/IEdgeInsights/AzureBridge/#eii-build-push>`_
+section).
+
+Provided you have met these two prerequisites, follow the steps below to do a
+single node deployment with the Azure Bridge on the Azure IoT Edge Runtime.
+
+Step 1 - Provisioning
+^^^^^^^^^^^^^^^^^^^^^
+
+The provisioning must take place on the node you wish to deploy your Azure IoT
+Edge modules onto.
+
+.. note::  This may be your development system, which was setup earlier. Keep in
+   mind, however, that having your system setup as a development system and a
+   targeted node for a single-node deployment should never be done in production.
+
+
+First, you must then install the Azure IoT Edge Runtime on your target deployment
+system. To do that, follow the instructions provided by Microsoft in
+`this guide <https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-linux>`_.
+
+Next, you must provision on your target deployment system. Follow the instructions
+provided in the EII READMEs/User Guide for completing this process.
+
+While provisioning on your system, note that you only need to setup the
+Video Ingesiton and/or the Video Analytics containers. All other services are
+not supported by the Azure Bridge currently.
+
+Be sure to note down which directory you generate your certificates into, this
+will be important later. Unless, you are running EII in dev mode, in that case
+you will have no certificates generated.
+
+**IMPORTANT NOTE:**
+
+If you previously installed EII outside of Azure on your system, then make sure
+that all of the EII containers have been stopped. You can do this by going to
+the ``build/`` directory in the EII source code and running the following command:
+
+.. code-block:: sh
+
+   $ docker-compose down
+
+This will stop and remove all of the previously running EII containers, allowing
+the Azure Bridge to run successfully.
+
+Expected Result
+~~~~~~~~~~~~~~~
+
+When you have completed these steps, you should have the Azure IoT Edge Runtime
+installed (which includes Docker), and you should have the ``ia_etcd`` EII container
+running on your system.
+
+To confirm this, run the ``docker ps`` command. Your output should look similar to
+the following:
+
+.. code-block:: sh
+
+   $ docker ps
+   CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+   75121173d4d8        ia_etcd:2.3         "./start_etcd.sh"   11 days ago         Up 2 seconds                            ia_etcd
+
+Step 2 - Configuring EII
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+This step should be done from your development system, and not the edge node you
+are deploying EII onto. The configuration you will do during this setup will
+allow your system to deploy EII to your edge node. As noted earlier, for development
+and testing purposes this could be the same system as your targeted edge device,
+but this is not recommended in a production environment.
+
+To configure EII, modify the ``build/provision/config/eii_config.json`` file. This
+should have been generated when the ``build/builder.py`` script was executed
+when building/pushing the EII containers to your ACR instance. If it does not
+exist, run this script based on the instructions provided in the EII README.
+
+Next, configure the ``build/.env`` file. You must make sure to modify the following
+values in the ``.env`` file:
+
+
+* ``DOCKER_REGISTRY`` - This should have been set when building/pushing the EII
+    containers to your ACR instance. Make sure it is set to the URL for your
+    ACR instance.
+* ``HOST_IP`` - This must be the IP address of the edge node you are deploying
+    your containers to
+* ``ETCD_HOST`` - This should be set to the same value as your ``HOST_IP`` address
+* ``DEV_MODE`` - Set this to the same value you used when provisioning your edge node
+    in the previous step
+
+Next, in the ``AzureBridge/`` source directory, modify the ``.env`` file. Make
+sure to set the following values:
+
+
+* ``EII_CERTIFICATES``              - The directory with the EII certificates on your edge system
+* ``AZ_CONTAINER_REGISTY_USERNAME`` - User name for the container registry login (obtained during creation)
+* ``AZ_CONTAINER_REGISTY_PASSWORD`` - Password for the container registry login (obtained during creation)
+
+  * **IMPORTANT NOTE:** Make sure to surround the password in single quotes, i.e. ``'``\ , because bash
+      may escape certain characters when the file is read, leading to incorrect configuration
+
+* ``AZ_BLOB_STORAGE_ACCOUNT_NAME``  - **(OPTIONAL)** User name for the local Azure Blob Storage instance
+
+**IMPORTANT NOTE #1:**
+
+It is important to note that for the ``AZ_CONTAINER_REGISTY_PASSWORD`` variable you
+must wrap the password in single quotes, i.e. ``'``. Otherwise, there may be
+characters that get escaped in a weird way when the values are populated into
+your deployment manifest leading to configuration errors.
+
+**IMPORTANT NOTE #2:**
+
+If you wish to use the sample EII ONNX UDF, now is the time to configure the UDF
+to run. See the `Sample EII ONNX UDF <http://localhost:7645/IEdgeInsights/AzureBridge/#sample-eii-onnx-udf>`_ configuration section
+below for how to configure the UDF.
+
+Expected Result
+~~~~~~~~~~~~~~~
+
+Once the following step has been completed, then you should have correctly configured
+``.env`` files to deploying EII via Azure. If some of the values were incorrect, then
+you will encounter issues in the proceeding steps.
+
+Step 3 - Configuring Azure IoT Deployment Manifest
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Once you have your target edge system provisioned and EII configured, you need to
+create your Azure IoT Hub deployment manifest. The Azure Bridge provides some
+convenience scripts to ease this process.
+
+.. note::  These steps should be done from your development system setup in
+   the `Development System Setup <http://localhost:7645/IEdgeInsights/AzureBridge/#dev-sys-setup>`_ section. Note, that for testing
+   and development purposes, these could be the same system.
+
+
+To generate your deployment manifest template, execute the following command:
+
+.. code-block:: sh
+
+   $ ./tools/generate-deployment-manifest.sh example AzureBridge SimpleSubscriber ia_video_ingestion ia_video_analytics
+
+.. note::  If you are using Azure Blob Storage, include ``AzureBlobStorageonIoTEdge``
+   in the argument list above.
+
+   **NOTE:** When you run the command above, it will pull some values from your
+   EII ``build/.env`` file. If the ``build/.env`` file is configured incorrectly,
+   you may run into issues.
+
+
+The above command will generate two files: ``./example.template.json`` and
+``config/example.amd64.json``. The first is a deployment template, and the second
+is the fully populated/generated configuration for Azure IoT Hub. In executing
+the script above, you should have a manifest which includes the Azure Bridge,
+Simple Subscriber, as well as the EII video ingestion service.
+
+The list of services given to the bash script can be changed if you wish to
+run different services.
+
+You may want/need to modify your ``./example.template.json`` file after running
+this command. This could be because you wish to change the topics that VI/VA use
+or because you want to configure the Azure Bridge in some different way. If you
+modify this file, you must regenerate the ``./config/example.amd64.json`` file.
+To do this, execute the following command:
+
+.. code-block:: sh
+
+   $ iotedgedev genconfig -f example.template.json
+
+If you wish to modify your ``eii_config.json`` file after generating your template,
+you can re-add this to the Azure Bridge digital twin by running the following
+command:
+
+.. code-block:: sh
+
+   $ python3 tools/serialize_eii_config.py example.template.json ../build/provision/config/eii_config.json
+
+**IMPORTANT NOTE:**
+
+If you wish to have the AzureBridge subscribe and bridge data over an IPC
+socket coming from either Video Ingestion or Video Analytics, then you must
+change the user which the container operates under. By default, the AzureBridge
+container is configured to run as the ``eiiuser`` created during the installation of
+EII on your edge system. Both Video Ingestion and Video Analytics operate as root
+in order to access various accelerators on your system. This results in the
+IPC sockets for the communication with these modules being created as root. To
+have the AzureBridge subscribe it must also run as root. To change this, do
+the following steps:
+
+
+#. Open your deployment manifest template
+#. Under the following JSON key path: ``modulesContent/modules/AzureBridge/settings/createOptions``
+    delete the ``User`` key
+
+This will cause the container to be launched as ``root`` by default allowing you to
+subscribe to IPC sockets created as root.
+
+Expected Result
+~~~~~~~~~~~~~~~
+
+If all of the commands above ran correctly, then you will have a valid ``*.template.json``
+file and a valid ``config/*.amd64.json`` file.
+
+If, for some reason, these commands fail, revisit Step 2 and make sure all of your
+environmental variables are set correctly. And if that does not resolve your issue,
+verify that your development system is setup correctly by revisiting the
+`Development System Setup <http://localhost:7645/IEdgeInsights/AzureBridge/#dev-sys-setup>`_ section.
+
+Step 4 - Deployment
+^^^^^^^^^^^^^^^^^^^
+
+Now that you have generated your deployment manifest, deploy the modules to your
+Azure IoT Edge Device using the Azure CLI command shown below:
+
+.. code-block:: sh
+
+   $ az iot edge set-modules -n <azure-iot-hub-name> -d <azure-iot-edge-device-name> -k config/<deployment-manifest>
+
+If this command run successfully, then you will see a large JSON string print out
+on the console with information on the deployment which it just initiated. If it
+failed, then the Azure CLI will output information on the potential reason for the
+failure.
+
+Expected Results
+~~~~~~~~~~~~~~~~
+
+Provided all of the setups above ran correctly, your edge node should now be running
+your Azure IoT Edge modules, the Azure Bridge, and the EII services you
+selected.
+
+It is possible that for the Azure Bridge (and any Python Azure IoT Edge modules)
+you will see that the service crashes the first couple of times it attempts to come
+up on your edge system with an exception similar to the following:
+
+.. code-block::
+
+   Traceback (most recent call last):
+       File "/usr/local/lib/python3.7/site-packages/azure/iot/device/common/mqtt_transport.py", line 340, in connect
+           host=self._hostname, port=8883, keepalive=DEFAULT_KEEPALIVE
+       File "/usr/local/lib/python3.7/site-packages/paho/mqtt/client.py", line 937, in connect
+           return self.reconnect()
+       File "/usr/local/lib/python3.7/site-packages/paho/mqtt/client.py", line 1071, in reconnect
+           sock = self._create_socket_connection()
+       File "/usr/local/lib/python3.7/site-packages/paho/mqtt/client.py", line 3522, in _create_socket_connection
+           return socket.create_connection(addr, source_address=source, timeout=self._keepalive)
+       File "/usr/local/lib/python3.7/socket.py", line 728, in create_connection
+           raise err
+       File "/usr/local/lib/python3.7/socket.py", line 716, in create_connection
+           sock.connect(sa)
+       ConnectionRefusedError: [Errno 111] Connection refused
+
+This occurs because the container is starting before the ``edgeHub`` container for
+the Azure IoT Edge Runtime has come up, and so it it unable to connect. Once the
+``edgeHub`` container is fully launched, then this should go away and the containers
+should launch correctly.
+
+If everything is running smoothly, you should see messages being printed in the
+Simple Subscriber service using the following command:
+
+.. code-block:: sh
+
+   $ docker logs -f SimpleSubscriber
+
+For more debugging info, see the following section.
+
+Helpful Debugging Commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are encountering issues, the following commands can help with debugging:
+
+
+* **Azure IoT Edge Runtime Daemon Logs:** ``journalctl -u iotedge -f``
+* **Container Logs:** ``docker logs -f <CONTAINER-NAME>``
+
+Final Notes
+^^^^^^^^^^^
+
+When deploying with Azure IoT Edge Runtime there are many security considerations
+to be taken into account. Please consult the following Microsoft resources regarding
+the security in your deployments.
+
+
+* `Securing Azure IoT Edge <https://docs.microsoft.com/en-us/azure/iot-edge/security>`_
+* `IoT Edge Security Manager <https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-security-manager>`_
+* `IoT Edge Certificates <https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-certs>`_
+* `Securing the Intelligent Edge blob post <https://azure.microsoft.com/en-us/blog/securing-the-intelligent-edge/>`_

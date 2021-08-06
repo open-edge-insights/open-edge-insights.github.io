@@ -1,0 +1,47 @@
+# **Deploy Process**
+
+Please find the ordered steps for deploying the Custom UDFs.
+
+  * Please configure Visualizer and WebVisualizer services `config.json` to connect to one or more streams coming out of below CustomUdf services by going
+    through [../Visualizer/README.md](../Visualizer/README.md) and [../WebVisualizer/README.md(../WebVisualizer/README.md)
+  * As per EII default scenario, the sample custom UDF containers are not mandatory containers to run, hence the builder.py should run
+    `video-streaming-all-udfs.yml` usecase. All the sample UDF containers are added in this example. Below code snnipet signifies the same. Just enable
+    the CustomUdf services that are of your interest.
+
+    ```yml
+    AppName:
+    - Visualizer
+    - WebVisualizer
+    - CustomUdfs/NativeSafetyGearAnalytics   <<<<< All lines from here added are customUDFs, User can define his own container directory here
+    - CustomUdfs/NativeSafetyGearIngestion
+    - CustomUdfs/PyMultiClassificationIngestion
+    - CustomUdfs/PySafetyGearAnalytics
+    - CustomUdfs/PySafetyGearIngestion
+    ```
+    Run the following command:
+
+    ```bash
+    $ cd [WORKDIR]/IEdgeInsights/build/
+    $ python3 builder.py -f usecases/video-streaming-all-udfs.yml
+    ```
+    **Note:**
+    It is not mandatory to keep the custom Udfs in the CustomUdfs directory, but user must change the video-streaming-all-udfs.yml file accordingly to point the right path accordingly.
+    Additionally if it is placed under ***IEdgeInsights*** directory then the builder.py file automatically picks it to generate a consolidated [***eii_config.json***](../build/config/eii_config.json) and [***docker-compose.yml***](../build/docker-compose.yml) file.
+
+  * After generation of consolidated [***eii_config.json***](../build/config/eii_config.json) and [***docker-compose.yml***](../build/docker-compose.yml) file, Run the below command to provision the UDF containers. As a pre-cautionary measure, User can cross check the afore-mentioned file to verify the sanity of the UDF specific config and service details.
+
+    ```bash
+    $ cd [WORKDIR]/IEdgeInsights/build/provision
+    $ sudo ./provision.sh  ../docker-compose.yml
+    ```
+  * Run the usecase:
+
+    ```bash
+    $ cd [WORKDIR]/IEdgeInsights/build/
+    $ # Build base images (needed for buidling native custom udf services)
+    $ docker-compose -f docker-compose-build.yml build ia_eiibase ia_common ia_video_common ia_openvino_base
+    $ # Build custom udf services based on the usecase chosen above
+    $ docker-compose -f docker-compose-build.yml build ia_gva_safety_gear_ingestion ia_native_safety_gear_analytics ia_native_safety_gear_ingestion ia_python_multi_classification ia_python_safety_gear_analytics ia_python_safety_gear_ingestion
+    $ docker-compose up -d
+    ```
+

@@ -1,0 +1,10 @@
+## Steps to execute query
+1. Once landed on the Point_Data_Dashboard, green spikes visible in the graph are the results of the default query
+
+2. In the "FROM" section of query, by default it will have 'default point_classifier_results WHERE +',
+   click on 'default_classifier_results', drop down will open with the name of Measurements present in InfluxDB.
+   If any other measurement is set the graph will switch to the measurement query results.
+
+3. In the "SELECT" section, by default it will have 'field(temperature) mean() +'. Click on 'temperature', a drop down will
+   open with the fields tags present in the schema of the measurements set in the FROM section.
+   Select any options the graph will react accordingly.

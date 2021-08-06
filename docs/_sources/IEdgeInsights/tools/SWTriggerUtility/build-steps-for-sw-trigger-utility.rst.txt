@@ -1,0 +1,64 @@
+
+Build steps for sw_trigger_utility:
+-----------------------------------
+
+To generate the "sw_trigger_utility"  binary.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: sh
+
+      cd <multi_repo>/IEdgeInsights/tools/SWTriggerUtility && \
+      sudo rm -rf build && \
+      mkdir build && \
+      cd build && \
+      cmake .. && \
+      make
+
+**This utility works in both dev & prod mode.**  As a pre-requisite make sure to turn ON the flag corresponding to "dev_mode" to true/false in the config.json file.
+
+Prod mode support :
+^^^^^^^^^^^^^^^^^^^
+
+
+#. 
+   EII services should be running in prod by setting ``DEV_MODE=false`` in `build/.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/.env>`_
+
+#. 
+   If using SWTrigger Utility in PROD mode, make sure to set required permissions to certificates.
+
+   .. code-block:: sh
+
+          $ sudo chmod -R 755 <EII-working-directory>/IEdgeInsights/build/provision/Certificates
+
+    **Note:** This step is required everytime provisioning is done.
+    **Caution:** This step will make the certs insecure. Please do not do it on a production machine.
+
+
+#. 
+   Comment lines 33-36 and uncomment the lines 27-30 in `env.sh <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/SWTriggerUtility/env.sh>`_ for running in PROD mode.
+
+#. 
+   Run the below step to source the env variable
+
+   .. code-block:: sh
+
+           $ cd <EII-working-directory>/IEdgeInsights/tools/SWTriggerUtility
+           $ source ./env.sh
+
+Dev mode support :
+^^^^^^^^^^^^^^^^^^
+
+
+#. 
+   EII services should be running in dev mode by setting ``DEV_MODE=true`` in `build/.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/.env>`_.
+
+#. 
+   Uncomment lines 33-36 and comment the lines 27-30 in `env.sh <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/SWTriggerUtility/env.sh>`_ for running in DEV mode.
+
+#. 
+   Run the below step to source the env variable
+
+   .. code-block:: sh
+
+           $ cd <EII-working-directory>/IEdgeInsights/tools/SWTriggerUtility
+           $ source ./env.sh

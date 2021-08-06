@@ -1,0 +1,94 @@
+
+Using input/output plugin with RFC udf
+--------------------------------------
+
+
+* 
+  Add the RFC task to `config.json <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json>`_\ :
+
+  .. code-block::
+
+         "task": [
+            {
+              "tick_script": "rfc_task.tick",
+              "task_name": "random_forest_sample",
+              "udfs": [{
+                  "type": "python",
+                  "name": "rfc_classifier"
+              }]
+            }
+         ]
+
+* 
+  Modify the `rfc_task.tick <https://github.com/open-edge-insights/eii-core/blob/master/tick_scripts/rfc_task.tick>`_ as below, for example:
+
+  .. code-block::
+
+     dbrp "eii"."autogen"
+
+     var data0 = stream
+             |from()
+                     .database('eii')
+                     .retentionPolicy('autogen')
+                     .measurement('ts_data')
+             |window()
+             .period(3s)
+             .every(4s)
+
+     data0
+             @rfc()
+             |eiiOut()
+                     .pubname('sample_publisher')
+                     .topic('sample_topic')
+
+* Add a publisher interface added to `config.json <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json>`_ with the same publisher name and topic 
+  i.e. 'sample_publisher' and 'sample_topic' respectively as in the above example.
+  For example:
+
+.. code-block::
+
+   **TCP mode**
+
+   ```
+       "Publishers": [
+           {
+               "Name": "sample_publisher",
+               "Type": "zmq_tcp",
+               "EndPoint": "0.0.0.0:65034",
+               "Topics": [
+                   "sample_topic"
+               ],
+               "AllowedClients": [
+                   "TimeSeriesProfiler",
+                   "EmbSubscriber",
+                   "GoSubscriber"
+               ]
+           }
+       ]
+
+   ```
+
+   **IPC mode**
+
+   ```
+       "Publishers": [
+           {
+               "Name": "sample_publisher",
+               "Type": "zmq_ipc",
+               "EndPoint": "/EII/sockets",
+               "Topics": [
+                   "sample_topic"
+               ],
+               "AllowedClients": [
+                   "TimeSeriesProfiler",
+                   "EmbSubscriber",
+                   "GoSubscriber"
+               ]
+           }
+       ]
+
+   ```
+
+
+
+* Do the `provisioning <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ and run the EII stack.

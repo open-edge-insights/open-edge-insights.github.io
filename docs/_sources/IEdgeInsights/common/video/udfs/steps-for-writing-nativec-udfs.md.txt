@@ -1,0 +1,153 @@
+## **Steps for writing native(c++) UDFs**
+
+Every UDF writing has two major part to it.
+
+* Writing actual pre/post processing logic using EII exposed APIs.
+
+* Adding EII infra specific configuration component for deploying it
+
+### **EII APIs for Writing Native UDFs(c++)**
+
+There are three APIs defined semantically to add the pre/post processing logic. These APIs must be implemented as method of a user defined class inherited from the Udf class named ***BaseUdf***.
+
+* #### **INITIALIZATION & DE-INITIALIZATION**
+
+    ``` C++
+        class DummyUdf : public BaseUdf {
+                public:
+                    DummyUdf(config_t* config) : BaseUdf(config) {
+                        //initialization Code can be added here
+                    };
+
+                    ~DummyUdf() {
+                        // Any de-initialization logic to be added here
+                    };
+        };
+
+    ```
+
+    The **DummyUdf** in the above code snippet is the user defined class and the constructor of the class initialize the UDF's specific data-structure. The only argument passed to this function is **config** which depicts configuration details mentioned in the `config.json` file of apps liks VideoIngestion and VideoAnalytics which process UDFs. The API to consume **config** is defined in [Util README](../common/util/c/README.md)
+
+
+* #### **PROCESSING THE ACTUAL DATA**
+
+    The API to utilize the ingested input looks as below:
+
+    ``` C++
+    UdfRetCode
+    process(cv::Mat& frame, cv::Mat& outputFrame, msg_envelope_t* meta) override {
+        // Logic for processing the frame & returning the inference result.
+    }
+    ```
+
+    This function is a override method which user need to define in its UDF file.
+
+    The *argument* details are described as below:
+
+    * **Argument 1(cv::Mat &frame)**: It represents the input frame for inference.
+
+    * **Argument 2(cv::Mat &outputFrame)**: It represents the modified frame by the user. This can be used if user need to pass a modified frame forward.
+
+    * **Argument 3(msg_envelope_t\* meta)**: It represents the inference result returned by UDF. The user need to fill the **msg_envelope_t** structure as described in following [**EIIMsgEnv README**](common/libs/EIIMsgEnv/README.md). There are sample code suggested in the README which explains the API usage in detail.
+
+    The *return* code details are  described as below:
+
+    * **UdfRetCode**: User need to return appropriate macro as mentioned below:
+        * **UDF_OK** - UDF has processed the frame gracefully.
+        * **UDF_DROP_FRAME** - The frame passed to process function need to be dropped.
+        * **UDF_ERROR** - it should be returned for any kind of error in UDF.
+
+* #### **LINKING UdfLoader AND CUSTOM-UDF**
+
+    The **initialize_udf()** function need to defined as follows to create a link between UdfLoader module and respective UDF. This function ensure UdfLoader to call proper constructor and process() function of respective UDF.
+
+    ```C++
+    extern "C" {
+        void *initialize_udf(config_t *config) {
+            DummyUdf *udf = new DummyUdf(config);
+            return (void *)udf;
+        }
+    }
+    ```
+
+    The **"DummyUdf"** is the class name of the user defined custom UDF.
+
+---
+
+### **EII APIs for Writing Raw Native UDFs(c++) for Multi Frame Support**
+
+There are three APIs defined semantically to add the pre/post processing logic. These APIs must be implemented as method of a user defined class inherited from the Udf class named ***RawUdf***.
+
+* #### **INITIALIZATION & DE-INITIALIZATION**
+
+    ``` C++
+        class RealSenseUdf : public RawBaseUdf {
+                public:
+                    RealSenseUdf(config_t* config) : RawBaseUdf(config) {
+                        //initialization Code can be added here
+                    };
+
+                    ~RealSenseUdf() {
+                        // Any de-initialization logic to be added here
+                    };
+        };
+
+    ```
+
+    The **RealSenseUdf** in the above code snippet is the user defined class and the constructor of the class initialize the UDF's specific data-structure. The only argument passed to this function is **config** which depicts configuration details mentioned in the `config.json` file of apps liks VideoIngestion and VideoAnalytics which process UDFs. The API to consume **config** is defined in [Util README](../common/util/c/README.md)
+
+
+* #### **PROCESSING THE ACTUAL DATA**
+
+    The API to utilize the ingested input looks as below:
+
+    ``` C++
+    UdfRetCode
+    process(Frame* frame) override {
+        // Logic for processing the frame & returning the inference result.
+    }
+    ```
+
+    This function is a override method which user need to define in its UDF file.
+
+    The *argument* details are described as below:
+
+    * **Argument 1(Frame* frame)**: It represents the frame object.
+
+    The *return* code details are  described as below:
+
+    * **UdfRetCode**: User need to return appropriate macro as mentioned below:
+        * **UDF_OK** - UDF has processed the frame gracefully.
+        * **UDF_DROP_FRAME** - The frame passed to process function need to be dropped.
+        * **UDF_ERROR** - it should be returned for any kind of error in UDF.
+
+* #### **LINKING UdfLoader AND CUSTOM-UDF**
+
+    The **initialize_udf()** function need to defined as follows to create a link between UdfLoader module and respective UDF. This function ensure UdfLoader to call proper constructor and process() function of respective UDF.
+
+    ```C++
+    extern "C" {
+        void *initialize_udf(config_t *config) {
+            RealSenseUdf *udf = new RealSenseUdf(config);
+            return (void *)udf;
+        }
+    }
+    ```
+
+    The **"RealSenseUdf"** is the class name of the user defined custom UDF.
+
+
+### **EII INFRASTRUCTURE RELATED CHANGES**
+
+This section describes the check-list one has to ensure to be completed before exercising C++ UDF.
+
+1. All the code specific to UDF should be kept under one directory which should be placed under **.../common/video/udfs/native** directory.
+
+2. Write appropriate ***CMakeLists.txt*** file and link appropriate external library based on the code. Currently two sample CMAKE files are defined for two different use-case.
+    * [ Dummy UDF's CMakeLists.txt file] (./native/dummy/CMakeLists.txt)
+    * [Safety Gear Demo CMakeLists.txt file](./native/safety_gear_demo/CMakeLists.txt)
+
+3. If the OpenVINO is used kindly follow the [safety_gear_demo](common/video/udfs/native/safety_gear_demo) example for proper linking of  **cpu_extension.so** shared object.
+
+4. An appropriate entry must exist for each UDF that need to be loaded as part of EII deployment. The UDF entry syntax is explained in detail in the following document [UDF README](./README.md)
+

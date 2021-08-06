@@ -1,0 +1,46 @@
+
+Running examples
+----------------
+
+
+#. 
+   Running the Publisher example:
+
+   .. code-block:: sh
+
+           $ ./pub
+
+#. 
+   Running the Subscriber example:
+
+   .. code-block:: sh
+
+           $ ./sub
+
+#. 
+   Running the Server example:
+
+   .. code-block:: sh
+
+           $ ./server
+
+#. 
+   Running the Client example:
+
+   .. code-block:: sh
+
+           $ ./client
+
+#. 
+   Running the GetConfig & watchCallback example:
+
+   .. code-block:: sh
+
+           $ ./sample_app
+
+#. 
+   Running the KV store example:
+
+   .. code-block:: sh
+
+           $ ./kv_store_etcd ./etcd_kv_store_config.json

@@ -1,0 +1,16 @@
+
+Custom UDFs
+===========
+
+The following are the two Custom Udfs workflow which EII supports:
+
+
+#. 
+   Build / Run custom udfs as standalone applications
+
+   For running custom udfs as standalone application one must download the video-custom-udfs repo and refer to `CustomUdfs/README.html <http://localhost:7645/IEdgeInsights/CustomUdfs/README.html>`_
+
+#. 
+   Build / Run custom udfs in VI or VA
+
+   For running custom udfs either in VI or VA one must refer to `VideoIngestion/docs/custom_udfs_doc.html <http://localhost:7645/IEdgeInsights/VideoIngestion/docs/custom_udfs_doc.html>`_

@@ -1,0 +1,44 @@
+# Provision
+
+<b>`By default EII is provisioned in Secure mode`</b>.
+
+Follow below steps to provision. Provisioning must be done before deploying EII on any node. It will start ETCD as a container and load it with configuration required to run EII for single node or multi node cluster set up.
+
+Please follow below steps to provision in Developer mode. Developer mode will have all security disabled.
+
+* Please update DEV_MODE=true in [build/.env](build/.env) to provision in Developer mode.
+* Please re-run the [build/builder.py](build/builder.py) to re-generate the consolidated files as mentioned above
+
+Following actions will be performed as part of Provisioning
+
+ * Loading inital ETCD values from json file located at [build/provision/config/eii_config.json](build/provision/config/eii_config.json).
+ * For Secure mode, Generating ZMQ secret/public keys for each app and putting them in ETCD.
+ * Generating required X509 certs and putting them in etcd.
+ * All server certificates will be generated with 127.0.0.1, localhost and HOST_IP mentioned in [build/.env](build/.env).
+ * If HOST_IP is blank in [build/.env](build/.env), then HOST_IP will be automatically detected when server certificates are generated.
+
+**Optional:** In case of any errors during provisioning w.r.t existing volumes, please remove the existing volumes by running the EII uninstaller script: [eii_uninstaller.sh](build/eii_uninstaller.sh)
+
+Run all the below commmands in this section from `[WORKDIR]/IEdgeInsights/build/provision` directory.
+
+The script shown below starts `etcd` as a container and provision. Please pass docker-compose file as argument, against which provisioning will be done.
+```sh
+$ cd [WORKDIR]/IEdgeInsights/build/provision
+$ sudo ./provision.sh <path_to_eii_docker_compose_file>
+
+# eq. $ sudo ./provision.sh ../docker-compose.yml
+
+```
+>**Optional**: By default, the provisioning step will pull the provisioning images from the docker registry. In case the user wants to build the images, `--build` flag should be provided in the provisioning command that is.
+```sh
+$ sudo -E ./provision.sh <path_to_eii_docker_compose_file> --build
+
+# eq. $ sudo -E ./provision.sh ../docker-compose.yml --build
+```
+>**Note**: The above command only `build` the provisioining images, will not do any other functions of provisioining script.
+
+**Optional:** For capturing the data back from ETCD Cluster to a JSON file, run the [etcd_capture.sh](build/provision/etcd_capture.sh) script. This can be achieved using the following command:
+```sh
+$ ./etcd_capture.sh
+```
+

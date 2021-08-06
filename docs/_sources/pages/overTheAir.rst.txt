@@ -1,0 +1,1021 @@
+
+=====================================
+Updating an Application-Over-The-Air
+=====================================
+
+**Application-Over-The-Air (AOTA)** update enable cloud to edge manageability of application services running on EII-enabled systems through the Turtle Creek component. Turtle Creek is a **Device Manageability** Software which helps to achieve Software Updates and Deployment from Cloud to device which includes SOTA, FOTA, AOTA, and few system operations. 
+
+For EII use case, only **AOTA** features from Turtle Creek are validated and will be supported through **Azure\***, **ThingsBoard\*** and **Telit\*** cloud-based management front-end services. Users can select either one of these options depending on preference. 
+
+The following section will walk you through setting up both **Azure\***, **ThingsBoard\*** and **Telit\***, creating and establishing connectivity with the target systems, as well as updating applications on those systems. 
+
+.. note::
+    
+    By default, the EII is downloaded from Github opensource will not have Device Manageability included in the package. The Device Manageability can be downloaded via customize package in ESH
+
+Installation - Turtle Creek 
+===========================
+
+**Pre-requisites**
+
+    *	Ubuntu 18.04
+    *	Install latest docker cli/docker daemon and docker engine by using the repository at `<https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository>`_ 
+    *	Manage Docker as a non-root user at `<https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user>`_  
+    *	Install latest Docker Compose at `<https://docs.docker.com/compose/install/#install-compose-on-linux-systems>`_  
+    *	Configure proxy setting for docker  at `<https://docs.docker.com/network/proxy/>`_  (optional if only running behind corporate proxy)
+
+All Turtle Creek devices can be controlled using a correctly set up cloud service application. Follow below step to install Turtle Creek
+
+.. note::
+
+    This step is required only for user that select cloud service **Azure\***, **ThingsBoard\*** and **Telit\*** .
+
+*	Install Turtle Creek agent on the machine. 
+
+    *	Run either of the following TC installation scripts:
+
+        **$  sudo ./install-tc.sh** (with TPM security)
+
+    *	After reading all the licenses, press 'q' once to finish. 
+    
+    *	Accept the License by typing Y
+
+        Figure below shows the Terminal output you should expect to see once installation is complete
+
+        .. figure:: image/ota-terminal.png
+            :scale: 50 %
+            :align: center
+
+
+    *	Once Turtle Creek has been installed successfully, a parameter in intel_manageability.conf needs to be changed. 
+
+        **$  sudo vi /etc/intel_manageability.conf** 
+
+    *	Under <all> </all> section change dbs ON to OFF (Figures below). DBS is stand for Docker Bench Security, this feature of Turtle Creek is not being used for EII
+
+        .. figure:: image/ota_ON.png
+            :scale: 50 %
+            :align: center
+
+
+        .. figure:: image/ota_OFF.png
+            :scale: 50 %
+            :align: center
+
+
+    *	Add the URL endpoint for the developer files to the TrustedRepositories as shown in Figure below.
+
+        .. figure:: image/url-endpoint.png
+            :scale: 50 %
+            :align: center
+
+
+    *	Save and exit. You must restart the machine before these changes can take effect. 
+
+
+Multi-Node deployment 
+=====================
+
+EII deployment on multiple nodes requires the use of the Docker* registry. The following section outlines some of the commands to be run on the primary node and on any newly added secondary nodes.
+
+.. note::
+
+    This step is required only for user that select cloud service **Azure Portal\***, **ThingsBoard\*** or **Telit\***.
+
+*	Set up the Docker registry URL, build, and push images. This step must to be run on the **primary** node.
+
+    *	Update docker registry URL in **DOCKER_REGISTRY** variable **<ip:port>**. The example uses **10.221.40.65:5000/** as the Docker registry.
+
+        **$  sudo vi [WORK_DIR]/IEdgeInsights/build/.env**
+
+        .. figure:: image/env_file.png
+            :scale: 50 %
+            :align: center
+
+
+    *	In the same build repository, build the image using the following command:
+
+        **$  docker-compose build**
+
+        If the build is successful, you should see the following terminal output:
+
+        .. figure:: image/success_build.png
+            :scale: 50 %
+            :align: center
+
+    
+    *	Push the image to the registry:
+        
+        **$  docker-compose push**
+
+*	To run EII in multi-node, the user must identify one primary node. To set the primary node, set ETCD_NAME in [WORK_DIR]/IEdgeInsights/build/.env to master.
+
+    .. figure:: image/change_etcd_setting.png
+        :scale: 50 %
+        :align: center
+
+
+*	Next, user can proceed to provision the primary node using below command. This will create the ETCD server on the primary edge node. 
+
+    *	**$  cd [WORK_DIR]/IEdgeInsights/build/provision**
+    *	**$  sudo ./provision.sh <path_to_eii_docker_compose_file>**
+
+*	After done the provisioning on the primary node, users need to do the provisioning for each of the worker node that will be included in the multi node deployment. Below step need to be executed at the primary node. Users need to ensure the ETCD_NAME in [WORK_DIR]/IEdgeInsights/build/.env have been set to other than master name.
+
+    *	**$  cd [WORK_DIR]/IEdgeInsights/build/deploy**
+    *	**$ sudo python3.6 generate_eii_bundle.py -p**
+
+    This step will generate the eii_provisioning.tar.gz at the same directory, you need to manually copy this to the worker node for the provisioning. 
+
+*	After done copy the generated file to the worker node, you need to run these commands on the worker node.
+    
+    *	**$ tar -xvzf eii_provisioning.tar.gz**
+    *	**$ cd eii_provisioning/provision/**
+    *	**$ sudo ./provision.sh**
+
+Generating EII Bundle for deployment 
+====================================
+
+*	The following steps are used to generate the EII_bundle. This must be done on the EII primary node that is currently EII is running. 
+
+    **Note:** This software will only work on Python* 3 and onwards.
+
+    *	Update config.json file to include the services that you need for the bundle. Be sure to exclude those services that you do not want with the bundle.
+        
+        $  **sudo vi build/deploy/config.json**
+
+        .. code-block::
+
+            {
+            "docker_compose_file_version": "<docker_compose_file_version which is compose file version supported by deploying docker engine>",      
+            "exclude_services": [list of services which you want to exclude from your deployement]
+            "include_services": [list of services needed in final deployment docker-compose.yml]
+            } 
+
+    **Note:** Please ensure that you have updated the DOCKER_REGISTRY in build/.env as mentioned in the Multi-Node deployment section
+
+    *	Update the .env file at [repo/build] directory for the worker node environment setting by changing below parameters
+        
+        .. code-block::
+
+            sudo gedit .env
+            ETCD_NAME=<any name other than `master`>
+            ETCD_HOST=<IP address of primary node>
+            DOCKER_REGISTRY=<Docker registry details>
+
+    *	Run the following script in the terminal to generate the eii_bundle
+
+        .. code-block::
+        
+            cd [WORK_DIR]/IEdgeInsights/build/deploy/
+            sudo python3.6 generate_eii_bundle.py
+
+        The default value for bundle name is **"eii_bundle.tar.gz"**, while the tag name is **"eii_bundle"**
+
+        Using *-t* options can give you a custom tag name which will also be used for bundle generation.
+
+        The default value for the docker-compose yml path is "../docker-compose.yml"
+
+    *	The file **eii_bundle.tar.gz** will be created in the same folder. This bundle will be used to deploy EII on the other node via ThingsBoard
+
+Creating an HTTP Local Server [ONLY FOR DEVELOPMENT]
+====================================================
+
+.. note::
+
+    This step is required only for user that select cloud service Azure* or ThingsBoard* cloud services. During actual implementation, users need to have their own cloud http server to upload the EII bundle that being generated and use the URL to fetch the uploaded bundle on the AOTA step later. 
+
+The generated EII bundle need to available via http server to perform AOTA fetching from the cloud services. 
+
+**Pre-Requisites**
+
+Run **sudo vi /etc/environment**. 
+
+Under no_proxy variable, add the local http server (e.g., 10.221.40.65).
+
+Perform **sudo systemctl restart configuration**.
+
+*	Run the following command on the ThingsBoard machine to create the HTTP server for sharing the eii_bundle:
+    
+    **$  python3 -m http.server [any port number]**
+
+*	Add the fileserver endpoint to the configuration file on the node that you will access via the local HTTP server.
+
+    In the example, the steps below must be done on the new node. The new node will access the local HTTP server to fetch the eii_bundle that is being created. 
+
+    *	Open the configuration file
+
+        **$  sudo vi /etc/intel_manageability.conf**
+
+    *	Under **"trustedRepositories"**, add the bundle hosting server endpoint on a new line. http://xx.xxx.xxx.xx as used above
+
+        .. figure:: image/trustedRepo.png
+            :scale: 50 %
+            :align: center
+
+    **Note:** The above example is running local HTTP server at 10.221.40.65:8000
+
+    *	Perform **$  sudo systemctl restart configuration on the machine.**
+
+Cloud Service: Azure Server Set up
+==================================
+
+All Turtle Creek devices can be connected and controlled via Azure portal. An Azure account can be created through the link below:
+
+`<https://azure.microsoft.com/en-us/free/>`_ , select start free, and create the account.
+
+Setting up an Azure IoT Central Application
+-------------------------------------------
+
+*	To generate a premade Turtle Creek (Intel Manageability) IoT Central application get the link from **/usr/share/cloudadapter-agent/azure_template_link.txt** file on turtle creek machine
+*	Copy and paste the link in your browser, you will be redirect to the Azure UI as shown below
+
+.. figure:: image/azure-iot-central.png
+        :scale: 50 %
+        :align: center
+ 
+
+*	For the pricing plan, user can select for the free trial version. Fill up the necessary contact information and click on the create account button. 
+*	After provisioning, the IoT Central application with premade device templates and dashboards will appear. As noted before, this can be accessed at `<https://apps.azureiotcentral.com>`_ or through the Azure portal.
+      
+.. figure:: image/azure-dashboard.png
+        :scale: 50 %
+        :align: center
+
+
+Obtaining device credentials
+----------------------------
+
+*	 To add new device, click on the devices tab on the side bar, click on the add new device button
+
+.. figure:: image/add_device.png
+        :scale: 50 %
+        :align: center
+
+
+*	Select real on the drop-down list, create new device form will appear as below. Click on create button.
+
+.. figure:: image/create-device.png
+        :scale: 50 %
+        :align: center
+
+
+*	The new added device will appear on the list of the devices page. To connect the device, click on that specific device and click on the connect button at the top bar right side.
+
+*	Device connection information form will appear as below. 
+
+.. figure:: image/device-connection.png
+        :scale: 50 %
+        :align: center
+
+
+Provisioning a device
+---------------------
+
+**Pre-Requisites** : In order to perform this step, the Turtle Creek device needs to be installed according to the instructions in the Installation Turtle Creek section.
+
+*	Provisioning can be done with or without TPM security by setting 'PROVISION_TPM'. 'PROVISION_TPM' can be set to the Turtle Creek device, users need to run these commands:
+
+    *	auto: use TPM if present; disable if not present; do not prompt
+    *	disable: do not use TPM.
+    *	enable: use TPM; return error code if TPM not detected.
+    *	(unset): default behavior; use TPM if present, prompt if not
+
+*	On the Turtle Creek device, users need to run be run below command, change the bold parameter accordingly as mentioned above. 
+
+    *	$  sudo PROVISION_TPM=auto provision-tc
+
+*	If the device already being configured before, it will prompt as below:
+
+.. figure:: image/cloud_configuration.png
+        :scale: 50 %
+        :align: center
+
+
+*	Press 'Y' to replace the existing configuration.
+
+*	Select '2' for cloud service option.
+
+.. figure:: image/cloud_option.png
+        :scale: 50 %
+        :align: center
+
+
+*	All the device credentials from Obtaining device credentials will be used here.  Fill up below information accordingly.
+
+.. figure:: image/device_credentials.png
+        :scale: 50 %
+        :align: center
+
+
+*	The script will then start the Intel Manageability services; when the script finishes, the device should be able to be interacted with on its associated IoT Central Application. To verify connectivity: a. Check to see if telemetry/events are appearing. If the info is not seen, use '''systemctl restart cloudadapter telemetry''' command to restart the two agents give few seconds for the info to be populated and refresh the portal page. b. Alternatively, trigger a command like Reboot
+
+*	If at any time the cloud service configuration needs to be changed or updated, run this provisioning script again.
+
+*	On the Azure portal, the device status should be change from Registered to Provisioned as showed below. 
+
+.. figure:: image/device-list.png
+        :scale: 50 %
+        :align: center
+
+
+*	Below is the example of telemetry data of the connected devices that is available to be view on the measurement tab by the user using Azure portal. 
+
+.. figure:: image/telemetry_data.png
+        :scale: 50 %
+        :align: center
+
+
+*	User can get the additional details information for the specific hardware and the event logs on the properties tab as shown below.
+
+.. figure:: image/device-dashboard.png
+        :scale: 50 %
+        :align: center
+
+
+*	Below is the example of basic information that being displayed on the dashboard tab. 
+
+.. figure:: image/device_properties.png
+        :scale: 50 %
+        :align: center
+
+
+Performing AOTA Updates Through the Azure Portal
+------------------------------------------------
+
+**Pre-requisites** : In order to perform  this step, EII bundle need to be generated as mentioned in section Generating EII Bundle for deployment. For the testing purpose, user can run the local http server as mentioned in Creating an HTTP Local Server [ONLY FOR DEVELOPMENT] . For the actual implementation, user is expected have your own http server or any cloud services that can provide valid URL to fetch the EII bundle. 
+
+*	Open the Azure portal, select for the specific device that user will trigger the AOTA. 
+
+*	Select the Commands tab on the top menu bar.
+
+.. figure:: image/command_tab.png
+        :scale: 50 %
+        :align: center
+
+
+*	On the list command, fill up the trigger AOTA form as detailed below. In order to perform this step, the EII bundle needs to be generated as mentioned in the **Generating EII Bundle for deployment section**.
+
+.. figure:: image/aota_form.png
+        :scale: 50 %
+        :align: center
+
+
+*	Above example assumes that the http server is being running at **http://10.221.40.65:8000/eii_bundle.tar.gz** and the EII bundle being generated using the default tag. User can leave all other section empty and click on the Run button. 
+
+The sample PCB demo example of the EII Visualizer application should appear on the new node. In case the visualizer does not appear, run the following command on the new node terminal.
+
+**$  xhost +**
+
+The user can also verify that EII has been successfully deployed on the new node by checking the list of running containers using the following command:
+
+**$  docker ps**
+
+This action should yield the following terminal output listing the running EII containers
+
+.. figure:: image/container_list.png
+        :scale: 50 %
+        :align: center
+
+
+    The user can also stop EII from running on the new node by repeating the AOTA method. Instead of passing command **up** parameter, the user can pass command **down** parameter and the correct eii_bundle tag. The user can verify that EII has stopped by checking on the list of running containers.
+
+Verifying Triggered AOTA in Event
+---------------------------------
+
+Once an AOTA event is triggered, we can verify the log of the triggered call. This can be one of the verification during development phase.
+
+*	Go to the Turtle Creek machine and run the following command to output the log of commands:
+    
+    **$  journalctl -fu dispatcher & journalctl -fu cloudadapter**
+
+*	Note the event logs on the Azure portal server showing which commands have been run
+ 
+.. note::
+
+    If the event log does not appear, follow the steps below.
+
+.. code-block::
+
+    Change settings from ERROR to DEBUG everywhere in below files.
+    (Only for Development Purpose)
+    /etc/intel-manageability/public/dispatcher-agent/logging.ini
+    /etc/intel-manageability/public/cloudadapter-agent/logging.ini
+
+Run the following commands
+
+.. code-block::
+
+    sudo systemctl restart dispatcher
+    sudo systemctl restart cloudadapter
+    sudo systemctl restart diagnostic
+
+Cloud Service: ThingsBoard* Setup
+=================================
+
+All Turtle Creek devices can be added into ThingsBoard to provision/enable AOTA updates.
+
+Starting ThingsBoard* as Docker [macOS*/Linux*]
+-----------------------------------------------
+
+*	Choose an edge device to run as the ThingsBoard server. The edge devices for ThingsBoard machine can be either within the cluster setup or any other edge devices. 
+
+*	Run the following command to start ThingsBoard on the ThingsBoard machine.
+
+    **$  docker run -it -p 9090:9090 -p 1884:2883 -p 5683:5683/udp -v ~/.mytb-data:/data -v ~/.mytb-logs:/var/log/thingsboard -e MQTT_BIND_PORT=2883 --name mytb --restart always thingsboard/tb-postgres:2.5.0**
+
+Assuming that ThingsBoard has started correctly, you should expect to see the terminal output as shown in figure below. 
+
+.. figure:: image/start_thingsboard.png
+        :scale: 50 %
+        :align: center
+
+
+*	After executing the command, the user can browse the ThingsBoard server:
+    
+    $  `<http://<host-ip>:9090>`_
+
+    Example: `<http://10.221.40.48:9090>`_
+
+*	ThingsBoard login page should appear, as shown in figure below. 
+
+.. figure:: image/login_thingsboard.png
+        :scale: 50 %
+        :align: center
+
+
+*	Enter default username and password to access to the ThingsBoard home. 
+    
+    Username: `<sysadmin@thingsboard.org>`_
+    
+    Password: sysadmin
+
+Creating a ThingsBoard* Account 
+--------------------------------
+
+*	On the homepage, click on Tenant management, as shown in figure below
+
+.. figure:: image/homepage_thingsboard.png
+        :scale: 50 %
+        :align: center
+
+        Figure 38.	ThingsBoard Home Page
+
+*	Click on the plus button in the bottom right to add a new tenant, as shown in figure below.
+
+.. figure:: image/tenant_button.png
+        :scale: 50 %
+        :align: center
+
+
+*	The Add Tenant form will appear as shown in figure below. Complete the form, then click on the **add** button. 
+
+.. figure:: image/tenant_form.png
+        :scale: 50 %
+        :align: center
+   
+
+*	New tenant entry will appear in the tenant sectionas shown in figure below. Click on Manage tenant admins to create a new user sign-in username and password.
+
+.. figure:: image/tenant_admin.png
+        :scale: 50 %
+        :align: center
+
+
+*	Add User form will appear as shown in figure below. Complete the form accordingly. For the Activation Method, click on display activation link, then click the "ADD" button.
+
+.. figure:: image/userform.png
+        :scale: 50 %
+        :align: center
+
+
+*	User activation link box will appear as shown in figure below. Click on the activation link.
+
+.. figure:: image/user_activation.png
+        :scale: 50 %
+        :align: center
+
+
+*	User will be redirected to create a new sign-in password. Click on create password to create the new password as shown in figure below. 
+
+.. figure:: image/password_screen.png
+        :scale: 50 %
+        :align: center
+
+
+*	Users can now sign in using their tenant username and password, after which they will be redirect to the ThingsBoard dashboard page as shown in figure below.
+
+.. figure:: image/dashboard_thingsboard.png
+        :scale: 50 %
+        :align: center
+
+
+Adding Turtle Creek Device to ThingsBoard*
+------------------------------------------
+
+* Add the new Turtle Creek device on ThingsBoard. 
+
+    *	Log into the ThingsBoard page. On the left sidebar, click on the **Devices** as shown in figure below.
+
+    .. figure:: image/menu_thingsboard.png
+        :scale: 50 %
+        :align: center
+
+
+    *	Click the 'plus' button on bottom right and choose to 'Add new device'. 
+
+    .. figure:: image/new_device.png
+        :scale: 50 %
+        :align: center
+
+
+    *	'Add device' window will appear. Completed the fields, then click the "ADD button.
+
+    .. figure:: image/intel_managebility.png
+        :scale: 50 %
+        :align: center
+ 
+
+    *	Newly added device will be shown on the devices page as shown in figure below.
+
+    .. figure:: image/device_page.png
+        :scale: 50 %
+        :align: center
+
+
+*	Obtaining device credentials
+
+    *	Click on the manage credentials icon as shown in figure below.
+
+.. figure:: image/manage_credentials.png
+    :scale: 50 %
+    :align: center
+
+
+    *	Device credentials window will appear as shown in figure below. Access token is required for provisioning purposes.
+
+.. figure:: image/device_credentials_tb.png
+    :scale: 50 %
+    :align: center
+
+
+*	Setting up the dashboard 
+
+    *	Some files need to be copied from the Turtle Creek machine to ThingsBoard page in the next step. These files can be found in the directory below (Figure 55). 
+
+        **$  cd /usr/share/cloudadapter-agent/thingboard**
+
+        .. figure:: image/tingsboard_templete.png
+            :scale: 50 %
+            :align: center
+
+ 
+    *	On the left side bar menu, click on the Widget Library, then click on Add new widget in the bottom right, and the Import widgets bundle. Drag the intel_manageability_widget.json file into the box provided and click Import (Figure 55).
+
+    .. figure:: image/widget_bundle.png
+        :scale: 50 %
+        :align: center
+
+        Figure 53.	Importing Widgets Bundle 
+
+    *	On the left sidebar menu, click on Dashboard, then on Add new dashboard in the bottom right. Drag **intel_manageability_devices.json** into the box provided and click Import. Repeat this step for **intel_manageability_batch.json**.
+
+    .. figure:: image/new_dashboard.png
+        :scale: 50 %
+        :align: center
+
+
+    *	Both newly added dashboards will be displayed (Figure 58). 
+
+    .. figure:: image/added_dashboard.png
+        :scale: 50 %
+        :align: center
+
+
+    *	To access the dashboard, click on 'Dashboard' on the left sidebar, then on Intel Manageability Devices (Figure 56). Basic information about added devices is available here. 
+
+If the user has more than one device, the user can choose which device to view by clicking the highlighted button in the top right (Figure 56). 
+
+As shown in Figure 56, buttons are also available in the lower part of the screen to view the entire event log, to search for specific event logs, or to expand the window to full screen.
+
+.. figure:: image/intel_manageability_window.png
+    :scale: 50 %
+    :align: center
+
+
+Provisioning a Device 
+---------------------
+
+**Pre-Requisites**: In order to perform this step, Turtle Creek needs to be installed following the instructions in the Installation - Turtle Creek section.
+
+    The user must provision the Turtle Creek device for it to connect to ThingsBoard. 
+
+*	Provisioning can be done with or without TPM security by setting 'PROVISION_TPM'. 'PROVISION_TPM' can be set to the Turtle Creek device, user needs to run these commands:
+
+    *	auto: use TPM if present; disable if not present; do not prompt
+    *	disable: do not use TPM.
+    *	enable: use TPM; return error code if TPM not detected.
+    *	(unset): default behavior; use TPM if present, prompt if not
+
+*	On the Turtle Creek device, user needs to run this command, change the bold parameter accordingly as mentioned above.
+
+    **$  sudo PROVISION_TPM=auto provision-**Read though the license and press **'Y'** to accept
+
+*	If the device was previously provisioned, the following message will appear. To override the previous cloud configuration, press **'Y'**. 
+
+.. figure:: image/existing_configuration.png
+    :scale: 50 %
+    :align: center
+
+
+*	Select ThingsBoard as the cloud service by pressing **'3'** and [ENTER].
+
+.. figure:: image/cloud_service.png
+    :scale: 50 %
+    :align: center
+
+
+*	Provide the IP address of the server running ThingsBoard.  
+
+.. figure:: image/thingsboard_server.png
+    :scale: 50 %
+    :align: center
+
+
+*	Provide the device token based on Step 3b.
+
+.. figure:: image/device_token.png
+    :scale: 50 %
+    :align: center
+
+
+*	Use 1884s for the port configuration.
+
+.. figure:: image/port_configuration.png
+    :scale: 50 %
+    :align: center
+
+
+*	Prompts for Configure TLS will appear and type 'N' for this.
+
+.. figure:: image/tls_config.png
+    :scale: 50 %
+    :align: center
+
+
+*	The following screen will appear if cloud provisioning has been completed successfully
+
+.. figure:: image/configured_cloud.png
+    :scale: 50 %
+    :align: center
+
+
+* The script will then start the Intel® Manageability Services. When the script finishes, you should be able to interact with the device via the ThingsBoard dashboard.
+
+*  If at any time the cloud service configuration needs to be changed or updated, run this provisioning script again.
+
+*  To add more than one device, repeat each of the previous steps, except for Step 4 (Setting Up the Dashboard).
+
+Performing AOTA Updates Through the ThingsBoard* Page
+-----------------------------------------------------
+
+**Pre-Requisites** : In order to perform  this step EII bundle need to be generated as mentioned in section Generating EII Bundle for deployment and local http server (for development) need to be run as mentioned in Creating an HTTP Local Server [ONLY FOR DEVELOPMENT]
+
+*	Open the ThingsBoard page, then click on the Dashboard page. Select 'Intel Manageability Devices'.
+
+.. figure:: image/dashboard_thingsboard2.png
+    :scale: 50 %
+    :align: center
+
+
+*	Select one of the previously added Turtle Creek devices. In this case, the user can select the new node (node 2) in which they want to deploy the eii_bundle.
+
+*	Click on the 'Trigger AOTA' button.
+
+.. figure:: image/aota_button.png
+    :scale: 50 %
+    :align: center
+
+
+*	Once the Trigger AOTA window opens, complete each field per the information below:
+
+.. figure:: image/aota_window.png
+    :scale: 50 %
+    :align: center
+
+
+For the fetch information, provide the local HTTP server being set up in section Creating an HTTP Local Server [ONLY FOR DEVELOPMENT]. The example uses **http://10.221.40.48:9000/eii_bundle.tar.gz** in this case.
+
+Leave the other section empty and click on the Send button. 
+
+In the step above, the new node will access the primary node through the local HTTP server that being set up to fetch the eii_bundle.  
+
+In the ThingsBoard log, the user can see that the eii_bundle has been fetched from the local server and was deployed successfully:
+
+.. figure:: image/successful_thingsboard.png
+    :scale: 50 %
+    :align: center
+
+
+The sample PCB demo example of the EII Visualizer application should appear on the new node. In case the visualizer does not appear, run the following command on the new node terminal.
+
+**$  xhost +**
+
+The user can also verify that EII has been successfully deployed on the new node by checking the list of running containers using the following command:
+
+**$  docker ps**
+
+This action should yield the following terminal output listing the running EII containers. 
+
+.. figure:: image/eii_container_list.png
+    :scale: 50 %
+    :align: center
+
+
+The user can also stop EII from running on the new node by repeating the AOTA method. Instead of passing command up parameter, the user can pass the command  down parameter and the correct eii_bundle tag. The user can verify that EII has stopped by checking on the list of running containers.
+
+Verifying Triggered AOTA in Event
+---------------------------------
+
+Once an AOTA event is triggered, we can verify the log of the triggered call. This can be one of the verification done during development phase.
+
+*	Go to the Turtle Creek machine and run the following command to output the log of commands:
+
+    **$  journalctl -fu dispatcher & journalctl -fu cloudadapter**
+
+*	Note the event logs on the ThingsBoard server showing which commands have been run.
+
+.. note::
+
+    If the event log does not appear, follow the steps below.
+
+.. code-block::
+
+    Change settings from ERROR to DEBUG everywhere in below files.
+    (Only for Development Purpose)
+    /etc/intel-manageability/public/dispatcher-agent/logging.ini
+    /etc/intel-manageability/public/cloudadapter-agent/logging.ini
+
+Run the following commands
+
+**$  sudo systemctl restart dispatcher**
+
+**$  sudo systemctl restart cloudadapter**
+
+Cloud Service: Telit* Cloud Setup
+=================================
+
+It is necessary to creating a Telit account and to receive an org token from Telit to provision/enable AOTA updates. You will also need to import the Thing Definition, which provides the buttons created to support AOTA functionality in EII.
+
+A connection to Telit can only be made if the user has a group/organization on the service. Visit the deviceWise domain to create an account and get an org or application 
+
+`https://docs.devicewise.com/Content/GettingStarted/Getting-Started-with-IoT-Platform.htm`_
+
+Create Your Telit* IoT Portal Account
+-------------------------------------
+
+Telit provides a Getting Started Guide for creating an account. This guide can be referenced here: 
+
+`https://docs.devicewise.com/Content/GettingStarted/IoT-Portal-Part-1---Creating-your-account.htm`_
+
+After setting up your password and accepting Telits terms, the first time you click on Things you will be asked to set up live updates. Although this is optional, Intel recommends setting the frequency of live updates to 5 seconds.
+
+.. figure:: image/live_update.png
+    :scale: 50 %
+    :align: center
+
+
+Import Thing Definition
+-----------------------
+
+**Pre-Requisites**: In order to perform this step Turtle Creek need to be installed based on Installation Turtle Creek section
+
+**To work with EII's AOTA capability, import INTEL-MGB as a Thing**
+
+*	Login to Telit* at `https://portal.telit.com/app/login`_
+*	Ensure the correct org in the top right corner, left of the gear wheel.
+*	Select the Developer tab along the top bar.
+*.	Select Thing Definitions button in the bottom left sidebar menu.
+*	Within the Things sub-screen, find the Import button in the upper right corner.
+*	Click Attach File and select **thingsdefinition.json** that available inside the turtlecreek repository. 
+*	Click the Import button. You should see the new Things definition added to your account
+
+.. figure:: image/confirmation.png
+    :scale: 50 %
+    :align: center
+
+*	The new Thing definition should now be visible within the Telit list of things under Things definitions, under the Developer tab.
+
+Copy Application Token
+----------------------
+
+Within the Telit portal, view the Developer tab and click Applications from the menu on the left. Copy and retain the token, which will be required during the provisioning script/step.
+
+This token is used to link your Thing to the Telit cloud and is used during provisioning.
+
+*	Log in to your Telit IoT Portal: `https://portal.devicecloud.windriver.com`_
+
+.. note::
+
+    The first time you log in, you will be asked to Enable Live Updates for Things. Click the box, set 5 seconds for the setting.
+
+*	Retrieve Token
+
+    *	Click on 'Developer'.
+    *	Click on 'Applications'.
+    *	Copy encrypted token.
+
+.. figure:: image/encrypted_token.png
+    :scale: 50 %
+    :align: center
+
+
+.. note::
+
+    Alternately, you can paste the token into a text editor.
+
+Provision with the Token
+------------------------
+
+*	Once you have copied your Application Token, you are ready to provision Turtle Creek. You will need the provisioning script.
+
+*	Provisioning can be done with or without TPM security by setting 'PROVISION_TPM'. 'PROVISION_TPM' can be set tothe turtlecreek device, users need to run be run below command
+
+    *	auto: use TPM if present; disable if not present; do not prompt
+    *	disable: do not use TPM.
+    *	enable: use TPM; return error code if TPM not detected.
+    *	(unset): default behavior; use TPM if present, prompt if not
+
+*	On the Turtle Creek device, users need to run be run below command, change the bold parameter accordingly as mentioned above. 
+
+    *	$  sudo PROVISION_TPM=auto provision-tc
+    *	User will be asked to replace configuration if there is any existing configured cloud service. Type Y
+    *	Choose Telit Cloud service
+    *	Select development for Telit host
+    *	Insert application token that have been copied on previous step.
+    *	Leave the Telit thing key blank
+
+User will be prompt by 'successfully configured cloud service' and 'Turtle Creek provision complete' message
+
+.. figure:: image/message.png
+    :scale: 50 %
+    :align: center
+
+
+*	Verify your Connectivity
+
+    *	Click on 'Things'. 
+    *	Verify that your system is now visible on Telit
+
+.. figure:: image/telit_ui.png
+    :scale: 50 %
+    :align: center
+
+
+Once your device is identified as a Thing in Telit, your system can be updated through Telit. 
+
+Telit serves as the UI to support the following OTAs (Over-the-Air) without manual intervention: 
+
+    **AOTA** (Application Over the Air update) 
+    
+    **FOTA** (Firmware Over the Air update) 
+    
+    **SOTA** (Software/OS Over the Air update) 
+    
+    **Config Update** (configuration parameter update) 
+    
+    **Power Management** (Remote Shutdown and Restart) 
+
+.. note::
+
+    Only AOTA is currently supported and validated with EII
+
+Link to Thing definition
+------------------------
+
+*	Set Thing definition
+    *	Click **Things** tab.
+    *	Click **(eye)** for your Thing.
+    *	Set **Thing Definition**, click **(book)**.
+    *	Choose definition: **INTEL_MGB**.
+    *	Submit, Okay.
+
+.. figure:: image/thing_overview.png
+    :scale: 50 %
+    :align: center
+
+
+*	Once the Things definition is installed, you will see the Methods tab is enabled, which will show you the widgets that EII supports. 
+
+.. figure:: image/connected_device_telit.png
+    :scale: 50 %
+    :align: center
+
+
+.. note::
+
+    Your 'Methods' might look different.
+
+The Telit website provides instructions for navigating the user interface to complete the steps of importing a thing definition and performing required configuration tasks. The following steps are generalized, as the name and placement of specific buttons and menus within the Telit website can change without notice.
+
+View and Name Your Thing
+------------------------
+
+*	Name your Thing (optional)
+
+    *	Click 'Actions'.
+    *	Click 'Edit'. 
+    *	Under Name* <enter name>.
+    *	Update, Okay
+
+.. figure:: image/device_naming.png
+    :scale: 50 %
+    :align: center
+
+
+.. note::
+
+    This helps to identify your device
+
+.. figure:: image/connected_device_list.png
+    :scale: 50 %
+    :align: center
+
+
+*	Identify thing on system (Thing Key)
+
+    *	Open Terminal
+    *	$  cat/usr/share/dispatcher-agent/device_id
+
+Uploading the Telit deployment bundle in Telit Portal 
+-----------------------------------------------------
+
+**Pre-Requisites** : In order to perform  this step EII bundle need to be generated as mentioned in section Generating EII Bundle for deployment. The EII bundle need to be in the same system as you access your Telit portal. 
+
+*	**Goto Developer Page** and Select **Files** General Menu on **Left** side panel.
+*	In **Files** Page Click **\*New File** Button.
+*	In **Add File** Popup, Click **Attach** File button and attach the generated TC-Telit Bundle **eii_bundle.tar.gz** and Select **Public** CheckBox. (Mandatory).
+*	Click Upload Button as shown below
+
+.. figure:: image/generated_bundle.png
+    :scale: 50 %
+    :align: center
+
+
+*	The new added file will be listed on the Files section. Copy **Url** of the uploaded for AOTA Method
+
+.. figure:: image/uploaded_url.png
+    :scale: 50 %
+    :align: center
+
+
+Performing AOTA Updates Through Telit
+-------------------------------------
+
+*	Go to **Things** Page `https://portal-dev.telit.com/things/browse.`_  
+*	Click the eye icon to select the provisioned device.
+*	Select **Methods** Tab.
+*	Select Trigger AOTA button as shown below.
+
+.. figure:: image/aota_methods.png
+    :scale: 50 %
+    :align: center
+
+
+*	Fill up the trigger AOTA form accordingly.
+    
+    Container tag should be eii_bundle if you generate the bundle using default value. 
+
+    Fetch should be the copied URL from the upload bundle in the Uploading the Telit deployment bundle in Telit Portal . 
+    
+    Version should be the docker compose file version number Which we used for tc-telit bundle generation.
+    
+    Leave the others section empty and click on the execute button
+
+.. figure:: image/trigger_aota_form.png
+    :scale: 50 %
+    :align: center
+
+
+*	Click on the event tab to check on the AOTA status, success message will be display as below if the AOTA is executed successfully. 
+
+.. figure:: image/event_tab.png
+    :scale: 50 %
+    :align: center
+
+
+Multinode deployment without using Turtle Creek. 
+================================================
+
+This step is to deploy EII on multi node by using the native method without any installation of Turtle Creek and Cloud service. To continue on this section, it is required to complete step in Multi-Node deployment and Generating EII Bundle for deployment section. 
+ 
+.. note::
+    Please make sure to copy and untar the above bundle on a secure location having root only access as it container secrets.
+
+# **$ sudo tar -xvf <eii_bundle gz generated>**
+
+# **$ cd build**
+
+# **$ docker-compose up**
+
+After done for this step, user can see that the container as what have been generated on the EII bundle is running.

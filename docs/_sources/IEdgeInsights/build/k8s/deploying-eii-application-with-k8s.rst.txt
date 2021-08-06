@@ -1,0 +1,24 @@
+
+Deploying EII Application with K8s
+----------------------------------
+
+..
+
+   **Note:** ``eii-k8s-deploy.yml`` file be generated in ``build/k8s`` directory by ``eiibuilder``.
+
+
+
+* Goto ``build/k8s`` directory.
+  .. code-block:: sh
+
+     $ cd build/k8s
+
+* Deploy ``k8s`` using ``kubectl`` utility by following command
+  .. code-block:: sh
+
+     $  kubectl apply -f ./eii-k8s-deploy.yml
+
+* Make sure the pods are ``Running`` fine as per deploy yml file.
+  .. code-block:: sh
+
+     $  kubectl -n eii get pods

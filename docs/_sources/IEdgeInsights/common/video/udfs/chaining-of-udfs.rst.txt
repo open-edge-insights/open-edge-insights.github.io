@@ -1,0 +1,36 @@
+.. role:: raw-html-m2r(raw)
+   :format: html
+
+
+``Chaining of UDFs``
+------------------------
+
+One can chain multiple native/python UDFs in the ``udfs`` key. The way chaining
+works here is the output of the UDF listed first would send the modified frame
+and metadata to the subsequent UDF and so on. One such classic example is having
+``pcb.pcb_filter`` and ``pcb.pcb_classifier`` in VideoIngestion service config to
+do both the pre-processing and the classification logic without the need of
+VideoAnalytics service.
+
+``Combination of UDFs with ingestors``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Ingestor
+     - Chaining UDFs for pcb demo usecase
+     - Chaining UDFs for worker safety gear usecase
+   * - opencv/gstreamer
+     - :raw-html-m2r:`<br>`\ :raw-html-m2r:`<br>`\ Combination of resize (native), pcb filter (python) and\ :raw-html-m2r:`<br>`\ pcb classifier (python) can be used as :raw-html-m2r:`<br>`\ per the need.
+     - :raw-html-m2r:`<br>`\ :raw-html-m2r:`<br>`\ :raw-html-m2r:`<br>`\ Combination of resize (native) and worker safety gear classifier (native/python) :raw-html-m2r:`<br>` can be used as per the need.
+   * - gstreamer with GVA(Gstreamer Video Analytics) elements
+     - Not Applicable
+     - :raw-html-m2r:`<br>`\ Any post-processing UDFs can be used as all\ :raw-html-m2r:`<br>`\ the pre-processing and classification is :raw-html-m2r:`<br>`\ happening in the gstreamer pipeline itself
+
+
+.. note:: \ :
+   Dummy UDF can also be used for above use cases for testing chaining UDFs
+   feature but as such there is no value add as it's a do-nothing UDF.
+   In DEV Mode python udfs changes can be tested by restarting containers, no need to rebuild.
+

@@ -1,0 +1,6 @@
+## ETCD Keeper
+* Lightweight etcd web client.
+* Support etcd 2.x and etcd 3.x.
+* The server uses the etcd go client interface, and the server compiles with the etcd client package.
+* Based easyui framework to achieve(easyui license [easyui website](http://www.jeasyui.com)).
+

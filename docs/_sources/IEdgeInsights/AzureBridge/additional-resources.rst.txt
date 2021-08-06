@@ -1,0 +1,12 @@
+
+Additional Resources
+--------------------
+
+For more resources on Azure IoT Hub and Azure IoT Edge, see the following
+references:
+
+
+* `Azure IoT Hub <https://docs.microsoft.com/en-us/azure/iot-hub/>`_
+* `Azure IoT Edge <https://docs.microsoft.com/en-us/azure/iot-edge/>`_
+* `How to Deploy AzureML Models <https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-and-where>`_
+* `AzureML Tutorial: Train your first ML Model <https://docs.microsoft.com/en-us/azure/machine-learning/tutorial-1st-experiment-sdk-train>`_

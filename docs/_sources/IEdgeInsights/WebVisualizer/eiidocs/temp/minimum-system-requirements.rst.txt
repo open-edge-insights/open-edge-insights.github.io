@@ -1,0 +1,22 @@
+
+Minimum System Requirements
+===========================
+
+EII software will run on the below mentioned Intel platforms:
+
+.. code-block::
+
+   * 6th generation Intel® CoreTM processor onwards OR
+     6th generation Intel® Xeon® processor onwards OR
+     Pentium® processor N4200/5, N3350/5, N3450/5 with Intel® HD Graphics
+   * At least 16GB RAM
+   * At least 64GB hard drive
+   * An internet connection
+   * Ubuntu 18.04
+
+For performing Video Analytics, a 16GB of RAM is recommended.
+For time-series ingestion and analytics, a 2GB RAM is sufficient.
+The EII is validated on Ubuntu 18.04 and though it can run on other platforms supporting docker, it is not recommended.
+
+.. note:: \ : In order to use ``SNAPSHOT`` functionality one needs to enable the sw trigger mode and make sure ingestion should be stopped before getting the frame snapshot capture.
+

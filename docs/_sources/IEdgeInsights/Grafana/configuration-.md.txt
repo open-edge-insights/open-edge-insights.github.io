@@ -1,0 +1,16 @@
+# CONFIGURATION #
+
+1. [dashboard.json](./dashboard.json)
+    This is the dashboard json file that is loaded when grafana starts. It has been preconfigured to display time-series data. 
+
+2. [dashboard_sample.yml](./dashboard_sample.yml)
+    This is the config file for all the dashboards. It specifies the path where all the dashboard json files will be looked for.
+
+3. [datasource_sample.yml](./datasource_sample.yml)
+    This is the config file for setting up the datasource. It has got various fields for datasource configuration.
+
+4. [grafana_template.ini](./grafana_template.ini)
+    This is the config for Grafana itself. It specifies how grafana should start up, once it has been configured.
+
+NOTE: The contents of these files can be edited according to the requirement.
+

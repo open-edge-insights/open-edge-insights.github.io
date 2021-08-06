@@ -1,0 +1,7 @@
+
+Start client, subscribe and destroy
+===================================
+
+.. code-block:: sh
+
+   make client

@@ -1,0 +1,53 @@
+
+Configuration file:
+-------------------
+
+**config.json** is the configuration file used for sw_trigger_utility.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Field
+     - Meaning
+     - Type of the value
+   * - ``num_of_cycles``
+     - ``Number of cyles of start-stop ingestions to repeat``
+     - ``integer``
+   * - ``dev_mode``
+     - ``dev mode ON or OFF``
+     - ``boolean (true or false)``
+   * - ``log_level``
+     - ``Log level to view the logs accordingly``
+     - ``integer [DEBUG=3 (default), ERROR=0, WARN=1, INFO=2]``
+
+
+.. note:: \ :
+
+
+   * When working with GigE cameras which requires ``network_mode: host``\ , update the ``EndPoint`` key of SWTriggerUtility interface in `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/SWTriggerUtility/config.json>`_ to have the host system IP instead of the service name of the server.
+
+
+.. code-block::
+
+   Eg. In order to connect to `ia_video_ingestion` service which is configured with GigE camera refer the below `EndPoint` change in the SWTriggerUtility interface:
+
+   ```javascript
+   {
+       "Clients": [
+           {
+               "EndPoint": "<HOST_SYSTEM_IP>:64013",
+               "Name": "default",
+               "ServerAppName": "VideoIngestion",
+               "Type": "zmq_tcp"
+           }
+       ]
+   }
+   ```
+
+
+..
+
+   * In case one needs to change the values in `pre-requisites section <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_\ , then ensure to re-run the steps mentioned in `pre-requisites section <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_ to see the updated changes are getting applied ``OR`` one can choose to update the config key of SWTriggerUtility app via ETCD UI and then restart the application.
+
+
+**This utility works in both dev & prod mode.**  As a pre-requisite make sure to turn ON the flag corresponding to "dev_mode" to true/false in the config.json file.

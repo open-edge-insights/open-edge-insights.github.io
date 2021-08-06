@@ -1,0 +1,11 @@
+# ConfigMgr 
+ConfigMgr (Config manager) provides CPP/Python/Golang APIs to:
+- fetch an applications configs values from the KV store.
+- fetch an applications interface values from KV store for pub, sub, server and client.
+- watch on application's config changes.
+- generate EII MessageBus config.
+- read and set /GlobalEnv variables.
+- fetch env variables: appname, dev_mode
+
+All these data are stored into the kv store of EII during the provisioning phase and can be changed   dynamically by the admin.
+

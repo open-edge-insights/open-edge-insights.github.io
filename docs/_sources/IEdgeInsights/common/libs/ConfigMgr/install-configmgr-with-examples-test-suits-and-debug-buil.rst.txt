@@ -1,0 +1,14 @@
+
+Install ConfigMgr with Examples, Test suits and Debug Build.
+------------------------------------------------------------
+
+.. code-block:: sh
+
+   $ rm -rf build
+   $ mkdir build
+   $ cd build
+   $ cmake -DWITH_EXAMPLES=ON -DWITH_TESTS=ON -DCMAKE_BUILD_TYPE=Debug ..
+   $ make
+   $ sudo make install
+
+``WITH_EXAMPLES=ON``\ , ``WITH_TESTS=ON`` and ``CMAKE_BUILD_TYPE=Debug`` to compile ConfigMgr with Examples, Unit Tests and Debug mode respectively.

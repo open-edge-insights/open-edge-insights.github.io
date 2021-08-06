@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>EII Pre-Requisites &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script src="../../../../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> EII Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installing_docker_pre_requisites.html">Manual steps to install docker daemon and docker-compose with proxy settings configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/running.html">Running EII</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#downloading-and-installation-from-the-edge-software-hub">Downloading and Installation from the Edge Software Hub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#downloading-the-default-package">Downloading the Default Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#downloading-customize-package">Downloading Customize Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#installing-the-package">Installing the Package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#manual-installation">Manual Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#docker-pre-requisites">Docker Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#provision">Provision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#build-and-run-eii-pcb-video-timeseries-use-cases">Build and Run EII PCB video/timeseries use cases</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#eii-message-bus-architecture">EII Message Bus Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#compilation">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id1">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#publishers">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#subscribers">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#services">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#requesters">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#using-zap-authentication">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#c-examples">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#publisher-many-example">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#eii-message-bus-development">EII Message Bus Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#developing-protocols">Developing Protocols</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#adding-a-new-protocol">Adding a New Protocol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#protocol-t-function-definition"><code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> Function Definition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#configmgr">ConfigMgr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#etcd-ui-service"><code class="docutils literal notranslate"><span class="pre">ETCD</span> <span class="pre">UI</span> <span class="pre">Service</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#zmqbroker">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#subscriber">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#publisher">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#zmq-tcp-protocol-usecase">zmq_tcp Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id1">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id2">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id3">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id5">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id6">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id7">Go Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/sample.html">Sample Application for APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/sample.html#sample-applications-for-eii-platform">Sample Applications for EII Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/video.html">Video Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#videoingestion-module"><code class="docutils literal notranslate"><span class="pre">VideoIngestion</span> <span class="pre">Module</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#ingestor-config"><code class="docutils literal notranslate"><span class="pre">Ingestor</span> <span class="pre">config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#note-for-working-with-genicam-usb3-vision-camera-please-install-the-respective-camera-sdk-by-referring-the-below-section"><strong>Note:</strong> For working with Genicam USB3 Vision camera please install the respective camera SDK by referring the below section.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/imageStore.html">ImageStore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/imageStore.html#imagestore-module"><code class="docutils literal notranslate"><span class="pre">ImageStore</span> <span class="pre">Module</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/imageStore.html#configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/imageStore.html#detailed-description-on-each-of-the-keys-used"><code class="docutils literal notranslate"><span class="pre">Detailed</span> <span class="pre">description</span> <span class="pre">on</span> <span class="pre">each</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">keys</span> <span class="pre">used</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/timeseries.html">Working with Timeseries Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../minimum-system-requirements.html">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../using-video-accelerators.html">Using video accelerators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../using-video-accelerators.html#note"><strong>Note</strong>:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../VideoIngestion/videoingestion-module.html"><code class="docutils literal notranslate"><span class="pre">VideoIngestion</span> <span class="pre">Module</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/restdata.html">RestDataExport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/overTheAir.html">Updating an Application-Over-The-Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/modes.html">DEV MODE and PROFILING MODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/docker.html">Sample Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/azure.html">Azure Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/orchestration.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/benchmarking.html">Video and Time-series Benchmarking Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/codeModification.html">Code Modification Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/debugging.html">Debugging EII</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>EII Pre-Requisites</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/IEdgeInsights/WebVisualizer/eiidocs/temp/eii-prereq.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="eii-pre-requisites">
+<h1>EII Pre-Requisites<a class="headerlink" href="#eii-pre-requisites" title="Permalink to this headline">¶</a></h1>
+<p>The section assumes the EII software is already downloaded from the release package or from git.</p>
+<div class="section" id="generating-consolidated-docker-compose-yml-eii-config-json-and-eii-k8s-deploy-yml-files">
+<h2>Generating consolidated docker-compose.yml, eii_config.json and eii-k8s-deploy.yml files:<a class="headerlink" href="#generating-consolidated-docker-compose-yml-eii-config-json-and-eii-k8s-deploy-yml-files" title="Permalink to this headline">¶</a></h2>
+<p>EII is equipped with <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/builder.py">builder</a>, a robust python tool to auto-generate the required configuration files to deploy EII services on single/multiple nodes. The tool is    capable of auto-generating the following consolidated files by fetching the respective files from EII service directories which are required to bring up different EII use-cases:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>file name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>docker-compose.yml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file used to launch EII docker containers in a given single node using <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> tool</p></td>
+</tr>
+<tr class="row-odd"><td><p>docker-compose.override.yml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">docker-compose-dev.override.yml</span></code> of every app that is generated only in DEV mode for EII deployment on a given single node using <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> tool</p></td>
+</tr>
+<tr class="row-even"><td><p>eii_config.json</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">config.json</span></code> of every app which will be put into etcd during provisioning</p></td>
+</tr>
+<tr class="row-odd"><td><p>eii-k8s-deploy.yml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">k8s-service.yml</span></code> of every app that is required to deploy EII servcie via Kubernetes orchestrator</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Whenever we make changes to individual EII app/service directories files as mentioned above in the description column,</dt><dd><p>it is required to re-run the builder.py script before provisioning and running the EII stack to ensure that the
+changes done reflect in the required consolidated files.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Manual editing of above consolidated files is not recommended and we would recommend to do the required changes to</dt><dd><p>respective files in EII app/service directories and use Builder script to generate the conslidated ones.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="using-builder-script">
+<h3>Using Builder script<a class="headerlink" href="#using-builder-script" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Install requirements</p></li>
+</ul>
+<hr class="docutils" />
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="o">[</span>WORKDIR<span class="o">]</span>/IEdgeInsights/build
+<span class="c1">## Install requirements for builder.py</span>
+$ pip3 install -r requirements.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Running Builder</p></li>
+</ul>
+<hr class="docutils" />
+<p>Builder script usage:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3.6 builder.py -h
+usage: builder.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-f YML_FILE<span class="o">]</span> <span class="o">[</span>-v VIDEO_PIPELINE_INSTANCES<span class="o">]</span>
+                    <span class="o">[</span>-d OVERRIDE_DIRECTORY<span class="o">]</span>
+
+optional arguments:
+    -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+    -f YML_FILE, --yml_file YML_FILE
+                        Optional config file <span class="k">for</span> list of services to include.
+                        Eg: python3.6 builder.py -f video-streaming.yml
+                        <span class="o">(</span>default: None<span class="o">)</span>
+    -v VIDEO_PIPELINE_INSTANCES, --video_pipeline_instances VIDEO_PIPELINE_INSTANCES
+                        Optional number of video pipeline instances to be
+                        created. Eg: python3.6 builder.py -v <span class="m">6</span> <span class="o">(</span>default:
+                        <span class="m">1</span><span class="o">)</span>
+    -d OVERRIDE_DIRECTORY, --override_directory OVERRIDE_DIRECTORY
+                        Optional directory consisting of of benchmarking
+                        configs to be present <span class="k">in</span> each app directory. Eg:
+                        python3.6 builder.py -d benchmarking <span class="o">(</span>default:
+                        None<span class="o">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Running</span> <span class="pre">builder</span> <span class="pre">to</span> <span class="pre">generate</span> <span class="pre">the</span> <span class="pre">above</span> <span class="pre">listed</span> <span class="pre">consolidated</span> <span class="pre">files</span> <span class="pre">for</span> <span class="pre">all</span> <span class="pre">applicable</span> <span class="pre">EII</span> <span class="pre">services</span></code>:</p>
+<blockquote>
+<div><p>Builder will parse the top level directories under <strong>IEdgeInsights</strong> to generate the above listed consolidated files.</p>
+</div></blockquote>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 builder.py
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Running</span> <span class="pre">builder</span> <span class="pre">to</span> <span class="pre">generate</span> <span class="pre">the</span> <span class="pre">above</span> <span class="pre">listed</span> <span class="pre">consolidated</span> <span class="pre">files</span> <span class="pre">for</span> <span class="pre">a</span> <span class="pre">subset</span> <span class="pre">of</span> <span class="pre">EII</span> <span class="pre">services</span></code>:</p>
+<blockquote>
+<div><p>This is achieved by providing a yml file to Builder as config which has list of services to include. User can mention the service name as path relative to <strong>IEdgeInsights</strong> or Full path to the service in the config yml file.</p>
+</div></blockquote>
+<p>If user wants to include only a certain number of services in the EII stack, he can opt to provide the <strong>-f or yml_file</strong> flag of builder to allow only the services provided in the yml file mentioned with the <strong>-f or yml_file</strong>. Few examples of such yml files for different usecases are provided at <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/video-streaming-azure.yml">video</a>, <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/video-streaming-azure.yml">time-series</a>, <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/video-streaming-azure.yml">Azure</a> etc.,</p>
+<p>An example for running Builder with this flag is given below:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 builder.py -f video-streaming.yml
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Running</span> <span class="pre">builder</span> <span class="pre">to</span> <span class="pre">generate</span> <span class="pre">multi</span> <span class="pre">instance</span> <span class="pre">configs</span></code>:</p>
+<p>Based on the user’s requirements, builder can also generate multi-instance docker-compose.yml, config.json, k8s-service.yml respectively.</p>
+<p>If user wants to generate boiler plate config for multiple stream use cases, he can do so by using the <strong>-v or video_pipeline_instances</strong> flag of builder. This flag creates multi stream boiler plate config for docker-compose.yml, eii_config.json &amp; k8s k8s-service.yml files respectively.</p>
+<p>An example for running builder to generate multi instance boiler plate config for 3 streams of <strong>video-streaming</strong> use case has been provided below:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 builder.py -v <span class="m">3</span> -f video-streaming.yml
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>NOTE</strong>: This multi-instance feature support of Builder works only for the video pipeline i.e., <strong>video-streaming.yml</strong> use case alone and not with any other use case yml files like <strong>video-streaming-storage.yml</strong> etc., Also, it doesn’t work for cases without <code class="docutils literal notranslate"><span class="pre">-f</span></code> switch too. In other words, only the above example works with <code class="docutils literal notranslate"><span class="pre">-v</span></code> taking in any +ve number</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Running</span> <span class="pre">builder</span> <span class="pre">to</span> <span class="pre">generate</span> <span class="pre">benchmarking</span> <span class="pre">configs</span></code>:</p>
+<p>If user wants to provide a different set of docker-compose.yml, config.json &amp; k8s k8s-service.yml other than the ones present in every service directory, he can opt to provide the <strong>-d or override_directory</strong> flag which indicates to search for these required set of files within a directory provided by the flag. For example, if user wants to pick up these files from a directory named <strong>benchmarking</strong>, he can run the command provided below:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 builder.py -d benchmarking
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong></p>
+<ul class="simple">
+<li><p>If using the override directory feature of builder, it is recommended to include set of all 3 files mentioned above. Failing to provide any of the files in the override directory results in builder not including that service in the generated final config.</p></li>
+<li><p>If user wishes to spawn a single Subscriber/Client container subscribing/receiving on multiple Publisher/Server containers, he can do so by adding the AppName of Subscriber/Client container in <strong>subscriber_list</strong> of <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/builder_config.json">builder_config.json</a> ensuring the Publisher/Server container <strong>AppName</strong> is added in the <strong>publisher_list</strong> of <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/builder_config.json">builder_config.json</a>. For services not mentioned in <strong>subscriber_list</strong>, multiple containers specified by the <strong>-v</strong> flag are spawned.
+For eg: If builder is run with <strong>-v 3</strong> option and <strong>Visualizer</strong> isn’t added in <strong>subscriber_list</strong> of <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/builder_config.json">builder_config.json</a>, 3 <strong>Visualizer</strong> instances are spawned, each of them subscribing to 3 <strong>VideoAnalytics</strong> services. If <strong>Visualizer</strong> is added in <strong>subscriber_list</strong> of <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/builder_config.json">builder_config.json</a>, a single <strong>Visualizer</strong> instance subscribing to 3 multiple <strong>VideoAnalytics</strong> is spawned.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="adding-new-eii-service-so-it-gets-picked-up-by-builder">
+<h4>Adding new EII service so it gets picked up by Builder<a class="headerlink" href="#adding-new-eii-service-so-it-gets-picked-up-by-builder" title="Permalink to this headline">¶</a></h4>
+<p>Since the builder takes care of registering and running any service present in it’s own directory in the <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/VideoAnalytics">IEdgeInsights</a> directory, this section describes on how to add any new service the user wants to add into the EII stack, subscribe to <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/VideoAnalytics">VideoAnalytics</a> and publish on a new port.</p>
+<p>Any service that needs to be added into the EII stack should be added as a new directory in the <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/eii_config.json">IEdgeInsights</a> directory. The directory should contain a <strong>docker-compose.yml</strong> which will be used to deploy the service as a docker container and it should also contain a <strong>config.json</strong> which contains the required config for the service to run once it is deployed. The <strong>config.json</strong> will mainly consist of a <strong>config</strong> section which includes the configuration related parameters required to run the application and an <strong>interfaces</strong> section which includes the configuration of how this service interacts with other services of the EII stack. The <strong>AppName</strong> present in <strong>environment</strong> section in <strong>docker-compose.yml</strong> file is appended to the <strong>config</strong> &amp; <strong>interfaces</strong> like <strong>/AppName/config</strong> &amp; <strong>/AppName/interfaces</strong> before being put into the main <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/eii_config.json">eii_config.json</a>. Additionally, if the EII service needs to be deployed over k8s orchestrator, the <strong>k8s-service.yml</strong> file needs to be defined.</p>
+<p>An example has been provided below on how to write the <strong>config.json</strong> for any new service, subscribe it to <strong>VideoAnalytics</strong> and publish on a new port:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;paramOne&quot;</span><span class="o">:</span> <span class="s2">&quot;Value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paramTwo&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span><span class="p">],</span>
+        <span class="s2">&quot;paramThree&quot;</span><span class="o">:</span> <span class="mf">4000</span><span class="p">,</span>
+        <span class="s2">&quot;paramFour&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;interfaces&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:65013&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;VideoAnalytics&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;camera1_stream_results&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:65113&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;publish_stream&quot;</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;ClientOne&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ClientTwo&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ClientThree&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above specified <strong>config.json</strong>, the value of <strong>config</strong> key is the config required by the service to run and the value of the <strong>interfaces</strong> key is the config required by the service to
+interact with other services of EII stack over EII message bus.</p>
+<p>The <strong>Subscribers</strong> value in the <strong>interfaces</strong> section denotes that this service should act as a subscriber to the stream being published by the value specified by <strong>PublisherAppName</strong> on the
+endpoint mentioned in value specified by <strong>EndPoint</strong> on topics specified in value of <strong>Topics</strong> key.</p>
+<p>The <strong>Publishers</strong> value in the <strong>interfaces</strong> section denotes that this service publishes a stream of data after obtaining and processing it from <strong>VideoAnalytics</strong>. The stream is published on
+the endpoint mentioned in value of <strong>EndPoint</strong> key on topics mentioned in the value of <strong>Topics</strong> key. The services mentioned in the value of <strong>AllowedClients</strong> are the only clients able to
+subscribe to the published stream if being published securely over the EIIMessageBus.</p>
+<p>Similar to above interface keys, EII services can also have “Servers” and “Clients” interface keys too. For example, check <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/config.json">config.json</a> of VideoIngestion service and <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/config.json">config.json</a> of SWTriggerUtility tool on how to use.</p>
+<p>More details on the <code class="docutils literal notranslate"><span class="pre">interfaces</span></code> key responsible for the EII MessageBus endpoint configuration
+can be found at <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/README.html#interfaces">common/libs/ConfigMgr/README.html#interfaces</a></p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

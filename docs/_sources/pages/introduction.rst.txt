@@ -1,0 +1,88 @@
+
+============
+Introduction
+============
+
+.. note:: Intel® Edge Insights for Industrial (EII) was previously named Intel® Edge Insights Software (EIS). Remnants of the previous name still exist in some components. The name replacement is ongoing and will be completed in future releases.
+
+Since its inception in early 2018, Intel® Edge Insights for Industrial (EII) has been focused on enabling the rapid deployment of solutions aimed at finding and revealing insights on compute devices outside data centers. The title of the software itself alludes to its intended purposes: 
+
+   **Edge** :- systems existing outside of a data center.
+
+   **Insights** :- understanding relationships. 
+
+This software consists of a set of pre-integrated ingredients optimized for Intel® architecture. It includes modules that enable data collection, storage, and analytics for both time-series and video data, as well as the ability to act on these insights by sending downstream commands to tools or devices. 
+The 2.x version of EII focuses on improving data ingestion and inference latency, as well as overall system modularity through a major messaging system overhaul.
+
+This guide will detail the capabilities of EII ingredients and will serve as a reference for developers working with them. This guide is designed to enable developers to create custom solutions for their end customers. In this document, all the terminology will use Intel® Edge Insights for Industrial (EII) and Edge Insights software (EIS) interchangeably to refer to the same software, and will be fully updated in the next release.  
+
+Terminology
+===========
+
+General Terminology
+--------------------
+   .. table::
+      :widths: 15 40 26 40 30
+
+      +------------+------------------------------------------------------------------------------------------------------------+
+      | Term       |  Description                                                                                               |
+      +============+============================================================================================================+
+      |API         |Application Programming Interface                                                                           |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |DB          |Database                                                                                                    |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |DL          |Deep Learning                                                                                               |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |ECN         |Edge Compute Node                                                                                           |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |EII         |Industrial Edge Insights for Industrial                                                                     |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |Json        |JavaScript Object Notation - Lightweight text format for storing and transporting data                      |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |M2M         |Machine-to-Machine                                                                                          |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |ML          |Machine Learning                                                                                            |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |MQTT        |Message Queuing Telemetry Transport - Standard publish-subscribe-based messaging protocol                   |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |OPC-UA      |OPC Unified Architecture - A popular protocol for communication between machines in industrial applications |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |OpenCV      |Open Computer Vision - A standard library of computer vision functions                                      |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |toolkit     |SDK developed by Intel for optimizing deep learning-based algorithms running on Intel hardware.             |
+      +------------+------------------------------------------------------------------------------------------------------------+ 
+      |RTSP        |Real Time Streaming Protocol - Standard protocol used for streaming video                                   |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |SI          |System Integrator                                                                                           |
+      +------------+------------------------------------------------------------------------------------------------------------+
+      |TICK        |Telegraf*, InfluxDB*, Chronograf*, Kapacitor*                                                               |
+      +------------+------------------------------------------------------------------------------------------------------------+ 
+      |UDF         |User-defined Function –  User written function for doing the custom functions on the input stream           |
+      +------------+------------------------------------------------------------------------------------------------------------+ 
+ 
+Security-Related Terminology
+------------------------------
+   .. table::
+      :widths: 15 40 26 40 30
+   
+      +------------+----------------------------------------------------------------------------------------------------------------------------------------+
+      | Term       |  Description                                                                                                                           |
+      +============+========================================================================================================================================+
+      |BIOS        |Application Programming Interface                                                                                                       |
+      +------------+----------------------------------------------------------------------------------------------------------------------------------------+
+      |CA          |Database                                                                                                                                |
+      +------------+----------------------------------------------------------------------------------------------------------------------------------------+
+      |CRL         |Certificate Revocation List - List of certificates that have been revoked/invalidated before expiration by a CA                         |
+      +------------+----------------------------------------------------------------------------------------------------------------------------------------+
+      |mTLS        |Mutual TLS authentication - Two-way authentication of both ends of a network connection                                                 |
+      +------------+----------------------------------------------------------------------------------------------------------------------------------------+
+      |PCR         |Platform Configuration Registers - A feature within the TPM to cryptographically record state of software and configuration             |
+      +------------+----------------------------------------------------------------------------------------------------------------------------------------+
+      |Intel® PTT  |Intel® Platform Trust Technology - Provides the capabilities of TPM 2.0 without dedicated hardware                                      | 
+      +------------+----------------------------------------------------------------------------------------------------------------------------------------+
+      |TLS         |Transport Layer Security - security protocol to encrypt and protect communication over a network                                        |
+      +------------+----------------------------------------------------------------------------------------------------------------------------------------+
+      |TPM 2.0     |Trusted Platform Module - A standard for providing dedicated hardware-based security                                                    |
+      +------------+----------------------------------------------------------------------------------------------------------------------------------------+
+
+

@@ -1,0 +1,25 @@
+
+Provision and deploy mode in times switching between dev and prodmode OR changing the usecase
+---------------------------------------------------------------------------------------------
+
+
+#. 
+   Set the DEV_MODE as "true/false" in  `.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/.env>`_ depending on dev or prod mode.
+
+#. 
+   Run builder to copy templates file to eii-deploy/templates directory and generate consolidated values.yaml file for eii-services:
+
+   .. code-block:: sh
+
+      $ python3 builder.py -f usecases/<usecase>.yml
+
+#. Remove the etcd storage directory
+   .. code-block:: sh
+
+      $sudo rm -rf /opt/intel/eii/data/*
+
+Do helm install of provision and deploy charts as per previous section.
+
+.. note:: \ :
+   Please wait for all the pods terminated successfully, In times of re-deploy helm chart for eii-provision and eii-deploy
+

@@ -1,0 +1,33 @@
+
+Select EII services to run on a particular node in multinode deployment
+-----------------------------------------------------------------------
+
+
+* 
+  Edit ``vars/vars.yml`` -> under ``nodes`` add a specific a node which was defined in the inventory file(\ ``hosts``\ ) and add EII services to ``include_services`` list
+
+    Eg. if you want leader to run ia_video_ingestion, ``vars/vars.yml`` should be
+
+  .. code-block:: yml
+
+           nodes:
+             leader:
+               include_services:
+                   - ia_video_ingestion
+
+* 
+  If you want to add ``worker1`` to ``nodes`` and bring up ``ia_visualizer`` in ``worker1``\ :
+
+  .. code-block:: yml
+
+       nodes:
+         leader:
+           include_services:
+               - ia_video_ingestion
+         worker1:
+           include_services:
+               - ia_visualizer
+
+.. note:: 
+   If a service is not added to ``include_services`` list, that service will not deployed on a particular node
+

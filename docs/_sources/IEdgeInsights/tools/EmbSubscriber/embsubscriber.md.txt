@@ -1,0 +1,4 @@
+# EmbSubscriber
+
+EmbSubscriber subscribes message coming from a publisher.It subscribes to messagebus topic to get the data.
+    

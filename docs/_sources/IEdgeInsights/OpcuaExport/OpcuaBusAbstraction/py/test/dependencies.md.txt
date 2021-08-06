@@ -1,0 +1,38 @@
+## Dependencies
+
+* python3 (for python) installed
+* Install databus_requirements.txt (for python) by running cmd: `sudo -H pip3.6 install -r  databus_requirements.txt`
+
+  **Note**: It is highly recommended that you use a python virtual environment to
+  install the python packages, so that the system python installation doesn't
+  get altered. Details on setting up and using python virtual environment can
+  be found here: https://www.geeksforgeeks.org/python-virtual-environment/
+
+* Install open62541 library dependencies (mbedTLS, python dev):
+
+  ```sh
+  sudo apt-get install -y libmbedtls-dev python3-dev
+  ```
+
+  > **NOTE**: If `OpcuaBusAbstraction` module is referred from dist_libs path, make sure that the `sub` client is also run on Ubuntu > 18.04 as the dist libs package is been created by a container with ubuntu 18.04 as the base image. If working from IEI repo,
+  > one shouldn't be bothered about this
+
+* Set `PYTHONPATH` env variable to OpcuaBusAbstraction/py folder path
+
+  * If executing from IEI repo path, set it as below:
+
+    ```sh
+    export PYTHONPATH=..:../../../../common/
+    ```
+
+  * If executing from IEI dist libs path (/opt/intel/iei/dist_libs). set it as below:
+
+    ```sh
+    export PYTHONPATH=..
+    ```
+
+
+* Copying certs and keys:
+  * Copy opcua client cert and key to /etc/ssl/opcua
+  * Copy CA cert to /etc/ssl/ca
+

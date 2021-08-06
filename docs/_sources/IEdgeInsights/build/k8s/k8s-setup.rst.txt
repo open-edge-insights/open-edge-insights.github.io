@@ -1,0 +1,16 @@
+
+K8s Setup
+---------
+
+.. note:: \ :
+   Please follow the standard proxy settings if your installation machines are behind proxy environment.
+   For orchestrator deployment in a proxy environment, make sure all communicating machines IP addresses
+   are in ``no_proxy`` list both in ``docker`` & ``system`` environment files as follows.
+
+
+   #. /etc/environment
+   #. /etc/systemd/system/docker.service.d/http-proxy.conf
+   #. ~/.docker/config.json
+
+   ``K8s installation should be done as pre-requisite to continue the following deployment``
+

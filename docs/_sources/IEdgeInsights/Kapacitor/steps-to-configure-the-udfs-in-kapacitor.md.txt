@@ -1,0 +1,85 @@
+## Steps to configure the UDFs in kapacitor.
+
+  * Keep the custom UDFs in the [udfs](udfs) directory and the TICK script in the [tick_scripts](tick_scripts) directory.
+
+  * Keep the training data set (if any) required for the custom UDFs in the [training_data_sets](training_data_sets) directory.
+
+  * For python UDFs, if any external python package dependency needs to be installed. To install the python package using pip, it can be added in the [requirements.txt](requirements.txt) file and to install the python package using conda, it can be added in the [conda_requirements.txt](conda_requirements.txt) file.
+
+  * Modify the udf section in the [kapacitor.conf](config/kapacitor.conf) and in the [kapacitor_devmode.conf](config/kapacitor_devmode.conf).
+    Mention the custom UDF in the conf
+    for example
+    ```
+    [udf.functions.customUDF]
+      socket = "/tmp/socket_file"
+      timeout = "20s"
+    ```
+
+  * In case of go/python based UDF, update the values of keys named "type", "name", "tick_script", "task_name", in the
+    [config.json](config.json)file.
+    for example
+    ```
+    "task": [{
+         "tick_script": "py_point_classifier.tick",
+         "task_name": "py_point_classifier",
+         "udfs": [{
+             "type": "python",
+             "name": "py_classifier"
+         }]
+    }]
+    ```
+
+  * In case of, tick only UDF, update the values of keys named "tick_script", "task_name", in the [config.json](config.json)file.
+    for example
+    ```
+    "task": [{
+         "tick_script": "simple_logging.tick",
+         "task_name": "simple_logging"
+         }]
+    ```
+
+    ### Note:
+    1. By default, go_classifier and rfc_classifier is configured.
+
+    2. Mention the TICK script udf function same as configured in the Kapacitor config file.
+       For example, UDF Node in the TICK script
+       ```
+       @py_point_classifier()
+       ```
+       should be same as
+       ```
+       [udf.functions.py_point_classifier]
+          socket = "/tmp/socket_file"
+          timeout = "20s"
+       ```
+
+    3. go/python based UDF should listen on the same socket file as mentioned in the the udf section in the
+       [kapacitor.conf](config/kapacitor.conf) and in the [kapacitor_devmode.conf](config/kapacitor_devmode.conf).
+       For example
+       ```
+       [udf.functions.customUDF]
+         socket = "/tmp/socket_file"
+         timeout = "20s"
+       ```
+
+    4. In case of process based UDFs, provide the correct path of the code within the container
+       in the [kapacitor.conf](config/kapacitor.conf) and in the [kapacitor_devmode.conf](config/kapacitor_devmode.conf).
+       By default, the files and directories will be copied into the container under "/EII" director. It is recommended to keep the custom UDFs
+       in the [udfs](udfs) directory, the path of the custom UDF will be "/EII/udfs/customUDF_name" as shown in below example.
+       If the UDF is kept in different path please modify the path in the args accordingly.
+
+       The PYTHONPATH of the Kapacitor agent directory is "/EII/go/src/github.com/influxdata/kapacitor/udf/agent/py/". How to pass
+       it is shown in the below example.
+
+       For example
+       ```
+       [udf.functions.customUDF]
+          prog = "python3.7"
+          args = ["-u", "/EII/udfs/customUDF"]
+          timeout = "60s"
+          [udf.functions.customUDF.env]
+             PYTHONPATH = "/go/src/github.com/influxdata/kapacitor/udf/agent/py/"
+       ```
+
+  * Do the [provisioning](../README.md#provision) and run the EII stack.
+

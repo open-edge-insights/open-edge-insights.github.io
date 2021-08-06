@@ -1,0 +1,34 @@
+## 1. "host" network_mode is incompatible with port_bindings during docker-compose up
+
+- Problem Description:
+
+  Issue in starting InfluxDBConnector, Kapacitor and Grafana Services like InfluxDBConnector, Kapacitor, Grafana whose ports
+  are exposed to start the service might fail to start during "docker-compose up".
+
+- Error description:
+
+        ERROR: for ia_kapacitor  "host" network_mode is incompatible with port_bindings 
+
+        ERROR: for ia_grafana  "host" network_mode is incompatible with port_bindings 
+
+        ERROR: for ia_influxdbconnector "host" network_mode is incompatible with port_bindings 
+
+        docker.errors.InvalidArgument: "host" network_mode is incompatible with port_bindings
+
+- Possible Cause:
+
+        docker-compose might have been installed using "pip" where version mismatch might be causing the issue.
+
+
+- Solution:
+
+  Installation of docker-compose using "curl" as mentiond in [Installing_docker_pre_requisites.md](./Installing_docker_pre_requisites.md) will solve the
+  issue. Also, following the below command should solve the issue.
+
+  ```sh
+  $ sudo rm /usr/local/bin/docker-compose
+  $ pip3 uninstall docker-compose
+  $ sudo curl L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-`uname -s``uname -m` -o /usr/local/bin/docker-compose
+  $ sudo chmod +x /usr/local/bin/docker-compose
+  ```
+

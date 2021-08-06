@@ -1,0 +1,23 @@
+
+PROD MODE [To be followed when running in PROD mode, skip if DEV mode]
+----------------------------------------------------------------------
+
+Import 'ca_certificate.pem' from 'build/provision/Certificates/ca' Directory to your Browser Certifcates.
+
+Steps to Import Certificates
+""""""""""""""""""""""""""""
+
+.. code-block::
+
+   * Go to *Settings* in Chrome
+   * Search *Manage Certificates* Under Privacy & Security
+   * Select Manage Certificates Option
+   * Under *Authorities* Tab Click Import Button
+   * With Import Wizard navigate to
+     *IEdgeInsights/build/provision/Certificates/ca* Dir
+   * Select *ca_certificate.pem* file
+   * Select All CheckBoxes and Click Import Button.
+
+
+
+#. Once ia_grafana service is up, go to https://< host ip >:3000 .

@@ -1,0 +1,5 @@
+
+OpcuaExport
+===========
+
+OpcuaExport service serves as as OPCUA server subscribring to classified results from EII message bus(VideoAnalytics) and starts publishing meta data to OPCUA clients

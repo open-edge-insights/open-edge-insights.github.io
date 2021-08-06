@@ -1,0 +1,31 @@
+## TO RUN THE TOOL IN zmq_ipc MODE
+
+User needs to modify interface section of **[config.json](./config.json)** as following
+
+```
+    {
+        "type": "zmq_ipc",
+        "EndPoint": "/EII/sockets"
+    }
+```
+
+
+NOTE: If you want good and bad frames then the query must contain the following parameters:
+	
+	*img_handle
+	*defects
+	*encoding_level
+	*encoding_type
+	*height
+	*width
+	*channel
+
+    Example: 
+     "select img_handle, defects, encoding_level, encoding_type,  height, width, channel from camera1_stream_results order by desc limit 10"
+
+     or
+
+     "select * from camera1_stream_results order by desc limit 10"
+
+
+

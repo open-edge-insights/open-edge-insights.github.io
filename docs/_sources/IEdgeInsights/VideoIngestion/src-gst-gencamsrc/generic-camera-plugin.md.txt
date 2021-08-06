@@ -1,0 +1,14 @@
+# Generic Camera Plugin
+
+1. [Overview](#overview)
+
+2. [Versioning](#versioning)
+
+2. [Build](#build)
+
+3. [Clean](#clean)
+
+4. [Usage](#usage)
+
+5. [Troubleshooting](#troubleshooting)
+

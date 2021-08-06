@@ -1,0 +1,13 @@
+## Creation of grpc .deb file (Optional)
+
+**Note**: This is an optional as we have already created .deb file in the repo.
+If user wants to create .deb file freshly, then one has to follow this step.
+
+Navigate to `[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr` and run the `grpc_deb.sh`
+
+```sh
+$ sudo ./grpc_deb.sh
+```
+
+By executing the above script, `grpc-1.29.0-Linux.deb` will be created in
+`[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr`.

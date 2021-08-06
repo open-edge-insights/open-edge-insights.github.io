@@ -1,0 +1,13 @@
+## Pre-requisites
+
+1. Please ensure you use the interfaces provided at [examples](../../examples) for VideoIngestion, VideoAnalytics & Visualizer respectively. If not provisioned using these as the interfaces, please use EtcdUI to update these interfaces at runtime.
+
+2. Ensure you comment/uncomment the required lines for DEV_PROD mode accordingly in [env.sh](../../examples/env.sh).
+
+3. Run this command from the build/examples directory after installing ConfigMgr WITH_EXAMPLES set to ON:
+
+    ```sh
+        $ cd ../../examples/ && source ./env.sh && \
+          cd -
+    ```
+

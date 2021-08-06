@@ -1,0 +1,50 @@
+## Docker Pre-requisities
+
+1. **Installing docker daemon and docker-compose tools with proxy settings configuration**.
+
+  Please follow the steps mentioned in [Installing_docker_pre_requisites.md](./Installing_docker_pre_requisites.md) for installing docker daemon and docker-compose tool
+
+2. **Optional:** For enabling full security, make sure host machine and docker daemon are configured with below security recommendations. [build/docker_security_recommendation.md](build/docker_security_recommendation.md)
+
+3. **Optional:** If one wishes to enable log rotation for docker containers
+
+    There are two ways to configure logging driver for docker containers
+
+    * Set logging driver as part of docker daemon (**applies to all docker containers by default**):
+
+        * Configure `json-file` driver as default logging driver by following [https://docs.docker.com/config/containers/logging/json-file/](https://docs.docker.com/config/containers/logging/json-file/). Sample json-driver config which can be copied to `/etc/docker/daemon.json` is provided below.
+
+            ```
+            {
+                "log-driver": "json-file",
+                "log-opts": {
+                "max-size": "10m",
+                "max-file": "5"
+                }
+            }
+            ```
+
+        * Reload the docker daemon
+            ```
+            $ sudo systemctl daemon-reload
+            ```
+        * Restart docker
+            ```
+            $ sudo systemctl restart docker
+            ```
+
+    * Set logging driver as part of docker compose which is conatiner specific and which always overwrites 1st option (i.e /etc/docker/daemon.json)
+
+        Example to enable logging driver only for video_ingestion service:
+
+        ```
+        ia_video_ingestion:
+            ...
+            ...
+            logging:
+             driver: json-file
+             options:
+              max-size: 10m
+              max-file: 5
+        ```
+

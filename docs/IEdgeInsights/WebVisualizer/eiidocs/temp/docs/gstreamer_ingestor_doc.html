@@ -1,0 +1,449 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>GStreamer Ingestor &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+        <script src="../../../../../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> EII Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Installing_docker_pre_requisites.html">Manual steps to install docker daemon and docker-compose with proxy settings configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/running.html">Running EII</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#downloading-and-installation-from-the-edge-software-hub">Downloading and Installation from the Edge Software Hub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#downloading-the-default-package">Downloading the Default Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#downloading-customize-package">Downloading Customize Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#installing-the-package">Installing the Package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#manual-installation">Manual Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#docker-pre-requisites">Docker Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#provision">Provision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#build-and-run-eii-pcb-video-timeseries-use-cases">Build and Run EII PCB video/timeseries use cases</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/msgbus.html#eii-message-bus-architecture">EII Message Bus Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/msgbus.html#compilation">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#id1">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#publishers">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#subscribers">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#services">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#requesters">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#using-zap-authentication">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#c-examples">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#publisher-many-example">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/msgbus.html#eii-message-bus-development">EII Message Bus Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#developing-protocols">Developing Protocols</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#adding-a-new-protocol">Adding a New Protocol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#protocol-t-function-definition"><code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> Function Definition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/eiiConfig.html#configmgr">ConfigMgr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/eiiConfig.html#etcd-ui-service"><code class="docutils literal notranslate"><span class="pre">ETCD</span> <span class="pre">UI</span> <span class="pre">Service</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#zmqbroker">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#subscriber">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#publisher">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#zmq-tcp-protocol-usecase">zmq_tcp Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id1">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id2">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id3">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id5">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id6">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id7">Go Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/sample.html">Sample Application for APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/sample.html#sample-applications-for-eii-platform">Sample Applications for EII Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/video.html">Video Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#videoingestion-module"><code class="docutils literal notranslate"><span class="pre">VideoIngestion</span> <span class="pre">Module</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/video.html#ingestor-config"><code class="docutils literal notranslate"><span class="pre">Ingestor</span> <span class="pre">config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#note-for-working-with-genicam-usb3-vision-camera-please-install-the-respective-camera-sdk-by-referring-the-below-section"><strong>Note:</strong> For working with Genicam USB3 Vision camera please install the respective camera SDK by referring the below section.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/imageStore.html">ImageStore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/imageStore.html#imagestore-module"><code class="docutils literal notranslate"><span class="pre">ImageStore</span> <span class="pre">Module</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/imageStore.html#configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/imageStore.html#detailed-description-on-each-of-the-keys-used"><code class="docutils literal notranslate"><span class="pre">Detailed</span> <span class="pre">description</span> <span class="pre">on</span> <span class="pre">each</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">keys</span> <span class="pre">used</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/timeseries.html">Working with Timeseries Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../minimum-system-requirements.html">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../using-video-accelerators.html">Using video accelerators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../using-video-accelerators.html#note"><strong>Note</strong>:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../VideoIngestion/videoingestion-module.html"><code class="docutils literal notranslate"><span class="pre">VideoIngestion</span> <span class="pre">Module</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/restdata.html">RestDataExport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/overTheAir.html">Updating an Application-Over-The-Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/modes.html">DEV MODE and PROFILING MODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/docker.html">Sample Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/azure.html">Azure Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/orchestration.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/benchmarking.html">Video and Time-series Benchmarking Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/codeModification.html">Code Modification Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/debugging.html">Debugging EII</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>GStreamer Ingestor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../_sources/IEdgeInsights/WebVisualizer/eiidocs/temp/docs/gstreamer_ingestor_doc.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gstreamer-ingestor">
+<h1>GStreamer Ingestor<a class="headerlink" href="#gstreamer-ingestor" title="Permalink to this headline">¶</a></h1>
+<p><strong>NOTE</strong>:</p>
+<ul>
+<li><p>The Gstreamer elements used are being leveraged from OpenVINO DL Streamer Framework.
+For debugging purpose one can use the <code class="docutils literal notranslate"><span class="pre">gst-inspect-1.0</span></code> and <code class="docutils literal notranslate"><span class="pre">gst-launch-1.0</span></code> tool with
+the gstreamer elements. In order to use the tool with the VideoIngestion container refer
+the below steps.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Use `docker exec` to run a command in a running container</span>
+
+$ docker <span class="nb">exec</span> -it ia_video_ingestion bash
+
+<span class="c1"># 2. Source the OpenVINO setupvars.sh script inside the VideoIngestion container</span>
+
+$ <span class="nb">source</span> /opt/intel/openvino/bin/setupvars.sh
+
+<span class="c1"># 3. Run the gstreamer command using the tool.</span>
+
+<span class="c1"># For e.g inorder to print info about a gstreamer element like `gvadetect` use the gst-inspect.1.0 tool</span>
+
+$ gst-inspect-1.0 gvadetect
+
+<span class="c1"># To view information about Generic Plugin or exercise it then update the GST_PLUGIN_PATH to include below path and then use the `gst-inspect-1.0` tool</span>
+
+$ <span class="nb">export</span> <span class="nv">GST_PLUGIN_PATH</span><span class="o">=</span><span class="nv">$GST_PLUGIN_PATH</span>:<span class="s2">&quot;/usr/local/lib/gstreamer-1.0&quot;</span>
+
+$ gst-inspect-1.0 gencamsrc
+</pre></div>
+</div>
+<p>For more information on the gstreamer tool refer the below link:
+<a class="reference external" href="https://gstreamer.freedesktop.org/documentation/tutorials/basic/gstreamer-tools.html?gi-language=c">https://gstreamer.freedesktop.org/documentation/tutorials/basic/gstreamer-tools.html?gi-language=c</a></p>
+</li>
+<li><p>If running on non-gfx systems or older systems which doesn’t have hardware
+media decoders (like in Xeon m/c) it is recommended to use <code class="docutils literal notranslate"><span class="pre">opencv</span></code> ingestor</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">gstreamer</span></code> ingestor expects the image format to be in <code class="docutils literal notranslate"><span class="pre">BGR</span></code> format so the output image format should be in <code class="docutils literal notranslate"><span class="pre">BGR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">poll_interval</span></code> key is not applicable for <code class="docutils literal notranslate"><span class="pre">gstreamer</span></code> ingestor. Refer the usage of <code class="docutils literal notranslate"><span class="pre">videorate</span></code> element in the below section to control the framerate in case of <code class="docutils literal notranslate"><span class="pre">gstreamer</span></code> ingestor.</p></li>
+<li><p>In case one wants to reduce the ingestion rate with <code class="docutils literal notranslate"><span class="pre">gstreamer</span></code> ingestor the <code class="docutils literal notranslate"><span class="pre">videorate</span></code> element can be used to control the framerate in the gstreamer pipeline.</p>
+<p><strong>Example pipeline to use the ``videorate`` element</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;multifilesrc loop=TRUE stop-index=0 location=./test_videos/pcb_d2000.avi ! h264parse ! decodebin ! videoconvert ! video/x-raw,format=BGR ! videorate ! video/x-raw,framerate=5/1 ! appsink&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note</strong>: In the above example after the stream is decoded and the color space conversion is done the framerate is adjusted to 5 FPS (The incoming stream framerate is 20 which is adjusted to 5 FPS). The correction in framerate is performed by dropping the frames in case the framerate is adjusted to a lower ethan the input stream. In case the framerate is adjusted to a higher FPS compared to the input stream then frames will be duplicated.</p>
+</div></blockquote>
+<p>For more information on <code class="docutils literal notranslate"><span class="pre">videorate</span></code> element refer the below link:
+<a class="reference external" href="https://gstreamer.freedesktop.org/documentation/videorate/index.html?gi-language=c">https://gstreamer.freedesktop.org/documentation/videorate/index.html?gi-language=c</a></p>
+</li>
+<li><p>In case of extended run with gstreamer ingestor one can consider the properties of <code class="docutils literal notranslate"><span class="pre">appsink</span></code> element such as <code class="docutils literal notranslate"><span class="pre">max-buffers</span></code> and <code class="docutils literal notranslate"><span class="pre">drop</span></code> to overcome issues like ingestion of frames getting blocked. The <code class="docutils literal notranslate"><span class="pre">appsink</span></code> element internally uses a queue to collect buffers from the streaming thread. The <code class="docutils literal notranslate"><span class="pre">max-buffers</span></code> property can be used to limit the queue size. The <code class="docutils literal notranslate"><span class="pre">drop</span></code> property is used to specify whether to block the streaming thread or to drop the old buffers when maximum size of queue is reached.</p>
+<p><strong>Example pipline to use ``max-buffers`` and ``drop`` properties of ``appsink`` element</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;rtspsrc location=\&quot;rtsp://admin:intel123@&lt;RTSP CAMERA IP&gt;:554/\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! videoconvert ! video/x-raw,format=BGR ! appsink max-buffers=10 drop=TRUE&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note</strong>:  The usage of <code class="docutils literal notranslate"><span class="pre">max-buffers</span></code> and <code class="docutils literal notranslate"><span class="pre">drop</span></code> properties are helpful when the camera should not be disconnected in case of slow downstream processing of buffers.</p>
+</div></blockquote>
+</li>
+<li><p>In case one notices the VideoIngestion not publishing any frames when working with GVA use case the <code class="docutils literal notranslate"><span class="pre">queue</span></code> element of Gstramer can be used to limit the     max size of the buffers and the upstreaming/downstreaming can be set to leak to drop the buffers</p>
+<p><strong>Example pipeline to use the ``queue`` element</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;rtspsrc location=\&quot;rtsp://admin:intel123@&lt;RTSP_CAMERA_IP&gt;:554/\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! queue max-size-buffers=10 leaky=downstream ! gvadetect model=models/frozen_inference_graph.xml ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information reagarding the queue element refer the below link:
+<a class="reference external" href="https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-queue.html">https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-plugins/html/gstreamer-plugins-queue.html</a></p>
+</li>
+<li><p>In case the user wants to enable debug information for the gstreamer elements, it can be set using the <code class="docutils literal notranslate"><span class="pre">GST_DEBUG</span></code> env variable in <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/docker-compose.yml">../docker-compose.yml</a>.</p>
+<p><strong>Example snippet to set the ``GST_DEBUG`` env variable in `../docker-compose.yml &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/docker-compose.yml&gt;`_:</strong></p>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>   services:
+     ia_video_ingestion:
+     ----snip----
+       environment:
+           GST_DEBUG: &quot;1,gencamsrc:4&quot;
+     ----snip----
+
+``GST_DEBUG: &quot;1,gencamsrc:4&quot;`` env variable  will set the GST log level of ``gencamsrc`` element to 4 and all other elements to 1.
+
+For more information on gstreamer debug log levels refer the below link:
+https://gstreamer.freedesktop.org/documentation/tutorials/basic/debugging-tools.html?gi-language=c
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

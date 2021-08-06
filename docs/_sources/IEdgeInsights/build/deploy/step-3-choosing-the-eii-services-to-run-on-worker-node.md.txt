@@ -1,0 +1,21 @@
+# Step 3 Choosing the EII services to run on worker node.
+
+>Note: This deployment bundle generated can be used to provision and also to deploy EII stack on new node
+
+1. This software works only on python3+ version.
+2. Please update the [config.json](./config.json) file
+
+      ```
+        {
+            "docker_compose_file_version": "<docker_compose_file_version which is compose file version supported by deploying docker engine>",
+
+            "exclude_services": [list of services which you want exclude for your deployement]
+            "include_services": [list of services needed in final deployment docker-compose.yml]
+
+        }
+      ```
+    ***Note***:
+    > 1. Please validate the json.
+
+    > 2. Please ensure that you have updated the DOCKER_REGISTRY in [build/.env](../.env) file
+

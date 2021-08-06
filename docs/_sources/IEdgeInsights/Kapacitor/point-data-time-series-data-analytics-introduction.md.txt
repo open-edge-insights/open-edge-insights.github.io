@@ -1,0 +1,26 @@
+# Point-data (Time-series data) analytics introduction
+
+Any integral value that gets generated over time, we can say it is a point data.
+The examples can be :
+* Temperature at a different time in a day.
+* Number of oil barrels processed per minute.
+
+By doing the analytics over point data, the factory can have an anomaly detection mechanism.
+That's where the PointDataAnalytics come into the picture.
+
+IEdgeInsights uses the [TICK stack](https://www.influxdata.com/time-series-platform/)
+to do point data analytics.
+
+IEdgeInsights has a temperature anomaly detection example for demonstrating the time-series data analytics flow.
+
+The high-level flow of the data, in the example, can be seen as MQTT-temp-sensor-->Telegraf-->Influx-->Kapacitor-->Influx.
+
+MQTT-temp-sensor simulator sends the data to the Telegraf. Telegraf just sends the same data to the
+Influx and Influx send it to Kapacitor. Kapacitor does anomaly detection and publishes the results back to
+Influx.
+
+Here,
+Telegraf is the TICK stack component and supporting the number of input plug-ins for data ingestion.
+Influx is a time-series database.
+Kapacitor is an analytics engine where users can write custom analytics plug-ins (TICK scripts).
+

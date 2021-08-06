@@ -1,0 +1,32 @@
+## `Configuration`
+
+All the ImageStore module configuration are added into etcd (distributed
+key-value data store) under `AppName` as mentioned in the
+environment section of this app's service definition in docker-compose.
+
+If `AppName` is `ImageStore`, then the app's config would look like as below
+ for `/ImageStore/config` key in Etcd:
+ ```
+    "/ImageStore/config": {
+        "minio":{
+           "accessKey":"admin",
+           "secretKey":"password",
+           "retentionTime":"1h",
+           "retentionPollInterval":"60s",
+           "ssl":"false"
+        }
+    }
+ ```
+
+### `Detailed description on each of the keys used`
+|  Key	        | Description 	                                                                                           | Possible Values  	                      |Required/Optional |
+|---	        |---	                                                                                                   |---	                                      |---	             |
+|  accessKey 	|   Username required to access Minio DB	                                                               | Any suitable value                       | Required	     |
+|  secretKey 	|   Password required to access Minio DB	                                                               | Any suitable value             	      | Required         |
+|  retentionTime|   The retention parameter specifies the retention policy to apply for the images stored in Minio DB.  In case of infinite retention time, set it to "-1" | Suitable duration string value as mentioned at https://golang.org/pkg/time/#ParseDuration. |   Required        |
+|  retentionPollInterval | Used to set the time interval for checking images for expiration. Expired images will become candidates for deletion and no longer retained. In case of infinite retention time, this attribute will be ignored |	Suitable duration string value as mentioned at https://golang.org/pkg/time/#ParseDuration  |   Required        |
+|  ssl          |  If "true", establishes a secure connection with Minio DB else a non-secure connection                   | "true" or "false"                        |   Required        |
+
+For more details on Etcd secrets and messagebus endpoint configuration, visit [Etcd_Secrets_Configuration.md](../Etcd_Secrets_Configuration.md) and
+[MessageBus Configuration](../common/libs/ConfigMgr/README.md#interfaces) respectively.
+

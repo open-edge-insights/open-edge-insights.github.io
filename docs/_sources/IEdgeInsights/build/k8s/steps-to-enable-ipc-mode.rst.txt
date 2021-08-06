@@ -1,0 +1,109 @@
+
+Steps to enable IPC mode
+------------------------
+
+.. note::  To achieve VideoIngestion & VideoAnalytics Module run in IPC mode. Both the Services should be running in same node. By following the below steps it makes the modules to the select the same node in ipc mode based on the label & config updated in ``k8s/eii-k8s-deploy.yml`` file.
+
+
+
+* 
+  Open the ``VideoIngestion/k8s-service.yml`` file
+
+* 
+  Update the ``PUBLISHER_TYPE`` and ``PUBLISHER_ENDPOINT`` env value for ``IPC`` connection in ``videoingestion`` deployment yaml section like below:
+
+  .. code-block:: yml
+
+             - name: PUBLISHER_TYPE
+                 value: "zmq_ipc"
+             - name: PUBLISHER_ENDPOINT
+                 value: "${SOCKET_DIR}/"
+
+* 
+  Open the ``VideoAnalytics/k8s-service.yml`` file
+
+* 
+  Update the ``SUBSCRIBER_TYPE`` and  ``SUBSCRIBER_ENDPOINT`` env value for ``IPC`` connection in ``videoanalytics`` deployment yaml section like below:
+
+  .. code-block:: yml
+
+             - name: SUBSCRIBER_TYPE
+                 value: "zmq_ipc"
+             - name: SUBSCRIBER_ENDPOINT
+                 value: "${SOCKET_DIR}/"
+
+* 
+  Add a ``nodeSelector`` field to your ``deployment`` configuration of both ``videoingestion`` & ``videoanalytics`` yaml above the ``containers`` in ``spec`` section.
+
+  .. code-block:: yml
+
+           spec:
+             nodeSelector:
+               ipc: enabled
+
+    For Eg. Following snippet shows the ``nodeSelector`` section in ``videoanalytics`` yaml file.
+
+  .. code-block:: yml
+
+             // ... omitted ...
+             .
+             .
+             .
+           spec:
+             replicas: 1
+             selector:
+               matchLabels:
+                 app: videoanalytics
+             template:
+               metadata:
+                 labels:
+                   app: videoanalytics
+               spec:
+                 nodeSelector:
+                   ipc: enabled
+                 containers:
+                 - name: ia-video-analytics
+                   image: ...
+               .
+               .
+               .
+               .
+               .
+               // ... omitted ...
+
+
+* 
+  Attach label to the ``node``
+
+
+  #. 
+     Run ``kubectl get nodes`` to get the names of your cluster's nodes. 
+      Pick out the one that you want to add a label to, and then run 
+
+     .. code-block:: sh
+
+         $ kubectl -n eii label nodes <node-name> ipc=enabled
+
+      to add a ``label`` to the node you've chosen.
+
+  #. 
+     Verify the node labelled properly with following command.
+
+     .. code-block:: sh
+
+         $ kubectl -n eii get nodes --show-labels <node-name> | grep ipc=enabled
+
+* Run ``builder`` from ``build`` directory to generate the updated yaml file.
+  .. code-block::
+
+     ```sh
+        python3 ./builder.py
+     ```
+
+* Deploy the ``latest`` generated ``yaml`` file from ``k8s`` directory
+  .. code-block:: sh
+
+           $ cd build/k8s/
+           $ kubectl apply -f ./eii-k8s-deploy.yml
+
+* Verify the respecitve workloads are running based on the ``nodeSelector`` constraints with ``ipc`` mode.

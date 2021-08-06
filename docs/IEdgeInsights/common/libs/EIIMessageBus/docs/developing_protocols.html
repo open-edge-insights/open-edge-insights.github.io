@@ -1,0 +1,1126 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Developing Protocols &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+        <script src="../../../../../_static/jquery.js"></script>
+        <script src="../../../../../_static/underscore.js"></script>
+        <script src="../../../../../_static/doctools.js"></script>
+        <script src="../../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../../_static/copybutton.js"></script>
+        <script src="../../../../../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../../index.html" class="icon icon-home"> EII Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">INTRODUCTION:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/legal.html">Legal Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/running.html">Running Intel® Edge Insights for Industrial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#downloading-and-installation-from-opensource-github-repository">Downloading and Installation from Opensource Github Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#generate-deployment-and-configuration-files">Generate deployment and configuration files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#generating-consolidated-docker-compose-yml-and-eii-config-json-files">Generating consolidated docker-compose.yml and eii_config.json files:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#using-builder-script">Using builder script</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/running.html#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services">Running builder to generate the above listed consolidated files for all applicable EII services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/running.html#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services">Running builder to generate the above listed consolidated files for a subset of EII services:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/running.html#running-builder-to-generate-multi-instance-configs">Running builder to generate multi instance configs:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/running.html#running-builder-to-generate-benchmarking-configs">Running builder to generate benchmarking configs:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#provision">Provision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#distribution-of-eii-container-images">Distribution of EII container images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#list-of-all-eii-services">List of All EII Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#common-eii-services">Common EII services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#video-related-services">Video related services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#timeseries-related-services">Timeseries related services</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#dev-mode-and-profiling-mode">Dev mode and Profiling mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#dev-mode">Dev Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#starting-the-eii-in-dev-mode">Starting the EII in Dev Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#profiling-mode">Profiling Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#build-and-run-eii-video-timeseries-use-cases">Build and Run EII video/timeseries use cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#build-eii-stack">Build EII stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#run-eii-services">Run EII services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#push-required-eii-images-to-docker-registry">Push required EII images to docker registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#eii-multi-node-cluster-provision-and-deployment">EII multi node cluster provision and deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#without-orchestrator"><strong>Without orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#ansible-based-eii-prequisites-setup-provisioning-build-deployment">Ansible based EII Prequisites setup, provisioning, build &amp; deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#installing-ansible-on-ubuntu-control-node">Installing Ansible on Ubuntu {Control node}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#prerequisite-step-needed-for-all-the-control-worker-nodes">Prerequisite step needed for all the control/worker nodes.</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/running.html#generate-ssh-key-for-all-nodes">Generate SSH KEY for all nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#adding-ssh-authorized-key-from-control-node-to-all-the-nodes">Adding SSH Authorized Key from control node to all the nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/running.html#configure-sudoers-file-to-accept-no-password-for-sudo-operation">Configure Sudoers file to accept NO PASSWORD for sudo operation.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#updating-the-leader-worker-node-s-information-for-using-remote-hosts">Updating the leader &amp; worker node’s information for using remote hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#non-orchestrated-multi-node-deployment-without-k8s">Non-orchestrated multi node deployment (without k8s)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment">Select EII services to run on a particular node in multinode deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#execute-ansible-playbook-from-eii-workdir-iedgeinsights-build-ansible-control-node-to-deploy-eii-services-in-single-multi-nodes">Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/running.html#deploying-eii-using-helm-in-kubernetes-k8s-environment">Deploying EII Using Helm in Kubernetes (k8s) environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#pre-requisites">Pre requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#update-the-helm-charts-directory">Update the helm charts directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#provision-and-deploy-in-the-kubernetes-node">Provision and deploy in the kubernetes node.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#provision-and-deploy-mode-in-times-switching-between-dev-and-prod-mode-or-changing-the-usecase">Provision and deploy mode in times switching between dev and prod mode OR changing the usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#steps-to-enable-accelarators">Steps to enable Accelarators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#steps-for-enabling-gige-camera-with-helm">Steps for Enabling GiGE Camera with helm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#accessing-web-visualizer-and-etcdui">Accessing Web Visualizer and EtcdUI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#eii-uninstaller">EII Uninstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#debugging">Debugging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#debugging-through-the-logs">Debugging Through the Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#enablement-of-x11-forwarding-for-eii-visualizer-container">Enablement of X11 Forwarding for EII Visualizer Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/running.html#debugging-options">Debugging options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/running.html#enabling-secure-boot">Enabling Secure boot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/release.html#eii-v2-6-new-features">EII v2.6 New Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">CORE LIBRARIES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/msgbus.html#id1">EII Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#id2">Generating Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#id3">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/msgbus.html#known-issues">Known issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/eiiConfig.html#etcd">etcd*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/eiiConfig.html#configmgr">ConfigMgr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/eiiConfig.html#tool-to-generate-configuration-management-ui-service">Tool to Generate Configuration Management UI Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#adding-new-eii-service-so-it-gets-picked-up-by-builder">Adding new EII service so it gets picked up by Builder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id5">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#install-configmgr-with-python-bindings-go-bindings-examples-test-suits-and-debug-build">Install ConfigMgr with Python bindings, Go bindings, Examples, Test suits and Debug Build.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#zmq-tcp-protocol-usecase">zmq_tcp Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#zmqbroker">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#subscriber">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#publisher">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id9">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id10">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id11">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id13">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id14">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/eiiConfig.html#id15">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/api.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/api.html#c-api">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/api.html#python-api">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/api.html#golang-api">GoLang API</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/video.html">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#videoingestion-module">VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#ingestor-config">Ingestor config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#video-ingestion-contents">Video Ingestion Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/video.html#camera-configuration">Camera Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/video.html#rtsp-camera">RTSP Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/video.html#usb-camera">USB Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/video.html#realsense-depth-camera">RealSense Depth Camera</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#videoanalytics-module">VideoAnalytics Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#sample-udfs">Sample UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#native-udfs">Native UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#chaining-of-udfs">Chaining of UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#combination-of-udfs-with-ingestors">Combination of UDFs with ingestors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#jupyter-notebook-pre-requisites">Jupyter Notebook pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#running-jupyter-notebook">Running Jupyter Notebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#gigeconfigtool-and-export-settings-from-basler-pylon-feature-system">GigEConfigTool and Export Settings from Basler Pylon Feature System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#discoverhistory">DiscoverHistory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#native-visualizer-module">Native Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#web-visualizer-module">Web Visualizer Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#metadata-structure">Metadata Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#influxdbconnector-module">InfluxDBConnector Module</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/timeseries.html">Working with Timeseries Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/timeseries.html#telegraf">Telegraf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#purpose-of-telegraf">Purpose of Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#optional-adding-multiple-telegraf-instances">Optional: Adding multiple telegraf instances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#enabling-eii-message-bus-input-plugin-in-telegraf">Enabling EII message bus input plugin in Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#enabling-eii-message-bus-output-plugin-in-telegraf">Enabling EII message bus Output plugin in Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin">Advanced: Multiple plugin sections of EII message bus output plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/timeseries.html#kapacitor">Kapacitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#starting-the-example">Starting the example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/timeseries.html#kapacitor-input-and-output-plugins">Kapacitor input and output plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#purpose-of-plugins">Purpose of plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#using-input-plugin">Using input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#using-output-plugin">Using output plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#user-defined-functions">User-defined Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#custom-udfs-available-in-the-udfs-directory">Custom UDFs available in the udfs directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#steps-to-configure-the-udfs-in-kapacitor">Steps to configure the UDFs in kapacitor.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/timeseries.html#id48">Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#id49">Steps to run the samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#id65">Steps to verify the results in single task with multiple UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#id66">Steps to verify the results in multiple tasks with single UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#working-with-kapacitor">Working with Kapacitor*</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/timeseries.html#influxdb">InfluxDB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#configuring-influxdb">Configuring InfluxDB*</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#influxdbconnector-configuration">InfluxDBConnector Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#influxdbconnector-installation">InfluxDBConnector Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/timeseries.html#eii-timeseriesprofiler">EII TimeSeriesProfiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#eii-pre-requisites">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#eii-timeseriesprofiler-modes">EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/timeseries.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">EXPORT SERVICES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/azure.html#pre-requisites-setup">Pre-Requisites / Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#azure-cloud-setup">Azure Cloud Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/azure.html#id1">Setting up AzureML</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#development-system-setup">Development System Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/azure.html#build-and-push-eii-containers">Build and Push EII Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/azure.html#id2">Single-Node Azure IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#step-1-provisioning">Step 1 - Provisioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/azure.html#expected-result">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#step-2-configuring-eii">Step 2 - Configuring EII</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/azure.html#id7">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#step-3-configuring-azure-iot-deployment-manifest">Step 3 - Configuring Azure IoT Deployment Manifest</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/azure.html#id9">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#step-4-deployment">Step 4 - Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/azure.html#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#helpful-debugging-commands">Helpful Debugging Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#final-notes">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/azure.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#id11">Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#id14">Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#simple-subscriber">Simple Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#eii-etcd-pre-load">EII ETCD Pre-Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#azure-blob-storage">Azure Blob Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/azure.html#azure-deployment-manifest">Azure Deployment Manifest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/azure.html#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/azure.html#id22">Supported EII Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/azure.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/opcua.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/opcua.html#service-bring-up">Service bring up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/restdata.html">RestDataExport</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/restdata.html#restexport-post-request-pipeline">RestExport POST Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/restdata.html#restexport-get-request-pipeline">RestExport Get Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/restdata.html#restexport-apis">RestExport APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/restdata.html#restexport-post-request-api">RestExport POST Request API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/restdata.html#restexport-get-request-api">RestExport GET Request API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/restdata.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/restdata.html#pre-requisites">Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/restdata.html#service-bring-up">Service bring up</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">ADDITIONAL INFO:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/tools.html">EII Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#discoverhistory">DiscoverHistory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#steps-to-build-and-run-discoverhistory-service">Steps to build and run DiscoverHistory service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#list-of-sample-select-queries">List of sample select queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#to-run-the-tool-in-zmq-ipc-mode">To run the tool in zmq_ipc mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id16">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id17">Configuration of the tool.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id18">Running EmbPublisher in IPC mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#id22">EmbSubscriber</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id23">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id26">Running EmbSubscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id27">Running EmbSubscriber in IPC mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#id31">EII GigEConfig tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id32">Generating PFS(Pylon Feature Stream) File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id33">Running GigEConfig Tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/tools.html#id34">Usage of GigEConfig tool:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../../pages/tools.html#id36">Execution of GigEConfig</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#httptestserver">HttpTestServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#pre-requisites-for-running-the-httptestserver">Pre-requisites for running the HttpTestServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#starting-httptestserver">Starting HttpTestServer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#id39">Jupyter Notebook usage to develop python UDFs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id40">Jupyter Notebook pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id45">Running Jupyter Notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#id48">MQTT publisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id49">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#id51">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id52">Software Trigger Utilily pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id56">Configuration file:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id59">Running Software Trigger Utility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#id62">EII TimeSeriesProfiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id63">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id66">EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id70">EII TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id71">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#id91">EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id92">EII Video Profiler pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id95">EII Video Profiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id100">EII Video Profiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id103">Running Video Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id111">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/tools.html#id113">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/sample.html">EII Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/sample.html#sample-cpp-app-for-eii-platform">Sample CPP APP for EII platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/sample.html#short-description-of-app-containers">‘Short Description of App containers’</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/sample.html#the-sample-golang-application-demonstrates-the-usage-of-eii-core-libraries-like-eiimessagebus-and-configmanager">The sample Golang application demonstrates the usage of EII core libraries like EIIMessageBus and ConfigManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/sample.html#id3">Short Description of App containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/sample.html#the-high-level-logical-flow-of-sample-app-is-as-below">The high level logical flow of Sample App is as below:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/sample.html#sample-python-app-for-eii-platform">Sample Python APP for EII platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/sample.html#id4">Short Description of App containers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../../pages/security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Developing Protocols</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../../_sources/IEdgeInsights/common/libs/EIIMessageBus/docs/developing_protocols.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p><strong>Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#developing-protocols">Developing Protocols</a></p>
+<ul>
+<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#overview">Overview</a></p></li>
+<li><p><cite>``protocol_t`</cite> Function Definition &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#protocol_t-function-definition">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#protocol_t-function-definition</a>&gt;`_</p>
+<ul>
+<li><p><cite>``destroy()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#destroy">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#destroy</a>&gt;`_</p></li>
+<li><p><cite>``publisher_new()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#publisher_new">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#publisher_new</a>&gt;`_</p></li>
+<li><p><cite>``publisher_publish()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#publisher_publish">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#publisher_publish</a>&gt;`_</p></li>
+<li><p><cite>``publisher_destroy()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#publisher_destroy">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#publisher_destroy</a>&gt;`_</p></li>
+<li><p><cite>``subscriber_new()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#subscriber_new">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#subscriber_new</a>&gt;`_</p></li>
+<li><p><cite>``service_new()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#service_new">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#service_new</a>&gt;`_</p></li>
+<li><p><cite>``service_get()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#service_get">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#service_get</a>&gt;`_</p></li>
+<li><p><cite>``recv_ctx_destroy()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_ctx_destroy">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_ctx_destroy</a>&gt;`_</p></li>
+<li><p><cite>``request()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#request">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#request</a>&gt;`_</p></li>
+<li><p><cite>``response()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#response">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#response</a>&gt;`_</p></li>
+<li><p><cite>``recv_wait()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_wait">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_wait</a>&gt;`_</p></li>
+<li><p><cite>``recv_timedwait()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_timedwait">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_timedwait</a>&gt;`_</p></li>
+<li><p><cite>``recv_nowait()`</cite> &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_nowait">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_nowait</a>&gt;`_</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="id1">
+<h1>Developing Protocols<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>Overview<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Protocols are at the bottom most layer of the EII Message Bus stack. They
+provide the implementation for the messaging primitives supported by the
+EII Message Bus. The main tasks expected of a protocol are as follows:</p>
+<ol class="arabic simple">
+<li><p>Initialize the state of the underlying message library (i.e. ZeroMQ, DDS, etc.)</p></li>
+<li><dl class="simple">
+<dt>Implement methods for initializing contexts for publishers, subscribers,</dt><dd><p>services, and service requesters</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Implement base methods for sending messages from publishers, services, and</dt><dd><p>service requesters</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Implement base methods for receiving messages as blocking, non-blocking, and</dt><dd><p>time out base function calls</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Provide the translation between the underlying messaging library’s messsage</dt><dd><p>structure to the EII Message Bus’s <code class="docutils literal notranslate"><span class="pre">msg_envelope_t</span></code> structure</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>All protocols must have a unique protocol name which the EII Message Bus can
+use to load the protocol based on the <code class="docutils literal notranslate"><span class="pre">type</span></code> configuration value it is provided.
+For example, the ZeroMQ TCP protocol uses the identifier <code class="docutils literal notranslate"><span class="pre">zmq_tcp</span></code>. Using this
+type name, the EII Message Bus knows how to load the protocol in the
+<code class="docutils literal notranslate"><span class="pre">msgbus_initialize()</span></code> method.</p>
+<p>Currently, the addition and loading of new protocols must be added directly
+to the source code for the EII Message Bus. In the future, the message bus will
+include a feature for dynamically loading protocol plugins. All protocols are
+expected to have an initialize method which follows the prototype:
+<code class="docutils literal notranslate"><span class="pre">protocol_t*</span> <span class="pre">proto_&lt;type&gt;_initialize(const</span> <span class="pre">char*</span> <span class="pre">type,</span> <span class="pre">config_t*</span> <span class="pre">config)</span></code>. This
+method is expected to initialize the underlying messaging library using the
+given <code class="docutils literal notranslate"><span class="pre">config</span></code> parameter and then return a pointer to a <code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> structure
+which has pointers for all of the various messaging functions. This method
+must then be added manually to the <code class="docutils literal notranslate"><span class="pre">msgbus_initialize()</span></code> function in
+<code class="docutils literal notranslate"><span class="pre">src/msgbus.c</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> structure is defined below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">void</span><span class="o">*</span> <span class="n">proto_ctx</span><span class="p">;</span>
+    <span class="n">config_t</span><span class="o">*</span> <span class="n">config</span><span class="p">;</span>
+
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">destroy</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">publisher_new</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">pub_ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">publisher_publish</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">pub_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">msg</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">publisher_destroy</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">pub_ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">subscriber_new</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">subscriber</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">recv_ctx_destroy</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">request</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">service_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">message</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">response</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">service_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">message</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">service_new</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">service_name</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">service_ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">service_get</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">service_name</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">service_ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">recv_wait</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">recv_timedwait</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">recv_nowait</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">protocol_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>It is expected that this structure is fully populated by a protocol’s
+initialization method. The <code class="docutils literal notranslate"><span class="pre">proto_ctx</span></code> value should be a pointer to an internal
+structure representing the state of the protocol which the various functions
+can use to perform the required tasks. Additionally, the <code class="docutils literal notranslate"><span class="pre">config</span></code> value should
+be set to the <code class="docutils literal notranslate"><span class="pre">config</span></code> variable passed to the initialization function. It is
+important to note that the returned <code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> structure is not responsible
+for freeing the memory assiciated with the <code class="docutils literal notranslate"><span class="pre">config</span></code> variable. This is managed
+by the message bus context object.</p>
+<p>For each of the functions in the structure the first <code class="docutils literal notranslate"><span class="pre">ctx</span></code> parameter will
+always be the value of the <code class="docutils literal notranslate"><span class="pre">proto_ctx</span></code> variable.</p>
+<p>For more information on the purpose of each of the function pointers in the
+<code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> structure see the <cite>``protocol_t`</cite> Function Definition &lt;<a class="reference external" href="http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#protocol_t-function-definition">http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/docs/#protocol_t-function-definition</a>&gt;`_.</p>
+<p>The rest of this section will cover the initial setup of a project to add a new
+protocol to the EII Message Bus, including the ideal code structure for the C
+source code file.</p>
+<p>For the purposes of this tutorial, the name of the proctol to be added will be
+named <code class="docutils literal notranslate"><span class="pre">example</span></code>. To start, create a new header file in the <code class="docutils literal notranslate"><span class="pre">include/eii/msgbus</span></code>
+directory and a new C file in the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ touch include/eii/msgbus/example.h
+$ touch src/example.c
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The names of the files above should be the name of your protocol.</p>
+</div>
+<p>Once these files are created, add the following to the <code class="docutils literal notranslate"><span class="pre">example.h</span></code> file.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// C include guards to prevent multiple definition from files including the</span>
+<span class="c1">// header</span>
+<span class="cp">#ifndef _EII_MESSAGE_BUS_EXAMPLE_H</span>
+<span class="cp">#define _EII_MESSAGE_BUS_EXAMPLE_H</span>
+
+<span class="c1">// Add extern C declaration if the code is being included from C++ code</span>
+<span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
+<span class="cp">#endif</span>
+
+<span class="c1">// Include the protocol.h to get the protocol_t and config_t structure</span>
+<span class="c1">// definitions</span>
+<span class="cp">#include</span> <span class="cpf">&quot;eii/msgbus/protocol.h&quot;</span><span class="cp"></span>
+
+<span class="cm">/**</span>
+<span class="cm"> * Method to initialize the example protocol.</span>
+<span class="cm"> */</span>
+<span class="n">protocol_t</span><span class="o">*</span> <span class="n">proto_example_initialize</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">type</span><span class="p">,</span> <span class="n">config_t</span><span class="o">*</span> <span class="n">config</span><span class="p">);</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#endif </span><span class="c1">// _EII_MESSAGE_BUS_EXAMPLE_H</span>
+</pre></div>
+</div>
+<p>The code above defines the initialization method for initializing the <code class="docutils literal notranslate"><span class="pre">example</span></code>
+protocol.</p>
+<p>Next, modify the <code class="docutils literal notranslate"><span class="pre">src/msgbus.c</span></code> file to call the new <code class="docutils literal notranslate"><span class="pre">proto_example_intiialize()</span></code>
+method if the type configuration parameter is set to <code class="docutils literal notranslate"><span class="pre">example</span></code>.</p>
+<p>First, include the <code class="docutils literal notranslate"><span class="pre">example.h</span></code> header file on line 36 in the <code class="docutils literal notranslate"><span class="pre">src/msgbus.c</span></code>
+file.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;eii/msgbus/example.h&quot;</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>Then, add the following code at after line 210.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="n">ind_example</span><span class="p">;</span>
+<span class="n">strcmp_s</span><span class="p">(</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">body</span><span class="p">.</span><span class="n">string</span><span class="p">,</span> <span class="n">strlen</span><span class="p">(</span><span class="s">&quot;example&quot;</span><span class="p">),</span> <span class="s">&quot;example&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ind_example</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Next, extend the <code class="docutils literal notranslate"><span class="pre">if...else...</span></code> block from lines 212 to 219 to add an <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>
+clause for if the the protocol type is <code class="docutils literal notranslate"><span class="pre">example</span></code>. The entire code block should
+look as follows in the end.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="p">(</span><span class="n">ind_ipc</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span><span class="n">ind_tcp</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="n">proto</span> <span class="o">=</span> <span class="n">proto_zmq_initialize</span><span class="p">(</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">body</span><span class="p">.</span><span class="n">string</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">proto</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">goto</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">ind_example</span> <span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">proto</span> <span class="o">=</span> <span class="n">proto_example_initialize</span><span class="p">(</span><span class="n">value</span><span class="o">-&gt;</span><span class="n">body</span><span class="p">.</span><span class="n">string</span><span class="p">,</span> <span class="n">config</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">proto</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span>
+        <span class="k">goto</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">LOG_ERROR</span><span class="p">(</span><span class="s">&quot;Unknown protocol type: %s&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">-&gt;</span><span class="n">body</span><span class="p">.</span><span class="n">string</span><span class="p">);</span>
+    <span class="k">goto</span> <span class="n">err</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Once these steps are completed, switch to the <code class="docutils literal notranslate"><span class="pre">src/example.c</span></code> file to add the
+protocol implementation. The recommended structure of the code in this file
+is shown below.</p>
+<p>The code below first defines a set of common header file includes, including
+the <code class="docutils literal notranslate"><span class="pre">example.h</span></code> header file. Following this are the function prototypes for
+all of the needed function pointers in the <code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> structure.</p>
+<p>After these definitions lies the implementation for the <code class="docutils literal notranslate"><span class="pre">proto_example_initialize()</span></code>
+function. The <code class="docutils literal notranslate"><span class="pre">TODO</span></code> comments represent areas where code must be added depending
+on the protocol being added to the EII Message Bus. The code then intializes
+the <code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> struct and assigns all of the proper pointers.</p>
+<p>After the implementation for the <code class="docutils literal notranslate"><span class="pre">proto_example_initialize()</span></code> function are all
+of the function imlementations for the prototypes defined at the top of the
+file.</p>
+<p>Once this file is saved as <code class="docutils literal notranslate"><span class="pre">src/example.c</span></code>, compile the EII Message Bus. The
+examples should all work, however, they should immediately return or potentially
+raise an error, since this is an empty protocol implementation and none of the
+return objects are being initialized.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Standard C includes</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Include the example.h header file</span>
+<span class="cp">#include</span> <span class="cpf">&quot;eii/msgbus/example.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// Include the logger.h for helper logging macros</span>
+<span class="cp">#include</span> <span class="cpf">&quot;eii/msgbus/logger.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// Function prototypes</span>
+<span class="kt">void</span> <span class="nf">proto_example_destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_publisher_new</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">pub_ctx</span><span class="p">);</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_publisher_publish</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">pub_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">msg</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">proto_example_publisher_destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">pub_ctx</span><span class="p">);</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_subscriber_new</span><span class="p">(</span>
+    <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">subscriber</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">proto_example_recv_ctx_destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">);</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_recv_wait</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">);</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_recv_timedwait</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">);</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_recv_nowait</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">);</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_service_get</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">service_name</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">service_ctx</span><span class="p">);</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_service_new</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">service_name</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">service_ctx</span><span class="p">);</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_request</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">service_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">msg</span><span class="p">);</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_response</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">service_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">message</span><span class="p">);</span>
+
+
+<span class="c1">// proto_example_initialize() method implementation</span>
+<span class="n">protocol_t</span><span class="o">*</span> <span class="nf">proto_example_initialize</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">type</span><span class="p">,</span> <span class="n">config_t</span><span class="o">*</span> <span class="n">config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">LOG_DEBUG_0</span><span class="p">(</span><span class="s">&quot;Initializing example protocol&quot;</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Retreive needed configuration values from config</span>
+
+    <span class="c1">// TODO: Initialize all the internal state for the protocol here</span>
+
+    <span class="c1">// Initialize the protocol_t structure</span>
+    <span class="n">protocol_t</span><span class="o">*</span> <span class="n">proto_ctx</span> <span class="o">=</span> <span class="p">(</span><span class="n">protocol_t</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">protocol_t</span><span class="p">));</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">proto_ctx</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LOG_ERROR_0</span><span class="p">(</span><span class="s">&quot;Ran out of memory allocating the protocol_t struct&quot;</span><span class="p">);</span>
+        <span class="k">goto</span> <span class="n">err</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// TODO: Replace with setting with the internal context structure for the</span>
+    <span class="c1">// protocol initailized prior to this</span>
+
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">proto_ctx</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span><span class="p">;</span>
+
+    <span class="c1">// Assign all of the function pointers</span>
+
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">destroy</span> <span class="o">=</span> <span class="n">proto_example_destroy</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">publisher_new</span> <span class="o">=</span> <span class="n">proto_example_publisher_new</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">publisher_publish</span> <span class="o">=</span> <span class="n">proto_example_publisher_publish</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">publisher_destroy</span> <span class="o">=</span> <span class="n">proto_example_publisher_destroy</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">subscriber_new</span> <span class="o">=</span> <span class="n">proto_example_subscriber_new</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">request</span> <span class="o">=</span> <span class="n">proto_example_request</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">response</span> <span class="o">=</span> <span class="n">proto_example_response</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">service_get</span> <span class="o">=</span> <span class="n">proto_example_service_get</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">service_new</span> <span class="o">=</span> <span class="n">proto_example_service_new</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">recv_ctx_destroy</span> <span class="o">=</span> <span class="n">proto_example_recv_ctx_destroy</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">recv_wait</span> <span class="o">=</span> <span class="n">proto_example_recv_wait</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">recv_timedwait</span> <span class="o">=</span> <span class="n">proto_example_recv_timedwait</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">recv_nowait</span> <span class="o">=</span> <span class="n">proto_example_recv_nowait</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">proto_ctx</span><span class="p">;</span>
+
+    <span class="c1">// It is recommended to have a single error goto location that cleans up</span>
+    <span class="c1">// all allocated memory if an error occurs.</span>
+<span class="nl">err</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// proto_* function implementations</span>
+
+<span class="kt">void</span> <span class="nf">proto_example_destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">LOG_DEBUG_0</span><span class="p">(</span><span class="s">&quot;Destroying example protocol context&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_publisher_new</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">pub_ctx</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">LOG_DEBUG</span><span class="p">(</span><span class="s">&quot;Initializing publisher for topic &#39;%s&#39;&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Intialize publisher</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_publisher_publish</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">pub_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">msg</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// TODO: Implement publishing a message</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">proto_example_publisher_destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">pub_ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">LOG_DEBUG_0</span><span class="p">(</span><span class="s">&quot;Destroying publisher context&quot;</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Destroy a publisher&#39;s context</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_subscriber_new</span><span class="p">(</span>
+    <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">subscriber</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">LOG_DEBUG</span><span class="p">(</span><span class="s">&quot;Initializig subscriber to topic &#39;%s&#39;&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Implement subscriber initialization</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">proto_example_recv_ctx_destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">LOG_DEBUG_0</span><span class="p">(</span><span class="s">&quot;Destroying receive context&quot;</span><span class="p">);</span>
+    <span class="c1">// TODO: Implement destroying a receive context</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_recv_wait</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// TODO: Implement blocking receive method</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_recv_timedwait</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// TODO: Implement receive which can timoue</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_recv_nowait</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// TODO: Imeplement non-blocking receive method</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_service_get</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">service_name</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">service_ctx</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">LOG_DEBUG</span><span class="p">(</span><span class="s">&quot;Initializing service request for service &#39;%s&#39;&quot;</span><span class="p">,</span> <span class="n">service_name</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Intiailize context for sending requests and receiving responses</span>
+    <span class="c1">// for the given service</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_service_new</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">service_name</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">service_ctx</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">LOG_DEBUG</span><span class="p">(</span><span class="s">&quot;Initializing service &#39;%s&#39; context&quot;</span><span class="p">,</span> <span class="n">service_name</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Initailize a service context</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_request</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">service_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">msg</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// NOTE: Becareful here that the service context is the correct one and</span>
+    <span class="c1">// is not for receiving responses</span>
+
+    <span class="c1">// TODO: Implement issuing a request to the service with the given</span>
+    <span class="c1">// service context</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_response</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">service_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// NOTE: Becareful here that the service context is the correct one and</span>
+    <span class="c1">// is not for receiving responses</span>
+
+    <span class="c1">// TODO: Implement sending a response to a request</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="protocol-t-function-definition">
+<h2><code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> Function Definition<a class="headerlink" href="#protocol-t-function-definition" title="Permalink to this headline">¶</a></h2>
+<p>The following describes the purpose of each of the function pointers above.</p>
+<div class="section" id="destroy">
+<h3><code class="docutils literal notranslate"><span class="pre">destroy()</span></code><a class="headerlink" href="#destroy" title="Permalink to this headline">¶</a></h3>
+<p>Responsible for destroying the <code class="docutils literal notranslate"><span class="pre">proto_ctx</span></code> variable and freeing any memory
+used by the context.</p>
+</div>
+<div class="section" id="publisher-new">
+<h3><code class="docutils literal notranslate"><span class="pre">publisher_new()</span></code><a class="headerlink" href="#publisher-new" title="Permalink to this headline">¶</a></h3>
+<p>Initializes a new publisher context for the given <code class="docutils literal notranslate"><span class="pre">topic</span></code>.</p>
+</div>
+<div class="section" id="publisher-publish">
+<h3><code class="docutils literal notranslate"><span class="pre">publisher_publish()</span></code><a class="headerlink" href="#publisher-publish" title="Permalink to this headline">¶</a></h3>
+<p>Publishes the given message value using the publisher context.</p>
+</div>
+<div class="section" id="publisher-destroy">
+<h3><code class="docutils literal notranslate"><span class="pre">publisher_destroy()</span></code><a class="headerlink" href="#publisher-destroy" title="Permalink to this headline">¶</a></h3>
+<p>Destroys a context for a publisher freeing any sockets, memory, etc. used by
+the publisher.</p>
+</div>
+<div class="section" id="subscriber-new">
+<h3><code class="docutils literal notranslate"><span class="pre">subscriber_new()</span></code><a class="headerlink" href="#subscriber-new" title="Permalink to this headline">¶</a></h3>
+<p>Subscribe to the given topic and output a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> to use with the <code class="docutils literal notranslate"><span class="pre">recv_*</span></code>
+methods to receive the publications for the topic.</p>
+</div>
+<div class="section" id="service-new">
+<h3><code class="docutils literal notranslate"><span class="pre">service_new()</span></code><a class="headerlink" href="#service-new" title="Permalink to this headline">¶</a></h3>
+<p>Create a new <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure which can be used to received requests
+from clients and send responses to received requests using the <code class="docutils literal notranslate"><span class="pre">response()</span></code>
+method.</p>
+</div>
+<div class="section" id="service-get">
+<h3><code class="docutils literal notranslate"><span class="pre">service_get()</span></code><a class="headerlink" href="#service-get" title="Permalink to this headline">¶</a></h3>
+<p>Create a new <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure which can be used to issue requests to and
+received responses from the specified service.</p>
+</div>
+<div class="section" id="recv-ctx-destroy">
+<h3><code class="docutils literal notranslate"><span class="pre">recv_ctx_destroy()</span></code><a class="headerlink" href="#recv-ctx-destroy" title="Permalink to this headline">¶</a></h3>
+<p>Destroy a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure.</p>
+</div>
+<div class="section" id="request">
+<h3><code class="docutils literal notranslate"><span class="pre">request()</span></code><a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h3>
+<p>Issue a request to the service using the given <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code>.</p>
+</div>
+<div class="section" id="response">
+<h3><code class="docutils literal notranslate"><span class="pre">response()</span></code><a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h3>
+<p>Send a response to a requesting client using the given <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure.</p>
+</div>
+<div class="section" id="recv-wait">
+<h3><code class="docutils literal notranslate"><span class="pre">recv_wait()</span></code><a class="headerlink" href="#recv-wait" title="Permalink to this headline">¶</a></h3>
+<p>Blocking function for receiving a message from a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> context structure.</p>
+</div>
+<div class="section" id="recv-timedwait">
+<h3><code class="docutils literal notranslate"><span class="pre">recv_timedwait()</span></code><a class="headerlink" href="#recv-timedwait" title="Permalink to this headline">¶</a></h3>
+<p>Function for receiving messages from a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> context structure which
+times out after the given timeout. The timeout shall always be milliseconds.</p>
+</div>
+<div class="section" id="recv-nowait">
+<h3><code class="docutils literal notranslate"><span class="pre">recv_nowait()</span></code><a class="headerlink" href="#recv-nowait" title="Permalink to this headline">¶</a></h3>
+<p>Receive a message from a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> context structure if a message is available,
+otherwise return immediately.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

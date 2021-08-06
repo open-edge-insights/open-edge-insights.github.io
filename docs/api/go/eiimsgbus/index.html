@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>eiimsgbus - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="./style/style.css">
+
+<link rel="stylesheet" href="./style/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a>The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a>Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>
+
+</div></div>
+
+
+
+<div id="page" class="wide" tabindex="-1" style="outline: 0px;">
+<div class="container">
+
+
+  <h1>
+    Package eiimsgbus
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type="text/javascript">
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "EIIMessageBus/eiimsgbus"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#ParseJsonConfig">func ParseJsonConfig(jsonBytes []byte) (map[string]interface{}, error)</a></dd>
+			
+				
+				<dd><a href="#ReadJsonConfig">func ReadJsonConfig(fileName string) (map[string]interface{}, error)</a></dd>
+			
+			
+				
+				<dd><a href="#MsgbusClient">type MsgbusClient</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewMsgbusClient">func NewMsgbusClient(config map[string]interface{}) (*MsgbusClient, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#MsgbusClient.Close">func (ctx *MsgbusClient) Close()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#MsgbusClient.GetService">func (ctx *MsgbusClient) GetService(serviceName string) (*ServiceRequester, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#MsgbusClient.IsClosed">func (ctx *MsgbusClient) IsClosed() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#MsgbusClient.NewPublisher">func (ctx *MsgbusClient) NewPublisher(topic string) (*Publisher, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#MsgbusClient.NewService">func (ctx *MsgbusClient) NewService(serviceName string) (*Service, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#MsgbusClient.NewSubscriber">func (ctx *MsgbusClient) NewSubscriber(topic string) (*Subscriber, error)</a></dd>
+				
+			
+				
+				<dd><a href="#Publisher">type Publisher</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Publisher.Close">func (pub *Publisher) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Publisher.Publish">func (pub *Publisher) Publish(msg interface{}) error</a></dd>
+				
+			
+				
+				<dd><a href="#Service">type Service</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Service.Close">func (service *Service) Close()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Service.ReceiveRequest">func (service *Service) ReceiveRequest(timeout int) (*types.MsgEnvelope, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Service.Response">func (service *Service) Response(response interface{}) error</a></dd>
+				
+			
+				
+				<dd><a href="#ServiceRequester">type ServiceRequester</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ServiceRequester.Close">func (service *ServiceRequester) Close()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ServiceRequester.ReceiveResponse">func (service *ServiceRequester) ReceiveResponse(timeout int) (*types.MsgEnvelope, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ServiceRequester.Request">func (service *ServiceRequester) Request(request interface{}) error</a></dd>
+				
+			
+				
+				<dd><a href="#Subscriber">type Subscriber</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Subscriber.Close">func (subscriber *Subscriber) Close()</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a>json_config.go</a>
+			
+				<a>msgbus_client.go</a>
+			
+				<a>publisher.go</a>
+			
+				<a>requester.go</a>
+			
+				<a>service.go</a>
+			
+				<a>subscriber.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls—perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+		
+			
+			
+			<h2 id="ParseJsonConfig">func <a>ParseJsonConfig</a>
+				<a class="permalink" href="#ParseJsonConfig">¶</a>
+			</h2>
+			<pre>func ParseJsonConfig(jsonBytes []<a>byte</a>) (map[<a>string</a>]interface{}, <a>error</a>)</pre>
+			<p>
+Helper function for parsing a JSON configuration for the message bus from the given byte blob.
+</p>
+<p>
+Note: This method automatically takes care of using a JSON decode having set the UseNumber() flag.
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ReadJsonConfig">func <a>ReadJsonConfig</a>
+				<a class="permalink" href="#ReadJsonConfig">¶</a>
+			</h2>
+			<pre>func ReadJsonConfig(fileName <a>string</a>) (map[<a>string</a>]interface{}, <a>error</a>)</pre>
+			<p>
+Helper function for reading a JSON configuration for the message bus from a JSON
+configuration file.
+</p>
+<p>
+Note: This method automatically takes care of using a JSON decode having set the UseNumber() flag.
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="MsgbusClient">type <a>MsgbusClient</a>
+				<a class="permalink" href="#MsgbusClient">¶</a>
+			</h2>
+			<p>
+Message bus client object
+</p>
+
+			<pre>type MsgbusClient struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewMsgbusClient">func <a>NewMsgbusClient</a>
+					<a class="permalink" href="#NewMsgbusClient">¶</a>
+				</h3>
+				<pre>func NewMsgbusClient(config map[<a>string</a>]interface{}) (*<a href="#MsgbusClient">MsgbusClient</a>, <a>error</a>)</pre>
+				<p>
+Initialize a new message bus context.
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="MsgbusClient.Close">func (*MsgbusClient) <a>Close</a>
+					<a class="permalink" href="#MsgbusClient.Close">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#MsgbusClient">MsgbusClient</a>) Close()</pre>
+				<p>
+Close the messaage bus client.
+</p>
+<p>
+**IMPORTANT NOTE:** After this is called, no other operations using this context
+will succeed (including methods on publishers, subscribers, etc.).
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MsgbusClient.GetService">func (*MsgbusClient) <a>GetService</a>
+					<a class="permalink" href="#MsgbusClient.GetService">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#MsgbusClient">MsgbusClient</a>) GetService(serviceName <a>string</a>) (*<a href="#ServiceRequester">ServiceRequester</a>, <a>error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="MsgbusClient.IsClosed">func (*MsgbusClient) <a>IsClosed</a>
+					<a class="permalink" href="#MsgbusClient.IsClosed">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#MsgbusClient">MsgbusClient</a>) IsClosed() <a>bool</a></pre>
+				<p>
+Check if the message bus client has already been destroyed.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MsgbusClient.NewPublisher">func (*MsgbusClient) <a>NewPublisher</a>
+					<a class="permalink" href="#MsgbusClient.NewPublisher">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#MsgbusClient">MsgbusClient</a>) NewPublisher(topic <a>string</a>) (*<a href="#Publisher">Publisher</a>, <a>error</a>)</pre>
+				<p>
+Create a new publisher on the message bus context.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MsgbusClient.NewService">func (*MsgbusClient) <a>NewService</a>
+					<a class="permalink" href="#MsgbusClient.NewService">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#MsgbusClient">MsgbusClient</a>) NewService(serviceName <a>string</a>) (*<a href="#Service">Service</a>, <a>error</a>)</pre>
+				<p>
+Create a new service to receive requests over and send responses from.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="MsgbusClient.NewSubscriber">func (*MsgbusClient) <a>NewSubscriber</a>
+					<a class="permalink" href="#MsgbusClient.NewSubscriber">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#MsgbusClient">MsgbusClient</a>) NewSubscriber(topic <a>string</a>) (*<a href="#Subscriber">Subscriber</a>, <a>error</a>)</pre>
+				<p>
+Create a new subscriber for the specified topic.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Publisher">type <a>Publisher</a>
+				<a class="permalink" href="#Publisher">¶</a>
+			</h2>
+			
+			<pre>type Publisher struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Publisher.Close">func (*Publisher) <a>Close</a>
+					<a class="permalink" href="#Publisher.Close">¶</a>
+				</h3>
+				<pre>func (pub *<a href="#Publisher">Publisher</a>) Close() <a>error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Publisher.Publish">func (*Publisher) <a>Publish</a>
+					<a class="permalink" href="#Publisher.Publish">¶</a>
+				</h3>
+				<pre>func (pub *<a href="#Publisher">Publisher</a>) Publish(msg interface{}) <a>error</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Service">type <a>Service</a>
+				<a class="permalink" href="#Service">¶</a>
+			</h2>
+			<p>
+Service object. This object is not thread-safe.
+</p>
+<p>
+Since service objects are not safe, all requests and sending of responses must
+occur in the same thread (i.e. goroutine).
+</p>
+
+			<pre>type Service struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Service.Close">func (*Service) <a>Close</a>
+					<a class="permalink" href="#Service.Close">¶</a>
+				</h3>
+				<pre>func (service *<a href="#Service">Service</a>) Close()</pre>
+				<p>
+Close the subscriber
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Service.ReceiveRequest">func (*Service) <a>ReceiveRequest</a>
+					<a class="permalink" href="#Service.ReceiveRequest">¶</a>
+				</h3>
+				<pre>func (service *<a href="#Service">Service</a>) ReceiveRequest(timeout <a">int</a>) (*<a>types</a>.<a>MsgEnvelope</a>, <a>error</a>)</pre>
+				<p>
+Receive a request issued to the service.
+</p>
+<p>
+The timeout parameter determines how the receive call will function. If the
+timeout is less than 0, then it will block for ever. If it is set 0, then
+it will return immediately. If the caller wishes there to be a timeout, then
+the timeout should be specified in milliseconds.
+</p>
+<p>
+For the no wait and timeout modes, if no message is received then both return
+values will be nil.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Service.Response">func (*Service) <a>Response</a>
+					<a class="permalink" href="#Service.Response">¶</a>
+				</h3>
+				<pre>func (service *<a href="#Service">Service</a>) Response(response interface{}) <a>error</a></pre>
+				<p>
+Send a response to a request received by the service.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ServiceRequester">type <a>ServiceRequester</a>
+				<a class="permalink" href="#ServiceRequester">¶</a>
+			</h2>
+			<p>
+ServiceRequester object. This object is not thread-safe.
+</p>
+<p>
+Since service request objects are not safe, all sending of requests and receiving
+of responses must occur in the same thread (i.e. goroutine).
+</p>
+
+			<pre>type ServiceRequester struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ServiceRequester.Close">func (*ServiceRequester) <a>Close</a>
+					<a class="permalink" href="#ServiceRequester.Close">¶</a>
+				</h3>
+				<pre>func (service *<a href="#ServiceRequester">ServiceRequester</a>) Close()</pre>
+				<p>
+Close the subscriber
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ServiceRequester.ReceiveResponse">func (*ServiceRequester) <a>ReceiveResponse</a>
+					<a class="permalink" href="#ServiceRequester.ReceiveResponse">¶</a>
+				</h3>
+				<pre>func (service *<a href="#ServiceRequester">ServiceRequester</a>) ReceiveResponse(timeout <a">int</a>) (*<a>types</a>.<a>MsgEnvelope</a>, <a>error</a>)</pre>
+				<p>
+Receive a response to a previously sent request.
+</p>
+<p>
+The timeout parameter determines how the receive call will function. If the
+timeout is less than 0, then it will block for ever. If it is set 0, then
+it will return immediately. If the caller wishes there to be a timeout, then
+the timeout should be specified in milliseconds.
+</p>
+<p>
+For the no wait and timeout modes, if no message is received then both return
+values will be nil.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ServiceRequester.Request">func (*ServiceRequester) <a>Request</a>
+					<a class="permalink" href="#ServiceRequester.Request">¶</a>
+				</h3>
+				<pre>func (service *<a href="#ServiceRequester">ServiceRequester</a>) Request(request interface{}) <a>error</a></pre>
+				<p>
+Send a request to the service.
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Subscriber">type <a>Subscriber</a>
+				<a class="permalink" href="#Subscriber">¶</a>
+			</h2>
+			<p>
+Subscriber object. This object is not thread-safe.
+</p>
+
+			<pre>type Subscriber struct {
+<span id="Subscriber.MessageChannel"></span>    MessageChannel chan *<a>types</a>.<a>MsgEnvelope</a>
+<span id="Subscriber.ErrorChannel"></span>    ErrorChannel   chan <a>error</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="Subscriber.Close">func (*Subscriber) <a>Close</a>
+					<a class="permalink" href="#Subscriber.Close">¶</a>
+				</h3>
+				<pre>func (subscriber *<a href="#Subscriber">Subscriber</a>) Close()</pre>
+				<p>
+Close the subscriber
+</p>
+
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.10.<br>
+Except as <a>noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a>BSD license</a>.<br>
+<a>Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="./style/jquery.js.download"></script>
+<script type="text/javascript" src="./style/jquery.treeview.js.download"></script>
+<script type="text/javascript" src="./style/jquery.treeview.edit.js.download"></script>
+
+
+<script>var goVersion = "go1.10";</script>
+<script type="text/javascript" src="./style/godocs.js.download"></script>
+
+
+
+
+</body></html>

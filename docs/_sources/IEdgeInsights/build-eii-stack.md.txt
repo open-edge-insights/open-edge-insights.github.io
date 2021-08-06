@@ -1,0 +1,21 @@
+## Build EII stack
+
+> **NOTE**:1. This step is optional if one wants to use the EII pre-built
+>    container images itself and doesn't want to build from source.
+>    For more details, refer: [Distribution of EII container images](#distribution-of-eii-container-images)
+> 2. Base EII services like ia_eiibase, ia_video_common and others., are required only at the build time and not at
+>    the runtime.
+
+Builds all EII services in the [docker-compose-build.yml](build/docker-compose-build.yml) along with the base EII services.
+
+```sh
+$ xhost +
+$ docker-compose -f docker-compose-build.yml build
+```
+
+If any of the services fails during build, it can be built using below command
+
+```sh
+$ docker-compose -f docker-compose-build.yml build --no-cache <service name>
+```
+

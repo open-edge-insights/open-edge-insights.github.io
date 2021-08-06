@@ -1,0 +1,44 @@
+## Purpose of Telegraf
+Telegraf is one of the data entry points for IEdgeInsights. It supports many input plugins, which can be used for
+point data ingestion. In the above example, the MQTT input plugin of Telegraf is used. And below is the configuration
+of the plugin.
+
+    ```
+    # # Read metrics from MQTT topic(s)
+    [[inputs.mqtt_consumer]]
+    #   ## MQTT broker URLs to be used. The format should be scheme://host:port,
+    #   ## schema can be tcp, ssl, or ws.
+        servers = ["tcp://localhost:1883"]
+    #
+    #   ## MQTT QoS, must be 0, 1, or 2
+    #   qos = 0
+    #   ## Connection timeout for initial connection in seconds
+    #   connection_timeout = "30s"
+    #
+    #   ## Topics to subscribe to
+        topics = [
+        "temperature/simulated/0",
+        ]
+        name_override = "point_data"
+        data_format = "json"
+    #
+    #   # if true, messages that can't be delivered while the subscriber is offline
+    #   # will be delivered when it comes back (such as on service restart).
+    #   # NOTE: if true, client_id MUST be set
+        persistent_session = false
+    #   # If empty, a random client ID will be generated.
+        client_id = ""
+    #
+    #   ## username and password to connect MQTT server.
+        username = ""
+        password = ""
+    ```
+
+The production mode Telegraf configuration file is
+[Telegraf/config/telegraf.conf](../Telegraf/config/telegraf.conf) and in developer mode,
+the configuration file is
+[Telegraf/config/telegraf_devmode.conf](../Telegraf/config/telegraf_devmode.conf).
+
+For more information on the supported input and output plugins please refer
+[https://docs.influxdata.com/telegraf/v1.10/plugins/](https://docs.influxdata.com/telegraf/v1.10/plugins/)
+

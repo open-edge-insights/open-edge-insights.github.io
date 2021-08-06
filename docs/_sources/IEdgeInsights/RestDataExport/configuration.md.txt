@@ -1,0 +1,5 @@
+## `Configuration`
+
+For more details on Etcd secrets and messagebus endpoint configuration, visit [Etcd_Secrets_Configuration.md](../Etcd_Secrets_Configuration.md) and
+[MessageBus Configuration](../common/libs/ConfigMgr/README.md#interfaces) respectively.
+

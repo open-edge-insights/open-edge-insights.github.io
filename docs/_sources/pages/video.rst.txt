@@ -1,0 +1,1036 @@
+========================
+Working with Video Data
+========================
+
+Using video accelerators in ingestion/analytics containers
+==========================================================
+
+EII supports running inference on ``CPU``\ , ``GPU``\ , ``MYRIAD``\ (NCS2), and ``HDDL`` devices by accepting ``device`` value ("CPU"|"GPU"|"MYRIAD"|"HDDL"), part of the ``udf`` object configuration in ``udfs``
+key. The ``device`` field in UDF config of ``udfs`` key in ``VideoIngestion`` and ``VideoAnalytics`` configs can either be changed in the ``build/provision/config/eii_config.json``
+before provisioning (or re-provision it again after the change to the apps config.json, re-running ``builder.py`` script and then re-running the provisioning script) or at run-time via EtcdUI. For more details on the udfs config,
+check `common/udfs/README.md <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_.
+
+**Note**\ : There is an initial delay of upto ~30s while running inference on ``GPU`` (only for the first frame) as dynamically certain packages get created during runtime.
+
+**To run on USB devices**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For actual deployment in case USB camera is required then mount the device node of the USB camera for ``ia_video_ingestion`` service. When multiple USB cameras are connected to host m/c the required camera should be identified with the device node and mounted.
+
+Eg: Mount the two USB cameras connected to the host m/c with device node as ``video0`` and ``video1``
+
+.. code-block:: yaml
+
+     ia_video_ingestion:
+       ...
+       devices:
+         - "/dev/dri"
+         - "/dev/video0:/dev/video0"
+         - "/dev/video1:/dev/video1"
+
+.. note:: \ : /dev/dri is needed for Graphic drivers
+
+
+**To run on MYRIAD devices**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* 
+  To run inference on ``MYRIAD`` device ``root`` user permissions needs to be used at runtime. To enable root user at runtime in either ``ia_video_ingestion``\ , ``ia_video_analytics`` or any of the custom udf services add ``user: root`` command in the respective docker-compose.yml file.
+
+  Eg: To use ``MYRAID`` device in ``ia_video_analytics`` service refer the below example
+
+  .. code-block:: yaml
+
+      ia_video_analytics:
+        ...
+        user: root
+
+* 
+  **Troubleshooting issues for MYRIAD(NCS2) devices**
+
+
+  * 
+    Following is an workaround can be excercised if in case user observes ``NC_ERROR`` during device initialization of NCS2 stick.
+    While running EII if NCS2 devices failed to initialize properly then user can re-plug the device for the init to happen freshly.
+    User can verify the successfull initialization by executing ***dmesg**** & **\ *lsusb*\ **  as below:
+
+    .. code-block:: sh
+
+       lsusb | grep "03e7" (03e7 is the VendorID and 2485 is one of the  productID for MyriadX)
+
+    ```sh
+    dmesg > dmesg.txt
+    [ 3818.214919] usb 3-4: new high-speed USB device number 10 using xhci_hcd
+    [ 3818.363542] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
+    [ 3818.363546] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+    [ 3818.363548] usb 3-4: Product: Movidius MyriadX
+    [ 3818.363550] usb 3-4: Manufacturer: Movidius Ltd.
+    [ 3818.363552] usb 3-4: SerialNumber: 03e72485
+    [ 3829.153556] usb 3-4: USB disconnect, device number 10
+    [ 3831.134804] usb 3-4: new high-speed USB device number 11 using xhci_hcd
+    [ 3831.283430] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
+    [ 3831.283433] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+    [ 3831.283436] usb 3-4: Product: Movidius MyriadX
+    [ 3831.283438] usb 3-4: Manufacturer: Movidius Ltd.
+    [ 3831.283439] usb 3-4: SerialNumber: 03e72485
+    [ 3906.460590] usb 3-4: USB disconnect, device number 11
+
+  * 
+    The below link can be referred in case user observes ``global mutex initialization failed`` during device initialization of NCS2 stick
+    https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html
+
+**To run on HDDL devices**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* 
+  Download the full package for OpenVINO™ toolkit for Linux version "2021.4"
+  (\ ``OPENVINO_IMAGE_VERSION`` used in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_\ ) from the official website
+  (https://software.intel.com/en-us/openvino-toolkit/choose-download/free-download-linux).
+  Please refer to the OpenVINO™ links below for to install and running the HDDL daemon on host.
+
+
+  #. OpenVINO™ install:
+     https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux.html#install-openvino
+  #. 
+     HDDL daemon setup:
+     https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux_ivad_vpu.html
+
+     **NOTE**\ :
+     -------------
+
+
+     * 
+       OpenVINO™ 2021.4 installation creates a symbolic link to latest installation with
+       filename as ``openvino_2021`` instead of ``openvino``. Hence one can create a symbolic link with filename as ``openvino`` to the latest installation using the below steps.
+
+       .. code-block:: sh
+
+          $ cd /opt/intel
+          $ sudo ln -s <OpenVINO latest installation> openvino
+
+       Eg: sudo ln -s openvino_2021.4.582 openvino
+
+       In case there are older versions of OpenVINO™ installed on the host system please un-install them.
+
+  #. 
+     Running hddldaemon:
+     Refer the below command to run the hddldaemon once the setup is done(it should run in a different terminal or in the background on the host system where inference would be done)
+
+     .. code-block:: sh
+
+        $ source /opt/intel/openvino/bin/setupvars.sh
+        $ $HDDL_INSTALL_DIR/bin/hddldaemon
+
+  #. Changing ownership of hddl files on host system.
+     Before running inference with EII, ownership of hddl files should be changed to the value of ``EII_USER_NAME`` key set in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_.
+     Refer the below command to set the ownership of hddl files on the host system.\ ``EII_USER_NAME=eiiuser`` in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_.
+     .. code-block::
+
+        $ sudo chown -R eiiuser /var/tmp/hddl_*
+
+
+  * 
+    For actual deployment one could choose to mount only the required devices for
+    services using OpenVINO™ with HDDL (\ ``ia_video_analytics`` or ``ia_video_ingestion``\ ) in ``build/docker-compose.yml``.
+
+    Eg: Mount only the Graphics and HDDL ion device for ``ia_video_anaytics`` service
+
+    .. code-block::
+
+         ia_video_analytics:
+           ...
+           devices:
+                   - "/dev/dri"
+                   - "/dev/ion:/dev/ion"
+
+  * 
+    **Troubleshooting issues for HDDL devices**
+
+
+    * 
+      Please verify the hddldaemon started on host m/c to verify if it is using the libraries of the correct OpenVINO™ version used in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_. One could enable the ``device_snapshot_mode`` to ``full`` in $HDDL_INSTALL_DIR/config/hddl_service.config on host m/c to get the complete snapshot of the hddl device.
+
+    * 
+      Please refer OpenVINO™ 2021.4 release notes in the below link for new features and changes from the previous versions.
+      https://software.intel.com/content/www/us/en/develop/articles/openvino-relnotes.html
+
+    * 
+      Refer OpenVINO™ website in the below link to skim through known issues, limitations and troubleshooting
+      https://docs.openvinotoolkit.org/2021.4/index.html
+      ### **To run on Intel(R) Processor Graphics (GPU/iGPU)**
+
+  ..
+
+     **Note**\ : The below step is required only for 11th gen Intel Processors
+
+
+  Upgrade the kernel version to 5.8 and install the required drivers from the below OpenVINO™ link:
+  https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps
+
+
+.. include:: ../IEdgeInsights/VideoIngestion/videoingestion-module.rst
+
+.. include:: ../IEdgeInsights/VideoIngestion/configuration.rst
+
+.. include:: ../IEdgeInsights/VideoAnalytics/videoanalytics-module.rst
+
+.. include:: ../IEdgeInsights/VideoAnalytics/configuration.rst
+
+User Defined Function (UDF)
+============================
+
+An UDF is a chunk of user code that acts as a filter, preprocessor, or classifier for a given data input coming from the EII. The User Defined Function (UDF) Loader Library provides a common API for loading C++ and Python UDFs.
+
+The library itself is written in C++ and provides an abstraction layer for loading and calling UDFs. Additionally, the library defines a common interface inheritable by all UDFs (whether written in C++ or Python).
+
+The overall block diagram for the library is shown in Figure 4.
+
+.. figure:: image/fig_9_4.png
+    :scale: 100%
+    :align: center
+
+    User-Defined Function Loader Library Block Design
+
+In this case, the VideoIngestion component is also able to execute the video data classifier algorithm by including the classifier UDF into the VideoIngestion configuration. By defining the Classifier UDF in the VideoIngestion component, the VideoAnalytics component become optional.
+
+UDFLoader is a library providing APIs for loading and executing native and python UDFs.
+
+Dependency Installation
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+UDFLoader depends on the below libraries. Follow their documentation to install them.
+
+
+* OpenCV - Run ``source /opt/intel/openvino/bin/setupvars.sh`` command
+* `EIIUtils <https://github.com/open-edge-insights/eii-c-utils/blob/master/README.html>`_
+* `IntelSafeString <https://github.com/open-edge-insights/eii-c-utils/blob/master/IntelSafeString/README.html>`_
+* Python3 Numpy package
+
+Compilation
+^^^^^^^^^^^^
+
+Utilizes CMake as the build tool for compiling the library. The simplest sequence of commands for building the library are
+shown below.
+
+.. code-block:: sh
+
+   $ mkdir build
+   $ cd build
+   $ cmake ..
+   $ make
+
+If you wish to compile in debug mode, then you can set
+the ``CMAKE_BUILD_TYPE`` to ``Debug`` when executing the ``cmake`` command (as shown
+below).
+
+.. code-block:: sh
+
+   $ cmake -DCMAKE_BUILD_TYPE=Debug ..
+
+Installation
+^^^^^^^^^^^^^
+
+.. note::  This is a mandatory step to use this library in
+   C/C++ EII modules
+
+
+If you wish to install this library on your system, execute the
+following command after building the library:
+
+.. code-block:: sh
+
+   $ sudo make install
+
+By default, this command will install the ``udfloader`` library into
+``/usr/local/lib/``. On some platforms this is not included in the ``LD_LIBRARY_PATH``
+by default. As a result, you must add this directory to you ``LD_LIBRARY_PATH``. This can
+be accomplished with the following ``export``\ :
+
+.. code-block:: sh
+
+   $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
+
+.. note::  You can also specify a different library prefix to CMake through
+   the ``CMAKE_INSTALL_PREFIX`` flag.
+
+
+Running Unit Tests
+^^^^^^^^^^^^^^^^^^^
+
+.. note::  The unit tests will only be compiled if the ``WITH_TESTS=ON`` option
+   is specified when running CMake.
+
+
+Run the following commands from the ``build/tests`` folder to cover the unit
+tests.
+
+.. code-block:: sh
+
+   # First, source the source.sh file to setup the PYTHONPATH environment
+   $ source ./source.sh
+
+   # Execute frame abstraction unit tests
+   $ ./frame-tests
+
+   # Execute UDF loader unit tests
+   $ ./udfloader-tests
+
+EII Sample UDFs
+----------------
+
+EII supports loading and executing of native(c++) and python UDFs. In here,
+one can find the sample native and python UDFs(User Defined Functions) to be used with EII components
+like VideoIngestion and VideoAnalytics. The UDFs can modify the frame, drop the frame and generate meta-data from the frame.
+
+UDF Configuration
+^^^^^^^^^^^^^^^^^^^
+
+Below is the JSON schema for UDF json object configuration:
+
+.. code-block:: javascript
+
+   {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+       "max_jobs": {
+         "description": "Number of queued UDF jobs",
+         "type": "integer",
+         "default": 20
+       },
+       "max_workers": {
+         "description": "Number of threads acting on queued jobs",
+         "type": "integer",
+         "default": 4
+       },
+       "udfs": {
+         "description": "Array of UDF config objects",
+         "type": "array",
+         "items": [
+           {
+             "description": "UDF config object",
+             "type": "object",
+             "properties": {
+               "type": {
+                 "description": "UDF type",
+                 "type": "string",
+                 "enum": [
+                   "native",
+                   "python",
+                   "raw_native"
+                 ]
+               },
+               "name": {
+                 "description": "Unique UDF name",
+                 "type": "string"
+               },
+               "device": {
+                 "description": "Device on which inference occurs",
+                 "type": "string",
+                 "enum": [
+                   "CPU",
+                   "GPU",
+                   "HDDL",
+                   "MYRIAD"
+                 ]
+               }
+             },
+             "additionalProperties": true,
+             "required": [
+               "type",
+               "name"
+             ]
+           }
+         ]
+       }
+     }
+   }
+
+One can use `JSON validator tool <https://www.jsonschemavalidator.net/>`_ for
+validating the UDF configuration object against the above schema.
+
+Example UDF configuration:
+
+.. code-block:: javascript
+
+   {
+     "max_jobs": 20,
+     "max_workers": 4,
+     "udfs": [ {
+         "type": "native",
+         "name": "dummy"
+       },
+       {
+         "type": "python",
+         "name": "pcb.pcb_filter"
+       }]
+   }
+
+UDF Writing Guide
+-----------------
+
+User can refer to `UDF Writing HOW-TO GUIDE <http://localhost:7645/IEdgeInsights/common/video/udfs/HOWTO_GUIDE_FOR_WRITING_UDF.html>`_ for an detailed explanation of process to write an custom UDF.
+
+Sample UDFs
+^^^^^^^^^^^
+
+.. note:: \ : The UDF config of these go as json objects in the ``udfs`` key in
+   the overall UDF configuration object
+
+
+Native UDFs
+^^^^^^^^^^^^
+
+
+* 
+  **Dummy UDF**
+
+  Accepts the frame and forwards the same without doing any processing. It's a
+  do-nothing UDF.
+
+  ``UDF config``\ :
+
+  .. code-block:: javascript
+
+     {
+         "name": "dummy",
+         "type": "native"
+     }
+
+* 
+  **Resize UDF**
+
+  Accepts the frame, resizes it based on the ``width`` and ``height`` params.
+
+  ``UDF config``\ :
+
+  .. code-block:: javascript
+
+     {
+         "name": "resize",
+         "type": "native",
+         "width": 600,
+         "height": 600
+     }
+
+* 
+  **FPS UDF**
+
+  FPS udf can be used to measure the total number of frames received every second. It can be used in VideoIngestion and VideoAnalytics
+  application by adding the below configuration in the udf configuration. It can also be chained with other udfs in which case the FPS result will be affected depending on the other udfs used.
+
+  ``UDF config``\ :
+
+  .. code-block:: javascript
+
+     {
+         "name": "fps",
+         "type": "native"
+     }
+
+  ``Config for chaining fps udf with other udfs``\ :
+
+  .. code-block:: javascript
+
+     "udfs": [{
+             "name": "dummy",
+             "type": "native"
+         },
+         {
+             "name": "fps",
+             "type": "native"
+         }]
+
+  ..
+
+     **Note** The fps results will be logged in ``DEBUG`` LOG_LEVEL, added to the metadata with the AppName as the key and will be
+     displayed in the visualizer.
+
+
+* 
+  **Sample Realsense UDF**
+
+  Accepts the color and depth frame, converts to rs2::frame type by using rs2::software_device simulation, enables a color filter on the depth frame using rs2::colorizer.
+
+  ``UDF config``\ :
+
+  .. code-block:: javascript
+
+     {
+         "name": "sample_realsense",
+         "type": "raw_native",
+     }
+
+  ----
+
+  ### ``Python UDFs``
+
+.. note:: \ : Additional properties/keys other than ``name`` and ``type`` in the UDF
+   config are the parameters of the python UDF constructor
+
+
+
+* 
+  **Dummy UDF**
+
+  Accepts the frame and forwards the same without doing any processing. It's a
+  do-nothing UDF.
+
+  ``UDF config``\ :
+
+  .. code-block:: javascript
+
+     {
+         "name": "dummy",
+         "type": "python"
+     }
+
+* 
+  **Jupyter Connector UDF**
+
+  Accepts the frame and publishes it to the EII JupyterNotebook service which processes the frame and publishes it back to the jupyter_connector UDF.
+
+  ``UDF config``\ :
+
+  .. code-block:: javascript
+
+     {
+         "name": "jupyter_connector",
+         "type": "python"
+     }
+
+* 
+  **PCB Filter UDF**
+
+  Accepts the frame and based on if ``pcb`` board is at the center in the frame or not,
+  it forwards or drops the frame. It basically sends out only the key frames forward
+  for further processing and not all frames it receives.
+
+  ``UDF config``\ :
+
+.. code-block:: javascript
+
+     {
+         "name": "pcb.pcb_filter",
+         "type": "python",
+         "training_mode": "false",
+         "scale_ratio": 4,
+         "n_total_px": 300000,
+         "n_left_px": 1000,
+         "n_right_px": 1000
+     }
+
+  Refer `python/pcb/README.html <http://localhost:7645/IEdgeInsights/common/video/udfs/python/pcb/README.html>`_ for more information.
+
+
+* 
+  **PCB Classifier UDF**
+
+  Accepts the frame, uses openvino inference engine APIs to determine whether it's
+  a ``good`` pcb with no defects or ``bad`` pcb with defects. Metadata associated with
+  the frame is populated accordingly.
+
+  ``UDF config``\ :
+
+  .. code-block:: javascript
+
+     {
+         "name": "pcb.pcb_classifier",
+         "type": "python",
+         "device": "CPU",
+         "ref_img": "common/video/udfs/python/pcb/ref/ref.png",
+         "ref_config_roi": "common/video/udfs/python/pcb/ref/roi_2.json",
+         "model_xml": "common/video/udfs/python/pcb/ref/model_2.xml",
+         "model_bin": "common/video/udfs/python/pcb/ref/model_2.bin"
+     }
+
+  Refer `python/pcb/README.html <http://localhost:7645/IEdgeInsights/common/video/udfs/python/pcb/README.html>`_ for more information.
+
+  **NOTE**\ :
+  The above config works for both "CPU" and "GPU" devices after setting appropriate ``device`` value.
+  Please set the "device" value appropriately based on the device used for inferencing.
+
+* 
+  **Sample ONNX UDF**
+
+  This UDF mainly demonstrates the model deployment on edge devices via AzureBridge service only.
+
+  Please follow the below steps:
+
+
+  * Configure the sample ONNX UDF by following `Sample ONNX UDF configuration guide <https://github.com/open-edge-insights/eii-azure-bridge/blob/master/README.html#sample-eii-onnx-8>`_
+  * Follow `Single-Node Azure IOT Edge Deployment <https://github.com/open-edge-insights/eii-azure-bridge/blob/master/README.html#single-node-azure-iot-edge-deployment>`_ to deploy the required modules
+
+  For more details on AzureBridge setup, please refer `AzureBridge README.html <https://github.com/open-edge-insights/eii-azure-bridge/blob/master/README.html>`_
+
+
+Construction of Metadata in UDF
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If EII Visualizer/WebVisualizer clients are used for visualizing the classified frames, then please follow the metadata guidelines mentioned in **\ ``Metadata Structure``\ ** in `Visualizer <https://github.com/open-edge-insights/video-native-visualizer/blob/master/README.html>`_ / `WebVisualizer <https://github.com/open-edge-insights/video-web-visualizer/blob/master/README.html>`_ README respectively.
+
+**Note**\ : User has to make sure that the data with in meta data should be of type list, tuple, dict or primitive data types (int, float, string or bool). Also, data with in list, tuple, dict
+must contain only primitive data types.
+Eg: Any data is of type "numpy.float" or "numpy.int" should be type-casted to float and int respectively.
+
+Chaining of UDFs
+^^^^^^^^^^^^^^^^
+
+One can chain multiple native/python UDFs in the ``udfs`` key. The way chaining
+works here is the output of the UDF listed first would send the modified frame
+and metadata to the subsequent UDF and so on. One such classic example is having
+``pcb.pcb_filter`` and ``pcb.pcb_classifier`` in VideoIngestion service config to
+do both the pre-processing and the classification logic without the need of
+VideoAnalytics service.
+
+Combination of UDFs with ingestors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. list-table::
+   :header-rows: 1
+
+   * - Ingestor
+     - Chaining UDFs for pcb demo usecase
+     - Chaining UDFs for worker safety gear usecase
+   * - opencv/gstreamer
+     - :raw-html-m2r:`<br>`\ :raw-html-m2r:`<br>`\ Combination of resize (native), pcb filter (python) and\ :raw-html-m2r:`<br>`\ pcb classifier (python) can be used as :raw-html-m2r:`<br>`\ per the need.
+     - :raw-html-m2r:`<br>`\ :raw-html-m2r:`<br>`\ :raw-html-m2r:`<br>`\ Combination of resize (native) and worker safety gear classifier (native/python) :raw-html-m2r:`<br>` can be used as per the need.
+   * - gstreamer with GVA(Gstreamer Video Analytics) elements
+     - Not Applicable
+     - :raw-html-m2r:`<br>`\ Any post-processing UDFs can be used as all\ :raw-html-m2r:`<br>`\ the pre-processing and classification is :raw-html-m2r:`<br>`\ happening in the gstreamer pipeline itself
+
+
+.. note:: \ :
+   Dummy UDF can also be used for above use cases for testing chaining UDFs
+   feature but as such there is no value add as it's a do-nothing UDF.
+   In DEV Mode python udfs changes can be tested by restarting containers, no need to rebuild.
+
+Developing python UDF using Jupyter Notebook
+---------------------------------------------
+
+UDF development in python can be done using the web based IDE of Jupyter Notebook.
+Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.
+
+This tool acts as an interface between user and Jupyter Notebook service allowing the user to interact with Jupyter Notebook to write, edit, experiment and create python UDFs.
+
+It works along with the `jupyter_connector <https://github.com/open-edge-insights/video-common/tree/master/udfs/python/jupyter_connector.py>`_ UDF for enabling the IDE for udf development.
+
+Jupyter Notebook pre-requisites
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+#. 
+   Jupyter Notebook expects a set of config, interfaces & public private keys to be present in ETCD as a pre-requisite.
+
+
+   * To achieve this, please ensure an entry for Jupyter Notebook with its relative path from `IEdgeInsights <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/>`_ directory is set in any of the .yml files present in `IEdgeInsights <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/>`_ directory.
+   * An example has been provided below to add the entry in `video-streaming.yml <https://github.com/open-edge-insights/eii-core/tree/master/build/usecases/video-streaming.yml>`_
+     .. code-block:: yml
+
+          AppContexts:
+          ---snip---
+          - tools/JupyterNotebook
+
+#. 
+   Ensure the `jupyter_connector <https://github.com/open-edge-insights/video-common/tree/master/udfs/python/jupyter_connector.py>`_ UDF is enabled in the config of either **VideoIngestion** or **VideoAnalytics** to be connected to JupyterNotebook. An example has been provided here for connecting **VideoIngestion** to **JupyterNotebook**\ , the config to be changed being present at `config.json <https://github.com/open-edge-insights/video-ingestion/blob/master/config.json>`_\ :
+
+   .. code-block:: javascript
+
+           {
+               "config": {
+                   "encoding": {
+                       "type": "jpeg",
+                       "level": 95
+                   },
+                   "ingestor": {
+                       "type": "opencv",
+                       "pipeline": "./test_videos/pcb_d2000.avi",
+                       "loop_video": true,
+                       "queue_size": 10,
+                       "poll_interval": 0.2
+                   },
+                   "sw_trigger": {
+                       "init_state": "running"
+                   },
+                   "max_workers":4,
+                   "udfs": [{
+                       "name": "jupyter_connector",
+                       "type": "python",
+                       "param1": 1,
+                       "param2": 2.0,
+                       "param3": "str"
+                   }]
+               }
+           }
+
+Running Jupyter Notebook
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+#. 
+   With the above pre-requisite done, please run the below command:
+
+   .. code-block:: sh
+
+           python3 builder.py -f usecases/video-streaming.yml
+
+#. 
+   Refer `IEdgeInsights/README.html <https://github.com/open-edge-insights/eii-core/blob/master/README.html>`_ to provision, build and run the tool along with the EII recipe/stack.
+
+#. 
+   Run the following command to see the logs:
+
+   .. code-block:: sh
+
+           docker logs -f ia_jupyter_notebook
+
+#. 
+   Copy paste the URL (along with the token) from the above logs in a browser. Below is a sample URL 
+
+   .. code-block:: sh
+
+           http://127.0.0.1:8888/?token=5839f4d1425ecf4f4d0dd5971d1d61b7019ff2700804b973
+
+   Replace the '127.0.0.1' IP address with host IP, if you are accessing the server remotely.
+
+#. 
+   Once the Jupyter Notebook service is launched in the browser, run the `main.ipynb <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/JupyterNotebook/main.ipynb>`_ file visible in the list of files available.
+
+#. 
+   The process method of `udf_template.ipynb <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/JupyterNotebook/udf_template.ipynb>`_ file available in the list of files can be altered and re-run to experiment and test the UDF.
+
+#. 
+   If any parameters are to be sent to the custom udf by the user, they can be added in the **jupyter_connector** UDF config provided to either **VideoIngestion** or **VideoAnalytics** and can be accessed in the `udf_template.ipynb <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/JupyterNotebook/udf_template.ipynb>`_ constructor in the **udf_config** parameter which is a dict containing all these parameters. A sample UDF for reference has been provided at `udf_template.ipynb <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/JupyterNotebook/udf_template.ipynb>`_.
+
+**Note**\ : After altering/creating a new udf, run main.ipynb  and restart **VideoIngestion** or **VideoAnalytics** with which you have enabled jupyter notebook service.
+
+
+#. 
+   Once the user is satisfied with the functionality of the UDF, the udf can be saved/exported by clicking on the **Download as** option and selecting **(.py)** option. The downloaded udf can then be directly used by placing it in the `../../common/video/udfs/python <https://github.com/open-edge-insights/video-common/blob/master/udfs/python>`_ directory or can be integrated and used with **CustomUDFs**.
+
+   ..
+
+      **Note:**
+
+
+      * JupyterNotebook is not to be used with **CustomUDFs** like **GVASafetyGearIngestion** since they are specific to certain usecases only. Instead, the VideoIngestion pipeline can be modified to use GVA ingestor pipeline and config can be modifed to use **jupyter_connector** UDF.
+
+Creating UDF in Jupyter Notebook
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#.
+  After running `main.ipynb <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/JupyterNotebook/main.ipynb>`_ , select `udf_template.ipynb <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/JupyterNotebook/udf_template.ipynb>`_ to start creating our own python UDF.
+
+.. figure:: image/udf_template.png
+    :scale: 50 %
+    :align: center
+
+#.
+  Edit the process method in the Udf class
+
+.. figure:: image/udf_edited.png
+    :scale: 50 %
+    :align: center
+
+#.
+  Run the cell 
+
+#.
+  Check the output on the visualizer
+
+GigEConfigTool and Export Settings from Basler Pylon Feature System
+====================================================================
+
+The EII introduces the GigEConfig tool. This config tool can be used to read the Basler camera properties from the Pylon Feature System (PFS) and construct a GStreamer* pipeline with the required camera features. 
+
+In order to run the GigEConfig tool, the user has to provide a PFS file as a pre-requisite. This file can be generated using the Pylon Viewer application. The application’s documentation and application link is https://docs.baslerweb.com/overview-of-the-pylon-viewer. 
+
+Generating Pylon Feature System File (PFS)
+------------------------------------------
+
+The Pylon Feature System (PFS) can be generated using Basler Pylon Viewer Application and use it in EII. Execute this command to run the Pylon Viewer application: 
+
+.. code-block::
+  
+  $ sudo <PATH>/pylon5/bin/PylonViewerApp 
+
+Using the Pylon Viewer Application, follow these steps to generate a PFS file.
+
+#.	Select the required camera and open it.
+#.	Configure the camera with the required settings, if required.
+#.	On the application toolbar, select Camera tab-> Save Features.
+#.	Close the camera.
+
+#.
+  Installing Dependencies for GigEConfig Tool 
+  
+  Source build/.env to get all the required ENVs
+
+  .. code-block:: sh
+  
+    $ set -a
+    $ source [WORKDIR]/IEdgeInsights/build/.env
+    $ set +a
+
+#.
+  Install the dependencies
+
+  .. code-block:: sh
+ 
+    $ pip3 install -r requirements.txt 
+
+Executing GigEConfig Tool
+--------------------------
+
+The tool can be executed in the following manner:
+
+#.	
+  .. code-block:: sh
+    
+    $ cd [WORKDIR]/IEdgeInsights/tools/GigEConfig
+
+#.	Modify config.json based on the requirements. See README.md for details on the elements required.
+
+#.
+  **For DEV Mode**
+
+  * 
+    In case etcd configuration needs to be updated.
+ 
+    .. code-block:: sh
+      
+      $ python3 GigEConfig.py --pfs_file <path to pylon's pfs file> --etcd 1
+  
+  *
+    In case only pipeline needs to be printed.
+  
+    .. code-block:: sh
+
+      $ python3 GigEConfig.py --pfs_file <path to pylon's pfs file>
+
+#.
+  **For PROD Mode**
+
+  Before running in PROD mode please change the permissions of the certificates i.e.,
+ 
+  .. code-block:: sh
+
+    $sudo chmod 755 -R [WORDK_DIR]/IEdgeInsights/build/provision/Certificates 
+ 
+  * 
+    In case the etcd configuration needs to be updated.
+ 
+    .. code-block:: sh
+      
+      $ python3 GigEConfig.py -f <path to pylon's pfs file> -c [WORK_DIR]/IEdgeInsights/build/provision/Certificates/ca/ca_certificate.pem -r_k [WORK_DIR]/IEdgeInsights/build/provision/Certificates/root/root_client_key.pem -r_c [WORK_DIR]IEdgeInsights/build/provision/Certificates/root/root_client_certificate.pem -e
+
+  *
+    In case only the pipeline needs to be printed.
+
+    .. code-block:: sh
+      
+      $ python3 GigEConfig.py -f <path to pylon's pfs file> -c [WORK_DIR]/IEdgeInsights/build/provision/Certificates/ca/ca_certificate.pem -r_k [WORK_DIR]/IEdgeInsights/build/provision/Certificates/root/root_client_key.pem -r_c [WORK_DIR]/IEdgeInsights/build/provision/Certificates/root/root_client_certificate.pem
+
+DiscoverHistory
+===============
+
+Steps to build and run DiscoverHistory service
+-----------------------------------------------
+
+* 
+  **Running in PROD mode**
+
+
+  #. 
+     DiscoverHistory expects a set of config, interfaces & public private keys to be present in ETCD as a pre-requisite.
+     To achieve this, please ensure an entry for DiscoverHistory with its relative path from `IEdgeInsights <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/>`_ directory is set in the video-streaming-storage.yml file present in `IEdgeInsights <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/>`_ directory. An example has been provided below:
+
+     .. code-block:: sh
+
+           AppContexts:
+           - VideoIngestion
+           - VideoAnalytics
+           - Visualizer
+           - WebVisualizer
+           - tools/DiscoverHistory
+           - ImageStore
+           - InfluxDBConnector
+
+  #. 
+     Open "config.json"
+
+  #. Provide the required query to be passed on to InfluxDB.
+  #. With the above pre-requisite done, please run the below to command:
+     .. code-block:: sh
+
+           python3 builder.py -f usecases/video-streaming-storage.yml
+
+  #. Refer `main EII README.html <https://github.com/open-edge-insights/eii-core/blob/master/README.html>`_ to provision, build and run the tool along with the EII video-streaming-storage recipe/stack.
+  #. Check imagestore and influxdbconnector services are running.
+  #. You will find data & frames directories at "/opt/intel/eii/tools_output".
+     (Note: if img_handle is part of select statement , then only frames
+     directory will be created)
+  #. Use ETCDUI to change the query in configuration. Please run below command to start container with new configuration:
+     .. code-block:: sh
+
+           docker restart ia_discover_history
+
+* 
+  **Running in DEV mode**
+
+
+  #. Open `.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_
+  #. Set the DEV_MODE variable as "true".
+     .. code-block::
+
+        DEV_MODE=false
+     to
+     .. code-block::
+
+        DEV_MODE=true
+
+.. note:: \ :
+
+
+   * Building the base images like ia_common, ia_eiibase are must in cases if this tool isn't run on the same node
+     where EII is running.
+   * Please ensure that the base images i.e. ia_common and ia_eiibase are present on the node where this tool is run.
+
+
+List of sample select queries
+------------------------------
+
+
+#. 
+   "select * from camera1_stream_results order by desc limit 10"
+   This query will return latest 10 records.
+
+#. 
+   "select height,img_handle from camera1_stream_results order by desc limit 10"
+
+#. 
+   "select * from camera1_stream_results where time>='2019-08-30T07:25:39Z' AND time<='2019-08-30T07:29:00Z'"
+    This query will return all the records between the given time frame i.e. (time>='2019-08-30T07:25:39Z' AND time<='2019-08-30T07:29:00Z')
+
+#. 
+   "select * from camera1_stream_results where time>=now()-1h"
+    This query will return all the records from the current time, going back upto last 1 hour.
+
+To run the tool in zmq_ipc mode
+--------------------------------
+
+User needs to modify interface section of **\ `config.json <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/DiscoverHistory/config.json>`_\ ** as following
+
+.. code-block::
+
+       {
+           "type": "zmq_ipc",
+           "EndPoint": "/EII/sockets"
+       }
+
+----
+
+**NOTE**\ :
+If you want good and bad frames then the query must contain the following parameters:
+
+.. code-block::
+
+   *img_handle
+   *defects
+   *encoding_level
+   *encoding_type
+   *height
+   *width
+   *channel
+
+   Example:
+    "select img_handle, defects, encoding_level, encoding_type,  height, width, channel from camera1_stream_results order by desc limit 10"
+
+    or
+
+    "select * from camera1_stream_results order by desc limit 10"
+
+----
+
+.. include:: ../IEdgeInsights/Visualizer/native-visualizer-module.rst
+
+.. include:: ../IEdgeInsights/Visualizer/steps-to-build-and-run-visualizer.rst
+
+.. include:: ../IEdgeInsights/Visualizer/using-labels.rst
+
+.. include:: ../IEdgeInsights/Visualizer/metadata-structure.rst
+
+.. include:: ../IEdgeInsights/WebVisualizer/web-visualizer-module.rst
+
+.. include:: ../IEdgeInsights/WebVisualizer/steps-to-build-and-run-web-visualizer.rst
+
+.. include:: ../IEdgeInsights/WebVisualizer/using-labels.rst
+
+.. include:: ../IEdgeInsights/ImageStore/imagestore-module.rst
+
+.. include:: ../IEdgeInsights/ImageStore/configuration.rst
+
+.. include:: ../IEdgeInsights/InfluxDBConnector/influxdbconnector-module.rst
+
+Configuring InfluxDB*
+---------------------
+
+The configuration parameters for the 'influxdb' section are:
+
+Influxdb_port
+    The port parameter need not be modified unless the default port for the InfluxDB is changed. 
+
+retention
+    This field signifies the retention duration of the data stored in InfluxDB. The format is in the form of "1h30m5s". It is recommended to keep a retention policy in accordance with the use case and the disk size.
+
+username, password
+    Provides an option to change the default username and password used for accessing the InfluxDB database. 
+
+DBName
+    The default DB name in InfluxDB used for storing the timeseries data is ?datain?. This field can be used to change this default DB name.
+
+ssl
+    When True, use HTTPS instead of HTTP to connect to InfluxDB.
+
+verify_ssl
+    When True, verify SSL certificates for HTTPS requests
+
+InfluxDBConnector Configuration
+-------------------------------
+
+All the InfluxDBConnector module configuration is added into EII ConfigMgr (distributed key-value data store) under AppName as mentioned in the environment section of this application's service definition in docker-compose.
+If AppName is InfluxDBConnector, then the application's configuration would look like as below for **/InfluxDBConnector/config** key in EII ConfigMgr:
+
+.. code-block:: 
+
+    "influxdb": {
+        "retention": "1h30m5s",
+        "username": "admin",
+        "password": "admin123",
+        "dbname": "datain",
+        "ssl": "True",
+        "verifySsl": "False",
+        "port": "8086"
+    }
+
+
+For more details on EII ConfigMgr and MessageBus endpoint configuration, visit **EII ConfigMgr_and_MsgBus_Endpoint_Configuration.**
+
+InfluxDBConnector Installation
+------------------------------
+
+#.	Follow **[WORK_DIR]/IEdgeInsights/build/provision/README.md** for EII provisioning if not done already as part of EII stack setup
+#.	Run InfluxDBConnector:
+
+    .. code-block:: 
+
+        $ ./[WORK_DIR]/InfluxDBConnector
+
+    Build and run InfluxDBConnector as a container:
+
+    .. code-block:: 
+
+        $  cd [WORK_DIR]/build
+        $  docker-compose up --build ia_influxdbconnector

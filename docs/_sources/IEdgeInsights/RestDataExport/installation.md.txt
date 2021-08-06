@@ -1,0 +1,5 @@
+## `Installation`
+
+* Follow steps 1-5 of main [EII README](../README.md) if not done already as part of EII stack setup
+
+> **NOTE:** For running in PROD mode, please ensure Step 3 of Pre-requisites is executed before trying to bring up RestDataExport container.

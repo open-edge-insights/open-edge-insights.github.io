@@ -1,0 +1,114 @@
+
+Steps to enable Accelarators
+----------------------------
+
+.. note:: \ :
+   ``nodeSelector`` is the simplest recommended form of node selection constraint.
+   ``nodeSelector`` is a field of PodSpec. It specifies a map of key-value pairs. For the pod to be eligible to run on a node, the node must have each of the indicated key-value pairs as labels (it can have additional labels as well). The most common usage is one key-value pair.
+
+
+
+#. 
+   Setting the ``label`` for a particular node
+
+   .. code-block:: sh
+
+      $ kubectl label nodes <node-name> <label-key>=<label-value>
+
+#. 
+   For HDDL/NCS2 dependenecies follow the steps for setting ``labels``.
+
+
+   * For HDDL
+
+   .. code-block:: sh
+
+      $ kubectl label nodes <node-name> hddl=true
+
+
+   * For NCS2
+
+   .. code-block:: sh
+
+      kubectl label nodes <node-name> ncs2=true
+
+.. note:: \ : Here the node-name is your worker node machine hostname
+
+
+
+#. 
+   Open the ``[WORKDIR]/IEdgeInsights/VideoIngestion/helm/values.yaml`` or ``[WORKDIR]/IEdgeInsights/VideoAnalytics/helm/values.yaml`` file.
+
+#. 
+   Based on your workload preference. Add hddl or ncs2 to accelerator in values.yaml of video-ingestion or video-analytics. 
+
+
+   * For HDDL
+
+   .. code-block:: yml
+
+      config:
+       video_ingestion:
+          .
+          .
+          .
+         accelerator: "hddl"
+         .
+         .
+         .
+
+
+   * For NCS2
+
+   .. code-block:: yml
+
+      config:
+       video_ingestion:
+          .
+          .
+          .
+         accelerator: "ncs2"
+         .
+         .
+         .
+
+#. 
+   set device as "MYRIAD" in case of ncs2 and as HDDL in case of hddl in the `VA config <https://github.com/open-edge-insights/video-analytics/blob/master/config.json>`_
+
+
+   * In case of ncs2.
+
+   .. code-block:: yml
+
+      "udfs": [{
+       .
+       .
+       .
+       "device": "MYRIAD"
+       }]
+
+
+   * In case of hddl.
+
+   .. code-block:: yml
+
+      "udfs": [{
+       .
+       .
+       .
+       "device": "HDDL"
+       }]
+
+#. 
+   Run the ``[WORKDIR]/IEdgeInsights/build/builder.py`` for generating latest consolidated ``deploy`` yml file based on your ``nodeSelector`` changes set in the respective Modules.
+
+   .. code-block:: sh
+
+      cd [WORKDIR]/IEdgeInsights/build/
+      python3 builder.py
+
+#. 
+   Follow the `Deployment Steps <http://localhost:7645/IEdgeInsights/build/helm-eii/##Provision-and-deploy-in-the-kubernetes-node>`_
+
+#. 
+   Verify the respecitve workloads are running based on the ``nodeSelector`` constraints.

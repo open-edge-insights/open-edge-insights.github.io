@@ -1,0 +1,11 @@
+## Software Trigger Utilily pre-requisites
+
+SWTriggerUtility expects a set of config, interfaces & public private keys to be present in ETCD as a pre-requisite.
+* To achieve this, please ensure an entry for SWTriggerUtility with its relative path from [IEdgeInsights](../../) directory is set in any of the .yml files present in [build/usecases](../../build/usecases) directory.
+    * An example has been provided below to add the entry in [video-streaming.yml](../../build/usecases/video-streaming.yml)
+    ```yml
+        AppContexts:
+        ---snip---
+        - tools/SWTriggerUtility
+    ```
+

@@ -1,0 +1,5 @@
+# `OpcuaExport`
+
+OpcuaExoprt service subscribes to classified results from EII message bus(VideoAnalytics) and starts publishing meta data to opcua clients
+
+

@@ -1,0 +1,8 @@
+
+================
+ImageStore
+================
+
+.. include:: ../IEdgeInsights/ImageStore/imagestore-module.rst
+
+.. include:: ../IEdgeInsights/ImageStore/configuration.rst

@@ -1,0 +1,76 @@
+## Optional: Adding multiple telegraf instances
+- User can add multiple instances of Telegraf. For that user needs to add additional environment variable named 'ConfigInstance' in docker-compose.yml file. For  every additional telegraf instance, there has to be additional compose section in the docker-compose.yml file. 
+- The configuration for every instance has to be in the telegraf image. The standard to be followed is described as below. 
+
+    For instance named $ConfigInstance the telegraf configuration has to be kept in the repository at 
+    [config](./config)/$ConfigInstance/$ConfigInstance.conf (for production mode) and 
+    [config](./config)/$ConfigInstance/$ConfigInstance_devmode.conf (for developer mode).
+
+    The same files will be available inside the respective container at
+    '/etc/Telegraf/$ConfigInstance/$ConfigInstance.conf' (for production mode)
+    '/etc/Telegraf/$ConfigInstance/$ConfigInstance_devmode.conf' (for developer mode)
+
+Let's have some of the examples.
+
+Example1:
+For $ConfigInstance = 'Telegraf1'
+
+- The location of the Telegraf configuration would be
+[config](./config)/Telegraf1/Telegraf1.conf (for production mode) and [config](./config)/Telegraf1/Telegraf1_devmode.conf (for developer mode)
+- The additional docker compose section which has to be manually added in the file 'docker-compose.yml' would be
+	```
+	  ia_telegraf1:
+	    depends_on:
+	      - ia_common
+	    build:
+	      context: $PWD/../Telegraf
+	      dockerfile: $PWD/../Telegraf/Dockerfile
+	      args:
+	        EII_VERSION: ${EII_VERSION}
+	        EII_UID: ${EII_UID}
+	        DOCKER_REGISTRY: ${DOCKER_REGISTRY}
+	        TELEGRAF_SOURCE_TAG: ${TELEGRAF_SOURCE_TAG}
+	        TELEGRAF_GO_VERSION: ${TELEGRAF_GO_VERSION}
+	    container_name: ia_telegraf1
+	    hostname: ia_telegraf1
+	    image: ${DOCKER_REGISTRY}openedgeinsights/ia_telegraf:${EII_VERSION}
+	    restart: unless-stopped
+	    ipc: "none"
+	    read_only: true
+	    environment:
+	      AppName: "Telegraf"
+	      ConfigInstance: "Telegraf1"
+	      CertType: "pem,zmq"
+	      DEV_MODE: ${DEV_MODE}
+	      no_proxy: "${ETCD_HOST},ia_influxdbconnector"
+	      NO_PROXY: "${ETCD_HOST},ia_influxdbconnector"
+	      ETCD_HOST: ${ETCD_HOST}
+	      MQTT_BROKER_HOST: $MQTT_BROKER_HOST
+	      INFLUX_SERVER: 'ia_influxdbconnector'
+	      INFLUXDB_PORT: $INFLUXDB_PORT
+	      ETCD_PREFIX: ${ETCD_PREFIX}
+	    user: ${EII_UID}
+            networks:
+              - eii
+	    volumes:
+	      - "vol_temp_telegraf:/tmp/"
+	      - "vol_eii_socket:${SOCKET_DIR}"
+	    secrets:
+	      - ca_etcd
+	      - etcd_Telegraf_cert
+	      - etcd_Telegraf_key
+	```
+
+**Note**: It's been practice followed by many users, to keep the configuration in a modular way. One way to achieve the same could be keeping the additional configuration inside 'Telegraf/config/$ConfigInstance/telegraf.d. For example:
+
+create a directory 'telegraf.d' inside 'Telegraf/config/config/$ConfigInstance' :
+   ```
+   $ mkdir config/$ConfigInstance/telegraf.d
+   $ cd config/$ConfigInstance/telegraf.d
+  ```
+   keep additional configuration files inside that directory and pass the whole command to start the Telegraf in docker-compose.yml file as following:
+	
+```
+	command: ["telegraf -config=/etc/Telegraf/$ConfigInstance/$ConfigInstance.conf -config-directory=/etc/Telegraf/$ConfigInstance/telegraf.d"]
+```
+

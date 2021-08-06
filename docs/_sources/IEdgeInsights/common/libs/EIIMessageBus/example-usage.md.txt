@@ -1,0 +1,326 @@
+## Example Usage
+
+> **IMPORTANT NOTE:** Some of the example configurations contain public/private
+> keys for the purpose of show how to use the message bus with security enabled.
+> THESE KEYS SHOULD **NEVER** BE USED IN PRODUCTION.
+
+> **NOTE:** The examples will only be compiled if the `WITH_EXAMPLES=ON` option
+> is set when CMake is executed during compilation.
+
+All of the examples provided for the EII Message Bus use a JSON configuration
+file to configure the EII Message Bus. There are several example configurations
+provided with the message bus for running in IPC and TCP mode accross the
+various different messaging patterns (i.e. Publish/Subscribe and Request/Response).
+All of these example configurations are in the `examples/configs/` directory.
+However, all of them are copied into the `examples/build/configs/` directory
+as well when build the examples.
+
+The table below specifies all of the provided example configurations.
+
+|                 Configuration                   |                                     Description                                     |
+| :---------------------------------------------: | ----------------------------------------------------------------------------------- |
+| ipc_example_config.json                         | Configuration for IPC based communication. Works with all examples.                 |
+| ipc_example_config_multi_topics.json            | Configuration for IPC based communication to be used with multi-topic publishing/subscribing. Works with publisher-many & subscriber examples. |
+| ipc_publisher_brokered.json                     | Publisher configuration for IPC based communication using the ZeroMQ Broker.    |
+| ipc_subscriber_brokered.json                    | Subscriber configuration for IPC based communication using the ZeroMQ Broker.   |
+| tcp_publisher_brokered_no_security.json         | TCP configuration for publishing with no security through the ZeroMQ Broker.    |
+| tcp_publisher_no_security.json                  | TCP configuration for publishing with no security.                                  |
+| tcp_publisher_with_security_no_auth.json        | TCP configuration for publishing with key based auth without ZAP auth.              |
+| tcp_publisher_with_security_with_auth.json      | TCP configuration for publishing with key based auth and ZAP auth.                  |
+| tcp_subscriber_no_security.json                 | TCP configuration for subscribing to a topic with no security.                      |
+| tcp_subscriber_no_security_prefix_match.json    | TCP configuration for subscribing to multiple topics which share a common prefix, with no security. |
+| tcp_subscriber_with_security.json               | TCP configuration for subscribing to a topic with security enabled.                 |
+| tcp_subscriber_with_security_prefix_match.json  | TCP configuration for subscribing to multiple topics which share a common prefix, with security. |
+| tcp_service_server_no_security.json             | TCP configuration for a service server side (i.e. `echo-service`) without security. |
+| tcp_service_server_with_security_no_auth.json   | TCP configuration for a service server side with key based auth without ZAP auth.   |
+| tcp_service_server_with_security_with_auth.json | TCP configuration for a service server side with key based auth and ZAP auth.       |
+| tcp_service_client_no_security.json             | TCP configuration for a service client side (i.e. `echo-client`) with no security.  |
+| tcp_service_client_with_security.json           | TCP configuration for a service client side with security enabled.                  |
+
+> **NOTE:** When using the brokered examples, you must also launch the broker
+> first. For more information on the broker and how to use it, see the
+> ZmqBroker/README.md.
+
+You will notice that for the publisher configurations and service server side
+configurations there are 3 configurations each, where as subscribers and service
+client side configurations only have 2. This is because for publishers and service
+server side applications there are two forms of security to enable: with ZAP authentication,
+and no ZAP authentication. In the configurations with ZAP authentication, an
+additional configuration value is provided which specifies the list of clients
+(i.e. subscribers or service client side connections) which are allowed to connect
+to the specified port. This list oporates as a whitelist of allowed client public
+keys. If a connection is attempted with a key not in that list, then the connection
+is denied.
+
+### C Examples
+
+There are currently 5 C examples:
+
+1. `examples/publisher.c`
+2. `examples/subscriber.c`
+3. `examples/echo_server.c`
+4. `examples/echo_client.c`
+5. `examples/publisher_many.c`
+
+All of the C example executables are in the `build/examples/` directory. To run
+them, execute the following command:
+
+```sh
+$ ./publisher ./configs/ipc_example_config.json
+```
+
+> **NOTE:** The `tcp_example_config.json` can also be used in lieu of the IPC
+> configuration file.
+
+All of the examples follow the command structure above, i.e.
+`<command> <json-config-file>.json`, except for the `publisher_many.c`
+example. This example is explained more in-depth in the next section.
+
+#### Publisher Many Example
+
+The `examples/publisher_many.c` example serves as a reference for implementing
+an application which contains many publishers. This also serves as a way of
+testing this functionality in the EII Message Bus.
+
+The example can be run with the following command (from the `build/examples/`
+directory):
+
+```sh
+$ ./publisher-many ./configs/ipc_example_config.json 5
+```
+
+In the case above, the example will create 5 publishers where the topic
+strings follow the pattern `pub-{0,N-1}` where `N` is the number of publishers
+specified through the CLI. Can replace this JSON config file with any other JSON
+config as mention in the table above.
+
+The behavior of how these topics are published depends on if the configuration
+is IPC or TCP (i.e. if `type` is set to `zmq_ipc` vs. `zmq_tcp` in the JSON
+configuration file).
+
+If IPC communication is being used, then each topic will be a different Unix
+socket file in the `socket_dir` directory specified in the configuration, if default IPC config file `ipc_example_config.json` is used. If the IPC config file `ipc_example_config_multi_topics.json` is used then each topic is published over
+the socket file that is mentioned in the configuration file. For example, in the
+default file `ipc_example_config_multi_topics.json`, all topics publish & subscribe over the same socket file "multi-topics". However, we can have each topic or a set of topics publish/subscribe over a different socket file.
+
+If TCP communication is being used, then each message will be published over
+the `host` and `port` specified under the `zmq_tcp_publish` JSON object in the
+configuration.
+
+In order to subscribe to the topics published by this example, use the
+`subscriber.c` example. If you are using TCP or even IPC with multiple topics subscription, then you will need to specify the topic in your configuration. For example, your JSON configuration will
+need to contain the following to subscribe to the `pub-0` topic:
+
+```json
+{
+    "pub-0": {
+        "host": "127.0.0.1",
+        "port": 5569
+    }
+```
+> **NOTE:** The `host` and `port` are assumed above, they may be different.
+
+In order to simplify the creation of the configuration for subscribing to
+topics over TCP, the `gen_tcp_sub_conf.py` helper script is provided. This
+Python script will generate a JSON file for you based on your TCP JSON
+configuration for the `publisher-many` example which contains all of the
+topics specified so you can subscribe to any of them.
+
+This helper script can be ran as follows:
+
+```sh
+$ python3 ./gen_tcp_sub_conf.py <CONFIG-FILE-PATH>/tcp_publisher_no_security.json output.json 5
+```
+
+The command above uses the `tcp_publisher_no_security.json` for the `publisher-many`
+configuration. Then it generates all 5 topics and outputs them into the
+`output.json` file.
+
+After generating this configuration, you can use the `subscriber.c` example as
+shown below to subscribe to the `pub-1` topic:
+
+```sh
+$ ./subscriber output.json pub-1
+```
+
+Similiarly for IPC mode of communicatin with multi topics, the sample JSON configuration would look like below:
+
+``` json
+    {
+    "type": "zmq_ipc",
+    "socket_dir": "${CMAKE_CURRENT_BINARY_DIR}/.socks",
+    "pub-0": {
+        "socket_file": "multi-topics"
+    },
+    "pub-1": {
+       "socket_file": "multi-topics"
+    },
+    "pub-": {
+       "socket_file": "multi-topics"
+    }
+}
+```
+Here, `pub-0` & `pub-1` are the PUB topics & `pub-` is the SUB topics, where we have given just the prefix name. If we don't intend to give the SUB topic prefix, we can as well give the entire SUB topic name. In this example all these topics communicate over a common socket file `multi-topics`.
+
+### Python Examples
+
+> **NOTE:** The Python examples will only be present if the `WITH_EXAMPLES=ON`
+> and `WITH_PYTHON=ON` flags are set when CMake is executed during compilation.
+
+There are currently 4 Python examples:
+
+1. `python/examples/publisher.py`
+2. `python/examples/subscriber.py`
+3. `python/examples/echo_server.py`
+4. `python/examples/echo_client.py`
+
+To run the Python examples, go to the `build/examples/` directory. Then source
+the `source.sh` script that is in the examples directory.
+
+```sh
+$ source ./source.sh
+```
+
+Then, execute one of the following commands:
+
+```sh
+$ python3 ./publisher.py <CONFIG-FILE-PATH>/ipc_example_config.json
+```
+
+> **NOTE:** The `tcp_example_config.json` can also be used in lieu of the IPC
+> configuration file.
+
+All of the examples follow the same command structure as the `publisher.py`
+script, i.e. `python3 <python-script>.py <json-config-file>.json`.
+
+### Go Examples
+
+> **IMPORANT NOTE:** It is assumed that when compiling the C library prior to
+> running the examples that the `WITH_GO=ON` flag was specified when executing
+> the `cmake` command. It is also assume that, `sudo make install` has been
+> ran. If it has not and you do not wish to install the library, see the
+> "Running Go Examples without Installing" section below.
+
+When the `sudo make install` command is executed on your system, the Go binding
+will be copied to your system's `$GOPATH`. To execute the examples provided
+with the EII Message Bus Go binding go to the `$GOPATH/src/EIIMessageBus/examples`
+directory on your system in a terminal window.
+
+Once you are in this directory choose an example (i.e. publisher, subscriber,
+etc.) and `cd` into that directory. Then, to run the example execute the
+following command:
+
+```sh
+$ go run main.go -configFile <CONFIG-FILE>.json -topic publish_test
+```
+
+The example command above will run either the subscriber or publisher examples.
+For the echo-client and echo-server examples the `-topic` flag should be
+`-serviceName`.
+
+Additionally, there are example configurations provided in the
+`build/examples/configs/` directory after building the EII Message Bus library.
+
+### Running Go Examples without Installing
+
+If you wish to run the Go binding examples with out installing the EII Message
+Bus library, then this can be accomplished by either copying or creating a
+soft-link to the `go/EIIMessageBus` directory in your `$GOPATH`. This can be
+accomplished with one of the commands shown below.
+
+```sh
+$ cp -r go/EIIMessageBus/ $GOPATH/src
+
+# OR
+
+$ ln -s go/EIIMessageBus/ $GOPATH/src
+```
+
+> **NOTE:** The command above assumes that you are currently in the
+> EIIMessageBus source root directory.
+
+Since it is assumed you have not ran the `sudo make install` command to install
+the EII Message Bus library, you must set the environmental variables specified
+below prior to running the examples.
+
+```sh
+$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$MSGBUS_DIR/build
+$ export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$MSGBUS_DIR/build
+```
+
+Note that in the `export` commands above the `$MSGBUS_DIR` variable represents
+the absolute path to the `libs/EIIMessageBus` directory. It is very important
+that this is the absolute path.
+
+Once you have exported these variables, once you have done these steps, you can
+run any of the Go examples as specified in the previous section.
+
+### Brokered Publish/Subscribe
+
+EII provides a ZeroMQ Broker. Any of the publisher and subscriber examples can
+be used with this broker. There are three example JSON configuration provided
+to showcase the required configuration of the publishers/subscribers to connect
+to the broker. These examples are listed below:
+
+1. `ipc_publisher_brokered.json` - IPC brokered publisher configuration
+2. `ipc_subscriber_brokered.json` - IPC brokered subscriber configuration
+3. `tcp_publisher_brokered_no_security.json` - TCP brokered publisher configuration
+
+Note that there is not TCP brokered subscriber configuration. This is because
+no configuration change is needed to connect a subscriber to the broker.
+
+For the publisher side of the configuration, it is important to note that in the
+IPC configuration, under the `publish-test` JSON object the configuration key
+`brokered` is set to `true`. Similarly, in the TCP configuration, under the
+`zmq_tcp_publish` JSON object the key `brokered` is also set to true. This
+tells the publisher to connect to the broker (vs. binding to the given socket
+configuration).
+
+Since there is no code change to use a brokered publisher or subscriber, the
+examples can be ran the same as before, just with these brokered configurations.
+An example of this is shown below:
+
+**IPC Example:**
+
+```sh
+# Start the publisher
+$ ./publisher ./configs/ipc_publisher_brokered.json
+
+# Start the subscriber
+$ ./subscriber ./configs/ipc_subscriber_brokered.json
+```
+
+> **NOTE:** These configurations work with the, "examples/ipc_frontend_example.json",
+> and, "examples/ipc_backend_example.json", examples provided with the EII
+> ZeroMQ Broker.
+
+**TCP Example:**
+
+```sh
+# Start the publisher
+$ ./publisher ./configs/tcp_publisher_brokered_with_security.json
+
+# Start the subscriber
+$ ./subscriber ./configs/tcp_subscriber_with_security.json
+```
+
+> **NOTE:** These configurations work with the, "examples/tcp_frontend_example.json",
+> and, "examples/tcp_backend_example.json", examples provided with the EII
+> ZeroMQ Broker.
+
+**IMPORTANT NOTE:**
+
+Before runnint the examples below, you must start the ZeroMQ Broker. See
+the ZmqBroker/README.md for more details on configuring/launching the broker.
+Keep in mind that your broker configuration will impact the configuration
+needed for these examples.
+
+For example, in the `ipc_publisher_brokered.json` configuration file, if the
+socket for publishers to connect to is not named `frontend-sock` then this
+configuration file needs to be changed to reflect the different socket file
+name.
+
+To make this easy, the ZeroMQ Broker provides example configurations for TCP
+and IPC which use the same socket directory / files and (host, port) combinations
+to easily try out this feature.
+

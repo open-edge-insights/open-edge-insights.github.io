@@ -1,0 +1,41 @@
+
+Updating the EII Source Folder, Usecase & Proxy Settings in Group Variables
+---------------------------------------------------------------------------
+
+
+#. Open ``group_vars/all.yml`` file
+   .. code-block:: sh
+
+           $ vi group_vars/all.yml
+
+#. Update Proxy Settings
+   .. code-block:: sh
+
+           enable_system_proxy: true
+           http_proxy: <proxy_server_details>
+           https_proxy: <proxy_server_details>
+           no_proxy: <managed_node ip>,<controller node ip>,<worker nodes ip>,localhost,127.0.0.1
+
+#. 
+   Update the ``usecase`` variable, based on the usecase ``builder.py`` generates the EII deployment & config files.
+
+   ..
+
+      **Note**
+
+
+      #. By default it will be ``video-streaming``\ , For other usecases refer the ``../usecases`` folder and update only names without ``.yml`` extension
+      #. For ``all`` usecase, it will bring up all ``default`` services of eii.
+      #. ``ia_kapacitor`` and ``ia_telegraf`` container images are not distributed via docker hub, so one won't be able to pull these images
+         for time-series use case upon using `../usecases/time-series.yml <https://github.com/open-edge-insights/eii-core/blob/master/usecases/time-series.yml`>`_ for deployment. For more details,
+         refer: [../README.md#distribution-of-eii-container-images]> (../README.md#distribution-of-eii-container-images).
+
+
+    For Eg. If you want build & deploy for ``../usecases/time-series.yml`` update the ``usecase`` key value as ``time-series``
+
+   .. code-block:: sh
+
+           usecase: <time-series>
+
+#. Optionally you can choose number of video pipeline instances to be created by updating ``instances`` variable
+#. Update other optional variables provided if required

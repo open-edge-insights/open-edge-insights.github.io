@@ -1,0 +1,52 @@
+====================================
+Intel® Edge Insights for Industrial
+====================================
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: INTRODUCTION:
+
+   pages/legal
+   pages/introduction
+   pages/overview
+   pages/architecture
+   pages/running
+   pages/release
+
+.. toctree::
+   :maxdepth: 2
+   :caption: CORE LIBRARIES:
+
+   pages/msgbus
+   pages/eiiConfig
+   pages/api
+   
+.. toctree::
+   :maxdepth: 2
+   :caption: VIDEO ANALYTICS PIPELINE:
+
+   pages/video
+
+.. toctree::
+   :maxdepth: 2
+   :caption: TIME-SERIES ANALYTICS PIPELINE:
+
+   pages/timeseries
+
+.. toctree::
+   :maxdepth: 2
+   :caption: EXPORT SERVICES:
+
+   pages/azure
+   pages/opcua
+   pages/restdata
+
+.. toctree::
+   :maxdepth: 2
+   :caption: ADDITIONAL INFO:
+
+   pages/tools
+   pages/sample
+   pages/security
+   

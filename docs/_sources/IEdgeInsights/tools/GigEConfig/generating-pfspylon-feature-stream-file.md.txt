@@ -1,0 +1,22 @@
+## Generating PFS(Pylon Feature Stream) File
+
+In order to execute this tool user has to provide a PFS file as a pre-requisite. The PFS file can be generated using the Pylon Viwer application for the respective Basler camera by following below steps:-
+
+1.  Refer the below link to install and get an overview of the Pylon Viewer application:-
+    https://docs.baslerweb.com/overview-of-the-pylon-viewer
+
+2. Execute the below steps to run the Pylon Viewer application:
+
+   ```sh
+      $ sudo <PATH>/pylon5/bin/PylonViewerApp
+   ```
+
+3. Using the Pylon Viewer application follow below steps to gererate a PFS file for the required camera.
+
+   * Select the required camera and open it
+   * Configure the camera  with the required settings if required
+   * On the application toolbar, select Camera tab-> Save Features..
+   * Close the camera
+
+**Note**:In case one needs to configure the camera using Pylon Viewer make sure the device is not used by another application as it can be controlled by only one application at a time.
+

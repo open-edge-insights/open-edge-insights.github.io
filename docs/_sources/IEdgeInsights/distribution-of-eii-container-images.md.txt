@@ -1,0 +1,48 @@
+# Distribution of EII container images
+
+EII services are available as pre-built container images in docker hub at https://hub.docker.com/orgs/openedgeinsights/repositories
+and for the ones not listed there, one needs to do the build from source before running `docker-compose up -d` command.
+
+Eg:
+```sh
+$ cd [WORKDIR]/IEdgeInsights/build
+$ # Base images that needs to be built
+$ docker-compose -f docker-compose-build.yml ia_eiibase
+$ docker-compose -f docker-compose-build.yml ia_common
+$ # Assuming here that the `python3 builder.py` step is been executed and ia_kapacitor
+$ # service exists in the generated compose files and also, provisioning step is done
+$ docker-compose -f docker-compose-build.yml ia_kapacitor
+$ docker-compose up -d
+```
+
+Below are the list of pre-built container images that are accessible at https://hub.docker.com/orgs/openedgeinsights/repositories:
+
+1. **Provisioning images**
+
+  * openedgeinsights/ia_etcd_provision
+  * openedgeinsights/ia_etcd
+
+2. **Common EII images applicable for video and timeseries use cases**
+
+  * openedgeinsights/ia_etcd_ui
+  * openedgeinsights/ia_influxdbconnector
+  * openedgeinsights/ia_rest_export
+  * openedgeinsights/ia_opcua_export
+
+3. **Video pipeline images**
+
+  * openedgeinsights/ia_video_ingestion
+  * openedgeinsights/ia_video_analytics
+  * openedgeinsights/ia_web_visualizer
+  * openedgeinsights/ia_visualizer
+  * openedgeinsights/ia_imagestore
+  * openedgeinsights/ia_azure_bridge
+  * openedgeinsights/ia_azure_simple_subscriber
+
+4. **Timeseries pipeline images**
+
+  * openedgeinsights/ia_grafana
+
+Additionally, we have `openedgeinsights/ia_edgeinsights_src` image available at the above docker hub
+location which consists of source code of GPL/LGPL/AGPL components of EII stack.
+

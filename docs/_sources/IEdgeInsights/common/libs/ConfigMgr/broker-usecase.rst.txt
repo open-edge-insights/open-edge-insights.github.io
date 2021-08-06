@@ -1,0 +1,5 @@
+
+Broker Usecase
+--------------
+
+If publisher and subscriber wants to communicate via broker(ZmqBroker), i.e., if publisher publish data to ZmqBroker and subscriber subscribes from ZmqBroker, then the interfaces of ZmqBroker, subscriber and publisher with respect to ``zmq_tcp`` and ``zmq_ipc`` protocol as follows.

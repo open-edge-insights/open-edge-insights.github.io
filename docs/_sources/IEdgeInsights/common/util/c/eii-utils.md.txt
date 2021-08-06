@@ -1,0 +1,4 @@
+# EII Utils
+
+EII Utils is a C library providing commonly used APIs across the C/C++ EII modules, EII Message Bus and Config Manager libraries.
+

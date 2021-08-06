@@ -1,0 +1,6 @@
+## For building the open62541 wrapper library `open62541W.so` and generating `open62541W.c`:
+
+```sh
+make build
+```
+

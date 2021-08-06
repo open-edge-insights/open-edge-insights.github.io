@@ -1,0 +1,18 @@
+## Running Software Trigger Utility
+
+1. EII services can be running in prod or dev mode by setting `DEV_MODE` value accordingly in [build/.env](../../build/.env)
+
+2. Execute builder.py script:
+   ```sh
+   $ cd [WORKDIR]/IEdgeInsights/build/
+   $ python3 builder.py -f usecases/video-streaming.yml
+   ```
+
+   **NOTE**: The same yml file to which the **SWTriggerUtility** entry was added in [pre-requisites](#software-trigger-utilily-pre-requisites) has to be selected while running [builder](../../build/builder.py)
+
+3. Run provisioning step as below:
+
+   ```sh
+   $ cd [WORKDIR]/IEdgeInsights/build/provision
+   $ sudo -E ./provision.sh  ../docker-compose.yml
+   ```

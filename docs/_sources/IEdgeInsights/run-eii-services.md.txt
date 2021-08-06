@@ -1,0 +1,15 @@
+## Run EII services
+
+> **NOTE**:
+>
+> If the images tagged with EII_VERSION as in [build/.env](build/.env) does not exist locally on the system, 
+> they would be pulled if those images exist int he docker hub during `docker-compose up`.
+
+Runs all the EII services in the [docker-compose.yml](build/docker-compose.yml)
+
+```sh
+$ docker-compose up -d
+```
+
+A successful run will open Visualizer UI with results of video analytics for all video usecases.
+

@@ -1,0 +1,16 @@
+============
+EII Samples
+============
+
+
+EII samples apps demonstrate usage of EII core libraries
+
+.. include:: ../IEdgeInsights/Samples/steps-to-run-eii-samples-apps.rst
+
+We have samples apps in C, golang and python as below:
+
+.. include:: ../IEdgeInsights/Samples/cpp_sample_app/README.rst
+
+.. include:: ../IEdgeInsights/Samples/go_sample_app/README.rst
+
+.. include:: ../IEdgeInsights/Samples/python_sample_app/README.rst

@@ -1,0 +1,14 @@
+# Troubleshooting guide
+
+1. Please refer to [TROUBLESHOOT.md](./TROUBLESHOOT.md) guide for any troubleshooting tips related to EII configuration and installation
+2. If any issues are observed w.r.t the python package installation then manually install the python packages as shown below :
+
+   **Note**: It is highly recommended that you use a python virtual environment to install the python packages, so that the system python installation doesn't get
+   altered. Details on setting up and using python virtual environment can be found here: https://www.geeksforgeeks.org/python-virtual-environment/
+
+```sh
+$ cd [WORKDIR]/IEdgeInsights/build
+# Install requirements for builder.py
+$ pip3 install -r requirements.txt
+```
+

@@ -1,0 +1,2 @@
+# Compilation steps (current directory: <repo>/OpcuaBusAbstraction/py/open62541/):
+

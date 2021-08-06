@@ -1,0 +1,9 @@
+## Usage
+A few example pipelines with this plugin below. The serial number of the Basler camera in PMCE BA lab is 22034422.
+```
+$ gst-launch-1.0 gencamsrc serial=22034422 ! videoconvert ! ximagesink
+$ gst-launch-1.0 gencamsrc serial=22034422 pixel-format=bayerbggr ! bayer2rgb ! ximagesink
+```
+
+
+

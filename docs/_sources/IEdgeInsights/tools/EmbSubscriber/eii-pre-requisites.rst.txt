@@ -1,0 +1,25 @@
+
+EII pre-requisites
+------------------
+
+
+#. 
+   EmbSubscriber expects a set of config, interfaces & public private keys to be present in ETCD as a pre-requisite.
+   To achieve this, please ensure an entry for EmbSubscriber with its relative path from `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory is set in the time-series.yml file present in `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory. An example has been provided below:
+
+   .. code-block:: sh
+
+          AppName:
+          - Grafana
+          - InfluxDBConnector
+          - Kapacitor
+          - Telegraf
+          - tools/EmbSubscriber
+
+#. 
+   With the above pre-requisite done, please run the below command:
+
+   .. code-block:: sh
+
+         $ cd [WORKDIR]/IEdgeInsights/build
+         $ python3 builder.py -f usecases/time-series.yml

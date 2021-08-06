@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Steps for Multinode Deployment &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> EII Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../Installing_docker_pre_requisites.html">Manual steps to install docker daemon and docker-compose with proxy settings configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/running.html">Running EII</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#downloading-and-installation-from-the-edge-software-hub">Downloading and Installation from the Edge Software Hub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#downloading-the-default-package">Downloading the Default Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#downloading-customize-package">Downloading Customize Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#installing-the-package">Installing the Package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#manual-installation">Manual Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#docker-pre-requisites">Docker Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#provision">Provision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#build-and-run-eii-pcb-video-timeseries-use-cases">Build and Run EII PCB video/timeseries use cases</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#eii-message-bus-architecture">EII Message Bus Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#compilation">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id1">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#publishers">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#subscribers">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#services">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#requesters">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#using-zap-authentication">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#c-examples">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#publisher-many-example">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#eii-message-bus-development">EII Message Bus Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#developing-protocols">Developing Protocols</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#adding-a-new-protocol">Adding a New Protocol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#protocol-t-function-definition"><code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> Function Definition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#configmgr">ConfigMgr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#etcd-ui-service"><code class="docutils literal notranslate"><span class="pre">ETCD</span> <span class="pre">UI</span> <span class="pre">Service</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#zmqbroker">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#subscriber">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#publisher">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#zmq-tcp-protocol-usecase">zmq_tcp Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#id1">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#id2">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#id3">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#id5">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#id6">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#id7">Go Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/sample.html">Sample Application for APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/sample.html#sample-applications-for-eii-platform">Sample Applications for EII Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/video.html">Video Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#videoingestion-module"><code class="docutils literal notranslate"><span class="pre">VideoIngestion</span> <span class="pre">Module</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#ingestor-config"><code class="docutils literal notranslate"><span class="pre">Ingestor</span> <span class="pre">config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#note-for-working-with-genicam-usb3-vision-camera-please-install-the-respective-camera-sdk-by-referring-the-below-section"><strong>Note:</strong> For working with Genicam USB3 Vision camera please install the respective camera SDK by referring the below section.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/imageStore.html">ImageStore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/imageStore.html#imagestore-module"><code class="docutils literal notranslate"><span class="pre">ImageStore</span> <span class="pre">Module</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/imageStore.html#configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/imageStore.html#detailed-description-on-each-of-the-keys-used"><code class="docutils literal notranslate"><span class="pre">Detailed</span> <span class="pre">description</span> <span class="pre">on</span> <span class="pre">each</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">keys</span> <span class="pre">used</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/timeseries.html">Working with Timeseries Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../minimum-system-requirements.html">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../using-video-accelerators.html">Using video accelerators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../using-video-accelerators.html#note"><strong>Note</strong>:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../VideoIngestion/videoingestion-module.html"><code class="docutils literal notranslate"><span class="pre">VideoIngestion</span> <span class="pre">Module</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/restdata.html">RestDataExport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/overTheAir.html">Updating an Application-Over-The-Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/modes.html">DEV MODE and PROFILING MODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/docker.html">Sample Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/azure.html">Azure Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/orchestration.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/benchmarking.html">Video and Time-series Benchmarking Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/codeModification.html">Code Modification Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/debugging.html">Debugging EII</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Steps for Multinode Deployment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../_sources/IEdgeInsights/build/k8s/steps-for-multinode-deployment.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="steps-for-multinode-deployment">
+<h1>Steps for Multinode Deployment<a class="headerlink" href="#steps-for-multinode-deployment" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">K8s</span> <span class="pre">Master</span> <span class="pre">node</span> <span class="pre">&amp;</span> <span class="pre">Worker(s)</span> <span class="pre">node</span> <span class="pre">Setup</span> <span class="pre">should</span> <span class="pre">be</span> <span class="pre">done</span> <span class="pre">as</span> <span class="pre">pre-requisite</span> <span class="pre">to</span> <span class="pre">continue</span> <span class="pre">the</span> <span class="pre">following</span> <span class="pre">deployment</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">step</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">required</span> <span class="pre">for</span> <span class="pre">**Single</span> <span class="pre">Node**</span> <span class="pre">deployment</span></code></p>
+<ul class="simple">
+<li><p>Pre-Requisites</p></li>
+</ul>
+</li>
+</ol>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">**</span><span class="n">Note</span><span class="o">**</span> <span class="n">For</span> <span class="n">Running</span> <span class="n">EII</span> <span class="n">Modules</span> <span class="ow">in</span> <span class="n">k8s</span> <span class="n">multi</span> <span class="n">node</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">corresponding</span> <span class="n">module</span> <span class="n">Container</span> <span class="n">Images</span> <span class="n">should</span> <span class="n">be</span> <span class="n">present</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">master</span> <span class="ow">and</span> <span class="n">worker</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">nodes</span><span class="o">.</span> <span class="n">The</span> <span class="n">container</span> <span class="n">images</span> <span class="n">can</span> <span class="n">be</span> <span class="n">pushed</span> <span class="n">to</span> <span class="n">a</span> <span class="n">Docker</span> <span class="n">registry</span> <span class="ow">and</span> <span class="n">pulled</span> <span class="n">on</span> <span class="n">the</span> <span class="n">required</span> <span class="n">nodes</span><span class="o">.</span> <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">on</span> <span class="n">Docker</span> <span class="n">registry</span><span class="o">-</span> <span class="n">Kindly</span> <span class="n">refer</span><span class="p">:</span>
+<span class="p">[</span><span class="n">build</span><span class="o">/</span><span class="n">deploy</span><span class="o">/</span><span class="n">README</span><span class="o">.</span><span class="n">html</span><span class="o">/</span><span class="c1">#step-2-set-up-docker-registry-url-then-build-and-push-images](http://localhost:7645/IEdgeInsights/#step-2-set-up-docker-registry-url-then-build-and-push-images)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Master Node provisoning: Follow steps mentioned in below links.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/k8s/###change-for-master-provision-for-multinode-deployment">Change for Master Provision for Multinode Deployment</a></p></li>
+<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/k8s/#provisioning-with-k8s">Provisioning with k8s</a></p></li>
+</ol>
+</li>
+<li><p>Worker Node provisoning: Follow steps mentioned in below links.</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/k8s/#Provision-Bundle-creation-for-k8s-worker-node">Provision Bundle creation for k8s worker node</a></p></li>
+<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/k8s/#EII-k8s-Worker-Node-provisioning-for-MultiNode-deployment">EII k8s Worker Node provisioning for MultiNode deployment</a></p></li>
+</ol>
+</li>
+</ul>
+<div class="section" id="id1">
+<h2>Change for Master Provision for Multinode Deployment.<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Get the master node name by running below command.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span> $ kubectl get nodes
+
+It will display NAME along with ROLES. Copy the <span class="nb">complete</span> <span class="sb">``</span>name<span class="sb">``</span> of Node with ROLES as <span class="sb">``</span>master<span class="sb">``</span>.
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   E.g.
+   $ kubectl get nodes
+   NAME     STATUS          ROLES    AGE   VERSION
+   coolm    Ready           master   67d   v1.18.6
+
+For example, copied ``coolm`` from above.
+</pre></div>
+</div>
+<ul>
+<li><p>Add copied master node name(e.g. coolm) with label <code class="docutils literal notranslate"><span class="pre">nodeName</span> <span class="pre">under</span> <span class="pre">spec</span> <span class="pre">of</span> <span class="pre">Pod</span> <span class="pre">ia-etcd</span> <span class="pre">as</span> <span class="pre">nodeName:</span></code> in below yaml based on DEV mode.</p>
+<ul class="simple">
+<li><p>If DEV mode =TRUE  <a class="reference external" href="https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/k8s_etcd_devmode.yml">build/provision/dep/k8s/k8s_etcd_devmode.yml</a></p></li>
+<li><p>IF DEV mode=FALSE  <a class="reference external" href="https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/k8s_etcd_prodmode.yml">build/provision/dep/k8s/k8s_etcd_prodmode.yml</a></p></li>
+</ul>
+<p>This will enable etcd to run always on master node.</p>
+<p>For example, added  <code class="docutils literal notranslate"><span class="pre">nodeName:coolm</span></code> in etcd_devmode.yaml or etcd_prodmode.yaml which was copied above.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">E</span><span class="o">.</span><span class="n">g</span><span class="o">.</span>
+<span class="n">spec</span><span class="p">:</span>
+  <span class="n">restartPolicy</span><span class="p">:</span> <span class="n">OnFailure</span>
+  <span class="n">nodeName</span><span class="p">:</span> <span class="n">coolm</span>
+</pre></div>
+</div>
+<p>### Provision Bundle creation for k8s worker node.</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>This step is not required for <strong>Single Node</strong> deployment</p></li>
+<li><p>Provisioning bundle will be generated on k8s <code class="docutils literal notranslate"><span class="pre">Master</span> <span class="pre">node</span></code>.</p></li>
+<li><p>Make Sure ETCD_NAME=[any name other than <code class="docutils literal notranslate"><span class="pre">master</span></code>] in <a class="reference external" href="https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/.env">build/.env</a> of Master node.</p></li>
+<li><p>Below steps to be run on Master node.</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">PROVISION_MODE=k8s</span></code> in <a class="reference external" href="https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/.env">build/provision/.env</a> file.</p></li>
+<li><p>Go to <code class="docutils literal notranslate"><span class="pre">$[WORK_DIR]/IEdgeInsights/build/deploy</span></code> directory</p></li>
+<li><p>Generate Provisioning bundle for k8s worker node provisioning.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo python3 generate_eii_bundle.py -p
+</pre></div>
+</div>
+<p>### EII <code class="docutils literal notranslate"><span class="pre">k8s</span> <span class="pre">Worker</span> <span class="pre">Node</span></code> provisioning for MultiNode deployment</p>
+<blockquote>
+<div><p><strong>Note</strong>:</p>
+<ol class="arabic simple">
+<li><p>This should be executed in k8s worker nodes in <a href="#id2"><span class="problematic" id="id3">**</span></a><em>Multi node
+scenario</em>** only.</p></li>
+<li><p>This step is not required for <strong>Single Node</strong> deployment</p></li>
+<li><p>Provisioning bundle generated on k8s Master node will be copied to worker node.</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Copy the <code class="docutils literal notranslate"><span class="pre">eii_provisioning.tar.gz</span></code> file from k8s master node to worker node(s).</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo scp &lt;eii_provisioning.tar.gz&gt; &lt;any-directory_on-worker-Filesystem&gt;
+$ sudo tar -xvf &lt;eii_provisioning.tar.gz&gt;
+$ <span class="nb">cd</span> &lt;eii_provisioning&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Provision the EII in k8s Worker(s) Node.
+.. code-block:: sh</p>
+<blockquote>
+<div><p>$ cd provision
+$ sudo ./provision.sh</p>
+</div></blockquote>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

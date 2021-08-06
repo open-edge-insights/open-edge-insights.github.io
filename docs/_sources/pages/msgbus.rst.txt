@@ -1,0 +1,23 @@
+##############################################
+ EII Message Bus
+##############################################
+
+.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/eii-message-bus.rst
+
+.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/dependency-installation.rst
+
+.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/compilation.rst
+
+.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/installation.rst
+
+.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/running-unit-tests.rst
+
+.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/configuration.rst
+
+.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/example-usage.rst
+
+.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/security.rst
+
+.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/known-issues.rst
+
+

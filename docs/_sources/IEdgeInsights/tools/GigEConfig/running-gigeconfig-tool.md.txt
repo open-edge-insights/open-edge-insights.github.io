@@ -1,0 +1,117 @@
+## Running GigEConfig Tool
+
+Before executing the tool make sure following steps are executed:-
+
+1. Please make sure that provisioning is done.
+
+2. Source build/.env to get all the required ENVs
+
+    ```sh
+    $ set -a
+    $ source [WORKDIR]/IEdgeInsights/build/.env
+    $ set +a
+    ```
+3. Install the dependencies:
+
+    **Note**: It is highly recommended that you use a python virtual environment to
+    install the python packages, so that the system python installation doesn't
+    get altered. Details on setting up and using python virtual environment can
+    be found here: https://www.geeksforgeeks.org/python-virtual-environment/
+
+    ```sh
+    $ pip3 install -r requirements.txt
+    ```
+4. If using GigE tool in PROD mode, make sure to set required permissions to certificates.
+
+    ```sh
+        sudo chmod -R 755 [WORKDIR]/IEdgeInsights/build/provision/Certificates
+    ```
+    Note : This step is required everytime provisioning is done.
+    Caution: This step will make the certs insecure. Please do not do it on a production machine.
+
+### Usage of GigEConfig tool:
+
+Script Usage:
+
+```sh
+$ python3 GigEConfig.py --help
+
+
+
+$  python3 GigEConfig.py [-h] --pfs_file PFS_FILE [--etcd] [--ca_cert CA_CERT]
+                         [--root_key ROOT_KEY] [--root_cert ROOT_CERT]
+                         [--app_name APP_NAME]
+```
+----
+Tool for updating pipeline according to user requirement
+
+optional arguments:
+
+  -h, --help            show this help message and exit
+
+  --pfs_file PFS_FILE, -f PFS_FILE
+                        To process pfs file genrated by PylonViwerApp (default: None)
+
+  --etcd, -e            Set for updating etcd config (default: False)
+
+  --ca_cert CA_CERT, -c CA_CERT
+                        Provide path of ca_certificate.pem (default: None)
+
+  --root_key ROOT_KEY, -r_k ROOT_KEY
+                        Provide path of root_client_key.pem (default: None)
+
+  --root_cert ROOT_CERT, -r_c ROOT_CERT
+                        Provide path of root_client_certificate.pem (default: None)
+
+  --app_name APP_NAME, -a APP_NAME
+                        For providing appname of VideoIngestion instance (default: VideoIngestion)
+----
+[config.json](config.json) consist of mapping between the PFS file elements and the camera properties. The pipeline constructed will only consist of the elements specified in it.
+
+The user needs to provide following elements:-
+
+* pipeline_constant: Specify the constant gstreamer element of pipeline.
+
+* plugin_name: The name of the gstreamer source plugin used
+
+* device_serial_number: Serial number of the device to which the plugin needs to connect to:
+
+* plugin_properties: Properties to be integrated in pipeline, The keys in here are mapped to respective gstreamer properties
+----
+
+### Execution of GigEConfig
+
+The tool can be executed in following manner :-
+
+1. ```sh
+   $ cd [WORKDIR]/IEdgeInsights/tools/GigEConfig
+   ```
+
+2. Modify [config.json](config.json) based on the requirements
+
+
+3. For DEV Mode
+
+    a. In case etcd configuration needs to be updated.
+
+    ```sh
+    $ python3 GigEConfig.py --pfs_file <path to pylon's pfs file> -e
+    ```
+    For PROD Mode
+
+    Before running in PROD mode please change the permissions of the certificates i.e :-
+
+    ```sh
+    $sudo chmod 755 -R [WORDK_DIR]/IEdgeInsights/build/provision/Certificates
+    ```
+
+    a. In case etcd configuration needs to be updated.
+
+    ```sh
+    $ python3 GigEConfig.py -f <path to pylon's pfs file> -c [WORK_DIR]/IEdgeInsights/build/provision/Certificates/ca/ca_certificate.pem -r_k [WORK_DIR]/IEdgeInsights/build/provision/Certificates/root/root_client_key.pem -r_c [WORK_DIR]IEdgeInsights/build/provision/Certificates/root/root_client_certificate.pem -e
+    ```
+4. In case only pipeline needs to be printed.
+
+    ```sh
+    $ python3 GigEConfig.py --pfs_file <path to pylon's pfs file>
+    ```

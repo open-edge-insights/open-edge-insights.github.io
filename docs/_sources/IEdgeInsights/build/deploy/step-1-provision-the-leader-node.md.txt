@@ -1,0 +1,29 @@
+# Step 1 Provision the Leader node
+
+> **Pre-requisite**:
+> Please follow the EII Pre-requisites before Provisioning.
+> [EII Pre-requisites](../../README.md#eii-pre-requisites)
+
+> **NOTE**:
+> * EII services can run on leader as well as worker nodes
+> * Leader node should have the entire repo/source code present
+> * Leader node is the primary administative node and has following attributes:
+>   1. Generating required certificates and secrets.
+>   2. Loading Initial ETCD values.
+>   3. Generating bundles to provision new nodes.
+>   4. Generating bundles to deploy EII services on new/worker nodes.
+
+
+For running EII in multi node, we have to identify one node to run ETCD server (this node is called as `leader` node). For a leader node, ETCD_NAME in [build/.env](../.env) must be set to `leader`. Rest other nodes are `Worker` nodes which doesn't run ETCD server, instead all the worker nodes remotely connect to the ETCD server running on the `Leader` node only. Make sure the `date` and `time` are in sync in all nodes.
+
+Provision the Leader node using the below command,
+
+        ```
+        $ cd [WORK_DIR]/IEdgeInsights/build/provision
+        $ sudo ./provision.sh <path_to_eii_docker_compose_file>
+
+        eq. $ sudo ./provision.sh ../docker-compose.yml
+
+        ```
+    This creates the ETCD server (Container ia_etcd) on the leader edge node.
+

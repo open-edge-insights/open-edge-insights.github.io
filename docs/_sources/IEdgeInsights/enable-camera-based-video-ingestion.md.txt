@@ -1,0 +1,4 @@
+# Enable camera based Video Ingestion
+
+For detailed description on configuring different types of cameras and  filter algorithms, refer to the [VideoIngestion/README.md](VideoIngestion/README.md).
+

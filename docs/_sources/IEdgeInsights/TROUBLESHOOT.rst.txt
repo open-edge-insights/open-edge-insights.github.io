@@ -1,0 +1,117 @@
+
+**Contents**
+
+
+* `Troubleshooting <http://localhost:7645/IEdgeInsights/#troubleshooting>`_
+
+  * `Contents <http://localhost:7645/IEdgeInsights/#contents>`_
+  * `1. "host" network_mode is incompatible with port_bindings during docker-compose up <http://localhost:7645/IEdgeInsights/#1-host-network_mode-is-incompatible-with-port_bindings-during-docker-compose-up>`_
+  * `2. eii_libs_installer.sh script failing during bare-metal execution <http://localhost:7645/IEdgeInsights/#2-eii_libs_installersh-script-failing-during-bare-metal-execution>`_
+
+Troubleshooting
+===============
+
+The troubleshooting guide here talks about the useful tips to address some of the EII configuration and installation issues.
+
+Contents
+--------
+
+
+#. `"host" network_mode is incompatible with port_bindings during docker-compose up <http://localhost:7645/IEdgeInsights/#1-host-network_mode-is-incompatible-with-port_bindings-during-docker-compose-up>`_
+#. `eii_libs_installer.sh script failing during bare-metal execution <http://localhost:7645/IEdgeInsights/#2-eii_libs_installersh-script-failing-during-bare-metal-execution>`_
+
+1. "host" network_mode is incompatible with port_bindings during docker-compose up
+----------------------------------------------------------------------------------
+
+
+* 
+  Problem Description:
+
+  Issue in starting InfluxDBConnector, Kapacitor and Grafana Services like InfluxDBConnector, Kapacitor, Grafana whose ports
+  are exposed to start the service might fail to start during "docker-compose up".
+
+* 
+  Error description:
+
+  .. code-block::
+
+       ERROR: for ia_kapacitor  "host" network_mode is incompatible with port_bindings 
+
+       ERROR: for ia_grafana  "host" network_mode is incompatible with port_bindings 
+
+       ERROR: for ia_influxdbconnector "host" network_mode is incompatible with port_bindings 
+
+       docker.errors.InvalidArgument: "host" network_mode is incompatible with port_bindings
+
+* 
+  Possible Cause:
+
+  .. code-block::
+
+       docker-compose might have been installed using "pip" where version mismatch might be causing the issue.
+
+
+* 
+  Solution:
+
+  Installation of docker-compose using "curl" as mentiond in `Installing_docker_pre_requisites.md <https://github.com/open-edge-insights/eii-core/blob/master/Installing_docker_pre_requisites.md>`_ will solve the
+  issue. Also, following the below command should solve the issue.
+
+  .. code-block:: sh
+
+     $ sudo rm /usr/local/bin/docker-compose
+     $ pip3 uninstall docker-compose
+     $ sudo curl L https://github.com/docker/compose/releases/download/1.27.4/docker-compose-`uname -s``uname -m` -o /usr/local/bin/docker-compose
+     $ sudo chmod +x /usr/local/bin/docker-compose
+
+2. eii_libs_installer.sh script failing during bare-metal execution
+-------------------------------------------------------------------
+
+
+* 
+  Problem Description:
+
+  One might run into issue of $GOPATH not being set appropriately which could result in the EII librarires installation failure when run on bare-metal
+
+* 
+  Error description:
+
+  .. code-block::
+
+       CMake Error at CMakeLists.txt:63 (message):
+       – $GOPATH envronmental variable is not set
+
+       – Configuring incomplete, errors occurred!
+
+       See also "/home/eisval-desk6/FOG/EIIv2.4_RC6/IEdgeInsights/common/libs/ConfigMgr/build/CMakeFiles/CMakeOutput.log".
+       See also "/home/eisval-desk6/FOG/EIIv2.4_RC6/IEdgeInsights/common/libs/ConfigMgr/build/CMakeFiles/CMakeError.log".
+       running install
+       running build
+       running build_py
+       running build_ext
+       building 'cfgmgr.app_config' extension
+       x86_64-linux-gnu-gcc -pthread -DNDEBUG -g -fwrapv -O2 -Wall -g -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2 -fPIC -I/usr/include/python3.8 -c ./build/cython/./cfgmgr/app_config.c -o build/temp.linux-x86_64-3.6/./build/cython/./cfgmgr/app_config.o
+       ./build/cython/./cfgmgr/app_config.c:626:10: fatal error: eii/config_manager/cfgmgr.h: No such file or directory
+       #include "eii/config_manager/cfgmgr.h"
+       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+       compilation terminated.
+       error: command 'x86_64-linux-gnu-gcc' failed with exit status 1
+
+* 
+  Possible Cause:
+
+  .. code-block::
+
+       If "GO" is already installed in the system, eii_libs_installer script skips the installation of it.
+
+       In this case where GO is already installed, GOPATH needs to be set in the system. If not, then above error occurs.
+
+* 
+  Solution:
+
+  Installing GO through eii_libs_installer script will install GO and set the required env variables like GOPATH. If not, then one need to set GOPATH
+  environment variable with appropriate path.
+
+  .. code-block:: sh
+
+     $ export GOPATH=<path_to_where_GO_is_installed>

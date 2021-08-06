@@ -1,0 +1,83 @@
+## zmq_tcp Protocol usecase
+
+### ZmqBroker:
+
+```javascript
+{
+    //X-PUB
+    "Publishers": [
+        {
+            "AllowedClients": [
+                "*"
+            ],
+            "EndPoint": "127.0.0.1:5568",
+            "Name": "backend",
+            "Topics": [
+                "*"
+            ],
+            "Type": "zmq_tcp"
+        }
+    ],
+    // X-SUB
+    "Subscribers": [
+        {
+            "AllowedClients": [
+                "*"
+            ],
+            "EndPoint": "127.0.0.1:5569",
+            "Name": "frontend",
+            "PublisherAppName": "*",
+            "Topics": [
+                "*"
+            ],
+            "Type": "zmq_tcp"
+        }
+    ]
+}
+
+```
+
+### Subscriber
+
+```javascript
+{
+    "Subscribers": [
+        {
+            "Name": "default",
+            "Type": "zmq_tcp",
+            "EndPoint": "127.0.0.1:5568",
+
+            // PublisherAppName will be "ZmqBroker" in case of brokered usecase 
+            "PublisherAppName": "ZmqBroker",
+            "Topics": [
+                "*"
+            ]
+        }
+    ]
+}
+```
+
+### Publisher
+
+```javascript
+{
+    "Publishers": [
+        {
+            "Name": "default",
+            "Type": "zmq_tcp",
+            "EndPoint": "127.0.0.1:5569",
+            "Topics": [
+                "camera1_stream"
+            ],
+            // With broker usecase, AllowedClients in Publisher's interface is not required, as it acts as a subscriber to X-SUB
+
+            // "brokered" and "BrokerAppName" should be added for ZmqBroker usecase
+            "brokered": true,
+            "BrokerAppName" : "ZmqBroker"
+        }
+    ]
+}
+
+```
+
+

@@ -1,0 +1,68 @@
+===================================
+Working with EII Docker* Containers
+===================================
+
+EII sets up the Docker containers using the docker-compose tool. If only minor changes are made in the user-defined functions without adding any new files, user can just restart the specific docker container by running **$ docker restart <Cointainer_ID>** in the build directory without rebuilding the whole EII container.
+
+Other useful commands when using the make tool are:
+
+**docker-compose build** : Will build the images for EII components, however will not start the EII
+
+**docker-compose up --build** : Will build the images for EII components and starts EII
+
+**docker-compose up** :  Will starts EII. 
+
+**docker-compose down** : Will stop the EII.
+
+Compose Files
+-------------
+
+Docker compose is a tool used to define and run multiple container applications using Docker. It is a wrapper around Docker that is responsible for creating a network and adding the containers to that network. By default, the bridge network is used, unless otherwise specified in the **docker-compose.yml** or **docker-compose.yaml** file.
+
+More details about the **docker-compose** and **docker-compose.yml** files is available at 
+
+`Docker compose <https://docs.docker.com/compose/>`_
+
+`Docker compose CLI <https://docs.docker.com/compose/reference/overview/>`_
+
+`Docker compose file reference <https://docs.docker.com/compose/compose-file/>`_
+
+`Dockerfile reference <https://docs.docker.com/engine/reference/builder/>`_
+
+`Best practices for writing Dockerfiles <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_
+
+`Docker commands <https://docs.docker.com/engine/reference/builder/>`_
+
+
+Useful Docker* Commands
+-----------------------
+
+The following list includes the most used docker-compose commands. These commands should come in handy during development and debugging of the EII stack:
+
+*	**docker-compose build**  Builds all the service containers at the same time. To build a single service container, use **docker-compose build [serv_cont_name]**.
+
+    This command generates several EII images. The docker images | grep ia | sort command can be used to see a list of these images.
+
+.. note::	
+    
+    If any source files are modified, the docker-compose build command must be re-run to see the changes reflected within the container. 
+
+*	**docker-compose down**  Stops and removes the service containers. Also, removes the Docker network.
+*	**docker-compose up d**  Brings up the service containers in detached mode (-d) by picking up the changes made in the docker-compose.yml file. It creates a Docker network and joins these containers to it. 
+
+.. note::
+
+    Use the following command to see the list of running EII containers: docker ps:
+
+*	**docker-compose logs -f**  Blocking process to see the Docker logs of all the containers. To see the logs for a single container, use docker logs f [serv_cont_name].
+*	To run the Docker images separately, use the command: **docker-compose run --no-deps [service_cont_name]**.
+
+    For example: **docker-compose run --name ia_video_ingestion --no-deps ia_video_ingestion** 
+    
+    Will run only the Video Ingestion container (the switch **--no-deps** will not bring up the dependencies configured in the docker-compose file). 
+    
+    If the container is not launching correctly, there could be an issue with the containers entrypoint program which can be overridden by providing the extra switch **--entrypoint /bin/bash** before the service container name in the **docker-compose run** command above. This creates a shell inside the container to run the actual entrypoint program from the container's terminal to determine the root cause of the issue. 
+    
+    If the container is already running, to get a shell inside the container to perform additional operations, use the command: **docker exec [service_cont_name] /bin/bash** or **docker exec -it [cont_name] /bin/bash**
+
+    For example: **docker-exec -it ia_data_analytics /bin/bash**

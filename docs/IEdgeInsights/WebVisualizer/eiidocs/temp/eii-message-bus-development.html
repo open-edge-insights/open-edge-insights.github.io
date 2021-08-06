@@ -1,0 +1,747 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>EII Message Bus Development &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script src="../../../../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> EII Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installing_docker_pre_requisites.html">Manual steps to install docker daemon and docker-compose with proxy settings configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/running.html">Running EII</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#downloading-and-installation-from-the-edge-software-hub">Downloading and Installation from the Edge Software Hub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#downloading-the-default-package">Downloading the Default Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#downloading-customize-package">Downloading Customize Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#installing-the-package">Installing the Package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#manual-installation">Manual Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#docker-pre-requisites">Docker Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#provision">Provision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#build-and-run-eii-pcb-video-timeseries-use-cases">Build and Run EII PCB video/timeseries use cases</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#eii-message-bus-architecture">EII Message Bus Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#compilation">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id1">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#publishers">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#subscribers">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#services">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#requesters">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#using-zap-authentication">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#c-examples">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#publisher-many-example">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#eii-message-bus-development">EII Message Bus Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#developing-protocols">Developing Protocols</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#adding-a-new-protocol">Adding a New Protocol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#protocol-t-function-definition"><code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> Function Definition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#configmgr">ConfigMgr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#etcd-ui-service"><code class="docutils literal notranslate"><span class="pre">ETCD</span> <span class="pre">UI</span> <span class="pre">Service</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#zmqbroker">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#subscriber">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#publisher">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#zmq-tcp-protocol-usecase">zmq_tcp Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id1">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id2">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id3">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id5">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id6">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id7">Go Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/sample.html">Sample Application for APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/sample.html#sample-applications-for-eii-platform">Sample Applications for EII Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/video.html">Video Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#videoingestion-module"><code class="docutils literal notranslate"><span class="pre">VideoIngestion</span> <span class="pre">Module</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#ingestor-config"><code class="docutils literal notranslate"><span class="pre">Ingestor</span> <span class="pre">config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#note-for-working-with-genicam-usb3-vision-camera-please-install-the-respective-camera-sdk-by-referring-the-below-section"><strong>Note:</strong> For working with Genicam USB3 Vision camera please install the respective camera SDK by referring the below section.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/imageStore.html">ImageStore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/imageStore.html#imagestore-module"><code class="docutils literal notranslate"><span class="pre">ImageStore</span> <span class="pre">Module</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/imageStore.html#configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/imageStore.html#detailed-description-on-each-of-the-keys-used"><code class="docutils literal notranslate"><span class="pre">Detailed</span> <span class="pre">description</span> <span class="pre">on</span> <span class="pre">each</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">keys</span> <span class="pre">used</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/timeseries.html">Working with Timeseries Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../minimum-system-requirements.html">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../using-video-accelerators.html">Using video accelerators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../using-video-accelerators.html#note"><strong>Note</strong>:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../VideoIngestion/videoingestion-module.html"><code class="docutils literal notranslate"><span class="pre">VideoIngestion</span> <span class="pre">Module</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/restdata.html">RestDataExport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/overTheAir.html">Updating an Application-Over-The-Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/modes.html">DEV MODE and PROFILING MODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/docker.html">Sample Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/azure.html">Azure Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/orchestration.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/benchmarking.html">Video and Time-series Benchmarking Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/codeModification.html">Code Modification Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/debugging.html">Debugging EII</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>EII Message Bus Development</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/IEdgeInsights/WebVisualizer/eiidocs/temp/eii-message-bus-development.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="eii-message-bus-development">
+<h1>EII Message Bus Development<a class="headerlink" href="#eii-message-bus-development" title="Permalink to this headline">¶</a></h1>
+<p>This section covers various instructions and tutorials for developing new
+features for the EII Message Bus library. It does not cover how to use the
+message bus or its APIs, that is covered in previous sections.</p>
+<div class="section" id="developing-protocols">
+<h2>Developing Protocols<a class="headerlink" href="#developing-protocols" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h3>
+<p>Protocols are at the bottom most layer of the EII Message Bus stack. They
+provide the implementation for the messaging primitives supported by the
+EII Message Bus. The main tasks expected of a protocol are as follows:</p>
+<ol class="arabic simple">
+<li><p>Initialize the state of the underlying message library (i.e. ZeroMQ, DDS, etc.)</p></li>
+<li><dl class="simple">
+<dt>Implement methods for initializing contexts for publishers, subscribers,</dt><dd><p>services, and service requesters</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Implement base methods for sending messages from publishers, services, and</dt><dd><p>service requesters</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Implement base methods for receiving messages as blocking, non-blocking, and</dt><dd><p>time out base function calls</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Provide the translation between the underlying messaging library’s messsage</dt><dd><p>structure to the EII Message Bus’s <code class="docutils literal notranslate"><span class="pre">msg_envelope_t</span></code> structure</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>All protocols must have a unique protocol name which the EII Message Bus can
+use to load the protocol based on the <code class="docutils literal notranslate"><span class="pre">type</span></code> configuration value it is provided.
+For example, the ZeroMQ TCP protocol uses the identifier <code class="docutils literal notranslate"><span class="pre">zmq_tcp</span></code>. Using this
+type name, the EII Message Bus knows how to load the protocol in the
+<code class="docutils literal notranslate"><span class="pre">msgbus_initialize()</span></code> method.</p>
+<p>The EII Message Bus has the ability to dynamically load protocol plugins. It
+does this by searching the system’s <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> environmental variable
+for a library following the naming scheme, “lib{TYPE}.so”, where, “{TYPE}”, is
+the value retrieved from the <code class="docutils literal notranslate"><span class="pre">type</span></code> configuration key.</p>
+<p>Once it has found the library, it calls <code class="docutils literal notranslate"><span class="pre">dlopen()</span></code> on the shared object and
+extracts the <code class="docutils literal notranslate"><span class="pre">PROTO_EXPORTS</span></code> symbol from the binary. The <code class="docutils literal notranslate"><span class="pre">PROTO_EXPORTS</span></code> symbol
+must be a global of the <code class="docutils literal notranslate"><span class="pre">protocol_exports_t</span></code> structure. This structure contains
+a single function pointer <code class="docutils literal notranslate"><span class="pre">initialize()</span></code> which points to the initialization
+function of the protocol plugin. The initialization function is responsible for
+creating and populating the <code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> structure.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> structure is defined below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="kt">void</span><span class="o">*</span> <span class="n">proto_ctx</span><span class="p">;</span>
+    <span class="n">config_t</span><span class="o">*</span> <span class="n">config</span><span class="p">;</span>
+
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">destroy</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">publisher_new</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">pub_ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">publisher_publish</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">pub_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">msg</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">publisher_destroy</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">pub_ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">subscriber_new</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">subscriber</span><span class="p">);</span>
+    <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">recv_ctx_destroy</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">request</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">service_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">message</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">response</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">service_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">message</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">service_new</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">service_name</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">service_ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">service_get</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">service_name</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">service_ctx</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">recv_wait</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">recv_timedwait</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">);</span>
+    <span class="n">msgbus_ret_t</span> <span class="p">(</span><span class="o">*</span><span class="n">recv_nowait</span><span class="p">)(</span>
+            <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">);</span>
+<span class="p">}</span> <span class="n">protocol_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>It is expected that this structure is fully populated by a protocol’s
+initialization method. The <code class="docutils literal notranslate"><span class="pre">proto_ctx</span></code> value should be a pointer to an internal
+structure representing the state of the protocol which the various functions
+can use to perform the required tasks. Additionally, the <code class="docutils literal notranslate"><span class="pre">config</span></code> value should
+be set to the <code class="docutils literal notranslate"><span class="pre">config</span></code> variable passed to the initialization function. It is
+important to note that the returned <code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> structure is not responsible
+for freeing the memory assiciated with the <code class="docutils literal notranslate"><span class="pre">config</span></code> variable. This is managed
+by the message bus context object.</p>
+<p>For each of the functions in the structure the first <code class="docutils literal notranslate"><span class="pre">ctx</span></code> parameter will
+always be the value of the <code class="docutils literal notranslate"><span class="pre">proto_ctx</span></code> variable.</p>
+<p>For more information on the purpose of each of the function pointers in the
+<code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> structure see the <cite>``protocol_t`</cite> Function Definition &lt;<a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/#protocol_t-function-definition">https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/#protocol_t-function-definition</a>&gt;`_.</p>
+<p>The rest of this section will cover the initial setup of a project to add a new
+protocol to the EII Message Bus, including the ideal code structure for the C
+source code file.</p>
+<p>The code will be split into a single header and C source file, <code class="docutils literal notranslate"><span class="pre">example.h</span></code> and
+<code class="docutils literal notranslate"><span class="pre">example.c</span></code> respectively.</p>
+<p>The header file is shown below. The <code class="docutils literal notranslate"><span class="pre">protocol.h</span></code> header file in the EII Message
+Bus includes a helpful macro for generating all of the function prototypes
+needed for a protocol. The usage of this is shown in the code below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// C include guards to prevent multiple definition from files including the</span>
+<span class="c1">// header</span>
+<span class="cp">#ifndef _EII_MESSAGE_BUS_EXAMPLE_H</span>
+<span class="cp">#define _EII_MESSAGE_BUS_EXAMPLE_H</span>
+
+<span class="c1">// Add extern C declaration if the code is being included from C++ code</span>
+<span class="cp">#ifdef __cplusplus</span>
+<span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
+<span class="cp">#endif</span>
+
+<span class="c1">// Include the protocol.h to get the protocol_t and config_t structure</span>
+<span class="c1">// definitions</span>
+<span class="cp">#include</span> <span class="cpf">&lt;eii/msgbus/protocol.h&gt;</span><span class="cp"></span>
+
+<span class="cm">/**</span>
+<span class="cm"> * The following macro generates all of the necessary function prototypes for</span>
+<span class="cm"> * initialization and all of the messaging primitives. In addition, it adds the</span>
+<span class="cm"> * `PROTO_EXPORTS` symbol as well.</span>
+<span class="cm"> */</span>
+<span class="n">EII_MSGBUS_PROTO</span><span class="p">(</span><span class="n">example</span><span class="p">)</span>
+
+<span class="cp">#ifdef __cplusplus</span>
+<span class="p">}</span>
+<span class="cp">#endif</span>
+
+<span class="cp">#endif </span><span class="c1">// _EII_MESSAGE_BUS_EXAMPLE_H</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">EII_MSGBUS_PROTO()</span></code> macro in the code above creates function prototypes of
+the structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">proto_</span><span class="o">&lt;</span><span class="n">NAME</span><span class="o">&gt;</span><span class="n">_</span><span class="o">&lt;</span><span class="n">METHOD</span><span class="o">&gt;</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">&lt;NAME&gt;</span></code> is the string given to the macro and <code class="docutils literal notranslate"><span class="pre">&lt;METHOD&gt;</span></code> is the protocol
+function which must be implemented using the desired networking library.</p>
+<p>The macro also creates a function called <code class="docutils literal notranslate"><span class="pre">proto_&lt;NAME&gt;_initialize()</span></code>, which
+is used to create the context for a given protocol plugin.</p>
+<p>In addition to this, it adds the <code class="docutils literal notranslate"><span class="pre">PROTO_EXPORTS</span></code> symbol mentioned before
+and points the initialization function to the correct value in the structure.
+This means, that the macro will generate a line of code that looks as
+follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">protocol_exports_t</span> <span class="n">PROTO_EXPORTS</span> <span class="o">=</span> <span class="p">{</span> <span class="p">.</span><span class="n">initialize</span><span class="o">=</span><span class="n">proto_example_initialize</span> <span class="p">};</span>
+</pre></div>
+</div>
+<p>Once you have your header defined, you must implement the corresponding C
+code for the function prototypes generated by the macro.</p>
+<p>The code below is an example of a stubbed out implementation of all of the
+functions generated by the protocol macro.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// Standard C includes</span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdlib.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Include the logger.h for helper logging macros</span>
+<span class="cp">#include</span> <span class="cpf">&lt;eii/utils/logger.h&gt;</span><span class="cp"></span>
+
+<span class="c1">// Include the example.h header file</span>
+<span class="cp">#include</span> <span class="cpf">&quot;eii/msgbus/example.h&quot;</span><span class="cp"></span>
+
+<span class="c1">// proto_example_initialize() method implementation</span>
+<span class="n">protocol_t</span><span class="o">*</span> <span class="nf">proto_example_initialize</span><span class="p">(</span><span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">type</span><span class="p">,</span> <span class="n">config_t</span><span class="o">*</span> <span class="n">config</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">LOG_DEBUG_0</span><span class="p">(</span><span class="s">&quot;Initializing example protocol&quot;</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Retreive needed configuration values from config</span>
+
+    <span class="c1">// TODO: Initialize all the internal state for the protocol here</span>
+
+    <span class="c1">// Initialize the protocol_t structure</span>
+    <span class="n">protocol_t</span><span class="o">*</span> <span class="n">proto_ctx</span> <span class="o">=</span> <span class="p">(</span><span class="n">protocol_t</span><span class="o">*</span><span class="p">)</span> <span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="n">protocol_t</span><span class="p">));</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">proto_ctx</span> <span class="o">==</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">LOG_ERROR_0</span><span class="p">(</span><span class="s">&quot;Ran out of memory allocating the protocol_t struct&quot;</span><span class="p">);</span>
+        <span class="k">goto</span> <span class="n">err</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// TODO: Replace with setting with the internal context structure for the</span>
+    <span class="c1">// protocol initailized prior to this</span>
+
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">proto_ctx</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span><span class="p">;</span>
+
+    <span class="c1">// Assign all of the function pointers</span>
+
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">destroy</span> <span class="o">=</span> <span class="n">proto_example_destroy</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">publisher_new</span> <span class="o">=</span> <span class="n">proto_example_publisher_new</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">publisher_publish</span> <span class="o">=</span> <span class="n">proto_example_publisher_publish</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">publisher_destroy</span> <span class="o">=</span> <span class="n">proto_example_publisher_destroy</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">subscriber_new</span> <span class="o">=</span> <span class="n">proto_example_subscriber_new</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">request</span> <span class="o">=</span> <span class="n">proto_example_request</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">response</span> <span class="o">=</span> <span class="n">proto_example_response</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">service_get</span> <span class="o">=</span> <span class="n">proto_example_service_get</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">service_new</span> <span class="o">=</span> <span class="n">proto_example_service_new</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">recv_ctx_destroy</span> <span class="o">=</span> <span class="n">proto_example_recv_ctx_destroy</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">recv_wait</span> <span class="o">=</span> <span class="n">proto_example_recv_wait</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">recv_timedwait</span> <span class="o">=</span> <span class="n">proto_example_recv_timedwait</span><span class="p">;</span>
+    <span class="n">proto_ctx</span><span class="o">-&gt;</span><span class="n">recv_nowait</span> <span class="o">=</span> <span class="n">proto_example_recv_nowait</span><span class="p">;</span>
+
+    <span class="k">return</span> <span class="n">proto_ctx</span><span class="p">;</span>
+
+    <span class="c1">// It is recommended to have a single error goto location that cleans up</span>
+    <span class="c1">// all allocated memory if an error occurs.</span>
+<span class="nl">err</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// proto_* function implementations</span>
+
+<span class="kt">void</span> <span class="nf">proto_example_destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">LOG_DEBUG_0</span><span class="p">(</span><span class="s">&quot;Destroying example protocol context&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_publisher_new</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">pub_ctx</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">LOG_DEBUG</span><span class="p">(</span><span class="s">&quot;Initializing publisher for topic &#39;%s&#39;&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Intialize publisher</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_publisher_publish</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">pub_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">msg</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// TODO: Implement publishing a message</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">proto_example_publisher_destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">pub_ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">LOG_DEBUG_0</span><span class="p">(</span><span class="s">&quot;Destroying publisher context&quot;</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Destroy a publisher&#39;s context</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_subscriber_new</span><span class="p">(</span>
+    <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">topic</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">subscriber</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">LOG_DEBUG</span><span class="p">(</span><span class="s">&quot;Initializig subscriber to topic &#39;%s&#39;&quot;</span><span class="p">,</span> <span class="n">topic</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Implement subscriber initialization</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">proto_example_recv_ctx_destroy</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">LOG_DEBUG_0</span><span class="p">(</span><span class="s">&quot;Destroying receive context&quot;</span><span class="p">);</span>
+    <span class="c1">// TODO: Implement destroying a receive context</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_recv_wait</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// TODO: Implement blocking receive method</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_recv_timedwait</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="kt">int</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// TODO: Implement receive which can timoue</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_recv_nowait</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">recv_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">**</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// TODO: Imeplement non-blocking receive method</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_service_get</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">service_name</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">service_ctx</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">LOG_DEBUG</span><span class="p">(</span><span class="s">&quot;Initializing service request for service &#39;%s&#39;&quot;</span><span class="p">,</span> <span class="n">service_name</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Intiailize context for sending requests and receiving responses</span>
+    <span class="c1">// for the given service</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_service_new</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">service_name</span><span class="p">,</span> <span class="kt">void</span><span class="o">**</span> <span class="n">service_ctx</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">LOG_DEBUG</span><span class="p">(</span><span class="s">&quot;Initializing service &#39;%s&#39; context&quot;</span><span class="p">,</span> <span class="n">service_name</span><span class="p">);</span>
+
+    <span class="c1">// TODO: Initailize a service context</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_request</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">service_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">msg</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// NOTE: Becareful here that the service context is the correct one and</span>
+    <span class="c1">// is not for receiving responses</span>
+
+    <span class="c1">// TODO: Implement issuing a request to the service with the given</span>
+    <span class="c1">// service context</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">msgbus_ret_t</span> <span class="nf">proto_example_response</span><span class="p">(</span>
+        <span class="kt">void</span><span class="o">*</span> <span class="n">ctx</span><span class="p">,</span> <span class="kt">void</span><span class="o">*</span> <span class="n">service_ctx</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">message</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// NOTE: Becareful here that the service context is the correct one and</span>
+    <span class="c1">// is not for receiving responses</span>
+
+    <span class="c1">// TODO: Implement sending a response to a request</span>
+
+    <span class="k">return</span> <span class="n">MSG_SUCCESS</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-a-new-protocol">
+<h3>Adding a New Protocol<a class="headerlink" href="#adding-a-new-protocol" title="Permalink to this headline">¶</a></h3>
+<p>This section will cover how to add an example dummy protcol to the EII
+Message Bus.</p>
+</div>
+<div class="section" id="protocol-t-function-definition">
+<h3><code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> Function Definition<a class="headerlink" href="#protocol-t-function-definition" title="Permalink to this headline">¶</a></h3>
+<p>The following describes the purpose of each of the function pointers above.</p>
+<div class="section" id="destroy">
+<h4><code class="docutils literal notranslate"><span class="pre">destroy()</span></code><a class="headerlink" href="#destroy" title="Permalink to this headline">¶</a></h4>
+<p>Responsible for destroying the <code class="docutils literal notranslate"><span class="pre">proto_ctx</span></code> variable and freeing any memory
+used by the context.</p>
+</div>
+<div class="section" id="publisher-new">
+<h4><code class="docutils literal notranslate"><span class="pre">publisher_new()</span></code><a class="headerlink" href="#publisher-new" title="Permalink to this headline">¶</a></h4>
+<p>Initializes a new publisher context for the given <code class="docutils literal notranslate"><span class="pre">topic</span></code>.</p>
+</div>
+<div class="section" id="publisher-publish">
+<h4><code class="docutils literal notranslate"><span class="pre">publisher_publish()</span></code><a class="headerlink" href="#publisher-publish" title="Permalink to this headline">¶</a></h4>
+<p>Publishes the given message value using the publisher context.</p>
+</div>
+<div class="section" id="publisher-destroy">
+<h4><code class="docutils literal notranslate"><span class="pre">publisher_destroy()</span></code><a class="headerlink" href="#publisher-destroy" title="Permalink to this headline">¶</a></h4>
+<p>Destroys a context for a publisher freeing any sockets, memory, etc. used by
+the publisher.</p>
+</div>
+<div class="section" id="subscriber-new">
+<h4><code class="docutils literal notranslate"><span class="pre">subscriber_new()</span></code><a class="headerlink" href="#subscriber-new" title="Permalink to this headline">¶</a></h4>
+<p>Subscribe to the given topic and output a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> to use with the <code class="docutils literal notranslate"><span class="pre">recv_*</span></code>
+methods to receive the publications for the topic.</p>
+</div>
+<div class="section" id="service-new">
+<h4><code class="docutils literal notranslate"><span class="pre">service_new()</span></code><a class="headerlink" href="#service-new" title="Permalink to this headline">¶</a></h4>
+<p>Create a new <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure which can be used to received requests
+from clients and send responses to received requests using the <code class="docutils literal notranslate"><span class="pre">response()</span></code>
+method.</p>
+</div>
+<div class="section" id="service-get">
+<h4><code class="docutils literal notranslate"><span class="pre">service_get()</span></code><a class="headerlink" href="#service-get" title="Permalink to this headline">¶</a></h4>
+<p>Create a new <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure which can be used to issue requests to and
+received responses from the specified service.</p>
+</div>
+<div class="section" id="recv-ctx-destroy">
+<h4><code class="docutils literal notranslate"><span class="pre">recv_ctx_destroy()</span></code><a class="headerlink" href="#recv-ctx-destroy" title="Permalink to this headline">¶</a></h4>
+<p>Destroy a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure.</p>
+</div>
+<div class="section" id="request">
+<h4><code class="docutils literal notranslate"><span class="pre">request()</span></code><a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h4>
+<p>Issue a request to the service using the given <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code>.</p>
+</div>
+<div class="section" id="response">
+<h4><code class="docutils literal notranslate"><span class="pre">response()</span></code><a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h4>
+<p>Send a response to a requesting client using the given <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure.</p>
+</div>
+<div class="section" id="recv-wait">
+<h4><code class="docutils literal notranslate"><span class="pre">recv_wait()</span></code><a class="headerlink" href="#recv-wait" title="Permalink to this headline">¶</a></h4>
+<p>Blocking function for receiving a message from a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> context structure.</p>
+</div>
+<div class="section" id="recv-timedwait">
+<h4><code class="docutils literal notranslate"><span class="pre">recv_timedwait()</span></code><a class="headerlink" href="#recv-timedwait" title="Permalink to this headline">¶</a></h4>
+<p>Function for receiving messages from a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> context structure which
+times out after the given timeout. The timeout shall always be milliseconds.</p>
+</div>
+<div class="section" id="recv-nowait">
+<h4><code class="docutils literal notranslate"><span class="pre">recv_nowait()</span></code><a class="headerlink" href="#recv-nowait" title="Permalink to this headline">¶</a></h4>
+<p>Receive a message from a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> context structure if a message is available,
+otherwise return immediately.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

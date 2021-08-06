@@ -1,0 +1,20 @@
+## `Chaining of UDFs`
+
+One can chain multiple native/python UDFs in the `udfs` key. The way chaining
+works here is the output of the UDF listed first would send the modified frame
+and metadata to the subsequent UDF and so on. One such classic example is having
+`pcb.pcb_filter` and `pcb.pcb_classifier` in VideoIngestion service config to
+do both the pre-processing and the classification logic without the need of
+VideoAnalytics service.
+
+### `Combination of UDFs with ingestors`
+
+| Ingestor | Chaining UDFs for pcb demo usecase | Chaining UDFs for worker safety gear usecase |
+|:--------:|:----------------------------------:|:--------------------------------------------:|
+| opencv/gstreamer | <br><br>Combination of resize (native), pcb filter (python) and<br>pcb classifier (python) can be used as <br>per the need.  | <br><br><br>Combination of resize (native) and worker safety gear classifier (native/python) <br> can be used as per the need.  |
+| gstreamer with GVA(Gstreamer Video Analytics) elements | Not Applicable | <br>Any post-processing UDFs can be used as all<br>the pre-processing and classification is <br>happening in the gstreamer pipeline itself |
+
+> **NOTE**:
+> Dummy UDF can also be used for above use cases for testing chaining UDFs
+> feature but as such there is no value add as it's a do-nothing UDF.
+> In DEV Mode python udfs changes can be tested by restarting containers, no need to rebuild.

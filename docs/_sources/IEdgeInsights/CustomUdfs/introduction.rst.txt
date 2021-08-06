@@ -1,0 +1,16 @@
+
+Introduction
+============
+
+This document describes the new approach of creating UDFs and using them inside the EII framework. Unlike `The UDF Writing Guide <https://github.com/open-edge-insights/video-common/blob/master/udfs/HOWTO_GUIDE_FOR_WRITING_UDF.md>`_ which specifically emphasizes on the coding aspects(callbacks) of the UDFs, this document describes the workflow of a  custom UDF.
+
+Currently the UDFs are to be created inside `udfs-path <https://github.com/open-edge-insights/video-common/tree/master/udfs>`_ of EII build environment so that it can get compiled into the VI(Video Ingestion) & VA(Video Analytics) containers. In addition to aforementioned approach,each UDF can be built as an independent container based out of VI(VideoIngestion) or VA(VideoAnalytics) container image. This additional method has multiple benefits, listing some of them below:
+
+
+* With increased number of sample UDFs, VI and VA need not grow large in size because of the bloated Algo artifacts.
+* Any update to the UDF's Algo or its logic will compile and build only intended UDF specific code, instead of rebuilding every UDFs
+* Any change to base containers because of some unrelated changes in ubuntu packages triggers a complete container build again, this adds to build time of an UDF.
+* Every UDF can be versioned independently as they are represented by its own container.
+* A reduced size of UDF container will reduce the network overhaul while transferring the images from REGISTRY to target system.
+
+As per this approach an UDF or a chain of UDFs should be compiled and run as a separate EII container. A video streaming pipeline contains two important components among all i.e. ingestion and analytics and in EII user adds UDFs as pre-processing, post-processing or analytics Algo, hence these UDF containers need to ne inherited from VI and VA container.

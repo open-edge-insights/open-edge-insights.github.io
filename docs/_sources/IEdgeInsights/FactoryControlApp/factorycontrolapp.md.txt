@@ -1,0 +1,8 @@
+# FactoryControlApp:
+
+This module controls the Alarm Light and Reset button.
+The Output of VA (Video Analytics) i.e. the classified results data (MetaData, Frame) is published on a topic (which is mentioned in the docker compose.yml file in VA section) & the Factory control app subscribes to this topic (again sub topic mentioned in compose file of factory control app section). This meta data is parsed by the FCA & is used to determine if the frame is Defective or a proper one & glow the Red or green light in the IO module (Adam controller) respectively.
+
+FactoryControlApp uses Message Bus Library to subscribe the output of VA (Video analytics) on the topic where VA publishes the classified data on the same topic.
+The config about Adamcontroller (IO module) like port, IP address, register bits is stored in ETCD (A distributed key-value store).
+

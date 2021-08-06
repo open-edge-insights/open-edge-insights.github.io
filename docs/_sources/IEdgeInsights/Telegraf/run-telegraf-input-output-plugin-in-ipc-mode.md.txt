@@ -1,0 +1,39 @@
+## Run Telegraf Input output plugin in IPC mode
+- User needs to modify interfaces section of **[config.json](./config.json)** to run in IPC mode as following:
+
+```
+    "interfaces": {
+        "Subscribers": [
+            {
+                "Name": "default",
+                "Type": "zmq_ipc",
+                "EndPoint": {
+                  "SocketDir": "/EII/sockets",
+                  "SocketFile": "backend-socket"
+                },
+
+                "Topics": [
+                    "*"
+                ],
+                "PublisherAppName": "ZmqBroker"
+            }
+        ],
+        "Publishers": [
+            {
+                "Name": "publisher1",
+                "Type": "zmq_ipc",
+                "EndPoint": {
+                  "SocketDir": "/EII/sockets",
+                  "SocketFile": "telegraf-out"
+                },
+                "Topics": [
+                    "*"
+                ],
+                "AllowedClients": [
+                    "*"
+                ]
+            }
+        ]
+    }
+
+```

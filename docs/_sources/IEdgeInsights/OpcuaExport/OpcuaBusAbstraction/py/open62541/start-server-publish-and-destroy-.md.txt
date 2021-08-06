@@ -1,0 +1,6 @@
+# Start server, publish and destroy 
+
+```sh
+make server
+```
+

@@ -1,0 +1,5 @@
+# Generate deployment and configuration files
+
+The section assumes the EII software is already downloaded from the release package or from git.
+Run all the below commmands in this section from `[WORKDIR]/IEdgeInsights/build/` directory.
+

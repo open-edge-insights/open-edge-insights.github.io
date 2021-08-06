@@ -1,0 +1,61 @@
+## MQTT sample configuration and tool to test it.
+
+* To test with MQTT publisher in k8s helm environment, Please update 'MQTT_BROKER_HOST' Environment Variables in [values.yaml](./helm/values.yaml) with HOST IP address of the system where MQTT Broker is running.
+
+* To test with remote mqtt broker in docker environment, Please update 'MQTT_BROKER_HOST' Environment Variables in [docker-compose.yml](docker-compose.yml) with HOST IP address of the system where MQTT Broker is running.
+
+```
+  ia_telegraf:
+    environment:
+      ...
+      MQTT_BROKER_HOST: '<HOST IP address of the system where MQTT Broker is running>'
+```
+
+* Telegraf Instance can be configured with pressure point data ingestion. In the following example, the MQTT input plugin of Telegraf is configured to read pressure point data and stores into ‘point_pressure_data’ measurement.
+
+	```
+	# # Read metrics from MQTT topic(s)
+	[[inputs.mqtt_consumer]]
+	#   ## MQTT broker URLs to be used. The format should be scheme://host:port,
+	#   ## schema can be tcp, ssl, or ws.
+		servers = ["tcp://localhost:1883"]
+	#
+	#   ## MQTT QoS, must be 0, 1, or 2
+	#   qos = 0
+	#   ## Connection timeout for initial connection in seconds
+	#   connection_timeout = "30s"
+	#
+	#   ## Topics to subscribe to
+		topics = [
+		"pressure/simulated/0",
+		]
+		name_override = "point_pressure_data"
+		data_format = "json"
+	#
+	#   # if true, messages that can't be delivered while the subscriber is offline
+	#   # will be delivered when it comes back (such as on service restart).
+	#   # NOTE: if true, client_id MUST be set
+		persistent_session = false
+	#   # If empty, a random client ID will be generated.
+		client_id = ""
+	#
+	#   ## username and password to connect MQTT server.
+		username = ""
+		password = ""
+
+	```
+
+* To start the mqtt-publisher with pressure data,
+   ```sh
+   $ cd ../tools/mqtt/publisher/
+   ```
+   change the command option in [docker-compose.yml](../tools/mqtt/publisher/docker-compose.yml) to:
+   ```sh
+   ["--pressure", "10:30"]
+   ```
+   Build and Run mqtt publisher:
+   ```sh
+   $ docker-compose up --build -d
+   ```
+please refer [tools/mqtt/README.md](../tools/mqtt/README.md)
+

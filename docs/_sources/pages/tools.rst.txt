@@ -1,0 +1,29 @@
+==========
+EII Tools
+==========
+
+EII stack has below set of tools which run as containers too:
+
+.. include:: ../IEdgeInsights/tools/Benchmarking/time-series-benchmarking-tool/README.rst
+
+.. include:: ../IEdgeInsights/tools/Benchmarking/video-benchmarking-tool/video-benchmarking-tool.rst
+
+.. include:: ../IEdgeInsights/tools/DiscoverHistory/README.rst
+
+.. include:: ../IEdgeInsights/tools/EmbPublisher/README.rst
+
+.. include:: ../IEdgeInsights/tools/EmbSubscriber/README.rst
+
+.. include:: ../IEdgeInsights/tools/GigEConfig/README.rst
+
+.. include:: ../IEdgeInsights/tools/HttpTestServer/README.rst
+
+.. include:: ../IEdgeInsights/tools/JupyterNotebook/README.rst
+
+.. include:: ../IEdgeInsights/tools/mqtt/README.rst
+
+.. include:: ../IEdgeInsights/tools/SWTriggerUtility/README.rst
+
+.. include:: ../IEdgeInsights/tools/TimeSeriesProfiler/README.rst
+
+.. include:: ../IEdgeInsights/tools/VideoProfiler/README.rst

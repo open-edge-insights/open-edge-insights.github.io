@@ -1,0 +1,37 @@
+
+Sample Applications for EII Platform
+====================================
+
+There are three sample apps for EII Platform:
+
+
+#. ### cpp_sample_app ###
+    Description: `README.html <http://localhost:7645/IEdgeInsights/Samples/cpp_sample_app/README.html>`_
+#. ### go_sample_app ###
+    Description: `README.html <http://localhost:7645/IEdgeInsights/Samples/go_sample_app/README.html>`_
+#. ### python_sample_app ###
+    Description: `README.html <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/README.MD>`_
+
+**EII Pre-requisites:**
+
+
+#. Each sample app expects a set of config, interfaces & public private keys to be present in ETCD as a pre-requisite.
+   To achieve this, please ensure an entry for a publisher-subscriber pair with its relative path from `build/usecases <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/usecases>`_ directory is set in any of the .yml files present in the `build/usecases <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/usecases>`_ directory. An example has been provided below:
+
+.. code-block:: yaml
+
+       AppContexts:
+       - Samples/cpp_sample_app/publisher
+       - Samples/cpp_sample_app/subscriber
+       - Samples/go_sample_app/publisher
+       - Samples/go_sample_app/subscriber
+       - Samples/python_sample_app/publisher
+       - Samples/python_sample_app/subscriber
+
+
+#. With the above pre-requisite done, please run the below command:
+   .. code-block:: sh
+
+      $ python3 builder.py -f ./usecases/<yml file used>
+
+**Refer `README.html <http://localhost:7645/IEdgeInsights/README.html>`_ to provision, build and run the Sample Apps.**

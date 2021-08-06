@@ -1,0 +1,19 @@
+# `VideoAnalytics Module`
+
+The VideoAnalytics module is mainly responsibly for running the classifier UDFs
+and doing the required inferencing on the chosen Intel(R) Hardware
+(CPU, GPU, VPU, HDDL) using openVINO.
+
+The high level logical flow of VideoAnalytics pipeline is as below:
+
+1. App reads the application configuration via EII Configuration Manager which
+   has details of `encoding` and `udfs`.
+2. App gets the msgbus endpoint configuration from system environment.
+3. Based on above two configurations, app subscribes to the published topic/stream
+   coming from VideoIngestion module.
+4. The frames received in the subscriber are passed onto one or more chained
+   native/python UDFs for running inferencing and doing any post-processing as
+   required. One can refer [UDFs README](../common/video/udfs/README.md) for more details
+5. The frames coming out of chained udfs are published on the different topic/stream
+   on EII MessageBus.
+

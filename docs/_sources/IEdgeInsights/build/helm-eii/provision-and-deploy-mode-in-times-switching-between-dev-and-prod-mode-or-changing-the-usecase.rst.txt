@@ -1,0 +1,33 @@
+
+Provision and deploy mode in times switching between dev and prod mode OR changing the usecase
+----------------------------------------------------------------------------------------------
+
+
+#. 
+   Set the DEV_MODE as "true/false" in  `.env <https://github.com/open-edge-insights/eii-core/blob/master/env>`_ depending on dev or prod mode.
+
+#. 
+   Run builder to copy templates file to eii-deploy/templates directory and generate consolidated values.yaml file for eii-services:
+
+   .. code-block:: sh
+
+      $ cd [WORKDIR]/IEdgeInsights/build
+      $ python3 builder.py -f usecases/<usecase>.yml
+
+.. note:: \ :
+   ``ia_kapacitor`` and ``ia_telegraf`` container images are not distributed via docker hub, so one won't be able to pull these images
+   for time-series use case upon using `../usecases/time-series.yml <https://github.com/open-edge-insights/eii-core/blob/master/usecases/time-series.yml`>`_ for deployment. For more details,
+   refer: [../README.md#distribution-of-eii-container-images]> (../README.md#distribution-of-eii-container-images).
+
+
+
+#. Remove the etcd storage directory
+   .. code-block:: sh
+
+      $sudo rm -rf /opt/intel/eii/data/*
+
+Do helm install of provision and deploy charts as per previous section.
+
+.. note:: \ :
+   Please wait for all the pods terminated successfully, In times of re-deploy helm chart for eii-provision and eii-deploy
+

@@ -1,0 +1,16 @@
+
+Accessing Web Visualizer and EtcdUI
+-----------------------------------
+
+  In K8s Environment EtcdUI & WebVisualizer will be running in Following ports. 
+
+
+* EtcdUI
+
+  * PROD Mode --  ``https://master-nodeip:30010/``
+  * DEV Mode -- ``http://master-nodeip:30010/``
+
+* WebVisualizer
+
+  * PROD Mode --  ``https://master-nodeip:30007/``
+  * DEV Mode -- ``http://master-nodeip:30009/``

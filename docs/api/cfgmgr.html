@@ -1,0 +1,1579 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>cfgmgr package &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="EIIMessageBus" href="eii_msgbus.html" />
+    <link rel="prev" title="EIIConfigMgr" href="eii_cfgmgr.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> EII Documentation
+            </a>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../pages/api.html">Python API</a> &raquo;</li>
+        
+          <li><a href="eii_cfgmgr.html">EIIConfigMgr</a> &raquo;</li>
+        
+      <li>cfgmgr package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api/cfgmgr.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="cfgmgr-package">
+<h1>cfgmgr package<a class="headerlink" href="#cfgmgr-package" title="Permalink to this headline">¶</a></h1>
+<section id="module-cfgmgr.app_config">
+<span id="submodules"></span><h2>Submodules<a class="headerlink" href="#module-cfgmgr.app_config" title="Permalink to this headline">¶</a></h2>
+<p>EII Message Bus Publisher wrapper object</p>
+<dl class="py class">
+<dt id="cfgmgr.app_config.AppCfg">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.app_config.</span></code><code class="sig-name descname"><span class="pre">AppCfg</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.app_config.AppCfg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Publisher object</p>
+<dl class="py method">
+<dt id="cfgmgr.app_config.AppCfg.get_dict">
+<code class="sig-name descname"><span class="pre">get_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.app_config.AppCfg.get_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get JSON object from the class object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>JSON object of AppCfg</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>JSON</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="cfgmgr.app_config.Watch">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.app_config.</span></code><code class="sig-name descname"><span class="pre">Watch</span></code><a class="headerlink" href="#cfgmgr.app_config.Watch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Watch class</p>
+<dl class="py method">
+<dt id="cfgmgr.app_config.Watch.destroy">
+<code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.app_config.Watch.destroy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroy the publisher.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.app_config.Watch.watch">
+<code class="sig-name descname"><span class="pre">watch</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.app_config.Watch.watch" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Method to watch over a given key</dt><dd><p>Calls the base C cfgmgr_watch() API</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – key to watch on</p></li>
+<li><p><strong>pyFunc</strong> – python function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.app_config.Watch.watch_config">
+<code class="sig-name descname"><span class="pre">watch_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.app_config.Watch.watch_config" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Method to watch over an application’s config</dt><dd><p>Calls the base C cfgmgr_watch() API</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pyFunc</strong> – python function</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.app_config.Watch.watch_interface">
+<code class="sig-name descname"><span class="pre">watch_interface</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.app_config.Watch.watch_interface" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Method to watch over an application’s interfaces</dt><dd><p>Calls the base C cfgmgr_watch() API</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pyFunc</strong> – python function</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.app_config.Watch.watch_prefix">
+<code class="sig-name descname"><span class="pre">watch_prefix</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.app_config.Watch.watch_prefix" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Method to watch over a given prefix</dt><dd><p>Calls the base C cfgmgr_watch_prefix() API</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prefix</strong> – prefix to watch on</p></li>
+<li><p><strong>pyFunc</strong> – python function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-0"></span><p>EII Message Bus Publisher wrapper object</p>
+<dl class="py class">
+<dt id="id0">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.app_config.</span></code><code class="sig-name descname"><span class="pre">AppCfg</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Publisher object</p>
+<dl class="py method">
+<dt id="id1">
+<code class="sig-name descname"><span class="pre">get_dict</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get JSON object from the class object</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>JSON object of AppCfg</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>JSON</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="id2">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.app_config.</span></code><code class="sig-name descname"><span class="pre">Watch</span></code><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Watch class</p>
+<dl class="py method">
+<dt id="id3">
+<code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroy the publisher.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id4">
+<code class="sig-name descname"><span class="pre">watch</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Method to watch over a given key</dt><dd><p>Calls the base C cfgmgr_watch() API</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> – key to watch on</p></li>
+<li><p><strong>pyFunc</strong> – python function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id5">
+<code class="sig-name descname"><span class="pre">watch_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Method to watch over an application’s config</dt><dd><p>Calls the base C cfgmgr_watch() API</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pyFunc</strong> – python function</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id6">
+<code class="sig-name descname"><span class="pre">watch_interface</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Method to watch over an application’s interfaces</dt><dd><p>Calls the base C cfgmgr_watch() API</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pyFunc</strong> – python function</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id7">
+<code class="sig-name descname"><span class="pre">watch_prefix</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>Method to watch over a given prefix</dt><dd><p>Calls the base C cfgmgr_watch_prefix() API</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prefix</strong> – prefix to watch on</p></li>
+<li><p><strong>pyFunc</strong> – python function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-cfgmgr.client"></span><p>EII Message Bus Client wrapper object</p>
+<dl class="py class">
+<dt id="cfgmgr.client.Client">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.client.</span></code><code class="sig-name descname"><span class="pre">Client</span></code><a class="headerlink" href="#cfgmgr.client.Client" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Client object</p>
+<dl class="py method">
+<dt id="cfgmgr.client.Client.destroy">
+<code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.client.Client.destroy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroy the client.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.client.Client.get_endpoint">
+<code class="sig-name descname"><span class="pre">get_endpoint</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.client.Client.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch Endpoint for particular client from its interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Endpoint config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.client.Client.get_interface_value">
+<code class="sig-name descname"><span class="pre">get_interface_value</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.client.Client.get_interface_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch particular interface value from Client interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – Key on which interface value will be extracted</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Interface value</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.client.Client.get_msgbus_config">
+<code class="sig-name descname"><span class="pre">get_msgbus_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.client.Client.get_msgbus_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs message bus config for Client</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Messagebus config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-1"></span><p>EII Message Bus Client wrapper object</p>
+<dl class="py class">
+<dt id="id8">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.client.</span></code><code class="sig-name descname"><span class="pre">Client</span></code><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Client object</p>
+<dl class="py method">
+<dt id="id9">
+<code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroy the client.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id10">
+<code class="sig-name descname"><span class="pre">get_endpoint</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch Endpoint for particular client from its interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Endpoint config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id11">
+<code class="sig-name descname"><span class="pre">get_interface_value</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch particular interface value from Client interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – Key on which interface value will be extracted</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Interface value</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id12">
+<code class="sig-name descname"><span class="pre">get_msgbus_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs message bus config for Client</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Messagebus config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-cfgmgr.config_manager"></span><p>EII ConfigManager Python mapping</p>
+<dl class="py class">
+<dt id="cfgmgr.config_manager.ConfigMgr">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.config_manager.</span></code><code class="sig-name descname"><span class="pre">ConfigMgr</span></code><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII ConfigManager context object</p>
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_app_config">
+<code class="sig-name descname"><span class="pre">get_app_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_app_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets AppCfg object respective applications config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return object of class AppCfg</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>obj</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_app_name">
+<code class="sig-name descname"><span class="pre">get_app_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_app_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the AppName for any application</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>App name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_client_by_index">
+<code class="sig-name descname"><span class="pre">get_client_by_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_client_by_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a client interface using it’s index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – Index of the client</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Client class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_client_by_name">
+<code class="sig-name descname"><span class="pre">get_client_by_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_client_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a client interface using it’s name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the client</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Client class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_num_clients">
+<code class="sig-name descname"><span class="pre">get_num_clients</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_num_clients" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total number of clients from client’s interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of clients in interface</p>
+</dd>
+</dl>
+<p>:rtype : int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_num_publishers">
+<code class="sig-name descname"><span class="pre">get_num_publishers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_num_publishers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total number of publishers from publisher’s interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of publishers in interface</p>
+</dd>
+</dl>
+<p>:rtype : int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_num_servers">
+<code class="sig-name descname"><span class="pre">get_num_servers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_num_servers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total number of servers from server’s interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of servers in interface</p>
+</dd>
+</dl>
+<p>:rtype : int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_num_subscribers">
+<code class="sig-name descname"><span class="pre">get_num_subscribers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_num_subscribers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total number of subscribers from subscriber’s interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of subscribers in interface</p>
+</dd>
+</dl>
+<p>:rtype : int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_publisher_by_index">
+<code class="sig-name descname"><span class="pre">get_publisher_by_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_publisher_by_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a publisher interface using it’s index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – Index of the publisher</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Publisher class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_publisher_by_name">
+<code class="sig-name descname"><span class="pre">get_publisher_by_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_publisher_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a publisher interface using it’s name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the publisher</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Publisher class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_server_by_index">
+<code class="sig-name descname"><span class="pre">get_server_by_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_server_by_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a server interface using it’s index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – Index of the server</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Server class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_server_by_name">
+<code class="sig-name descname"><span class="pre">get_server_by_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_server_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a server interface using it’s name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the server</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Server class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_subscriber_by_index">
+<code class="sig-name descname"><span class="pre">get_subscriber_by_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_subscriber_by_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a subscriber interface using it’s index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – Index of the subscriber</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Subscriber class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_subscriber_by_name">
+<code class="sig-name descname"><span class="pre">get_subscriber_by_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_subscriber_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a subscriber interface using it’s name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the subscriber</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Subscriber class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.get_watch_obj">
+<code class="sig-name descname"><span class="pre">get_watch_obj</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.get_watch_obj" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetching the object to call watch APIs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Watch class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.config_manager.ConfigMgr.is_dev_mode">
+<code class="sig-name descname"><span class="pre">is_dev_mode</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.config_manager.ConfigMgr.is_dev_mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>To check if application is running in dev or prod mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether dev mode is set</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-2"></span><p>EII ConfigManager Python mapping</p>
+<dl class="py class">
+<dt id="id13">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.config_manager.</span></code><code class="sig-name descname"><span class="pre">ConfigMgr</span></code><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII ConfigManager context object</p>
+<dl class="py method">
+<dt id="id14">
+<code class="sig-name descname"><span class="pre">get_app_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd><p>gets AppCfg object respective applications config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Return object of class AppCfg</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>obj</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id15">
+<code class="sig-name descname"><span class="pre">get_app_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the AppName for any application</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>App name</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id16">
+<code class="sig-name descname"><span class="pre">get_client_by_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id16" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a client interface using it’s index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – Index of the client</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Client class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id17">
+<code class="sig-name descname"><span class="pre">get_client_by_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id17" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a client interface using it’s name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the client</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Client class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id18">
+<code class="sig-name descname"><span class="pre">get_num_clients</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id18" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total number of clients from client’s interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of clients in interface</p>
+</dd>
+</dl>
+<p>:rtype : int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id19">
+<code class="sig-name descname"><span class="pre">get_num_publishers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id19" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total number of publishers from publisher’s interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of publishers in interface</p>
+</dd>
+</dl>
+<p>:rtype : int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id20">
+<code class="sig-name descname"><span class="pre">get_num_servers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id20" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total number of servers from server’s interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of servers in interface</p>
+</dd>
+</dl>
+<p>:rtype : int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id21">
+<code class="sig-name descname"><span class="pre">get_num_subscribers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id21" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get total number of subscribers from subscriber’s interface</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>number of subscribers in interface</p>
+</dd>
+</dl>
+<p>:rtype : int</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id22">
+<code class="sig-name descname"><span class="pre">get_publisher_by_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id22" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a publisher interface using it’s index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – Index of the publisher</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Publisher class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id23">
+<code class="sig-name descname"><span class="pre">get_publisher_by_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id23" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a publisher interface using it’s name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the publisher</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Publisher class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id24">
+<code class="sig-name descname"><span class="pre">get_server_by_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id24" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a server interface using it’s index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – Index of the server</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Server class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id25">
+<code class="sig-name descname"><span class="pre">get_server_by_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id25" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a server interface using it’s name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the server</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Server class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id26">
+<code class="sig-name descname"><span class="pre">get_subscriber_by_index</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id26" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a subscriber interface using it’s index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>index</strong> – Index of the subscriber</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Subscriber class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id27">
+<code class="sig-name descname"><span class="pre">get_subscriber_by_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id27" title="Permalink to this definition">¶</a></dt>
+<dd><p>To fetch a subscriber interface using it’s name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – Name of the subscriber</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Subscriber class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id28">
+<code class="sig-name descname"><span class="pre">get_watch_obj</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id28" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fetching the object to call watch APIs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Watch class object</p>
+</dd>
+</dl>
+<p>:rtype : obj</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id29">
+<code class="sig-name descname"><span class="pre">is_dev_mode</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id29" title="Permalink to this definition">¶</a></dt>
+<dd><p>To check if application is running in dev or prod mode</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Whether dev mode is set</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-cfgmgr.exc"></span><p>Custom exceptions used in the Python module</p>
+<dl class="py exception">
+<dt id="cfgmgr.exc.InitializationFailed">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.exc.</span></code><code class="sig-name descname"><span class="pre">InitializationFailed</span></code><a class="headerlink" href="#cfgmgr.exc.InitializationFailed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+<span class="target" id="module-cfgmgr.publisher"></span><p>EII Message Bus Publisher wrapper object</p>
+<dl class="py class">
+<dt id="cfgmgr.publisher.Publisher">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.publisher.</span></code><code class="sig-name descname"><span class="pre">Publisher</span></code><a class="headerlink" href="#cfgmgr.publisher.Publisher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Publisher object</p>
+<dl class="py method">
+<dt id="cfgmgr.publisher.Publisher.destroy">
+<code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.publisher.Publisher.destroy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroy the publisher.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.publisher.Publisher.get_allowed_clients">
+<code class="sig-name descname"><span class="pre">get_allowed_clients</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.publisher.Publisher.get_allowed_clients" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get the names of the clients allowed to get publishers data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of clients</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.publisher.Publisher.get_endpoint">
+<code class="sig-name descname"><span class="pre">get_endpoint</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.publisher.Publisher.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get endpoint for particular publisher from its interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Endpoint config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.publisher.Publisher.get_interface_value">
+<code class="sig-name descname"><span class="pre">get_interface_value</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.publisher.Publisher.get_interface_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get particular interface value from Publisher interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – Key on which interface value will be extracted</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Interface value</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.publisher.Publisher.get_msgbus_config">
+<code class="sig-name descname"><span class="pre">get_msgbus_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.publisher.Publisher.get_msgbus_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs message bus config for Publisher</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Messagebus config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.publisher.Publisher.get_topics">
+<code class="sig-name descname"><span class="pre">get_topics</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.publisher.Publisher.get_topics" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get topics from publisher interface config on which data will be published
+:return: List of topics
+:rtype: List</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.publisher.Publisher.set_topics">
+<code class="sig-name descname"><span class="pre">set_topics</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.publisher.Publisher.set_topics" title="Permalink to this definition">¶</a></dt>
+<dd><p>To set new topics for publisher in publishers interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>whether topic is set</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-3"></span><p>EII Message Bus Publisher wrapper object</p>
+<dl class="py class">
+<dt id="id30">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.publisher.</span></code><code class="sig-name descname"><span class="pre">Publisher</span></code><a class="headerlink" href="#id30" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Publisher object</p>
+<dl class="py method">
+<dt id="id31">
+<code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id31" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroy the publisher.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id32">
+<code class="sig-name descname"><span class="pre">get_allowed_clients</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id32" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get the names of the clients allowed to get publishers data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of clients</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id33">
+<code class="sig-name descname"><span class="pre">get_endpoint</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id33" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get endpoint for particular publisher from its interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Endpoint config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id34">
+<code class="sig-name descname"><span class="pre">get_interface_value</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id34" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get particular interface value from Publisher interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – Key on which interface value will be extracted</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Interface value</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id35">
+<code class="sig-name descname"><span class="pre">get_msgbus_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id35" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs message bus config for Publisher</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Messagebus config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id36">
+<code class="sig-name descname"><span class="pre">get_topics</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id36" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get topics from publisher interface config on which data will be published
+:return: List of topics
+:rtype: List</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id37">
+<code class="sig-name descname"><span class="pre">set_topics</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id37" title="Permalink to this definition">¶</a></dt>
+<dd><p>To set new topics for publisher in publishers interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>whether topic is set</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-cfgmgr.server"></span><p>EII Message Bus Server wrapper object</p>
+<dl class="py class">
+<dt id="cfgmgr.server.Server">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.server.</span></code><code class="sig-name descname"><span class="pre">Server</span></code><a class="headerlink" href="#cfgmgr.server.Server" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Server object</p>
+<dl class="py method">
+<dt id="cfgmgr.server.Server.destroy">
+<code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.server.Server.destroy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroy the server.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.server.Server.get_allowed_clients">
+<code class="sig-name descname"><span class="pre">get_allowed_clients</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.server.Server.get_allowed_clients" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get the names of the clients allowed to connect to server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of clients</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.server.Server.get_endpoint">
+<code class="sig-name descname"><span class="pre">get_endpoint</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.server.Server.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get endpoint for particular server from its interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Endpoint config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.server.Server.get_interface_value">
+<code class="sig-name descname"><span class="pre">get_interface_value</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.server.Server.get_interface_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get particular interface value from Server interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – Key on which interface value will be extracted</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Interface value</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.server.Server.get_msgbus_config">
+<code class="sig-name descname"><span class="pre">get_msgbus_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.server.Server.get_msgbus_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs message bus config for Server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Messagebus config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-4"></span><p>EII Message Bus Server wrapper object</p>
+<dl class="py class">
+<dt id="id38">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.server.</span></code><code class="sig-name descname"><span class="pre">Server</span></code><a class="headerlink" href="#id38" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Server object</p>
+<dl class="py method">
+<dt id="id39">
+<code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id39" title="Permalink to this definition">¶</a></dt>
+<dd><p>Destroy the server.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id40">
+<code class="sig-name descname"><span class="pre">get_allowed_clients</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id40" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get the names of the clients allowed to connect to server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of clients</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id41">
+<code class="sig-name descname"><span class="pre">get_endpoint</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id41" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get endpoint for particular server from its interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Endpoint config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id42">
+<code class="sig-name descname"><span class="pre">get_interface_value</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id42" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get particular interface value from Server interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – Key on which interface value will be extracted</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Interface value</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id43">
+<code class="sig-name descname"><span class="pre">get_msgbus_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id43" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs message bus config for Server</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Messagebus config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-cfgmgr.subscriber"></span><p>EII Message Bus Subscriber wrapper object</p>
+<dl class="py class">
+<dt id="cfgmgr.subscriber.Subscriber">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.subscriber.</span></code><code class="sig-name descname"><span class="pre">Subscriber</span></code><a class="headerlink" href="#cfgmgr.subscriber.Subscriber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Subscriber object</p>
+<dl class="py method">
+<dt id="cfgmgr.subscriber.Subscriber.destroy">
+<code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.subscriber.Subscriber.destroy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the subscriber.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.subscriber.Subscriber.get_endpoint">
+<code class="sig-name descname"><span class="pre">get_endpoint</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.subscriber.Subscriber.get_endpoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get endpoint for particular subscriber from its interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Endpoint config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.subscriber.Subscriber.get_interface_value">
+<code class="sig-name descname"><span class="pre">get_interface_value</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.subscriber.Subscriber.get_interface_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get particular interface value from Subscriber interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – Key on which interface value will be extracted</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Interface value</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.subscriber.Subscriber.get_msgbus_config">
+<code class="sig-name descname"><span class="pre">get_msgbus_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.subscriber.Subscriber.get_msgbus_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs message bus config for Subscriber</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Messagebus config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.subscriber.Subscriber.get_topics">
+<code class="sig-name descname"><span class="pre">get_topics</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.subscriber.Subscriber.get_topics" title="Permalink to this definition">¶</a></dt>
+<dd><p>To gets topics from subscriber interface config on which subscriber receives data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of topics</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="cfgmgr.subscriber.Subscriber.set_topics">
+<code class="sig-name descname"><span class="pre">set_topics</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#cfgmgr.subscriber.Subscriber.set_topics" title="Permalink to this definition">¶</a></dt>
+<dd><p>To sets new topics for subscriber in subscribers interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>whether topic is set</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-5"></span><p>EII Message Bus Subscriber wrapper object</p>
+<dl class="py class">
+<dt id="id44">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.subscriber.</span></code><code class="sig-name descname"><span class="pre">Subscriber</span></code><a class="headerlink" href="#id44" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Subscriber object</p>
+<dl class="py method">
+<dt id="id45">
+<code class="sig-name descname"><span class="pre">destroy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id45" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the subscriber.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id46">
+<code class="sig-name descname"><span class="pre">get_endpoint</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id46" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get endpoint for particular subscriber from its interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Endpoint config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id47">
+<code class="sig-name descname"><span class="pre">get_interface_value</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id47" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get particular interface value from Subscriber interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>key</strong> – Key on which interface value will be extracted</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Interface value</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id48">
+<code class="sig-name descname"><span class="pre">get_msgbus_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id48" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructs message bus config for Subscriber</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Messagebus config</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id49">
+<code class="sig-name descname"><span class="pre">get_topics</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id49" title="Permalink to this definition">¶</a></dt>
+<dd><p>To gets topics from subscriber interface config on which subscriber receives data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>List of topics</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id50">
+<code class="sig-name descname"><span class="pre">set_topics</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id50" title="Permalink to this definition">¶</a></dt>
+<dd><p>To sets new topics for subscriber in subscribers interface config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>whether topic is set</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-cfgmgr.util"></span><p>EII Message Bus Subscriber wrapper object</p>
+<dl class="py class">
+<dt id="cfgmgr.util.Util">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.util.</span></code><code class="sig-name descname"><span class="pre">Util</span></code><a class="headerlink" href="#cfgmgr.util.Util" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Publisher object</p>
+</dd></dl>
+
+<span class="target" id="module-6"></span><p>EII Message Bus Subscriber wrapper object</p>
+<dl class="py class">
+<dt id="id51">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">cfgmgr.util.</span></code><code class="sig-name descname"><span class="pre">Util</span></code><a class="headerlink" href="#id51" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Publisher object</p>
+</dd></dl>
+
+</section>
+<section id="module-cfgmgr">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-cfgmgr" title="Permalink to this headline">¶</a></h2>
+<p>EII ConfigManager</p>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

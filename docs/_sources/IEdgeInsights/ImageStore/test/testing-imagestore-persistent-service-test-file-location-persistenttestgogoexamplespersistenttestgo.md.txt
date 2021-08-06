@@ -1,0 +1,2 @@
+# Testing ImageStore Persistent service. Test file location [persistentTest.go](../go/examples/persistentTest.go)
+go run ./persistentTest.go

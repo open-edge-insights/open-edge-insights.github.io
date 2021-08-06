@@ -1,0 +1,106 @@
+# EII Prerequisites installation
+
+> **Note**
+>   * Recommended `Docker CLI & Daemon version` is `20.10.6`
+>   * Recommended `docker-compose version` is `1.29.0`
+
+The installer script automates the installation & configuration of all the prerequisite software needed to be installed on a system with a freshly installed Operating system to make the system ready for provisioning, building and running EII stack. These pre-requisite softwares include:s
+1. **docker daemon**
+2. **docker client**
+3. **docker-compose**
+4. **Python packages**
+
+The script checks if docker & docker-compose are already installed in the system. If not installed, then it installs the intended version of the docker & docker-compose which is mentioned in the script.
+If docker and/or docker-compose are already installed in the system but the installed version of the docker/docker-compose is older than the intended docker/docker-compose version (which is mentioned in the script) then the script uninstalls the older version of docker/docker-compose & re-installs the intended version mentioned in the script. The script also configures the proxy settings for docker client and docker daemon to connect to internet.
+
+The [build/pre_requisites.sh](build/pre_requisites.sh) script also does proxy setting configuration for both system wide proxy & docker proxy. The script prompts for the proxy address to be entered by the user, if the system is behind a proxy.
+The script also configures proxy setting system wide `/etc/environment` and for docker by taking the proxy value as user input if the system is running behind proxy. The proxy settings for `/etc/apt/apt.conf` is also set by this script to enable apt updates & installations.
+
+> **Note**:
+>  * It is recommended to install the required `docker-compose version` which is `1.29.0`. Older version of docker-compose binary less than 1.29.0 may not work with the video-usecase docker-compose.yml files. It is observed that `device_cgroup_rules` command is not supported in certain docker-compose binaries versions less than `1.29.0`.
+
+>  * If one still needs to use the older versions of docker-compose then `device_cgroup_rules` command needs to be commented in `ia_video_ingestion` and `ia_video_analytics` service which could result in limited inference and device support.
+
+    ```yaml
+        ia_video_ingestion:
+          ...
+          #device_cgroup_rules:
+            #- 'c 189:* rmw'
+            #- 'c 209:* rmw'
+
+    ```
+    After making changes to the docker-compose.yml file refer `Using builder script` section to re-run `builder.py` script before running the services using `docker-compose up`
+
+
+1. **Steps to run the installer script is as follows**:
+
+```sh
+$ cd [WORKDIR]/IEdgeInsights/build
+$ sudo ./pre_requisites.sh --help
+
+Usage :: sudo ./pre_requisites.sh [OPTION...]
+
+List of available options...
+
+--proxy         proxies, required when the gateway/edge node running EII (or any of EII profile) is connected behind proxy
+
+--help / -h         display this help and exit
+
+Note : If --proxy option is not provided then script will run without proxy
+
+Different use cases...
+
+                1. RUNS WITHOUT PROXY
+                $sudo ./pre_requisites.sh
+
+
+                2.RUNS WITH PROXY
+                $sudo ./pre_requisites.sh --proxy="proxy.intel.com:891"
+
+```
+
+
+2. **Optional:** For enabling full security for production deployments, make sure host machine and docker daemon are configured with below security recommendations. [build/docker_security_recommendation.md](build/docker_security_recommendation.md)
+
+3. **Optional:** If one wishes to enable log rotation for docker containers
+
+    There are two ways to configure logging driver for docker containers
+
+    * Set logging driver as part of docker daemon (**applies to all docker containers by default**):
+
+        * Configure `json-file` driver as default logging driver by following [https://docs.docker.com/config/containers/logging/json-file/](https://docs.docker.com/config/containers/logging/json-file/). Sample json-driver config which can be copied to `/etc/docker/daemon.json` is provided below.
+
+            ```
+            {
+                "log-driver": "json-file",
+                "log-opts": {
+                "max-size": "10m",
+                "max-file": "5"
+                }
+            }
+            ```
+
+        * Reload the docker daemon
+            ```
+            $ sudo systemctl daemon-reload
+            ```
+        * Restart docker
+            ```
+            $ sudo systemctl restart docker
+            ```
+
+    * Set logging driver as part of docker compose which is container specific and which it always overwrites the first option (i.e /etc/docker/daemon.json)
+
+        Example to enable logging driver only for video_ingestion service:
+
+        ```
+        ia_video_ingestion:
+            ...
+            ...
+            logging:
+             driver: json-file
+             options:
+              max-size: 10m
+              max-file: 5
+        ```
+

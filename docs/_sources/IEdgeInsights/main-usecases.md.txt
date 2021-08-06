@@ -1,0 +1,8 @@
+## Main usecases
+
+| Usecase                    | yaml file                                                |
+| :---                       | :---                                                    |
+| Video + Timeseries         | [build/usecases/video-timeseries.yml](build/usecases/video-timeseries.yml) |
+| Video                      | [build/usecases/video.yml](build/usecases/video.yml)                       |
+| Timeseries                 | [build/usecases/time-series.yml](build/usecases/time-series.yml)           |
+

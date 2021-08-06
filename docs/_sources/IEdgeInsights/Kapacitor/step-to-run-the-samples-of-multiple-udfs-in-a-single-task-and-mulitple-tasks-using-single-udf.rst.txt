@@ -1,0 +1,6 @@
+
+Step to run the samples of multiple UDFs in a single task and mulitple tasks using single UDF
+---------------------------------------------------------------------------------------------
+
+
+* please refer to the `samples/README <http://localhost:7645/IEdgeInsights/Kapacitor/samples/README.html>`_

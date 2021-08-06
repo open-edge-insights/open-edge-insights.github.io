@@ -1,0 +1,742 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Debugging EII &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Release Notes" href="release.html" />
+    <link rel="prev" title="Code Modification Recommendations" href="codeModification.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> EII Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../IEdgeInsights/Installing_docker_pre_requisites.html">Manual steps to install docker daemon and docker-compose with proxy settings configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running Intel® Edge Insights for Industrial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#downloading-and-installation-from-opensource-github-repository">Downloading and Installation from Opensource Github Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#provision">Provision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#distribution-of-eii-container-images">Distribution of EII container images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#dev-mode-and-profiling-mode">Dev mode and Profiling mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#dev-mode">Dev Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#starting-the-eii-in-dev-mode">Starting the EII in Dev Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#profiling-mode">Profiling Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#build-and-run-eii-video-timeseries-use-cases">Build and Run EII video/timeseries use cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#build-eii-stack">Build EII stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#run-eii-services">Run EII services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#push-required-eii-images-to-docker-registry">Push required EII images to docker registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#enabling-secure-boot">Enabling Secure boot</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Core libraries:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id1">EII Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id2">Generating Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id3">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#known-issues">Known issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd">etcd*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#configmgr">ConfigMgr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#tool-to-generate-configuration-management-ui-service">Tool to Generate Configuration Management UI Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#adding-new-eii-service-so-it-gets-picked-up-by-builder">Adding new EII service so it gets picked up by Builder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#id5">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#install-configmgr-with-python-bindings-go-bindings-examples-test-suits-and-debug-build">Install ConfigMgr with Python bindings, Go bindings, Examples, Test suits and Debug Build.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#zmq-tcp-protocol-usecase">zmq_tcp Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#zmqbroker">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#subscriber">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#publisher">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id9">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id10">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id11">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id13">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id14">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id15">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sample.html">EII Sample Apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Working with EII Docker* Containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#compose-files">Compose Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#useful-docker-commands">Useful Docker* Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#id5">Pre-Requisites / Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id7">Azure Cloud Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="azure.html#id9">Setting up AzureML</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id11">Development System Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#id12">Build and Push EII Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#id14">Single-Node Azure IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id18">Step 1 - Provisioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="azure.html#id20">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id21">Step 2 - Configuring EII</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="azure.html#id23">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id24">Step 3 - Configuring Azure IoT Deployment Manifest</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="azure.html#id26">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id28">Step 4 - Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="azure.html#id29">Expected Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id30">Helpful Debugging Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id31">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#id32">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id33">Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id36">Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id39">Simple Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id40">EII ETCD Pre-Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id41">Azure Blob Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id44">Azure Deployment Manifest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#id46">Azure IoT Edge Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#id49">Supported EII Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#id50">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="multiNode.html">Multi node cluster provision and deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#pre-requisites">Pre requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#update-the-helm-charts-directory">Update the helm charts directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#provision-and-deploy-in-the-kubernetes-node">Provision and deploy in the kubernetes node.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#provision-and-deploy-mode-in-times-switching-between-dev-and-prod-mode-or-changing-the-usecase">Provision and deploy mode in times switching between dev and prod mode OR changing the usecase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#steps-to-enable-accelarators">Steps to enable Accelarators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#steps-for-enabling-gige-camera-with-helm">Steps for Enabling GiGE Camera with helm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#accessing-web-visualizer-and-etcdui">Accessing Web Visualizer and EtcdUI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#ansible-based-eii-prequisites-setup-provisioning-build-deployment">Ansible based EII Prequisites setup, provisioning, build &amp; deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#installing-ansible-on-ubuntu-control-node">Installing Ansible on Ubuntu {Control node}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#prerequisite-step-needed-for-all-the-control-worker-nodes">Prerequisite step needed for all the control/worker nodes.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="multiNode.html#generate-ssh-key-for-all-nodes">Generate SSH KEY for all nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#adding-ssh-authorized-key-from-control-node-to-all-the-nodes">Adding SSH Authorized Key from control node to all the nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="multiNode.html#configure-sudoers-file-to-accept-no-password-for-sudo-operation">Configure Sudoers file to accept NO PASSWORD for sudo operation.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#updating-the-leader-worker-node-s-information-for-using-remote-hosts">Updating the leader &amp; worker node’s information for using remote hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#updating-the-eii-source-folder-usecase-proxy-settings-in-group-variables">Updating the EII Source Folder, Usecase &amp; Proxy Settings in Group Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#non-orchestrated-multi-node-deployment-without-k8s">Non-orchestrated multi node deployment (without k8s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment">Select EII services to run on a particular node in multinode deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="multiNode.html#execute-ansible-playbook-from-eii-workdir-iedgeinsights-build-ansible-control-node-to-deploy-eii-services-in-single-multi-nodes">Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="multiNode.html#deploying-eii-using-helm-in-kubernetes-k8s-environment">Deploying EII Using Helm in Kubernetes (k8s) environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Video and Time-series Benchmarking Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="benchmarking.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarking.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codeModification.html">Code Modification Recommendations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Debugging EII</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#debugging-through-the-logs">Debugging Through the Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gstreamer-valid-plugins-element">GStreamer Valid Plugins / Element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-the-video-ingestion-container">Debugging the Video Ingestion Container</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#enablement-of-x11-forwarding-for-eii-visualizer-container">Enablement of X11 Forwarding for EII Visualizer Container</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Video analytics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="video.html">Video Ingestion and Video Analytics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="video.html#video-data-ingestion-configuration">Video Data Ingestion Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#videoingestion-module">VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#ingestor-config">Ingestor config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#video-ingestion-contents">Video Ingestion Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#adding-new-camera-support-in-eii">Adding New Camera Support In EII</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#video-data-analytics">Video Data Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id4">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#custom-udfs">Custom Udfs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#time-series-analytics">Time-series Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-multi-node-cluster-provision-and-deployment">EII multi node cluster provision and deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#without-orchestrator"><strong>Without orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-tools">EII tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-uninstaller">EII Uninstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#debugging-options">Debugging options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#troubleshooting-guide">Troubleshooting guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#user-defined-function-udf-loader-library">User Defined Function (UDF) Loader Library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#udf-container-directory-layout">UDF Container Directory Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#deploy-process">Deploy Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#sample-udfs-directory">Sample UDFs Directory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#gvasafetygearingestion">GVASafetyGearIngestion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#nativepclingestion">NativePclIngestion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#jupyter-notebook-usage-to-develop-python-udfs">Jupyter Notebook usage to develop python UDFs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#jupyter-notebook-pre-requisites">Jupyter Notebook pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#running-jupyter-notebook">Running Jupyter Notebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-video-profiler">EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#eii-video-profiler-pre-requisites">EII Video Profiler pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#eii-video-profiler-modes">EII Video Profiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#eii-video-profiler-configurations">EII Video Profiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#running-video-profiler">Running Video Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#gigeconfigtool-and-export-settings-from-basler-pylon-feature-system">GigEConfigTool and Export Settings from Basler Pylon Feature System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#generating-pylon-feature-system-file-pfs">Generating Pylon Feature System File (PFS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#executing-gigeconfig-tool">Executing GigEConfig Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#steps-to-build-and-run-discoverhistory-service">Steps to build and run DiscoverHistory service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#list-of-sample-select-queries">List of sample select queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#to-run-the-tool-in-zmq-ipc-mode">To run the tool in zmq_ipc mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#native-visualizer-module">Native Visualizer Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-visualizer">Steps to build and run visualizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#using-labels">Using Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#metadata-structure">Metadata Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#web-visualizer-module">Web Visualizer Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id101">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#id105">Metadata Structure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id106">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Time-series analytics:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Working with Timeseries Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#purpose-of-telegraf">Purpose of Telegraf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#optional-adding-multiple-telegraf-instances">Optional: Adding multiple telegraf instances</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#enabling-eii-message-bus-input-plugin-in-telegraf">Enabling EII message bus input plugin in Telegraf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#enabling-eii-message-bus-output-plugin-in-telegraf">Enabling EII message bus Output plugin in Telegraf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin">Advanced: Multiple plugin sections of EII message bus output plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#kapacitor">Kapacitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#point-data-time-series-data-analytics-introduction">Point-data (Time-series data) analytics introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#starting-the-example">Starting the example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#kapacitor-input-and-output-plugins">Kapacitor input and output plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#purpose-of-plugins">Purpose of plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#using-input-plugin">Using input plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#using-output-plugin">Using output plugin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#timeseries-storage">Timeseries Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#configuring-influxdb">Configuring InfluxDB*</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#influxdbconnector-configuration">InfluxDBConnector Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#influxdbconnector-installation">InfluxDBConnector Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#user-defined-functions">User-defined Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#custom-udfs-available-in-the-udfs-directory">Custom UDFs available in the udfs directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#steps-to-configure-the-udfs-in-kapacitor">Steps to configure the UDFs in kapacitor.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id48">Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#id49">Steps to run the samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#id65">Steps to verify the results in single task with multiple UDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#id66">Steps to verify the results in multiple tasks with single UDF</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#working-with-kapacitor">Working with Kapacitor*</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timeseries.html#eii-timeseriesprofiler">EII TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id67">EII TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#eii-pre-requisites">EII pre-requisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#eii-timeseriesprofiler-modes">EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Optional libraries:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opcua.html#opcuaexport">OpcuaExport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-post-request-pipeline">RestExport POST Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-get-request-pipeline">RestExport Get Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-apis">RestExport APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-post-request-api">RestExport POST Request API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-get-request-api">RestExport GET Request API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#pre-requisites">Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#service-bring-up">Service bring up</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Debugging EII</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/pages/debugging.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="debugging-eii">
+<h1>Debugging EII<a class="headerlink" href="#debugging-eii" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="debugging-through-the-logs">
+<h2>Debugging Through the Logs<a class="headerlink" href="#debugging-through-the-logs" title="Permalink to this headline">¶</a></h2>
+<p>For any service run in the EII stack, please use <strong>docker logs -f &lt;service_name&gt;</strong></p>
+</div>
+<div class="section" id="debugging-video-ingestion-through-gst-launch">
+<h2>Debugging Video Ingestion Through gst-launch<a class="headerlink" href="#debugging-video-ingestion-through-gst-launch" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="gstreamer-valid-plugins-element">
+<h3>GStreamer Valid Plugins / Element<a class="headerlink" href="#gstreamer-valid-plugins-element" title="Permalink to this headline">¶</a></h3>
+<p>There is attribute named “pipeline” in the EII ConfigMgr for VideoIngestion. This attribute is used to mention the source of the video frame. For example:</p>
+<p>“pipeline”: “rtspsrc location=”<a class="reference external" href="rtsp://localhost:8554/">rtsp://localhost:8554/</a>” latency=100 ! <strong>rtph264depay ! h264parse ! mfxdecode ! videoconvert ! appsink</strong>”.</p>
+<p>The <strong>bold text</strong> in the above example are the GStreamer element/plugins.</p>
+<p>A list of valid GStreamer plugins or elements can be found at</p>
+<p>To know which plugins are installed, use the command <strong>gst-inspect-1.0.</strong> This command will display all installed plugins.</p>
+</div>
+<div class="section" id="debugging-the-video-ingestion-container">
+<h3>Debugging the Video Ingestion Container<a class="headerlink" href="#debugging-the-video-ingestion-container" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These steps should only be followed if pipeline has been modified by the SI.</p>
+</div>
+<p>If the SI modifies the value of the pipeline attribute (an attribute from the factory.json file) which causes video ingestion to stop working, use the <strong>gst-launch-1.0</strong> command inside the video ingestion container. To get the granular logs from this command line utility, set the environment variable <strong>GST_DEBUG</strong>. The value can range from 1 to 5.</p>
+<p>For example, consider a case in which the video_str attribute has been modified. The new value has an invalid GStreamer element or plugin, say:</p>
+<blockquote>
+<div><p>rtspsrc location=”<a class="reference external" href="rtsp://localhost:8554/">rtsp://localhost:8554/</a>” latency=100 ! rtph264depay ! <a href="#id1"><span class="problematic" id="id2">:red:`h264parse123`</span></a> ! avdec_h264 ! videoconvert ! appsink</p>
+</div></blockquote>
+<p>Consequently, video ingestion starts showing:</p>
+<blockquote>
+<div><p>2019-05-22 01:12:14,387 : ERROR : algos.dpm.ingestion.video : [video.py] :_run : in line : [183] : Failed to retrieve frame from camera cam_serial3</p>
+<p>2019-05-22 01:12:14,388 : ERROR : algos.dpm.ingestion.video : [video.py] :_run : in line : [183] : Failed to retrieve frame from camera cam_serial1</p>
+</div></blockquote>
+<p>In this example, <strong>h264parse123</strong> is not a valid GStreamer plugin or element.</p>
+<p>To debug this issue:</p>
+<ol class="arabic simple">
+<li><p>Go inside the container using the command: <strong>docker exec -it -u root ia_video_ingestion bash</strong></p></li>
+<li><p>Set the GST_DEBUG variable (“export GST_DEBUG=3”).</p></li>
+<li><p>Use the below command and examine the logs.</p></li>
+</ol>
+<blockquote>
+<div><p>gst-launch-1.0 <strong>rtspsrc location=”rtsp://localhost:8554/” latency=100 ! rtph264depay ! :red:`h264parse123` ! avdec_h264 ! videoconvert ! appsink</strong></p>
+<p>The <strong>bold text</strong> in the command above is exactly the value of the pipeline attribute. Since, <a href="#id3"><span class="problematic" id="id4">:red:`h264parse123`</span></a> is not a valid GStreamer plugin or element, using the above command will result in a log with the following ERROR messages.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0:00:00.018350108    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element &quot;h264parse123&quot;
+0:00:00.018434694    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no sink [source=@0xe44080]
+0:00:00.018473162    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element &quot;avdec_h264&quot;
+0:00:00.018497100    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@(nil)]
+0:00:00.019408613    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@0xe50f30]
+WARNING: erroneous pipeline: no element &quot;h264parse123&quot;
+</pre></div>
+</div>
+<p>Therefore, using the <strong>gst-launch-1.0 command</strong> line utility has revealed that there is no h264parse123 <a href="#id5"><span class="problematic" id="id6">:red:`h264parse123`</span></a>. Now we need to check whether the plugin is valid and whether it has been installed. The <strong>gst-inspect-1.0</strong> command can be used to check whether the plugin has been installed.</p>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="enablement-of-x11-forwarding-for-eii-visualizer-container">
+<h2>Enablement of X11 Forwarding for EII Visualizer Container<a class="headerlink" href="#enablement-of-x11-forwarding-for-eii-visualizer-container" title="Permalink to this headline">¶</a></h2>
+<p>In EII, <strong>ia_visualizer</strong> is a reference application that visualizes the video analytics results. For simplicity, its X11 GUI output is defaulted to display on localhost:0, the console. However, this can cause problems on headless devices or devices where a developer does not have physical/virtual access to the console.</p>
+<p>When a user does SSH with X11 forwarding enabled, for example, with the -X option, and the user is using X11 (the DISPLAY environment variable is set), the connection to the X11 display is automatically forwarded to the remote side in such a way that any X11 programs started from the shell (or command) will go through the encrypted channel, and the connection to the real X server will be made from the local machine</p>
+<ul class="simple">
+<li><p>Create a bash shell script and save it as Visualizer/startup.sh with the following content:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+
+if [ -n ${HOSTXAUTH} ] &amp;&amp; [ -f ${HOSTXAUTH} ]
+then
+if [ -n ${XAUTHORITY} ]
+then
+    [ -f ${XAUTHORITY} ] || touch ${XAUTHORITY}
+    xauth -inf ${HOSTXAUTH} nlist | sed -e &#39;s/^..../ffff/&#39; | xauth -f ${XAUTHORITY} nmerge -
+fi
+fi
+
+python3.6 ./visualize.py
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Set the execution permission</p></li>
+</ul>
+<blockquote>
+<div><p><strong>$ chmod 744 startup.sh</strong></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>In Visualizer/Dockerfile add the bold section</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Installing dependencies</span>
+<span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span><span class="o">-</span><span class="n">tk</span>
+
+<span class="n">RUN</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">xauth</span>
+
+<span class="n">COPY</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span> <span class="o">.</span>
+<span class="n">RUN</span> <span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+
+<span class="n">COPY</span> <span class="n">visualize</span><span class="o">.</span><span class="n">py</span> <span class="o">.</span>
+
+<span class="n">COPY</span> <span class="n">startup</span><span class="o">.</span><span class="n">sh</span> <span class="o">.</span>
+
+<span class="c1">#Removing build dependencies</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>At the end of the <strong>Visualizer/Dockerfile</strong>, comment out the line that starts visualize.py and run startup.sh instead</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#ENTRYPOINT [&quot;python3.6&quot;, &quot;visualize.py&quot;]</span>
+<span class="n">ENTRYPOINT</span> <span class="p">[</span><span class="s2">&quot;bash&quot;</span><span class="p">,</span> <span class="s2">&quot;./startup.sh&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Open the <strong>build/docker-compose.yml</strong>, update below parameter under <strong>ia_visualizer</strong> section</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>EII_UID: ${ EII_UID}
+EII_USER_NAME: ${ EII_USER_NAME}
+#read_only: true
+image: ${DOCKER_REGISTRY}ia_visualizer:${ EII_VERSION}
+
+volumes:
+- &quot;${ EII_INSTALL_PATH}/saved_images:${ EII_INSTALL_PATH}/saved_images&quot;
+- &quot;vol_eii_socket:${SOCKET_DIR}&quot;
+#user: ${EII_UID}
+
+environment:
+    AppName: &quot;Visualizer&quot;
+    #DISPLAY: &quot;:0&quot;
+    DISPLAY: $DISPLAY
+    HOSTXAUTH: &quot;/tmp/host-xauth&quot;
+    XAUTHORITY: /tmp/.Xauthority
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>In the volumes section add the line in bold below. This mounts the <strong>.Xauthority</strong> file from the host to the running container.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">volumes</span><span class="p">:</span>
+<span class="o">-</span> <span class="s2">&quot;$</span><span class="si">{EII_INSTALL_PATH}</span><span class="s2">/saved_images:$</span><span class="si">{EII_INSTALL_PATH}</span><span class="s2">/saved_images&quot;</span>
+<span class="o">-</span> <span class="s2">&quot;/tmp/.X11-unix:/tmp/.X11-unix&quot;</span>
+<span class="o">-</span> <span class="s2">&quot;vol_eii_socket:$</span><span class="si">{SOCKET_DIR}</span><span class="s2">&quot;</span>
+<span class="o">-</span> <span class="s2">&quot;$</span><span class="si">{HOME}</span><span class="s2">/.Xauthority:/tmp/host-xauth:ro&quot;</span>
+</pre></div>
+</div>
+<p>This concept has been tested and verified in single-node as well as multi-node setups. Note that it takes a live SSH connection and valid X11 authorization cookies on both ends, local and remote, for this to work, this SSH connection must be kept alive during the time you want your Visualizer to run. If the SSH connection can’t be established or is torn down in the middle of operation, errors are thrown from the Visualizer container. Below is the example of the EII Visualizer App.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/visualizer.png"><img alt="../_images/visualizer.png" src="../_images/visualizer.png" style="width: 300.5px; height: 278.5px;" /></a>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

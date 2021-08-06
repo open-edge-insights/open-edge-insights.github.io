@@ -1,0 +1,23 @@
+# Step 4 Provisioning the worker node
+
+```
+    # Please ensure the following fields are correctly set in the leader node before generating the provisioning bundle:
+    ETCD_HOST=<IP address of leader node>
+    DOCKER_REGISTRY=<Docker registry details>
+
+    # commands to be executed on leader node:
+    $ cd build/deploy
+    $ sudo python3 generate_eii_bundle.py -p
+
+    This will generate the 'worker_provisioning.tar.gz'.
+    Do a manual copy of this bundle on worker node. And then follow below commands
+    on worker node.
+```
+
+```
+    # commands to be executed on worker node.
+    $ tar -xvzf worker_provisioning.tar.gz
+    $ cd worker_provisioning/provision/
+    $ sudo ./provision.sh
+```
+

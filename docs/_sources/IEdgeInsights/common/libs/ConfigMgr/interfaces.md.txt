@@ -1,0 +1,161 @@
+# Interfaces
+
+ConfigMgr parses the data from the kv store (eg: etcd) and the application environment variables for its functionality.
+It supports Publisher, Subscriber, Server and Client interfaces. Below are the examples for providing 
+different interfaces and different usecases.
+
+Please refer [different ways of giving endpoints](###**Note**-"endpoint"-can-be-given-in-different-ways:)
+
+### **Publisher Interface**
+
+```javascript
+{
+    "Publishers": [
+        {
+            "Name": "default",
+            "Type": "zmq_ipc",
+            "EndPoint": "/EII/sockets",
+            "Topics": [
+                "camera1_stream"
+            ],
+            "AllowedClients": [
+                "*"
+            ]
+        },
+        {
+            "Name": "example",
+            "Type": "zmq_tcp",
+            "EndPoint": "127.0.0.1:65015",
+            "Topics": [
+                "*"
+            ],
+            "AllowedClients": [
+                "Visualizer", "VideoAnalytics"
+            ]
+        }
+    ]
+}
+```
+
+|          Key        |    Type   | Required (Mandatory) |                         Description                          |
+| :-----------------: | --------- | -------------------- | ------------------------------------------------------------ |
+| `Publishers`         | `array`   | Yes                  | Entire publisher interface will be added with in the array. Multiple publish endpoints can be added by adding elements in the array.  |
+| `Name`              | `string`  | Yes                  | Name of different publisher interfaces                   |
+| `Type`              | `string`  | Yes                  | Specifies ZeroMQ protocol ("zmq_tcp" or "zmq_ipc") on which data will be published    |
+| `EndPoint`          | `string` or `object`  | Yes                  | In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer [Different ways of specifying endpoint](###**Note**-"endpoint"-can-be-given-in-different-ways:)|
+| `Topics`            | `array`   | Yes                  | Specifying the topics on which data will be published on. Multiple elements in this array can denote multiple topics published on the same endpoint   |
+| `AllowedClients`    | `array`   | Yes                  | Specifying who can subscribe to the the topic on which data is published. If AllowedClients is "*", then all the provisioned services can receive the data published.                  |
+
+
+### **Subscriber Interface**
+
+```javascript
+{
+    "Subscribers": [
+
+        // tcp usecase
+        {
+            "Name": "example",
+            "Type": "zmq_tcp",
+            "EndPoint": "127.0.0.1:65013",
+            "PublisherAppName": "VideoIngestion",
+            "Topics": [
+                "*"
+            ]
+        },
+
+        // ipc usecase
+        {
+            "Name": "default",
+            "Type": "zmq_ipc",
+            "EndPoint": ".socks",
+            "PublisherAppName": "VideoIngestion",
+            // Topics cannot be "*", if the only IPC directory is given
+            // if it Topics "*" to be used in ipc, then socket file should be given explicitly.
+            "Topics": [
+                "camera1_stream"
+            ]
+        }
+    ]
+}
+```
+
+|          Key        |    Type   | Required (Mandatory) |                         Description                          |
+| :-----------------: | --------- | -------------------- | ------------------------------------------------------------ |
+| `Subscribers`        | `array`   | Yes                  | Entire subscriber interface will be added with in the array. Multiple subscribe endpoints can be added by adding elements in the array  |
+| `Name`              | `string`  | Yes                  | Name of different subscriber interfaces                      |
+| `Type`              | `string`  | Yes                  | Specifies ZeroMQ protocol ("zmq_tcp" or "zmq_ipc") through which subscription happens |
+| `EndPoint`          | `string` or `object`  | Yes                  | In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In Case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer [Different ways of specifying endpoint](###**Note**-"endpoint"-can-be-given-in-different-ways:) |
+|`PublisherAppName`   | `string`  | Yes                  | Specifies the publisher's AppName through which data will be received|
+| `Topics`            | `array`   | Yes                  | Specifying the topics on which data will be published on. If Topics is "*", the subscriber receives all the data published on the endpoint, irrespective of the topic names data is published on. Multiple elements in this array can denote multiple topics subscribed on the same endpoint   |
+
+
+### **Server Interface**
+
+```javascript
+{
+    "Servers": [
+        // tcp usecase
+        {
+            "Name": "default",
+            "Type": "zmq_tcp",
+            "EndPoint": "127.0.0.1:9006",
+            "AllowedClients": [
+                "VideoAnalytics"
+            ]
+        },
+        //ipc usecase
+        {
+            "Name": "example",
+            "Type": "zmq_ipc",
+            "EndPoint": "/EII/sockets",
+            "AllowedClients": [
+                "VideoAnalytics"
+            ]
+        }
+    ]
+}
+```
+
+|          Key        |    Type   | Required (Mandatory) |                         Description                          |
+| :-----------------: | --------- | -------------------- | ------------------------------------------------------------ |
+| `Servers`           | `array`   | Yes                  | Entire server interface will be added with in the array. Multiple server endpoints can be added by adding elements in the array   |
+| `Name`              | `string`  | Yes                  | Name of different server interfaces                          |
+| `Type`              | `string`  | Yes                  | Specifies ZeroMQ protocol ("zmq_tcp" or "zmq_ipc") through which Server pushes data   |
+| `EndPoint`          | `string` or `object`  | Yes                  | In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer [Different ways of specifying endpoint](###**Note**-"endpoint"-can-be-given-in-different-ways:) |
+| `AllowedClients`    | `array`   | Yes                  | Specifying who can get data is from the Server. If AllowedClients is "*", then all the provisioned services can connect to Server.                                                |
+
+
+### **Client Interface**
+
+```javascript
+{
+    "Clients": [
+        // tcp usecase
+        {
+            "Name": "default",
+            "ServerAppName": "VideoIngestion",
+            "Type": "zmq_tcp",
+            "EndPoint": "127.0.0.1:9006"
+        },
+
+        // ipc usecase
+        {
+            "Name": "example",
+            "ServerAppName": "VideoIngestion",
+            "Type": "zmq_ipc",
+            "EndPoint": "/EII/sockets"
+        }
+    ]
+}
+```
+
+|          Key        |    Type   | Required (Mandatory) |                         Description                          |
+| :-----------------: | --------- | -------------------- | ------------------------------------------------------------ |
+| `Clients`           | `array`   | Yes                  | Entire client interface will be added with in the array. Multiple client endpoints can be added by adding elements in the array   |
+| `Name`              | `string`  | Yes                  | Name of different client interfaces                          |
+| `ServerAppName`     | `string`  | Yes                  | Server's AppName to which client connection is established      |
+| `Type`              | `string`  | Yes                  | Specifies ZeroMQ protocol ("zmq_tcp" or "zmq_ipc") through which client connection is established   |
+| `EndPoint`          | `string` or `object`  | Yes                  | In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer [Different ways of specifying endpoint](###**Note**-"endpoint"-can-be-given-in-different-ways:) |
+
+

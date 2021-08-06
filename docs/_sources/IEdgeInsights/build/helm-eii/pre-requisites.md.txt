@@ -1,0 +1,30 @@
+## Pre requisites
+
+For preparing the necessary files required for the provision and deployment, user needs to execute the build and provision steps on an Ubuntu 18.04 / 20.04 machine.
+Follow the Docker pre-requisites, EII Pre-requisites, Provision EII and Build and Run EII mentioned in [README.md](../../README.md) on the Ubuntu dev machine.
+
+  > **Note**:
+ 
+  > K8s installation on single or multi node should be done as pre-requisite to continue the following deployment.
+  
+  > builder.py need to be executed with the preferred usecase for generating the consolidated helm charts for the provisioning and deployment.
+
+  > For helm installation refer [helm website](https://helm.sh/docs/intro/install/).
+
+  > **Note**:
+  > To run eii services with helm in fresh system where EII services are going to run for the first time(no eiiuser is present on that system), user needs to run below steps:
+  > 1. Create eii user if not exists:
+  >```sh
+  >  $ set -a
+  >  $ source ../.env
+  >  $ set +a
+  >  $ groupadd $EII_USER_NAME -g $EII_UID
+  >  $ useradd -r -u $EII_UID -g $EII_USER_NAME $EII_USER_NAME
+  >  ```
+  > 2. Create required directory and change ownership to eiiuser
+  >```sh
+  >  $ mkdir -p $EII_INSTALL_PATH/data/influxdata
+  >  $ mkdir -p $EII_INSTALL_PATH/sockets/
+  >  $ chown -R $EII_USER_NAME:$EII_USER_NAME $EII_INSTALL_PATH
+  >  ```
+

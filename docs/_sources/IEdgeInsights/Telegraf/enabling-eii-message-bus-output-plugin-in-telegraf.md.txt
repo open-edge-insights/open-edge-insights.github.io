@@ -1,0 +1,59 @@
+## Enabling EII message bus Output plugin in Telegraf
+
+**Purpose**
+Receiving the data from Telegraf Input Plugin and publish data to eii msgbus.
+
+**Configuration of the plugin**
+Configuration of the plugin is divided into two parts
+1. ETCD configuration
+2. Configuration in Telegraf.conf file [config/Telegraf/Telegraf.conf](./config/Telegraf/Telegraf.conf)
+
+**ETCD configuration**
+Since this is eii message bus plugin and so it’s part of EII framework, message bus configuration and plugin’s topic specific configuration is kept into etcd.
+Below is the sample configuration
+
+```json
+{
+    "config": {
+        "publisher1": {
+            "measurements": ["*"],
+            "profiling": "false"
+        }
+    },
+    "interfaces": {
+        "Publishers": [
+            {
+                "Name": "publisher1",
+                "Type": "zmq_tcp",
+                "EndPoint": "0.0.0.0:65077",
+                "Topics": [
+                    "*"
+                ],
+                "AllowedClients": [
+                    "*"
+                ]
+            }
+        ]
+    }
+}
+```
+
+**Brief description of the configuration**.
+Like any other EII service Telegraf has 'config' and 'interfaces'  sections.  "interfaces" are the eii interface details. Let's have more information of "config" section.
+
+config :  Contains eii messagebus output plugin (**"publisher1"**). In the above sample configuration, the **"publisher1"** is an instance name. This instance name is referenced from the Telegraf's configuration file [config/Telegraf/Telegraf.conf](./config/Telegraf/Telegraf.conf)
+
+- measurements : This is an array of measurements configuration, where user specifies, which measurement data should be published in msgbus.
+- profiling : This is to enable profiling mode of this plugin (value can be either "true" or "false").
+
+
+**Configuration at Telegraf.conf file**
+
+The plugin instance name is an additional key, kept into plugin configuration section. This key is used to fetch the configuration from ETCD. Below is the minimmum, sample configuration with single plugin instance.
+
+    [[outputs.eii_msgbus]]
+    **instance_name = "publisher1"**
+
+
+Here, the value **'publisher1'**  acts as a key in the file **[config.json](./config.json)**. For this key, there is configuration in the **'interfaces' and 'config'** sections of the file **[config.json](./config.json)**. So the value of** 'instance_name'** acts as a connect/glue between the Telegraf configuration **[config/Telegraf/Telegraf.conf](./config/Telegraf/Telegraf.conf)** and the **ETCD configuration [config.json](./config.json)**
+

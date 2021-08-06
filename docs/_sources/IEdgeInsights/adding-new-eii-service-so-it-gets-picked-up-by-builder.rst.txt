@@ -1,0 +1,66 @@
+
+Adding new EII service so it gets picked up by Builder
+------------------------------------------------------
+
+.. note:: 
+   Please refer EII sample apps at `Samples <https://github.com/open-edge-insights/eii-samples/blob/master/README.md>`_ written in C++, python and golang using EII Core libraries for more details on adding new EII services
+
+
+Since the builder takes care of registering and running any service present in it's own directory in the `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory, this section describes on how to add any new service into the EII stack, subscribe to `IEdgeInsights <https://github.com/open-edge-insights/>`_ and publish on a new port.
+
+Any service that needs to be added into the EII stack should be added as a new directory in the `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory. The directory should contain a **docker-compose.yml** which will be used to deploy the service as a docker container and it should also contain a **config.json** which contains the required config for the service to run once it is deployed. The **config.json** will mainly consist of a **config** section which includes the configuration related parameters required to run the application and an **interfaces** section which includes the configuration of how this service interacts with other services of the EII stack. The **AppName** present in **environment** section in **docker-compose.yml** file is appended to the **config** & **interfaces** like **/AppName/config** & **/AppName/interfaces** before being put into the main ``build/provision/config/eii_config.json``.
+
+An example has been provided below on how to write the **config.json** for any new service, subscribe to **VideoAnalytics** and publish on a new port:
+
+.. code-block:: javascript
+
+       {
+           "config": {
+               "paramOne": "Value",
+               "paramTwo": [1, 2, 3],
+               "paramThree": 4000,
+               "paramFour": true
+           },
+           "interfaces": {
+               "Subscribers": [
+                   {
+                       "Name": "default",
+                       "Type": "zmq_tcp",
+                       "EndPoint": "127.0.0.1:65013",
+                       "PublisherAppName": "VideoAnalytics",
+                       "Topics": [
+                           "camera1_stream_results"
+                       ]
+                   }
+               ],
+               "Publishers": [
+                   {
+                       "Name": "default",
+                       "Type": "zmq_tcp",
+                       "EndPoint": "127.0.0.1:65113",
+                       "Topics": [
+                           "publish_stream"
+                       ],
+                       "AllowedClients": [
+                           "ClientOne",
+                           "ClientTwo",
+                           "ClientThree"
+                       ]
+                   }
+               ]
+           }
+       }
+
+In the above specified **config.json**\ , the value of **config** key is the config required by the service to run and the value of the **interfaces** key is the config required by the service to interact with other services of EII stack over EII message bus.
+
+The **Subscribers** value in the **interfaces** section denotes that this service should act as a subscriber to the stream being published by the value specified by **PublisherAppName** on the
+endpoint mentioned in value specified by **EndPoint** on topics specified in value of **Topics** key.
+
+The **Publishers** value in the **interfaces** section denotes that this service publishes a stream of data after obtaining and processing it from **VideoAnalytics**. The stream is published on
+the endpoint mentioned in value of **EndPoint** key on topics mentioned in the value of **Topics** key. The services mentioned in the value of **AllowedClients** are the only clients able to
+subscribe to the published stream if being published securely over the EIIMessageBus.
+
+Similar to above interface keys, EII services can also have "Servers" and "Clients" interface keys too. For example, check `config.json <https://github.com/open-edge-insights/video-ingestion/blob/master/config.json>`_ of VideoIngestion service and `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/SWTriggerUtility/config.json>`_ of SWTriggerUtility tool on how to use.
+
+More details on the ``interfaces`` key responsible for the EII MessageBus endpoint configuration
+can be found at `Etcd_Secrets_Configuration <https://github.com/open-edge-insights/eii-core/blob/master/Etcd_Secrets_Configuration.md>`_. For more details on Etcd secrets configuration, visit `Etcd_Secrets_Configuration <https://github.com/open-edge-insights/eii-core/blob/master/Etcd_Secrets_Configuration.md>`_

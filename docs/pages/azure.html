@@ -1,0 +1,1730 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Azure Bridge &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="OpcuaExport Application" href="opcua.html" />
+    <link rel="prev" title="Working with Timeseries Data" href="timeseries.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> EII Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">INTRODUCTION:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="legal.html">Legal Disclaimer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running Intel® Edge Insights for Industrial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#downloading-and-installation-from-opensource-github-repository">Downloading and Installation from Opensource Github Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#generate-deployment-and-configuration-files">Generate deployment and configuration files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#generating-consolidated-docker-compose-yml-and-eii-config-json-files">Generating consolidated docker-compose.yml and eii_config.json files:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#using-builder-script">Using builder script</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services">Running builder to generate the above listed consolidated files for all applicable EII services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services">Running builder to generate the above listed consolidated files for a subset of EII services:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#running-builder-to-generate-multi-instance-configs">Running builder to generate multi instance configs:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#running-builder-to-generate-benchmarking-configs">Running builder to generate benchmarking configs:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#provision">Provision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#distribution-of-eii-container-images">Distribution of EII container images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#list-of-all-eii-services">List of All EII Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#common-eii-services">Common EII services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#video-related-services">Video related services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#timeseries-related-services">Timeseries related services</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#dev-mode-and-profiling-mode">Dev mode and Profiling mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#dev-mode">Dev Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#starting-the-eii-in-dev-mode">Starting the EII in Dev Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#profiling-mode">Profiling Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#build-and-run-eii-video-timeseries-use-cases">Build and Run EII video/timeseries use cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#build-eii-stack">Build EII stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#run-eii-services">Run EII services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#push-required-eii-images-to-docker-registry">Push required EII images to docker registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#eii-multi-node-cluster-provision-and-deployment">EII multi node cluster provision and deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#without-orchestrator"><strong>Without orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#ansible-based-eii-prequisites-setup-provisioning-build-deployment">Ansible based EII Prequisites setup, provisioning, build &amp; deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#installing-ansible-on-ubuntu-control-node">Installing Ansible on Ubuntu {Control node}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#prerequisite-step-needed-for-all-the-control-worker-nodes">Prerequisite step needed for all the control/worker nodes.</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#generate-ssh-key-for-all-nodes">Generate SSH KEY for all nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#adding-ssh-authorized-key-from-control-node-to-all-the-nodes">Adding SSH Authorized Key from control node to all the nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#configure-sudoers-file-to-accept-no-password-for-sudo-operation">Configure Sudoers file to accept NO PASSWORD for sudo operation.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#updating-the-leader-worker-node-s-information-for-using-remote-hosts">Updating the leader &amp; worker node’s information for using remote hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#non-orchestrated-multi-node-deployment-without-k8s">Non-orchestrated multi node deployment (without k8s)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment">Select EII services to run on a particular node in multinode deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#execute-ansible-playbook-from-eii-workdir-iedgeinsights-build-ansible-control-node-to-deploy-eii-services-in-single-multi-nodes">Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#deploying-eii-using-helm-in-kubernetes-k8s-environment">Deploying EII Using Helm in Kubernetes (k8s) environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#pre-requisites">Pre requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#update-the-helm-charts-directory">Update the helm charts directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#provision-and-deploy-in-the-kubernetes-node">Provision and deploy in the kubernetes node.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#provision-and-deploy-mode-in-times-switching-between-dev-and-prod-mode-or-changing-the-usecase">Provision and deploy mode in times switching between dev and prod mode OR changing the usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#steps-to-enable-accelarators">Steps to enable Accelarators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#steps-for-enabling-gige-camera-with-helm">Steps for Enabling GiGE Camera with helm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#accessing-web-visualizer-and-etcdui">Accessing Web Visualizer and EtcdUI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#eii-uninstaller">EII Uninstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#debugging">Debugging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-through-the-logs">Debugging Through the Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#enablement-of-x11-forwarding-for-eii-visualizer-container">Enablement of X11 Forwarding for EII Visualizer Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-options">Debugging options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#enabling-secure-boot">Enabling Secure boot</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-new-features">EII v2.6 New Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">CORE LIBRARIES:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id1">EII Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id2">Generating Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id3">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#known-issues">Known issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd">etcd*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#configmgr">ConfigMgr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#tool-to-generate-configuration-management-ui-service">Tool to Generate Configuration Management UI Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#adding-new-eii-service-so-it-gets-picked-up-by-builder">Adding new EII service so it gets picked up by Builder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#id5">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#install-configmgr-with-python-bindings-go-bindings-examples-test-suits-and-debug-build">Install ConfigMgr with Python bindings, Go bindings, Examples, Test suits and Debug Build.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#zmq-tcp-protocol-usecase">zmq_tcp Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#zmqbroker">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#subscriber">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#publisher">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id9">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id10">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id11">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id13">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id14">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id15">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#c-api">C API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#python-api">Python API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api.html#golang-api">GoLang API</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="video.html">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#videoingestion-module">VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#ingestor-config">Ingestor config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#video-ingestion-contents">Video Ingestion Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#camera-configuration">Camera Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#rtsp-camera">RTSP Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#usb-camera">USB Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#realsense-depth-camera">RealSense Depth Camera</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#videoanalytics-module">VideoAnalytics Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#sample-udfs">Sample UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#native-udfs">Native UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#chaining-of-udfs">Chaining of UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#combination-of-udfs-with-ingestors">Combination of UDFs with ingestors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#jupyter-notebook-pre-requisites">Jupyter Notebook pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#running-jupyter-notebook">Running Jupyter Notebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#gigeconfigtool-and-export-settings-from-basler-pylon-feature-system">GigEConfigTool and Export Settings from Basler Pylon Feature System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#discoverhistory">DiscoverHistory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#native-visualizer-module">Native Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#web-visualizer-module">Web Visualizer Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#metadata-structure">Metadata Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#influxdbconnector-module">InfluxDBConnector Module</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Working with Timeseries Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#telegraf">Telegraf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-telegraf">Purpose of Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#optional-adding-multiple-telegraf-instances">Optional: Adding multiple telegraf instances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#enabling-eii-message-bus-input-plugin-in-telegraf">Enabling EII message bus input plugin in Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#enabling-eii-message-bus-output-plugin-in-telegraf">Enabling EII message bus Output plugin in Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin">Advanced: Multiple plugin sections of EII message bus output plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#kapacitor">Kapacitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#starting-the-example">Starting the example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timeseries.html#kapacitor-input-and-output-plugins">Kapacitor input and output plugins</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-plugins">Purpose of plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#using-input-plugin">Using input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#using-output-plugin">Using output plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#user-defined-functions">User-defined Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#custom-udfs-available-in-the-udfs-directory">Custom UDFs available in the udfs directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#steps-to-configure-the-udfs-in-kapacitor">Steps to configure the UDFs in kapacitor.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timeseries.html#id48">Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id49">Steps to run the samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id65">Steps to verify the results in single task with multiple UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id66">Steps to verify the results in multiple tasks with single UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#working-with-kapacitor">Working with Kapacitor*</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#influxdb">InfluxDB</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#configuring-influxdb">Configuring InfluxDB*</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#influxdbconnector-configuration">InfluxDBConnector Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#influxdbconnector-installation">InfluxDBConnector Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#eii-timeseriesprofiler">EII TimeSeriesProfiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#eii-pre-requisites">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#eii-timeseriesprofiler-modes">EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">EXPORT SERVICES:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-requisites-setup">Pre-Requisites / Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#azure-cloud-setup">Azure Cloud Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Setting up AzureML</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#development-system-setup">Development System Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#build-and-push-eii-containers">Build and Push EII Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Single-Node Azure IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-provisioning">Step 1 - Provisioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#expected-result">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-configuring-eii">Step 2 - Configuring EII</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-configuring-azure-iot-deployment-manifest">Step 3 - Configuring Azure IoT Deployment Manifest</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-deployment">Step 4 - Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#helpful-debugging-commands">Helpful Debugging Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#final-notes">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#simple-subscriber">Simple Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eii-etcd-pre-load">EII ETCD Pre-Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#azure-blob-storage">Azure Blob Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#azure-deployment-manifest">Azure Deployment Manifest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id22">Supported EII Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opcua.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opcua.html#service-bring-up">Service bring up</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-post-request-pipeline">RestExport POST Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-get-request-pipeline">RestExport Get Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-apis">RestExport APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-post-request-api">RestExport POST Request API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-get-request-api">RestExport GET Request API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#pre-requisites">Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#service-bring-up">Service bring up</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">ADDITIONAL INFO:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">EII Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#discoverhistory">DiscoverHistory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#steps-to-build-and-run-discoverhistory-service">Steps to build and run DiscoverHistory service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#list-of-sample-select-queries">List of sample select queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#to-run-the-tool-in-zmq-ipc-mode">To run the tool in zmq_ipc mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#embpublisher">EmbPublisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id16">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id17">Configuration of the tool.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id18">Running EmbPublisher in IPC mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id22">EmbSubscriber</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id23">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id26">Running EmbSubscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id27">Running EmbSubscriber in IPC mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id31">EII GigEConfig tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id32">Generating PFS(Pylon Feature Stream) File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id33">Running GigEConfig Tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#id34">Usage of GigEConfig tool:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#id36">Execution of GigEConfig</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#httptestserver">HttpTestServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#pre-requisites-for-running-the-httptestserver">Pre-requisites for running the HttpTestServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#starting-httptestserver">Starting HttpTestServer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id39">Jupyter Notebook usage to develop python UDFs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id40">Jupyter Notebook pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id45">Running Jupyter Notebook</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id48">MQTT publisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id49">Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id51">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id52">Software Trigger Utilily pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id56">Configuration file:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id59">Running Software Trigger Utility</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id62">EII TimeSeriesProfiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id63">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id66">EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id70">EII TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id71">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id91">EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id92">EII Video Profiler pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id95">EII Video Profiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id100">EII Video Profiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id103">Running Video Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id111">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id113">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sample.html">EII Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sample.html#sample-cpp-app-for-eii-platform">Sample CPP APP for EII platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sample.html#short-description-of-app-containers">‘Short Description of App containers’</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sample.html#the-sample-golang-application-demonstrates-the-usage-of-eii-core-libraries-like-eiimessagebus-and-configmanager">The sample Golang application demonstrates the usage of EII core libraries like EIIMessageBus and ConfigManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sample.html#id3">Short Description of App containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sample.html#the-high-level-logical-flow-of-sample-app-is-as-below">The high level logical flow of Sample App is as below:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sample.html#sample-python-app-for-eii-platform">Sample Python APP for EII platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sample.html#id4">Short Description of App containers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Azure Bridge</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/pages/azure.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="azure-bridge">
+<h1>Azure Bridge<a class="headerlink" href="#azure-bridge" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The source code for this project must be placed under the <code class="docutils literal notranslate"><span class="pre">IEdgeInsights</span></code>
+directory in the source code for EII for the various scripts and commands in
+this README to work.</p>
+</div>
+<p>The Azure Bridge serves as a connector between EII and the Microsoft
+Azure IoT Edge Runtime ecosystem. It does this by allowing the following
+forms of bridging:</p>
+<ul class="simple">
+<li><p>Publishing of incoming data from EII onto the Azure IoT Edge Runtime bus</p></li>
+<li><dl class="simple">
+<dt>Storage of incoming images from the EII video analytics pipeline into a</dt><dd><p>local instance of the Azure Blob Storage service</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Translation of configuration for EII from the Azure IoT Hub digital twin</dt><dd><p>for the bridge into ETCD via the EII Configuration Manager APIs</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>This code base is structured as an Azure IoT Edge Runtime module. It includes:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Deployment templates for deploying the EII video analytics pipeline with the</dt><dd><p>bridge on top of the Azure IoT Edge Runtime</p>
+</dd>
+</dl>
+</li>
+<li><p>The Azure Bridge module</p></li>
+<li><dl class="simple">
+<dt>A simple subscriber on top of the Azure IoT Edge Runtime for showcasing the</dt><dd><p>end-to-end transmission of data</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Various utilities and helper scripts for deploying and developing on the</dt><dd><p>Azure Bridge</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The following sections will cover the configuration/usage of the Azure
+Bridge, the deployment of EII on the Azure IoT Edge Runtime, as well as the
+usage of the tools and scripts included in this code base for development.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following sections assume an understanding of the configuration
+for EII. It is recommended that you read the main README and User Guide for
+EII prior to using this service.</p>
+</div>
+<div class="section" id="pre-requisites-setup">
+<h2>Pre-Requisites / Setup<a class="headerlink" href="#pre-requisites-setup" title="Permalink to this headline">¶</a></h2>
+<p>To use and develop with the Azure Bridge there are a few steps which must
+be taken to configure your environment. The setup must be done to configure
+your Azure Cloud account, your development system, and also the node which
+you are going to deploy the Azure Bridge on.</p>
+<p>The following sections cover the setup for the first two environments listed.
+Setting up your system for a single-node deployment will be covered in the
+<a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a> section below.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you deploy with Azure IoT Hub you will also need to configure
+the Azure IoT Edge Runtime and EII on your target device.</p>
+</div>
+<div class="section" id="azure-cloud-setup">
+<h3>Azure Cloud Setup<a class="headerlink" href="#azure-cloud-setup" title="Permalink to this headline">¶</a></h3>
+<p>Prior to using the Azure Bridge there are a few cloud services in Azure
+which must be initialized.</p>
+<p>Primarily, you need an Azure Containter Registry instance, an Azure IoT Hub,
+as well as an Azure IoT Device. Additionally, if you wish to use the sample ONNX
+UDF in EII to download a ML/DL model from AzureML, then you must follow a few
+steps to get this configured as well. For these steps, see the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml">Setting up AzureML</a>
+section below.</p>
+<p>To create these instances, follow the guides provided by Microsoft below:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the quickstart guides below it is recommended that you create an
+Azure Resource Group. This is a good practice as it makes for easy clean up
+of your Azure cloud environment.</p>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal">Create Azure Container Registry</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal">Create Azure IoT Hub</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/how-to-register-device">Register an Azure IoT Device</a></p></li>
+</ul>
+<blockquote>
+<div><p><strong>IMPORTANT:</strong>
+In the tutorials above you will receive credentials/connection strings for your
+Azure Container Registry, Azure IoT Hub, and Azure IoT Device. Save these for
+later, as they will be important for setting up your development and single node
+deployment showcased in this README.</p>
+</div></blockquote>
+<p>All of the tutorials provided above provide options for creating these instances
+via Visual Studio Code, the Azure Portal, or the Azure CLI. If you wish to use
+the Azure CLI, it is recommended that you follow the Development System Setup
+instructions below.</p>
+<div class="section" id="id1">
+<h4>Setting up AzureML<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>To use the sample EII ONNX UDF, you must do the following:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Create an AzureML Workspace (see <a class="reference external" href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace">these</a></dt><dd><p>instructions provided by Microsoft)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Configure Service Principle Authentication on your AzureML workspace by following</dt><dd><p>instructions provided <a class="reference external" href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication">here</a></p>
+</dd>
+</dl>
+</li>
+</ol>
+<p><strong>IMPORTANT</strong></p>
+<p>During the setup process provided for step 2 above, you will run a command similar
+to the following:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ az ad sp create-for-rbac --sdk-auth --name ml-auth
+</pre></div>
+</div>
+<p>After executing this command you will see a JSON blob printed to your console
+window. Save the <code class="docutils literal notranslate"><span class="pre">clientId</span></code>, <code class="docutils literal notranslate"><span class="pre">clientSecret</span></code>, <code class="docutils literal notranslate"><span class="pre">subscriptionId</span></code>, and <code class="docutils literal notranslate"><span class="pre">tenantId</span></code>
+for configuring the sample ONNX EII UDF later.</p>
+<div class="section" id="pushing-a-model-to-azureml">
+<h5>Pushing a Model to AzureML<a class="headerlink" href="#pushing-a-model-to-azureml" title="Permalink to this headline">¶</a></h5>
+<p>If you already have an ONNX model you wish to push to your AzureML Workspace, then
+follow <a class="reference external" href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-existing-model">these instructions</a>
+to push your model.</p>
+<p>If you do not have a model, and want an easy model to use, follow
+<a class="reference external" href="https://notebooks.azure.com/azureml/projects/azureml-getting-started/html/how-to-use-azureml/deployment/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb">this</a>
+notebook provided my Microsoft to train a simple model to push to your AzureML Workspace.</p>
+<p>Also, you can find pre-trained models in the <a class="reference external" href="https://github.com/onnx/models">ONNX Model Zoo</a>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="development-system-setup">
+<h3>Development System Setup<a class="headerlink" href="#development-system-setup" title="Permalink to this headline">¶</a></h3>
+<p>The development system will be used for the following actions:</p>
+<ul class="simple">
+<li><p>Building and pushing the EII containers (including the bridge) to your Azure Container Registry</p></li>
+<li><p>Creating your Azure IoT Hub deployment manifest</p></li>
+<li><p>Deploying your manifest to a single node</p></li>
+</ul>
+<p>For testing purposes, your development system can serve to do the actions detailed
+above, as well as being the device you use for your single-node deployment. This
+should not be done in a production environment, but it can be helpful when
+familiarizing yourself with the Azure Bridge.</p>
+<p>First, setup your system for building EII. To do this, follow the instructions
+detailed in the main EII README and the EII User Guide. At the end, you should
+have installed Docker, Docker Compose, and other EII Python dependencies for
+the Builder script in the <code class="docutils literal notranslate"><span class="pre">../build/</span></code> directory.</p>
+<p>Once this is completed, install the required components to user the Azure CLI
+and development tools. The script <code class="docutils literal notranslate"><span class="pre">./tools/install-dev-tools.sh</span></code> automates this
+process. To run this script, execute the following command:</p>
+<p><strong>Note</strong>: It is highly recommended that you use a python virtual environment to
+install the python packages, so that the system python installation doesn’t
+get altered. Details on setting up and using python virtual environment can
+be found here: <a class="reference external" href="https://www.geeksforgeeks.org/python-virtual-environment/">https://www.geeksforgeeks.org/python-virtual-environment/</a></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo -H -E -u <span class="si">${</span><span class="nv">USER</span><span class="si">}</span> ./tools/install-dev-tools.sh
+</pre></div>
+</div>
+<p>Please set the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> environmental variable as below in the terminal
+where you are using <code class="docutils literal notranslate"><span class="pre">iotedgedev</span></code> and <code class="docutils literal notranslate"><span class="pre">iotedgehubdev</span></code> commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>~/.local/bin:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">-u</span> <span class="pre">${USER}</span></code> flag above allows the Azure CLI to launch your
+browser (if it can) so you can login to your Azure account.</p>
+<p><strong>NOTE:</strong> Occasionally, pip’s local cache can get corrupted. If this happens,
+pip may <code class="docutils literal notranslate"><span class="pre">SEGFAULT</span></code>. In the case that this happens, delete the <code class="docutils literal notranslate"><span class="pre">~/.local</span></code> directory
+on your system and re-run the script mentioned above. You may consider creating
+a backup of this directory just in case.</p>
+</div>
+<p>While running this script you will be prompted to sign-in to your Azure
+account so you can run commands from the Azure CLI that interact with your
+Azure instance.</p>
+<p>This script will install the following tools:</p>
+<ul class="simple">
+<li><p>Azure CLI</p></li>
+<li><p>Azure CLI IoT Edge/Hub Extensions</p></li>
+<li><p>Azure <code class="docutils literal notranslate"><span class="pre">iotedgehubdev</span></code> development tool</p></li>
+<li><p>Azure <code class="docutils literal notranslate"><span class="pre">iotedgedev</span></code> development tool</p></li>
+</ul>
+<p>Next, login to your Azure Container Registry with the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ az acr login --name &lt;ACR Name&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Fill in <code class="docutils literal notranslate"><span class="pre">&lt;ACR</span> <span class="pre">Name&gt;</span></code> with the name of your Azure Container Registry</p>
+</div>
+<p><strong>IMPORTANT NOTE:</strong></p>
+<p>Please see the list of supported services at the end of this README for the
+services which can be pushed to an ACR instance. Not all EII services are
+supported by and validated to work with the Azure Bridge.</p>
+</div>
+</div>
+<div class="section" id="build-and-push-eii-containers">
+<h2>Build and Push EII Containers<a class="headerlink" href="#build-and-push-eii-containers" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By following the steps below, the Azure Bridge and Simple
+Subscriber Azure IoT Modules will be pushed to your ACR instance as well.</p>
+</div>
+<p>After setting up your development system, build and push the EII containers
+to your Azure Contianer Registry instance. Note that the Azure Bridge only
+supports a few of the EII services currently. Before building and pushing your
+EII containers, be sure to look at the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#supported-eii-services">Supported EII Services</a>
+section below, so as to not build/push uneeded containers to your registry.</p>
+<p>To do this go to the <code class="docutils literal notranslate"><span class="pre">../build/</span></code> directory in the EII source code, modify the
+<code class="docutils literal notranslate"><span class="pre">DOCKER_REGISTRY</span></code> variable in the <code class="docutils literal notranslate"><span class="pre">../build/.env</span></code> file to point to your Azure
+Container Registry.</p>
+<p>Next, execute the following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 builder.py -f usecases/video-streaming-azure.yml
+$ docker-compose -f docker-compose-build.yml build
+$ docker-compose -f docker-compose-push.yml push
+</pre></div>
+</div>
+<p>For more detailed instructions on this process, see the EII README and User Guide.</p>
+</div>
+<div class="section" id="id2">
+<h2>Single-Node Azure IoT Edge Deployment<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Outside of the Azure ecosystem, EII can be deployed and communicate
+across nodes. In the Azure IoT Edge ecosystem this is not possible with EII.
+All EII services must be running on the same edge node. However, you can
+deploy EII on multiple nodes, but intercommunication between the nodes will
+not work.</p>
+<p><strong>IMPORTANT NOTE:</strong>
+If you are using TCP communication between VI or VA and the Azure Bridge,
+then you must modify the <code class="docutils literal notranslate"><span class="pre">AllowedClients</span></code> list under the <code class="docutils literal notranslate"><span class="pre">Publishers</span></code> section
+of the interfaces configuration of VI or VA to include <code class="docutils literal notranslate"><span class="pre">AzureBridge</span></code>.
+This must be done prior to provisioning to that the proper certificates will
+be generated to encrypt/authenticate connections.</p>
+</div>
+<p>In the Azure IoT ecosystem you can deploy to single-nodes and you can do bulk
+deployments. This section will cover how to deploy the Azure Bridge and
+associated EII services to a single Linux edge node. For more details on deploying
+modules at scale with the Azure IoT Edge Runtime, see
+<a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-monitor">this guide</a></p>
+<p>Note that this section will give a high-level overview of how to deploy the
+modules with the Azure CLI. For more information on developing and deploying
+Azure modules, see <a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-develop-for-linux">this guide</a>.</p>
+<p>The deloyment of the Azure IoT Edge and the EII modules can be broken down into
+the following steps:</p>
+<ol class="arabic simple">
+<li><p>Provisioning</p></li>
+<li><p>Configuring EII</p></li>
+<li><p>Configuring Azure IoT Deployment Manifest</p></li>
+<li><p>Deployment</p></li>
+</ol>
+<p>Prior to deploying a single Azure IoT Edge node you must have already
+configured your Azure cloud instance (see instructions in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#azure-cloud-setup">Azure Cloud Setup</a>
+section). Additionally, you need to have already built and pushed the EII services to your
+Azure Container Registry (follow the instructions in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/##build-and-push-eii-containers">Build and Push EII Containers</a>
+section).</p>
+<p>Provided you have met these two prerequisites, follow the steps below to do a
+single node deployment with the Azure Bridge on the Azure IoT Edge Runtime.</p>
+<div class="section" id="step-1-provisioning">
+<h3>Step 1 - Provisioning<a class="headerlink" href="#step-1-provisioning" title="Permalink to this headline">¶</a></h3>
+<p>The provisioning must take place on the node you wish to deploy your Azure IoT
+Edge modules onto.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This may be your development system, which was setup earlier. Keep in
+mind, however, that having your system setup as a development system and a
+targeted node for a single-node deployment should never be done in production.</p>
+</div>
+<p>First, you must then install the Azure IoT Edge Runtime on your target deployment
+system. To do that, follow the instructions provided by Microsoft in
+<a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-linux">this guide</a>.</p>
+<p>Next, you must provision on your target deployment system. Follow the instructions
+provided in the EII READMEs/User Guide for completing this process.</p>
+<p>While provisioning on your system, note that you only need to setup the
+Video Ingesiton and/or the Video Analytics containers. All other services are
+not supported by the Azure Bridge currently.</p>
+<p>Be sure to note down which directory you generate your certificates into, this
+will be important later. Unless, you are running EII in dev mode, in that case
+you will have no certificates generated.</p>
+<p><strong>IMPORTANT NOTE:</strong></p>
+<p>If you previously installed EII outside of Azure on your system, then make sure
+that all of the EII containers have been stopped. You can do this by going to
+the <code class="docutils literal notranslate"><span class="pre">build/</span></code> directory in the EII source code and running the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ docker-compose down
+</pre></div>
+</div>
+<p>This will stop and remove all of the previously running EII containers, allowing
+the Azure Bridge to run successfully.</p>
+<div class="section" id="expected-result">
+<h4>Expected Result<a class="headerlink" href="#expected-result" title="Permalink to this headline">¶</a></h4>
+<p>When you have completed these steps, you should have the Azure IoT Edge Runtime
+installed (which includes Docker), and you should have the <code class="docutils literal notranslate"><span class="pre">ia_etcd</span></code> EII container
+running on your system.</p>
+<p>To confirm this, run the <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">ps</span></code> command. Your output should look similar to
+the following:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+75121173d4d8        ia_etcd:2.3         <span class="s2">&quot;./start_etcd.sh&quot;</span>   <span class="m">11</span> days ago         Up <span class="m">2</span> seconds                            ia_etcd
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="step-2-configuring-eii">
+<h3>Step 2 - Configuring EII<a class="headerlink" href="#step-2-configuring-eii" title="Permalink to this headline">¶</a></h3>
+<p>This step should be done from your development system, and not the edge node you
+are deploying EII onto. The configuration you will do during this setup will
+allow your system to deploy EII to your edge node. As noted earlier, for development
+and testing purposes this could be the same system as your targeted edge device,
+but this is not recommended in a production environment.</p>
+<p>To configure EII, modify the <code class="docutils literal notranslate"><span class="pre">build/provision/config/eii_config.json</span></code> file. This
+should have been generated when the <code class="docutils literal notranslate"><span class="pre">build/builder.py</span></code> script was executed
+when building/pushing the EII containers to your ACR instance. If it does not
+exist, run this script based on the instructions provided in the EII README.</p>
+<p>Next, configure the <code class="docutils literal notranslate"><span class="pre">build/.env</span></code> file. You must make sure to modify the following
+values in the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">DOCKER_REGISTRY</span></code> - This should have been set when building/pushing the EII</dt><dd><p>containers to your ACR instance. Make sure it is set to the URL for your
+ACR instance.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">HOST_IP</span></code> - This must be the IP address of the edge node you are deploying</dt><dd><p>your containers to</p>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ETCD_HOST</span></code> - This should be set to the same value as your <code class="docutils literal notranslate"><span class="pre">HOST_IP</span></code> address</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">DEV_MODE</span></code> - Set this to the same value you used when provisioning your edge node</dt><dd><p>in the previous step</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Next, in the <code class="docutils literal notranslate"><span class="pre">AzureBridge/</span></code> source directory, modify the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file. Make
+sure to set the following values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">EII_CERTIFICATES</span></code>              - The directory with the EII certificates on your edge system</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AZ_CONTAINER_REGISTY_USERNAME</span></code> - User name for the container registry login (obtained during creation)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AZ_CONTAINER_REGISTY_PASSWORD</span></code> - Password for the container registry login (obtained during creation)</p>
+<ul>
+<li><dl class="simple">
+<dt><strong>IMPORTANT NOTE:</strong> Make sure to surround the password in single quotes, i.e. <code class="docutils literal notranslate"><span class="pre">'</span></code>, because bash</dt><dd><p>may escape certain characters when the file is read, leading to incorrect configuration</p>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AZ_BLOB_STORAGE_ACCOUNT_NAME</span></code>  - <strong>(OPTIONAL)</strong> User name for the local Azure Blob Storage instance</p></li>
+</ul>
+<p><strong>IMPORTANT NOTE #1:</strong></p>
+<p>It is important to note that for the <code class="docutils literal notranslate"><span class="pre">AZ_CONTAINER_REGISTY_PASSWORD</span></code> variable you
+must wrap the password in single quotes, i.e. <code class="docutils literal notranslate"><span class="pre">'</span></code>. Otherwise, there may be
+characters that get escaped in a weird way when the values are populated into
+your deployment manifest leading to configuration errors.</p>
+<p><strong>IMPORTANT NOTE #2:</strong></p>
+<p>If you wish to use the sample EII ONNX UDF, now is the time to configure the UDF
+to run. See the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#sample-eii-onnx-udf">Sample EII ONNX UDF</a> configuration section
+below for how to configure the UDF.</p>
+<div class="section" id="id7">
+<h4>Expected Result<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<p>Once the following step has been completed, then you should have correctly configured
+<code class="docutils literal notranslate"><span class="pre">.env</span></code> files to deploying EII via Azure. If some of the values were incorrect, then
+you will encounter issues in the proceeding steps.</p>
+</div>
+</div>
+<div class="section" id="step-3-configuring-azure-iot-deployment-manifest">
+<h3>Step 3 - Configuring Azure IoT Deployment Manifest<a class="headerlink" href="#step-3-configuring-azure-iot-deployment-manifest" title="Permalink to this headline">¶</a></h3>
+<p>Once you have your target edge system provisioned and EII configured, you need to
+create your Azure IoT Hub deployment manifest. The Azure Bridge provides some
+convenience scripts to ease this process.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These steps should be done from your development system setup in
+the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a> section. Note, that for testing
+and development purposes, these could be the same system.</p>
+</div>
+<p>To generate your deployment manifest template, execute the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ./tools/generate-deployment-manifest.sh example AzureBridge SimpleSubscriber ia_video_ingestion ia_video_analytics
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using Azure Blob Storage, include <code class="docutils literal notranslate"><span class="pre">AzureBlobStorageonIoTEdge</span></code>
+in the argument list above.</p>
+<p><strong>NOTE:</strong> When you run the command above, it will pull some values from your
+EII <code class="docutils literal notranslate"><span class="pre">build/.env</span></code> file. If the <code class="docutils literal notranslate"><span class="pre">build/.env</span></code> file is configured incorrectly,
+you may run into issues.</p>
+</div>
+<p>The above command will generate two files: <code class="docutils literal notranslate"><span class="pre">./example.template.json</span></code> and
+<code class="docutils literal notranslate"><span class="pre">config/example.amd64.json</span></code>. The first is a deployment template, and the second
+is the fully populated/generated configuration for Azure IoT Hub. In executing
+the script above, you should have a manifest which includes the Azure Bridge,
+Simple Subscriber, as well as the EII video ingestion service.</p>
+<p>The list of services given to the bash script can be changed if you wish to
+run different services.</p>
+<p>You may want/need to modify your <code class="docutils literal notranslate"><span class="pre">./example.template.json</span></code> file after running
+this command. This could be because you wish to change the topics that VI/VA use
+or because you want to configure the Azure Bridge in some different way. If you
+modify this file, you must regenerate the <code class="docutils literal notranslate"><span class="pre">./config/example.amd64.json</span></code> file.
+To do this, execute the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ iotedgedev genconfig -f example.template.json
+</pre></div>
+</div>
+<p>If you wish to modify your <code class="docutils literal notranslate"><span class="pre">eii_config.json</span></code> file after generating your template,
+you can re-add this to the Azure Bridge digital twin by running the following
+command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 tools/serialize_eii_config.py example.template.json ../build/provision/config/eii_config.json
+</pre></div>
+</div>
+<p><strong>IMPORTANT NOTE:</strong></p>
+<p>If you wish to have the AzureBridge subscribe and bridge data over an IPC
+socket coming from either Video Ingestion or Video Analytics, then you must
+change the user which the container operates under. By default, the AzureBridge
+container is configured to run as the <code class="docutils literal notranslate"><span class="pre">eiiuser</span></code> created during the installation of
+EII on your edge system. Both Video Ingestion and Video Analytics operate as root
+in order to access various accelerators on your system. This results in the
+IPC sockets for the communication with these modules being created as root. To
+have the AzureBridge subscribe it must also run as root. To change this, do
+the following steps:</p>
+<ol class="arabic simple">
+<li><p>Open your deployment manifest template</p></li>
+<li><dl class="simple">
+<dt>Under the following JSON key path: <code class="docutils literal notranslate"><span class="pre">modulesContent/modules/AzureBridge/settings/createOptions</span></code></dt><dd><p>delete the <code class="docutils literal notranslate"><span class="pre">User</span></code> key</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>This will cause the container to be launched as <code class="docutils literal notranslate"><span class="pre">root</span></code> by default allowing you to
+subscribe to IPC sockets created as root.</p>
+<div class="section" id="id9">
+<h4>Expected Result<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<p>If all of the commands above ran correctly, then you will have a valid <code class="docutils literal notranslate"><span class="pre">*.template.json</span></code>
+file and a valid <code class="docutils literal notranslate"><span class="pre">config/*.amd64.json</span></code> file.</p>
+<p>If, for some reason, these commands fail, revisit Step 2 and make sure all of your
+environmental variables are set correctly. And if that does not resolve your issue,
+verify that your development system is setup correctly by revisiting the
+<a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a> section.</p>
+</div>
+</div>
+<div class="section" id="step-4-deployment">
+<h3>Step 4 - Deployment<a class="headerlink" href="#step-4-deployment" title="Permalink to this headline">¶</a></h3>
+<p>Now that you have generated your deployment manifest, deploy the modules to your
+Azure IoT Edge Device using the Azure CLI command shown below:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ az iot edge set-modules -n &lt;azure-iot-hub-name&gt; -d &lt;azure-iot-edge-device-name&gt; -k config/&lt;deployment-manifest&gt;
+</pre></div>
+</div>
+<p>If this command run successfully, then you will see a large JSON string print out
+on the console with information on the deployment which it just initiated. If it
+failed, then the Azure CLI will output information on the potential reason for the
+failure.</p>
+<div class="section" id="expected-results">
+<h4>Expected Results<a class="headerlink" href="#expected-results" title="Permalink to this headline">¶</a></h4>
+<p>Provided all of the setups above ran correctly, your edge node should now be running
+your Azure IoT Edge modules, the Azure Bridge, and the EII services you
+selected.</p>
+<p>It is possible that for the Azure Bridge (and any Python Azure IoT Edge modules)
+you will see that the service crashes the first couple of times it attempts to come
+up on your edge system with an exception similar to the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+    <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/azure/iot/device/common/mqtt_transport.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">340</span><span class="p">,</span> <span class="ow">in</span> <span class="n">connect</span>
+        <span class="n">host</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_hostname</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8883</span><span class="p">,</span> <span class="n">keepalive</span><span class="o">=</span><span class="n">DEFAULT_KEEPALIVE</span>
+    <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/paho/mqtt/client.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">937</span><span class="p">,</span> <span class="ow">in</span> <span class="n">connect</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">reconnect</span><span class="p">()</span>
+    <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/paho/mqtt/client.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1071</span><span class="p">,</span> <span class="ow">in</span> <span class="n">reconnect</span>
+        <span class="n">sock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_socket_connection</span><span class="p">()</span>
+    <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.7/site-packages/paho/mqtt/client.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">3522</span><span class="p">,</span> <span class="ow">in</span> <span class="n">_create_socket_connection</span>
+        <span class="k">return</span> <span class="n">socket</span><span class="o">.</span><span class="n">create_connection</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">source_address</span><span class="o">=</span><span class="n">source</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_keepalive</span><span class="p">)</span>
+    <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.7/socket.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">728</span><span class="p">,</span> <span class="ow">in</span> <span class="n">create_connection</span>
+        <span class="k">raise</span> <span class="n">err</span>
+    <span class="n">File</span> <span class="s2">&quot;/usr/local/lib/python3.7/socket.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">716</span><span class="p">,</span> <span class="ow">in</span> <span class="n">create_connection</span>
+        <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">sa</span><span class="p">)</span>
+    <span class="ne">ConnectionRefusedError</span><span class="p">:</span> <span class="p">[</span><span class="n">Errno</span> <span class="mi">111</span><span class="p">]</span> <span class="n">Connection</span> <span class="n">refused</span>
+</pre></div>
+</div>
+<p>This occurs because the container is starting before the <code class="docutils literal notranslate"><span class="pre">edgeHub</span></code> container for
+the Azure IoT Edge Runtime has come up, and so it it unable to connect. Once the
+<code class="docutils literal notranslate"><span class="pre">edgeHub</span></code> container is fully launched, then this should go away and the containers
+should launch correctly.</p>
+<p>If everything is running smoothly, you should see messages being printed in the
+Simple Subscriber service using the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ docker logs -f SimpleSubscriber
+</pre></div>
+</div>
+<p>For more debugging info, see the following section.</p>
+</div>
+</div>
+<div class="section" id="helpful-debugging-commands">
+<h3>Helpful Debugging Commands<a class="headerlink" href="#helpful-debugging-commands" title="Permalink to this headline">¶</a></h3>
+<p>If you are encountering issues, the following commands can help with debugging:</p>
+<ul class="simple">
+<li><p><strong>Azure IoT Edge Runtime Daemon Logs:</strong> <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-u</span> <span class="pre">iotedge</span> <span class="pre">-f</span></code></p></li>
+<li><p><strong>Container Logs:</strong> <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">-f</span> <span class="pre">&lt;CONTAINER-NAME&gt;</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="final-notes">
+<h3>Final Notes<a class="headerlink" href="#final-notes" title="Permalink to this headline">¶</a></h3>
+<p>When deploying with Azure IoT Edge Runtime there are many security considerations
+to be taken into account. Please consult the following Microsoft resources regarding
+the security in your deployments.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/security">Securing Azure IoT Edge</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-security-manager">IoT Edge Security Manager</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-certs">IoT Edge Certificates</a></p></li>
+<li><p><a class="reference external" href="https://azure.microsoft.com/en-us/blog/securing-the-intelligent-edge/">Securing the Intelligent Edge blob post</a></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>The configuration of the Azure Bridge is a mix of the configuration for the
+EII services, the Azure Bridge module, and configuration for the other
+Azure IoT Edge Modules (i.e. the Simple Subscriber, and the Azure Blob Storage
+modules). All of this configuration is wrapped up into your deployment manifest
+for Azure IoT Hub.</p>
+<p>The following sections cover the configuration of the aforementioned servies
+and then the generation of your Azure Deployment manifest.</p>
+<div class="section" id="id11">
+<h3>Azure Bridge<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>The Azure Bridge spans EII and Azure IoT Edge Runtime environments, as such
+its configuration is a mix of EII configuration and Azure IoT Edge module configuration
+properties. The configuration of the bridge is split between environmental
+variables specified in your Azure IoT Hub deployment manifest and the module’s
+digital twin. Additionally, the digital twin for the Azure Bridge module
+contains the entire configuration for the EII services running in your edge
+environment.</p>
+<p>The configuration of the EII Message Bus is done in a method similar to that of
+the other EII services, such as the Video Analytics service. To provided the
+configuration for the topics which the bridge should subscribe to,
+you must set the <code class="docutils literal notranslate"><span class="pre">Subscribers</span></code> list in the <a class="reference external" href="https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-azure-bridge/-/blob/master/modules//config.json">modules/AzureBridge/config.json</a>
+file. The list is comprised of JSON objects for every subscription you wish the
+Azure Bridge to establish. Below is an example of the configuration for
+subscribing to the the publications coming from the Video Analytics container.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="c1">// Specifies that this is the default subscriber</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+
+            <span class="c1">// Gives the type of connection, i.e. zmq_tcp, this could</span>
+            <span class="c1">// also be zmq_ipc</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+
+            <span class="c1">// The EndPoint specifies the details of the connect, for an</span>
+            <span class="c1">// IPC connection, this would be a JSON object with the</span>
+            <span class="c1">// SocketDir key pointing to the directory of the IPC sockets</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:65013&quot;</span><span class="p">,</span>
+
+            <span class="c1">// Specification of the AppName of the service publishing the</span>
+            <span class="c1">// messages. This allows the Azure Bridge to get the needed</span>
+            <span class="c1">// authentication keys to subscribe</span>
+            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;VideoAnalytics&quot;</span><span class="p">,</span>
+
+            <span class="c1">// Specifies the list of all of the topics which the</span>
+            <span class="c1">// AzureBridge shall subscribe to</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;camera1_stream_results&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>There are a few important implications to be aware of for both ZeroMQ TCP and IPC
+subscribers over the EII Message Bus. These implications are specified below.</p>
+<p><strong>ZeroMQ TCP Subscription Implications</strong></p>
+<p>For ZeroMQ TCP subscribers, like the example shown above, the <code class="docutils literal notranslate"><span class="pre">EndPoint</span></code> in
+the subscriber’s configuration object has to be overridden through an
+environmental variable. The reason for this, is that the Azure Bridge
+service runs attached to a bridged Docker network created by the Azure IoT
+Edge Runtime, whereas the other EII services run on the different bridged network.
+In order to subscribe, the Azure Bridge must use the host’s IP address to
+connect.</p>
+<p>If the Azure Bridge is only subscribing to a single service, then the
+<code class="docutils literal notranslate"><span class="pre">EndPoint</span></code> can be overridden by setting the <code class="docutils literal notranslate"><span class="pre">SUBSCRIBER_ENDPOINT</span></code> environmental
+variable. The environmental variable changes if there are multiple subscribers.
+For instance, if the configuration example had another object in the Subscribers
+list which had the <code class="docutils literal notranslate"><span class="pre">Name</span></code> key set to <code class="docutils literal notranslate"><span class="pre">example_name</span></code>, then the environmental
+variable name would need to be <code class="docutils literal notranslate"><span class="pre">SUBSCRIBER_example_name_ENDPOINT</span></code>. Essentially,
+for multiple subscribers the <code class="docutils literal notranslate"><span class="pre">Name</span></code> property must be in the environmental
+variable name between the <code class="docutils literal notranslate"><span class="pre">SUBSCRIBER_</span></code> and <code class="docutils literal notranslate"><span class="pre">_ENDPOINT</span></code>. The same holds true for
+<code class="docutils literal notranslate"><span class="pre">CLIENT_ENDPOINT</span></code> and <code class="docutils literal notranslate"><span class="pre">CLIENT_&lt;Name&gt;_ENDPOINT</span></code> usage of environmental variables too.</p>
+<p>In either case, the value of the environmental variable must be set to
+<code class="docutils literal notranslate"><span class="pre">$HOST_IP:&lt;PORT&gt;</span></code> where you must fill in what the desired port is. Note that the
+IP address is the variable <code class="docutils literal notranslate"><span class="pre">$HOST_IP</span></code>. This will be pulled from the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file
+when generating your deployment manifest.</p>
+<p>The final implication is on the configuration of the services which the
+Azure Bridge is subscribing to. Most EII services publishing over TCP set
+their host to <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>. This keeps the communication only available to
+subscribers which are on the local host network on the system. In order for
+the Azure Bridge to subscribe to these publications this must be changed
+to <code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code>.</p>
+<p>This can be accomplished by overridding the service’s publisher <code class="docutils literal notranslate"><span class="pre">EndPoint</span></code>
+configuration via environmental variables, just like with the Azure Bridge
+service. For each service which the Azure Bridge needs to subscribe to over
+TCP, add the environmental variable <code class="docutils literal notranslate"><span class="pre">PUBLISHER_ENDPOINT=0.0.0.0:&lt;PORT&gt;</span></code> to the
+environmental variable configuration of the serivce’s module configuration in
+your deployment manifest (note: be sure to replace the port).  Or if there are
+multiple topics being published, use the variable <code class="docutils literal notranslate"><span class="pre">PUBLISHER_&lt;Name&gt;_ENDPOINT</span></code>.
+The same holds true for <code class="docutils literal notranslate"><span class="pre">SERVER_ENDPOINT</span></code> and <code class="docutils literal notranslate"><span class="pre">SERVER_&lt;Name&gt;_ENDPOINT</span></code> usage
+of environmental variables too.</p>
+<p>These variables have already been set for to have the Azure Bridge subscribe
+to a single instance of the Video Analytics service. This configuration can be
+seen in your deployment manifest under the, “AzureBridge”, and, “ia_video_analytics”,
+modules. Or, you can see this configuration being set in the,
+“config/templates/ia_video_analytics.template.json”, and,
+“config/templates/AzureBridge.template.json”, files.</p>
+<p><strong>ZeroMQ IPC Subscription Implications</strong></p>
+<p>If AzureBridge is subscribing to publisher over a ZeroMQ IPC socket, ensure that</p>
+<ul>
+<li><p>AzureBridge app’s subscriber interfaces configuration matches to that of the
+publisher app’s publisher interfaces configuration in <code class="docutils literal notranslate"><span class="pre">build/provision/config/eii_config.json</span></code>
+file.  Below is an example of the AzureBridge interface configuration subscribing to the
+publications coming from the VideoIngestion container.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="c1">// Specifies that this is the default subscriber</span>
+          <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+
+          <span class="c1">// Gives the type of connection, i.e. zmq_tcp/zmq_ipc</span>
+          <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+
+          <span class="c1">// The EndPoint specifies the details of the connect, for an</span>
+          <span class="c1">// IPC connection, this would be a JSON object with the</span>
+          <span class="c1">// SocketDir key pointing to the directory of the IPC sockets</span>
+          <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
+
+          <span class="c1">// Specification of the AppName of the service publishing the</span>
+          <span class="c1">// messages. This allows the Azure Bridge to get the needed</span>
+          <span class="c1">// authentication keys to subscriber</span>
+          <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;VideoIngestion&quot;</span><span class="p">,</span>
+
+          <span class="c1">// Specifies the list of all of the topics which the</span>
+          <span class="c1">// AzureBridge shall subscribe to</span>
+          <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+              <span class="s2">&quot;camera1_stream&quot;</span>
+          <span class="p">]</span>
+      <span class="p">}</span>
+   <span class="p">]</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Please follow <code class="docutils literal notranslate"><span class="pre">Step</span> <span class="pre">3</span> <span class="pre">-</span> <span class="pre">Configuring</span> <span class="pre">Azure</span> <span class="pre">IoT</span> <span class="pre">Deployment</span> <span class="pre">Manifest</span></code> above to generate the manifest
+template file and deployment manifest files. Ensure to remove all the <code class="docutils literal notranslate"><span class="pre">PUBLISHER_ENDPOINT</span></code>,
+<code class="docutils literal notranslate"><span class="pre">PUBLISHER_&lt;Name&gt;_ENDPOINT</span></code>, <code class="docutils literal notranslate"><span class="pre">SUBSCRIBER_ENDPOINT</span></code> and <code class="docutils literal notranslate"><span class="pre">SUBSCRIBER_&lt;Name&gt;_ENDPOINT</span></code> environmental
+variables from the generated deployment manifest template file i.e., <a class="reference external" href="https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-azure-bridge/-/blob/master/example.template.json">example.template.json</a>
+as these ENVs are not applicable for IPC configuration. Additionally, update the
+<a class="reference external" href="https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-azure-bridge/-/blob/master/example.template.json">example.template.json</a> as per the recommendations mentioned in the
+<code class="docutils literal notranslate"><span class="pre">Important</span> <span class="pre">Note</span></code> section for IPC configuration. Please re-generate the deployment manifest file (<code class="docutils literal notranslate"><span class="pre">config/example.amd64.json</span></code>)
+by running the below command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ iotedgedev genconfig -f example.template.json
+</pre></div>
+</div>
+</li>
+<li><p>Please follow <code class="docutils literal notranslate"><span class="pre">Step</span> <span class="pre">4</span> <span class="pre">-</span> <span class="pre">Deployment</span></code> above for deployment</p></li>
+</ul>
+<p>Below is an example digital twin for the Azure Bridge:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;log_level&quot;</span><span class="p">:</span> <span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;topics&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;camera1_stream_results&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;az_output_topic&quot;</span><span class="p">:</span> <span class="s2">&quot;camera1_stream_results&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;eii_config&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;/AzureBridge/config\&quot;: {}, \&quot;/AzureBridge/interfaces\&quot;: {\&quot;Subscribers\&quot;: [{\&quot;EndPoint\&quot;: \&quot;127.0.0.1:65013\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;PublisherAppName\&quot;: \&quot;VideoAnalytics\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream_results\&quot;], \&quot;Type\&quot;: \&quot;zmq_tcp\&quot;}]}, \&quot;/EtcdUI/config\&quot;: {}, \&quot;/EtcdUI/interfaces\&quot;: {}, \&quot;/GlobalEnv/\&quot;: {\&quot;C_LOG_LEVEL\&quot;: \&quot;DEBUG\&quot;, \&quot;ETCD_KEEPER_PORT\&quot;: \&quot;7070\&quot;, \&quot;GO_LOG_LEVEL\&quot;: \&quot;INFO\&quot;, \&quot;GO_VERBOSE\&quot;: \&quot;0\&quot;, \&quot;PY_LOG_LEVEL\&quot;: \&quot;DEBUG\&quot;}, \&quot;/VideoAnalytics/config\&quot;: {\&quot;encoding\&quot;: {\&quot;level\&quot;: 95, \&quot;type\&quot;: \&quot;jpeg\&quot;}, \&quot;max_jobs\&quot;: 20, \&quot;max_workers\&quot;: 4, \&quot;queue_size\&quot;: 10, \&quot;udfs\&quot;: [{\&quot;device\&quot;: \&quot;CPU\&quot;, \&quot;model_bin\&quot;: \&quot;common/udfs/python/pcb/ref/model_2.bin\&quot;, \&quot;model_xml\&quot;: \&quot;common/udfs/python/pcb/ref/model_2.xml\&quot;, \&quot;name\&quot;: \&quot;pcb.pcb_classifier\&quot;, \&quot;ref_config_roi\&quot;: \&quot;common/udfs/python/pcb/ref/roi_2.json\&quot;, \&quot;ref_img\&quot;: \&quot;common/udfs/python/pcb/ref/ref.png\&quot;, \&quot;type\&quot;: \&quot;python\&quot;}]}, \&quot;/VideoAnalytics/interfaces\&quot;: {\&quot;Publishers\&quot;: [{\&quot;AllowedClients\&quot;: [\&quot;*\&quot;], \&quot;EndPoint\&quot;: \&quot;0.0.0.0:65013\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream_results\&quot;], \&quot;Type\&quot;: \&quot;zmq_tcp\&quot;}], \&quot;Subscribers\&quot;: [{\&quot;EndPoint\&quot;: \&quot;/EII/sockets\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;PublisherAppName\&quot;: \&quot;VideoIngestion\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream\&quot;], \&quot;Type\&quot;: \&quot;zmq_ipc\&quot;, \&quot;zmq_recv_hwm\&quot;: 50}]}, \&quot;/VideoIngestion/config\&quot;: {\&quot;encoding\&quot;: {\&quot;level\&quot;: 95, \&quot;type\&quot;: \&quot;jpeg\&quot;}, \&quot;ingestor\&quot;: {\&quot;loop_video\&quot;: true, \&quot;pipeline\&quot;: \&quot;./test_videos/pcb_d2000.avi\&quot;, \&quot;poll_interval\&quot;: 0.2, \&quot;queue_size\&quot;: 10, \&quot;type\&quot;: \&quot;opencv\&quot;}, \&quot;max_jobs\&quot;: 20, \&quot;max_workers\&quot;: 4, \&quot;sw_trigger\&quot;: {\&quot;init_state\&quot;: \&quot;running\&quot;}, \&quot;udfs\&quot;: [{\&quot;n_left_px\&quot;: 1000, \&quot;n_right_px\&quot;: 1000, \&quot;n_total_px\&quot;: 300000, \&quot;name\&quot;: \&quot;pcb.pcb_filter\&quot;, \&quot;scale_ratio\&quot;: 4, \&quot;training_mode\&quot;: \&quot;false\&quot;, \&quot;type\&quot;: \&quot;python\&quot;}]}, \&quot;/VideoIngestion/interfaces\&quot;: {\&quot;Publishers\&quot;: [{\&quot;AllowedClients\&quot;: [\&quot;VideoAnalytics\&quot;, \&quot;Visualizer\&quot;, \&quot;WebVisualizer\&quot;, \&quot;TLSRemoteAgent\&quot;, \&quot;RestDataExport\&quot;], \&quot;EndPoint\&quot;: \&quot;/EII/sockets\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream\&quot;], \&quot;Type\&quot;: \&quot;zmq_ipc\&quot;}], \&quot;Servers\&quot;: [{\&quot;AllowedClients\&quot;: [\&quot;*\&quot;], \&quot;EndPoint\&quot;: \&quot;127.0.0.1:66013\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;Type\&quot;: \&quot;zmq_tcp\&quot;}]}}&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>See the <code class="docutils literal notranslate"><span class="pre">modules/AzureBridge/config_schema.json</span></code> for the full JSON schema
+for the digital twin of the Azure Bridge module.</p>
+</div></blockquote>
+<p>Each key in the configuration above is described in the table below.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">log_level</span></code></p></td>
+<td><p>This is the logging level for the Azure Bridge module, must be INFO, DEBUG, WARN, or ERROR</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">topics</span></code></p></td>
+<td><p>Configuration for the topics to map from the EII Message Bus into the Azure IoT Edge Runtime</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">eii_config</span></code></p></td>
+<td><p>Entire serialized configuration for EII; this configuration will be placed in ETCD</p></td>
+</tr>
+</tbody>
+</table>
+<p>You will notice that the <code class="docutils literal notranslate"><span class="pre">eii_config</span></code> is a serialized JSON string. This is due
+to a limitation with the Azure IoT Edge Runtime. Currently, module digital twins
+do not support arrays; however, the EII configuration requires array support. To
+workaround this limitation, the EII configuration must be a serialized JSON
+string in the digital twin for the Azure Bridge module.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">topics</span></code> value is a JSON object, where each key is a topic from the EII Message
+Bus which will be re-published onto the Azure IoT Edge Runtime. The value for
+the topic key will be an additional JSON object, where there is one required
+key, <code class="docutils literal notranslate"><span class="pre">az_output_topic</span></code>, which is the topic on Azure IoT Edge Runtime to use and
+then an optional key, <code class="docutils literal notranslate"><span class="pre">az_blob_container_name</span></code>. This key specifies the Azure Blob
+Storage container to store the images from the EII video analytics pipeline in.
+If the <code class="docutils literal notranslate"><span class="pre">az_blob_container_name</span></code> key is not specified, then the images will
+not be saved.</p>
+<blockquote>
+<div><p><strong>IMPORTANT NOTE:</strong> “Container” in the Azure Blob Storage context is not
+referencing a Docker container, but rather a storage structure within the
+Azure Blob Storage instance running on your edge device. For more information
+on the data structure of Azure Blob Storage, see
+<a class="reference external" href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction#blob-storage-resources">this link</a>.</p>
+</div></blockquote>
+<p><strong>IMPORTANT NOTE</strong></p>
+<p>The Azure Blob Storage service places strict requirements on the name of the,
+“container”, under which it stores blobs. This impacts the value given for the
+<code class="docutils literal notranslate"><span class="pre">az_blob_container_name</span></code> configuration key. According to the Azure documentation,
+the name must a valid DNS name adhering to the following rules:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Container names must start or end with a letter or number, and can contain</dt><dd><p>only letters, numbers, and the dash (-) character.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Every dash (-) character must be immediately preceded and followed by a</dt><dd><p>letter or number; consecutive dashes are not permitted in container names.</p>
+</dd>
+</dl>
+</li>
+<li><p>All letters in a container name must be lowercase.</p></li>
+<li><p>Container names must be from 3 through 63 characters long.</p></li>
+</ul>
+<p>For more information on the name conventions/restrictions for Azure Blob Storage
+container names, see <a class="reference external" href="https://docs.microsoft.com/en-us/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata">this</a>
+page of the Azure documentation.</p>
+</div>
+<div class="section" id="id14">
+<h3>Sample EII ONNX UDF<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<p>EII provides a sample UDF which utilizes the ONNX RT to execute your machine learning /
+deep learning model. It also supports connecting to an AzureML Workspace to download
+the model and then run it. The source code for this UDF is in
+<code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/common/video/udfs/python/sample_onnx/</span></code>, please also refer
+<code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">ONNX</span> <span class="pre">UDF</span></code> section in <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/common/video/udfs/README.html</span></code> for doing
+the required configuration for running this UDF.</p>
+<p>To use this UDF with EII, you need to modify your <code class="docutils literal notranslate"><span class="pre">build/provision/config/eii_config.json</span></code>
+configuration file to run the UDF in either your Video Ingesiton or Video Analytics
+instance. Then, you need to modify the environmental variables in the <code class="docutils literal notranslate"><span class="pre">AzureBridge/.env</span></code>
+file to provide the connection information to enable the UDF to download your
+model from AzureML. Make sure to follow the instructions provided in the
+<a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml">Setting up AzureML</a> section above to configure your
+workspace correctly so that the UDF can download your model.</p>
+<p>The sample ONNX UDF requires that the following configuration values be set for
+the UDF in your <code class="docutils literal notranslate"><span class="pre">eii_config.json</span></code> file:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">aml_ws</span></code></p></td>
+<td><p>AzureML workspace name</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">aml_subscription_id</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">subscriptionId</span></code> saved from creating the Service Principal Authentication</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">model_name</span></code></p></td>
+<td><p>Name of the model in your AzureML workspace</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">download_mode</span></code></p></td>
+<td><p>Whether or not to attempt to download the model</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">download_mode</span></code> is <code class="docutils literal notranslate"><span class="pre">false</span></code>, then it expects the <code class="docutils literal notranslate"><span class="pre">model_name</span></code> to
+where the <code class="docutils literal notranslate"><span class="pre">*.onnx</span></code> model file is in the container.</p>
+</div>
+<p>This should be added into the <code class="docutils literal notranslate"><span class="pre">udfs</span></code> list for your Video Ingestion or Video Analytics
+instance you wish to have run the UDF. The configuration should look similar to
+the following:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="c1">// ... omited rest of EII configuration ...</span>
+
+    <span class="s2">&quot;udfs&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;sample_onnx.onnx_udf&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;aml_ws&quot;</span><span class="o">:</span> <span class="s2">&quot;example-azureml-workspace&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;aml_subscription_id&quot;</span><span class="o">:</span> <span class="s2">&quot;subscription-id&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;model_name&quot;</span><span class="o">:</span> <span class="s2">&quot;example-model-name&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;download_model&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+
+    <span class="c1">// ... omited rest of EII configuration ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following environmental variables must be set in the <code class="docutils literal notranslate"><span class="pre">AzureBridge/.env</span></code> file
+in order to have the sample ONNX UDF download your model from an AzureML Workspace:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Setting</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AML_TENANT_ID</span></code></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">tenantId</span></code> saved in the Azure Cloud setup</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">AML_PRINCIPAL_ID</span></code></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">clientId</span></code> saved in the Azure Cloud setup</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AML_PRINCIPAL_PASS</span></code></p></td>
+<td><p>The <code class="docutils literal notranslate"><span class="pre">clientSecret</span></code> saved in the Azure Cloud setup</p></td>
+</tr>
+</tbody>
+</table>
+<p>It is important to note that for the <code class="docutils literal notranslate"><span class="pre">AML_PRINCIPAL_PASS</span></code> variable you must wrap the password
+in single quotes, i.e. <code class="docutils literal notranslate"><span class="pre">'</span></code>. Otherwise, there may be characters that get escaped in
+a weird way when the values are populated into your deployment manifest leading
+to configuration errors.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tenantId</span></code>, <code class="docutils literal notranslate"><span class="pre">clientId</span></code>, <code class="docutils literal notranslate"><span class="pre">clientSecret</span></code>, and <code class="docutils literal notranslate"><span class="pre">subscriptionId</span></code> should all have
+been obtained when following the instructions in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml">Setting up AzureML</a>
+section.</p>
+<p>Please run the below steps when the <code class="docutils literal notranslate"><span class="pre">sample_onnx</span></code> UDF is failing with error like
+<code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">provided</span> <span class="pre">client</span> <span class="pre">secret</span> <span class="pre">keys</span> <span class="pre">are</span> <span class="pre">expired.</span> <span class="pre">Visit</span> <span class="pre">the</span> <span class="pre">Azure</span> <span class="pre">Portal</span> <span class="pre">to</span> <span class="pre">create</span> <span class="pre">new</span> <span class="pre">keys</span> <span class="pre">for</span> <span class="pre">your</span> <span class="pre">app</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ az login
+$ az ad sp create-for-rbac --sdk-auth --name ml-auth
+</pre></div>
+</div>
+<p>The output of above command will be in json format. Please update the <code class="docutils literal notranslate"><span class="pre">AML_</span></code> env variables in <code class="docutils literal notranslate"><span class="pre">AzureBridge/.env</span></code>
+as per above table and follow the steps <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#step-3---configuring-azure-iot-deployment-manifest">Step 3</a> and
+<a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#step-4---deployment">Step 4</a> to see the <code class="docutils literal notranslate"><span class="pre">sample_onnx</span></code> UDF working fine.</p>
+<p><strong>IMPORTANT NOTE:</strong></p>
+<p>If your system is behind a proxy, you may run into an issue where the download of
+your ONNX model from AzureML times out. This may happen even if the proxy is set
+globally for Docker on your system. To fix this, update your deployment manifest
+template so that the Video Ingestion and/or Video Analytics containers have
+the <code class="docutils literal notranslate"><span class="pre">http_proxy</span></code> and <code class="docutils literal notranslate"><span class="pre">https_proxy</span></code> values set. The manifest should look something
+like the following:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="c1">// ... omitted ...</span>
+
+    <span class="s2">&quot;modules&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ia_video_ingestion&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="c1">// ... omitted ...</span>
+
+            <span class="s2">&quot;settings&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;createOptions&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;Env&quot;</span><span class="o">:</span> <span class="p">[</span>
+                        <span class="c1">// ... omitted ...</span>
+
+                        <span class="s2">&quot;http_proxy=&lt;YOUR PROXY&gt;&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;https_proxy=&lt;YOUR PROXY&gt;&quot;</span><span class="p">,</span>
+
+                        <span class="c1">// ... omitted ...</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="c1">// ... omitted ...</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ... omitted ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="simple-subscriber">
+<h3>Simple Subscriber<a class="headerlink" href="#simple-subscriber" title="Permalink to this headline">¶</a></h3>
+<p>The Simple Subscriber module provided with the Azure Bridge is a very simple
+service which only receives messages over the Azure IoT Edge Runtime and prints
+them to stdout. As such, there is no digital twin required for this module. The
+only configuration required is that a route be established in the Azure IoT Edge
+Runtime from the Azure Bridge module to the Simple Subscriber module. This
+routewill look something like the following in your deployment manifest:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;$schema-template&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;modulesContent&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">// ... omitted for brevity ...</span>
+
+        <span class="s2">&quot;$edgeHub&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;properties.desired&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;schemaVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;routes&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;BridgeToSimpleSubscriber&quot;</span><span class="o">:</span> <span class="s2">&quot;FROM /messages/modules/AzureBridge/outputs/camera1_stream INTO BrokeredEndpoint(\&quot;/modules/SimpleSubscriber/inputs/input1\&quot;)&quot;</span>
+                <span class="p">},</span>
+                <span class="s2">&quot;storeAndForwardConfiguration&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;timeToLiveSecs&quot;</span><span class="o">:</span> <span class="mi">7200</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="c1">// ... omitted for brevity ...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>For more information on establishing routes in the Azure IoT Edge Runtime,
+see <a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/module-composition#declare-routes">this documentation</a>.</p>
+</div>
+<div class="section" id="eii-etcd-pre-load">
+<h3>EII ETCD Pre-Load<a class="headerlink" href="#eii-etcd-pre-load" title="Permalink to this headline">¶</a></h3>
+<p>The configuration for EII is given to the Azure Bridge via the <code class="docutils literal notranslate"><span class="pre">eii_config</span></code>
+key in the module’s digital twin. As specified in the Azure Bridge configuration
+section, this must be a serialized string. For the scripts included with the
+Azure Bridge for generating your deployment manifest the ETCD pre-load
+configuration is stored at <code class="docutils literal notranslate"><span class="pre">config/eii_config.json</span></code>. See the EII documentation
+for more information on populating this file with your desired EII configuration.
+The helper scripts will automatically serialize this JSON file and add it to your
+deployment manifest.</p>
+</div>
+<div class="section" id="azure-blob-storage">
+<h3>Azure Blob Storage<a class="headerlink" href="#azure-blob-storage" title="Permalink to this headline">¶</a></h3>
+<p>The Azure Bridge enables to use of the Azure Blob Storage edge IoT service
+from Microsoft. This service can be used to save images from EII into the blob
+storage.</p>
+<p>If you wish to have the Azure Blob Storage service save the images to your
+host filesystem, then you must do the following:</p>
+<ol class="arabic">
+<li><dl class="simple">
+<dt>Create the directory to save the data on your host filesystem, it is recommended</dt><dd><p>to use the following commands:</p>
+</dd>
+</dl>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo mkdir /opt/intel/eii/data/azure-blob-storage
+$ sudo chown eiiuser:eiiuser /opt/intel/eii/data/azure-blob-storage
+</pre></div>
+</div>
+</li>
+<li><dl class="simple">
+<dt>Next, modify your deployment manifest to alter the bind location which the</dt><dd><p>Azure Blob Storage service uses. To do this, open your <code class="docutils literal notranslate"><span class="pre">*.template.json</span></code> file.
+Provided you specified the Azure Blob Storage service, you should see something
+like the following in your deployment manifest template:</p>
+</dd>
+</dl>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>   {
+       &quot;AzureBlobStorageonIoTEdge&quot;: {
+           &quot;type&quot;: &quot;docker&quot;,
+           &quot;status&quot;: &quot;running&quot;,
+           &quot;restartPolicy&quot;: &quot;always&quot;,
+           &quot;version&quot;: &quot;1.0&quot;,
+           &quot;settings&quot;: {
+               &quot;image&quot;: &quot;mcr.microsoft.com/azure-blob-storage&quot;,
+               &quot;createOptions&quot;: {
+                   &quot;User&quot;: &quot;${EII_UID}&quot;,
+                   &quot;Env&quot;: [
+                       &quot;LOCAL_STORAGE_ACCOUNT_NAME=$AZ_BLOB_STORAGE_ACCOUNT_NAME&quot;,
+                       &quot;LOCAL_STORAGE_ACCOUNT_KEY=$AZ_BLOB_STORAGE_ACCOUNT_KEY&quot;
+                   ],
+                   &quot;HostConfig&quot;: {
+                       &quot;Binds&quot;: [
+                           &quot;az-blob-storage-volume:/blobroot&quot;
+                       ]
+                   }
+               }
+           }
+       }
+   }
+
+Change the ``Binds`` location to the following:
+</pre></div>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>   <span class="p">{</span>
+       <span class="s2">&quot;AzureBlobStorageonIoTEdge&quot;</span><span class="o">:</span> <span class="p">{</span>
+           <span class="c1">// ... omitted ...</span>
+           <span class="s2">&quot;settings&quot;</span><span class="o">:</span> <span class="p">{</span>
+               <span class="s2">&quot;createOptions&quot;</span><span class="o">:</span> <span class="p">{</span>
+                   <span class="c1">// ... omitted ...</span>
+                   <span class="s2">&quot;HostConfig&quot;</span><span class="o">:</span> <span class="p">{</span>
+                       <span class="s2">&quot;Binds&quot;</span><span class="o">:</span> <span class="p">[</span>
+                           <span class="s2">&quot;/opt/intel/eii/data/azure-blob-storage/:/blobroot&quot;</span>
+                       <span class="p">]</span>
+                   <span class="p">}</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+       <span class="p">}</span>
+   <span class="p">}</span>
+
+<span class="nx">Make</span> <span class="nx">sure</span> <span class="nx">to</span> <span class="nx">run</span> <span class="nx">the</span> <span class="sb">``</span><span class="nx">iotedgedev</span> <span class="nx">geoncfig</span> <span class="o">-</span><span class="nx">f</span> <span class="o">&lt;</span><span class="nx">manifest</span><span class="o">-</span><span class="nx">template</span><span class="o">&gt;</span><span class="sb">``</span> <span class="nx">command</span>
+<span class="k">for</span> <span class="nx">the</span> <span class="nx">changes</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">applied</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">actual</span> <span class="nx">deployment</span> <span class="nx">manifest</span><span class="p">.</span>
+
+<span class="nx">When</span> <span class="nx">you</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">Azure</span> <span class="nx">Bridge</span> <span class="nx">where</span> <span class="nx">it</span> <span class="nx">is</span> <span class="nx">configured</span> <span class="nx">to</span> <span class="nx">save</span> <span class="nx">the</span> <span class="nx">images</span> <span class="nx">into</span>
+<span class="nx">an</span> <span class="nx">Azure</span> <span class="nx">Blob</span> <span class="nx">Storage</span> <span class="nx">instance</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">should</span> <span class="nx">see</span> <span class="nx">the</span> <span class="nx">images</span> <span class="nx">by</span> <span class="nx">running</span> <span class="nx">the</span>
+<span class="nx">following</span> <span class="nx">command</span><span class="o">:</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>   $ sudo ls -l /opt/intel/eii/data/azure-blob-storage/BlockBlob/
+
+In that directory, you will see a folder <span class="k">for</span> each container. Inside that directory
+will be the individually saved images.
+</pre></div>
+</div>
+</li>
+</ol>
+<p>For more information on configuring your Azure Blob Storage instance at the
+edge, see the documentation for the service <a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/how-to-store-data-blob">here</a>.</p>
+<p>Also see <a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-blob">this guide</a>
+as well.</p>
+</div>
+<div class="section" id="azure-deployment-manifest">
+<h3>Azure Deployment Manifest<a class="headerlink" href="#azure-deployment-manifest" title="Permalink to this headline">¶</a></h3>
+<p>For more information on creating / modifying Azure IoT Hub deployment manifests,
+see <a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/module-composition">this guide</a>.</p>
+</div>
+</div>
+<div class="section" id="azure-iot-edge-simulator">
+<h2>Azure IoT Edge Simulator<a class="headerlink" href="#azure-iot-edge-simulator" title="Permalink to this headline">¶</a></h2>
+<p>Microsoft provides a simluator for the Azure IoT Edge Runtime. During the
+setup of your development system (covered in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a>
+section), the simulator is automatically installed on your system.</p>
+<p>Additionally, the Azure Bridge provides the <code class="docutils literal notranslate"><span class="pre">./tools/run-simulator.sh</span></code> script
+to easily use the simulator with the bridge.</p>
+<p>To do this, follow steps 1 - 3 in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a>
+section above. Then, instead of step 4, run the following command to setup
+the simulator:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo env <span class="s2">&quot;PATH=</span><span class="nv">$PATH</span><span class="s2">&quot;</span> iotedgehubdev setup -c <span class="s2">&quot;&lt;edge-device-connection-string&gt;&quot;</span>
+</pre></div>
+</div>
+<p><strong>NOTE:</strong> The <code class="docutils literal notranslate"><span class="pre">env</span> <span class="pre">&quot;PATH=$PATH&quot;</span></code> above ensures that the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> env variable set in
+the regular user context gets exported to <code class="docutils literal notranslate"><span class="pre">sudo</span></code> environment.</p>
+<p>Next, start the simulator with your deployment manifest template using the
+following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ./tools/run-simulator.sh ./example.template.json
+</pre></div>
+</div>
+<p>If everything is running smoothly, you should see messages being printed in the
+Simple Subscriber service using the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ docker logs -f SimpleSubscriber
+</pre></div>
+</div>
+<p><strong>IMPORTANT NOTE:</strong></p>
+<p>You <em>cannot</em> run both the Azure IoT Edge Runtime and the simulator simultaneously
+on the same system. If you are using the same system, first stop the Azure IoT Edge
+Runtime daemon with the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo iotedge system stop
+</pre></div>
+</div>
+<p>Then, run the simulator as specified above.</p>
+</div>
+<div class="section" id="id22">
+<h2>Supported EII Services<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<p>Below is a list of services supported by the Azure Bridge:</p>
+<ul class="simple">
+<li><p>Video Ingestion</p></li>
+<li><p>Video Analytics</p></li>
+</ul>
+</div>
+<div class="section" id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<p>For more resources on Azure IoT Hub and Azure IoT Edge, see the following
+references:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-hub/">Azure IoT Hub</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/">Azure IoT Edge</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-and-where">How to Deploy AzureML Models</a></p></li>
+<li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/machine-learning/tutorial-1st-experiment-sdk-train">AzureML Tutorial: Train your first ML Model</a></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,350 @@
+
+Using video accelerators in ingestion/analytics containers
+----------------------------------------------------------
+
+EII supports running inference on ``CPU``\ , ``GPU``\ , ``MYRIAD``\ (NCS2), and ``HDDL`` devices by accepting ``device`` value ("CPU"|"GPU"|"MYRIAD"|"HDDL"), part of the ``udf`` object configuration in ``udfs``
+key. The ``device`` field in UDF config of ``udfs`` key in ``VideoIngestion`` and ``VideoAnalytics`` configs can either be changed in the ``build/provision/config/eii_config.json``
+before provisioning (or re-provision it again after the change to the apps config.json, re-running ``builder.py`` script and then re-running the provisioning script) or at run-time via EtcdUI. For more details on the udfs config,
+check `common/udfs/README.md <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_.
+
+.. note:: 
+   There is an initial delay of upto ~30s while running inference on ``GPU`` (only for the first frame) as dynamically certain packages get created during runtime.
+
+
+**To run on USB devices**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For actual deployment in case USB camera is required then mount the device node of the USB camera for ``ia_video_ingestion`` service. When multiple USB cameras are connected to host m/c the required camera should be identified with the device node and mounted.
+
+Eg: Mount the two USB cameras connected to the host m/c with device node as ``video0`` and ``video1``
+
+.. code-block:: yaml
+
+     ia_video_ingestion:
+       ...
+       devices:
+         - "/dev/dri"
+         - "/dev/video0:/dev/video0"
+         - "/dev/video1:/dev/video1"
+
+.. note:: 
+   /dev/dri is needed for Graphic drivers
+
+
+**To run on MYRIAD devices**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* 
+  To run inference on ``MYRIAD`` device ``root`` user permissions needs to be used at runtime. To enable root user at runtime in either ``ia_video_ingestion``\ , ``ia_video_analytics`` or any of the custom udf services add ``user: root`` command in the respective docker-compose.yml file.
+
+  Eg: To use ``MYRAID`` device in ``ia_video_analytics`` service refer the below example
+
+  .. code-block:: yaml
+
+      ia_video_analytics:
+        ...
+        user: root
+
+* 
+  **Troubleshooting issues for MYRIAD(NCS2) devices**
+
+
+  * 
+    Following is an workaround can be excercised if in case user observes ``NC_ERROR`` during device initialization of NCS2 stick.
+    While running EII if NCS2 devices failed to initialize properly then user can re-plug the device for the init to happen freshly.
+    User can verify the successfull initialization by executing ***dmesg**** & **\ *lsusb*\ **  as below:
+
+    .. code-block:: sh
+
+       lsusb | grep "03e7" (03e7 is the VendorID and 2485 is one of the  productID for MyriadX)
+
+    ```sh
+    dmesg > dmesg.txt
+    [ 3818.214919] usb 3-4: new high-speed USB device number 10 using xhci_hcd
+    [ 3818.363542] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
+    [ 3818.363546] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+    [ 3818.363548] usb 3-4: Product: Movidius MyriadX
+    [ 3818.363550] usb 3-4: Manufacturer: Movidius Ltd.
+    [ 3818.363552] usb 3-4: SerialNumber: 03e72485
+    [ 3829.153556] usb 3-4: USB disconnect, device number 10
+    [ 3831.134804] usb 3-4: new high-speed USB device number 11 using xhci_hcd
+    [ 3831.283430] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
+    [ 3831.283433] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+    [ 3831.283436] usb 3-4: Product: Movidius MyriadX
+    [ 3831.283438] usb 3-4: Manufacturer: Movidius Ltd.
+    [ 3831.283439] usb 3-4: SerialNumber: 03e72485
+    [ 3906.460590] usb 3-4: USB disconnect, device number 11
+
+  * 
+    The below link can be referred in case user observes ``global mutex initialization failed`` during device initialization of NCS2 stick
+    https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html
+
+**To run on HDDL devices**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* 
+  Download the full package for OpenVINO toolkit for Linux version "2021.4"
+  (\ ``OPENVINO_IMAGE_VERSION`` used in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_\ ) from the official website
+  (https://software.intel.com/en-us/openvino-toolkit/choose-download/free-download-linux).
+  Please refer to the OpenVINO links below for to install and running the HDDL daemon on host.
+
+
+  #. OpenVINO install:
+     https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux.html#install-openvino
+  #. 
+     HDDL daemon setup:
+     https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux_ivad_vpu.html
+
+     **NOTE**\ :
+     -------------
+
+
+     * 
+       OpenVINO 2021.4 installation creates a symbolic link to latest installation with
+       filename as ``openvino_2021`` instead of ``openvino``. Hence one can create a symbolic link with filename as ``openvino`` to the latest installation using the below steps.
+
+       .. code-block:: sh
+
+          $ cd /opt/intel
+          $ sudo ln -s <OpenVINO latest installation> openvino
+
+       Eg: sudo ln -s openvino_2021.4.582 openvino
+
+       In case there are older versions of OpenVINO installed on the host system please un-install them.
+
+  #. 
+     Running hddldaemon:
+     Refer the below command to run the hddldaemon once the setup is done(it should run in a different terminal or in the background on the host system where inference would be done)
+
+     .. code-block:: sh
+
+        $ source /opt/intel/openvino/bin/setupvars.sh
+        $ $HDDL_INSTALL_DIR/bin/hddldaemon
+
+  #. Changing ownership of hddl files on host system.
+     Before running inference with EII, ownership of hddl files should be changed to the value of ``EII_USER_NAME`` key set in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_.
+     Refer the below command to set the ownership of hddl files on the host system.\ ``EII_USER_NAME=eiiuser`` in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_.
+     .. code-block::
+
+        $ sudo chown -R eiiuser /var/tmp/hddl_*
+
+
+  * 
+    For actual deployment one could choose to mount only the required devices for
+    services using OpenVINO with HDDL (\ ``ia_video_analytics`` or ``ia_video_ingestion``\ ) in ``build/docker-compose.yml``.
+
+    Eg: Mount only the Graphics and HDDL ion device for ``ia_video_anaytics`` service
+
+    .. code-block::
+
+         ia_video_analytics:
+           ...
+           devices:
+                   - "/dev/dri"
+                   - "/dev/ion:/dev/ion"
+
+  * 
+    **Troubleshooting issues for HDDL devices**
+
+
+    * 
+      Please verify the hddldaemon started on host m/c to verify if it is using the libraries of the correct OpenVINO version used in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_. One could enable the ``device_snapshot_mode`` to ``full`` in $HDDL_INSTALL_DIR/config/hddl_service.config on host m/c to get the complete snapshot of the hddl device.
+
+    * 
+      Please refer OpenVINO 2021.4 release notes in the below link for new features and changes from the previous versions.
+      https://software.intel.com/content/www/us/en/develop/articles/openvino-relnotes.html
+
+    * 
+      Refer OpenVINO website in the below link to skim through known issues, limitations and troubleshooting
+      https://docs.openvinotoolkit.org/2021.4/index.html
+      ### **To run on Intel(R) Processor Graphics (GPU/iGPU)**
+
+  ..
+
+     **Note**
+     The below step is required only for 11th gen Intel Processors
+
+
+  Upgrade the kernel version to 5.8 and install the required drivers from the below OpenVINO link:
+  https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps
+
+Custom Udfs
+-----------
+
+The following are the two Custom Udfs workflow which EII supports:
+
+
+#. 
+   Build / Run custom udfs as standalone applications
+
+   For running custom udfs as standalone application one must download the video-custom-udfs repo and refer `CustomUdfs/README.md <https://github.com/open-edge-insights/video-custom-udfs/blob/master/README.md>`_
+
+#. 
+   Build / Run custom udfs in VI or VA
+
+   For running custom udfs either in VI or VA one must refer `VideoIngestion/docs/custom_udfs_doc.md <https://github.com/open-edge-insights/video-ingestion/blob/master/docs/custom_udfs_doc.md>`_
+
+Time-series Analytics
+=====================
+
+For time-series data, a sample analytics flow uses Telegraf for ingestion, Influx DB for storage and Kapacitor for classification. This is demonstrated with an MQTT based ingestion of sample temperature sensor data and analytics with a Kapacitor UDF which does threshold detection on the input values.
+
+The services mentioned in `build/usecases/time-series.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/time-series.yml>`_ will be available in the consolidated ``build/docker-compose.yml`` and consolidated ``build/provision/config/eii_config.json`` of the EII stack for timeseries use case when built via ``builder.py`` as called out in previous steps.
+
+This will enable building of Telegraf and the Kapacitor based analytics containers.
+More details on enabling this mode can be referred from `Kapacitor/README.md <https://github.com/open-edge-insights/ts-kapacitor/blob/master/README.md>`_
+
+The sample temperature sensor can be simulated using the `tools/mqtt/README.md <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/README.md>`_ application.
+
+EII multi node cluster provision and deployment
+===============================================
+
+**Without orchestrator**
+----------------------------
+
+By default EII is provisioned with single node cluster.
+
+One of the below options could be tried out:
+
+
+* [\ ``Recommended``\ ] For deploying through ansible playbook on multiple nodes automatically, please refer `build/ansible/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/ansible/README.md#updating-the-eii-source-folder-usecase--proxy-settings-in-group-variables>`_
+* In order to deploy EII on multiple nodes using docker registry and provision ETCD, please follow `build/deploy/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/deploy/README.md>`_.
+
+**With k8s orchestrator**
+-----------------------------
+
+One of the below options could be tried out:
+
+
+* [\ ``Recommended``\ ] For deploying through ansible playbook on multiple nodes automatically, please refer `build/ansible/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/ansible/README.md##deploying-eii-using-helm-in-kubernetes-k8s-environment>`_
+* Please refer `build/helm-eii/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/helm-eii/README.md>`_ on using helm charts to provision the node and
+  deploy EII services
+
+EII tools
+=========
+
+EII stack has below set of tools which run as containers too:
+
+
+* Benchmarking
+
+  * `Video Benchmarking <https://github.com/open-edge-insights/eii-tools/blob/master/Benchmarking/video-benchmarking-tool/README.md>`_
+  * `Time-series Benchmarking <https://github.com/open-edge-insights/eii-tools/blob/master/Benchmarking/time-series-benchmarking-tool/README.md>`_
+
+* `DiscoverHistory <https://github.com/open-edge-insights/eii-tools/blob/master/DiscoverHistory/README.md>`_
+* `EmbPublisher <https://github.com/open-edge-insights/eii-tools/blob/master/EmbPublisher/README.md>`_
+* `EmbSubscriber <https://github.com/open-edge-insights/eii-tools/blob/master/EmbSubscriber/README.md>`_
+* `GigEConfig <https://github.com/open-edge-insights/eii-tools/blob/master/GigEConfig/README.md>`_
+* `HttpTestServer <https://github.com/open-edge-insights/eii-tools/blob/master/HttpTestServer/README.md>`_
+* `JupyterNotebook <https://github.com/open-edge-insights/eii-tools/blob/master/JupyterNotebook/README.md>`_
+* `mqtt <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/README.md>`_
+* `SWTriggerUtility <https://github.com/open-edge-insights/eii-tools/blob/master/SWTriggerUtility/README.md>`_
+* `TimeSeriesProfiler <https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/README.md>`_
+* `VideoProfiler <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/README.md>`_
+
+EII Uninstaller
+===============
+
+The uninstaller script automates the removal of all the EII Docker configuration installed on a system. This uninstaller will perform the following tasks:
+
+
+#. **Stops and removes all EII running and stopped containers**
+#. **Removes all EII docker volumes**
+#. **Removes all EII docker images [Optional]**
+#. **Removes all EII install directory**
+
+Run the below commmand from ``[WORKDIR]/IEdgeInsights/build/`` directory.
+
+.. code-block:: sh
+
+   $ ./eii_uninstaller.sh -h
+   Usage: ./eii_uninstaller.sh [-h] [-d]
+
+    This script uninstalls previous EII version.
+    Where:
+       -h show the help
+       -d triggers the deletion of docker images (by default it will not trigger)
+
+    Example:
+     1) Deleting only EII Containers and Volumes
+       $ ./eii_uninstaller.sh
+
+     2) Deleting EII Containers, Volumes and Images
+       $ export EII_VERSION=2.4
+       $ ./eii_uninstaller.sh -d
+       above example will delete EII containers, volumes and all the docker images having 2.4 version.
+
+Debugging options
+=================
+
+
+#. 
+   To check if all the EII images are built successfully, use cmd: ``docker images|grep ia`` and
+   to check if all containers are running, use cmd: ``docker ps`` (\ ``one should see all the dependency containers and EII containers up and running``\ ). If you see issues where the build is failing due to non-reachability to Internet, please ensure you have correctly configured proxy settings and restarted docker service. Even after doing this, if you are running into the same issue, please add below instrcutions to all the dockerfiles in ``build\dockerfiles`` at the top after the LABEL instruction and retry the building EII images:
+
+   .. code-block:: sh
+
+       ENV http_proxy http://proxy.iind.intel.com:911
+       ENV https_proxy http://proxy.iind.intel.com:911
+
+#. 
+   ``docker ps`` should list all the enabled containers which are included in docker-compose.yml
+
+#. 
+   To verify if the default video pipeline with EII is working fine i.e., from video ingestion->video analytics->visualizer, please check the visualizer UI
+
+#. 
+   ``/opt/intel/eii`` root directory gets created - This is the installation path for EII:
+
+
+   * ``data/`` - stores the backup data for persistent imagestore and influxdb
+   * ``sockets/`` - stores the IPC ZMQ socket files
+
+----
+
+**Note**\ :
+
+
+#. 
+   Few useful docker-compose and docker commands:
+
+
+   * ``docker-compose -f docker-compose-build.yml build`` - builds all the service containers. To build a single service container, use ``docker-compose -f docker-compose-build.yml build [serv_cont_name]``
+   * ``docker-compose down`` - stops and removes the service containers
+   * ``docker-compose up -d`` - brings up the service containers by picking the changes done in ``docker-compose.yml``
+   * ``docker ps`` - check running containers
+   * ``docker ps -a`` - check running and stopped containers
+   * ``docker stop $(docker ps -a -q)`` - stops all the containers
+   * ``docker rm $(docker ps -a -q)`` - removes all the containers. Useful when you run into issue of already container is in use.
+   * `docker compose cli <https://docs.docker.com/compose/reference/overview/>`_
+   * `docker compose reference <https://docs.docker.com/compose/compose-file/>`_
+   * `docker cli <https://docs.docker.com/engine/reference/commandline/cli/#configuration-files>`_
+
+#. 
+   If you want to run the docker images separately i.e, one by one, run the command ``docker-compose run --no-deps [service_cont_name]`` Eg: ``docker-compose run --name ia_video_ingestion --no-deps      ia_video_ingestion`` to run VI container and the switch ``--no-deps`` will not bring up it's dependencies mentioned in the docker-compose file. If the container is not launching, there could be
+   some issue with entrypoint program which could be overrided by providing this extra switch ``--entrypoint /bin/bash`` before the service container name in the docker-compose run command above, this would let one inside the container and run the actual entrypoint program from the container's terminal to rootcause the issue. If the container is running and one wants to get inside, use cmd: ``docker-compose exec [service_cont_name] /bin/bash`` or ``docker exec -it [cont_name] /bin/bash``
+
+#. 
+   Best way to check logs of containers is to use command: ``docker logs -f [cont_name]``. If one wants to see all the docker-compose service container logs at once, then just run
+   ``docker-compose logs -f``
+
+----
+
+Troubleshooting guide
+=====================
+
+
+#. Please refer to `TROUBLESHOOT.md <https://github.com/open-edge-insights/eii-core/blob/master/TROUBLESHOOT.md>`_ guide for any troubleshooting tips related to EII configuration and installation
+#. 
+   If any issues are observed w.r.t the python package installation then manually install the python packages as shown below :
+
+   **Note**\ : It is highly recommended that you use a python virtual environment to install the python packages, so that the system python installation doesn't get
+   altered. Details on setting up and using python virtual environment can be found here: https://www.geeksforgeeks.org/python-virtual-environment/
+
+   .. code-block:: sh
+
+       $ cd [WORKDIR]/IEdgeInsights/build
+       # Install requirements for builder.py
+       $ pip3 install -r requirements.txt

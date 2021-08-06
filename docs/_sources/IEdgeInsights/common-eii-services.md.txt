@@ -1,0 +1,7 @@
+## Common EII services
+
+1. [EtcdUI](EtcdUI/README.md)
+2. [InfluxDBConnector](InfluxDBConnector/README.md)
+3. [OpcuaExport](OpcuaExport/README.md) - Optional service to read from VideoAnalytics container to publish data to opcua clients
+4. [RestDataExport](RestDataExport/README.md) - Optional service to read the metadata and image blob from InfluxDBConnector and ImageStore services respectively
+

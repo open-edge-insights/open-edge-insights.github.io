@@ -1,0 +1,38 @@
+## Prerequisite step needed for all the control/worker nodes.
+### Generate SSH KEY for all nodes
+
+Generate the SSH KEY for all nodes using following command (to be executed in the only control node), ignore to run this command if you already have ssh keys generated in your system without id and passphrase,
+
+```sh
+    $ ssh-keygen
+```
+> **Note**:
+>   * Dont give any passphrase and id, just press `Enter` for all the prompt which will generate the key.
+
+For Eg.
+```sh
+$ ssh-keygen
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):  <ENTER>
+Enter passphrase (empty for no passphrase):  <ENTER>
+Enter same passphrase again:  <ENTER>
+Your identification has been saved in ~/.ssh/id_rsa.
+Your public key has been saved in ~/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:vlcKVU8Tj8nxdDXTW6AHdAgqaM/35s2doon76uYpNA0 root@host
+The key's randomart image is:
++---[RSA 2048]----+
+|          .oo.==*|
+|     .   .  o=oB*|
+|    o . .  ..o=.=|
+|   . oE.  .  ... |
+|      ooS.       |
+|      ooo.  .    |
+|     . ...oo     |
+|      . .*o+.. . |
+|       =O==.o.o  |
++----[SHA256]-----+
+```
+
+

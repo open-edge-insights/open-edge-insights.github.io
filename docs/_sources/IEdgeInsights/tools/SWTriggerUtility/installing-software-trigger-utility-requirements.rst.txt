@@ -1,0 +1,6 @@
+
+Installing Software Trigger Utility requirements
+------------------------------------------------
+
+
+#. To install EII libs on bare-metal, follow the `README <http://localhost:7645/IEdgeInsights/common/README.html>`_ of eii_libs_installer.

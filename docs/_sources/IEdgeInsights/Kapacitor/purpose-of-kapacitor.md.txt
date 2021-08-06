@@ -1,0 +1,26 @@
+## Purpose of Kapacitor
+
+  About Kapacitor and UDF
+  * User can write the custom anomaly detection algorithm in PYTHON/GOLANG. And these algorithms will be called as
+    UDF (user-defined function). These algorithms have to follow certain API standards so that the Kapacitor will be able to
+    call these UDFs at run time.
+
+  * IEdgeInsights has come up with the sample UDF written in GOLANG. Kapacitor is subscribed to the InfluxDB, and
+    gets the temperature data. After getting this data, Kapacitor calls these UDF, which detects the anomaly in the temperature
+    and sends back the results to Influx.
+
+  * The sample Go UDF is at [go_classifier.go](udf/go_point_classifier.go) and
+    the tick script  is at [go_point_classifier.tick](TICK_script/go_point_classifier.tick)
+
+  * The sample Python UDF is at [py_classifier.py](udf/py_point_classifier.py) and
+    the tick script  is at [py_point_classifier.tick](TICK_script/py_point_classifier.tick)
+
+    For more details, on Kapacitor and UDF, please refer below links
+    i)  Writing a sample UDF at [anomaly detection](https://docs.influxdata.com/kapacitor/v1.5/guides/anomaly_detection/)
+    ii) UDF and kapacitor interaction [here](https://docs.influxdata.com/kapacitor/v1.5/guides/socket_udf/)
+
+  * In production mode the Kapacitor config file is
+    [Kapacitor/config/kapacitor.conf](./config/kapacitor.conf)
+    and in developer mode the config file would be
+    [Kapacitor/config/kapacitor_devmode.conf](./config/kapacitor_devmode.conf)
+

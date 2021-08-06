@@ -1,0 +1,76 @@
+
+Provisioning with k8s
+---------------------
+
+..
+
+   **Note:** If Provisioning of EII with k8s is already done under Multinode deployment, please skip it.
+
+
+   #. EII Deployment with k8s can be done in **PROD** & **DEV** mode.
+   #. For running EII in multi node, we have to identify one master node.For a master node ``ETCD_NAME`` in `build/.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/.env>`_ must be set to ``master``.
+   #. Please follow the `EII Pre-requisites <http://localhost:7645/IEdgeInsights/README.html#eii-pre-requisites>`_ before k8s Provisioning.
+
+
+
+* 
+  Please Update following Environment Variables in `build/.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/.env>`_
+
+
+  * HOST_IP           =     [masternodeip]
+  * ETCD_HOST         =     [masternodeip]
+  * ETCD_CLIENT_PORT  =     8379
+  * ETCD_PEER_PORT    =     8380
+
+* 
+  Please Update following Environment Variables in `build/provision/.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/.env>`_
+
+
+  * EII_LOCAL_PATH    =     [EII Source path]
+  * PROVISION_MODE    =     k8s
+
+Provisioning ``EII`` with ``k8s`` in ``DEV`` mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+..
+
+   **Note:** ``k8s_eii_deploy.yml`` file be generated in ``build/k8s`` directory by ``eiibuilder``.
+   Once 'DEV_MODE\ ``is updated. We should re-run``\ eiibuilder\ ``to generate
+   updated``\ build/k8s/k8s_eii_deploy.yml` file.
+     Please follow the `EII Pre-requisites <http://localhost:7645/IEdgeInsights/README.html#eii-pre-requisites>`_
+
+
+
+* 
+  Please Update ``DEV_MODE=true`` in `build/.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/.env>`_ file.
+
+* 
+  Provision with K8s.
+
+  .. code-block:: sh
+
+     $ sudo ./provision.sh <path_to_eii_docker_compose_file>
+
+     eq. $ sudo ./provision.sh ../docker-compose.yml
+
+  ### Provisioning ``EII`` with ``k8s`` in ``PROD`` mode
+
+  ..
+
+     **Note:** ``k8s_eii_deploy.yml`` file be generated in ``build/k8s`` directory by ``eiibuilder``.
+     Once 'DEV_MODE\ ``is updated. We should re-run``\ eiibuilder\ ``to generate
+     updated``\ build/k8s/k8s_eii_deploy.yml` file.
+     Please follow the `EII Pre-requisites <http://localhost:7645/IEdgeInsights/README.html#eii-pre-requisites>`_
+
+
+* 
+  Please Update ``DEV_MODE=false`` in `build/.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/.env>`_ file.
+
+* 
+  Provision with K8s.
+
+  .. code-block:: sh
+
+     $ sudo ./provision.sh <path_to_eii_docker_compose_file>
+
+     eq. $ sudo ./provision.sh ../docker-compose.yml

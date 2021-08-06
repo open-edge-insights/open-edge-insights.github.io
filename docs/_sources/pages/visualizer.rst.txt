@@ -1,0 +1,24 @@
+
+================
+Visualizer
+================
+
+.. include:: ../IEdgeInsights/Visualizer/native-visualizer-module.rst
+
+.. include:: ../IEdgeInsights/Visualizer/steps-to-build-and-run-visualizer.rst
+
+.. include:: ../IEdgeInsights/Visualizer/using-labels.rst
+
+.. include:: ../IEdgeInsights/Visualizer/metadata-structure.rst
+
+Web Visualizer
+==============
+
+.. include:: ../IEdgeInsights/WebVisualizer/web-visualizer-module.rst
+
+.. include:: ../IEdgeInsights/WebVisualizer/steps-to-build-and-run-web-visualizer.rst
+
+.. include:: ../IEdgeInsights/WebVisualizer/using-labels.rst
+
+
+

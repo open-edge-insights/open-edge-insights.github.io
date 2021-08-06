@@ -1,0 +1,18 @@
+## Compilation
+
+CMAKE_INSTALL_PREFIX needs to be set for the build and installation:
+
+```sh
+    $ export CMAKE_INSTALL_PREFIX="/opt/intel/eii"
+```
+
+The simplest sequence of commands for building the library are
+shown below.
+
+```sh
+$ mkdir build
+$ cd build
+$ cmake -DCMAKE_INSTALL_INCLUDEDIR=$CMAKE_INSTALL_PREFIX/include -DCMAKE_INSTALL_PREFIX=$CMAKE_INSTALL_PREFIX ..
+$ make
+```
+

@@ -1,0 +1,15 @@
+
+Clean
+-----
+
+To remove the program binaries and object files from the source code directory
+
+.. code-block::
+
+   $ make clean
+
+To also remove the files project Makefile that 'configure' created
+
+.. code-block::
+
+   $ make distclean

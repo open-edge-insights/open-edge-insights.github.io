@@ -1,0 +1,15 @@
+
+Purpose of plugins
+------------------
+
+  The plugins allow Kapacitor to interact directly with EII message bus. They use message bus publisher/subscriber
+  interface. Using these plugins Kapacitor can now receive data from various EII publishers and send data 
+  to various EII subscribers.
+  Hence, it's possible to have a time-series use case without InfluxDB and Kapacitor can act as
+  an independent analytical engine.
+
+  A simple use case flow can be:
+
+.. code-block::
+
+       MQTT-temp-sensor-->Telegraf-->Kapacitor-->TimeseriesProfiler

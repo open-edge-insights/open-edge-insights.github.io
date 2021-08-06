@@ -1,0 +1,28 @@
+## Updating the EII Source Folder, Usecase & Proxy Settings in Group Variables
+
+1. Open `group_vars/all.yml` file
+    ```sh
+        $ vi group_vars/all.yml
+    ```
+2. Update Proxy Settings
+    ```sh
+        enable_system_proxy: true
+        http_proxy: <proxy_server_details>
+        https_proxy: <proxy_server_details>
+        no_proxy: <managed_node ip>,<controller node ip>,<worker nodes ip>,localhost,127.0.0.1
+    ```
+3. Update the `usecase` variable, based on the usecase `builder.py` generates the EII deployment & config files.
+> **Note**:
+> 1. By default it will be `video-streaming`, For other usecases refer the `../usecases` folder and update only names without `.yml` extension
+> 2. `ia_kapacitor` and `ia_telegraf` container images are not distributed via docker hub, so one won't be able to pull these images
+>    for time-series use case upon using [../usecases/time-series.yml](../usecases/time-series.yml`) for deployment. For more details,
+>    refer: [../README.md#distribution-of-eii-container-images]> (../README.md#distribution-of-eii-container-images).
+
+    For Eg. If you want build & deploy for `../usecases/time-series.yml` update the `usecase` key value as `time-series`
+    ```sh
+        usecase: <time-series>
+    ```
+4. Optionally you can choose number of video pipeline instances to be created by updating `instances` variable
+5. Update other optional variables provided if required
+
+

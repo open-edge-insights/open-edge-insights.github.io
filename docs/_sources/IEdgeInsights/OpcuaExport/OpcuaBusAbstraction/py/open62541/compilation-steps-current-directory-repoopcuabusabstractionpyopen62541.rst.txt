@@ -1,0 +1,6 @@
+.. role:: raw-html-m2r(raw)
+   :format: html
+
+
+Compilation steps (current directory: :raw-html-m2r:`<repo>`\ /OpcuaBusAbstraction/py/open62541/):
+====================================================================================================

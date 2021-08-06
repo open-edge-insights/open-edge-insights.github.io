@@ -1,0 +1,39 @@
+
+Running C API examples
+----------------------
+
+
+#. 
+   Running the Publisher example:
+
+   .. code-block:: sh
+
+           $ ./pub_c
+
+#. 
+   Running the Subscriber example:
+
+   .. code-block:: sh
+
+           $ ./sub_c
+
+#. 
+   Running the Server example:
+
+   .. code-block:: sh
+
+           $ ./server_c
+
+#. 
+   Running the Client example:
+
+   .. code-block:: sh
+
+           $ ./client_c
+
+#. 
+   Running the KV store example:
+
+   .. code-block:: sh
+
+           $ ./kv_store_etcd ./etcd_kv_store_config.json

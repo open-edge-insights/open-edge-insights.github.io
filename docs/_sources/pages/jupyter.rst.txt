@@ -1,0 +1,9 @@
+=================================
+Custom UDF using Jupyter Notebook
+=================================
+
+.. include:: ../IEdgeInsights/tools/JupyterNotebook/jupyter-notebook-pre-requisites.rst
+
+.. include:: ../IEdgeInsights/tools/JupyterNotebook/running-jupyter-notebook.rst
+
+.. include:: ../IEdgeInsights/tools/JupyterNotebook/jupyter-notebook-usage-to-develop-python-udfs.rst

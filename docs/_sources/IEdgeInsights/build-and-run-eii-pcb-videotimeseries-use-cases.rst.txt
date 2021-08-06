@@ -1,0 +1,37 @@
+
+Build and Run EII PCB video/timeseries use cases
+================================================
+
+----
+
+..
+
+   **Note:**
+
+
+   * For running EII services in IPC mode, make sure that the same user should be there in publisher and subscriber.
+        If publisher is running as root (eg: VI, VA), then the subscriber also need to run as root.
+        In `docker-compose.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/docker-compose.yml>`_ if ``user: ${EII_UID}`` is in publisher service, then the
+        same ``user: ${EII_UID}`` has to be in subscriber service. If the publisher doesn't have the user specified like above,
+        then the subscriber service should not have that too.
+   * If services needs to be running in multiple nodes in TCP mode of communication, msgbus subscribers and clients of ``AppName`` are required to configure the "EndPoint" in config.json with HOST_IP and PORT under "Subscribers/Publishers" or "Clients/Servers" interfaces section.
+   * Make sure the PORT is being exposed in `docker-compose.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/docker-compose.yml>`_ of the respective ``AppName``
+       Eg: If the ``"EndPoint": <HOST_IP>:60012`` is configured in ``config.json``\ , then expose the port 60012 in `docker-compose.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/docker-compose.yml>`_ of the service ``ia_video_ingestion``
+
+
+.. code-block::
+
+   ```yaml
+     ia_video_ingestion:
+       ...
+       ports:
+         - 65012:65012
+   ```
+
+
+----
+
+All the below EII build and run commands needs to be executed from the ``[WORKDIR]/IEdgeInsights/build/`` directory.
+
+Below are the usecases supported by EII to bring up the respective services mentioned in the
+yaml file.

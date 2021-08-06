@@ -1,0 +1,10 @@
+## Video related services
+
+1. [VideoIngestion](VideoIngestion/README.md)
+2. [VideoAnalytics](VideoAnalytics/README.md)
+3. [Visualizer](Visualizer/README.md)
+4. [WebVisualizer](WebVisualizer/README.md)
+5. [ImageStore](ImageStore/README.md)
+6. [AzureBridge](AzureBridge/README.md)
+7. [FactoryControlApp](FactoryControlApp/README.md) - Optional service to read from VideoAnalytics container if one wants to control the light based on defective/non-defective data
+

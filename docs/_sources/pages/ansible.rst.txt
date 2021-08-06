@@ -1,0 +1,24 @@
+===============================================
+Ansible Based Multi Node Deployment Automation
+===============================================
+
+.. include:: ../IEdgeInsights/build/ansible/ansible-based-eii-prequisites-setup-provisioning-build--deployment.rst
+
+.. include:: ../IEdgeInsights/build/ansible/installing-ansible-on-ubuntu-control-node-.rst
+
+.. include:: ../IEdgeInsights/build/ansible/installing-ansible-on-ubuntu-control-node-.rst
+
+.. include:: ../IEdgeInsights/build/ansible/prerequisite-step-needed-for-all-the-controlworker-nodes.rst
+
+.. include:: ../IEdgeInsights/build/ansible/adding-ssh-authorized-key-from-control-node-to-all-the-nodes.rst
+
+.. include:: ../IEdgeInsights/build/ansible/updating-the-leader--worker-nodes-information-for-using-remote-hosts.rst
+
+.. include:: ../IEdgeInsights/build/ansible/updating-the-eii-source-folder-usecase--proxy-settings-in-group-variables.rst
+
+.. include:: ../IEdgeInsights/build/ansible/non-orchestrated-multi-node-deployment-without-k8s.rst
+
+.. include:: ../IEdgeInsights/build/ansible/select-eii-services-to-run-on-a-particular-node-in-multinode-deployment.rst
+
+.. include:: ../IEdgeInsights/build/ansible/execute-ansible-playbook-from-eii-workdiriedgeinsightsbuildansible-control-node-to-deploy-eii-services-in-singlemulti-nodes.rst
+

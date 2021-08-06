@@ -1,0 +1,2 @@
+# The sample Golang application demonstrates the usage of EII core libraries like EIIMessageBus and ConfigManager #
+

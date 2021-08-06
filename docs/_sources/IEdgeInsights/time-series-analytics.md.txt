@@ -1,0 +1,11 @@
+# Time-series Analytics
+
+For time-series data, a sample analytics flow uses Telegraf for ingestion, Influx DB for storage and Kapacitor for classification. This is demonstrated with an MQTT based ingestion of sample temperature sensor data and analytics with a Kapacitor UDF which does threshold detection on the input values.
+
+The services mentioned in [build/usecases/time-series.yml](build/usecases/time-series.yml) will be available in the consolidated [build/docker-compose.yml](build/docker-compose.yml) and consolidated [build/eii_config.json](build/eii_config.json) of the EII stack for timeseries use case when built via `builder.py` as called out in previous steps.
+
+This will enable building of Telegraf and the Kapacitor based analytics containers.
+More details on enabling this mode can be referred from [Kapacitor/README.md](Kapacitor/README.md)
+
+The sample temperature sensor can be simulated using the [tools/mqtt-temp-sensor](tools/mqtt-temp-sensor) application.
+

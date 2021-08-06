@@ -1,0 +1,51 @@
+
+``Installation``
+--------------------
+
+
+* 
+  Follow steps 1-5 of main `EII README <http://localhost:7645/IEdgeInsights/README.html>`_ if not done already as part of EII stack setup
+
+* 
+  Please use below steps to generate opcua client certificates before running test client subscriber for production mode.
+
+
+  #. 
+     Append following key in `certs' in `build/provision/config/x509_cert_config.json <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/x509_cert_config.json>`_ file.
+
+     .. code-block::
+
+                  {
+                  "opcua": {
+              "client_alt_name": "",
+              "output_format": "DER"
+                           }
+                  }
+
+
+     #. 
+        Re-provision EII using below command in ``[WORKDIR]/IEdgeInsights/build/provision`` folder to reprovision EII.
+
+        .. code-block::
+
+           $ sudo ./provision.sh <path_to_eii_docker_compose_file>
+
+           eq. $ sudo ./provision.sh ../docker-compose.yml
+
+.. code-block::
+
+   3. Update opcua client certificate access so that sample test program can access the certificates.
+
+   ```
+
+       sudo chmod -R 755 ../../build/provision/Certificates/ca
+       sudo chmod -R 755 ../../build/provision/Certificates/opcua
+
+    ```
+
+   Caution: This step will make the certs insecure. Please do not do it on a production machine.
+
+
+
+
+* To run a test subscriber follow README at `OpcuaExport/OpcuaBusAbstraction/c/test <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-opcua-export/-/blob/master/OpcuaBusAbstraction/c/test>`_

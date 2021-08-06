@@ -1,0 +1,19 @@
+##################################################
+         Architecture
+##################################################
+
+It’s best to think about Industrial EII from Intel as a set of containers. Figure 2 depicts these containers as dashed lines around the components held by each container. The high-level functions of EII are data ingestion (video and time-series), data storage, data analytics, as well as data and device management.
+
+
+.. figure:: image/fig2.png
+      :scale: 100 %
+      :align: center
+
+      Figure 2.   EII Ingredients
+
+This EII configuration is designed for deployment near to the site of data generation (for example, a PLC, robotic arm, tool, video camera, sensor, etc.). The EII Docker* containers perform video and time-series data ingestion, real-time\ :sub:`1` analytics, and allow closed-loop control\ :sub:`2`. 
+The following sections describe how to add new ingestion streams or algorithms within the EII Docker* containers, as well as how to connect external applications (such as a Human Machine Interface (HMI) or a Manufacturing Execution System (MES)) to the EII.
+
+.. note::  1. Real-time measurements, as tested by Intel, are as low as 50 milliseconds. 
+
+.. note::  2. EII closed-loop control functions do not provide deterministic control.

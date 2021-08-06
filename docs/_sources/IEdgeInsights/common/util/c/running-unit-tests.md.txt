@@ -1,0 +1,15 @@
+## Running Unit Tests
+
+> **NOTE:** The unit tests will only be compiled if the `WITH_TESTS=ON` option
+> is specified when running CMake.
+
+Run the following commands from the `build/tests` folder to cover the unit
+tests.
+
+```sh
+$ ./config-tests
+$ ./frame-tests
+$ ./log-tests
+$ ./thp-tests
+$ ./tsp-tests
+```

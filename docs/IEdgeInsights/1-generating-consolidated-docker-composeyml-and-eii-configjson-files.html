@@ -1,0 +1,683 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Generating consolidated docker-compose.yml and eii_config.json files: &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> EII Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Installing_docker_pre_requisites.html">Manual steps to install docker daemon and docker-compose with proxy settings configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/running.html">Running Intel® Edge Insights for Industrial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#downloading-and-installation-from-opensource-github-repository">Downloading and Installation from Opensource Github Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#downloading-and-installation-from-the-edge-software-hub">Downloading and Installation from the Edge Software Hub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#downloading-the-default-package">Downloading the Default Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#downloading-customize-package">Downloading Customize Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#installing-the-package">Installing the Package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#manual-installation">Manual Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#docker-pre-requisites">Docker Pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#eii-pre-requisites">EII Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#removing-eii-from-host-system">Removing EII from Host System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#enabling-secure-boot">Enabling Secure boot</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#eii-message-bus-usage">EII Message Bus Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#publish-subscribe-tutorial">Publish/Subscribe Tutorial</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#topic-names-and-multi-topics-publishing-and-subscribing">Topic Names and Multi-Topics Publishing and Subscribing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#running-multi-topics-examples">Running Multi-Topics Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#publishing-multiple-topics-over-a-single-tcp-port">Publishing Multiple-topics Over a Single TCP port</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#subscribing-to-multiple-topics-over-a-single-tcp-port">Subscribing to Multiple-topics Over a Single TCP Port</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#publishing-multiple-topics-over-the-same-socket-file-for-ipc-mode">Publishing Multiple-topics Over the Same Socket file for IPC Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#subscribing-multiple-topics-over-same-socket-file-for-ipc-mode">Subscribing Multiple-topics over Same Socket File for IPC Mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#zeromq-broker-scheme">ZeroMQ Broker Scheme</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#starting-zeromq-broker-service">Starting ZeroMQ Broker service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#configuration-step-to-connect-eii-services-to-zeromq-service">Configuration step to connect EII services to ZeroMQ service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#etcd">etcd*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#tool-to-generate-configuration-management-ui-service">Tool to Generate Configuration Management UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#eii-etcd-secrets-configuration">EII Etcd Secrets Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#messagebus-endpoints-configuration">Messagebus Endpoints Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#interfaces">Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#broker-use-case">Broker use case</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#running-unit-test">Running Unit Test</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/sample.html">Sample Application for APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/sample.html#sample-app-for-c-apis">Sample App for C APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/sample.html#sample-app-for-go-apis">Sample app for GO APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/sample.html#sample-app-for-phyton-apis">Sample App for Phyton APIs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/security.html#provision-eii">Provision EII</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/video.html">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#video-data-ingestion-configuration">Video Data Ingestion Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#video-file-ingestion">Video File Ingestion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#basler-camera-ingestion">Basler Camera Ingestion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#rtsp-camera-ingestion">RTSP Camera Ingestion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#rtsp-simulated-camera-using-cvlc">RTSP simulated camera using cvlc</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#genicam-gige-or-usb3-camera">GenICam GigE or USB3 Camera</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#genicam-gige-camera">GenICam GigE Camera</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#usb-camera">USB Camera</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#realsense-depth-camera">RealSense Depth Camera</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#adding-new-camera-support-in-eii">Adding New Camera Support In EII</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#filter-configuration">Filter Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#developing-filter-code-in-videoingestion">Developing Filter Code in VideoIngestion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#software-trigger">Software Trigger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#generic-plugin">Generic Plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#video-data-analytics">Video Data Analytics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#video-data-analytics-configuration">Video Data Analytics Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#classifier-configuration-for-videoanalytics">Classifier Configuration for VideoAnalytics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#developing-classifier-code-in-videoanalytics">Developing Classifier Code in VideoAnalytics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#using-accelerators">Using Accelerators</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#user-defined-function-udf-loader-library">User Defined Function (UDF) Loader Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#native-udfs">Native UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#python-udfs">Python UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#udfs-chaining">UDFs Chaining</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#custom-udfs">Custom UDFs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#udf-container-directory-layout">UDF Container Directory Layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#udf-container-configuration">UDF Container Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#build-and-deploy-process">Build and deploy process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#sample-udfs-directory">Sample UDFs Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#gvasafetygearingestion">GVASafetyGearIngestion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#tls-remote-agent-configuration">TLS Remote Agent Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#tls-remote-agent-setup">TLS Remote Agent Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#eii-video-profiler-modes">EII Video Profiler modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#installing-video-profiler-requirements">Installing Video Profiler requirements.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#running-video-profiler">Running Video Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#optimizing-eii-video-pipeline-by-analyzing-video-profiler-results">Optimizing EII Video pipeline by analyzing Video Profiler results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#software-trigger-utility">Software Trigger utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#installing-software-trigger-utility-requirements">Installing Software Trigger Utility requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#configuration-file">Configuration file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#build-steps-for-sw-trigger-utility">Build steps for sw_trigger_utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#usage-of-software-trigger-utility">Usage of Software Trigger Utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#generating-pylon-feature-system-file-pfs">Generating Pylon Feature System File (PFS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#executing-gigeconfig-tool">Executing GigEConfig Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#step-to-run-the-tools">Step to run the tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/visualizer.html">Visualizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/visualizer.html#edge-insights-simple-visualizer">Edge Insights Simple Visualizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/visualizer.html#steps-to-build-and-run-visualizer-as-a-docker-container">Steps to Build and Run Visualizer as a Docker Container</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/visualizer.html#web-visualizer">Web Visualizer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/visualizer.html#prod-mode">PROD Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/visualizer.html#using-labels-and-metadata-structure">Using Labels and Metadata Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/visualizer.html#using-labels">Using Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/visualizer.html#metadata-structure">Metadata Structure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/imageStore.html">ImageStore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/imageStore.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/imageStore.html#testing-image-store-service">Testing Image Store Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/imageStore.html#testing-image-store-subscriber">Testing Image Store Subscriber</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/timeseries.html">Working with Timeseries Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#timeseries-storage">Timeseries Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#configuring-influxdb">Configuring InfluxDB*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#influxdbconnector-configuration">InfluxDBConnector Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#influxdbconnector-installation">InfluxDBConnector Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#kapacitor">Kapacitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#user-defined-functions">User-defined Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#multiple-udfs-in-single-task-and-multiple-tasks-in-single-udf-kapacitor">Multiple UDFs in single task and multiple tasks in single UDF Kapacitor*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#multiple-udfs-in-single-task">Multiple UDFs in single task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#multiple-task-in-single-udf">Multiple Task in single UDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#working-with-kapacitor">Working with Kapacitor*</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#eii-timeseriesprofiler">EII TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#installing-timeseriesprofiler-requirements">Installing TimeSeriesProfiler requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/opcua.html">OpcuaExport Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/restdata.html">RestDataExport</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/restdata.html#restexport-post-request-pipeline">RestExport POST Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/restdata.html#restexport-get-request-pipeline">RestExport Get Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/restdata.html#restexport-apis">RestExport APIs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/restdata.html#restexport-post-request-api">RestExport POST Request API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/restdata.html#restexport-get-request-api">RestExport GET Request API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/restdata.html#restexport-configuration">RestExport Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/overTheAir.html">Updating an Application-Over-The-Air</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/overTheAir.html#installation-turtle-creek">Installation - Turtle Creek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/overTheAir.html#multi-node-deployment">Multi-Node deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/overTheAir.html#generating-eii-bundle-for-deployment">Generating EII Bundle for deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/overTheAir.html#creating-an-http-local-server-only-for-development">Creating an HTTP Local Server [ONLY FOR DEVELOPMENT]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/overTheAir.html#cloud-service-azure-server-set-up">Cloud Service: Azure Server Set up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#setting-up-an-azure-iot-central-application">Setting up an Azure IoT Central Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#obtaining-device-credentials">Obtaining device credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#provisioning-a-device">Provisioning a device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#performing-aota-updates-through-the-azure-portal">Performing AOTA Updates Through the Azure Portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#verifying-triggered-aota-in-event">Verifying Triggered AOTA in Event</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/overTheAir.html#cloud-service-thingsboard-setup">Cloud Service: ThingsBoard* Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#starting-thingsboard-as-docker-macos-linux">Starting ThingsBoard* as Docker [macOS*/Linux*]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#creating-a-thingsboard-account">Creating a ThingsBoard* Account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#adding-turtle-creek-device-to-thingsboard">Adding Turtle Creek Device to ThingsBoard*</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#id1">Provisioning a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#performing-aota-updates-through-the-thingsboard-page">Performing AOTA Updates Through the ThingsBoard* Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#id2">Verifying Triggered AOTA in Event</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/overTheAir.html#cloud-service-telit-cloud-setup">Cloud Service: Telit* Cloud Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#create-your-telit-iot-portal-account">Create Your Telit* IoT Portal Account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#import-thing-definition">Import Thing Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#copy-application-token">Copy Application Token</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#provision-with-the-token">Provision with the Token</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#link-to-thing-definition">Link to Thing definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#view-and-name-your-thing">View and Name Your Thing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#uploading-the-telit-deployment-bundle-in-telit-portal">Uploading the Telit deployment bundle in Telit Portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/overTheAir.html#performing-aota-updates-through-telit">Performing AOTA Updates Through Telit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/overTheAir.html#multinode-deployment-without-using-turtle-creek">Multinode deployment without using Turtle Creek.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/modes.html">DEV MODE and PROFILING MODE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/modes.html#dev-mode">DEV MODE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/modes.html#starting-the-eii-in-dev-mode">Starting the EII in Dev Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/modes.html#profiling-mode">PROFILING MODE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/docker.html">Working with EII Docker* Containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/docker.html#compose-files">Compose Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/docker.html#useful-docker-commands">Useful Docker* Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/azure.html#pre-requisites-set-up">Pre-Requisites Set Up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#configure-azure-cloud">Configure Azure Cloud*</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#development-system-set-up">Development System Set Up</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/azure.html#build-and-push-eii-container">Build and Push EII Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure* IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#provisioning">Provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#configuring-eii">Configuring EII</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#configuring-azure-iot-deployment-manifest">Configuring Azure IoT Deployment Manifest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#deployment">Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#using-sample-eii-onnx-udf">Using Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#setting-up-azureml">Setting up AzureML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#pushing-a-model-to-azureml">Pushing a Model to AzureML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#configuring-eii-to-work-with-azure-bridge">Configuring EII to work with Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#id2">Deployment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/orchestration.html">Orchestration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/orchestration.html#single-node-deployment">Single Node Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/orchestration.html#multi-node-deployment">Multi-node Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/benchmarking.html">Video and Time-series Benchmarking Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/benchmarking.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/benchmarking.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/codeModification.html">Code Modification Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/debugging.html">Debugging EII</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/debugging.html#debugging-through-the-logs">Debugging Through the Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/debugging.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/debugging.html#gstreamer-valid-plugins-element">GStreamer Valid Plugins / Element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/debugging.html#debugging-the-video-ingestion-container">Debugging the Video Ingestion Container</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/debugging.html#enablement-of-x11-forwarding-for-eii-visualizer-container">Enablement of X11 Forwarding for EII Visualizer Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/debugging.html#debugging-options">Debugging Options</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>1. Generating consolidated docker-compose.yml and eii_config.json files:</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/IEdgeInsights/1-generating-consolidated-docker-composeyml-and-eii-configjson-files.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="generating-consolidated-docker-compose-yml-and-eii-config-json-files">
+<h1>1. Generating consolidated docker-compose.yml and eii_config.json files:<a class="headerlink" href="#generating-consolidated-docker-compose-yml-and-eii-config-json-files" title="Permalink to this headline">¶</a></h1>
+<p>EII is equipped with <a class="reference external" href="build/builder.py">builder</a>, a robust python tool to auto-generate the required configuration files to deploy EII services on single/multiple nodes. The tool is    capable of auto-generating the following consolidated files by fetching the respective files from EII service directories which are required to bring up different EII use-cases:</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>file name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>docker-compose.yml</td>
+<td>Consolidated <code>docker-compose.yml</code> file used to launch EII docker containers in a given single node using <code>docker-compose</code> tool</td>
+</tr>
+<tr>
+<td>docker-compose.override.yml</td>
+<td>Consolidated <code>docker-compose-dev.override.yml</code> of every app that is generated only in DEV mode for EII deployment on a given single node using <code>docker-compose</code> tool</td>
+</tr>
+<tr>
+<td>docker-compose-build.yml</td>
+<td>Consolidated <code>docker-compose-build.yml</code> file having EII base images and <code>depends_on</code> and <code>build</code> keys required for building EII services</td>
+</tr>
+<tr>
+<td>docker-compose-push.yml</td>
+<td>Consolidated <code>docker-compose-push.yml</code> file (same as <code>docker-compose.yml</code> file with just dummy <code>build</code> key added), used for pushing EII services to docker registry</td>
+</tr>
+<tr>
+<td>eii_config.json</td>
+<td>Consolidated <code>config.json</code> of every app which will be put into etcd during provisioning</td>
+</tr>
+<tr>
+<td>values.yaml</td>
+<td>Consolidated <code>values.yaml</code> of every app inside helm-eii/eii-deploy directory, which is required to deploy EII services via helm</td>
+</tr>
+<tr>
+<td>Template yaml files</td>
+<td>Files copied from helm/templates directory of every app to helm-eii/eii-deploy/templates directory, which are required to deploy EII services via helm</td>
+</tr>
+</tbody>
+</table><blockquote>
+<div><p><strong>NOTE</strong>:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Whenever we make changes to individual EII app/service directories files as mentioned above in the description column</dt><dd><p>or in the <a class="reference external" href="build/.env">build/.env</a> file, it is required to re-run the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script before provisioning and running
+the EII stack to ensure that the changes done reflect in the required consolidated files.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Manual editing of above consolidated files is not recommended and we would recommend to do the required changes to</dt><dd><p>respective files in EII app/service directories and use <a class="reference external" href="build/builder.py">build/builder.py</a> script to generate the conslidated ones.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+<div class="section" id="using-builder-script">
+<h2>2. Using builder script<a class="headerlink" href="#using-builder-script" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Running builder</p></li>
+</ul>
+<hr class="docutils" />
+<p>Builder script usage:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 builder.py -h
+usage: builder.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-f YML_FILE<span class="o">]</span> <span class="o">[</span>-v VIDEO_PIPELINE_INSTANCES<span class="o">]</span>
+                    <span class="o">[</span>-d OVERRIDE_DIRECTORY<span class="o">]</span>
+
+optional arguments:
+    -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+    -f YML_FILE, --yml_file YML_FILE
+                        Optional config file <span class="k">for</span> list of services to include.
+                        Eg: python3 builder.py -f video-streaming.yml
+                        <span class="o">(</span>default: None<span class="o">)</span>
+    -v VIDEO_PIPELINE_INSTANCES, --video_pipeline_instances VIDEO_PIPELINE_INSTANCES
+                        Optional number of video pipeline instances to be
+                        created. Eg: python3 builder.py -v <span class="m">6</span> <span class="o">(</span>default:
+                        <span class="m">1</span><span class="o">)</span>
+    -d OVERRIDE_DIRECTORY, --override_directory OVERRIDE_DIRECTORY
+                        Optional directory consisting of of benchmarking
+                        configs to be present in each app directory. Eg:
+                        python3 builder.py -d benchmarking <span class="o">(</span>default:
+                        None<span class="o">)</span>
+</pre></div>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Running</span> <span class="pre">builder</span> <span class="pre">to</span> <span class="pre">generate</span> <span class="pre">the</span> <span class="pre">above</span> <span class="pre">listed</span> <span class="pre">consolidated</span> <span class="pre">files</span> <span class="pre">for</span> <span class="pre">all</span> <span class="pre">applicable</span> <span class="pre">EII</span> <span class="pre">services</span></code>:</p>
+<blockquote>
+<div><p>Builder will parse the top level directories under <strong>IEdgeInsights</strong> to generate the above listed consolidated files.</p>
+</div></blockquote>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 builder.py
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Running</span> <span class="pre">builder</span> <span class="pre">to</span> <span class="pre">generate</span> <span class="pre">the</span> <span class="pre">above</span> <span class="pre">listed</span> <span class="pre">consolidated</span> <span class="pre">files</span> <span class="pre">for</span> <span class="pre">a</span> <span class="pre">subset</span> <span class="pre">of</span> <span class="pre">EII</span> <span class="pre">services</span></code>:</p>
+<blockquote>
+<div><p>This is achieved by providing a yml file to Builder as config which has list of services to include. User can mention the service name as path relative to <strong>IEdgeInsights</strong> or Full path to the service in the config yml file.</p>
+</div></blockquote>
+<p>If user wants to include only a certain number of services in the EII stack, he can opt to provide the <strong>-f or yml_file</strong> flag of builder.py to allow only the services provided in the yml file mentioned with the <strong>-f or yml_file</strong>. Few examples of such yml files for different usecases are provided at <a class="reference external" href="build/usecases/video-streaming.yml">video</a>, <a class="reference external" href="build/usecases/time-series.yml">time-series</a>, <a class="reference external" href="build/usecases/video-streaming-azure.yml">Azure</a> etc.,</p>
+<p>An example for running Builder with this flag is given below:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 builder.py -f usecases/video-streaming.yml
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Running</span> <span class="pre">builder</span> <span class="pre">to</span> <span class="pre">generate</span> <span class="pre">multi</span> <span class="pre">instance</span> <span class="pre">configs</span></code>:</p>
+<p>Based on the user’s requirements, builder can also generate multi-instance docker-compose.yml, config.json respectively.</p>
+<p>If user wants to generate boiler plate config for multiple stream use cases, he can do so by using the <strong>-v or video_pipeline_instances</strong> flag of builder. This flag creates multi stream boiler plate config for docker-compose.yml, eii_config.json files respectively.</p>
+<p>An example for running builder to generate multi instance boiler plate config for 3 streams of <strong>video-streaming</strong> use case has been provided below:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 builder.py -v <span class="m">3</span> -f usecases/video-streaming.yml
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>NOTE</strong>: This multi-instance feature support of Builder works only for the video pipeline i.e., <strong>usecases/video-streaming.yml</strong> use case alone and not with any other use case yml files like <strong>usecases/video-streaming-storage.yml</strong> etc., Also, it doesn’t work for cases without <code class="docutils literal notranslate"><span class="pre">-f</span></code> switch too. In other words, only the above example works with <code class="docutils literal notranslate"><span class="pre">-v</span></code> taking in any +ve number</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Running</span> <span class="pre">builder</span> <span class="pre">to</span> <span class="pre">generate</span> <span class="pre">benchmarking</span> <span class="pre">configs</span></code>:</p>
+<p>If user wants to provide a different set of docker-compose.yml, config.json other than the ones present in every service directory, he can opt to provide the <strong>-d or override_directory</strong> flag which indicates to search for these required set of files within a directory provided by the flag. For example, if user wants to pick up these files from a directory named <strong>benchmarking</strong>, he can run the command provided below:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 builder.py -d benchmarking
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note:</strong></p>
+<ul class="simple">
+<li><p>If using the override directory feature of builder, it is recommended to include set of all 3 files mentioned above. Failing to provide any of the files in the override directory results in builder not including that service in the generated final config.</p></li>
+<li><p>If user wishes to spawn a single Subscriber/Client container subscribing/receiving on multiple Publisher/Server containers, he can do so by adding the AppName of Subscriber/Client container in <strong>subscriber_list</strong> of <a class="reference external" href="build/builder_config.json">builder_config.json</a> ensuring the Publisher/Server container <strong>AppName</strong> is added in the <strong>publisher_list</strong> of <a class="reference external" href="build/builder_config.json">builder_config.json</a>. For services not mentioned in <strong>subscriber_list</strong>, multiple containers specified by the <strong>-v</strong> flag are spawned.
+For eg: If builder is run with <strong>-v 3</strong> option and <strong>Visualizer</strong> isn’t added in <strong>subscriber_list</strong> of <a class="reference external" href="build/builder_config.json">builder_config.json</a>, 3 <strong>Visualizer</strong> instances are spawned, each of them subscribing to 3 <strong>VideoAnalytics</strong> services. If <strong>Visualizer</strong> is added in <strong>subscriber_list</strong> of <a class="reference external" href="build/builder_config.json">builder_config.json</a>, a single <strong>Visualizer</strong> instance subscribing to 3 multiple <strong>VideoAnalytics</strong> is spawned.
+#### 3. Adding new EII service so it gets picked up by Builder</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Since the builder takes care of registering and running any service present in it’s own directory in the <a class="reference external" href="./">IEdgeInsights</a> directory, this section describes on how to add any new service the user wants to add into the EII stack, subscribe to <a class="reference external" href="./VideoAnalytics">VideoAnalytics</a> and publish on a new port.</p>
+<p>Any service that needs to be added into the EII stack should be added as a new directory in the <a class="reference external" href="./">IEdgeInsights</a> directory. The directory should contain a <strong>docker-compose.yml</strong> which will be used to deploy the service as a docker container and it should also contain a <strong>config.json</strong> which contains the required config for the service to run once it is deployed. The <strong>config.json</strong> will mainly consist of a <strong>config</strong> section which includes the configuration related parameters required to run the application and an <strong>interfaces</strong> section which includes the configuration of how this service interacts with other services of the EII stack. The <strong>AppName</strong> present in <strong>environment</strong> section in <strong>docker-compose.yml</strong> file is appended to the <strong>config</strong> &amp; <strong>interfaces</strong> like <strong>/AppName/config</strong> &amp; <strong>/AppName/interfaces</strong> before being put into the main <a class="reference external" href="build/provision/config/eii_config.json">eii_config.json</a>.</p>
+<p>An example has been provided below on how to write the <strong>config.json</strong> for any new service, subscribe it to <strong>VideoAnalytics</strong> and publish on a new port:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;paramOne&quot;</span><span class="o">:</span> <span class="s2">&quot;Value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paramTwo&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+        <span class="s2">&quot;paramThree&quot;</span><span class="o">:</span> <span class="mi">4000</span><span class="p">,</span>
+        <span class="s2">&quot;paramFour&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;interfaces&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:65013&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;VideoAnalytics&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;camera1_stream_results&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:65113&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;publish_stream&quot;</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;ClientOne&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ClientTwo&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ClientThree&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above specified <strong>config.json</strong>, the value of <strong>config</strong> key is the config required by the service to run and the value of the <strong>interfaces</strong> key is the config required by the service to
+interact with other services of EII stack over EII message bus.</p>
+<p>The <strong>Subscribers</strong> value in the <strong>interfaces</strong> section denotes that this service should act as a subscriber to the stream being published by the value specified by <strong>PublisherAppName</strong> on the
+endpoint mentioned in value specified by <strong>EndPoint</strong> on topics specified in value of <strong>Topics</strong> key.</p>
+<p>The <strong>Publishers</strong> value in the <strong>interfaces</strong> section denotes that this service publishes a stream of data after obtaining and processing it from <strong>VideoAnalytics</strong>. The stream is published on
+the endpoint mentioned in value of <strong>EndPoint</strong> key on topics mentioned in the value of <strong>Topics</strong> key. The services mentioned in the value of <strong>AllowedClients</strong> are the only clients able to
+subscribe to the published stream if being published securely over the EIIMessageBus.</p>
+<p>Similar to above interface keys, EII services can also have “Servers” and “Clients” interface keys too. For example, check <a class="reference external" href="VideoIngestion/config.json">config.json</a> of VideoIngestion service and <a class="reference external" href="tools/SWTriggerUtility/config.json">config.json</a> of SWTriggerUtility tool on how to use.</p>
+<p>More details on the <code class="docutils literal notranslate"><span class="pre">interfaces</span></code> key responsible for the EII MessageBus endpoint configuration
+can be found at <a class="reference external" href="common/libs/ConfigMgr/README.md#interfaces">common/libs/ConfigMgr/README.md#interfaces</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

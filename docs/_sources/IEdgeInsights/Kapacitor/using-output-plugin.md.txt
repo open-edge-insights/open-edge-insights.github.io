@@ -1,0 +1,58 @@
+## Using output plugin
+  * Create/modify a tick script to use 'eiiOut' node to send the data using publisher interface
+    For example, you may modify the profiling UDF as below:
+    ```
+    dbrp "eii"."autogen"
+
+    var data0 = stream
+        |from()
+                .database('eii')
+                .retentionPolicy('autogen')
+                .measurement('point_data')
+        @profiling_udf()
+        |eiiOut()
+                .pubname('sample_publisher')
+                .topic('sample_topic')
+
+    ```
+  * Add a publisher interface added to [config.json](config.json) with the same publisher name and topic 
+    i.e. 'sample_publisher' and 'sample_topic' respectively as in the above example.
+    For example:
+   
+    **TCP mode**
+    ```
+        "Publishers": [
+            {
+                "Name": "sample_publisher",
+                "Type": "zmq_tcp",
+                "EndPoint": "0.0.0.0:65034",
+                "Topics": [
+                    "sample_topic"
+                ],
+                "AllowedClients": [
+                    "TimeSeriesProfiler"
+                ]
+            }
+        ]
+
+    ```
+
+    **IPC mode**
+    ```
+        "Publishers": [
+            {
+                "Name": "sample_publisher",
+                "Type": "zmq_ipc",
+                "EndPoint": "/EII/sockets",
+                "Topics": [
+                    "sample_topic"
+                ],
+                "AllowedClients": [
+                    "TimeSeriesProfiler"
+                ]
+            }
+        ]
+
+    ```
+  * Do the [provisioning](../README.md#provision) and run the EII stack.
+

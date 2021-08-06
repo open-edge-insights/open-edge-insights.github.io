@@ -1,0 +1,50 @@
+
+**VideoIngestion micro-service exposes the functionality of software trigger in the following ways:**
+
+  1) It can accept software trigger to "START_INGESTION"/ "STOP_INGESTION"/ "SNAPSHOT" from any client utility which uses the EII messagebus over server-client model.
+
+  2) The software trigger functionality of VI is demonstrated using an sample baremetal utility called "SW_Trigger_utility", which is shipped with the VideoIngestion code in tools repo, the details of the usage of this utility is mentioned in `../../tools/SWTriggerUtility/README.html <https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/README.html>`_.
+
+.. note:: \ : When the ``init_state`` value is ``running`` then ingestor is started without any sw trigger from the client. In order to control the ingestor using the sw trigger utility change the value to ``stopped``. To refer the available option to generate the sw trigger refer `../tools/SWTriggerUtility/README.html <https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/README.html>`_
+
+
+**The supported commands in the VI Gerenic Server are:**
+
+
+#. 
+   START_INGESTION: to start the ingestor
+
+    Payload format:
+
+   .. code-block:: javascript
+
+         {
+           "command" : "START_INGESTION"
+         }
+
+#. 
+   STOP_INGESTION: to stop the ingestor
+
+    Payload format:
+
+   .. code-block:: javascript
+
+         {
+           "command" : "STOP_INGESTION"
+         }
+
+#. 
+   SNAPSHOT: to get the frame snapshot and feed in one frame into the video data pipeline
+
+    Payload format:
+
+   .. code-block:: javascript
+
+         {
+           "command" : "SNAPSHOT"
+         }
+
+   ..
+
+      **Note**\ : In order to use ``SNAPSHOT`` functionality one needs to enable the sw trigger mode and make sure ingestion should be stopped before getting the frame snapshot capture.
+

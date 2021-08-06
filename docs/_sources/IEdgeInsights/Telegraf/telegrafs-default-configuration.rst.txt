@@ -1,0 +1,12 @@
+
+Telegraf's default configuration
+--------------------------------
+
+
+#. Telegraf starts with the default configuration which is present at `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_ (for the dev mode the name is 'Telegraf_devmode.conf'). By default the below plugins are enabled.
+
+   * MQTT input plugin (\ **[[inputs.mqtt_consumer]]**\ )
+   * EII message bus input plugin (\ **[[inputs.eii_msgbus]]**\ )
+   * Influxdb output plugin (\ **[[outputs.influxdb]]**\ )
+
+Telegraf will be started using script 'telegraf_start.py. This script will get the configuration from ETCD first and then it will start the  Telegraf service by picking the right configuration depending on the developer/production mode. By default only single instance of Telegraf container runs (named 'ia_telegraf').

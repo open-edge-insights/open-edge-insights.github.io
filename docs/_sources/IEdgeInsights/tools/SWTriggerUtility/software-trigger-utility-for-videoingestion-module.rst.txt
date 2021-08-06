@@ -1,0 +1,10 @@
+
+Software Trigger Utility for VideoIngestion Module
+==================================================
+
+This utility is used for invoking various software trigger features of VideoIngestion. The currently supported triggers to VideoIngestion module are:
+
+
+#. START INGESTION - to start the ingestor
+#. STOP_INGESTION -  to stop the ingestor
+#. SNAPSHOT - to get frame snapshot which feeds one only frame into the video data pipeline.

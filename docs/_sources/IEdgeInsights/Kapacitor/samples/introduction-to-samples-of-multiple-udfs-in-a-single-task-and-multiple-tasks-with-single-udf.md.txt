@@ -1,0 +1,14 @@
+# Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF
+
+Implementation of 2 simple examples to showcase the use of a single task with multiple UDFs and multiple tasks with single UDF in Kapacitor.
+
+ * Sample implemented in single task with multiple UDFs.
+   MQTT Publisher is publishing 2 parameters (temperature and humidity). TICK script is calling 2 UDFs (one written in GO, another one in python), Go-based UDF is filtering the data based on the condition (i.e. temperature > 25), similarly for the python based UDF the condition is set to “humidity > 25”, filtered data is written back to “point_classifier_results” measurement in InfluxDB.
+
+ * Sample implemented in multiple tasks with single UDF.
+   MQTT Publisher is publishing 2 parameters (temperature and humidity). One TICK script is calling Go UDF, it is filtering the data based on the condition “temperature > 25” and the data is written back to “point_classifier_results” measurement.
+
+   Second TICK script is calling python UDF, it is filtering the data based on the condition “humidity > 25” and the data is written back to “humidity_classifier_results” measurement.
+
+ * Samples directory contain 3 directories, kapacitor_config which is common to both the samples and the tick scripts and eii config for each sample is kept in respective directory.
+ 

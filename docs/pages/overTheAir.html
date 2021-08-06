@@ -1,0 +1,1523 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Updating an Application-Over-The-Air &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="DEV MODE and PROFILING MODE" href="modes.html" />
+    <link rel="prev" title="RestDataExport" href="restdata.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> EII Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../IEdgeInsights/Installing_docker_pre_requisites.html">Manual steps to install docker daemon and docker-compose with proxy settings configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running Intel® Edge Insights for Industrial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#downloading-and-installation-from-opensource-github-repository">Downloading and Installation from Opensource Github Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#provision">Provision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#distribution-of-eii-container-images">Distribution of EII container images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#build-and-run-eii-video-timeseries-use-cases">Build and Run EII video/timeseries use cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#build-eii-stack">Build EII stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#run-eii-services">Run EII services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#push-required-eii-images-to-docker-registry">Push required EII images to docker registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#enabling-secure-boot">Enabling Secure boot</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id1">EII Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id2">Generating Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id3">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#known-issues">Known issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd">etcd*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#configmgr">ConfigMgr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#tool-to-generate-configuration-management-ui-service">Tool to Generate Configuration Management UI Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#adding-new-eii-service-so-it-gets-picked-up-by-builder">Adding new EII service so it gets picked up by Builder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#id5">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#install-configmgr-with-python-bindings-go-bindings-examples-test-suits-and-debug-build">Install ConfigMgr with Python bindings, Go bindings, Examples, Test suits and Debug Build.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#zmq-tcp-protocol-usecase">zmq_tcp Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#zmqbroker">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#subscriber">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#publisher">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id9">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id10">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id11">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id13">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id14">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id15">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sample.html">EII Sample Apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="video.html">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="video.html#video-data-ingestion-configuration">Video Data Ingestion Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#videoingestion-module">VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#ingestor-config">Ingestor config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#video-ingestion-contents">Video Ingestion Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#adding-new-camera-support-in-eii">Adding New Camera Support In EII</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#video-data-analytics">Video Data Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id4">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#custom-udfs">Custom Udfs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#time-series-analytics">Time-series Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-multi-node-cluster-provision-and-deployment">EII multi node cluster provision and deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#without-orchestrator"><strong>Without orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-tools">EII tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-uninstaller">EII Uninstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#debugging-options">Debugging options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#troubleshooting-guide">Troubleshooting guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#user-defined-function-udf-loader-library">User Defined Function (UDF) Loader Library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#udf-container-directory-layout">UDF Container Directory Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#deploy-process">Deploy Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#sample-udfs-directory">Sample UDFs Directory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#gvasafetygearingestion">GVASafetyGearIngestion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#nativepclingestion">NativePclIngestion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-video-profiler">EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#eii-video-profiler-pre-requisites">EII Video Profiler pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#eii-video-profiler-modes">EII Video Profiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#eii-video-profiler-configurations">EII Video Profiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#running-video-profiler">Running Video Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#gigeconfigtool-and-export-settings-from-basler-pylon-feature-system">GigEConfigTool and Export Settings from Basler Pylon Feature System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#generating-pylon-feature-system-file-pfs">Generating Pylon Feature System File (PFS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#executing-gigeconfig-tool">Executing GigEConfig Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#steps-to-build-and-run-discoverhistory-service">Steps to build and run DiscoverHistory service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#list-of-sample-select-queries">List of sample select queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#to-run-the-tool-in-zmq-ipc-mode">To run the tool in zmq_ipc mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualizer.html">Visualizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="visualizer.html#native-visualizer-module">Native Visualizer Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="visualizer.html#steps-to-build-and-run-visualizer">Steps to build and run visualizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualizer.html#using-labels">Using Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualizer.html#metadata-structure">Metadata Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="visualizer.html#web-visualizer">Web Visualizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualizer.html#web-visualizer-module">Web Visualizer Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="visualizer.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualizer.html#id7">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="visualizer.html#id11">Metadata Structure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imageStore.html">ImageStore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imageStore.html#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imageStore.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="imageStore.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Working with Timeseries Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#timeseries-storage">Timeseries Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#configuring-influxdb">Configuring InfluxDB*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#influxdbconnector-configuration">InfluxDBConnector Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#influxdbconnector-installation">InfluxDBConnector Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#kapacitor">Kapacitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#point-data-time-series-data-analytics-introduction">Point-data (Time-series data) analytics introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#starting-the-example">Starting the example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-telegraf">Purpose of Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#optional-adding-multiple-telegraf-instances">Optional: Adding multiple telegraf instances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#enabling-eii-message-bus-input-plugin-in-telegraf">Enabling EII message bus input plugin in Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#user-defined-functions">User-defined Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#custom-udfs-available-in-the-udfs-directory">Custom UDFs available in the udfs directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#steps-to-configure-the-udfs-in-kapacitor">Steps to configure the UDFs in kapacitor.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#multiple-udfs-in-single-task-and-multiple-tasks-in-single-udf-kapacitor">Multiple UDFs in single task and multiple tasks in single UDF Kapacitor*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#multiple-udfs-in-single-task">Multiple UDFs in single task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#multiple-task-in-single-udf">Multiple Task in single UDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#working-with-kapacitor">Working with Kapacitor*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#installing-timeseriesprofiler-requirements">Installing TimeSeriesProfiler requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opcua.html#opcuaexport">OpcuaExport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-post-request-pipeline">RestExport POST Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-get-request-pipeline">RestExport Get Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-apis">RestExport APIs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#restexport-post-request-api">RestExport POST Request API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#restexport-get-request-api">RestExport GET Request API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#restexport-configuration">RestExport Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Updating an Application-Over-The-Air</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation-turtle-creek">Installation - Turtle Creek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#multi-node-deployment">Multi-Node deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-eii-bundle-for-deployment">Generating EII Bundle for deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-an-http-local-server-only-for-development">Creating an HTTP Local Server [ONLY FOR DEVELOPMENT]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-service-azure-server-set-up">Cloud Service: Azure Server Set up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-an-azure-iot-central-application">Setting up an Azure IoT Central Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#obtaining-device-credentials">Obtaining device credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#provisioning-a-device">Provisioning a device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performing-aota-updates-through-the-azure-portal">Performing AOTA Updates Through the Azure Portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verifying-triggered-aota-in-event">Verifying Triggered AOTA in Event</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-service-thingsboard-setup">Cloud Service: ThingsBoard* Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#starting-thingsboard-as-docker-macos-linux">Starting ThingsBoard* as Docker [macOS*/Linux*]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-thingsboard-account">Creating a ThingsBoard* Account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-turtle-creek-device-to-thingsboard">Adding Turtle Creek Device to ThingsBoard*</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Provisioning a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performing-aota-updates-through-the-thingsboard-page">Performing AOTA Updates Through the ThingsBoard* Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Verifying Triggered AOTA in Event</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-service-telit-cloud-setup">Cloud Service: Telit* Cloud Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#create-your-telit-iot-portal-account">Create Your Telit* IoT Portal Account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#import-thing-definition">Import Thing Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copy-application-token">Copy Application Token</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#provision-with-the-token">Provision with the Token</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#link-to-thing-definition">Link to Thing definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#view-and-name-your-thing">View and Name Your Thing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uploading-the-telit-deployment-bundle-in-telit-portal">Uploading the Telit deployment bundle in Telit Portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#performing-aota-updates-through-telit">Performing AOTA Updates Through Telit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#multinode-deployment-without-using-turtle-creek">Multinode deployment without using Turtle Creek.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modes.html">DEV MODE and PROFILING MODE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modes.html#dev-mode">DEV MODE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modes.html#starting-the-eii-in-dev-mode">Starting the EII in Dev Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modes.html#profiling-mode">PROFILING MODE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Working with EII Docker* Containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#compose-files">Compose Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#useful-docker-commands">Useful Docker* Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#pre-requisites-set-up">Pre-Requisites Set Up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#configure-azure-cloud">Configure Azure Cloud*</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#development-system-set-up">Development System Set Up</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#build-and-push-eii-container">Build and Push EII Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure* IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#provisioning">Provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#configuring-eii">Configuring EII</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#configuring-azure-iot-deployment-manifest">Configuring Azure IoT Deployment Manifest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#deployment">Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#using-sample-eii-onnx-udf">Using Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#setting-up-azureml">Setting up AzureML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#pushing-a-model-to-azureml">Pushing a Model to AzureML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#configuring-eii-to-work-with-azure-bridge">Configuring EII to work with Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id2">Deployment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="orchestration.html">Orchestration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="orchestration.html#single-node-deployment">Single Node Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orchestration.html#multi-node-deployment">Multi-node Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ansible.html">Ansible Based Multi Node Deployment Automation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html#ansible-based-eii-prequisites-setup-provisioning-build-deployment">Ansible based EII Prequisites setup, provisioning, build &amp; deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html#installing-ansible-on-ubuntu-control-node">Installing Ansible on Ubuntu {Control node}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html#id1">Installing Ansible on Ubuntu {Control node}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html#prerequisite-step-needed-for-all-the-control-worker-nodes">Prerequisite step needed for all the control/worker nodes.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ansible.html#generate-ssh-key-for-all-nodes">Generate SSH KEY for all nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html#adding-ssh-authorized-key-from-control-node-to-all-the-nodes">Adding SSH Authorized Key from control node to all the nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ansible.html#configure-sudoers-file-to-accept-no-password-for-sudo-operation">Configure Sudoers file to accept NO PASSWORD for sudo operation.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html#updating-the-leader-worker-node-s-information-for-using-remote-hosts">Updating the leader &amp; worker node’s information for using remote hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html#updating-the-eii-source-folder-usecase-proxy-settings-in-group-variables">Updating the EII Source Folder, Usecase &amp; Proxy Settings in Group Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html#non-orchestrated-multi-node-deployment-without-k8s">Non-orchestrated multi node deployment (without k8s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment">Select EII services to run on a particular node in multinode deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible.html#execute-ansible-playbook-from-eii-workdir-iedgeinsights-build-ansible-control-node-to-deploy-eii-services-in-single-multi-nodes">Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ansible.html#deploying-eii-using-helm-in-kubernetes-k8s-environment">Deploying EII Using Helm in Kubernetes (k8s) environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Video and Time-series Benchmarking Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="benchmarking.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarking.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codeModification.html">Code Modification Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging EII</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-through-the-logs">Debugging Through the Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="debugging.html#gstreamer-valid-plugins-element">GStreamer Valid Plugins / Element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="debugging.html#debugging-the-video-ingestion-container">Debugging the Video Ingestion Container</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#enablement-of-x11-forwarding-for-eii-visualizer-container">Enablement of X11 Forwarding for EII Visualizer Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-options">Debugging Options</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API Docs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#python-api">Python API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#golang-api">GoLang API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Updating an Application-Over-The-Air</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/pages/overTheAir.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="updating-an-application-over-the-air">
+<h1>Updating an Application-Over-The-Air<a class="headerlink" href="#updating-an-application-over-the-air" title="Permalink to this headline">¶</a></h1>
+<p><strong>Application-Over-The-Air (AOTA)</strong> update enable cloud to edge manageability of application services running on EII-enabled systems through the Turtle Creek component. Turtle Creek is a <strong>Device Manageability</strong> Software which helps to achieve Software Updates and Deployment from Cloud to device which includes SOTA, FOTA, AOTA, and few system operations.</p>
+<p>For EII use case, only <strong>AOTA</strong> features from Turtle Creek are validated and will be supported through <strong>Azure*</strong>, <strong>ThingsBoard*</strong> and <strong>Telit*</strong> cloud-based management front-end services. Users can select either one of these options depending on preference.</p>
+<p>The following section will walk you through setting up both <strong>Azure*</strong>, <strong>ThingsBoard*</strong> and <strong>Telit*</strong>, creating and establishing connectivity with the target systems, as well as updating applications on those systems.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, the EII is downloaded from Github opensource will not have Device Manageability included in the package. The Device Manageability can be downloaded via customize package in ESH</p>
+</div>
+<div class="section" id="installation-turtle-creek">
+<h2>Installation - Turtle Creek<a class="headerlink" href="#installation-turtle-creek" title="Permalink to this headline">¶</a></h2>
+<p><strong>Pre-requisites</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Ubuntu 18.04</p></li>
+<li><p>Install latest docker cli/docker daemon and docker engine by using the repository at <a class="reference external" href="https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository">https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository</a></p></li>
+<li><p>Manage Docker as a non-root user at <a class="reference external" href="https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user">https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user</a></p></li>
+<li><p>Install latest Docker Compose at <a class="reference external" href="https://docs.docker.com/compose/install/#install-compose-on-linux-systems">https://docs.docker.com/compose/install/#install-compose-on-linux-systems</a></p></li>
+<li><p>Configure proxy setting for docker  at <a class="reference external" href="https://docs.docker.com/network/proxy/">https://docs.docker.com/network/proxy/</a>  (optional if only running behind corporate proxy)</p></li>
+</ul>
+</div></blockquote>
+<p>All Turtle Creek devices can be controlled using a correctly set up cloud service application. Follow below step to install Turtle Creek</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This step is required only for user that select cloud service <strong>Azure*</strong>, <strong>ThingsBoard*</strong> and <strong>Telit*</strong> .</p>
+</div>
+<ul class="simple">
+<li><p>Install Turtle Creek agent on the machine.</p></li>
+</ul>
+<blockquote>
+<div><ul>
+<li><p>Run either of the following TC installation scripts:</p>
+<p><strong>$  sudo ./install-tc.sh</strong> (with TPM security)</p>
+</li>
+<li><p>After reading all the licenses, press ‘q’ once to finish.</p></li>
+<li><p>Accept the License by typing Y</p>
+<p>Figure below shows the Terminal output you should expect to see once installation is complete</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/ota-terminal.png"><img alt="../_images/ota-terminal.png" src="../_images/ota-terminal.png" style="width: 350.0px; height: 241.0px;" /></a>
+</div>
+</li>
+<li><p>Once Turtle Creek has been installed successfully, a parameter in intel_manageability.conf needs to be changed.</p>
+<p><strong>$  sudo vi /etc/intel_manageability.conf</strong></p>
+</li>
+<li><p>Under &lt;all&gt; &lt;/all&gt; section change dbs ON to OFF (Figures below). DBS is stand for Docker Bench Security, this feature of Turtle Creek is not being used for EII</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/ota_ON.png"><img alt="../_images/ota_ON.png" src="../_images/ota_ON.png" style="width: 452.0px; height: 136.5px;" /></a>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/ota_OFF.png"><img alt="../_images/ota_OFF.png" src="../_images/ota_OFF.png" style="width: 446.0px; height: 137.5px;" /></a>
+</div>
+</li>
+<li><p>Add the URL endpoint for the developer files to the TrustedRepositories as shown in Figure below.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/url-endpoint.png"><img alt="../_images/url-endpoint.png" src="../_images/url-endpoint.png" style="width: 502.5px; height: 91.5px;" /></a>
+</div>
+</li>
+<li><p>Save and exit. You must restart the machine before these changes can take effect.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="multi-node-deployment">
+<h2>Multi-Node deployment<a class="headerlink" href="#multi-node-deployment" title="Permalink to this headline">¶</a></h2>
+<p>EII deployment on multiple nodes requires the use of the Docker* registry. The following section outlines some of the commands to be run on the primary node and on any newly added secondary nodes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This step is required only for user that select cloud service <strong>Azure Portal*</strong>, <strong>ThingsBoard*</strong> or <strong>Telit*</strong>.</p>
+</div>
+<ul class="simple">
+<li><p>Set up the Docker registry URL, build, and push images. This step must to be run on the <strong>primary</strong> node.</p></li>
+</ul>
+<blockquote>
+<div><ul>
+<li><p>Update docker registry URL in <strong>DOCKER_REGISTRY</strong> variable <strong>&lt;ip:port&gt;</strong>. The example uses <strong>10.221.40.65:5000/</strong> as the Docker registry.</p>
+<p><strong>$  sudo vi [WORK_DIR]/IEdgeInsights/build/.env</strong></p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/env_file.png"><img alt="../_images/env_file.png" src="../_images/env_file.png" style="width: 361.5px; height: 241.5px;" /></a>
+</div>
+</li>
+<li><p>In the same build repository, build the image using the following command:</p>
+<p><strong>$  docker-compose build</strong></p>
+<p>If the build is successful, you should see the following terminal output:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/success_build.png"><img alt="../_images/success_build.png" src="../_images/success_build.png" style="width: 358.5px; height: 237.5px;" /></a>
+</div>
+</li>
+<li><p>Push the image to the registry:</p>
+<p><strong>$  docker-compose push</strong></p>
+</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>To run EII in multi-node, the user must identify one primary node. To set the primary node, set ETCD_NAME in [WORK_DIR]/IEdgeInsights/build/.env to master.</p></li>
+</ul>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/change_etcd_setting.png"><img alt="../_images/change_etcd_setting.png" src="../_images/change_etcd_setting.png" style="width: 223.5px; height: 104.0px;" /></a>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li><p>Next, user can proceed to provision the primary node using below command. This will create the ETCD server on the primary edge node.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>$  cd [WORK_DIR]/IEdgeInsights/build/provision</strong></p></li>
+<li><p><strong>$  sudo ./provision.sh &lt;path_to_eii_docker_compose_file&gt;</strong></p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>After done the provisioning on the primary node, users need to do the provisioning for each of the worker node that will be included in the multi node deployment. Below step need to be executed at the primary node. Users need to ensure the ETCD_NAME in [WORK_DIR]/IEdgeInsights/build/.env have been set to other than master name.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>$  cd [WORK_DIR]/IEdgeInsights/build/deploy</strong></p></li>
+<li><p><strong>$ sudo python3.6 generate_eii_bundle.py -p</strong></p></li>
+</ul>
+<p>This step will generate the eii_provisioning.tar.gz at the same directory, you need to manually copy this to the worker node for the provisioning.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>After done copy the generated file to the worker node, you need to run these commands on the worker node.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>$ tar -xvzf eii_provisioning.tar.gz</strong></p></li>
+<li><p><strong>$ cd eii_provisioning/provision/</strong></p></li>
+<li><p><strong>$ sudo ./provision.sh</strong></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="generating-eii-bundle-for-deployment">
+<h2>Generating EII Bundle for deployment<a class="headerlink" href="#generating-eii-bundle-for-deployment" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The following steps are used to generate the EII_bundle. This must be done on the EII primary node that is currently EII is running.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>Note:</strong> This software will only work on Python* 3 and onwards.</p>
+<ul>
+<li><p>Update config.json file to include the services that you need for the bundle. Be sure to exclude those services that you do not want with the bundle.</p>
+<p>$  <strong>sudo vi build/deploy/config.json</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;docker_compose_file_version&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;docker_compose_file_version which is compose file version supported by deploying docker engine&gt;&quot;</span><span class="p">,</span>
+<span class="s2">&quot;exclude_services&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">list</span> <span class="n">of</span> <span class="n">services</span> <span class="n">which</span> <span class="n">you</span> <span class="n">want</span> <span class="n">to</span> <span class="n">exclude</span> <span class="kn">from</span> <span class="nn">your</span> <span class="n">deployement</span><span class="p">]</span>
+<span class="s2">&quot;include_services&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">list</span> <span class="n">of</span> <span class="n">services</span> <span class="n">needed</span> <span class="ow">in</span> <span class="n">final</span> <span class="n">deployment</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Note:</strong> Please ensure that you have updated the DOCKER_REGISTRY in build/.env as mentioned in the Multi-Node deployment section</p>
+<ul>
+<li><p>Update the .env file at [repo/build] directory for the worker node environment setting by changing below parameters</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo gedit .env
+ETCD_NAME=&lt;any name other than `master`&gt;
+ETCD_HOST=&lt;IP address of primary node&gt;
+DOCKER_REGISTRY=&lt;Docker registry details&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Run the following script in the terminal to generate the eii_bundle</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="p">[</span><span class="n">WORK_DIR</span><span class="p">]</span><span class="o">/</span><span class="n">IEdgeInsights</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">deploy</span><span class="o">/</span>
+<span class="n">sudo</span> <span class="n">python3</span><span class="o">.</span><span class="mi">6</span> <span class="n">generate_eii_bundle</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>The default value for bundle name is <strong>“eii_bundle.tar.gz”</strong>, while the tag name is <strong>“eii_bundle”</strong></p>
+<p>Using <em>-t</em> options can give you a custom tag name which will also be used for bundle generation.</p>
+<p>The default value for the docker-compose yml path is “../docker-compose.yml”</p>
+</li>
+<li><p>The file <strong>eii_bundle.tar.gz</strong> will be created in the same folder. This bundle will be used to deploy EII on the other node via ThingsBoard</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="creating-an-http-local-server-only-for-development">
+<h2>Creating an HTTP Local Server [ONLY FOR DEVELOPMENT]<a class="headerlink" href="#creating-an-http-local-server-only-for-development" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This step is required only for user that select cloud service Azure* or ThingsBoard* cloud services. During actual implementation, users need to have their own cloud http server to upload the EII bundle that being generated and use the URL to fetch the uploaded bundle on the AOTA step later.</p>
+</div>
+<p>The generated EII bundle need to available via http server to perform AOTA fetching from the cloud services.</p>
+<p><strong>Pre-Requisites</strong></p>
+<p>Run <strong>sudo vi /etc/environment</strong>.</p>
+<p>Under no_proxy variable, add the local http server (e.g., 10.221.40.65).</p>
+<p>Perform <strong>sudo systemctl restart configuration</strong>.</p>
+<ul class="simple">
+<li><p>Run the following command on the ThingsBoard machine to create the HTTP server for sharing the eii_bundle:</p></li>
+</ul>
+<blockquote>
+<div><p><strong>$  python3 -m http.server [any port number]</strong></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Add the fileserver endpoint to the configuration file on the node that you will access via the local HTTP server.</p></li>
+</ul>
+<blockquote>
+<div><p>In the example, the steps below must be done on the new node. The new node will access the local HTTP server to fetch the eii_bundle that is being created.</p>
+<ul>
+<li><p>Open the configuration file</p>
+<p><strong>$  sudo vi /etc/intel_manageability.conf</strong></p>
+</li>
+<li><p>Under <strong>“trustedRepositories”</strong>, add the bundle hosting server endpoint on a new line. <a class="reference external" href="http://xx.xxx.xxx.xx">http://xx.xxx.xxx.xx</a> as used above</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/trustedRepo.png"><img alt="../_images/trustedRepo.png" src="../_images/trustedRepo.png" style="width: 379.5px; height: 74.0px;" /></a>
+</div>
+</li>
+</ul>
+<p><strong>Note:</strong> The above example is running local HTTP server at 10.221.40.65:8000</p>
+<ul class="simple">
+<li><p>Perform <strong>$  sudo systemctl restart configuration on the machine.</strong></p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="cloud-service-azure-server-set-up">
+<h2>Cloud Service: Azure Server Set up<a class="headerlink" href="#cloud-service-azure-server-set-up" title="Permalink to this headline">¶</a></h2>
+<p>All Turtle Creek devices can be connected and controlled via Azure portal. An Azure account can be created through the link below:</p>
+<p><a class="reference external" href="https://azure.microsoft.com/en-us/free/">https://azure.microsoft.com/en-us/free/</a> , select start free, and create the account.</p>
+<div class="section" id="setting-up-an-azure-iot-central-application">
+<h3>Setting up an Azure IoT Central Application<a class="headerlink" href="#setting-up-an-azure-iot-central-application" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>To generate a premade Turtle Creek (Intel Manageability) IoT Central application get the link from <strong>/usr/share/cloudadapter-agent/azure_template_link.txt</strong> file on turtle creek machine</p></li>
+<li><p>Copy and paste the link in your browser, you will be redirect to the Azure UI as shown below</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/azure-iot-central.png"><img alt="../_images/azure-iot-central.png" src="../_images/azure-iot-central.png" style="width: 474.0px; height: 432.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>For the pricing plan, user can select for the free trial version. Fill up the necessary contact information and click on the create account button.</p></li>
+<li><p>After provisioning, the IoT Central application with premade device templates and dashboards will appear. As noted before, this can be accessed at <a class="reference external" href="https://apps.azureiotcentral.com">https://apps.azureiotcentral.com</a> or through the Azure portal.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/azure-dashboard.png"><img alt="../_images/azure-dashboard.png" src="../_images/azure-dashboard.png" style="width: 402.0px; height: 227.0px;" /></a>
+</div>
+</div>
+<div class="section" id="obtaining-device-credentials">
+<h3>Obtaining device credentials<a class="headerlink" href="#obtaining-device-credentials" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>To add new device, click on the devices tab on the side bar, click on the add new device button</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/add_device.png"><img alt="../_images/add_device.png" src="../_images/add_device.png" style="width: 481.5px; height: 74.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Select real on the drop-down list, create new device form will appear as below. Click on create button.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/create-device.png"><img alt="../_images/create-device.png" src="../_images/create-device.png" style="width: 174.5px; height: 113.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>The new added device will appear on the list of the devices page. To connect the device, click on that specific device and click on the connect button at the top bar right side.</p></li>
+<li><p>Device connection information form will appear as below.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/device-connection.png"><img alt="../_images/device-connection.png" src="../_images/device-connection.png" style="width: 426.0px; height: 422.5px;" /></a>
+</div>
+</div>
+<div class="section" id="provisioning-a-device">
+<h3>Provisioning a device<a class="headerlink" href="#provisioning-a-device" title="Permalink to this headline">¶</a></h3>
+<p><strong>Pre-Requisites</strong> : In order to perform this step, the Turtle Creek device needs to be installed according to the instructions in the Installation Turtle Creek section.</p>
+<ul class="simple">
+<li><p>Provisioning can be done with or without TPM security by setting ‘PROVISION_TPM’. ‘PROVISION_TPM’ can be set to the Turtle Creek device, users need to run these commands:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>auto: use TPM if present; disable if not present; do not prompt</p></li>
+<li><p>disable: do not use TPM.</p></li>
+<li><p>enable: use TPM; return error code if TPM not detected.</p></li>
+<li><p>(unset): default behavior; use TPM if present, prompt if not</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>On the Turtle Creek device, users need to run be run below command, change the bold parameter accordingly as mentioned above.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>$  sudo PROVISION_TPM=auto provision-tc</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>If the device already being configured before, it will prompt as below:</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/cloud_configuration.png"><img alt="../_images/cloud_configuration.png" src="../_images/cloud_configuration.png" style="width: 378.5px; height: 45.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Press ‘Y’ to replace the existing configuration.</p></li>
+<li><p>Select ‘2’ for cloud service option.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/cloud_option.png"><img alt="../_images/cloud_option.png" src="../_images/cloud_option.png" style="width: 195.0px; height: 55.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>All the device credentials from Obtaining device credentials will be used here.  Fill up below information accordingly.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/device_credentials.png"><img alt="../_images/device_credentials.png" src="../_images/device_credentials.png" style="width: 230.5px; height: 132.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>The script will then start the Intel Manageability services; when the script finishes, the device should be able to be interacted with on its associated IoT Central Application. To verify connectivity: a. Check to see if telemetry/events are appearing. If the info is not seen, use ‘’‘systemctl restart cloudadapter telemetry’‘’ command to restart the two agents give few seconds for the info to be populated and refresh the portal page. b. Alternatively, trigger a command like Reboot</p></li>
+<li><p>If at any time the cloud service configuration needs to be changed or updated, run this provisioning script again.</p></li>
+<li><p>On the Azure portal, the device status should be change from Registered to Provisioned as showed below.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/device-list.png"><img alt="../_images/device-list.png" src="../_images/device-list.png" style="width: 596.0px; height: 62.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Below is the example of telemetry data of the connected devices that is available to be view on the measurement tab by the user using Azure portal.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/telemetry_data.png"><img alt="../_images/telemetry_data.png" src="../_images/telemetry_data.png" style="width: 542.5px; height: 306.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>User can get the additional details information for the specific hardware and the event logs on the properties tab as shown below.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/device-dashboard.png"><img alt="../_images/device-dashboard.png" src="../_images/device-dashboard.png" style="width: 691.5px; height: 472.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Below is the example of basic information that being displayed on the dashboard tab.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/device_properties.png"><img alt="../_images/device_properties.png" src="../_images/device_properties.png" style="width: 680.0px; height: 431.5px;" /></a>
+</div>
+</div>
+<div class="section" id="performing-aota-updates-through-the-azure-portal">
+<h3>Performing AOTA Updates Through the Azure Portal<a class="headerlink" href="#performing-aota-updates-through-the-azure-portal" title="Permalink to this headline">¶</a></h3>
+<p><strong>Pre-requisites</strong> : In order to perform  this step, EII bundle need to be generated as mentioned in section Generating EII Bundle for deployment. For the testing purpose, user can run the local http server as mentioned in Creating an HTTP Local Server [ONLY FOR DEVELOPMENT] . For the actual implementation, user is expected have your own http server or any cloud services that can provide valid URL to fetch the EII bundle.</p>
+<ul class="simple">
+<li><p>Open the Azure portal, select for the specific device that user will trigger the AOTA.</p></li>
+<li><p>Select the Commands tab on the top menu bar.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/command_tab.png"><img alt="../_images/command_tab.png" src="../_images/command_tab.png" style="width: 182.0px; height: 52.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>On the list command, fill up the trigger AOTA form as detailed below. In order to perform this step, the EII bundle needs to be generated as mentioned in the <strong>Generating EII Bundle for deployment section</strong>.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/aota_form.png"><img alt="../_images/aota_form.png" src="../_images/aota_form.png" style="width: 313.5px; height: 188.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Above example assumes that the http server is being running at <strong>http://10.221.40.65:8000/eii_bundle.tar.gz</strong> and the EII bundle being generated using the default tag. User can leave all other section empty and click on the Run button.</p></li>
+</ul>
+<p>The sample PCB demo example of the EII Visualizer application should appear on the new node. In case the visualizer does not appear, run the following command on the new node terminal.</p>
+<p><strong>$  xhost +</strong></p>
+<p>The user can also verify that EII has been successfully deployed on the new node by checking the list of running containers using the following command:</p>
+<p><strong>$  docker ps</strong></p>
+<p>This action should yield the following terminal output listing the running EII containers</p>
+<div class="figure align-default" id="id3">
+<img alt="pages/image/container_list.png:scale:50%:align:center" src="pages/image/container_list.png:scale:50%:align:center" />
+<p class="caption"><span class="caption-text">The user can also stop EII from running on the new node by repeating the AOTA method. Instead of passing command <strong>up</strong> parameter, the user can pass command <strong>down</strong> parameter and the correct eii_bundle tag. The user can verify that EII has stopped by checking on the list of running containers.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="verifying-triggered-aota-in-event">
+<h3>Verifying Triggered AOTA in Event<a class="headerlink" href="#verifying-triggered-aota-in-event" title="Permalink to this headline">¶</a></h3>
+<p>Once an AOTA event is triggered, we can verify the log of the triggered call. This can be one of the verification during development phase.</p>
+<ul class="simple">
+<li><p>Go to the Turtle Creek machine and run the following command to output the log of commands:</p></li>
+</ul>
+<blockquote>
+<div><p><strong>$  journalctl -fu dispatcher &amp; journalctl -fu cloudadapter</strong></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Note the event logs on the Azure portal server showing which commands have been run</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the event log does not appear, follow the steps below.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Change</span> <span class="n">settings</span> <span class="kn">from</span> <span class="nn">ERROR</span> <span class="n">to</span> <span class="n">DEBUG</span> <span class="n">everywhere</span> <span class="ow">in</span> <span class="n">below</span> <span class="n">files</span><span class="o">.</span>
+<span class="p">(</span><span class="n">Only</span> <span class="k">for</span> <span class="n">Development</span> <span class="n">Purpose</span><span class="p">)</span>
+<span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">intel</span><span class="o">-</span><span class="n">manageability</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">dispatcher</span><span class="o">-</span><span class="n">agent</span><span class="o">/</span><span class="n">logging</span><span class="o">.</span><span class="n">ini</span>
+<span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">intel</span><span class="o">-</span><span class="n">manageability</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">cloudadapter</span><span class="o">-</span><span class="n">agent</span><span class="o">/</span><span class="n">logging</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>Run the following commands</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">dispatcher</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">cloudadapter</span>
+<span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">diagnostic</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="cloud-service-thingsboard-setup">
+<h2>Cloud Service: ThingsBoard* Setup<a class="headerlink" href="#cloud-service-thingsboard-setup" title="Permalink to this headline">¶</a></h2>
+<p>All Turtle Creek devices can be added into ThingsBoard to provision/enable AOTA updates.</p>
+<div class="section" id="starting-thingsboard-as-docker-macos-linux">
+<h3>Starting ThingsBoard* as Docker [macOS*/Linux*]<a class="headerlink" href="#starting-thingsboard-as-docker-macos-linux" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Choose an edge device to run as the ThingsBoard server. The edge devices for ThingsBoard machine can be either within the cluster setup or any other edge devices.</p></li>
+<li><p>Run the following command to start ThingsBoard on the ThingsBoard machine.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>$  docker run -it -p 9090:9090 -p 1884:2883 -p 5683:5683/udp -v ~/.mytb-data:/data -v ~/.mytb-logs:/var/log/thingsboard -e MQTT_BIND_PORT=2883 –name mytb –restart always thingsboard/tb-postgres:2.5.0</strong></p>
+</div></blockquote>
+<p>Assuming that ThingsBoard has started correctly, you should expect to see the terminal output as shown in figure below.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/start_thingsboard.png"><img alt="../_images/start_thingsboard.png" src="../_images/start_thingsboard.png" style="width: 233.5px; height: 66.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>After executing the command, the user can browse the ThingsBoard server:</p></li>
+</ul>
+<blockquote>
+<div><p>$  <a href="#id6"><span class="problematic" id="id7">`&lt;http://&lt;host-ip&gt;:9090&gt;`_</span></a></p>
+<p>Example: <a class="reference external" href="http://10.221.40.48:9090">http://10.221.40.48:9090</a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>ThingsBoard login page should appear, as shown in figure below.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/login_thingsboard.png"><img alt="../_images/login_thingsboard.png" src="../_images/login_thingsboard.png" style="width: 201.0px; height: 223.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Enter default username and password to access to the ThingsBoard home.</p></li>
+</ul>
+<blockquote>
+<div><p>Username: <a class="reference external" href="mailto:sysadmin&#37;&#52;&#48;thingsboard&#46;org">mailto:sysadmin<span>&#64;</span>thingsboard<span>&#46;</span>org</a></p>
+<p>Password: sysadmin</p>
+</div></blockquote>
+</div>
+<div class="section" id="creating-a-thingsboard-account">
+<h3>Creating a ThingsBoard* Account<a class="headerlink" href="#creating-a-thingsboard-account" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>On the homepage, click on Tenant management, as shown in figure below</p></li>
+</ul>
+<div class="figure align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/homepage_thingsboard.png"><img alt="../_images/homepage_thingsboard.png" src="../_images/homepage_thingsboard.png" style="width: 364.5px; height: 182.5px;" /></a>
+<p class="caption"><span class="caption-text">Figure 38.      ThingsBoard Home Page</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>Click on the plus button in the bottom right to add a new tenant, as shown in figure below.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/tenant_button.png"><img alt="../_images/tenant_button.png" src="../_images/tenant_button.png" style="width: 79.0px; height: 65.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>The Add Tenant form will appear as shown in figure below. Complete the form, then click on the <strong>add</strong> button.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/tenant_form.png"><img alt="../_images/tenant_form.png" src="../_images/tenant_form.png" style="width: 314.0px; height: 284.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>New tenant entry will appear in the tenant sectionas shown in figure below. Click on Manage tenant admins to create a new user sign-in username and password.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/tenant_admin.png"><img alt="../_images/tenant_admin.png" src="../_images/tenant_admin.png" style="width: 431.5px; height: 217.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Add User form will appear as shown in figure below. Complete the form accordingly. For the Activation Method, click on display activation link, then click the “ADD” button.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/userform.png"><img alt="../_images/userform.png" src="../_images/userform.png" style="width: 456.0px; height: 136.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>User activation link box will appear as shown in figure below. Click on the activation link.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/user_activation.png"><img alt="../_images/user_activation.png" src="../_images/user_activation.png" style="width: 456.0px; height: 136.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>User will be redirected to create a new sign-in password. Click on create password to create the new password as shown in figure below.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/password_screen.png"><img alt="../_images/password_screen.png" src="../_images/password_screen.png" style="width: 274.0px; height: 230.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Users can now sign in using their tenant username and password, after which they will be redirect to the ThingsBoard dashboard page as shown in figure below.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/dashboard_thingsboard.png"><img alt="../_images/dashboard_thingsboard.png" src="../_images/dashboard_thingsboard.png" style="width: 917.0px; height: 581.5px;" /></a>
+</div>
+</div>
+<div class="section" id="adding-turtle-creek-device-to-thingsboard">
+<h3>Adding Turtle Creek Device to ThingsBoard*<a class="headerlink" href="#adding-turtle-creek-device-to-thingsboard" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>Add the new Turtle Creek device on ThingsBoard.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Log into the ThingsBoard page. On the left sidebar, click on the <strong>Devices</strong> as shown in figure below.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/menu_thingsboard.png"><img alt="../_images/menu_thingsboard.png" src="../_images/menu_thingsboard.png" style="width: 145.0px; height: 266.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Click the ‘plus’ button on bottom right and choose to ‘Add new device’.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/new_device.png"><img alt="../_images/new_device.png" src="../_images/new_device.png" style="width: 238.5px; height: 183.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>‘Add device’ window will appear. Completed the fields, then click the “ADD button.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/intel_managebility.png"><img alt="../_images/intel_managebility.png" src="../_images/intel_managebility.png" style="width: 341.5px; height: 345.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Newly added device will be shown on the devices page as shown in figure below.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/device_page.png"><img alt="../_images/device_page.png" src="../_images/device_page.png" style="width: 377.0px; height: 163.0px;" /></a>
+</div>
+</div></blockquote>
+</li>
+<li><p>Obtaining device credentials</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Click on the manage credentials icon as shown in figure below.</p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/manage_credentials.png"><img alt="../_images/manage_credentials.png" src="../_images/manage_credentials.png" style="width: 305.0px; height: 145.5px;" /></a>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/device_credentials_tb.png"><img alt="../_images/device_credentials_tb.png" src="../_images/device_credentials_tb.png" style="width: 160.5px; height: 171.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Setting up the dashboard</p></li>
+</ul>
+<blockquote>
+<div><ul>
+<li><p>Some files need to be copied from the Turtle Creek machine to ThingsBoard page in the next step. These files can be found in the directory below (Figure 55).</p>
+<p><strong>$  cd /usr/share/cloudadapter-agent/thingboard</strong></p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/tingsboard_templete.png"><img alt="../_images/tingsboard_templete.png" src="../_images/tingsboard_templete.png" style="width: 960.0px; height: 600.0px;" /></a>
+</div>
+</li>
+<li><p>On the left side bar menu, click on the Widget Library, then click on Add new widget in the bottom right, and the Import widgets bundle. Drag the intel_manageability_widget.json file into the box provided and click Import (Figure 55).</p></li>
+</ul>
+<div class="figure align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/widget_bundle.png"><img alt="../_images/widget_bundle.png" src="../_images/widget_bundle.png" style="width: 547.0px; height: 317.0px;" /></a>
+<p class="caption"><span class="caption-text">Figure 53.      Importing Widgets Bundle</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<ul class="simple">
+<li><p>On the left sidebar menu, click on Dashboard, then on Add new dashboard in the bottom right. Drag <strong>intel_manageability_devices.json</strong> into the box provided and click Import. Repeat this step for <strong>intel_manageability_batch.json</strong>.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/new_dashboard.png"><img alt="../_images/new_dashboard.png" src="../_images/new_dashboard.png" style="width: 546.5px; height: 319.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Both newly added dashboards will be displayed (Figure 58).</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/added_dashboard.png"><img alt="../_images/added_dashboard.png" src="../_images/added_dashboard.png" style="width: 251.5px; height: 66.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>To access the dashboard, click on ‘Dashboard’ on the left sidebar, then on Intel Manageability Devices (Figure 56). Basic information about added devices is available here.</p></li>
+</ul>
+</div></blockquote>
+<p>If the user has more than one device, the user can choose which device to view by clicking the highlighted button in the top right (Figure 56).</p>
+<p>As shown in Figure 56, buttons are also available in the lower part of the screen to view the entire event log, to search for specific event logs, or to expand the window to full screen.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/intel_manageability_window.png"><img alt="../_images/intel_manageability_window.png" src="../_images/intel_manageability_window.png" style="width: 608.0px; height: 352.0px;" /></a>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Provisioning a Device<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><strong>Pre-Requisites</strong>: In order to perform this step, Turtle Creek needs to be installed following the instructions in the Installation - Turtle Creek section.</p>
+<blockquote>
+<div><p>The user must provision the Turtle Creek device for it to connect to ThingsBoard.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Provisioning can be done with or without TPM security by setting ‘PROVISION_TPM’. ‘PROVISION_TPM’ can be set to the Turtle Creek device, user needs to run these commands:</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>auto: use TPM if present; disable if not present; do not prompt</p></li>
+<li><p>disable: do not use TPM.</p></li>
+<li><p>enable: use TPM; return error code if TPM not detected.</p></li>
+<li><p>(unset): default behavior; use TPM if present, prompt if not</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>On the Turtle Creek device, user needs to run this command, change the bold parameter accordingly as mentioned above.</p></li>
+</ul>
+<blockquote>
+<div><p><strong>$  sudo PROVISION_TPM=auto provision-**Read though the license and press **’Y’</strong> to accept</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>If the device was previously provisioned, the following message will appear. To override the previous cloud configuration, press <strong>‘Y’</strong>.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/existing_configuration.png"><img alt="../_images/existing_configuration.png" src="../_images/existing_configuration.png" style="width: 357.0px; height: 240.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Select ThingsBoard as the cloud service by pressing <strong>‘3’</strong> and [ENTER].</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/cloud_service.png"><img alt="../_images/cloud_service.png" src="../_images/cloud_service.png" style="width: 195.5px; height: 77.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Provide the IP address of the server running ThingsBoard.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/thingsboard_server.png"><img alt="../_images/thingsboard_server.png" src="../_images/thingsboard_server.png" style="width: 118.0px; height: 25.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Provide the device token based on Step 3b.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/device_token.png"><img alt="../_images/device_token.png" src="../_images/device_token.png" style="width: 133.0px; height: 25.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Use 1884s for the port configuration.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/port_configuration.png"><img alt="../_images/port_configuration.png" src="../_images/port_configuration.png" style="width: 309.5px; height: 34.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Prompts for Configure TLS will appear and type ‘N’ for this.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/tls_config.png"><img alt="../_images/tls_config.png" src="../_images/tls_config.png" style="width: 75.0px; height: 26.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>The following screen will appear if cloud provisioning has been completed successfully</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/configured_cloud.png"><img alt="../_images/configured_cloud.png" src="../_images/configured_cloud.png" style="width: 159.0px; height: 36.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>The script will then start the Intel® Manageability Services. When the script finishes, you should be able to interact with the device via the ThingsBoard dashboard.</p></li>
+<li><p>If at any time the cloud service configuration needs to be changed or updated, run this provisioning script again.</p></li>
+<li><p>To add more than one device, repeat each of the previous steps, except for Step 4 (Setting Up the Dashboard).</p></li>
+</ul>
+</div>
+<div class="section" id="performing-aota-updates-through-the-thingsboard-page">
+<h3>Performing AOTA Updates Through the ThingsBoard* Page<a class="headerlink" href="#performing-aota-updates-through-the-thingsboard-page" title="Permalink to this headline">¶</a></h3>
+<p><strong>Pre-Requisites</strong> : In order to perform  this step EII bundle need to be generated as mentioned in section Generating EII Bundle for deployment and local http server (for development) need to be run as mentioned in Creating an HTTP Local Server [ONLY FOR DEVELOPMENT]</p>
+<ul class="simple">
+<li><p>Open the ThingsBoard page, then click on the Dashboard page. Select ‘Intel Manageability Devices’.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/dashboard_thingsboard2.png"><img alt="../_images/dashboard_thingsboard2.png" src="../_images/dashboard_thingsboard2.png" style="width: 503.0px; height: 209.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Select one of the previously added Turtle Creek devices. In this case, the user can select the new node (node 2) in which they want to deploy the eii_bundle.</p></li>
+<li><p>Click on the ‘Trigger AOTA’ button.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/aota_button.png"><img alt="../_images/aota_button.png" src="../_images/aota_button.png" style="width: 118.5px; height: 42.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Once the Trigger AOTA window opens, complete each field per the information below:</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/aota_window.png"><img alt="../_images/aota_window.png" src="../_images/aota_window.png" style="width: 211.5px; height: 421.0px;" /></a>
+</div>
+<p>For the fetch information, provide the local HTTP server being set up in section Creating an HTTP Local Server [ONLY FOR DEVELOPMENT]. The example uses <strong>http://10.221.40.48:9000/eii_bundle.tar.gz</strong> in this case.</p>
+<p>Leave the other section empty and click on the Send button.</p>
+<p>In the step above, the new node will access the primary node through the local HTTP server that being set up to fetch the eii_bundle.</p>
+<p>In the ThingsBoard log, the user can see that the eii_bundle has been fetched from the local server and was deployed successfully:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/successful_thingsboard.png"><img alt="../_images/successful_thingsboard.png" src="../_images/successful_thingsboard.png" style="width: 371.0px; height: 62.0px;" /></a>
+</div>
+<p>The sample PCB demo example of the EII Visualizer application should appear on the new node. In case the visualizer does not appear, run the following command on the new node terminal.</p>
+<p><strong>$  xhost +</strong></p>
+<p>The user can also verify that EII has been successfully deployed on the new node by checking the list of running containers using the following command:</p>
+<p><strong>$  docker ps</strong></p>
+<p>This action should yield the following terminal output listing the running EII containers.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/eii_container_list.png"><img alt="../_images/eii_container_list.png" src="../_images/eii_container_list.png" style="width: 392.5px; height: 54.5px;" /></a>
+</div>
+<p>The user can also stop EII from running on the new node by repeating the AOTA method. Instead of passing command up parameter, the user can pass the command  down parameter and the correct eii_bundle tag. The user can verify that EII has stopped by checking on the list of running containers.</p>
+</div>
+<div class="section" id="id2">
+<h3>Verifying Triggered AOTA in Event<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Once an AOTA event is triggered, we can verify the log of the triggered call. This can be one of the verification done during development phase.</p>
+<ul class="simple">
+<li><p>Go to the Turtle Creek machine and run the following command to output the log of commands:</p></li>
+</ul>
+<blockquote>
+<div><p><strong>$  journalctl -fu dispatcher &amp; journalctl -fu cloudadapter</strong></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Note the event logs on the ThingsBoard server showing which commands have been run.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the event log does not appear, follow the steps below.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Change</span> <span class="n">settings</span> <span class="kn">from</span> <span class="nn">ERROR</span> <span class="n">to</span> <span class="n">DEBUG</span> <span class="n">everywhere</span> <span class="ow">in</span> <span class="n">below</span> <span class="n">files</span><span class="o">.</span>
+<span class="p">(</span><span class="n">Only</span> <span class="k">for</span> <span class="n">Development</span> <span class="n">Purpose</span><span class="p">)</span>
+<span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">intel</span><span class="o">-</span><span class="n">manageability</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">dispatcher</span><span class="o">-</span><span class="n">agent</span><span class="o">/</span><span class="n">logging</span><span class="o">.</span><span class="n">ini</span>
+<span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">intel</span><span class="o">-</span><span class="n">manageability</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">cloudadapter</span><span class="o">-</span><span class="n">agent</span><span class="o">/</span><span class="n">logging</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<p>Run the following commands</p>
+<p><strong>$  sudo systemctl restart dispatcher</strong></p>
+<p><strong>$  sudo systemctl restart cloudadapter</strong></p>
+</div>
+</div>
+<div class="section" id="cloud-service-telit-cloud-setup">
+<h2>Cloud Service: Telit* Cloud Setup<a class="headerlink" href="#cloud-service-telit-cloud-setup" title="Permalink to this headline">¶</a></h2>
+<p>It is necessary to creating a Telit account and to receive an org token from Telit to provision/enable AOTA updates. You will also need to import the Thing Definition, which provides the buttons created to support AOTA functionality in EII.</p>
+<p>A connection to Telit can only be made if the user has a group/organization on the service. Visit the deviceWise domain to create an account and get an org or application</p>
+<p><a href="#id8"><span class="problematic" id="id9">`https://docs.devicewise.com/Content/GettingStarted/Getting-Started-with-IoT-Platform.htm`_</span></a></p>
+<div class="section" id="create-your-telit-iot-portal-account">
+<h3>Create Your Telit* IoT Portal Account<a class="headerlink" href="#create-your-telit-iot-portal-account" title="Permalink to this headline">¶</a></h3>
+<p>Telit provides a Getting Started Guide for creating an account. This guide can be referenced here:</p>
+<p><a href="#id10"><span class="problematic" id="id11">`https://docs.devicewise.com/Content/GettingStarted/IoT-Portal-Part-1---Creating-your-account.htm`_</span></a></p>
+<p>After setting up your password and accepting Telits terms, the first time you click on Things you will be asked to set up live updates. Although this is optional, Intel recommends setting the frequency of live updates to 5 seconds.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/live_update.png"><img alt="../_images/live_update.png" src="../_images/live_update.png" style="width: 364.0px; height: 176.0px;" /></a>
+</div>
+</div>
+<div class="section" id="import-thing-definition">
+<h3>Import Thing Definition<a class="headerlink" href="#import-thing-definition" title="Permalink to this headline">¶</a></h3>
+<p><strong>Pre-Requisites</strong>: In order to perform this step Turtle Creek need to be installed based on Installation Turtle Creek section</p>
+<p><strong>To work with EII’s AOTA capability, import INTEL-MGB as a Thing</strong></p>
+<ul class="simple">
+<li><p>Login to Telit* at <a href="#id12"><span class="problematic" id="id13">`https://portal.telit.com/app/login`_</span></a></p></li>
+<li><p>Ensure the correct org in the top right corner, left of the gear wheel.</p></li>
+<li><p>Select the Developer tab along the top bar.</p></li>
+</ul>
+<p><em>.      Select Thing Definitions button in the bottom left sidebar menu.
+*       Within the Things sub-screen, find the Import button in the upper right corner.
+*       Click Attach File and select **thingsdefinition.json*</em> that available inside the turtlecreek repository.
+*       Click the Import button. You should see the new Things definition added to your account</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/confirmation.png"><img alt="../_images/confirmation.png" src="../_images/confirmation.png" style="width: 654.0px; height: 103.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>The new Thing definition should now be visible within the Telit list of things under Things definitions, under the Developer tab.</p></li>
+</ul>
+</div>
+<div class="section" id="copy-application-token">
+<h3>Copy Application Token<a class="headerlink" href="#copy-application-token" title="Permalink to this headline">¶</a></h3>
+<p>Within the Telit portal, view the Developer tab and click Applications from the menu on the left. Copy and retain the token, which will be required during the provisioning script/step.</p>
+<p>This token is used to link your Thing to the Telit cloud and is used during provisioning.</p>
+<ul class="simple">
+<li><p>Log in to your Telit IoT Portal: <a href="#id14"><span class="problematic" id="id15">`https://portal.devicecloud.windriver.com`_</span></a></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The first time you log in, you will be asked to Enable Live Updates for Things. Click the box, set 5 seconds for the setting.</p>
+</div>
+<ul class="simple">
+<li><p>Retrieve Token</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Click on ‘Developer’.</p></li>
+<li><p>Click on ‘Applications’.</p></li>
+<li><p>Copy encrypted token.</p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/encrypted_token.png"><img alt="../_images/encrypted_token.png" src="../_images/encrypted_token.png" style="width: 436.5px; height: 61.5px;" /></a>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Alternately, you can paste the token into a text editor.</p>
+</div>
+</div>
+<div class="section" id="provision-with-the-token">
+<h3>Provision with the Token<a class="headerlink" href="#provision-with-the-token" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Once you have copied your Application Token, you are ready to provision Turtle Creek. You will need the provisioning script.</p></li>
+<li><p>Provisioning can be done with or without TPM security by setting ‘PROVISION_TPM’. ‘PROVISION_TPM’ can be set tothe turtlecreek device, users need to run be run below command</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>auto: use TPM if present; disable if not present; do not prompt</p></li>
+<li><p>disable: do not use TPM.</p></li>
+<li><p>enable: use TPM; return error code if TPM not detected.</p></li>
+<li><p>(unset): default behavior; use TPM if present, prompt if not</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>On the Turtle Creek device, users need to run be run below command, change the bold parameter accordingly as mentioned above.</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>$  sudo PROVISION_TPM=auto provision-tc</p></li>
+<li><p>User will be asked to replace configuration if there is any existing configured cloud service. Type Y</p></li>
+<li><p>Choose Telit Cloud service</p></li>
+<li><p>Select development for Telit host</p></li>
+<li><p>Insert application token that have been copied on previous step.</p></li>
+<li><p>Leave the Telit thing key blank</p></li>
+</ul>
+</div></blockquote>
+<p>User will be prompt by ‘successfully configured cloud service’ and ‘Turtle Creek provision complete’ message</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/message.png"><img alt="../_images/message.png" src="../_images/message.png" style="width: 378.5px; height: 313.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Verify your Connectivity</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Click on ‘Things’.</p></li>
+<li><p>Verify that your system is now visible on Telit</p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/telit_ui.png"><img alt="../_images/telit_ui.png" src="../_images/telit_ui.png" style="width: 394.5px; height: 314.0px;" /></a>
+</div>
+<p>Once your device is identified as a Thing in Telit, your system can be updated through Telit.</p>
+<p>Telit serves as the UI to support the following OTAs (Over-the-Air) without manual intervention:</p>
+<blockquote>
+<div><p><strong>AOTA</strong> (Application Over the Air update)</p>
+<p><strong>FOTA</strong> (Firmware Over the Air update)</p>
+<p><strong>SOTA</strong> (Software/OS Over the Air update)</p>
+<p><strong>Config Update</strong> (configuration parameter update)</p>
+<p><strong>Power Management</strong> (Remote Shutdown and Restart)</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only AOTA is currently supported and validated with EII</p>
+</div>
+</div>
+<div class="section" id="link-to-thing-definition">
+<h3>Link to Thing definition<a class="headerlink" href="#link-to-thing-definition" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Set Thing definition</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Click <strong>Things</strong> tab.</p></li>
+<li><p>Click <strong>(eye)</strong> for your Thing.</p></li>
+<li><p>Set <strong>Thing Definition</strong>, click <strong>(book)</strong>.</p></li>
+<li><p>Choose definition: <strong>INTEL_MGB</strong>.</p></li>
+<li><p>Submit, Okay.</p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/thing_overview.png"><img alt="../_images/thing_overview.png" src="../_images/thing_overview.png" style="width: 315.0px; height: 50.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Once the Things definition is installed, you will see the Methods tab is enabled, which will show you the widgets that EII supports.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/connected_device_telit.png"><img alt="../_images/connected_device_telit.png" src="../_images/connected_device_telit.png" style="width: 365.0px; height: 90.0px;" /></a>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Your ‘Methods’ might look different.</p>
+</div>
+<p>The Telit website provides instructions for navigating the user interface to complete the steps of importing a thing definition and performing required configuration tasks. The following steps are generalized, as the name and placement of specific buttons and menus within the Telit website can change without notice.</p>
+</div>
+<div class="section" id="view-and-name-your-thing">
+<h3>View and Name Your Thing<a class="headerlink" href="#view-and-name-your-thing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Name your Thing (optional)</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Click ‘Actions’.</p></li>
+<li><p>Click ‘Edit’.</p></li>
+<li><p>Under Name* &lt;enter name&gt;.</p></li>
+<li><p>Update, Okay</p></li>
+</ul>
+</div></blockquote>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/device_naming.png"><img alt="../_images/device_naming.png" src="../_images/device_naming.png" style="width: 401.0px; height: 103.5px;" /></a>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This helps to identify your device</p>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/connected_device_list.png"><img alt="../_images/connected_device_list.png" src="../_images/connected_device_list.png" style="width: 404.0px; height: 81.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Identify thing on system (Thing Key)</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Open Terminal</p></li>
+<li><p>$  cat/usr/share/dispatcher-agent/device_id</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="uploading-the-telit-deployment-bundle-in-telit-portal">
+<h3>Uploading the Telit deployment bundle in Telit Portal<a class="headerlink" href="#uploading-the-telit-deployment-bundle-in-telit-portal" title="Permalink to this headline">¶</a></h3>
+<p><strong>Pre-Requisites</strong> : In order to perform  this step EII bundle need to be generated as mentioned in section Generating EII Bundle for deployment. The EII bundle need to be in the same system as you access your Telit portal.</p>
+<ul class="simple">
+<li><p><strong>Goto Developer Page</strong> and Select <strong>Files</strong> General Menu on <strong>Left</strong> side panel.</p></li>
+<li><p>In <strong>Files</strong> Page Click <strong>*New File</strong> Button.</p></li>
+<li><p>In <strong>Add File</strong> Popup, Click <strong>Attach</strong> File button and attach the generated TC-Telit Bundle <strong>eii_bundle.tar.gz</strong> and Select <strong>Public</strong> CheckBox. (Mandatory).</p></li>
+<li><p>Click Upload Button as shown below</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/generated_bundle.png"><img alt="../_images/generated_bundle.png" src="../_images/generated_bundle.png" style="width: 326.0px; height: 253.0px;" /></a>
+</div>
+<ul class="simple">
+<li><p>The new added file will be listed on the Files section. Copy <strong>Url</strong> of the uploaded for AOTA Method</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="pages/image/uploaded_url.png"><img alt="pages/image/uploaded_url.png" src="pages/image/uploaded_url.png" /></a>
+</div>
+</div>
+<div class="section" id="performing-aota-updates-through-telit">
+<h3>Performing AOTA Updates Through Telit<a class="headerlink" href="#performing-aota-updates-through-telit" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Go to <strong>Things</strong> Page <a href="#id16"><span class="problematic" id="id17">`https://portal-dev.telit.com/things/browse.`_</span></a></p></li>
+<li><p>Click the eye icon to select the provisioned device.</p></li>
+<li><p>Select <strong>Methods</strong> Tab.</p></li>
+<li><p>Select Trigger AOTA button as shown below.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/aota_methods.png"><img alt="../_images/aota_methods.png" src="../_images/aota_methods.png" style="width: 386.0px; height: 58.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Fill up the trigger AOTA form accordingly.</p></li>
+</ul>
+<blockquote>
+<div><p>Container tag should be eii_bundle if you generate the bundle using default value.</p>
+<p>Fetch should be the copied URL from the upload bundle in the Uploading the Telit deployment bundle in Telit Portal .</p>
+<p>Version should be the docker compose file version number Which we used for tc-telit bundle generation.</p>
+<p>Leave the others section empty and click on the execute button</p>
+</div></blockquote>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/trigger_aota_form.png"><img alt="../_images/trigger_aota_form.png" src="../_images/trigger_aota_form.png" style="width: 365.0px; height: 332.5px;" /></a>
+</div>
+<ul class="simple">
+<li><p>Click on the event tab to check on the AOTA status, success message will be display as below if the AOTA is executed successfully.</p></li>
+</ul>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../_images/event_tab.png"><img alt="../_images/event_tab.png" src="../_images/event_tab.png" style="width: 465.5px; height: 147.0px;" /></a>
+</div>
+</div>
+</div>
+<div class="section" id="multinode-deployment-without-using-turtle-creek">
+<h2>Multinode deployment without using Turtle Creek.<a class="headerlink" href="#multinode-deployment-without-using-turtle-creek" title="Permalink to this headline">¶</a></h2>
+<p>This step is to deploy EII on multi node by using the native method without any installation of Turtle Creek and Cloud service. To continue on this section, it is required to complete step in Multi-Node deployment and Generating EII Bundle for deployment section.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please make sure to copy and untar the above bundle on a secure location having root only access as it container secrets.</p>
+</div>
+<p># <strong>$ sudo tar -xvf &lt;eii_bundle gz generated&gt;</strong></p>
+<p># <strong>$ cd build</strong></p>
+<p># <strong>$ docker-compose up</strong></p>
+<p>After done for this step, user can see that the container as what have been generated on the EII bundle is running.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

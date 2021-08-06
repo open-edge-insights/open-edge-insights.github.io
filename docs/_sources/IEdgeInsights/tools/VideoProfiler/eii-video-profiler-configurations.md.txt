@@ -1,0 +1,19 @@
+## EII Video Profiler configurations
+
+1. dev_mode
+
+    Setting this to false enables secure communication with the EII stack. User must ensure this switch is in sync with DEV_MODE in [.env](../../build/.env)
+    With PROD mode enabled, the path for the certs mentioned in [config](./config.json) can be changed by the user to point to the required certs.
+
+2. total_number_of_frames
+
+    If mode is set to 'fps', the average FPS is calculated for the number of frames set by this variable.
+    If mode is set to 'monitor', the average stats is calculated for the number of frames set by this variable.
+    Setting it to (-1) will run the profiler forever unless terminated by signal interrupts('Ctrl+C').
+    total_number_of_frames should never be set as (-1) for 'fps' mode.
+
+3. export_to_csv
+
+    Setting this switch to **true** exports csv files for the results obtained in VideoProfiler. For monitor_mode, runtime stats printed in the csv
+    are based on the the following precdence: avg_stats, per_frame_stats, display_metadata.
+

@@ -1,0 +1,44 @@
+==============
+Release Notes
+==============
+
+EII v2.6 New Features
+----------------------
+
+* Ansible playbooks for EII installation, provisioning and cluster set up (single & multi nodes) 
+ 
+    * Enable setup of single/multi-nodes deployment 
+    * Multi-nodes deployment can be done with single command 
+ 
+* Helm charts for K8s deployment 
+ 
+    * Deploy containers to Kubernetes cluster using Helm charts 
+
+* Support for Jupyter Notebooks for developing UDFs (User Defined Functions) 
+ 
+    * UDF development in python can be done using Jupyter Notebook 
+ 
+* Enabling Realsense Cameras 
+ 
+    * VI support ingestion from Realsense camera 
+    * Generate point cloud data 
+ 
+* Prebuilt containers distribution 
+ 
+* EII video pipeline multi-Stream synchronous processing support 
+ 
+* Ubuntu 20.04 Host OS and docker base image support. 
+ 
+* C API layer support for EII Config Mgr. 
+ 
+* Timeseries Message Bus connections 
+ 
+    * EII Messagebus Output plugin for Telegraf 
+    
+    * EII Messagebus Input and output nodes for Kapacitor 
+
+Known Issues
+------------
+
+#. Encoding cannot be enabled with native PCL udf	
+#. NativePCLIngestion CustomUDF throws warnings while processing rs2 depth frames

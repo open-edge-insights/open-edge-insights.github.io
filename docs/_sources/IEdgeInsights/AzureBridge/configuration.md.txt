@@ -1,0 +1,476 @@
+## Configuration
+
+The configuration of the Azure Bridge is a mix of the configuration for the
+EII services, the Azure Bridge module, and configuration for the other
+Azure IoT Edge Modules (i.e. the Simple Subscriber, and the Azure Blob Storage
+modules). All of this configuration is wrapped up into your deployment manifest
+for Azure IoT Hub.
+
+The following sections cover the configuration of the aforementioned servies
+and then the generation of your Azure Deployment manifest.
+
+### Azure Bridge
+
+The Azure Bridge spans EII and Azure IoT Edge Runtime environments, as such
+its configuration is a mix of EII configuration and Azure IoT Edge module configuration
+properties. The configuration of the bridge is split between environmental
+variables specified in your Azure IoT Hub deployment manifest and the module's
+digital twin. Additionally, the digital twin for the Azure Bridge module
+contains the entire configuration for the EII services running in your edge
+environment.
+
+The configuration of the EII Message Bus is done in a method similar to that of
+the other EII services, such as the Video Analytics service. To provided the
+configuration for the topics which the bridge should subscribe to,
+you must set the `Subscribers` list in the [modules/AzureBridge/config.json](./modules/AzureBridge/config.json)
+file. The list is comprised of JSON objects for every subscription you wish the
+Azure Bridge to establish. Below is an example of the configuration for
+subscribing to the the publications coming from the Video Analytics container.
+
+```javascript
+{
+    "Subscribers": [
+        {
+            // Specifies that this is the default subscriber
+            "Name": "default",
+
+            // Gives the type of connection, i.e. zmq_tcp, this could
+            // also be zmq_ipc
+            "Type": "zmq_tcp",
+
+            // The EndPoint specifies the details of the connect, for an
+            // IPC connection, this would be a JSON object with the
+            // SocketDir key pointing to the directory of the IPC sockets
+            "EndPoint": "127.0.0.1:65013",
+
+            // Specification of the AppName of the service publishing the
+            // messages. This allows the Azure Bridge to get the needed
+            // authentication keys to subscribe
+            "PublisherAppName": "VideoAnalytics",
+
+            // Specifies the list of all of the topics which the
+            // AzureBridge shall subscribe to
+            "Topics": [
+                "camera1_stream_results"
+            ]
+        }
+    ]
+}
+```
+
+There are a few important implications to be aware of for both ZeroMQ TCP and IPC
+subscribers over the EII Message Bus. These implications are specified below.
+
+**ZeroMQ TCP Subscription Implications**
+
+For ZeroMQ TCP subscribers, like the example shown above, the `EndPoint` in
+the subscriber's configuration object has to be overridden through an
+environmental variable. The reason for this, is that the Azure Bridge
+service runs attached to a bridged Docker network created by the Azure IoT
+Edge Runtime, whereas the other EII services run on the host's network. In
+order to subscribe, the Azure Bridge must use the host's IP address to
+connect.
+
+If the Azure Bridge is only subscribing to a single service, then the
+`EndPoint` can be overridden by setting the `SUBSCRIBER_ENDPOINT` environmental
+variable. The environmental variable changes if there are multiple subscribers.
+For instance, if the configuration example had another object in the Subscribers
+list which had the `Name` key set to `example_name`, then the environmental
+variable name would need to be `SUBSCRIBER_example_name_ENDPOINT`. Essentially,
+for multiple subscribers the `Name` property must be in the environmental
+variable name between the `SUBSCRIBER_` and `_ENDPOINT`.
+
+In either case, the value of the environmental variable must be set to
+`$HOST_IP:<PORT>` where you must fill in what the desired port is. Note that the
+IP address is the variable `$HOST_IP`. This will be pulled from the `.env` file
+when generating your deployment manifest.
+
+The final implication is on the configuration of the services which the
+Azure Bridge is subscribing to. Most EII services publishing over TCP set
+their host to `127.0.0.1`. This keeps the communication only available to
+subscribers which are on the local host network on the system. In order for
+the Azure Bridge to subscribe to these publications this must be changed
+to `0.0.0.0`.
+
+This can be accomplished by overridding the service's publisher `EndPoint`
+configuration via environmental variables, just like with the Azure Bridge
+service. For each service which the Azure Bridge needs to subscribe to over
+TCP, add the environmental variable `PUBLISHER_ENDPOINT=0.0.0.0:<PORT>` to the
+environmental variable configuration of the serivce's module configuration in
+your deployment manifest (note: be sure to replace the port).  Or if there are
+multiple topics being published, use the variable `PUBLISHER_<Name>_ENDPOINT`.
+
+These variables have already been set for to have the Azure Bridge subscribe
+to a single instance of the Video Analytics service. This configuration can be
+seen in your deployment manifest under the, "AzureBridge", and, "ia_video_analytics",
+modules. Or, you can see this configuration being set in the,
+"config/templates/ia_video_analytics.template.json", and,
+"config/templates/AzureBridge.template.json", files.
+
+**ZeroMQ IPC Subscription Implications**
+
+If AzureBridge is subscribing to publisher over a ZeroMQ IPC socket, ensure that
+* AzureBridge app's subscriber interfaces configuration matches to that of the 
+  publisher app's publisher interfaces configuration in `build/provision/config/eii_config.json`
+  file.  Below is an example of the AzureBridge interface configuration subscribing to the 
+  publications coming from the VideoIngestion container.
+  
+  ```javascript
+  {
+    "Subscribers": [
+        {
+            // Specifies that this is the default subscriber
+            "Name": "default",
+
+            // Gives the type of connection, i.e. zmq_tcp/zmq_ipc
+            "Type": "zmq_ipc",
+
+            // The EndPoint specifies the details of the connect, for an
+            // IPC connection, this would be a JSON object with the
+            // SocketDir key pointing to the directory of the IPC sockets
+            "EndPoint": "/EII/sockets",
+
+            // Specification of the AppName of the service publishing the
+            // messages. This allows the Azure Bridge to get the needed
+            // authentication keys to subscriber
+            "PublisherAppName": "VideoIngestion",
+
+            // Specifies the list of all of the topics which the
+            // AzureBridge shall subscribe to
+            "Topics": [
+                "camera1_stream"
+            ]
+        }
+     ]
+    }
+    ```
+
+* Please follow `Step 3 - Configuring Azure IoT Deployment Manifest` above to generate the manifest
+  template file and deployment manifest files. Ensure to remove all the `PUBLISHER_ENDPOINT`, 
+  `PUBLISHER_<Name>_ENDPOINT`, `SUBSCRIBER_ENDPOINT` and `SUBSCRIBER_<Name>_ENDPOINT` environmental 
+  variables from the generated deployment manifest template file i.e., [example.template.json](./example.template.json) 
+  as these ENVs are not applicable for IPC configuration. Additionally, update the 
+  [example.template.json](./example.template.json) as per the recommendations mentioned in the 
+  `Important Note` section for IPC configuration. Please re-generate the deployment manifest file (`config/example.amd64.json`)
+  by running the below command:
+  
+  ```sh
+  $ iotedgedev genconfig -f example.template.json
+  ```
+
+
+* Please follow `Step 4 - Deployment` above for deployment
+  
+
+Below is an example digital twin for the Azure Bridge:
+
+```json
+{
+    "log_level": "DEBUG",
+    "topics": {
+        "camera1_stream_results": {
+            "az_output_topic": "camera1_stream_results"
+        }
+    },
+    "eii_config": "{\"/AzureBridge/config\": {}, \"/AzureBridge/interfaces\": {\"Subscribers\": [{\"EndPoint\": \"127.0.0.1:65013\", \"Name\": \"default\", \"PublisherAppName\": \"VideoAnalytics\", \"Topics\": [\"camera1_stream_results\"], \"Type\": \"zmq_tcp\"}]}, \"/EtcdUI/config\": {}, \"/EtcdUI/interfaces\": {}, \"/GlobalEnv/\": {\"C_LOG_LEVEL\": \"DEBUG\", \"ETCD_KEEPER_PORT\": \"7070\", \"GO_LOG_LEVEL\": \"INFO\", \"GO_VERBOSE\": \"0\", \"PY_LOG_LEVEL\": \"DEBUG\"}, \"/VideoAnalytics/config\": {\"encoding\": {\"level\": 95, \"type\": \"jpeg\"}, \"max_jobs\": 20, \"max_workers\": 4, \"queue_size\": 10, \"udfs\": [{\"device\": \"CPU\", \"model_bin\": \"common/udfs/python/pcb/ref/model_2.bin\", \"model_xml\": \"common/udfs/python/pcb/ref/model_2.xml\", \"name\": \"pcb.pcb_classifier\", \"ref_config_roi\": \"common/udfs/python/pcb/ref/roi_2.json\", \"ref_img\": \"common/udfs/python/pcb/ref/ref.png\", \"type\": \"python\"}]}, \"/VideoAnalytics/interfaces\": {\"Publishers\": [{\"AllowedClients\": [\"*\"], \"EndPoint\": \"0.0.0.0:65013\", \"Name\": \"default\", \"Topics\": [\"camera1_stream_results\"], \"Type\": \"zmq_tcp\"}], \"Subscribers\": [{\"EndPoint\": \"/EII/sockets\", \"Name\": \"default\", \"PublisherAppName\": \"VideoIngestion\", \"Topics\": [\"camera1_stream\"], \"Type\": \"zmq_ipc\", \"zmq_recv_hwm\": 50}]}, \"/VideoIngestion/config\": {\"encoding\": {\"level\": 95, \"type\": \"jpeg\"}, \"ingestor\": {\"loop_video\": true, \"pipeline\": \"./test_videos/pcb_d2000.avi\", \"poll_interval\": 0.2, \"queue_size\": 10, \"type\": \"opencv\"}, \"max_jobs\": 20, \"max_workers\": 4, \"sw_trigger\": {\"init_state\": \"running\"}, \"udfs\": [{\"n_left_px\": 1000, \"n_right_px\": 1000, \"n_total_px\": 300000, \"name\": \"pcb.pcb_filter\", \"scale_ratio\": 4, \"training_mode\": \"false\", \"type\": \"python\"}]}, \"/VideoIngestion/interfaces\": {\"Publishers\": [{\"AllowedClients\": [\"VideoAnalytics\", \"Visualizer\", \"WebVisualizer\", \"TLSRemoteAgent\", \"RestDataExport\"], \"EndPoint\": \"/EII/sockets\", \"Name\": \"default\", \"Topics\": [\"camera1_stream\"], \"Type\": \"zmq_ipc\"}], \"Servers\": [{\"AllowedClients\": [\"*\"], \"EndPoint\": \"127.0.0.1:66013\", \"Name\": \"default\", \"Type\": \"zmq_tcp\"}]}}"
+}
+```
+
+> See the `modules/AzureBridge/config_schema.json` for the full JSON schema
+> for the digital twin of the Azure Bridge module.
+
+Each key in the configuration above is described in the table below.
+
+|       Key       |                                              Description                                       |
+| :-------------: | ---------------------------------------------------------------------------------------------- |
+| `log_level`     | This is the logging level for the Azure Bridge module, must be INFO, DEBUG, WARN, or ERROR |
+| `topics`        | Configuration for the topics to map from the EII Message Bus into the Azure IoT Edge Runtime   |
+| `eii_config`    | Entire serialized configuration for EII; this configuration will be placed in ETCD             |
+
+You will notice that the `eii_config` is a serialized JSON string. This is due
+to a limitation with the Azure IoT Edge Runtime. Currently, module digital twins
+do not support arrays; however, the EII configuration requires array support. To
+workaround this limitation, the EII configuration must be a serialized JSON
+string in the digital twin for the Azure Bridge module.
+
+The `topics` value is a JSON object, where each key is a topic from the EII Message
+Bus which will be re-published onto the Azure IoT Edge Runtime. The value for
+the topic key will be an additional JSON object, where there is one required
+key, `az_output_topic`, which is the topic on Azure IoT Edge Runtime to use and
+then an optional key, `az_blob_container_name`. This key specifies the Azure Blob
+Storage container to store the images from the EII video analytics pipeline in.
+If the `az_blob_container_name` key is not specified, then the images will
+not be saved.
+
+> **IMPORTANT NOTE:** "Container" in the Azure Blob Storage context is not
+> referencing a Docker container, but rather a storage structure within the
+> Azure Blob Storage instance running on your edge device. For more information
+> on the data structure of Azure Blob Storage, see
+> [this link](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction#blob-storage-resources).
+
+**IMPORTANT NOTE**
+
+The Azure Blob Storage service places strict requirements on the name of the,
+"container", under which it stores blobs. This impacts the value given for the
+`az_blob_container_name` configuration key. According to the Azure documentation,
+the name must a valid DNS name adhering to the following rules:
+
+* Container names must start or end with a letter or number, and can contain
+    only letters, numbers, and the dash (-) character.
+* Every dash (-) character must be immediately preceded and followed by a
+    letter or number; consecutive dashes are not permitted in container names.
+* All letters in a container name must be lowercase.
+* Container names must be from 3 through 63 characters long.
+
+For more information on the name conventions/restrictions for Azure Blob Storage
+container names, see [this](https://docs.microsoft.com/en-us/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)
+page of the Azure documentation.
+
+### Sample EII ONNX UDF
+
+EII provides a sample UDF which utilizes the ONNX RT to execute your machine learning /
+deep learning model. It also supports connecting to an AzureML Workspace to download
+the model and then run it. The source code for this UDF is in 
+`[WORKDIR]/IEdgeInsights/common/video/udfs/python/sample_onnx/`, please also refer 
+`Sample ONNX UDF` section in `[WORKDIR]/IEdgeInsights/common/video/udfs/README.md` for doing
+the required configuration for running this UDF.
+
+To use this UDF with EII, you need to modify your `build/provision/config/eii_config.json`
+configuration file to run the UDF in either your Video Ingesiton or Video Analytics
+instance. Then, you need to modify the environmental variables in the `AzureBridge/.env`
+file to provide the connection information to enable the UDF to download your
+model from AzureML. Make sure to follow the instructions provided in the
+[Setting up AzureML](#setting-up-azureml) section above to configure your
+workspace correctly so that the UDF can download your model.
+
+The sample ONNX UDF requires that the following configuration values be set for
+the UDF in your `eii_config.json` file:
+
+|           Key         |                                      Value                                |
+| --------------------- | ------------------------------------------------------------------------- |
+| `aml_ws`              | AzureML workspace name                                                    |
+| `aml_subscription_id` | `subscriptionId` saved from creating the Service Principal Authentication |
+| `model_name`          | Name of the model in your AzureML workspace                               |
+| `download_mode`       | Whether or not to attempt to download the model                           |
+
+> **NOTE:** If `download_mode` is `false`, then it expects the `model_name` to
+> where the `*.onnx` model file is in the container.
+
+This should be added into the `udfs` list for your Video Ingestion or Video Analytics
+instance you wish to have run the UDF. The configuration should look similar to
+the following:
+
+```javascript
+{
+    // ... omited rest of EII configuration ...
+
+    "udfs": [
+        {
+            "name": "sample_onnx.onnx_udf",
+            "type": "python",
+            "aml_ws": "example-azureml-workspace",
+            "aml_subscription_id": "subscription-id",
+            "model_name": "example-model-name",
+            "download_model": true
+        }
+    ]
+
+    // ... omited rest of EII configuration ...
+}
+```
+
+The following environmental variables must be set in the `AzureBridge/.env` file
+in order to have the sample ONNX UDF download your model from an AzureML Workspace:
+
+|             Setting             |                      Description                  |
+| :-----------------------------: | ------------------------------------------------- |
+| `AML_TENANT_ID`                 | The `tenantId` saved in the Azure Cloud setup     |
+| `AML_PRINCIPAL_ID`              | The `clientId` saved in the Azure Cloud setup     |
+| `AML_PRINCIPAL_PASS`            | The `clientSecret` saved in the Azure Cloud setup |
+
+It is important to note that for the `AML_PRINCIPAL_PASS` variable you must wrap the password
+in single quotes, i.e. `'`. Otherwise, there may be characters that get escaped in
+a weird way when the values are populated into your deployment manifest leading
+to configuration errors.
+
+The `tenantId`, `clientId`, `clientSecret`, and `subscriptionId` should all have
+been obtained when following the instructions in the [Setting up AzureML](#setting-up-azureml)
+section.
+
+**IMPORTANT NOTE:**
+
+If your system is behind a proxy, you may run into an issue where the download of
+your ONNX model from AzureML times out. This may happen even if the proxy is set
+globally for Docker on your system. To fix this, update your deployment manifest
+template so that the Video Ingestion and/or Video Analytics containers have
+the `http_proxy` and `https_proxy` values set. The manifest should look something
+like the following:
+
+```javascript
+{
+    // ... omitted ...
+
+    "modules": {
+        "ia_video_ingestion": {
+            // ... omitted ...
+
+            "settings": {
+                "createOptions": {
+                    "Env": [
+                        // ... omitted ...
+
+                        "http_proxy=<YOUR PROXY>",
+                        "https_proxy=<YOUR PROXY>",
+
+                        // ... omitted ...
+                    ]
+                }
+            }
+
+            // ... omitted ...
+        }
+    }
+
+    // ... omitted ...
+}
+```
+
+### Simple Subscriber
+
+The Simple Subscriber module provided with the Azure Bridge is a very simple
+service which only receives messages over the Azure IoT Edge Runtime and prints
+them to stdout. As such, there is no digital twin required for this module. The
+only configuration required is that a route be established in the Azure IoT Edge
+Runtime from the Azure Bridge module to the Simple Subscriber module. This
+routewill look something like the following in your deployment manifest:
+
+```javascript
+{
+    "$schema-template": "2.0.0",
+    "modulesContent": {
+        // ... omitted for brevity ...
+
+        "$edgeHub": {
+            "properties.desired": {
+                "schemaVersion": "1.0",
+                "routes": {
+                    "BridgeToSimpleSubscriber": "FROM /messages/modules/AzureBridge/outputs/camera1_stream INTO BrokeredEndpoint(\"/modules/SimpleSubscriber/inputs/input1\")"
+                },
+                "storeAndForwardConfiguration": {
+                    "timeToLiveSecs": 7200
+                }
+            }
+        }
+
+        // ... omitted for brevity ...
+    }
+}
+```
+
+For more information on establishing routes in the Azure IoT Edge Runtime,
+see [this documentation](https://docs.microsoft.com/en-us/azure/iot-edge/module-composition#declare-routes).
+
+### EII ETCD Pre-Load
+
+The configuration for EII is given to the Azure Bridge via the `eii_config`
+key in the module's digital twin. As specified in the Azure Bridge configuration
+section, this must be a serialized string. For the scripts included with the
+Azure Bridge for generating your deployment manifest the ETCD pre-load
+configuration is stored at `config/eii_config.json`. See the EII documentation
+for more information on populating this file with your desired EII configuration.
+The helper scripts will automatically serialize this JSON file and add it to your
+deployment manifest.
+
+### Azure Blob Storage
+
+The Azure Bridge enables to use of the Azure Blob Storage edge IoT service
+from Microsoft. This service can be used to save images from EII into the blob
+storage.
+
+If you wish to have the Azure Blob Storage service save the images to your
+host filesystem, then you must do the following:
+
+1. Create the directory to save the data on your host filesystem, it is recommended
+    to use the following commands:
+
+    ```sh
+    $ sudo mkdir /opt/intel/eii/data/azure-blob-storage
+    $ sudo chown eiiuser:eiiuser /opt/intel/eii/data/azure-blob-storage
+    ```
+
+2. Next, modify your deployment manifest to alter the bind location which the
+    Azure Blob Storage service uses. To do this, open your `*.template.json` file.
+    Provided you specified the Azure Blob Storage service, you should see something
+    like the following in your deployment manifest template:
+
+    ```json
+    {
+        "AzureBlobStorageonIoTEdge": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "version": "1.0",
+            "settings": {
+                "image": "mcr.microsoft.com/azure-blob-storage",
+                "createOptions": {
+                    "User": "${EII_UID}",
+                    "Env": [
+                        "LOCAL_STORAGE_ACCOUNT_NAME=$AZ_BLOB_STORAGE_ACCOUNT_NAME",
+                        "LOCAL_STORAGE_ACCOUNT_KEY=$AZ_BLOB_STORAGE_ACCOUNT_KEY"
+                    ],
+                    "HostConfig": {
+                        "Binds": [
+                            "az-blob-storage-volume:/blobroot"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+    ```
+
+    Change the `Binds` location to the following:
+
+    ```javascript
+    {
+        "AzureBlobStorageonIoTEdge": {
+            // ... omitted ...
+            "settings": {
+                "createOptions": {
+                    // ... omitted ...
+                    "HostConfig": {
+                        "Binds": [
+                            "/opt/intel/eii/data/azure-blob-storage/:/blobroot"
+                        ]
+                    }
+                }
+            }
+        }
+    }
+    ```
+
+    Make sure to run the `iotedgedev geoncfig -f <manifest-template>` command
+    for the changes to be applied to the actual deployment manifest.
+
+    When you run the Azure Bridge where it is configured to save the images into
+    an Azure Blob Storage instance, you should see the images by running the
+    following command:
+
+    ```sh
+    $ sudo ls -l /opt/intel/eii/data/azure-blob-storage/BlockBlob/
+    ```
+
+    In that directory, you will see a folder for each container. Inside that directory
+    will be the individually saved images.
+
+For more information on configuring your Azure Blob Storage instance at the
+edge, see the documentation for the service [here](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-store-data-blob).
+
+Also see [this guide](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-blob)
+as well.
+
+### Azure Deployment Manifest
+
+For more information on creating / modifying Azure IoT Hub deployment manifests,
+see [this guide](https://docs.microsoft.com/en-us/azure/iot-edge/module-composition).
+

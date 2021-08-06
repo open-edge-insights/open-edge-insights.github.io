@@ -1,0 +1,16 @@
+## EII Video Profiler pre-requisites
+
+1. VideoProfiler expects a set of config, interfaces & public private keys to be present in ETCD as a pre-requisite.
+    To achieve this, please ensure an entry for VideoProfiler with its relative path from [IEdgeInsights](../../) directory is set in any of the .yml files present in [build/usecases](../../build/usecases) directory. An example has been provided below:
+    ```sh
+        AppContexts:
+        - VideoIngestion
+        - VideoAnalytics
+        - tools/VideoProfiler
+    ```
+
+2. With the above pre-requisite done, please run the below to command:
+    ```sh
+        python3 builder.py -f usecases/video-streaming.yml
+    ```
+

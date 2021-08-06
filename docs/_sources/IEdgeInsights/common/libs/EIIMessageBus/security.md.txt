@@ -1,0 +1,155 @@
+## Security
+
+> **IMPORTANT NOTE:** Security is only available for TCP communications. If IPC
+> is being used, then all access must be controlled using Linux file
+> permissions.
+
+> **NOTE:** Example configurations using for enabling security in the examples
+> are provided in the `examples` directory.
+
+The ZeroMQ protocol for the EII Message Bus enables to usage of
+[CurveZMQ](http://curvezmq.org/) for encryption and authentication where the
+[ZAP](https://rfc.zeromq.org/spec:27/ZAP/) protocol is used for the
+authentication.
+
+The ZeroMQ protocol for the message bus allows for using both CurveZMQ and ZAP
+together, only CurveZMQ encryption, or no encryption/authentication for TCP
+communication.
+
+Enabling the security features is done through the configuration object which
+is given to the `msgbus_initialize()` method. The example configurations below
+showcase how to use the security features enabled in the message bus. It is
+important to note that although the examples below use JSON to convey the
+configurations it is not required that you use a JSON configuration for the
+message bus. However, utilities are provided in the C library for the EII
+message bus for using a JSON file to configure the bus.
+
+### Using Only CurveZMQ Encryption
+
+If you wish to use the message bus with only CurveZMQ encryption, then you
+specify the following keys for the communication types specified in the
+sections below.
+
+**IMPORTANT NOTE:** All keys must be Z85 encoded (see ZeroMQ documentation for
+more information).
+
+#### Publish/Subscribe
+
+For publications over TCP, the configuration must contain a `server_secret_key`
+value which the secret key of the Curve key pair that is Z85 encoded (see
+the ZeroMQ documentation for more information).
+
+Additionally, every subscriber configuration object (which is specified under
+the key for the topic it is subscribing to) must contain the following three
+keys: `server_public_key`, `client_public_key`, and `client_secret_key`.
+
+**Example:**
+
+Below is an example configuration in JSON (note: the keys are not Z85 encoded,
+but are more clear text to help the example).
+
+**Publisher Config:**
+
+```json
+{
+    "type": "zmq_tcp",
+    "zmq_tcp_publish": {
+        "host": "127.0.0.1",
+        "port": 3000,
+        "server_secret_key": "publishers-secret-key"
+    }
+}
+```
+
+**Subscriber Config:**
+
+```json
+{
+    "type": "zmq_tcp",
+    "pub-sub-topic": {
+        "host": "127.0.0.1",
+        "port": 3000,
+        "server_public_key": "publishers-public-key",
+        "client_secret_key": "subscriber-secret-key",
+        "client_public_key": "subscriber-public-key"
+    }
+}
+```
+
+In the example configurations above, it is assumed that the publisher is
+sending messages on the `pub-sub-topic` topic.
+
+#### Request/Response
+
+For every service which is going to accept and respond to requests, there must
+exist the `server_secret_key` in the configuration object for the service. The
+key for the configuration of the service is its service name.
+
+For every service which is going to issue requests to another service, there
+must exist a configuration object for the destination service name which
+contains the following three keys: `server_public_key`, `client_public_key`,
+and `client_secret_key`.
+
+**Example:**
+
+**Service Config:**
+
+```json
+{
+    "type": "zmq_tcp",
+    "example-service": {
+        "host": "127.0.0.1",
+        "port": 3000,
+        "server_secret_key": "service-secret-key"
+    }
+}
+```
+
+**Service Requester Config:**
+
+```json
+{
+    "type": "zmq_tcp",
+    "example-service": {
+        "host": "127.0.0.1",
+        "port": 3000,
+        "server_public_key": "service-public-key",
+        "client_secret_key": "service-requester-secret_key",
+        "client_public_key": "service-requester-public-key"
+    }
+}
+```
+
+In the example above, the service requester will connect to the `example-service`
+and issue requests to it on the port: `127.0.0.1:3000`.
+
+### Using ZAP Authentication
+
+To enable ZAP authentication protocol using CurveZMQ on top of the encryption,
+then in the configuration specify the key `allowed_clients`. This key must have
+a value which is a list of Z85 encoded strings which are the public keys of the
+clients which are allowed to connect to the application.
+
+For example, using the publish/subscribe example from before, to make it so
+that only the subscriber client can connect to the publisher the publisher's
+configuration would be modified to be the following:
+
+```json
+{
+    "type": "zmq_tcp",
+    "allowed_clients": ["subscriber-public-key"],
+    "zmq_tcp_publish": {
+        "host": "127.0.0.1",
+        "port": 3000,
+        "server_secret_key": "publishers-secret-key"
+    }
+}
+```
+
+### Disabling Security
+
+To disable all encryption and authentication for TCP communication do not
+specify any of the configuration keys documented above. This will cause the
+message bus to initialize the ZeroMQ protocol without any of the CurveZMQ
+security primitives.
+

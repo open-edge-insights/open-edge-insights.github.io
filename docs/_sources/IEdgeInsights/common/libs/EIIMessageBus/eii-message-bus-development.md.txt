@@ -1,0 +1,395 @@
+## EII Message Bus Development
+
+This section covers various instructions and tutorials for developing new
+features for the EII Message Bus library. It does not cover how to use the
+message bus or its APIs, that is covered in previous sections.
+
+### Developing Protocols
+
+#### Overview
+
+Protocols are at the bottom most layer of the EII Message Bus stack. They
+provide the implementation for the messaging primitives supported by the
+EII Message Bus. The main tasks expected of a protocol are as follows:
+
+1. Initialize the state of the underlying message library (i.e. ZeroMQ, DDS, etc.)
+2. Implement methods for initializing contexts for publishers, subscribers,
+    services, and service requesters
+3. Implement base methods for sending messages from publishers, services, and
+    service requesters
+4. Implement base methods for receiving messages as blocking, non-blocking, and
+    time out base function calls
+5. Provide the translation between the underlying messaging library's messsage
+    structure to the EII Message Bus's `msg_envelope_t` structure
+
+All protocols must have a unique protocol name which the EII Message Bus can
+use to load the protocol based on the `type` configuration value it is provided.
+For example, the ZeroMQ TCP protocol uses the identifier `zmq_tcp`. Using this
+type name, the EII Message Bus knows how to load the protocol in the
+`msgbus_initialize()` method.
+
+The EII Message Bus has the ability to dynamically load protocol plugins. It
+does this by searching the system's `LD_LIBRARY_PATH` environmental variable
+for a library following the naming scheme, "lib{TYPE}.so", where, "{TYPE}", is
+the value retrieved from the `type` configuration key.
+
+Once it has found the library, it calls `dlopen()` on the shared object and
+extracts the `PROTO_EXPORTS` symbol from the binary. The `PROTO_EXPORTS` symbol
+must be a global of the `protocol_exports_t` structure. This structure contains
+a single function pointer `initialize()` which points to the initialization
+function of the protocol plugin. The initialization function is responsible for
+creating and populating the `protocol_t` structure.
+
+The `protocol_t` structure is defined below.
+
+```c
+typedef struct {
+    void* proto_ctx;
+    config_t* config;
+
+    void (*destroy)(void* ctx);
+    msgbus_ret_t (*publisher_new)(
+            void* ctx, const char* topic, void** pub_ctx);
+    msgbus_ret_t (*publisher_publish)(
+            void* ctx, void* pub_ctx, msg_envelope_t* msg);
+    void (*publisher_destroy)(void* ctx, void* pub_ctx);
+    msgbus_ret_t (*subscriber_new)(
+            void* ctx, const char* topic, void** subscriber);
+    void (*recv_ctx_destroy)(void* ctx, void* recv_ctx);
+    msgbus_ret_t (*request)(
+            void* ctx, void* service_ctx, msg_envelope_t* message);
+    msgbus_ret_t (*response)(
+            void* ctx, void* service_ctx, msg_envelope_t* message);
+    msgbus_ret_t (*service_new)(
+            void* ctx, const char* service_name, void** service_ctx);
+    msgbus_ret_t (*service_get)(
+            void* ctx, const char* service_name, void** service_ctx);
+    msgbus_ret_t (*recv_wait)(
+            void* ctx, void* recv_ctx, msg_envelope_t** message);
+    msgbus_ret_t (*recv_timedwait)(
+            void* ctx, void* recv_ctx, int timeout, msg_envelope_t** message);
+    msgbus_ret_t (*recv_nowait)(
+            void* ctx, void* recv_ctx, msg_envelope_t** message);
+} protocol_t;
+```
+
+It is expected that this structure is fully populated by a protocol's
+initialization method. The `proto_ctx` value should be a pointer to an internal
+structure representing the state of the protocol which the various functions
+can use to perform the required tasks. Additionally, the `config` value should
+be set to the `config` variable passed to the initialization function. It is
+important to note that the returned `protocol_t` structure is not responsible
+for freeing the memory assiciated with the `config` variable. This is managed
+by the message bus context object.
+
+For each of the functions in the structure the first `ctx` parameter will
+always be the value of the `proto_ctx` variable.
+
+For more information on the purpose of each of the function pointers in the
+`protocol_t` structure see the [`protocol_t` Function Definition](#protocol_t-function-definition).
+
+The rest of this section will cover the initial setup of a project to add a new
+protocol to the EII Message Bus, including the ideal code structure for the C
+source code file.
+
+The code will be split into a single header and C source file, `example.h` and
+`example.c` respectively.
+
+The header file is shown below. The `protocol.h` header file in the EII Message
+Bus includes a helpful macro for generating all of the function prototypes
+needed for a protocol. The usage of this is shown in the code below.
+
+```c
+// C include guards to prevent multiple definition from files including the
+// header
+#ifndef _EII_MESSAGE_BUS_EXAMPLE_H
+#define _EII_MESSAGE_BUS_EXAMPLE_H
+
+// Add extern C declaration if the code is being included from C++ code
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+// Include the protocol.h to get the protocol_t and config_t structure
+// definitions
+#include <eii/msgbus/protocol.h>
+
+/**
+ * The following macro generates all of the necessary function prototypes for
+ * initialization and all of the messaging primitives. In addition, it adds the
+ * `PROTO_EXPORTS` symbol as well.
+ */
+EII_MSGBUS_PROTO(example)
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // _EII_MESSAGE_BUS_EXAMPLE_H
+```
+
+The `EII_MSGBUS_PROTO()` macro in the code above creates function prototypes of
+the structure:
+
+```
+proto_<NAME>_<METHOD>()
+```
+
+Where `<NAME>` is the string given to the macro and `<METHOD>` is the protocol
+function which must be implemented using the desired networking library.
+
+The macro also creates a function called `proto_<NAME>_initialize()`, which
+is used to create the context for a given protocol plugin.
+
+In addition to this, it adds the `PROTO_EXPORTS` symbol mentioned before
+and points the initialization function to the correct value in the structure.
+This means, that the macro will generate a line of code that looks as
+follows:
+
+```c
+protocol_exports_t PROTO_EXPORTS = { .initialize=proto_example_initialize };
+```
+
+Once you have your header defined, you must implement the corresponding C
+code for the function prototypes generated by the macro.
+
+The code below is an example of a stubbed out implementation of all of the
+functions generated by the protocol macro.
+
+```c
+// Standard C includes
+#include <stdlib.h>
+
+// Include the logger.h for helper logging macros
+#include <eii/utils/logger.h>
+
+// Include the example.h header file
+#include "eii/msgbus/example.h"
+
+// proto_example_initialize() method implementation
+protocol_t* proto_example_initialize(const char* type, config_t* config) {
+    LOG_DEBUG_0("Initializing example protocol");
+
+    // TODO: Retreive needed configuration values from config
+
+    // TODO: Initialize all the internal state for the protocol here
+
+    // Initialize the protocol_t structure
+    protocol_t* proto_ctx = (protocol_t*) malloc(sizeof(protocol_t));
+    if(proto_ctx == NULL) {
+        LOG_ERROR_0("Ran out of memory allocating the protocol_t struct");
+        goto err;
+    }
+
+    // TODO: Replace with setting with the internal context structure for the
+    // protocol initailized prior to this
+
+    proto_ctx->proto_ctx = NULL;
+    proto_ctx->config = config;
+
+    // Assign all of the function pointers
+
+    proto_ctx->destroy = proto_example_destroy;
+    proto_ctx->publisher_new = proto_example_publisher_new;
+    proto_ctx->publisher_publish = proto_example_publisher_publish;
+    proto_ctx->publisher_destroy = proto_example_publisher_destroy;
+    proto_ctx->subscriber_new = proto_example_subscriber_new;
+    proto_ctx->request = proto_example_request;
+    proto_ctx->response = proto_example_response;
+    proto_ctx->service_get = proto_example_service_get;
+    proto_ctx->service_new = proto_example_service_new;
+    proto_ctx->recv_ctx_destroy = proto_example_recv_ctx_destroy;
+    proto_ctx->recv_wait = proto_example_recv_wait;
+    proto_ctx->recv_timedwait = proto_example_recv_timedwait;
+    proto_ctx->recv_nowait = proto_example_recv_nowait;
+
+    return proto_ctx;
+
+    // It is recommended to have a single error goto location that cleans up
+    // all allocated memory if an error occurs.
+err:
+    return NULL;
+}
+
+// proto_* function implementations
+
+void proto_example_destroy(void* ctx) {
+    LOG_DEBUG_0("Destroying example protocol context");
+}
+
+msgbus_ret_t proto_example_publisher_new(
+        void* ctx, const char* topic, void** pub_ctx)
+{
+    LOG_DEBUG("Initializing publisher for topic '%s'", topic);
+
+    // TODO: Intialize publisher
+
+    return MSG_SUCCESS;
+}
+
+msgbus_ret_t proto_example_publisher_publish(
+        void* ctx, void* pub_ctx, msg_envelope_t* msg)
+{
+    // TODO: Implement publishing a message
+
+    return MSG_SUCCESS;
+}
+
+void proto_example_publisher_destroy(void* ctx, void* pub_ctx) {
+    LOG_DEBUG_0("Destroying publisher context");
+
+    // TODO: Destroy a publisher's context
+}
+
+msgbus_ret_t proto_example_subscriber_new(
+    void* ctx, const char* topic, void** subscriber)
+{
+    LOG_DEBUG("Initializig subscriber to topic '%s'", topic);
+
+    // TODO: Implement subscriber initialization
+
+    return MSG_SUCCESS;
+}
+
+void proto_example_recv_ctx_destroy(void* ctx, void* recv_ctx) {
+    LOG_DEBUG_0("Destroying receive context");
+    // TODO: Implement destroying a receive context
+}
+
+msgbus_ret_t proto_example_recv_wait(
+        void* ctx, void* recv_ctx, msg_envelope_t** message)
+{
+    // TODO: Implement blocking receive method
+
+    return MSG_SUCCESS;
+}
+
+msgbus_ret_t proto_example_recv_timedwait(
+        void* ctx, void* recv_ctx, int timeout, msg_envelope_t** message)
+{
+    // TODO: Implement receive which can timoue
+
+    return MSG_SUCCESS;
+}
+
+msgbus_ret_t proto_example_recv_nowait(
+        void* ctx, void* recv_ctx, msg_envelope_t** message)
+{
+    // TODO: Imeplement non-blocking receive method
+
+    return MSG_SUCCESS;
+}
+
+msgbus_ret_t proto_example_service_get(
+        void* ctx, const char* service_name, void** service_ctx)
+{
+    LOG_DEBUG("Initializing service request for service '%s'", service_name);
+
+    // TODO: Intiailize context for sending requests and receiving responses
+    // for the given service
+
+    return MSG_SUCCESS;
+}
+
+msgbus_ret_t proto_example_service_new(
+        void* ctx, const char* service_name, void** service_ctx)
+{
+    LOG_DEBUG("Initializing service '%s' context", service_name);
+
+    // TODO: Initailize a service context
+
+    return MSG_SUCCESS;
+}
+
+msgbus_ret_t proto_example_request(
+        void* ctx, void* service_ctx, msg_envelope_t* msg)
+{
+    // NOTE: Becareful here that the service context is the correct one and
+    // is not for receiving responses
+
+    // TODO: Implement issuing a request to the service with the given
+    // service context
+
+    return MSG_SUCCESS;
+}
+
+msgbus_ret_t proto_example_response(
+        void* ctx, void* service_ctx, msg_envelope_t* message)
+{
+    // NOTE: Becareful here that the service context is the correct one and
+    // is not for receiving responses
+
+    // TODO: Implement sending a response to a request
+
+    return MSG_SUCCESS;
+}
+```
+
+#### Adding a New Protocol
+
+This section will cover how to add an example dummy protcol to the EII
+Message Bus.
+
+#### `protocol_t` Function Definition
+
+The following describes the purpose of each of the function pointers above.
+
+##### `destroy()`
+
+Responsible for destroying the `proto_ctx` variable and freeing any memory
+used by the context.
+
+##### `publisher_new()`
+
+Initializes a new publisher context for the given `topic`.
+
+##### `publisher_publish()`
+
+Publishes the given message value using the publisher context.
+
+##### `publisher_destroy()`
+
+Destroys a context for a publisher freeing any sockets, memory, etc. used by
+the publisher.
+
+##### `subscriber_new()`
+
+Subscribe to the given topic and output a `recv_ctx_t` to use with the `recv_*`
+methods to receive the publications for the topic.
+
+##### `service_new()`
+
+Create a new `recv_ctx_t` structure which can be used to received requests
+from clients and send responses to received requests using the `response()`
+method.
+
+##### `service_get()`
+
+Create a new `recv_ctx_t` structure which can be used to issue requests to and
+received responses from the specified service.
+
+##### `recv_ctx_destroy()`
+
+Destroy a `recv_ctx_t` structure.
+
+##### `request()`
+
+Issue a request to the service using the given `recv_ctx_t`.
+
+##### `response()`
+
+Send a response to a requesting client using the given `recv_ctx_t` structure.
+
+##### `recv_wait()`
+
+Blocking function for receiving a message from a `recv_ctx_t` context structure.
+
+##### `recv_timedwait()`
+
+Function for receiving messages from a `recv_ctx_t` context structure which
+times out after the given timeout. The timeout shall always be milliseconds.
+
+##### `recv_nowait()`
+
+Receive a message from a `recv_ctx_t` context structure if a message is available,
+otherwise return immediately.

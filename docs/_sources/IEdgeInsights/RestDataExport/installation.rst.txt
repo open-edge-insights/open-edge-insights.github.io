@@ -1,0 +1,9 @@
+
+``Installation``
+--------------------
+
+
+* Follow steps 1-5 of main `EII README <http://localhost:7645/IEdgeInsights/README.html>`_ if not done already as part of EII stack setup
+
+.. note::  For running in PROD mode, please ensure Step 3 of Pre-requisites is executed before trying to bring up RestDataExport container.
+

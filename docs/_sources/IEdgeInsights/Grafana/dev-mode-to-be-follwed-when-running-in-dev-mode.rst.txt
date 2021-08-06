@@ -1,0 +1,14 @@
+
+DEV MODE [To be follwed when running in DEV mode]
+-------------------------------------------------
+
+
+#. Once ia_grafana service is up, go to http://< host ip >:3000 .
+
+
+#. Provide default username: "admin" and password: "admin".
+#. On "Home Dashboard" page, click on Dashboards icon from the left corner.
+#. Click on Manage Dashboards tab, it will list out all the preconfigured dashboards.
+#. Click on "Point_Data_Dashboard" which is a preconfigured dashboard.
+#. Click on "Panel Title" and select the "edit" option.
+#. Now you will be on Point_Data_Dashboard page and here you can make modifications to the query.

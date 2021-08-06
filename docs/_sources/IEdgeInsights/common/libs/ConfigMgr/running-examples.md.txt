@@ -1,0 +1,177 @@
+## Running Examples
+
+The ConfigMgr library also supports Cpp APIs and Python & Go bindings. These APIs/bindings can be used in Cpp and Python/Go services in the EII stack to fetch required config/interfaces/msgbus config. 
+
+Examples will only be compiled if the `WITH_EXAMPLES=ON` option is specified while running CMake.
+Please refer [Examples installation](###-install-configMgr-with-examples,-test-suits-and-debug-build-enabled.) 
+
+Refer the interfaces of publisher and server in [./examples/configs/VideoIngestion_interfaces.json](./examples/configs/VideoIngestion_interfaces.json) and for subscriber and client, refer [./examples/configs/VideoAnalytics_interfaces.json](./examples/configs/VideoAnalytics_interfaces.json)
+
+Examples on demonstrating the usage of these APIs in the bindings have been given in respective sections below.
+* [CPP Examples](###-cpp-examples)
+* [Python Examples](###-python-examples)
+* [Go Examples](###-go-examples)
+
+
+### CPP Examples
+
+```sh
+$ Navigate to [WORKDIR]/IEdgeInsights/common/libs/ConfigMgr
+$ sudo rm -rf build
+$ mkdir build
+$ cd build
+$ cmake -DCMAKE_INSTALL_INCLUDEDIR=$CMAKE_INSTALL_PREFIX/include -DCMAKE_INSTALL_PREFIX=$CMAKE_INSTALL_PREFIX -DWITH_EXAMPLES=ON ..
+$ make
+$ sudo make install
+```
+
+There are currently 5 CPP examples:
+
+1. `examples/sample_pub.cpp`
+2. `examples/sample_sub.cpp`
+3. `examples/sample_server.cpp`
+4. `examples/sample_client.cpp`
+5. `examples/sample_getvalue.cpp`
+
+All of the Cpp example executables are in the `build/examples/` directory. To run
+them, execute the following command:
+
+Before executing any of the examples, please run below command from `build/examples/`
+```sh
+ cd ../../examples/ && source ./env.sh && cd -
+```
+
+Publisher example.
+```sh
+$ ./pub
+```
+
+Subscriber example.
+```sh
+$ ./sub
+```
+
+Server example.
+```sh
+$ ./server
+```
+
+Client example.
+```sh
+$ ./client
+```
+
+Sample_getvalue used to get the values from application's config
+```sh
+$ ./sample_app
+```
+
+### Python Examples
+
+```sh
+$ Navigate to [WORKDIR]/IEdgeInsights/common/libs/ConfigMgr
+$ sudo rm -rf build
+$ mkdir build
+$ cd build
+$ cmake -DCMAKE_INSTALL_INCLUDEDIR=$CMAKE_INSTALL_PREFIX/include -DCMAKE_INSTALL_PREFIX=$CMAKE_INSTALL_PREFIX -DWITH_PYTHON=ON ..
+$ make
+$ sudo make install
+```
+
+There are currently 5 Python examples:
+
+1. `examples/publisher.py`
+2. `examples/subscriber.py`
+3. `examples/echo_service.py`
+4. `examples/echo_client.py`
+5. `examples/sample_get_value.py`
+
+All of the py examples are in `python/examples/` directory. To run
+them, execute the following command:
+
+Before executing any of the examples, please run below command from `python/examples/`
+```sh
+ cd ../../examples/ && source ./env.sh && cd -
+```
+
+Publisher example.
+```sh
+$ python3 publisher.py
+```
+
+Subscriber example.
+```sh
+$ python3 subscriber.py
+```
+
+Server example.
+```sh
+$ python3 echo_service.py
+```
+
+Client example.
+```sh
+$ python3 echo_client.py
+```
+
+sample_get_value used to get the values from application's config
+```sh
+$ python3 sample_get_value.py
+```
+
+### Go Examples
+
+```sh
+$ Navigate to [WORKDIR]/IEdgeInsights/common/libs/ConfigMgr/go
+$ cp -r ConfigMgr/ $GOPATH/src
+$ cd ConfigMgr/examples
+$ source go_env.sh
+```
+
+There are currently 5 Go examples:
+
+1. `publisher.go`
+2. `subscriber.go`
+3. `echo_service.go`
+4. `echo_client.go`
+5. `app_config.go`
+
+All of the go examples are in `go/examples/` directory. To run
+them, execute the following command:
+
+Before executing any of the examples, please run below command from `go/ConfigMgr/examples/`
+```sh
+ cd ../../../examples/ && source ./env.sh && cd -
+ source ./go_env.sh
+```
+
+Publisher example.
+```sh
+$ go build publisher.go
+$ ./publisher
+```
+
+Subscriber example.
+```sh
+$ go build subscriber.go
+$ ./subscriber
+```
+
+Server example.
+```sh
+$ go build echo_service.go
+$ ./echo_service
+```
+
+Client example.
+```sh
+$ go build echo_client.go
+$ ./echo_client
+```
+
+app_config used to get the values from application's config
+```sh
+$ go build app_config.go
+$ ./app_config
+```
+

@@ -1,0 +1,6 @@
+# Remove all binaries/object files
+
+```sh
+make clean
+```
+

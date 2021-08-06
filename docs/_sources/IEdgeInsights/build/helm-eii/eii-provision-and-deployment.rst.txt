@@ -1,0 +1,9 @@
+
+EII provision and deployment
+============================
+
+For deployment of EII, helm charts are provided for both provision and deployment.
+
+.. note:: \ :
+   Same procedure has to be followed for single or multi node.
+

@@ -1,0 +1,23 @@
+## Installation
+
+> **NOTE:** This is a mandatory step to use this library in
+> C/C++ EII modules
+
+If you wish to install this library on your system, execute the
+following command after building the library:
+
+```sh
+$ sudo make install
+```
+
+By default, this command will install the `udfloader` library into
+`/usr/local/lib/`. On some platforms this is not included in the `LD_LIBRARY_PATH`
+by default. As a result, you must add this directory to you `LD_LIBRARY_PATH`. This can
+be accomplished with the following `export`:
+
+```sh
+$ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
+```
+> **NOTE:** You can also specify a different library prefix to CMake through
+> the `CMAKE_INSTALL_PREFIX` flag.
+

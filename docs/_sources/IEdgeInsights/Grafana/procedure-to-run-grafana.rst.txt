@@ -1,0 +1,41 @@
+
+Procedure to run Grafana
+------------------------
+
+
+#. Open `docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/docker-compose.yml>`_ and uncomment ia_grafana.
+#. Check ia_influxdbconnector, ia_kapacitor, ia_telegraph are running for time-series data.
+#. Check `publisher <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/publisher_temp.sh>`_ is running.
+#. Use "docker-compose build" to build image.
+#. 
+   Use "docker-compose up" to run the service.
+
+
+   * 
+     **Prod mode [To be followed when running in PROD mode, skip if DEV mode]**
+
+     Import 'ca_certificate.pem' from 'build/provision/Certificates/ca' Directory to your Browser Certifcates.
+
+     Steps to Import Certificates
+
+
+     * Go to *Settings* in Chrome
+     * Search *Manage Certificates* Under Privacy & Security
+     * Select Manage Certificates Option
+     * Under *Authorities* Tab Click Import Button
+     * With Import Wizard navigate to
+       *IEdgeInsights/build/provision/Certificates/ca* Dir
+     * Select *ca_certificate.pem* file
+     * Select All CheckBoxes and Click Import Button.
+
+   * **Dev mode [To be followed when running in DEV mode]**
+
+#. 
+   Once ia_grafana service is up, go to http://< host ip >:3000 .
+
+#. Provide default username: "admin" and password: "admin".
+#. On "Home Dashboard" page, click on Dashboards icon from the left corner.
+#. Click on Manage Dashboards tab, it will list out all the preconfigured dashboards.
+#. Click on "Point_Data_Dashboard" which is a preconfigured dashboard.
+#. Click on "Panel Title" and select the "edit" option.
+#. Now you will be on Point_Data_Dashboard page and here you can make modifications to the query.

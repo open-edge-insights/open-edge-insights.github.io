@@ -1,0 +1,162 @@
+
+================
+Debugging EII
+================
+
+
+Debugging Through the Logs
+==========================
+
+For any service run in the EII stack, please use **docker logs -f <service_name>**
+
+Debugging Video Ingestion Through gst-launch
+============================================
+
+GStreamer Valid Plugins / Element
+---------------------------------
+
+There is attribute named "pipeline" in the EII ConfigMgr for VideoIngestion. This attribute is used to mention the source of the video frame. For example:
+
+"pipeline": "rtspsrc location=\"rtsp://localhost:8554/\" latency=100 ! **rtph264depay ! h264parse ! mfxdecode ! videoconvert ! appsink**".
+
+The **bold text** in the above example are the GStreamer element/plugins. 
+
+A list of valid GStreamer plugins or elements can be found at 
+
+To know which plugins are installed, use the command **gst-inspect-1.0.** This command will display all installed plugins.
+
+Debugging the Video Ingestion Container 
+---------------------------------------
+
+.. note::
+    
+    These steps should only be followed if pipeline has been modified by the SI.
+
+If the SI modifies the value of the pipeline attribute (an attribute from the factory.json file) which causes video ingestion to stop working, use the **gst-launch-1.0** command inside the video ingestion container. To get the granular logs from this command line utility, set the environment variable **GST_DEBUG**. The value can range from 1 to 5.
+
+For example, consider a case in which the video_str attribute has been modified. The new value has an invalid GStreamer element or plugin, say: 
+
+    rtspsrc location=\"rtsp://localhost:8554/\" latency=100 ! rtph264depay ! :red:`h264parse123` ! avdec_h264 ! videoconvert ! appsink
+
+Consequently, video ingestion starts showing: 
+
+    2019-05-22 01:12:14,387 : ERROR : algos.dpm.ingestion.video : [video.py] :_run : in line : [183] : Failed to retrieve frame from camera cam_serial3
+    
+    2019-05-22 01:12:14,388 : ERROR : algos.dpm.ingestion.video : [video.py] :_run : in line : [183] : Failed to retrieve frame from camera cam_serial1
+    
+In this example, **h264parse123** is not a valid GStreamer plugin or element.
+
+To debug this issue:
+
+#.	Go inside the container using the command: **docker exec -it -u root ia_video_ingestion bash**
+
+#.	Set the GST_DEBUG variable ("export GST_DEBUG=3").
+
+#.	Use the below command and examine the logs.
+
+    gst-launch-1.0 **rtspsrc location=\"rtsp://localhost:8554/\" latency=100 ! rtph264depay ! :red:`h264parse123` ! avdec_h264 ! videoconvert ! appsink**
+
+    The **bold text** in the command above is exactly the value of the pipeline attribute. Since, :red:`h264parse123` is not a valid GStreamer plugin or element, using the above command will result in a log with the following ERROR messages.
+
+    .. code-block::
+
+        0:00:00.018350108    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element "h264parse123"
+        0:00:00.018434694    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no sink [source=@0xe44080]
+        0:00:00.018473162    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element "avdec_h264"
+        0:00:00.018497100    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@(nil)]
+        0:00:00.019408613    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@0xe50f30]
+        WARNING: erroneous pipeline: no element "h264parse123"
+
+    Therefore, using the **gst-launch-1.0 command** line utility has revealed that there is no h264parse123 :red:`h264parse123`. Now we need to check whether the plugin is valid and whether it has been installed. The **gst-inspect-1.0** command can be used to check whether the plugin has been installed. 
+
+Enablement of X11 Forwarding for EII Visualizer Container
+=========================================================
+
+In EII, **ia_visualizer** is a reference application that visualizes the video analytics results. For simplicity, its X11 GUI output is defaulted to display on localhost:0, the console. However, this can cause problems on headless devices or devices where a developer does not have physical/virtual access to the console.
+
+When a user does SSH with X11 forwarding enabled, for example, with the -X option, and the user is using X11 (the DISPLAY environment variable is set), the connection to the X11 display is automatically forwarded to the remote side in such a way that any X11 programs started from the shell (or command) will go through the encrypted channel, and the connection to the real X server will be made from the local machine
+
+*	Create a bash shell script and save it as Visualizer/startup.sh with the following content:
+
+.. code-block::
+
+    #!/bin/bash
+
+    if [ -n ${HOSTXAUTH} ] && [ -f ${HOSTXAUTH} ]
+    then 
+    if [ -n ${XAUTHORITY} ]
+    then
+        [ -f ${XAUTHORITY} ] || touch ${XAUTHORITY}
+        xauth -inf ${HOSTXAUTH} nlist | sed -e 's/^..../ffff/' | xauth -f ${XAUTHORITY} nmerge -
+    fi
+    fi
+
+    python3.6 ./visualize.py
+
+*	Set the execution permission 
+    
+    **$ chmod 744 startup.sh**
+
+*	In Visualizer/Dockerfile add the bold section 
+
+.. code-block::
+
+    # Installing dependencies
+    RUN apt-get install -y python3.6-tk
+
+    RUN apt-get install -y xauth
+
+    COPY requirements.txt .
+    RUN pip3 install -r requirements.txt
+    
+    COPY visualize.py .
+
+    COPY startup.sh .
+
+    #Removing build dependencies
+
+*	At the end of the **Visualizer/Dockerfile**, comment out the line that starts visualize.py and run startup.sh instead
+
+.. code-block::
+
+    #ENTRYPOINT ["python3.6", "visualize.py"]
+    ENTRYPOINT ["bash", "./startup.sh"]
+
+*	Open the **build/docker-compose.yml**, update below parameter under **ia_visualizer** section
+
+.. code-block::
+
+    EII_UID: ${ EII_UID}
+    EII_USER_NAME: ${ EII_USER_NAME}
+    #read_only: true
+    image: ${DOCKER_REGISTRY}ia_visualizer:${ EII_VERSION}
+    
+    volumes:
+    - "${ EII_INSTALL_PATH}/saved_images:${ EII_INSTALL_PATH}/saved_images"     
+    - "vol_eii_socket:${SOCKET_DIR}"
+    #user: ${EII_UID}
+    
+    environment:
+        AppName: "Visualizer"
+        #DISPLAY: ":0"
+        DISPLAY: $DISPLAY
+        HOSTXAUTH: "/tmp/host-xauth"
+        XAUTHORITY: /tmp/.Xauthority
+
+*	In the volumes section add the line in bold below. This mounts the **.Xauthority** file from the host to the running container.
+
+.. code-block::
+
+    volumes:
+    - "${EII_INSTALL_PATH}/saved_images:${EII_INSTALL_PATH}/saved_images"
+    - "/tmp/.X11-unix:/tmp/.X11-unix"
+    - "vol_eii_socket:${SOCKET_DIR}"
+    - "${HOME}/.Xauthority:/tmp/host-xauth:ro"
+
+This concept has been tested and verified in single-node as well as multi-node setups. Note that it takes a live SSH connection and valid X11 authorization cookies on both ends, local and remote, for this to work, this SSH connection must be kept alive during the time you want your Visualizer to run. If the SSH connection can't be established or is torn down in the middle of operation, errors are thrown from the Visualizer container. Below is the example of the EII Visualizer App. 
+
+.. figure:: image/visualizer.png
+    :scale: 50 %
+    :align: center
+
+.. include:: ../IEdgeInsights/debugging-options.rst

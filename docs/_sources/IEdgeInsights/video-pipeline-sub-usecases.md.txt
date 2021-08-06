@@ -1,0 +1,9 @@
+## Video pipeline sub-usecases
+
+| Usecase                                | yaml file                                                               |
+| :---                                   | :---                                                                    |
+| Video streaming                        | [build/usecases/video-streaming.yml](build/usecases/video-streaming.yml)                  |
+| Video streaming and historical         | [build/usecases/video-streaming-storage.yml](build/usecases/video-streaming-storage.yml)  |
+| Video streaming with AzureBridge       | [build/usecases/video-streaming-azure.yml](build/usecases/video-streaming-azure.yml)      |
+| Video streaming and custom udfs        | [build/usecases/video-streaming-all-udfs.yml](build/usecases/video-streaming-all-udfs.yml)|
+

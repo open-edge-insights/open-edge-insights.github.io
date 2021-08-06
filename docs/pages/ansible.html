@@ -1,0 +1,1020 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Ansible Based Multi Node Deployment Automation &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Video and Time-series Benchmarking Tool" href="benchmarking.html" />
+    <link rel="prev" title="Orchestration" href="orchestration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> EII Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../IEdgeInsights/Installing_docker_pre_requisites.html">Manual steps to install docker daemon and docker-compose with proxy settings configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Running Intel® Edge Insights for Industrial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#downloading-and-installation-from-opensource-github-repository">Downloading and Installation from Opensource Github Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#provision">Provision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#distribution-of-eii-container-images">Distribution of EII container images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#build-and-run-eii-video-timeseries-use-cases">Build and Run EII video/timeseries use cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#build-eii-stack">Build EII stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#run-eii-services">Run EII services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#push-required-eii-images-to-docker-registry">Push required EII images to docker registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#enabling-secure-boot">Enabling Secure boot</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id1">EII Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id2">Generating Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id3">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#known-issues">Known issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd">etcd*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#configmgr">ConfigMgr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#tool-to-generate-configuration-management-ui-service">Tool to Generate Configuration Management UI Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#adding-new-eii-service-so-it-gets-picked-up-by-builder">Adding new EII service so it gets picked up by Builder</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#id5">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#install-configmgr-with-python-bindings-go-bindings-examples-test-suits-and-debug-build">Install ConfigMgr with Python bindings, Go bindings, Examples, Test suits and Debug Build.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#zmq-tcp-protocol-usecase">zmq_tcp Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#zmqbroker">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#subscriber">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#publisher">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id9">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id10">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id11">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id13">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id14">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#id15">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sample.html">EII Sample Apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="video.html">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="video.html#video-data-ingestion-configuration">Video Data Ingestion Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#videoingestion-module">VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#ingestor-config">Ingestor config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#video-ingestion-contents">Video Ingestion Contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#adding-new-camera-support-in-eii">Adding New Camera Support In EII</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#video-data-analytics">Video Data Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id4">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#custom-udfs">Custom Udfs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#time-series-analytics">Time-series Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-multi-node-cluster-provision-and-deployment">EII multi node cluster provision and deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#without-orchestrator"><strong>Without orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-tools">EII tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-uninstaller">EII Uninstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#debugging-options">Debugging options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#troubleshooting-guide">Troubleshooting guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#user-defined-function-udf-loader-library">User Defined Function (UDF) Loader Library</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#udf-container-directory-layout">UDF Container Directory Layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#deploy-process">Deploy Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#sample-udfs-directory">Sample UDFs Directory</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#gvasafetygearingestion">GVASafetyGearIngestion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#nativepclingestion">NativePclIngestion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-video-profiler">EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#eii-video-profiler-pre-requisites">EII Video Profiler pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#eii-video-profiler-modes">EII Video Profiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#eii-video-profiler-configurations">EII Video Profiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#running-video-profiler">Running Video Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#gigeconfigtool-and-export-settings-from-basler-pylon-feature-system">GigEConfigTool and Export Settings from Basler Pylon Feature System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#generating-pylon-feature-system-file-pfs">Generating Pylon Feature System File (PFS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#executing-gigeconfig-tool">Executing GigEConfig Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#steps-to-build-and-run-discoverhistory-service">Steps to build and run DiscoverHistory service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#list-of-sample-select-queries">List of sample select queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#to-run-the-tool-in-zmq-ipc-mode">To run the tool in zmq_ipc mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="visualizer.html">Visualizer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="visualizer.html#native-visualizer-module">Native Visualizer Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="visualizer.html#steps-to-build-and-run-visualizer">Steps to build and run visualizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualizer.html#using-labels">Using Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualizer.html#metadata-structure">Metadata Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="visualizer.html#web-visualizer">Web Visualizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualizer.html#web-visualizer-module">Web Visualizer Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="visualizer.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="visualizer.html#id7">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="visualizer.html#id11">Metadata Structure</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="imageStore.html">ImageStore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="imageStore.html#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imageStore.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="imageStore.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Working with Timeseries Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#timeseries-storage">Timeseries Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#configuring-influxdb">Configuring InfluxDB*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#influxdbconnector-configuration">InfluxDBConnector Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#influxdbconnector-installation">InfluxDBConnector Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#kapacitor">Kapacitor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#point-data-time-series-data-analytics-introduction">Point-data (Time-series data) analytics introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#starting-the-example">Starting the example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-telegraf">Purpose of Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#optional-adding-multiple-telegraf-instances">Optional: Adding multiple telegraf instances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#enabling-eii-message-bus-input-plugin-in-telegraf">Enabling EII message bus input plugin in Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#user-defined-functions">User-defined Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#custom-udfs-available-in-the-udfs-directory">Custom UDFs available in the udfs directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#steps-to-configure-the-udfs-in-kapacitor">Steps to configure the UDFs in kapacitor.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#multiple-udfs-in-single-task-and-multiple-tasks-in-single-udf-kapacitor">Multiple UDFs in single task and multiple tasks in single UDF Kapacitor*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#multiple-udfs-in-single-task">Multiple UDFs in single task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#multiple-task-in-single-udf">Multiple Task in single UDF</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#working-with-kapacitor">Working with Kapacitor*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#installing-timeseriesprofiler-requirements">Installing TimeSeriesProfiler requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opcua.html#opcuaexport">OpcuaExport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-post-request-pipeline">RestExport POST Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-get-request-pipeline">RestExport Get Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#restexport-apis">RestExport APIs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#restexport-post-request-api">RestExport POST Request API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#restexport-get-request-api">RestExport GET Request API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#restexport-configuration">RestExport Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overTheAir.html">Updating an Application-Over-The-Air</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overTheAir.html#installation-turtle-creek">Installation - Turtle Creek</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overTheAir.html#multi-node-deployment">Multi-Node deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overTheAir.html#generating-eii-bundle-for-deployment">Generating EII Bundle for deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overTheAir.html#creating-an-http-local-server-only-for-development">Creating an HTTP Local Server [ONLY FOR DEVELOPMENT]</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overTheAir.html#cloud-service-azure-server-set-up">Cloud Service: Azure Server Set up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#setting-up-an-azure-iot-central-application">Setting up an Azure IoT Central Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#obtaining-device-credentials">Obtaining device credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#provisioning-a-device">Provisioning a device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#performing-aota-updates-through-the-azure-portal">Performing AOTA Updates Through the Azure Portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#verifying-triggered-aota-in-event">Verifying Triggered AOTA in Event</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overTheAir.html#cloud-service-thingsboard-setup">Cloud Service: ThingsBoard* Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#starting-thingsboard-as-docker-macos-linux">Starting ThingsBoard* as Docker [macOS*/Linux*]</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#creating-a-thingsboard-account">Creating a ThingsBoard* Account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#adding-turtle-creek-device-to-thingsboard">Adding Turtle Creek Device to ThingsBoard*</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#id1">Provisioning a Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#performing-aota-updates-through-the-thingsboard-page">Performing AOTA Updates Through the ThingsBoard* Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#id2">Verifying Triggered AOTA in Event</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overTheAir.html#cloud-service-telit-cloud-setup">Cloud Service: Telit* Cloud Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#create-your-telit-iot-portal-account">Create Your Telit* IoT Portal Account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#import-thing-definition">Import Thing Definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#copy-application-token">Copy Application Token</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#provision-with-the-token">Provision with the Token</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#link-to-thing-definition">Link to Thing definition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#view-and-name-your-thing">View and Name Your Thing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#uploading-the-telit-deployment-bundle-in-telit-portal">Uploading the Telit deployment bundle in Telit Portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="overTheAir.html#performing-aota-updates-through-telit">Performing AOTA Updates Through Telit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="overTheAir.html#multinode-deployment-without-using-turtle-creek">Multinode deployment without using Turtle Creek.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="modes.html">DEV MODE and PROFILING MODE</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modes.html#dev-mode">DEV MODE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="modes.html#starting-the-eii-in-dev-mode">Starting the EII in Dev Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modes.html#profiling-mode">PROFILING MODE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="docker.html">Working with EII Docker* Containers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#compose-files">Compose Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker.html#useful-docker-commands">Useful Docker* Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#pre-requisites-set-up">Pre-Requisites Set Up</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#configure-azure-cloud">Configure Azure Cloud*</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#development-system-set-up">Development System Set Up</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#build-and-push-eii-container">Build and Push EII Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure* IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#provisioning">Provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#configuring-eii">Configuring EII</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#configuring-azure-iot-deployment-manifest">Configuring Azure IoT Deployment Manifest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#deployment">Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#using-sample-eii-onnx-udf">Using Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#setting-up-azureml">Setting up AzureML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#pushing-a-model-to-azureml">Pushing a Model to AzureML</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#configuring-eii-to-work-with-azure-bridge">Configuring EII to work with Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id2">Deployment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="orchestration.html">Orchestration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="orchestration.html#single-node-deployment">Single Node Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orchestration.html#multi-node-deployment">Multi-node Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Ansible Based Multi Node Deployment Automation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ansible-based-eii-prequisites-setup-provisioning-build-deployment">Ansible based EII Prequisites setup, provisioning, build &amp; deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-ansible-on-ubuntu-control-node">Installing Ansible on Ubuntu {Control node}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Installing Ansible on Ubuntu {Control node}</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisite-step-needed-for-all-the-control-worker-nodes">Prerequisite step needed for all the control/worker nodes.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generate-ssh-key-for-all-nodes">Generate SSH KEY for all nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-ssh-authorized-key-from-control-node-to-all-the-nodes">Adding SSH Authorized Key from control node to all the nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configure-sudoers-file-to-accept-no-password-for-sudo-operation">Configure Sudoers file to accept NO PASSWORD for sudo operation.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-the-leader-worker-node-s-information-for-using-remote-hosts">Updating the leader &amp; worker node’s information for using remote hosts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-the-eii-source-folder-usecase-proxy-settings-in-group-variables">Updating the EII Source Folder, Usecase &amp; Proxy Settings in Group Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#non-orchestrated-multi-node-deployment-without-k8s">Non-orchestrated multi node deployment (without k8s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment">Select EII services to run on a particular node in multinode deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#execute-ansible-playbook-from-eii-workdir-iedgeinsights-build-ansible-control-node-to-deploy-eii-services-in-single-multi-nodes">Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deploying-eii-using-helm-in-kubernetes-k8s-environment">Deploying EII Using Helm in Kubernetes (k8s) environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">Video and Time-series Benchmarking Tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="benchmarking.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarking.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codeModification.html">Code Modification Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging EII</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-through-the-logs">Debugging Through the Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="debugging.html#gstreamer-valid-plugins-element">GStreamer Valid Plugins / Element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="debugging.html#debugging-the-video-ingestion-container">Debugging the Video Ingestion Container</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#enablement-of-x11-forwarding-for-eii-visualizer-container">Enablement of X11 Forwarding for EII Visualizer Container</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-options">Debugging Options</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API Docs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">C API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#python-api">Python API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#golang-api">GoLang API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Ansible Based Multi Node Deployment Automation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/pages/ansible.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ansible-based-multi-node-deployment-automation">
+<h1>Ansible Based Multi Node Deployment Automation<a class="headerlink" href="#ansible-based-multi-node-deployment-automation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ansible-based-eii-prequisites-setup-provisioning-build-deployment">
+<h2>Ansible based EII Prequisites setup, provisioning, build &amp; deployment<a class="headerlink" href="#ansible-based-eii-prequisites-setup-provisioning-build-deployment" title="Permalink to this headline">¶</a></h2>
+<p>Ansible is the automation engine which can enable EII deployment across single/multi nodes.
+We need one control node where ansible is installed and optional hosts. We can also use the control node itself to deploy EII</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>:</p>
+<ul class="simple">
+<li><p>Ansible can execute the tasks on control node based on the playbooks defined</p></li>
+<li><p>There are 3 types of nodes - control node where ansible must be installed, EII leader node where ETCD server will be running and optional worker nodes, all worker nodes remotely connect to ETCD server running on leader node. Control node and EII leader node can be same.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="installing-ansible-on-ubuntu-control-node">
+<h2>Installing Ansible on Ubuntu {Control node}<a class="headerlink" href="#installing-ansible-on-ubuntu-control-node" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Execute the following command in the identified control node machine.
+.. code-block:: sh</p>
+<blockquote>
+<div><p>$ sudo apt update
+$ sudo apt install software-properties-common
+$ sudo apt-add-repository –yes –update ppa:ansible/ansible
+$ sudo apt install ansible</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h2>Installing Ansible on Ubuntu {Control node}<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Execute the following command in the identified control node machine.
+.. code-block:: sh</p>
+<blockquote>
+<div><p>$ sudo apt update
+$ sudo apt install software-properties-common
+$ sudo apt-add-repository –yes –update ppa:ansible/ansible
+$ sudo apt install ansible</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="prerequisite-step-needed-for-all-the-control-worker-nodes">
+<h2>Prerequisite step needed for all the control/worker nodes.<a class="headerlink" href="#prerequisite-step-needed-for-all-the-control-worker-nodes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="generate-ssh-key-for-all-nodes">
+<h3>Generate SSH KEY for all nodes<a class="headerlink" href="#generate-ssh-key-for-all-nodes" title="Permalink to this headline">¶</a></h3>
+<p>Generate the SSH KEY for all nodes using following command (to be executed in the only control node), ignore to run this command if you already have ssh keys generated in your system without id and passphrase,</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ssh-keygen
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>:</p>
+<ul class="simple">
+<li><p>Dont give any passphrase and id, just press <code class="docutils literal notranslate"><span class="pre">Enter</span></code> for all the prompt which will generate the key.</p></li>
+</ul>
+</div>
+<p>For Eg.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ssh-keygen
+
+Generating public/private rsa key pair.
+Enter file in which to save the key (/root/.ssh/id_rsa):  &lt;ENTER&gt;
+Enter passphrase (empty for no passphrase):  &lt;ENTER&gt;
+Enter same passphrase again:  &lt;ENTER&gt;
+Your identification has been saved in ~/.ssh/id_rsa.
+Your public key has been saved in ~/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:vlcKVU8Tj8nxdDXTW6AHdAgqaM/35s2doon76uYpNA0 root@host
+The key&#39;s randomart image is:
++---[RSA 2048]----+
+|          .oo.==*|
+|     .   .  o=oB*|
+|    o . .  ..o=.=|
+|   . oE.  .  ... |
+|      ooS.       |
+|      ooo.  .    |
+|     . ...oo     |
+|      . .*o+.. . |
+|       =O==.o.o  |
++----[SHA256]-----+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-ssh-authorized-key-from-control-node-to-all-the-nodes">
+<h2>Adding SSH Authorized Key from control node to all the nodes<a class="headerlink" href="#adding-ssh-authorized-key-from-control-node-to-all-the-nodes" title="Permalink to this headline">¶</a></h2>
+<p>Please follow the steps to copy the generated keys from control node to all other nodes</p>
+<p>Execute the following command from <code class="docutils literal notranslate"><span class="pre">control</span></code> node.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ssh-copy-id &lt;USER_NAME&gt;@&lt;HOST_IP&gt;
+</pre></div>
+</div>
+<p>For Eg.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ssh-copy-id test@192.0.0.1
+
+/usr/bin/ssh-copy-id: INFO: Source of key<span class="o">(</span>s<span class="o">)</span> to be installed: <span class="s2">&quot;/home/&lt;username&gt;/.ssh/id_rsa.pub&quot;</span>
+
+Number of key<span class="o">(</span>s<span class="o">)</span> added: <span class="m">1</span>
+
+Now try logging into the machine, with:   <span class="s2">&quot;ssh &#39;test@192.0.0.1&#39;&quot;</span>
+and check to make sure that only the key<span class="o">(</span>s<span class="o">)</span> you wanted were added.
+</pre></div>
+</div>
+<div class="section" id="configure-sudoers-file-to-accept-no-password-for-sudo-operation">
+<h3>Configure Sudoers file to accept NO PASSWORD for sudo operation.<a class="headerlink" href="#configure-sudoers-file-to-accept-no-password-for-sudo-operation" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>: Ansible need to execute some commands as <code class="docutils literal notranslate"><span class="pre">sudo</span></code>. The below configuration is needed so that <code class="docutils literal notranslate"><span class="pre">passwords</span></code> need not be saved in the ansible inventory file <code class="docutils literal notranslate"><span class="pre">hosts</span></code></p>
+</div>
+<p>Update <code class="docutils literal notranslate"><span class="pre">sudoers</span></code> file</p>
+<ol class="arabic">
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">sudoers</span></code> file.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo visudo
+</pre></div>
+</div>
+</li>
+<li><p>Append the following to the <code class="docutils literal notranslate"><span class="pre">sudoers</span></code> file</p>
+<blockquote>
+<div><p><strong>Note</strong>: Please append to the last line of the <code class="docutils literal notranslate"><span class="pre">sudoers</span></code> file.</p>
+</div></blockquote>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ &lt;ansible_non_root_user&gt;  <span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span> NOPASSWD: ALL
+</pre></div>
+</div>
+<p>For E.g:</p>
+<p>If in control node, the current non root user is <code class="docutils literal notranslate"><span class="pre">user1</span></code>, you should append as follows</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>user1 <span class="nv">ALL</span><span class="o">=(</span>ALL:ALL<span class="o">)</span> NOPASSWD: ALL
+</pre></div>
+</div>
+</li>
+<li><p>Save &amp; Close the file</p></li>
+<li><p>For checking the <code class="docutils literal notranslate"><span class="pre">sudo</span></code> access for the enabled <code class="docutils literal notranslate"><span class="pre">user</span></code>, please logout and login to the session again
+check the following command.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo -l -U &lt;ansible_non_root_user&gt;
+</pre></div>
+</div>
+<p>Now the above line authorizes <code class="docutils literal notranslate"><span class="pre">user1</span></code> user to do <code class="docutils literal notranslate"><span class="pre">sudo</span></code> operation in the control node without <code class="docutils literal notranslate"><span class="pre">PASSWORD</span></code> ask.</p>
+<blockquote>
+<div><p><strong>Note</strong>: The same procedure applies to all other nodes where ansible connection is involved.</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="updating-the-leader-worker-node-s-information-for-using-remote-hosts">
+<h2>Updating the leader &amp; worker node’s information for using remote hosts<a class="headerlink" href="#updating-the-leader-worker-node-s-information-for-using-remote-hosts" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>: By <code class="docutils literal notranslate"><span class="pre">default</span></code> both control/leader node <code class="docutils literal notranslate"><span class="pre">ansible_connection</span></code> will be <code class="docutils literal notranslate"><span class="pre">localhost</span></code> in single node deployment.</p>
+</div>
+<p>Please follow below steps to update the details of leader/worker nodes for multi node scenario.</p>
+<ul>
+<li><p>Update the hosts information in the inventory file <code class="docutils literal notranslate"><span class="pre">hosts</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">group_name</span><span class="p">]</span>
+<span class="o">&lt;</span><span class="n">nodename</span><span class="o">&gt;</span> <span class="n">ansible_connection</span><span class="o">=</span><span class="n">ssh</span> <span class="n">ansible_host</span><span class="o">=&lt;</span><span class="n">ipaddress</span><span class="o">&gt;</span> <span class="n">ansible_user</span><span class="o">=&lt;</span><span class="n">machine_user_name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>For Eg:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">targets</span><span class="p">]</span>
+<span class="n">leader</span> <span class="n">ansible_connection</span><span class="o">=</span><span class="n">ssh</span> <span class="n">ansible_host</span><span class="o">=</span><span class="mf">192.0</span><span class="o">.</span><span class="mf">0.1</span>  <span class="n">ansible_user</span><span class="o">=</span><span class="n">user1</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ansible_connection=ssh</span></code> is mandatory when you are updating any remote hosts, which makes ansible to connect via <code class="docutils literal notranslate"><span class="pre">ssh</span></code>.</p></li>
+<li><p>The above information is used by ansible to establish ssh connection to the nodes.</p></li>
+<li><p>control node will always be <code class="docutils literal notranslate"><span class="pre">ansible_connection=local</span></code>, <strong>don’t update the control node’s information</strong></p></li>
+<li><p>To deploy EII in single , <code class="docutils literal notranslate"><span class="pre">ansible_connection=local</span></code> and <code class="docutils literal notranslate"><span class="pre">ansible_host=localhost</span></code></p></li>
+<li><p>To deploy EII on multiple nodes, add hosts(worker1, worker2 etc..) details to the inventory file</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="updating-the-eii-source-folder-usecase-proxy-settings-in-group-variables">
+<h2>Updating the EII Source Folder, Usecase &amp; Proxy Settings in Group Variables<a class="headerlink" href="#updating-the-eii-source-folder-usecase-proxy-settings-in-group-variables" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">group_vars/all.yml</span></code> file
+.. code-block:: sh</p>
+<blockquote>
+<div><p>$ vi group_vars/all.yml</p>
+</div></blockquote>
+</li>
+<li><p>Update Proxy Settings
+.. code-block:: sh</p>
+<blockquote>
+<div><p>enable_system_proxy: true
+http_proxy: &lt;proxy_server_details&gt;
+https_proxy: &lt;proxy_server_details&gt;
+no_proxy: &lt;managed_node ip&gt;,&lt;controller node ip&gt;,&lt;worker nodes ip&gt;,localhost,127.0.0.1</p>
+</div></blockquote>
+</li>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">usecase</span></code> variable, based on the usecase <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> generates the EII deployment &amp; config files.</p>
+<blockquote>
+<div><blockquote>
+<div><p><strong>Note</strong>:</p>
+<ol class="arabic simple">
+<li><p>By default it will be <code class="docutils literal notranslate"><span class="pre">video-streaming</span></code>, For other usecases refer the <code class="docutils literal notranslate"><span class="pre">../usecases</span></code> folder and update only names without <code class="docutils literal notranslate"><span class="pre">.yml</span></code> extension</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ia_kapacitor</span></code> and <code class="docutils literal notranslate"><span class="pre">ia_telegraf</span></code> container images are not distributed via docker hub, so one won’t be able to pull these images
+for time-series use case upon using <cite>../usecases/time-series.yml &lt;https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/time-series.yml</cite>&gt;`_ for deployment. For more details,
+refer: [../README.html#distribution-of-eii-container-images]&gt; (../README.html#distribution-of-eii-container-images).</p></li>
+</ol>
+</div></blockquote>
+<p>For Eg. If you want build &amp; deploy for <code class="docutils literal notranslate"><span class="pre">../usecases/time-series.yml</span></code> update the <code class="docutils literal notranslate"><span class="pre">usecase</span></code> key value as <code class="docutils literal notranslate"><span class="pre">time-series</span></code></p>
+</div></blockquote>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>usecase: &lt;time-series&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Optionally you can choose number of video pipeline instances to be created by updating <code class="docutils literal notranslate"><span class="pre">instances</span></code> variable</p></li>
+<li><p>Update other optional variables provided if required</p></li>
+</ol>
+</div>
+<div class="section" id="non-orchestrated-multi-node-deployment-without-k8s">
+<h2>Non-orchestrated multi node deployment (without k8s)<a class="headerlink" href="#non-orchestrated-multi-node-deployment-without-k8s" title="Permalink to this headline">¶</a></h2>
+<p>Below configuration changes need to be made for multi node deployment without k8s</p>
+<ol class="arabic">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">multi_node:</span> <span class="pre">true</span></code> in <code class="docutils literal notranslate"><span class="pre">group_vars/all.yml</span></code> to enable multinode deployment and <code class="docutils literal notranslate"><span class="pre">false</span></code> to enable single node deployment. Update <code class="docutils literal notranslate"><span class="pre">vars/vars.yml</span></code> to the services to run on a specific node in case of multi_node deployment by following <a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#Select-EII-services-to-run-on-a-particular-node-in-multinode-deployment">this</a>, where in single node deployment all the services based on the <code class="docutils literal notranslate"><span class="pre">usecase</span></code> chosen will be deployed.</p></li>
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">docker</span></code> registry details in following section if using a custom/private registry
+.. code-block:: sh</p>
+<blockquote>
+<div><p>docker_registry=”&lt;regsitry_url&gt;”
+docker_login_user=”&lt;username&gt;”
+docker_login_passwd=”&lt;password&gt;”</p>
+</div></blockquote>
+<blockquote>
+<div><p><strong>Note</strong>: Use of <code class="docutils literal notranslate"><span class="pre">docker_registry</span></code> and <code class="docutils literal notranslate"><span class="pre">build</span></code> flags</p>
+<ul class="simple">
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">docker_registry</span></code> details to use docker images from custom registry, optionally set <code class="docutils literal notranslate"><span class="pre">build:</span> <span class="pre">true</span></code> to push docker images to this registry</p></li>
+<li><p>Unset <code class="docutils literal notranslate"><span class="pre">docker_registry</span></code> details if you don’t want to use custom registry and set <code class="docutils literal notranslate"><span class="pre">build:</span> <span class="pre">true</span></code> to save and load docker images from one node to another node</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>If you are using images from docker hub, then set <code class="docutils literal notranslate"><span class="pre">build:</span> <span class="pre">false</span></code> and unset <code class="docutils literal notranslate"><span class="pre">docker_registry</span></code> details</p></li>
+</ol>
+</div>
+<div class="section" id="select-eii-services-to-run-on-a-particular-node-in-multinode-deployment">
+<h2>Select EII services to run on a particular node in multinode deployment<a class="headerlink" href="#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>Edit <code class="docutils literal notranslate"><span class="pre">vars/vars.yml</span></code> -&gt; under <code class="docutils literal notranslate"><span class="pre">nodes</span></code> add a specific a node which was defined in the inventory file(<code class="docutils literal notranslate"><span class="pre">hosts</span></code>) and add EII services to <code class="docutils literal notranslate"><span class="pre">include_services</span></code> list</p>
+<blockquote>
+<div><p>Eg. if you want leader to run ia_video_ingestion, <code class="docutils literal notranslate"><span class="pre">vars/vars.yml</span></code> should be</p>
+</div></blockquote>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>nodes:
+  leader:
+    include_services:
+        - ia_video_ingestion
+</pre></div>
+</div>
+</li>
+<li><p>If you want to add <code class="docutils literal notranslate"><span class="pre">worker1</span></code> to <code class="docutils literal notranslate"><span class="pre">nodes</span></code> and bring up <code class="docutils literal notranslate"><span class="pre">ia_visualizer</span></code> in <code class="docutils literal notranslate"><span class="pre">worker1</span></code>:</p>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>nodes:
+  leader:
+    include_services:
+        - ia_video_ingestion
+  worker1:
+    include_services:
+        - ia_visualizer
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>: If a service is not added to <code class="docutils literal notranslate"><span class="pre">include_services</span></code> list, that service will not deployed on a particular node</p>
+</div>
+</div>
+<div class="section" id="execute-ansible-playbook-from-eii-workdir-iedgeinsights-build-ansible-control-node-to-deploy-eii-services-in-single-multi-nodes">
+<h2>Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes<a class="headerlink" href="#execute-ansible-playbook-from-eii-workdir-iedgeinsights-build-ansible-control-node-to-deploy-eii-services-in-single-multi-nodes" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>:</p>
+<ul class="simple">
+<li><p>Updating messagebus endpoints to connect to interfaces is still the manual process. Make sure to update Application specific endpoints in <code class="docutils literal notranslate"><span class="pre">[AppName]/config.json</span></code></p></li>
+<li><p>After <code class="docutils literal notranslate"><span class="pre">pre-requisites</span></code> are successfully installed, please do logout and login to apply the changes</p></li>
+</ul>
+</div>
+<p><strong>For Single Point of Execution</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>: This will execute all the steps of EII as prequisite, build, provision, deploy &amp; setup leader node for multinode deployement usecase in one shot sequentialy.
+*</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  ```sh
+  $ ansible-playbook eii.yml
+  ```
+
+
+**Below steps are the individual execution of setups.**
+</pre></div>
+</div>
+<ul>
+<li><p>Load <code class="docutils literal notranslate"><span class="pre">.env</span></code> values from template</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;load_env&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>For EII Prequisite Setup</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;prerequisites&quot;</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note</strong>: After <code class="docutils literal notranslate"><span class="pre">pre-requisites</span></code> are successfully installed, please do logout and login to apply the changes</p>
+</div></blockquote>
+</li>
+<li><p>To generate builder and config files, build images and push to registry</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;build&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>To generate Certificates in control node</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;gen_certs&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>To generate provision bundle for leader</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;gen_leader_provision_bundle&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>To generate provision bundle for worker nodes</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;gen_worker_provision_bundle&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>To generate eii bundles for leader, worker nodes</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;gen_bundles&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Provision leader and bring up ETCD server</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;leader_provision&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Provision worker node</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;worker_provsion&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Provision EIS Config values to etcd</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;etcd_provision&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>To generate deploy selected services to leader, worker nodes</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;deploy&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="section" id="deploying-eii-using-helm-in-kubernetes-k8s-environment">
+<h3>Deploying EII Using Helm in Kubernetes (k8s) environment<a class="headerlink" href="#deploying-eii-using-helm-in-kubernetes-k8s-environment" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><p>To Deploy EII using helm in k8s aenvironment, <code class="docutils literal notranslate"><span class="pre">k8s</span></code> setup is a prerequisite.</p></li>
+<li><p>You need update the <code class="docutils literal notranslate"><span class="pre">k8s</span></code> leader machine as leader node in <code class="docutils literal notranslate"><span class="pre">hosts</span></code> file.</p></li>
+<li><p>Non <code class="docutils literal notranslate"><span class="pre">k8s</span></code> leader machine the <code class="docutils literal notranslate"><span class="pre">helm</span></code> deployment will fail.</p></li>
+<li><p>For <code class="docutils literal notranslate"><span class="pre">helm</span></code> deployment <code class="docutils literal notranslate"><span class="pre">ansible-multinode</span></code> parameters will not applicable, Since
+node selection &amp; pod selection will be done by <code class="docutils literal notranslate"><span class="pre">k8s</span></code> orchestrator.</p></li>
+</ol>
+</div>
+<ul>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">DEPLOYMENT_MODE</span></code> flag as <code class="docutils literal notranslate"><span class="pre">k8s</span></code> in <code class="docutils literal notranslate"><span class="pre">group_vars/all.yml</span></code> file:</p>
+<ul>
+<li><p>Open <code class="docutils literal notranslate"><span class="pre">group_vars/all.yml</span></code> file
+.. code-block:: sh</p>
+<blockquote>
+<div><p>$ vi group_vars/all.yml</p>
+</div></blockquote>
+</li>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">DEPLOYMENT_MODE</span></code> flag as <code class="docutils literal notranslate"><span class="pre">k8s</span></code></p>
+<div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>## Deploy in k8s mode using helm
+DEPLOYMENT_MODE: &quot;k8s&quot;
+</pre></div>
+</div>
+</li>
+<li><p>Save &amp; Close</p></li>
+</ul>
+</li>
+<li><p>For Single Point of Execution</p>
+<blockquote>
+<div><p><strong>Note</strong>: This will execute all the steps of EII as prequisite, build, provision, deploy for a usecase in one shot sequentialy.</p>
+</div></blockquote>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>: Below steps are the individual execution of setups.</p>
+</div>
+<ul>
+<li><p>Load <code class="docutils literal notranslate"><span class="pre">.env</span></code> values from template</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;load_env&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>For EII Prequisite Setup</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;prerequisites&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>For building EII containers</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;build&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>To generate Certificates in control node</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;gen_certs&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Prerequisites for deploy EII using Ansible helm environment.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ansible-playbook eii.yml --tags <span class="s2">&quot;helm_k8s_prerequisites&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Provision &amp; Deploy EII Using Ansible helm environment
+.. code-block:: sh</p>
+<blockquote>
+<div><p>$ ansible-playbook eii.yml –tags “helm_k8s_deploy”</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

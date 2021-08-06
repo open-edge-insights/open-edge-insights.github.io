@@ -1,0 +1,10 @@
+
+PROCEDURE TO RUN GRAFANA
+========================
+
+
+#. Open `docker-compose.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/docker-compose.yml>`_ and uncomment ia_grafana.
+#. Check ia_influxdbconnector, ia_kapacitor, ia_telegraph are running for time-series data.
+#. Check `publisher <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/publisher.sh>`_ is running.
+#. Use "docker-compose build" to build image.
+#. Use "docker-compose up" to run the service.

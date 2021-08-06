@@ -1,0 +1,117 @@
+## Running TimeSeriesProfiler
+
+1. Pre-requisite :
+
+   Profiling UDF returns "ts_kapacitor_udf_entry" and "ts_kapacitor_udf_exit" timestamp.  
+   
+    These 2 as examples to refer:
+    1. [profiling_udf.go](../../Kapacitor/udfs/profiling_udf.go)
+    2. [rfc_classifier.py](../../Kapacitor/udfs/rfc_classifier.py)
+   
+* **Additional:** Adding timestamps in ingestion and UDFs:
+
+  In case user wants to enable his/her own ingestion and UDFs, timestamps need to be added to ingestion and UDFs modules respectively.
+  The TS Profiler needs three timestamps.
+
+  1. "ts" timestamp which is to be filled by the ingestor (done by the mqtt-publisher app).
+
+  2. The udf to give "ts_kapacitor_udf_entry" and "ts_kapacitor_udf_exit" timestamps to profile the udf execution time.
+
+     ts_kapacitor_udf_entry : timestamp in UDF before execution of the of the algorithm
+
+     ts_kapacitor_udf_exit : timestamp in UDF after execution of the algorithm.
+
+    The sample profiling UDFs can be referred at [profiling_udf.go](../../Kapacitor/udfs/profiling_udf.go) and [rfc_classifier.py](../../Kapacitor/udfs/rfc_classifier.py).
+
+* configuration required to run profiling_udf.go as profiling udf
+
+   In **[Kapacitor config.json](../../Kapacitor/config.json)** , update "task" key as below:
+   ```
+   "task": [{
+       "tick_script": "profiling_udf.tick",
+       "task_name": "profiling_udf",
+       "udfs": [{
+          "type": "go",
+          "name": "profiling_udf"
+       }]
+   }]
+   ```
+   In **[kapacitor.conf](../../Kapacitor/config/kapacitor.conf)** under udf section:
+
+   ```
+      [udf.functions]
+         [udf.functions.profiling_udf]
+           socket = "/tmp/profiling_udf"
+           timeout = "20s"
+
+   ```
+ * configuration required to run rfc_classifier.py as profiler udf
+   In **[Kapacitor config.json](../../Kapacitor/config.json)** , update "task" key as below:
+   ```
+   "task": [{
+       {
+        "tick_script": "rfc_task.tick",
+        "task_name": "random_forest_sample"
+        }
+   }]
+   ```
+   In **[kapacitor.conf](../../Kapacitor/config/kapacitor.conf)** under udf section:
+
+   ```
+    [udf.functions.rfc]
+      prog = "python3.7"
+      args = ["-u", "/EII/udfs/rfc_classifier.py"]
+      timeout = "60s"
+      [udf.functions.rfc.env]
+         PYTHONPATH = "/EII/go/src/github.com/influxdata/kapacitor/udf/agent/py/"
+   ```
+  keep **[config.json](./config.json)** file as following:
+```
+  {
+    "config": {
+        "total_number_of_samples": 10,
+        "export_to_csv": "False"
+    },
+    "interfaces": {
+        "Subscribers": [
+            {
+                "Name": "default",
+                "Type": "zmq_tcp",
+                "EndPoint": "ia_influxdbconnector:65032",
+                "PublisherAppName": "InfluxDBConnector",
+                "Topics": [
+                    "rfc_results"
+                ]
+            }
+        ]
+    }
+}
+```
+
+
+
+   In [.env](../../build/.env):
+
+   Set the profiling mode as true.
+
+2. Set environment variables accordingly in [config.json](config.json)
+
+3. Set the required output stream/streams and appropriate stream config in [config.json](config.json) file.
+
+4. To run this tool in IPC mode, User needs to modify subscribers interface section of **[config.json](./config.json)** as following
+
+```
+    {
+        "type": "zmq_ipc",
+        "EndPoint": "/EII/sockets"
+    }
+```
+
+5. Refer [README.md](../../README.md) to provision, build and run the tool along with the EII time-series recipe/stack.
+
+6. Run the following command to see the logs:
+
+    ```sh
+        docker logs -f ia_timeseries_profiler
+    ```
+

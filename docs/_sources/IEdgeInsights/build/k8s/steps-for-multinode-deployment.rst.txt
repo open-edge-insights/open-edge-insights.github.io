@@ -1,0 +1,116 @@
+
+Steps for Multinode Deployment
+------------------------------
+
+..
+
+   #. ``K8s Master node & Worker(s) node Setup should be done as pre-requisite to continue the following deployment``
+   #. ``This step is not required for **Single Node** deployment``
+
+      * Pre-Requisites
+
+
+.. code-block::
+
+   **Note** For Running EII Modules in k8s multi node cluster, corresponding module Container Images should be present in the master and worker(s) nodes. The container images can be pushed to a Docker registry and pulled on the required nodes. For more information on Docker registry- Kindly refer:
+   [build/deploy/README.html/#step-2-set-up-docker-registry-url-then-build-and-push-images](http://localhost:7645/IEdgeInsights/#step-2-set-up-docker-registry-url-then-build-and-push-images)
+
+
+
+* Master Node provisoning: Follow steps mentioned in below links.
+
+  #. `Change for Master Provision for Multinode Deployment <http://localhost:7645/IEdgeInsights/build/k8s/###change-for-master-provision-for-multinode-deployment>`_
+  #. `Provisioning with k8s <http://localhost:7645/IEdgeInsights/build/k8s/#provisioning-with-k8s>`_
+
+* Worker Node provisoning: Follow steps mentioned in below links.
+
+  #. `Provision Bundle creation for k8s worker node <http://localhost:7645/IEdgeInsights/build/k8s/#Provision-Bundle-creation-for-k8s-worker-node>`_
+  #. `EII k8s Worker Node provisioning for MultiNode deployment <http://localhost:7645/IEdgeInsights/build/k8s/#EII-k8s-Worker-Node-provisioning-for-MultiNode-deployment>`_
+
+Change for Master Provision for Multinode Deployment.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* 
+  Get the master node name by running below command.
+
+  .. code-block:: sh
+
+      $ kubectl get nodes
+
+     It will display NAME along with ROLES. Copy the complete ``name`` of Node with ROLES as ``master``.
+
+  .. code-block::
+
+        E.g.
+        $ kubectl get nodes
+        NAME     STATUS          ROLES    AGE   VERSION
+        coolm    Ready           master   67d   v1.18.6
+
+     For example, copied ``coolm`` from above.
+
+
+  * 
+    Add copied master node name(e.g. coolm) with label ``nodeName under spec of Pod ia-etcd as nodeName:`` in below yaml based on DEV mode.
+
+
+    * If DEV mode =TRUE  `build/provision/dep/k8s/k8s_etcd_devmode.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/k8s_etcd_devmode.yml>`_
+    * IF DEV mode=FALSE  `build/provision/dep/k8s/k8s_etcd_prodmode.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/k8s_etcd_prodmode.yml>`_
+
+    This will enable etcd to run always on master node.
+
+    For example, added  ``nodeName:coolm`` in etcd_devmode.yaml or etcd_prodmode.yaml which was copied above.
+
+    .. code-block::
+
+       E.g.
+       spec:
+         restartPolicy: OnFailure
+         nodeName: coolm
+
+    ### Provision Bundle creation for k8s worker node.
+
+    ..
+
+       #. This step is not required for **Single Node** deployment
+       #. Provisioning bundle will be generated on k8s ``Master node``.
+       #. Make Sure ETCD_NAME=[any name other than ``master``\ ] in `build/.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/.env>`_ of Master node.
+       #. Below steps to be run on Master node.
+
+
+  * Set ``PROVISION_MODE=k8s`` in `build/provision/.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/.env>`_ file.
+  * Go to ``$[WORK_DIR]/IEdgeInsights/build/deploy`` directory
+  * 
+    Generate Provisioning bundle for k8s worker node provisioning.
+
+    .. code-block:: sh
+
+        $ sudo python3 generate_eii_bundle.py -p
+
+    ### EII ``k8s Worker Node`` provisioning for MultiNode deployment
+
+    ..
+
+       **Note**\ :
+
+
+       #. This should be executed in k8s worker nodes in **\ *Multi node
+          scenario*\ ** only.
+       #. This step is not required for **Single Node** deployment
+       #. Provisioning bundle generated on k8s Master node will be copied to worker node.
+
+
+  * 
+    Copy the ``eii_provisioning.tar.gz`` file from k8s master node to worker node(s).
+
+    .. code-block:: sh
+
+            $ sudo scp <eii_provisioning.tar.gz> <any-directory_on-worker-Filesystem>
+            $ sudo tar -xvf <eii_provisioning.tar.gz>
+            $ cd <eii_provisioning>
+
+  * Provision the EII in k8s Worker(s) Node.
+    .. code-block:: sh
+
+            $ cd provision
+            $ sudo ./provision.sh

@@ -1,0 +1,13 @@
+## Install ConfigMgr with Python bindings, Go bindings, Examples, Test suits and Debug Build.
+
+```sh
+$ rm -rf build
+$ mkdir build
+$ cd build
+$ cmake -DCMAKE_INSTALL_INCLUDEDIR=$CMAKE_INSTALL_PREFIX/include -DCMAKE_INSTALL_PREFIX=$CMAKE_INSTALL_PREFIX -DWITH_PYTHON=ON -DWITH_GO=ON -DWITH_EXAMPLES=ON -DWITH_TESTS=ON -DCMAKE_BUILD_TYPE=Debug ..
+$ make
+$ sudo make install
+```
+
+`WITH_PYTHON=ON`, `WITH_GO=ON`, `WITH_EXAMPLES=ON`, `WITH_TESTS=ON` and `CMAKE_BUILD_TYPE=Debug` to compile ConfigMgr with Python bindings, Go bindings, Examples, Unit Tests and Debug mode respectively.
+

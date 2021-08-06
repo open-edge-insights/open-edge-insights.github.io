@@ -1,0 +1,14 @@
+
+Other X509 Certificates
+-----------------------
+
+If any of the Services needs to generate other X509 Certificates(pem or der format), please use below option and provisioining will generate certificates and put them in ETCD key for the App.
+
+.. code-block::
+
+     [service_name]:
+       ...
+       environment:
+
+         # Only required in PROD mode
+         CertType: "pem" or "der"

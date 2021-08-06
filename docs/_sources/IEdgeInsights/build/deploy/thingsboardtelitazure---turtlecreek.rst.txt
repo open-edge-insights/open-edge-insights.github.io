@@ -1,0 +1,32 @@
+
+Thingsboard/Telit/Azure - TurtleCreek:
+--------------------------------------
+
+EII deployment will only be done on the node where TurtleCreek is installed & provisioned via Thingsboard/Telit/Azure portal.
+
+
+#. 
+   Before proceeding this step, please make sure, you have followed steps 1-5.
+
+#. 
+   For TurtleCreek Agent installation and deployment through TurtleCreek, please refer TurtleCreek repo README.
+
+    While deploying EII Software Stack via Telit-TurtleCreek. Visualizer UI will not pop up because of display not attached to docker container of Visualizer.
+
+    To Overcome. goto IEdgeInsights/build
+    -->  Stop the running ia_visualizer container with it's name or container id using "docker ps" command.
+
+   .. code-block::
+
+        ```sh
+        docker rm -f ia_visualizer
+        ```
+
+
+    -->  Start the ia_visualizer again.
+
+   .. code-block::
+
+       ```sh
+       docker-compose up ia_visualizer
+       ```

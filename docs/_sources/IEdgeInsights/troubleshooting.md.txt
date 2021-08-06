@@ -1,0 +1,4 @@
+# Troubleshooting
+
+The troubleshooting guide here talks about the useful tips to address some of the EII configuration and installation issues.
+

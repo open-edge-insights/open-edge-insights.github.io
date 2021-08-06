@@ -1,0 +1,7 @@
+# GRAFANA #
+
+1. Grafana is an open source metric analytics & visualization suite. It is most commonly used for visualizing time series data for infrastructure and        application analytics but many use it in other domains including industrial sensors, home automation, weather, and process control.
+2. Grafana supports many different storage backends for our time series data (Data Source). Here in EII we are using InfluxDB as datasource.
+3. Grafana connects to the InfluxDB datasource which has been preconfigured as a part of grafana setup. The data source i.e. ia_influxdbconnector service must be running in order for grafana to collect time series data.
+4. Once the data source is working, we can visualize the incoming data using the preconfigured dashboard. We can aslo edit the dashboard as per our convenience.
+

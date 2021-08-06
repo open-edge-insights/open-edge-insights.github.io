@@ -1,0 +1,31 @@
+## Optimizing EII Video pipeline by analysing Video Profiler results
+
+1. VI ingestor/UDF input queue is blocked, consider reducing ingestion rate.
+
+    If this log is displayed by the Video Profiler tool, it indicates that the ingestion rate is too high or the VideoIngestion
+    UDFs are slow and causing latency throughout the pipeline.
+    As per the log suggests, the user can increase the poll_interval to a optimum value to reduce the blockage of VideoIngestion
+    ingestor queue thereby optimizing the video pipeline in case using the opencv ingestor.
+    In case Gstreamer ingestor is used, the videorate option can be optimized by following the [README](../../VideoIngestion/README.md).
+
+2. VA subs/UDF input queue is blocked, consider reducing ZMQ_RECV_HWM value or reducing ingestion rate.
+
+    If this log is displayed by the Video Profiler tool, it indicates that the VideoAnalytics UDFs are slow and causing latency
+    throughout the pipeline.
+    As per the log suggests, the user can consider reducing ZMQ_RECV_HWM to an optimum value to free the VideoAnalytics UDF input/subscriber
+    queue by dropping incoming frames or reducing the ingestion rate to a required value.
+
+3. UDF VI output queue blocked.
+
+    If this log is displayed by the Video Profiler tool, it indicates that the VI to VA messagebus transfer is delayed.
+    1. User can consider reducing the ingestion rate to a required value.
+    2. User can increase ZMQ_RECV_HWM to an optimum value so as to not drop
+    the frames when the queue is full or switching to IPC mode of communication.
+
+4. UDF VA output queue blocked.
+
+    If this log is displayed by the Video Profiler tool, it indicates that the VA to VideoProfiler messagebus transfer is delayed.
+    1. User can consider reducing the ingestion rate to a required value.
+    2. User can increase ZMQ_RECV_HWM to an optimum value so as to not drop
+    the frames when the queue is full or switching to IPC mode of communication.
+

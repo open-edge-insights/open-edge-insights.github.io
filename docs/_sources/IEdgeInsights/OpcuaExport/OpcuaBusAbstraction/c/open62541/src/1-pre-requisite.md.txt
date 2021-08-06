@@ -1,0 +1,7 @@
+## 1. Pre-requisite
+
+  ```sh
+  make clean
+  make build_safestring_lib
+  ```
+

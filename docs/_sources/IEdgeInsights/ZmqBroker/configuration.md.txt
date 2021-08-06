@@ -1,0 +1,184 @@
+## Configuration
+
+> **NOTE:** The JSON schema for the configuration properties of the ZeroMQ
+> Broker can be found in the, "schema.json", file.
+
+Configuration of the ZeroMQ Broker is predominantly accomplished from the
+EII Configuration Manager APIs. However, it can also be configured via JSON
+files, as described in the Usage section below. The configuration via JSON
+files is only for development/debugging purposes. This section will focus on
+the preduction configuration of the broker.
+
+The configuration of the broker falls into two main areas:
+
+1. **Application/Service Configuration** - Configuration of the runtime behavior
+2. **Interface Configuration** - Configuration of the networking interfaces
+    (i.e. frontend and backend sockets)
+
+Aside from the interface and service configuration, there are two properties
+that are set via environmental variables: `AppName` and `DEV_MODE`. The
+`AppName` variable determines how the service quries its configuration using
+the Configuration Manager APIs. For docker-compose, this is set in the
+`environment` section of the, "docker-compose.yml", file under the
+`ia_zmq_broker` section. The default value for this is `ZmqBroker`.
+
+The `DEV_MODE` variable sets whether or not the broker will attempt to use
+certificates with the Configuration Manager APIs and over any TCP connections.
+This also is obtainerd from the `environment` section of the, "docker-compose.yml",
+file.
+
+**IMPORTANT NOTE:**
+There are some other configuration properties in the `environment` section of
+the, "docker-compose.yml", file. These are provided to the service from the,
+"build/.env", file. See the EII User Guide for more details.
+
+The following two sections cover that various configuration properties the
+broker supports for interfaces and application configuration.
+
+### Application/Service Configuration
+
+The broker supports two configuration parameters; one for the Linux scheduler
+policy and the other for the scheduler priority. These two properties are
+applied to the main thread which is running the ZeroMQ proxy.
+
+The configuration values must be specified in the config.json prior to running
+the `builder.py` script or eii_config.json after using the `builder.py`
+script.
+
+The table below specifies the details for these parameters. Note that neither of
+these are required in the configuration and should only be set if the user
+knows they need to have a certain scheduling policy and priority for the broker.
+
+|         Key      |    Type   |                                                            Description                                                          |
+| :--------------: | :-------: | ------------------------------------------------------------------------------------------------------------------------------- |
+| `sched_policy`   | `string`  | Scheduling policy to set for the main thread. Must be: `SCHED_OTHER`, `SCHED_IDLE`, `SCHED_BATCH`, `SCHED_FIFO`, or `SCHED_RR`. |
+| `sched_priority` | `integer` | Sets the priority for the thread. Must be between `0` and `99`. Only valid for `SCHED_FIFO` and `SCHED_RR` policies.            |
+
+An example of applying these two settings to the ZeroMQ Broker's
+configuration is shown below. In this example, the configuration is an
+excerpt from the, 'IEdgeInsights/build/provision/config/eii_config.json",
+generated while using the `builder.py` script.
+
+```javascript
+{
+    // ... omitted ...
+
+    "/ZmqBroker/config": {
+        "sched_policy": "SCHED_FIFO",
+        "sched_priority": 42
+    }
+
+    // ... omitted ...
+}
+```
+
+> **NOTE:** There will also be an `/ZmqBroker/interfaces` section associated
+> with the broker, but that is covered in the next section.
+
+The configuration above sets the Linux scheduler policy to `SCHED_FIFO` and its
+priority to `42`. As stated before, this can also be left entirely empty and the
+broker thread will default to the Linux default thread scheduling policy/priority.
+
+### Interface Configuration
+
+The configuration of the networking interfaces for the ZeroMQ Broker is
+divided into two sections, "Subscribers", and, "Publishers". The, "Subscribers",
+sections sets the configuration for the **frontend** socket (since it subscribes
+to the messages coming from publishers), and the, "Publishers", section
+determines the configuration for the **backend** socket.
+
+The Configuration Manager API assumes that the, "Subscribers", and, "Publishers",
+section is a list. However, since the ZeroMQ Broker does not use multiple
+publisher and subscriber sockets, the lists must only contain one element.
+
+The single JSON object which is expected to be in the, "Subscribers", and,
+"Publishers", sections is essentially the same. An example is shown below of
+the interfaces configuration for a broker instance with TCP sockets for both
+the **frontend** and **backend**.
+
+```javascript
+{
+    "Subscribers": [
+        {
+            "Name": "frontend",
+            "Type": "zmq_tcp",
+            "EndPoint": "0.0.0.0:60514",
+            "Topics": ["*"],
+            "PublisherAppName": "*",
+            "AllowedClients": ["*"]
+        }
+    ],
+    "Publishers": [
+        {
+            "Name": "backend",
+            "Type": "zmq_tcp",
+            "EndPoint": "0.0.0.0:60515",
+            "Topics": ["*"],
+            "AllowedClients": ["*"]
+        }
+    ]
+}
+```
+
+The primary difference to point out is that the, "Name", and, "Topics",
+fields are different. For the, "Subscribers", the, "Name", MUST be the
+string `frontend`, and the, "Topics", list must only contain a single value in
+it, which is `"*"`. For the, "Publishers", object the same rules hold
+true. Note that, "AllowedClients", also has a `"*"` in it. If you wish to only
+allowed certain services to connect to the broker, then change this to a list
+of the app name's of the services which are allowd to connect.
+
+This allows the broker to query specific configuration objects using the
+defined names `frontend` and `backend`. It is important to note that if the
+deployment needs to limit the services which can connect to the broker, then
+the, "AllowedClients", list should be modified to contain only the app names of
+the services allowed to connect.
+
+For IPC sockets, the configuration is very similar, except that the, "EndPoint",
+and, "Type", values are different (as shown in the example below).
+
+```javascript
+{
+    "Subscribers": [
+        {
+            "Name": "frontend",
+            "Type": "zmq_ipc",
+            "EndPoint": {
+                "SocketDir": "/tmp/socks",
+                "SocketFile": "frontend-socket"
+            },
+            "PublisherAppName": "*",
+            "Topics": ["*"],
+            "AllowedClients": ["*"]
+        }
+    ],
+    "Publishers": [
+        {
+            "Name": "backend",
+            "Type": "zmq_ipc",
+            "EndPoint": {
+                "SocketDir": "/tmp/socks",
+                "SocketFile": "backend-socket"
+            },
+            "Topics": ["*"],
+            "AllowedClients": ["*"]
+        }
+    ]
+}
+```
+
+In the example above, note that the, "Type", values is now `zmq_ipc` and the,
+"EndPoint", is a JSON object which defines the socket directory and file to use
+for the sockets.
+
+**IMPORTANT NOTES:**
+
+There are two important notes to be aware of with the configurations presented
+above:
+
+1. Although the configurations above showcase using IPC and TCP for both the
+    frontend and backend sockets they can be used in any combination (e.g. the
+    broker can use an IPC socket for the frontend and TCP for the backend).
+2. When using IPC sockets, the name of the, "SocketFile", must also be specified
+    for all subscribers or publishers which will be connecting to that socket.
+

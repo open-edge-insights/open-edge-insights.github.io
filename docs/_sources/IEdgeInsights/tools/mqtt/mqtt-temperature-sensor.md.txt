@@ -1,0 +1,3 @@
+# MQTT Temperature Sensor
+Simple Python temperature sensor simulator.
+

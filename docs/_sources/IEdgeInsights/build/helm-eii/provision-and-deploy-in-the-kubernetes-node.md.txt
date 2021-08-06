@@ -1,0 +1,38 @@
+## Provision and deploy in the kubernetes node.
+
+Copy the helm charts in helm-eii/ directory to the node.
+
+1. Install provision helm chart
+  ```sh
+  $ cd [WORKDIR]/IEdgeInsights/build/helm-eii/
+  $ helm install eii-provision eii-provision/
+  ```
+
+  Verify the pod is in running state:
+  ```sh
+  $ kubectl get pods
+
+  NAME                       READY   STATUS    RESTARTS   AGE
+  ia-etcd-58866469b9-dl66k   2/2     Running   0          8s
+  ```
+
+2. Install deploy helm chart
+  ```sh
+  $ cd [WORKDIR]/IEdgeInsights/build/helm-eii/
+  $ helm install eii-deploy eii-deploy/
+  ```
+
+  Verify all the pod are running:
+  ```sh
+  $ kubectl get pods
+
+  NAME                                          READY   STATUS    RESTARTS   AGE
+  deployment-etcd-ui-6c7c6cd769-rwqm6           1/1     Running   0          11s
+  deployment-video-analytics-546574f474-mt7wp   1/1     Running   0          11s
+  deployment-video-ingestion-979dd8998-9mzkh    1/1     Running   0          11s
+  deployment-webvisualizer-6c9d56694b-4qhnw     1/1     Running   0          11s
+  ia-etcd-58866469b9-dl66k                      2/2     Running   0          2m26s
+  ```
+
+The EII is now successfully deployed.
+

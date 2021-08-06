@@ -1,0 +1,21 @@
+
+Installing Video Profiler requirements
+--------------------------------------
+
+
+#. 
+   To install EII libs on bare-metal, follow the `README <http://localhost:7645/IEdgeInsights/common/README.html>`_ of eii_libs_installer.
+
+#. 
+   Run this command to install the requirements of Video Profiler
+
+   .. code-block:: sh
+
+           pip3 install -r requirements.txt
+
+#. 
+   Set the required env by running the below command.
+
+   .. code-block:: sh
+
+           source ./env.sh

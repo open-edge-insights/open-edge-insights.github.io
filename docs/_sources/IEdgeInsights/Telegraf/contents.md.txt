@@ -1,0 +1,18 @@
+# Contents:
+
+1. [Telegraf in brief](#Telegraf-in-brief)
+
+2. [Telegraf's default configuration](#Telegraf's-default-configuration)
+
+3. [MQTT sample configuration and tool to test it](#MQTT-sample-configuration-and-tool-to-test-it)
+
+4. [Enabling EII message bus input plugin in Telegraf](#Enabling-EII-message-bus-input-plugin-in-Telegraf)
+
+5. [Advanced: Multiple plugin sections of EII message bus input plugin](#Advanced:-Multiple-plugin-sections-of-EII-message-bus-input-plugin)
+
+6. [Enabling EII message bus Output plugin in Telegraf](#Enabling-EII-message-bus-output-plugin-in-Telegraf)
+
+7. [Advanced: Multiple plugin sections of EII message bus output plugin](#Advanced:-Multiple-plugin-sections-of-EII-message-bus-output-plugin)
+
+8. [Optional: Adding multiple telegraf instances](#Optional:-Adding-multiple-telegraf-instances)
+

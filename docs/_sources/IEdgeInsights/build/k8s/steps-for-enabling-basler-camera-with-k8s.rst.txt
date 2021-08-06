@@ -1,0 +1,90 @@
+
+Steps for Enabling Basler Camera with k8s
+-----------------------------------------
+
+..
+
+   **Note:** For more information on ``Multus`` please refer this git https://github.com/intel/multus-cni
+   Skip installing multus if it is already installed and execute others.
+
+
+
+* 
+  Prequisites
+  For enabling basler camera with k8s. K8s pod networks should be enabled ``Multus`` Network Interface
+  to attach host system network interface access by the pods for connected camera access.
+
+  ..
+
+     **Note**\ : Please follow the below steps & make sure ``dhcp daemon`` is running fine.If there is an error on ``macvlan`` container creation on accessing the socket or if socket was not running. Please execute the below steps again
+
+     .. code-block:: sh
+
+          $ sudo rm -f /run/cni/dhcp.sock
+          $ cd /opt/cni/bin
+          $ sudo ./dhcp daemon
+
+
+  ### Setting up Multus CNI and Enabling it.
+
+
+  * 
+    Multus CNI is a container network interface (CNI) plugin for Kubernetes that enables attaching multiple network interfaces to pods. Typically, in Kubernetes each pod only has one network interface (apart from a loopback) -- with Multus you can create a multi-homed pod that has multiple interfaces. This is accomplished by Multus acting as a "meta-plugin", a CNI plugin that can call multiple other CNI plugins.
+
+  * 
+    Get the name of the ``ethernet`` interface in which basler camera & host system connected
+
+    ..
+
+       **Note**\ : Identify the network interface name by following command
+
+       .. code-block:: sh
+
+            $ ifconfig
+
+
+  * 
+    Execute the Following Script with Identified ``ethernet`` interface name as Argument for ``Multus Network Setup``
+
+    ..
+
+       **Note:** Pass the ``interface`` name without ``quotes``
+
+       .. code-block:: sh
+
+          $ sudo -E sh ./k8s_multus_setup.sh <interface_name>
+
+
+  * 
+    Update ``macvlan`` network config ``VideoIngestion`` deployment ``yml`` file in ``VideoIngestion/k8s-service.yml``
+
+  .. code-block:: yml
+
+           annotations:
+               k8s.v1.cni.cncf.io/networks: macvlan-conf
+
+  Eg.
+
+  .. code-block:: yml
+
+       template:
+         metadata:
+           labels:
+             app: video
+           annotations:
+             k8s.v1.cni.cncf.io/networks: macvlan-conf
+
+         spec:
+           containers:
+           - name: ia-video-ingestion
+
+
+  * 
+    Follow the `Deployment Steps <http://localhost:7645/IEdgeInsights/build/k8s/#deploying-eii-application-with-k8s>`_
+
+  * 
+    Verify ``pod``\ ip & ``host`` ip are same as per Configured ``Ethernet`` interface by using below command.
+
+    .. code-block:: sh
+
+           $ kubectl -n eii exec -it <pod_name> -- ip -d address

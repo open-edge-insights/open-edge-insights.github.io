@@ -1,0 +1,19 @@
+
+========================================
+Video and Time-series Benchmarking Tool
+========================================
+
+Suggested Physical Setup: 
+
+*	Test setup calls 2 systems on the network. 
+
+    *	System 1 - **Traffic generator**. This is where Intel supplied bash scripts to run. Alternately, system 1 can be replaced with more than 1 RTSP cameras to generate multi stream video traffic.   
+    *	System 2 - The System Under Test (SUT), this is where EII containers are running
+
+    .. figure:: image/benchmarking.png
+        :scale: 50 %
+        :align: center
+
+.. include:: ../IEdgeInsights/tools/Benchmarking/video-benchmarking-tool/video-benchmarking-tool.rst
+
+.. include:: ../IEdgeInsights/tools/Benchmarking/time-series-benchmarking-tool/time-series-benchmarking-tool.rst

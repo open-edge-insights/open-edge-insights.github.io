@@ -1,0 +1,30 @@
+
+============================
+DEV MODE and PROFILING MODE
+============================
+
+DEV MODE
+========
+
+Starting the EII in Dev ModeDev mode eases the development phase for System Integrator (SI). This mode can be enabled by setting the environment variable dev_mode to **true** in the **[WORK_DIR]/IEdgeInsights/build/.env** file. The default value of this variable is **false**. 
+
+Starting the EII in Dev Mode
+----------------------------
+
+All components will communicate over non-encrypted channels in dev mode. 
+
+.. note::
+
+    The user should not use this mode in a production environment because the security features have been disabled in this mode.
+
+
+PROFILING MODE
+==============
+
+Profiling mode is used to gather performance statistics. In this mode, each EII component makes a record of the time needed for processing any single frame. These statistics are gathered in the visualizer where the SI can see the end-to-end processing time for individual frames, as well as the end-to-end average time. To enable profiling mode in EII, set the environment variable **PROFILING** in the **[WORK_DIR]/IEdgeInsights/build/.env** file to **true**. 
+
+For each EII services defined in the **[WORK_DIR]/IEdgeInsights/build/docker-compose.yml** file, there is an ENV to determine whether **PROFILING** should be enabled based on the setting in the **[WORK_DIR]/IEdgeInsights/build/.env** file. Figure 52 provides an example from the Visualizer service.
+
+.. figure:: image/profiling-mode.png
+    :scale: 50 %
+    :align: center

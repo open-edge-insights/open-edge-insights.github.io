@@ -1,0 +1,696 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Configuration &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script src="../../../../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html" class="icon icon-home"> EII Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/architecture.html">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Installing_docker_pre_requisites.html">Manual steps to install docker daemon and docker-compose with proxy settings configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/running.html">Running EII</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#downloading-and-installation-from-the-edge-software-hub">Downloading and Installation from the Edge Software Hub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#downloading-the-default-package">Downloading the Default Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#downloading-customize-package">Downloading Customize Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#installing-the-package">Installing the Package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#manual-installation">Manual Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#docker-pre-requisites">Docker Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#provision">Provision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#build-and-run-eii-pcb-video-timeseries-use-cases">Build and Run EII PCB video/timeseries use cases</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#eii-message-bus-architecture">EII Message Bus Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#compilation">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id1">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#publishers">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#subscribers">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#services">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#requesters">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#using-zap-authentication">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#c-examples">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#publisher-many-example">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#eii-message-bus-development">EII Message Bus Development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#developing-protocols">Developing Protocols</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#adding-a-new-protocol">Adding a New Protocol</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#protocol-t-function-definition"><code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> Function Definition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#configmgr">ConfigMgr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#etcd-ui-service"><code class="docutils literal notranslate"><span class="pre">ETCD</span> <span class="pre">UI</span> <span class="pre">Service</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#zmqbroker">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#subscriber">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#publisher">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#zmq-tcp-protocol-usecase">zmq_tcp Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id1">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id2">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id3">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id5">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id6">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#id7">Go Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/sample.html">Sample Application for APIs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/sample.html#sample-applications-for-eii-platform">Sample Applications for EII Platform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/security.html">Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/video.html">Video Ingestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#videoingestion-module"><code class="docutils literal notranslate"><span class="pre">VideoIngestion</span> <span class="pre">Module</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#ingestor-config"><code class="docutils literal notranslate"><span class="pre">Ingestor</span> <span class="pre">config</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#note-for-working-with-genicam-usb3-vision-camera-please-install-the-respective-camera-sdk-by-referring-the-below-section"><strong>Note:</strong> For working with Genicam USB3 Vision camera please install the respective camera SDK by referring the below section.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/visualizer.html">Visualizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/imageStore.html">ImageStore</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/imageStore.html#imagestore-module"><code class="docutils literal notranslate"><span class="pre">ImageStore</span> <span class="pre">Module</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/imageStore.html#configuration"><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/imageStore.html#detailed-description-on-each-of-the-keys-used"><code class="docutils literal notranslate"><span class="pre">Detailed</span> <span class="pre">description</span> <span class="pre">on</span> <span class="pre">each</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">keys</span> <span class="pre">used</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/timeseries.html">Working with Timeseries Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../minimum-system-requirements.html">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../using-video-accelerators.html">Using video accelerators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../using-video-accelerators.html#note"><strong>Note</strong>:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../VideoIngestion/videoingestion-module.html"><code class="docutils literal notranslate"><span class="pre">VideoIngestion</span> <span class="pre">Module</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/restdata.html">RestDataExport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/overTheAir.html">Updating an Application-Over-The-Air</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/modes.html">DEV MODE and PROFILING MODE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/docker.html">Sample Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/azure.html">Azure Bridge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/orchestration.html">Orchestration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/benchmarking.html">Video and Time-series Benchmarking Tool</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/codeModification.html">Code Modification Recommendations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/debugging.html">Debugging EII</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><code class="docutils literal notranslate"><span class="pre">Configuration</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/IEdgeInsights/WebVisualizer/eiidocs/temp/configuration.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration">
+<h1><code class="docutils literal notranslate"><span class="pre">Configuration</span></code><a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<hr class="docutils" />
+<p><strong>NOTE</strong>:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">max_workers</span></code> and <code class="docutils literal notranslate"><span class="pre">udfs</span></code> are configuration keys related to udfs.
+For more details on udf configuration, please visit
+<a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/README.html">../common/video/udfs/README.html</a></p></li>
+<li><p>For more details on Etcd secrets and messagebus endpoint configuration, visit
+<a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/Etcd_Secrets_Configuration.html">Etcd_Secrets_Configuration.html</a> and
+<a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/README.html#interfaces">MessageBus Configuration</a> respectively.</p></li>
+</ul>
+<hr class="docutils" />
+<p>All the app module configuration are added into distributed key-value store
+under <code class="docutils literal notranslate"><span class="pre">AppName</span></code> env, as mentioned in the environment section of this app’s service
+definition in docker-compose.</p>
+<p>Developer mode related overrides go into docker-compose-dev.override.yml</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">AppName</span></code> is <code class="docutils literal notranslate"><span class="pre">VideoIngestion</span></code>, then the app’s config would be fetched from
+<code class="docutils literal notranslate"><span class="pre">/VideoIngestion/config</span></code> key via EII Configuration Manager.
+Below is the JSON schema for app’s config:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;additionalProperties&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">&quot;ingestor&quot;</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;encoding&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Encoding object&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;level&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Encoding type&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span>
+              <span class="s2">&quot;jpeg&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;png&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Encoding value&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="mf">0</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;ingestor&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Ingestor object&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;pipeline&quot;</span>
+      <span class="p">],</span>
+      <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Ingestor type&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span>
+              <span class="s2">&quot;opencv&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;gstreamer&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer pipeline&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;loop_video&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;whether to loop video or not&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;boolean&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;queue_size&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;ingestor queue size for frames&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;integer&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;poll_interval&quot;</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;polling interval for reading ingested frames&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;number&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="mf">0.0</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;max_workers&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Number of threads acting on queued jobs&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="mf">4</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;udfs&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Array of UDF config objects&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;UDF config object&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;UDF type&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;native&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;python&quot;</span>
+              <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Unique UDF name&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;device&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Device on which inference occurs&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;CPU&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;GPU&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;HDDL&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;MYRIAD&quot;</span>
+              <span class="p">]</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;additionalProperties&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Note</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>* For `jpeg` encoding type, `level` is the quality from `0 to 100` (the higher is the better)
+
+* For `png` encoding type, `level` is the compression level from `0 to 9`. A higher value means a smaller size and longer compression time.
+</pre></div>
+</div>
+<p>One can use <a class="reference external" href="https://www.jsonschemavalidator.net/">JSON validator tool</a> for validating the app configuration against the above schema.</p>
+<div class="section" id="ingestor-config">
+<h2><code class="docutils literal notranslate"><span class="pre">Ingestor</span> <span class="pre">config</span></code><a class="headerlink" href="#ingestor-config" title="Permalink to this headline">¶</a></h2>
+<p>The following are the type of ingestors supported:</p>
+<ol class="arabic simple">
+<li><p>OpenCV</p></li>
+<li><p>GStreamer</p></li>
+</ol>
+<p><strong>Refer `docs/gstreamer_ingestor_doc.html &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/docs/gstreamer_ingestor_doc.html&gt;`_ for more information/configuration on gstreamer ingestor.</strong></p>
+<hr class="docutils" />
+<div class="section" id="camera-independent-software-trigger-way-of-video-ingestion">
+<h3><code class="docutils literal notranslate"><span class="pre">Camera</span> <span class="pre">independent</span> <span class="pre">Software</span> <span class="pre">Trigger</span> <span class="pre">way</span> <span class="pre">of</span> <span class="pre">video</span> <span class="pre">ingestion</span></code><a class="headerlink" href="#camera-independent-software-trigger-way-of-video-ingestion" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Software triggering way of video ingestion is a solution which enables to control video ingestion from all types of cameras, any configuration (Gstreamer &amp; Opencv) / video files.</p></li>
+<li><p>The regular way of video ingestion is autonomous i.e. as soon as the Video Ingestion micro-service is started the ingestion starts automatically using the video source (file/camera). There is no way to control the ingestion without stopping the ingestion micro-service itself. Software trigger feature provides a mechanism to start &amp; stop video ingestion using software triggers sent by the client application.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="generic-server-in-videoingestion">
+<h3><code class="docutils literal notranslate"><span class="pre">Generic</span> <span class="pre">Server</span> <span class="pre">in</span> <span class="pre">VideoIngestion</span></code><a class="headerlink" href="#generic-server-in-videoingestion" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>VI generic server responds back to the client with the return values specific to the command. There is a total flexibility in sending the number &amp; type of arguments back to client which is totally dependent on the command.</p></li>
+<li><p>Example JSON format for incoming payload from client to server to initialize software trigger:
+.. code-block:: javascript</p>
+<blockquote>
+<div><p>{
+   “init_state” : “running”
+}</p>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Refer `docs/gerneric_server_doc.html &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/docs/generic_server_doc.html&gt;`_ for more information/configuration on software trigger and generic server.</strong></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="gstreamer-video-analytics">
+<h3><code class="docutils literal notranslate"><span class="pre">Gstreamer</span> <span class="pre">Video</span> <span class="pre">Analytics</span></code><a class="headerlink" href="#gstreamer-video-analytics" title="Permalink to this headline">¶</a></h3>
+<p>VI module supports the usage of GVA (Gstreamer Video Analytics) plugins with <code class="docutils literal notranslate"><span class="pre">gstreamer</span></code> ingestor. <a class="reference external" href="https://github.com/openvinotoolkit/dlstreamer_gst">GVA</a> is
+a collection of GStreamer elements to enable CNN model based video analytics capabilities (such as object detection, classification, recognition) in GStreamer framework.</p>
+<p><strong>Refer `docs/gva_doc.html &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/docs/gva_doc.html&gt;`_ for more information on GVA elements.</strong></p>
+<p><strong>Refer `CustomUdfs-GVASafetyGearIngestion &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/README.html&gt;`_ to refer GVA based CustomUdf container added for SafetyGear sample.</strong></p>
+<p><strong>Refer `models-readme &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/README.html&gt;`_ to run GVA usecase inside VI container.</strong></p>
+</div>
+<hr class="docutils" />
+<div class="section" id="generic-plugin">
+<h3><code class="docutils literal notranslate"><span class="pre">Generic</span> <span class="pre">Plugin</span></code><a class="headerlink" href="#generic-plugin" title="Permalink to this headline">¶</a></h3>
+<p>Generic Plugin is a gstreamer generic source plugin that communicates and streams from a GenICam based camera which provides a GenTL producer. In order to use
+the generic plugin with VI one must install the respective GenICam camera SDK and make sure the compatible GenTL producer for the camera is installed.</p>
+<p><strong>Refer `src-gst-gencamsrc/README &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/README&gt;`_ for Element Properties of Generic Plugin</strong>.</p>
+<p><strong>Refer `src-gst-gencamsrc/README.html &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/README.html&gt;`_ for more information on Generic Plugin</strong>.</p>
+</div>
+</div>
+</div>
+<div class="section" id="note-for-working-with-genicam-usb3-vision-camera-please-install-the-respective-camera-sdk-by-referring-the-below-section">
+<h1><strong>Note:</strong> For working with Genicam USB3 Vision camera please install the respective camera SDK by referring the below section.<a class="headerlink" href="#note-for-working-with-genicam-usb3-vision-camera-please-install-the-respective-camera-sdk-by-referring-the-below-section" title="Permalink to this headline">¶</a></h1>
+<p>In order to use the generic plugin with newer Genicam camera SDK follow the below steps:</p>
+<ol class="arabic simple">
+<li><p>Install the respective GenICam camera SDK by adding the camera SDK installation steps in <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/Dockerfile">VI-Dockerfile</a>. The camera SDK will be installed during docker build and one can install multiple camera SDKs in <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/Dockerfile">VI-Dockerfile</a>. Refer Dokerfile reference documentation (<a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/Dockerfile">https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/Dockerfile</a>) for Dockerfile Instructions. Typically one would need to use <code class="docutils literal notranslate"><span class="pre">RUN</span> <span class="pre">&lt;command&gt;</span></code> instrcution to execute shell commands for installing newer camera sdk. In case the camera SDK cannot be downloaded in a non-interactive manner then one would need to place the camera SDK under <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/VideoIngestion/</span></code> directory, use the <code class="docutils literal notranslate"><span class="pre">COPY</span></code> instruction in <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/Dockerfile">VI-Dockerfile</a> to use the camera SDK in the build context and then use the <code class="docutils literal notranslate"><span class="pre">RUN</span></code> instruction for installing the camera SDK during docker build.</p></li>
+<li><p>After making sure the compatible GenTL producer is successfully installed one must add a case statement in <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/gentl_producer_env.sh">gentl_producer_env.sh</a> scipt to export the GenTL producer path to <code class="docutils literal notranslate"><span class="pre">GENICAM_GENTL64_PATH</span></code> env variable. In order to verify the GenTL producer path one can search for the <code class="docutils literal notranslate"><span class="pre">.cti</span></code> file under the installation path. Typically GenTL provider is characterized by a file with <code class="docutils literal notranslate"><span class="pre">.cti</span></code> extension. Path to cti library containing folder must be exported to env variable named <code class="docutils literal notranslate"><span class="pre">GENICAM_GENTL64_PATH</span></code> (<a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/gentl_producer_env.sh">https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/gentl_producer_env.sh</a>).</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">GENICAM</span></code> env variable in <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/docker-compose.yml">../build/docker-compose.yml</a> to execute the corresponding case statement in <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/docker-compose.yml">gentl_producer_env.sh</a> and export the GenTL producer path accordingly. GenTL producer path will be exported during docker runtime. Hence one can choose to add install multiple Genicam camera SDK during docker build and then switch between GenTL providers during docker runtime by modifying the <code class="docutils literal notranslate"><span class="pre">GENICAM</span></code> env variable in <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/docker-compose.yml">../build/docker-compose.yml</a>.</p></li>
+</ol>
+<p><a href="#id5"><span class="problematic" id="id6">**</span></a>Refer the below snippet example to select <code class="docutils literal notranslate"><span class="pre">Basler</span></code> camera and export its GenTL producer path in <a class="reference external" href="https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/docker-compose.yml">../build/docker-compose.yml</a>** assuming the corresponding Basler Camera SDK and GenTL producer is installed.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ia_video_ingestion:
+...
+  environment:
+  ...
+  <span class="c1"># Setting GENICAM value to the respective camera which needs to be used</span>
+  GENICAM: <span class="s2">&quot;Basler&quot;</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Video</span> <span class="pre">file</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OpenCV</span> <span class="pre">Ingestor</span></code></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;opencv&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;./test_videos/pcb_d2000.avi&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;poll_interval&quot;</span><span class="o">:</span> <span class="mf">0.2</span>
+  <span class="s2">&quot;loop_video&quot;</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Gstreamer</span> <span class="pre">Ingestor</span></code></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;multifilesrc loop=TRUE stop-index=0 location=./test_videos/pcb_d2000.avi ! h264parse ! decodebin ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Refer `docs/multifilesrc_doc.html &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/docs/multifilesrc_doc.html&gt;`_ for more information/configuration on multifilesrc element.</strong></p>
+</li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Basler</span> <span class="pre">Camera</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Gstreamer</span> <span class="pre">Ingestor</span></code></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;gencamsrc serial=&lt;DEVICE_SERIAL_NUMBER&gt; pixel-format=&lt;PIXEL_FORMAT&gt; ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Hardware</span> <span class="pre">trigger</span> <span class="pre">based</span> <span class="pre">ingestion</span> <span class="pre">with</span> <span class="pre">gstreamer</span> <span class="pre">ingestor</span></code></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
+<span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;gencamsrc serial=&lt;DEVICE_SERIAL_NUMBER&gt; pixel-format=&lt;PIXEL_FORMAT&gt; trigger-selector=FrameStart trigger-source=Line1 trigger-activation=RisingEdge hw-trigger-timeout=100 acquisition-mode=singleframe ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Note:</strong></p>
+</li>
+</ul>
+</li>
+<li><p>For PCB usecase use the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> properties of gencamsrc to set the resolution to <code class="docutils literal notranslate"><span class="pre">1920x1200</span></code>. One can refer the below example pipeline:
+.. code-block:: javascript</p>
+<blockquote>
+<div><dl class="simple">
+<dt>{</dt><dd><p>“type”: “gstreamer”,
+“pipeline”: “gencamsrc serial=&lt;DEVICE_SERIAL_NUMBER&gt; pixel-format=ycbcr422_8 width=1920 height=1200 ! videoconvert ! video/x-raw,format=BGR ! appsink”</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+</li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> properies are not set then gencamsrc plugin will set the maximum resolution supported by the camera.
+<strong>Refer `docs/basler_doc.html &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/docs/basler_doc.html&gt;`_ for more information/configuration on basler camera.</strong></p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RTSP</span> <span class="pre">Camera</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OpenCV</span> <span class="pre">Ingestor</span></code></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;opencv&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;rtsp://admin:intel123@&lt;RTSP CAMERA IP&gt;:554&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>NOTE</strong>: Opencv for rtsp will use software decoders</p>
+</div></blockquote>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Gstreamer</span> <span class="pre">Ingestor</span></code></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;rtspsrc location=\&quot;rtsp://admin:intel123@&lt;RTSP CAMERA IP&gt;:554/\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Refer `docs/rtsp_doc.html &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/docs/rtsp_doc.html&gt;`_ for more information/configuration on rtsp camera.</strong></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">Camera</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OpenCV</span> <span class="pre">Ingestor</span></code></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;opencv&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;/dev/video0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Gstreamer</span> <span class="pre">Ingestor</span></code></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;v4l2src ! video/x-raw,format=YUY2 ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Refer `docs/usb_doc.html &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/docs/usb_doc.html&gt;`_ for more information/configurations on usb camera.</strong></p>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">RTSP</span> <span class="pre">simulated</span> <span class="pre">camera</span> <span class="pre">using</span> <span class="pre">cvlc</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">OpenCV</span> <span class="pre">Ingestor</span></code></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;opencv&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;rtsp://localhost:8554/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Gstreamer</span> <span class="pre">Ingestor</span></code></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;rtspsrc location=\&quot;rtsp://localhost:8554/\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Refer `docs/rtsp_doc.html &lt;https://verbose-umbrella-1e93cbeb.pages.github.io/IEdgeInsights/WebVisualizer/eiidocs/temp/docs/rtsp_doc.html&gt;`_ for more information/configuration on rtsp simulated camera.</strong></p>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

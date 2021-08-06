@@ -1,0 +1,133 @@
+
+================
+Orchestration
+================
+
+EIS also introduces support of containers to be deployed with industry standard orchestration, Kubernetes.
+
+.. note::
+    
+    Users guide to only describe key additional steps to deploy containers in an already installed Kubernetes environment or in a new Kubernetes install. It is assumed that user is already familiar with fundamental operations of Kubernetes, thus no explanation of Kubernetes operations will be discussed. 
+
+.. note::
+    
+    For EII deployment in single or multi node mode, ensure that root mode is not used. All the steps are exercised in user mode. This is not an absolute requirement but is recommended.
+
+.. note::
+    
+    Deploying EII supported containers require systems to be in a no_proxy environment, meaning proxy needs to be disabled for Kubernetes cluster running EII containers.
+
+Ensure that proxy is disabled at
+
+*	/etc/environment
+*	/etc/systemd/system/docker.service.d/http-proxy.conf
+*	/etc/systemd/system/docker.service.d/https-proxy.conf
+*	~/.docker/config.json
+
+Single Node Deployment
+----------------------
+
+Below are the steps required to enable Kubernetes support for a single node. Although single node orchestration is not typical customer user case, this is documented to illustrate the steps required.  NOTE: Container images needs to be pre-built on the system or to be pushed from user desired repository.
+
+*	Complete EII pre-perquisites by executing the following commands
+    
+    *	pip3 install -r requirements.txt
+    *	python3 eis_builder.py. 
+
+Step b above is to build following key files. Output files below are located in build directory
+
+File Name 	Description
+docker-compose.yml	Compose file used to launch docker containers in a given node
+eis_config.json	The main config that is put into etcd consisting of individual app configs
+eis-k8s-deploy.yml	The yml file required to launch EII services via Kubernetes
+
+*	Update .env
+    
+    *	Please Update following Environment Variables in build/.env
+
+        *	HOST_IP = [masternodeip]
+        *	ETCD_HOST = [masternodeip]
+        *	ETCD_CLIENT_PORT = 8379. NOTE: Port values needs to be updated for ETCD
+        *   ETCD_PEER_PORT = 8380
+
+    *	Please Update following Environment Variables in build/provision/.env
+
+        *	EIS_LOCAL_PATH = [EIS Source path]
+        *	PROVISION_MODE = k8s
+
+3.	Provision EII 
+
+    *	sudo ./provision_eis.sh ../docker-compose.yml
+
+4.	Build and run 
+    
+    *	docker-compose up --build -d
+
+5.	Deploy EII with K8s
+    
+    *	kubectl apply -f ./eis-k8s-deploy.yml
+    *	kubectl -n eis get pods  This command checks status of running pods. Confirm that ia_etcd STATUS is Running on a master node.
+
+ 
+ 
+Multi-node Deployment
+---------------------
+
+For multi-node EII container deployment, it is assumed that Multi and Single node cluster deployment is complete. And EII container images are present in both master and worker node(s).
+
+Master Node - Steps to Provision 
+
+*	$ kubectl get nodes  This command fetches master node name.
+    
+    *	Expected output is 
+        E.g.
+        $ kubectl get nodes
+        NAME          STATUS          ROLES    AGE   VERSION
+        Super_Node    Ready           master   67d   v1.18.6
+
+*	To enable ETCD to run always on the master node, , for production mode update k8s_etcd_prodmode.yml file [or for dev mode, k8s_etcd_devmode.yml] located at build/provision/dep/k8s, add contents mention in step a below.
+    
+    *	Copy name of the master node (in this case Super_Node) under spec of Pod ia-etcd as nodeName:
+
+
+Worker Node - Steps to create EII provision bundle
+
+.. note:: 
+    
+    This step will be exercised on the master node and in later steps contents will be copied over to worker nodes. 
+
+*	Ensure ETCD NAME is updated accordingly -  ETCD_NAME=[any name other than master] in build/.env of Master node.
+*	Set PROVISION_MODE=k8s in build/provision/.env file. Note that this step was completed for single node deployment as well. No need to repeat if this already done.
+*	Script to generate is located in /IEdgeInsights/build/deploy directory 
+*	Generate Provisioning bundle for k8s worker node provisioning by running the following command line
+    
+    *	$ sudo python3 generate_eis_bundle.py -p
+
+*	The output of the above command line is eis_provisioning.tar.gz
+*	Copy this gz file to worker nodes
+    
+    *	$ sudo scp <eis_provisioning.tar.gz> <any-directory_on-worker-Filesystem>
+    *	$ sudo tar -xvf <eis_provisioning.tar.gz
+
+*	Provision the EII in k8s Worker(s) Node.
+    
+    *	$ cd provision
+    *	$ sudo ./provision_eis.sh
+
+*	Update master node ETCD_NAME in build/.env must be set to master.
+*	Next steps are to Provision and Deploy EII containers with Kubernetes. These steps mainly remain the same as mentioned for single node deployment.
+
+.. note::
+    
+    When using Kubernetes cluster, port for ETCD UI is 30010. And for the Web Visualizer, it is 30007 and 30009 for production and development modes.
+
+*	EtcdUI 
+
+    *	PROD Mode -- `https://master-nodeip:30010/`_ 
+    *	DEV Mode -- `http://master-nodeip:30010/`_ 
+
+*	WebVisualizer
+
+    *	PROD Mode -- `https://master-nodeip:30007/`_ 
+    *	DEV Mode -- `http://master-nodeip:30009/`_
+

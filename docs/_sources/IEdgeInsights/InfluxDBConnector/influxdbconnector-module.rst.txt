@@ -1,0 +1,14 @@
+
+InfluxDBConnector Module
+========================
+
+
+#. InfluxDBConnector will subscribe to the InfluxDB and start the zmq
+   publisher, zmq subscriber threads, and zmq request reply thread
+   based on PubTopics, SubTopics and QueryTopics configuration.
+#. zmq subscriber thread connects to the PUB socket of zmq bus on which
+   the data is published by VideoAnalytics and push it to the InfluxDB
+#. zmq publisher thread will publish the point data ingested by the telegraf
+   and the classifier result coming out of the point data analytics.
+#. zmq reply request service will receive the InfluxDB select query and
+   response with the historical data.

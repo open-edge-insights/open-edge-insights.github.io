@@ -1,0 +1,14 @@
+## 3. Testing with security disabled
+
+* Start publisher, publish and destroy
+
+```sh
+make pub_insecure
+```
+
+* Start subscriber, subscribe and destroy
+
+```sh
+make sub_insecure
+```
+

@@ -1,0 +1,22 @@
+
+EII Video Profiler pre-requisites
+---------------------------------
+
+
+#. 
+   VideoProfiler expects a set of config, interfaces & public private keys to be present in ETCD as a pre-requisite.
+    To achieve this, please ensure an entry for VideoProfiler with its relative path from `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory is set in any of the .yml files present in `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory. An example has been provided below:
+
+   .. code-block:: sh
+
+           AppContexts:
+           - VideoIngestion
+           - VideoAnalytics
+           - tools/VideoProfiler
+
+#. 
+   With the above pre-requisite done, please run the below to command:
+
+   .. code-block:: sh
+
+           python3 builder.py -f usecases/video-streaming.yml

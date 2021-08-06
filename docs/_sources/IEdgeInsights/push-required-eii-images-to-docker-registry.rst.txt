@@ -1,0 +1,9 @@
+
+Push required EII images to docker registry
+-------------------------------------------
+
+Pushes all the EII service docker images in the ``build/docker-compose-push.yml``. Ensure to update the DOCKER_REGISTRY value in `.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file.
+
+.. code-block:: sh
+
+   $ docker-compose -f docker-compose-push.yml push

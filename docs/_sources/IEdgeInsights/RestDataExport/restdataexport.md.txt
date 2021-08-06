@@ -1,0 +1,5 @@
+# `RestDataExport`
+
+RestDataExport service subscribes to any topic from EIIMessageBus and starts publishing meta data via POST requests to any external HTTP servers. It has an internal HTTP server running to respond to any GET requests for a required frame from any HTTP clients.
+
+

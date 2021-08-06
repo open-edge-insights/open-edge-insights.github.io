@@ -1,0 +1,37 @@
+
+Step 1 Provision the Master node
+================================
+
+..
+
+   **Pre-requisite**\ :
+   Please follow the EII Pre-requisites before Provisioning.
+   `EII Pre-requisites <http://localhost:7645/IEdgeInsights/README.html#eii-pre-requisites>`_
+
+   **NOTE**\ :
+
+
+   * EII services can run on master as well as worker nodes
+   * Master node should have the entire repo/source code present
+   * Master node is the primary administative node and has following attributes:
+
+     #. Generating required certificates and secrets.
+     #. Loading Initial ETCD values.
+     #. Generating bundles to provision new nodes.
+     #. Generating bundles to deploy EII services on new/worker nodes.
+
+
+For running EII in multi node, we have to identify one node to run ETCD server (this node is called as ``master`` node). For a master node, ETCD_NAME in `build/.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/.env>`_ must be set to ``master``. Rest other nodes are ``Worker`` nodes which doesn't run ETCD server, instead all the worker nodes remotely connect to the ETCD server running on the ``Master`` node only.
+
+Provision the Master node using the below command,
+
+.. code-block::
+
+       ```
+       $ cd [WORK_DIR]/IEdgeInsights/build/provision
+       $ sudo ./provision.sh <path_to_eii_docker_compose_file>
+
+       eq. $ sudo ./provision.sh ../docker-compose.yml
+
+       ```
+   This creates the ETCD server (Container ia_etcd) on the master edge node.

@@ -1,0 +1,18 @@
+
+Video pipeline sub-usecases
+---------------------------
+
+.. list-table::
+   :header-rows: 1
+
+   * - Usecase
+     - yaml file
+   * - Video streaming
+     - `build/usecases/video-streaming.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/video-streaming.yml>`_
+   * - Video streaming and historical
+     - `build/usecases/video-streaming-storage.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/video-streaming-storage.yml>`_
+   * - Video streaming with AzureBridge
+     - `build/usecases/video-streaming-azure.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/video-streaming-azure.yml>`_
+   * - Video streaming and custom udfs
+     - `build/usecases/video-streaming-all-udfs.yml <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/video-streaming-all-udfs.yml>`_
+

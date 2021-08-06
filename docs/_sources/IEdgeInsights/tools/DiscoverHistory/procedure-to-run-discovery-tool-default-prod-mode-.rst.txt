@@ -1,0 +1,54 @@
+
+PROCEDURE TO RUN DISCOVERY TOOL (DEFAULT: PROD MODE)
+====================================================
+
+
+#. 
+   DiscoverHistory expects a set of config, interfaces & public private keys to be present in ETCD as a pre-requisite.
+   To achieve this, please ensure an entry for DiscoverHistory with its relative path from `build/usecases <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/usecases>`_ directory is set in the video-streaming-storage.yml file present in `build/usecases <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/usecases>`_ directory. An example has been provided below:
+
+   .. code-block:: sh
+
+          AppContexts:
+          - VideoIngestion
+          - VideoAnalytics
+          - Visualizer
+          - WebVisualizer
+          - tools/DiscoverHistory
+          - ImageStore
+          - InfluxDBConnector
+
+#. 
+   Open "config.json"
+
+#. Provide the required query to be passed on to InfluxDB.
+#. With the above pre-requisite done, please run the below to command:
+   .. code-block:: sh
+
+          python3 builder.py -f usecases/video-streaming-storage.yml
+
+#. Refer `main EII README.html <http://localhost:7645/IEdgeInsights/README.html>`_ to provision, build and run the tool along with the EII video-streaming-storage recipe/stack.
+#. Check imagestore and influxdbconnector services are running.
+#. You will find data & frames directories at "/opt/intel/eii/tools_output".
+   (Note: if img_handle is part of select statement , then only frames
+   directory will be created)
+#. Use ETCDUI to change the query in configuration. Please run below command to start container with new configuration:
+   .. code-block:: sh
+
+          docker restart ia_discover_history
+   ## ADDITIONAL STEP TO RUN DISCOVERY TOOL IN DEV MODE
+#. Open `.env <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/.env>`_
+#. Set the DEV_MODE variable as "true".
+   .. code-block::
+
+      DEV_MODE=false
+   to
+   .. code-block::
+
+      DEV_MODE=true
+
+NOTE:Building the base images like ia_common, ia_eiibase are must in cases if this tool isn't run on the same node where EII is running.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Please ensure that the base images i.e. ia_common and ia_eiibase are present on the node where this tool is run.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

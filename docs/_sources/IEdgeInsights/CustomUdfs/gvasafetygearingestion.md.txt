@@ -1,0 +1,20 @@
+## GVASafetyGearIngestion
+
+Following the above mentioned steps in this document [*GVASafetyGearIngestion*](./GVASafetyGearIngestion) UDF container has been added. It is a GVA based UDF container based out of VI container.
+
+Refer [GVASafetyGearIngestion-README.md](./GVASafetyGearIngestion/README.md) for more information on the udf configs.
+
+**Notes**:
+* Since analytics operation is performed using the constructed gstreamer pipeline using the GVA plugin elements, it is not mandatory to have an udf parameter in the config and it is also not mandatory to have an analytics container as the classified results can be directly subscribed from the GVA ingestion container.
+* The model files which are provided to the GVA plugin elements needed to be copied inside the container to  `./models` directory path.
+
+  **Example:** Refer [GVASafetyGearIngestion-Dockerfile](./GVASafetyGearIngestion/Dockerfile) snip below:
+
+  ```Dockerfile
+
+  ----snip----
+  COPY ./ref ./models/ref
+
+  ```
+  Here the models files placed under the `ref` directory on the hostsystem is copied to `./models/ref` path inside the container.
+

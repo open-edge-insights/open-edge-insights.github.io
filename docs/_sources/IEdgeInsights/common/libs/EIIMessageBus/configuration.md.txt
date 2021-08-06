@@ -1,0 +1,164 @@
+## Configuration
+
+The EII Message Bus is configured through a `key, value` pair interface. The
+values can be objects, arrays, integers, floating point, boolean, or strings.
+The keys that are required to be available in the configuration are largly
+determined by the underlying protocol which the message bus will use. The
+protocol is specified via the `type` key and currently must be one of the
+following:
+
+- `zmq_ipc` - ZeroMQ over IPC protocol
+- `zmq_tcp` - ZeroMQ over TCP protocol
+
+The following sections specify the configuration attributes expected for the
+TCP and IPC ZeroMQ protocols.
+
+### ZeroMQ IPC Configuration
+
+The ZeroMQ IPC protocol implementation only requires one configuration
+attribute: `socket_dir`. The value of this attribute specifies the directory
+where the message bus should create the Unix socket files to establish the IPC
+based communication.
+
+The ZeroMQ IPC protocol also supports a few optional configuration properties.
+For all communication patterns (request/response and publisher/subscribe), the
+`socket_file` property can be specified for any service name or publish/subscribe
+topic. This makes it so that all communication happens over the specified socket
+file, instead of the default, which is for the message bus to use the topic/service
+name for the socket file name. This enables two specific use cases:
+
+1. Having a single application publish multiple topics over a single IPC socket
+    file
+2. Connecting ZeroMQ IPC publishers to the ZeroMQ Broker
+
+For the second use case, there is an additional property which must be specified;
+the `brokered` configuration value. This is must be a boolean value, with `true`
+telling the publisher to connect to the broker and `false` for not connecting.
+Note that this value is not required. If it is `false` or is not specified, then
+the publisher will not connect to a broker and will bind to the given `socket_file`
+value.
+
+**IMPORTANT NOTE:**
+
+The `socket_file` value should only be the name of a file. The socket itself
+will still be created in the specified `socket_dir` directory.
+
+Also, both the `socket_file` and `brokered` values must be specified in the
+configuration under an object with its key being the topic or service name.
+An example of this is shown below.
+
+```javascript
+{
+    // Specifies the ZeroMQ IPC protocol
+    "type": "zmq_ipc",
+
+    // Specifies the socket directory
+    "socket_dir": "/tmp/socks",
+
+    // The key, "example-topic", is the topic which the publisher shall publish
+    // on. This could also be a service name.
+    "example-topic": {
+        // For the example-topic, the below property specifies the socket file
+        // to use
+        "socket_file": "socket-filename",
+
+        // The below property is only supported by publishers, this specifies
+        // that the given publisher will be brokered through the ZeroMQ Broker
+        "brokered": true
+    }
+}
+```
+
+The example above uses JSON to represent the EII Message Bus configuration.
+See the, "Examples", below section for more details and more examples.
+
+### ZeroMQ TCP Configuration
+
+The ZeroMQ TCP protocol has several configuration attributes which must be
+specified based on the communication pattern the application is using and
+based on the security the application wishes to enable for its communication.
+
+#### Publishers
+
+For an application which wishes to publish messages over specific topics, the
+configuration must contain the key `zmq_tcp_publish`. This attribute must be
+an object which has the following keys:
+
+|          Key        |    Type   | Required |                         Description                          |
+| :-----------------: | --------- | -------- | ------------------------------------------------------------ |
+| `host`              | `string`  | Yes      | Specifies the host to publish as                             |
+| `port`              | `int`     | Yes      | Specifies the port to publish messages on                    |
+| `server_secret_key` | `string`  | No       | Specifies the secret key for the port for authentication     |
+| `brokered`          | `boolean` | No       | Specifies whether or not to connect to the ZeroMQ Broker |
+
+The `server_secret_key` must be a Curve Z85 encoded string value that is
+specified if the application wishes to use CurveZMQ authentication with to
+secure incoming connections from subscribers.
+
+The `brokered` key must be a boolean value. This will determine whether or not
+the publishers attempt to bind or connect to the given  TCP (host, port)
+combination.
+
+#### Subscribers
+
+To subscribe to messages coming from a publisher over TCP, the configuration
+must contain a key for the topic you wish to subscribe to. For example, if
+*Application 1* were publishing on topic `sensor-1`, then the subscribing
+application *Application 2* would need to contain a configuration key `sensor-1`
+which contains the keys required to configure the TCP connection to
+*Application 1*.
+
+The key that can be specified for a subscribers configuration are outline in the
+table below.
+
+|          Key        |   Type   | Required |                         Description                        |
+| :-----------------: | -------- | -------- | ---------------------------------------------------------- |
+| `host`              | `string` | Yes      | Specifies the host of the publisher                        |
+| `port`              | `int`    | Yes      | Specifies the port of the publisher                        |
+| `server_public_key` | `string` | No       | Specifies the publisher's public key for authentication    |
+| `client_secret_key` | `string` | No       | Specifies the subscribers's secret key for authentication  |
+| `client_public_key` | `string` | No       | Specifies the subcribers's public key for authentication   |
+
+> **NOTE:** If one of the `*_key` values is specifed, then all of them must be
+> specified.
+
+#### Services
+
+The configuration to host a service to receive and respond to requests is
+similar to the configuration for doing publications on a message bus context.
+The only difference, is the configuration for a service is placed under a key
+which is the name of the service.
+
+For example, if *Application 1* wishes to host a service named `example-service`,
+then the configuration must contain an a key called `example-service`. The value
+for that key must be an object containing the keys listed in the table of
+the Publishers section.
+
+#### Requesters
+
+The configuration to issue requests to a service is the exact same as a
+subscriber. In the case of a requester, instead of the configuration being
+under the name of the topic, the configuration is placed under the name of
+the service it wishes to connect to. For the details of the allowed values,
+see the table in the Subscribers section above.
+
+#### Using ZAP Authentication
+
+For services and publishers additional security can be enabled for all incoming
+connections (i.e. requesters and subscribers). This method utilizes the ZMQ
+ZAP protocol to verify the incoming client public keys against a list of
+whitelisted clients.
+
+The list of allowed clients is given to the message bus via the `allowed_clients`
+key. This key must be a list of Z85 encoded CurveZMQ keys.
+
+### Additional ZeroMQ Configuration Properties
+
+The configuration interface for the ZeroMQ protocol exposes additional socket
+properties. The table below specifies each of the supported properties.
+
+|     Configuration      |  Type  |  Default |                                    Description                               |
+| :--------------------: | :----: | :------: | ---------------------------------------------------------------------------- |
+| `zmq_recv_hwm`         | `int`  | `1000`   | Sets `ZMQ_RCVHWM` socket property (queue size for pending received messages) |
+| `zmq_connect_retries`  | `int`  | `1000`   | Sets number of connect failures before recreating ZMQ socket object          |
+

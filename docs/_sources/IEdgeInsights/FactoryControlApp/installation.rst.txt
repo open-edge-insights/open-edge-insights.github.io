@@ -1,0 +1,10 @@
+
+``Installation``
+--------------------
+
+
+* 
+  Update "io_module_ip" key with host ip address in the `config <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-factoryctrl/-/blob/master/config.json>`_ file.
+
+* 
+  Follow steps 1-5 of main `EII README <http://localhost:7645/IEdgeInsights/README.html>`_ if not done already as part of EII stack setup

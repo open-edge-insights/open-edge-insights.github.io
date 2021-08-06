@@ -1,0 +1,20 @@
+==================================
+Code Modification Recommendations
+==================================
+
+Below is the list of modules that need to be modified for the implementation of various factory use cases. Module names correspond with directory names in the **[WORK_DIR]** directory.
+
+* **IEdgeInsights/common/video/udfs** 
+    
+    This module contains the classifier which needs to be uniquely created for every factory deployment which requires video analytics. It also included the logic of filtering the ingested frames based on use case requirement and publish into the EII message bus. Under the udfs, the classifier can be either implemented in C++ (native) or Python approach.
+    For more details refer `README <https://github.com/open-edge-insights/video-common/tree/master/udfs#readme>`_
+
+* **IEdgeInsight/kapacitor** 
+    
+    This module runs the UDF, which is registered with Kapacitor within a default TICK script. Modify this for scenarios such as when changing the TICK script, for changing the integration with classifier algorithm or for changing the classifier_results format going into the InfluxDB.
+    For more details refer `README <https://github.com/open-edge-insights/ts-kapacitor#readme>`_
+
+* **FactoryControlApp** 
+    
+    For closed loop control specific to a factory use case.
+    For more details refer `README <https://github.com/open-edge-insights/eii-factoryctrl#readme>`_

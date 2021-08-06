@@ -1,0 +1,7 @@
+
+Telegraf in brief
+-----------------
+
+----
+
+Telegraf is a part of TICK stack (https://www.influxdata.com/time-series-platform/). This is a plugin based agent.  Telegraf has many input and output plugins. In EII's basic configuration, it's being used for data ingestion. However EII framework does not restrict Telegraf's any of the features. In EII basic configuration uses Telegraf for data ingestion and sending it to influxdb. 
