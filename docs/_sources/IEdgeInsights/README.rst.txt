@@ -5,57 +5,57 @@
 **Contents**
 
 
-* `Introduction <http://localhost:7645/IEdgeInsights/#introduction>`_
-* `Minimum System Requirements <http://localhost:7645/IEdgeInsights/#minimum-system-requirements>`_
-* `EII Prerequisites installation <http://localhost:7645/IEdgeInsights/#eii-prerequisites-installation>`_
-* `Generate deployment and configuration files <http://localhost:7645/IEdgeInsights/#generate-deployment-and-configuration-files>`_
+* `Introduction <https://open-edge-insights.github.io/IEdgeInsights/#introduction>`_
+* `Minimum System Requirements <https://open-edge-insights.github.io/IEdgeInsights/#minimum-system-requirements>`_
+* `EII Prerequisites installation <https://open-edge-insights.github.io/IEdgeInsights/#eii-prerequisites-installation>`_
+* `Generate deployment and configuration files <https://open-edge-insights.github.io/IEdgeInsights/#generate-deployment-and-configuration-files>`_
 
-  * `1. Generating consolidated docker-compose.yml and eii_config.json files: <http://localhost:7645/IEdgeInsights/#generating-consolidated-docker-composeyml-and-eii_configjson-files>`_
-  * `2. Using builder script <http://localhost:7645/IEdgeInsights/#2-using-builder-script>`_
+  * `1. Generating consolidated docker-compose.yml and eii_config.json files: <https://open-edge-insights.github.io/IEdgeInsights/#generating-consolidated-docker-composeyml-and-eii_configjson-files>`_
+  * `2. Using builder script <https://open-edge-insights.github.io/IEdgeInsights/#2-using-builder-script>`_
 
-    * `2.1 Running builder to generate the above listed consolidated files for all applicable EII services <http://localhost:7645/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services>`_
-    * `2.2 Running builder to generate the above listed consolidated files for a subset of EII services: <http://localhost:7645/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services>`_
-    * `2.3 Running builder to generate multi instance configs: <http://localhost:7645/IEdgeInsights/#running-builder-to-generate-multi-instance-configs>`_
-    * `2.4 Running builder to generate benchmarking configs: <http://localhost:7645/IEdgeInsights/#running-builder-to-generate-benchmarking-configs>`_
+    * `2.1 Running builder to generate the above listed consolidated files for all applicable EII services <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services>`_
+    * `2.2 Running builder to generate the above listed consolidated files for a subset of EII services: <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services>`_
+    * `2.3 Running builder to generate multi instance configs: <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-multi-instance-configs>`_
+    * `2.4 Running builder to generate benchmarking configs: <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-benchmarking-configs>`_
 
-  * `3. Adding new EII service so it gets picked up by Builder <http://localhost:7645/IEdgeInsights/#adding-new-eii-service-so-it-gets-picked-up-by-builder>`_
+  * `3. Adding new EII service so it gets picked up by Builder <https://open-edge-insights.github.io/IEdgeInsights/#adding-new-eii-service-so-it-gets-picked-up-by-builder>`_
 
-* `Distribution of EII container images <http://localhost:7645/IEdgeInsights/#distribution-of-eii-container-images>`_
-* `Provision <http://localhost:7645/IEdgeInsights/#provision>`_
-* `Build and Run EII video/timeseries use cases <http://localhost:7645/IEdgeInsights/#build-and-run-eii-videotimeseries-use-cases>`_
+* `Distribution of EII container images <https://open-edge-insights.github.io/IEdgeInsights/#distribution-of-eii-container-images>`_
+* `Provision <https://open-edge-insights.github.io/IEdgeInsights/#provision>`_
+* `Build and Run EII video/timeseries use cases <https://open-edge-insights.github.io/IEdgeInsights/#build-and-run-eii-videotimeseries-use-cases>`_
 
-  * `Build EII stack <http://localhost:7645/IEdgeInsights/#build-eii-stack>`_
-  * `Run EII services <http://localhost:7645/IEdgeInsights/#run-eii-services>`_
-  * `Push required EII images to docker registry <http://localhost:7645/IEdgeInsights/#push-required-eii-images-to-docker-registry>`_
+  * `Build EII stack <https://open-edge-insights.github.io/IEdgeInsights/#build-eii-stack>`_
+  * `Run EII services <https://open-edge-insights.github.io/IEdgeInsights/#run-eii-services>`_
+  * `Push required EII images to docker registry <https://open-edge-insights.github.io/IEdgeInsights/#push-required-eii-images-to-docker-registry>`_
 
-* `List of All EII Services <http://localhost:7645/IEdgeInsights/#list-of-all-eii-services>`_
+* `List of All EII Services <https://open-edge-insights.github.io/IEdgeInsights/#list-of-all-eii-services>`_
 
-  * `Common EII services <http://localhost:7645/IEdgeInsights/#common-eii-services>`_
-  * `Video related services <http://localhost:7645/IEdgeInsights/#video-related-services>`_
-  * `Timeseries related services <http://localhost:7645/IEdgeInsights/#timeseries-related-services>`_
+  * `Common EII services <https://open-edge-insights.github.io/IEdgeInsights/#common-eii-services>`_
+  * `Video related services <https://open-edge-insights.github.io/IEdgeInsights/#video-related-services>`_
+  * `Timeseries related services <https://open-edge-insights.github.io/IEdgeInsights/#timeseries-related-services>`_
 
-* `Video pipeline Analytics <http://localhost:7645/IEdgeInsights/#video-pipeline-analytics>`_
+* `Video pipeline Analytics <https://open-edge-insights.github.io/IEdgeInsights/#video-pipeline-analytics>`_
 
-  * `Enable camera based Video Ingestion <http://localhost:7645/IEdgeInsights/#enable-camera-based-video-ingestion>`_
-  * `Using video accelerators in ingestion/analytics containers <http://localhost:7645/IEdgeInsights/#using-video-accelerators-in-ingestionanalytics-containers>`_
+  * `Enable camera based Video Ingestion <https://open-edge-insights.github.io/IEdgeInsights/#enable-camera-based-video-ingestion>`_
+  * `Using video accelerators in ingestion/analytics containers <https://open-edge-insights.github.io/IEdgeInsights/#using-video-accelerators-in-ingestionanalytics-containers>`_
 
-    * `\ **To run on USB devices** <http://localhost:7645/IEdgeInsights/#to-run-on-usb-devices>`_
-    * `\ **To run on MYRIAD devices** <http://localhost:7645/IEdgeInsights/#to-run-on-myriad-devices>`_
-    * `\ **To run on HDDL devices** <http://localhost:7645/IEdgeInsights/#to-run-on-hddl-devices>`_
-    * `\ **To run on Intel(R) Processor Graphics (GPU/iGPU)** <http://localhost:7645/IEdgeInsights/#to-run-on-intelr-processor-graphics-gpuigpu>`_
+    * `\ **To run on USB devices** <https://open-edge-insights.github.io/IEdgeInsights/#to-run-on-usb-devices>`_
+    * `\ **To run on MYRIAD devices** <https://open-edge-insights.github.io/IEdgeInsights/#to-run-on-myriad-devices>`_
+    * `\ **To run on HDDL devices** <https://open-edge-insights.github.io/IEdgeInsights/#to-run-on-hddl-devices>`_
+    * `\ **To run on Intel(R) Processor Graphics (GPU/iGPU)** <https://open-edge-insights.github.io/IEdgeInsights/#to-run-on-intelr-processor-graphics-gpuigpu>`_
 
-  * `Custom Udfs <http://localhost:7645/IEdgeInsights/#custom-udfs>`_
+  * `Custom Udfs <https://open-edge-insights.github.io/IEdgeInsights/#custom-udfs>`_
 
-* `Time-series Analytics <http://localhost:7645/IEdgeInsights/#time-series-analytics>`_
-* `EII multi node cluster provision and deployment <http://localhost:7645/IEdgeInsights/#eii-multi-node-cluster-provision-and-deployment>`_
+* `Time-series Analytics <https://open-edge-insights.github.io/IEdgeInsights/#time-series-analytics>`_
+* `EII multi node cluster provision and deployment <https://open-edge-insights.github.io/IEdgeInsights/#eii-multi-node-cluster-provision-and-deployment>`_
 
-  * `\ **Without orchestrator** <http://localhost:7645/IEdgeInsights/#without-orchestrator>`_
-  * `\ **With k8s orchestrator** <http://localhost:7645/IEdgeInsights/#with-k8s-orchestrator>`_
+  * `\ **Without orchestrator** <https://open-edge-insights.github.io/IEdgeInsights/#without-orchestrator>`_
+  * `\ **With k8s orchestrator** <https://open-edge-insights.github.io/IEdgeInsights/#with-k8s-orchestrator>`_
 
-* `EII tools <http://localhost:7645/IEdgeInsights/#eii-tools>`_
-* `EII Uninstaller <http://localhost:7645/IEdgeInsights/#eii-uninstaller>`_
-* `Debugging options <http://localhost:7645/IEdgeInsights/#debugging-options>`_
-* `Troubleshooting guide <http://localhost:7645/IEdgeInsights/#troubleshooting-guide>`_
+* `EII tools <https://open-edge-insights.github.io/IEdgeInsights/#eii-tools>`_
+* `EII Uninstaller <https://open-edge-insights.github.io/IEdgeInsights/#eii-uninstaller>`_
+* `Debugging options <https://open-edge-insights.github.io/IEdgeInsights/#debugging-options>`_
+* `Troubleshooting guide <https://open-edge-insights.github.io/IEdgeInsights/#troubleshooting-guide>`_
 
 Introduction
 ============
@@ -582,7 +582,7 @@ Build EII stack
 
    #. This step is optional if one wants to use the EII pre-built
       container images itself and doesn't want to build from source.
-      For more details, refer: `Distribution of EII container images <http://localhost:7645/IEdgeInsights/#distribution-of-eii-container-images>`_
+      For more details, refer: `Distribution of EII container images <https://open-edge-insights.github.io/IEdgeInsights/#distribution-of-eii-container-images>`_
    #. Base EII services like ia_eiibase, ia_video_common etc., are required only at the build time and not at
       the runtime.
 
@@ -635,7 +635,7 @@ Common EII services
 -------------------
 
 
-#. `EtcdUI <https://github.com/open-edge-insights/eii-etcd-ui/blob/master/README.md>`_
+#. `EtcdUI <https://github.com/open-edge-insights/eii-core/blob/master/EtcdUI/README.md>`_
 #. `InfluxDBConnector <https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/README.md>`_
 #. `OpcuaExport <https://github.com/open-edge-insights/eii-opcua-export/blob/master/README.md>`_ - Optional service to read from VideoAnalytics container to publish data to opcua clients
 #. `RestDataExport <https://github.com/open-edge-insights/eii-rest-data-export/blob/master/README.md>`_ - Optional service to read the metadata and image blob from InfluxDBConnector and ImageStore services respectively

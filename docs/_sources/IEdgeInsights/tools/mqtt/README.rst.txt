@@ -2,9 +2,9 @@
 **Contents**
 
 
-* `MQTT publisher <http://localhost:7645/IEdgeInsights/tools/mqtt/#mqtt-publisher>`_
+* `MQTT publisher <https://open-edge-insights.github.io/IEdgeInsights/tools/mqtt/#mqtt-publisher>`_
 
-  * `Usage <http://localhost:7645/IEdgeInsights/tools/mqtt/#usage>`_
+  * `Usage <https://open-edge-insights.github.io/IEdgeInsights/tools/mqtt/#usage>`_
 
 MQTT publisher
 ==============

@@ -2,13 +2,13 @@
 **Contents**
 
 
-* `Introduction <http://localhost:7645/IEdgeInsights/CustomUdfs/#introduction>`_
-* `UDF Container Directory Layout <http://localhost:7645/IEdgeInsights/CustomUdfs/#udf-container-directory-layout>`_
-* `Deploy Process <http://localhost:7645/IEdgeInsights/CustomUdfs/#deploy-process>`_
-* `Sample UDFs Directory <http://localhost:7645/IEdgeInsights/CustomUdfs/#sample-udfs-directory>`_
+* `Introduction <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#introduction>`_
+* `UDF Container Directory Layout <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#udf-container-directory-layout>`_
+* `Deploy Process <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#deploy-process>`_
+* `Sample UDFs Directory <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#sample-udfs-directory>`_
 
-  * `GVASafetyGearIngestion <http://localhost:7645/IEdgeInsights/CustomUdfs/#gvasafetygearingestion>`_
-  * `NativePclIngestion <http://localhost:7645/IEdgeInsights/CustomUdfs/#nativepclingestion>`_
+  * `GVASafetyGearIngestion <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#gvasafetygearingestion>`_
+  * `NativePclIngestion <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#nativepclingestion>`_
 
 Introduction
 ============

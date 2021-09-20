@@ -4,14 +4,14 @@ Multi-node Provisioning & Deployment
 
 Perform the below steps  to achieve provisioning & deployment on multiple nodes
 
-`Step 1 Provision the Leader node <http://localhost:7645/IEdgeInsights/build/deploy/#step-1-provision-the-leader-node>`_
+`Step 1 Provision the Leader node <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-1-provision-the-leader-node>`_
 
-`Step 2 Set up Docker Registry URL then Build and Push Images <http://localhost:7645/IEdgeInsights/build/deploy/#step-2-set-up-docker-registry-url-then-build-and-push-images>`_
+`Step 2 Set up Docker Registry URL then Build and Push Images <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-2-set-up-docker-registry-url-then-build-and-push-images>`_
 
-`Step 3 Choosing the EII services to run on worker node <http://localhost:7645/IEdgeInsights/build/deploy/#step-3-choosing-the-eii-services-to-run-on-worker-node>`_
+`Step 3 Choosing the EII services to run on worker node <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-3-choosing-the-eii-services-to-run-on-worker-node>`_
 
-`Step 4 Provisioning the worker node <http://localhost:7645/IEdgeInsights/build/deploy/#step-4-provisioning-the-worker-node>`_
+`Step 4 Provisioning the worker node <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-4-provisioning-the-worker-node>`_
 
-`Step 5 Creating eii bundle for worker node <http://localhost:7645/IEdgeInsights/build/deploy/#step-5-creating-eii-bundle-for-worker-node>`_
+`Step 5 Creating eii bundle for worker node <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-5-creating-eii-bundle-for-worker-node>`_
 
-`Step 6 EII-Multinode deployment <http://localhost:7645/IEdgeInsights/build/deploy/#step-6-eii-multinode-deployment>`_
+`Step 6 EII-Multinode deployment <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-6-eii-multinode-deployment>`_

@@ -1,9 +1,13 @@
-==============
+#############
 Release Notes
-==============
+#############
 
-EII v2.6 New Features
-----------------------
+********
+EII v2.6
+********
+
+Features
+========
 
 * Ansible playbooks for EII installation, provisioning and cluster set up (single & multi nodes) 
  
@@ -34,11 +38,62 @@ EII v2.6 New Features
 * Timeseries Message Bus connections 
  
     * EII Messagebus Output plugin for Telegraf 
-    
     * EII Messagebus Input and output nodes for Kapacitor 
 
 Known Issues
-------------
+============
 
 #. Encoding cannot be enabled with native PCL udf	
 #. NativePCLIngestion CustomUDF throws warnings while processing rs2 depth frames
+
+********
+EII v2.5
+********
+
+Features
+========
+
+* Added eis-messagebus-go repo for EII-EdgeX integration
+
+* Added pre-requisite installer script (to install docker-ce, docker-compose etc.,) and EII uninstaller script
+
+* UX/DX Improvements
+
+    * Enable Volume mount for UDFs
+    * eis_builder to auto-create multi-instance boilerplate configurations
+    * Small Analytics size
+    * Pylon viewer export settings
+    * Option to Disable Bounding box in Both Visualizer
+
+* Benchmarking Code Release in EII
+
+    * Release Video Ingest Benchmarking 
+    * Release Time series Ingest Benchmarking
+
+* Kubernetes orchestrator enablement
+
+    * Single node deployment
+    * Multi-node deployment
+
+* Revamp Configuration APIs for EII
+    
+    * Revamp Config Manager API
+    * Implement C ETCD Config library
+
+* Time series improvements
+
+    * Enable Multiple Telegraf instances
+    * Enable multiple UDF support with Kapacitor.
+    * Enable Random Forest Algo
+    * Implement EISMessageBus (ZMQ) plugin for Telegraf.
+
+* Video use case improvements
+
+    * Support more popular GigE camera in VI
+    * Add snapshot feature for SW trigger (feed in just one frame)
+
+* EII Message Bus Improvements
+
+    * Enable XPUB-XSUB messaging pattern of EII Message Bus.
+    * Dynamic loading of protocol plugins
+

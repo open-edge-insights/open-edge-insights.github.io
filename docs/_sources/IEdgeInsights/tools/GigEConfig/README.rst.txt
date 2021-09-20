@@ -2,13 +2,13 @@
 **Contents**
 
 
-* `EII GigEConfig tool <http://localhost:7645/IEdgeInsights/tools/GigEConfig/#eii-gigeconfig-tool>`_
+* `EII GigEConfig tool <https://open-edge-insights.github.io/IEdgeInsights/tools/GigEConfig/#eii-gigeconfig-tool>`_
 
-  * `Generating PFS(Pylon Feature Stream) File <http://localhost:7645/IEdgeInsights/tools/GigEConfig/#generating-pfspylon-feature-stream-file>`_
-  * `Running GigEConfig Tool <http://localhost:7645/IEdgeInsights/tools/GigEConfig/#running-gigeconfig-tool>`_
+  * `Generating PFS(Pylon Feature Stream) File <https://open-edge-insights.github.io/IEdgeInsights/tools/GigEConfig/#generating-pfspylon-feature-stream-file>`_
+  * `Running GigEConfig Tool <https://open-edge-insights.github.io/IEdgeInsights/tools/GigEConfig/#running-gigeconfig-tool>`_
 
-    * `Usage of GigEConfig tool: <http://localhost:7645/IEdgeInsights/tools/GigEConfig/#usage-of-gigeconfig-tool>`_
-    * `Execution of GigEConfig <http://localhost:7645/IEdgeInsights/tools/GigEConfig/#execution-of-gigeconfig>`_
+    * `Usage of GigEConfig tool: <https://open-edge-insights.github.io/IEdgeInsights/tools/GigEConfig/#usage-of-gigeconfig-tool>`_
+    * `Execution of GigEConfig <https://open-edge-insights.github.io/IEdgeInsights/tools/GigEConfig/#execution-of-gigeconfig>`_
 
 EII GigEConfig tool
 ===================

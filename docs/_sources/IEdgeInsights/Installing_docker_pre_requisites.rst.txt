@@ -5,7 +5,7 @@
 **Contents**
 
 
-* `Manual steps to install docker daemon and docker-compose with proxy settings configuration <http://localhost:7645/IEdgeInsights/#manual-steps-to-install-docker-daemon-and-docker-compose-with-proxy-settings-configuration>`_
+* `Manual steps to install docker daemon and docker-compose with proxy settings configuration <https://open-edge-insights.github.io/IEdgeInsights/#manual-steps-to-install-docker-daemon-and-docker-compose-with-proxy-settings-configuration>`_
 
 Manual steps to install docker daemon and docker-compose with proxy settings configuration
 ------------------------------------------------------------------------------------------

@@ -5,52 +5,52 @@
 **Contents**
 
 
-* `Azure Bridge <http://localhost:7645/IEdgeInsights/AzureBridge/#azure-bridge>`_
+* `Azure Bridge <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#azure-bridge>`_
 
-  * `Pre-Requisites / Setup <http://localhost:7645/IEdgeInsights/AzureBridge/#pre-requisites--setup>`_
+  * `Pre-Requisites / Setup <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#pre-requisites--setup>`_
 
-    * `Azure Cloud Setup <http://localhost:7645/IEdgeInsights/AzureBridge/#azure-cloud-setup>`_
+    * `Azure Cloud Setup <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#azure-cloud-setup>`_
 
-      * `Setting up AzureML <http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml>`_
+      * `Setting up AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml>`_
 
-        * `Pushing a Model to AzureML <http://localhost:7645/IEdgeInsights/AzureBridge/#pushing-a-model-to-azureml>`_
+        * `Pushing a Model to AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#pushing-a-model-to-azureml>`_
 
-    * `Development System Setup <http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup>`_
+    * `Development System Setup <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup>`_
 
-  * `Build and Push EII Containers <http://localhost:7645/IEdgeInsights/AzureBridge/#build-and-push-eii-containers>`_
-  * `Single-Node Azure IoT Edge Deployment <http://localhost:7645/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment>`_
+  * `Build and Push EII Containers <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#build-and-push-eii-containers>`_
+  * `Single-Node Azure IoT Edge Deployment <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment>`_
 
-    * `Step 1 - Provisioning <http://localhost:7645/IEdgeInsights/AzureBridge/#step-1---provisioning>`_
+    * `Step 1 - Provisioning <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-1---provisioning>`_
 
-      * `Expected Result <http://localhost:7645/IEdgeInsights/AzureBridge/#expected-result>`_
+      * `Expected Result <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#expected-result>`_
 
-    * `Step 2 - Configuring EII <http://localhost:7645/IEdgeInsights/AzureBridge/#step-2---configuring-eii>`_
+    * `Step 2 - Configuring EII <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-2---configuring-eii>`_
 
-      * `Expected Result <http://localhost:7645/IEdgeInsights/AzureBridge/#expected-result-1>`_
+      * `Expected Result <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#expected-result-1>`_
 
-    * `Step 3 - Configuring Azure IoT Deployment Manifest <http://localhost:7645/IEdgeInsights/AzureBridge/#step-3---configuring-azure-iot-deployment-manifest>`_
+    * `Step 3 - Configuring Azure IoT Deployment Manifest <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-3---configuring-azure-iot-deployment-manifest>`_
 
-      * `Expected Result <http://localhost:7645/IEdgeInsights/AzureBridge/#expected-result-2>`_
+      * `Expected Result <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#expected-result-2>`_
 
-    * `Step 4 - Deployment <http://localhost:7645/IEdgeInsights/AzureBridge/#step-4---deployment>`_
+    * `Step 4 - Deployment <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-4---deployment>`_
 
-      * `Expected Results <http://localhost:7645/IEdgeInsights/AzureBridge/#expected-results>`_
+      * `Expected Results <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#expected-results>`_
 
-    * `Helpful Debugging Commands <http://localhost:7645/IEdgeInsights/AzureBridge/#helpful-debugging-commands>`_
-    * `Final Notes <http://localhost:7645/IEdgeInsights/AzureBridge/#final-notes>`_
+    * `Helpful Debugging Commands <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#helpful-debugging-commands>`_
+    * `Final Notes <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#final-notes>`_
 
-  * `Configuration <http://localhost:7645/IEdgeInsights/AzureBridge/#configuration>`_
+  * `Configuration <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#configuration>`_
 
-    * `Azure Bridge <http://localhost:7645/IEdgeInsights/AzureBridge/#azure-bridge-1>`_
-    * `Sample EII ONNX UDF <http://localhost:7645/IEdgeInsights/AzureBridge/#sample-eii-onnx-udf>`_
-    * `Simple Subscriber <http://localhost:7645/IEdgeInsights/AzureBridge/#simple-subscriber>`_
-    * `EII ETCD Pre-Load <http://localhost:7645/IEdgeInsights/AzureBridge/#eii-etcd-pre-load>`_
-    * `Azure Blob Storage <http://localhost:7645/IEdgeInsights/AzureBridge/#azure-blob-storage>`_
-    * `Azure Deployment Manifest <http://localhost:7645/IEdgeInsights/AzureBridge/#azure-deployment-manifest>`_
+    * `Azure Bridge <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#azure-bridge-1>`_
+    * `Sample EII ONNX UDF <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#sample-eii-onnx-udf>`_
+    * `Simple Subscriber <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#simple-subscriber>`_
+    * `EII ETCD Pre-Load <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#eii-etcd-pre-load>`_
+    * `Azure Blob Storage <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#azure-blob-storage>`_
+    * `Azure Deployment Manifest <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#azure-deployment-manifest>`_
 
-  * `Azure IoT Edge Simulator <http://localhost:7645/IEdgeInsights/AzureBridge/#azure-iot-edge-simulator>`_
-  * `Supported EII Services <http://localhost:7645/IEdgeInsights/AzureBridge/#supported-eii-services>`_
-  * `Additional Resources <http://localhost:7645/IEdgeInsights/AzureBridge/#additional-resources>`_
+  * `Azure IoT Edge Simulator <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#azure-iot-edge-simulator>`_
+  * `Supported EII Services <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#supported-eii-services>`_
+  * `Additional Resources <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#additional-resources>`_
 
 Azure Bridge
 ============
@@ -101,7 +101,7 @@ you are going to deploy the Azure Bridge on.
 
 The following sections cover the setup for the first two environments listed.
 Setting up your system for a single-node deployment will be covered in the
-`Single-Node Azure IoT Edge Deployment <http://localhost:7645/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment>`_ section below.
+`Single-Node Azure IoT Edge Deployment <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment>`_ section below.
 
 .. note::  When you deploy with Azure IoT Hub you will also need to configure
    the Azure IoT Edge Runtime and EII on your target device.
@@ -116,7 +116,7 @@ which must be initialized.
 Primarily, you need an Azure Containter Registry instance, an Azure IoT Hub,
 as well as an Azure IoT Device. Additionally, if you wish to use the sample ONNX
 UDF in EII to download a ML/DL model from AzureML, then you must follow a few
-steps to get this configured as well. For these steps, see the `Setting up AzureML <http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml>`_
+steps to get this configured as well. For these steps, see the `Setting up AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml>`_
 section below.
 
 To create these instances, follow the guides provided by Microsoft below:
@@ -268,7 +268,7 @@ Build and Push EII Containers
 After setting up your development system, build and push the EII containers
 to your Azure Contianer Registry instance. Note that the Azure Bridge only
 supports a few of the EII services currently. Before building and pushing your
-EII containers, be sure to look at the `Supported EII Services <http://localhost:7645/IEdgeInsights/AzureBridge/#supported-eii-services>`_
+EII containers, be sure to look at the `Supported EII Services <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#supported-eii-services>`_
 section below, so as to not build/push uneeded containers to your registry.
 
 To do this go to the ``../build/`` directory in the EII source code, modify the
@@ -322,9 +322,9 @@ the following steps:
 #. Deployment
 
 Prior to deploying a single Azure IoT Edge node you must have already
-configured your Azure cloud instance (see instructions in the `Azure Cloud Setup <http://localhost:7645/IEdgeInsights/AzureBridge/#azure-cloud-setup>`_
+configured your Azure cloud instance (see instructions in the `Azure Cloud Setup <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#azure-cloud-setup>`_
 section). Additionally, you need to have already built and pushed the EII services to your
-Azure Container Registry (follow the instructions in the `Build and Push EII Containers <http://localhost:7645/IEdgeInsights/AzureBridge/##build-and-push-eii-containers>`_
+Azure Container Registry (follow the instructions in the `Build and Push EII Containers <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/##build-and-push-eii-containers>`_
 section).
 
 Provided you have met these two prerequisites, follow the steps below to do a
@@ -435,7 +435,7 @@ your deployment manifest leading to configuration errors.
 **IMPORTANT NOTE #2:**
 
 If you wish to use the sample EII ONNX UDF, now is the time to configure the UDF
-to run. See the `Sample EII ONNX UDF <http://localhost:7645/IEdgeInsights/AzureBridge/#sample-eii-onnx-udf>`_ configuration section
+to run. See the `Sample EII ONNX UDF <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#sample-eii-onnx-udf>`_ configuration section
 below for how to configure the UDF.
 
 Expected Result
@@ -453,7 +453,7 @@ create your Azure IoT Hub deployment manifest. The Azure Bridge provides some
 convenience scripts to ease this process.
 
 .. note::  These steps should be done from your development system setup in
-   the `Development System Setup <http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup>`_ section. Note, that for testing
+   the `Development System Setup <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup>`_ section. Note, that for testing
    and development purposes, these could be the same system.
 
 
@@ -539,7 +539,7 @@ file and a valid ``config/*.amd64.json`` file.
 If, for some reason, these commands fail, revisit Step 2 and make sure all of your
 environmental variables are set correctly. And if that does not resolve your issue,
 verify that your development system is setup correctly by revisiting the
-`Development System Setup <http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup>`_ section.
+`Development System Setup <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup>`_ section.
 
 Step 4 - Deployment
 ^^^^^^^^^^^^^^^^^^^
@@ -885,7 +885,7 @@ configuration file to run the UDF in either your Video Ingesiton or Video Analyt
 instance. Then, you need to modify the environmental variables in the ``AzureBridge/.env``
 file to provide the connection information to enable the UDF to download your
 model from AzureML. Make sure to follow the instructions provided in the
-`Setting up AzureML <http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml>`_ section above to configure your
+`Setting up AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml>`_ section above to configure your
 workspace correctly so that the UDF can download your model.
 
 The sample ONNX UDF requires that the following configuration values be set for
@@ -955,7 +955,7 @@ a weird way when the values are populated into your deployment manifest leading
 to configuration errors.
 
 The ``tenantId``\ , ``clientId``\ , ``clientSecret``\ , and ``subscriptionId`` should all have
-been obtained when following the instructions in the `Setting up AzureML <http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml>`_
+been obtained when following the instructions in the `Setting up AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml>`_
 section.
 
 Please run the below steps when the ``sample_onnx`` UDF is failing with error like
@@ -967,8 +967,8 @@ Please run the below steps when the ``sample_onnx`` UDF is failing with error li
    $ az ad sp create-for-rbac --sdk-auth --name ml-auth
 
 The output of above command will be in json format. Please update the ``AML_`` env variables in ``AzureBridge/.env``
-as per above table and follow the steps `Step 3 <http://localhost:7645/IEdgeInsights/AzureBridge/#step-3---configuring-azure-iot-deployment-manifest>`_ and
-`Step 4 <http://localhost:7645/IEdgeInsights/AzureBridge/#step-4---deployment>`_ to see the ``sample_onnx`` UDF working fine.
+as per above table and follow the steps `Step 3 <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-3---configuring-azure-iot-deployment-manifest>`_ and
+`Step 4 <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-4---deployment>`_ to see the ``sample_onnx`` UDF working fine.
 
 **IMPORTANT NOTE:**
 
@@ -1158,13 +1158,13 @@ Azure IoT Edge Simulator
 ------------------------
 
 Microsoft provides a simluator for the Azure IoT Edge Runtime. During the
-setup of your development system (covered in the `Development System Setup <http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup>`_
+setup of your development system (covered in the `Development System Setup <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup>`_
 section), the simulator is automatically installed on your system.
 
 Additionally, the Azure Bridge provides the ``./tools/run-simulator.sh`` script
 to easily use the simulator with the bridge.
 
-To do this, follow steps 1 - 3 in the `Single-Node Azure IoT Edge Deployment <http://localhost:7645/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment>`_
+To do this, follow steps 1 - 3 in the `Single-Node Azure IoT Edge Deployment <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment>`_
 section above. Then, instead of step 4, run the following command to setup
 the simulator:
 

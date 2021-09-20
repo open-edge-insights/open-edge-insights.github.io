@@ -5,13 +5,13 @@
 **Contents**
 
 
-* `Contributing to IEdgeInsights <http://localhost:7645/IEdgeInsights/#contributing-to-iedgeinsights>`_
+* `Contributing to IEdgeInsights <https://open-edge-insights.github.io/IEdgeInsights/#contributing-to-iedgeinsights>`_
 
-  * `Merge Requests <http://localhost:7645/IEdgeInsights/#merge-requests>`_
+  * `Merge Requests <https://open-edge-insights.github.io/IEdgeInsights/#merge-requests>`_
 
-    * `Commit and MR Hygiene <http://localhost:7645/IEdgeInsights/#commit-and-mr-hygiene>`_
-    * `Minimum requirements for a MR <http://localhost:7645/IEdgeInsights/#minimum-requirements-for-a-mr>`_
-    * `Review Process <http://localhost:7645/IEdgeInsights/#review-process>`_
+    * `Commit and MR Hygiene <https://open-edge-insights.github.io/IEdgeInsights/#commit-and-mr-hygiene>`_
+    * `Minimum requirements for a MR <https://open-edge-insights.github.io/IEdgeInsights/#minimum-requirements-for-a-mr>`_
+    * `Review Process <https://open-edge-insights.github.io/IEdgeInsights/#review-process>`_
 
 Contributing to IEdgeInsights
 =============================

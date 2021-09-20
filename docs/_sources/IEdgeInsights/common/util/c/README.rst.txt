@@ -2,12 +2,12 @@
 **Contents**
 
 
-* `EII Utils <http://localhost:7645/IEdgeInsights/common/util/c/#eii-utils>`_
+* `EII Utils <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/#eii-utils>`_
 
-  * `Dependency Installation <http://localhost:7645/IEdgeInsights/common/util/c/#dependency-installation>`_
-  * `Compilation <http://localhost:7645/IEdgeInsights/common/util/c/#compilation>`_
-  * `Installation <http://localhost:7645/IEdgeInsights/common/util/c/#installation>`_
-  * `Running Unit Tests <http://localhost:7645/IEdgeInsights/common/util/c/#running-unit-tests>`_
+  * `Dependency Installation <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/#dependency-installation>`_
+  * `Compilation <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/#compilation>`_
+  * `Installation <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/#installation>`_
+  * `Running Unit Tests <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/#running-unit-tests>`_
 
 EII Utils
 =========

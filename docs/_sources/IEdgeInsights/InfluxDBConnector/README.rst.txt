@@ -2,9 +2,9 @@
 **Contents**
 
 
-* `\ ``InfluxDBConnector Module`` <http://localhost:7645/IEdgeInsights/InfluxDBConnector/#influxdbconnector-module>`_
+* `\ ``InfluxDBConnector Module`` <https://open-edge-insights.github.io/IEdgeInsights/InfluxDBConnector/#influxdbconnector-module>`_
 
-  * `\ ``Configuration`` <http://localhost:7645/IEdgeInsights/InfluxDBConnector/#configuration>`_
+  * `\ ``Configuration`` <https://open-edge-insights.github.io/IEdgeInsights/InfluxDBConnector/#configuration>`_
 
 InfluxDBConnector Module
 ========================

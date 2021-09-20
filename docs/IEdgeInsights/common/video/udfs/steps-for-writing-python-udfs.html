@@ -1,75 +1,37 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Steps for writing Python UDFs &mdash; EII Documentation v1.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/contentui.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>Steps for writing Python UDFs &mdash; EII Documentation v1.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/contentui.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/clipboard.min.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
         <script src="../../../../_static/contentui.js"></script>
-    
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-
-    
+    <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../../../index.html" class="icon icon-home"> EII Documentation
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,19 +39,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">INTRODUCTION:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">INTRODUCTION:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/introduction.html#terminology">Terminology</a><ul>
@@ -177,12 +128,19 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/release.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-6-new-features">EII v2.6 New Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#known-issues">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id1">Features</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">CORE LIBRARIES:</span></p>
+</li>
+</ul>
+<p><span class="caption-text">CORE LIBRARIES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/msgbus.html">EII Message Bus</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id1">EII Message Bus</a><ul>
@@ -270,7 +228,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
+<p><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/video.html">Working with Video Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#videoingestion-module">VideoIngestion Module</a><ul>
@@ -346,7 +304,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
+<p><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/timeseries.html">Working with Timeseries Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/timeseries.html#telegraf">Telegraf</a><ul>
@@ -398,7 +356,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">EXPORT SERVICES:</span></p>
+<p><span class="caption-text">EXPORT SERVICES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/azure.html">Azure Bridge</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#pre-requisites-setup">Pre-Requisites / Setup</a><ul>
@@ -464,7 +422,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">ADDITIONAL INFO:</span></p>
+<p><span class="caption-text">ADDITIONAL INFO:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/tools.html">EII Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
@@ -557,79 +515,38 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">EII Documentation</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li><strong>Steps for writing Python UDFs</strong></li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../../../_sources/IEdgeInsights/common/video/udfs/steps-for-writing-python-udfs.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="steps-for-writing-python-udfs">
+             
+  <section id="steps-for-writing-python-udfs">
 <h1><strong>Steps for writing Python UDFs</strong><a class="headerlink" href="#steps-for-writing-python-udfs" title="Permalink to this headline">¶</a></h1>
 <p>This section describes the process of writing a Python UDF. As discussed in the aforementioned scenario, it also has two aspects to it.</p>
 <ul class="simple">
 <li><p>Writing the actual UDF. It needs knowledge EII exposed python APIs</p></li>
 <li><p>Adding the UDF to EII framework by altering different configs.</p></li>
 </ul>
-<div class="section" id="python-apis-for-writing-udf-for-eii">
+<section id="python-apis-for-writing-udf-for-eii">
 <h2><strong>Python APIs for writing UDF for EII</strong><a class="headerlink" href="#python-apis-for-writing-udf-for-eii" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p><strong>INITIALIZATION</strong></p>
@@ -664,7 +581,7 @@
 
 <span class="n">This</span> <span class="n">function</span> <span class="n">returns</span> <span class="n">three</span> <span class="n">values</span><span class="o">.</span>
 
-<span class="o">*</span><span class="mi">1</span><span class="n">st</span> <span class="n">Value</span><span class="o">*</span> <span class="p">:</span> <span class="n">Represents</span> <span class="k">if</span> <span class="n">the</span> <span class="n">frame</span> <span class="n">Need</span> <span class="n">to</span> <span class="n">be</span> <span class="n">dropped</span> <span class="ow">or</span> <span class="n">Not</span><span class="o">.</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">boolean</span> <span class="ow">in</span> <span class="n">nature</span><span class="o">.</span> <span class="n">In</span> <span class="n">case</span> <span class="n">of</span> <span class="n">failure</span> <span class="n">user</span> <span class="n">can</span> <span class="k">return</span> <span class="o">*</span><span class="bp">True</span><span class="o">*</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">positional</span> <span class="k">return</span> <span class="n">value</span><span class="o">.</span>
+<span class="o">*</span><span class="mi">1</span><span class="n">st</span> <span class="n">Value</span><span class="o">*</span> <span class="p">:</span> <span class="n">Represents</span> <span class="k">if</span> <span class="n">the</span> <span class="n">frame</span> <span class="n">Need</span> <span class="n">to</span> <span class="n">be</span> <span class="n">dropped</span> <span class="ow">or</span> <span class="n">Not</span><span class="o">.</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">boolean</span> <span class="ow">in</span> <span class="n">nature</span><span class="o">.</span> <span class="n">In</span> <span class="n">case</span> <span class="n">of</span> <span class="n">failure</span> <span class="n">user</span> <span class="n">can</span> <span class="k">return</span> <span class="o">*</span><span class="kc">True</span><span class="o">*</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">positional</span> <span class="k">return</span> <span class="n">value</span><span class="o">.</span>
 
 <span class="o">*</span><span class="mi">2</span><span class="n">nd</span> <span class="n">Value</span><span class="o">*</span> <span class="p">:</span> <span class="n">It</span> <span class="n">represents</span> <span class="n">the</span> <span class="n">actual</span> <span class="n">modified</span> <span class="n">frame</span> <span class="k">if</span> <span class="n">at</span> <span class="nb">all</span> <span class="n">it</span> <span class="n">has</span> <span class="n">been</span> <span class="n">modified</span><span class="o">.</span> <span class="n">Hence</span> <span class="n">the</span> <span class="nb">type</span> <span class="ow">is</span> <span class="o">**</span><span class="n">numpy</span><span class="s1">&#39;s ndarray**. If the frame is not modified user can return a *None* in this place.</span>
 
@@ -679,8 +596,8 @@
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/pcb/pcb_classifier.py">PCB_CLASSIFIER</a></p></li>
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/dummy.py">Dummy UDF</a></p></li>
 </ul>
-</div>
-<div class="section" id="eii-infrastructure-changes">
+</section>
+<section id="eii-infrastructure-changes">
 <h2><strong>EII Infrastructure changes</strong><a class="headerlink" href="#eii-infrastructure-changes" title="Permalink to this headline">¶</a></h2>
 <p>For any UDF to be utilized by the EII infrastructure, user must follow the below steps.</p>
 <ul>
@@ -693,55 +610,39 @@ A file present in this path <em>./python/pcb/pcb_filter.py</em> must have the <e
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="conclusion">
+</section>
+<section id="conclusion">
 <h2>CONCLUSION<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
 <p>The UDFs currently supported using python and C++. UDF uses in-memory message passing instead of sockets for the communication between the pipeline and UDFs making it faster in comparison. EII has many sample UDFs can be found in following paths <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/python">for python</a> &amp; <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/python">for python</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright (c) 2021 Intel Corporation.
-
-    </p>
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

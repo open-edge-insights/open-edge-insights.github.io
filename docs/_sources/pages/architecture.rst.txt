@@ -5,7 +5,7 @@
 It’s best to think about Industrial EII from Intel as a set of containers. Figure 2 depicts these containers as dashed lines around the components held by each container. The high-level functions of EII are data ingestion (video and time-series), data storage, data analytics, as well as data and device management.
 
 
-.. figure:: image/fig2.png
+.. figure:: image/eii26_architecture.png
       :scale: 100 %
       :align: center
 

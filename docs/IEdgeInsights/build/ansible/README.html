@@ -1,75 +1,37 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Ansible based EII Prequisites setup, provisioning, build &amp; deployment &mdash; EII Documentation v1.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/contentui.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>Ansible based EII Prequisites setup, provisioning, build &amp; deployment &mdash; EII Documentation v1.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/contentui.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/clipboard.min.js"></script>
         <script src="../../../_static/copybutton.js"></script>
         <script src="../../../_static/contentui.js"></script>
-    
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
-    
+    <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../../index.html" class="icon icon-home"> EII Documentation
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,19 +39,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">INTRODUCTION:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">INTRODUCTION:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/introduction.html#terminology">Terminology</a><ul>
@@ -177,12 +128,19 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/release.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-6-new-features">EII v2.6 New Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#known-issues">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id1">Features</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">CORE LIBRARIES:</span></p>
+</li>
+</ul>
+<p><span class="caption-text">CORE LIBRARIES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/msgbus.html">EII Message Bus</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id1">EII Message Bus</a><ul>
@@ -270,7 +228,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
+<p><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/video.html">Working with Video Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#videoingestion-module">VideoIngestion Module</a><ul>
@@ -346,7 +304,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
+<p><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/timeseries.html">Working with Timeseries Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/timeseries.html#telegraf">Telegraf</a><ul>
@@ -398,7 +356,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">EXPORT SERVICES:</span></p>
+<p><span class="caption-text">EXPORT SERVICES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/azure.html">Azure Bridge</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#pre-requisites-setup">Pre-Requisites / Setup</a><ul>
@@ -464,7 +422,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">ADDITIONAL INFO:</span></p>
+<p><span class="caption-text">ADDITIONAL INFO:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/tools.html">EII Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
@@ -557,96 +515,55 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">EII Documentation</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Ansible based EII Prequisites setup, provisioning, build &amp; deployment</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../../_sources/IEdgeInsights/build/ansible/README.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <p><strong>Contents</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#ansible-based-eii-prequisites-setup-provisioning-build--deployment">Ansible based EII Prequisites setup, provisioning, build &amp; deployment</a></p></li>
-<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#installing-ansible-on-ubuntu-control-node">Installing Ansible on Ubuntu {Control node}</a></p></li>
-<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#prerequisite-step-needed-for-all-the-controlworker-nodes">Prerequisite step needed for all the control/worker nodes.</a></p>
+<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#ansible-based-eii-prequisites-setup-provisioning-build--deployment">Ansible based EII Prequisites setup, provisioning, build &amp; deployment</a></p></li>
+<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#installing-ansible-on-ubuntu-control-node">Installing Ansible on Ubuntu {Control node}</a></p></li>
+<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#prerequisite-step-needed-for-all-the-controlworker-nodes">Prerequisite step needed for all the control/worker nodes.</a></p>
 <ul>
-<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#generate-ssh-key-for-all-nodes">Generate SSH KEY for all nodes</a></p></li>
+<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#generate-ssh-key-for-all-nodes">Generate SSH KEY for all nodes</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#adding-ssh-authorized-key-from-control-node-to-all-the-nodes">Adding SSH Authorized Key from control node to all the nodes</a></p>
+<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#adding-ssh-authorized-key-from-control-node-to-all-the-nodes">Adding SSH Authorized Key from control node to all the nodes</a></p>
 <ul>
-<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#configure-sudoers-file-to-accept-no-password-for-sudo-operation">Configure Sudoers file to accept NO PASSWORD for sudo operation.</a></p></li>
+<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#configure-sudoers-file-to-accept-no-password-for-sudo-operation">Configure Sudoers file to accept NO PASSWORD for sudo operation.</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#updating-the-leader--worker-nodes-information-for-using-remote-hosts">Updating the leader &amp; worker node’s information for using remote hosts</a></p></li>
-<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#updating-the-eii-source-folder-usecase--proxy-settings-in-group-variables">Updating the EII Source Folder, Usecase &amp; Proxy Settings in Group Variables</a></p></li>
-<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#non-orchestrated-multi-node-deployment-without-k8s">Non-orchestrated multi node deployment (without k8s)</a></p></li>
-<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment">Select EII services to run on a particular node in multinode deployment</a></p></li>
+<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#updating-the-leader--worker-nodes-information-for-using-remote-hosts">Updating the leader &amp; worker node’s information for using remote hosts</a></p></li>
+<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#updating-the-eii-source-folder-usecase--proxy-settings-in-group-variables">Updating the EII Source Folder, Usecase &amp; Proxy Settings in Group Variables</a></p></li>
+<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#non-orchestrated-multi-node-deployment-without-k8s">Non-orchestrated multi node deployment (without k8s)</a></p></li>
+<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment">Select EII services to run on a particular node in multinode deployment</a></p></li>
 <li><p><a class="reference external" href="#execute-ansible-playbook-from-eii_workdiriedgeinsightsbuildansible-control-node-to-deploy-eii-services-in-singlemulti-nodes">Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes</a></p>
 <ul>
-<li><p><a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#deploying-eii-using-helm-in-kubernetes-k8s-environment">Deploying EII Using Helm in Kubernetes (k8s) environment</a></p></li>
+<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#deploying-eii-using-helm-in-kubernetes-k8s-environment">Deploying EII Using Helm in Kubernetes (k8s) environment</a></p></li>
 </ul>
 </li>
 </ul>
-<div class="section" id="id1">
+<section id="id1">
 <h1>Ansible based EII Prequisites setup, provisioning, build &amp; deployment<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>Ansible is the automation engine which can enable EII deployment across single/multi nodes.
 We need one control node where ansible is installed and optional hosts. We can also use the control node itself to deploy EII</p>
@@ -657,8 +574,8 @@ We need one control node where ansible is installed and optional hosts. We can a
 <li><p>There are 3 types of nodes - control node where ansible must be installed, EII leader node where ETCD server will be running and optional worker nodes, all worker nodes remotely connect to ETCD server running on leader node. Control node and EII leader node can be same.</p></li>
 </ul>
 </div>
-</div>
-<div class="section" id="id2">
+</section>
+<section id="id2">
 <h1>Installing Ansible on Ubuntu {Control node}<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic">
 <li><p>Execute the following command in the identified control node machine.
@@ -671,10 +588,10 @@ $ sudo apt install ansible</p>
 </div></blockquote>
 </li>
 </ol>
-</div>
-<div class="section" id="id3">
+</section>
+<section id="id3">
 <h1>Prerequisite step needed for all the control/worker nodes.<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id4">
+<section id="id4">
 <h2>Generate SSH KEY for all nodes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>Generate the SSH KEY for all nodes using following command (to be executed in the only control node), ignore to run this command if you already have ssh keys generated in your system without id and passphrase,</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ssh-keygen
@@ -709,9 +626,9 @@ The key&#39;s randomart image is:
 +----[SHA256]-----+
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="id5">
+</section>
+</section>
+<section id="id5">
 <h1>Adding SSH Authorized Key from control node to all the nodes<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h1>
 <p>Please follow the steps to copy the generated keys from control node to all other nodes</p>
 <p>Execute the following command from <code class="docutils literal notranslate"><span class="pre">control</span></code> node.</p>
@@ -729,7 +646,7 @@ Now try logging into the machine, with:   <span class="s2">&quot;ssh &#39;test@1
 and check to make sure that only the key<span class="o">(</span>s<span class="o">)</span> you wanted were added.
 </pre></div>
 </div>
-<div class="section" id="id6">
+<section id="id6">
 <h2>Configure Sudoers file to accept NO PASSWORD for sudo operation.<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -769,9 +686,9 @@ The same procedure applies to all other nodes where ansible connection is involv
 </div></blockquote>
 </li>
 </ol>
-</div>
-</div>
-<div class="section" id="id7">
+</section>
+</section>
+<section id="id7">
 <h1>Updating the leader &amp; worker node’s information for using remote hosts<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -786,7 +703,7 @@ The same procedure applies to all other nodes where ansible connection is involv
 </div>
 <p>For Eg:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">targets</span><span class="p">]</span>
-<span class="n">leader</span> <span class="n">ansible_connection</span><span class="o">=</span><span class="n">ssh</span> <span class="n">ansible_host</span><span class="o">=</span><span class="mf">192.0</span><span class="o">.</span><span class="mf">0.1</span>  <span class="n">ansible_user</span><span class="o">=</span><span class="n">user1</span>
+<span class="n">leader</span> <span class="n">ansible_connection</span><span class="o">=</span><span class="n">ssh</span> <span class="n">ansible_host</span><span class="o">=</span><span class="mf">192.0.0.1</span>  <span class="n">ansible_user</span><span class="o">=</span><span class="n">user1</span>
 </pre></div>
 </div>
 <blockquote>
@@ -801,8 +718,8 @@ The same procedure applies to all other nodes where ansible connection is involv
 </div></blockquote>
 </li>
 </ul>
-</div>
-<div class="section" id="id8">
+</section>
+<section id="id8">
 <h1>Updating the EII Source Folder, Usecase &amp; Proxy Settings in Group Variables<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h1>
 <ol class="arabic">
 <li><p>Open <code class="docutils literal notranslate"><span class="pre">group_vars/all.yml</span></code> file
@@ -841,12 +758,12 @@ refer: [../README.md#distribution-of-eii-container-images]&gt; (../README.md#dis
 <li><p>Optionally you can choose number of video pipeline instances to be created by updating <code class="docutils literal notranslate"><span class="pre">instances</span></code> variable</p></li>
 <li><p>Update other optional variables provided if required</p></li>
 </ol>
-</div>
-<div class="section" id="id9">
+</section>
+<section id="id9">
 <h1>Non-orchestrated multi node deployment (without k8s)<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h1>
 <p>Below configuration changes need to be made for multi node deployment without k8s</p>
 <ol class="arabic">
-<li><p>Set <code class="docutils literal notranslate"><span class="pre">multi_node:</span> <span class="pre">true</span></code> in <code class="docutils literal notranslate"><span class="pre">group_vars/all.yml</span></code> to enable multinode deployment and <code class="docutils literal notranslate"><span class="pre">false</span></code> to enable single node deployment. Update <code class="docutils literal notranslate"><span class="pre">vars/vars.yml</span></code> to the services to run on a specific node in case of multi_node deployment by following <a class="reference external" href="http://localhost:7645/IEdgeInsights/build/ansible/#Select-EII-services-to-run-on-a-particular-node-in-multinode-deployment">this</a>, where in single node deployment all the services based on the <code class="docutils literal notranslate"><span class="pre">usecase</span></code> chosen will be deployed.</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">multi_node:</span> <span class="pre">true</span></code> in <code class="docutils literal notranslate"><span class="pre">group_vars/all.yml</span></code> to enable multinode deployment and <code class="docutils literal notranslate"><span class="pre">false</span></code> to enable single node deployment. Update <code class="docutils literal notranslate"><span class="pre">vars/vars.yml</span></code> to the services to run on a specific node in case of multi_node deployment by following <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#Select-EII-services-to-run-on-a-particular-node-in-multinode-deployment">this</a>, where in single node deployment all the services based on the <code class="docutils literal notranslate"><span class="pre">usecase</span></code> chosen will be deployed.</p></li>
 <li><p>Update <code class="docutils literal notranslate"><span class="pre">docker</span></code> registry details in following section if using a custom/private registry
 .. code-block:: sh</p>
 <blockquote>
@@ -865,8 +782,8 @@ Use of <code class="docutils literal notranslate"><span class="pre">docker_regis
 </li>
 <li><p>If you are using images from docker hub, then set <code class="docutils literal notranslate"><span class="pre">build:</span> <span class="pre">false</span></code> and unset <code class="docutils literal notranslate"><span class="pre">docker_registry</span></code> details</p></li>
 </ol>
-</div>
-<div class="section" id="id10">
+</section>
+<section id="id10">
 <h1>Select EII services to run on a particular node in multinode deployment<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h1>
 <ul>
 <li><p>Edit <code class="docutils literal notranslate"><span class="pre">vars/vars.yml</span></code> -&gt; under <code class="docutils literal notranslate"><span class="pre">nodes</span></code> add a specific a node which was defined in the inventory file(<code class="docutils literal notranslate"><span class="pre">hosts</span></code>) and add EII services to <code class="docutils literal notranslate"><span class="pre">include_services</span></code> list</p>
@@ -896,8 +813,8 @@ Use of <code class="docutils literal notranslate"><span class="pre">docker_regis
 <p class="admonition-title">Note</p>
 <p>If a service is not added to <code class="docutils literal notranslate"><span class="pre">include_services</span></code> list, that service will not deployed on a particular node</p>
 </div>
-</div>
-<div class="section" id="id11">
+</section>
+<section id="id11">
 <h1>Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -981,7 +898,7 @@ After <code class="docutils literal notranslate"><span class="pre">pre-requisite
 </div>
 </li>
 </ul>
-<div class="section" id="id12">
+<section id="id12">
 <h2>Deploying EII Using Helm in Kubernetes (k8s) environment<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1060,51 +977,35 @@ This will execute all the steps of EII as prequisite, build, provision, deploy f
 </div></blockquote>
 </li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright (c) 2021 Intel Corporation.
-
-    </p>
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

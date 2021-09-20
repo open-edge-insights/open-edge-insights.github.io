@@ -5,17 +5,17 @@
 **Contents**
 
 
-* `\ ``UDF Configuration`` <http://localhost:7645/IEdgeInsights/common/video/udfs/#udf-configuration>`_
-* `\ ``UDF Writing Guide`` <http://localhost:7645/IEdgeInsights/common/video/udfs/#udf-writing-guide>`_
-* `\ ``Sample UDFs`` <http://localhost:7645/IEdgeInsights/common/video/udfs/#sample-udfs>`_
+* `\ ``UDF Configuration`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#udf-configuration>`_
+* `\ ``UDF Writing Guide`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#udf-writing-guide>`_
+* `\ ``Sample UDFs`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#sample-udfs>`_
 
-  * `\ ``Native UDFs`` <http://localhost:7645/IEdgeInsights/common/video/udfs/#native-udfs>`_
-  * `\ ``Python UDFs`` <http://localhost:7645/IEdgeInsights/common/video/udfs/#python-udfs>`_
+  * `\ ``Native UDFs`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#native-udfs>`_
+  * `\ ``Python UDFs`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#python-udfs>`_
 
-* `\ ``Construction of Metadata in UDF`` <http://localhost:7645/IEdgeInsights/common/video/udfs/#construction-of-metadata-in-udf>`_
-* `\ ``Chaining of UDFs`` <http://localhost:7645/IEdgeInsights/common/video/udfs/#chaining-of-udfs>`_
+* `\ ``Construction of Metadata in UDF`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#construction-of-metadata-in-udf>`_
+* `\ ``Chaining of UDFs`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#chaining-of-udfs>`_
 
-  * `\ ``Combination of UDFs with ingestors`` <http://localhost:7645/IEdgeInsights/common/video/udfs/#combination-of-udfs-with-ingestors>`_
+  * `\ ``Combination of UDFs with ingestors`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#combination-of-udfs-with-ingestors>`_
 
 ``EII Sample UDFs``
 
@@ -138,6 +138,25 @@ User can refer to `UDF Writing HOW-TO GUIDE <https://github.com/open-edge-insigh
          "type": "native"
      }
 
+
+* 
+  **Raw Dummy UDF**
+
+  Accepts the Frame object and forwards the same without doing any processing. It's a
+  do-nothing UDF for working with multi-frame support.
+
+  ``UDF config``\ :
+
+  .. code-block:: javascript
+
+     {
+         "name": "raw_dummy",
+         "type": "raw_native"
+     }
+
+**Note**\ : ``raw_native`` udf type has been added to support multi-frame ingestion support.RealSense usecase requires multi-frame ingestion for color and depth frames.
+
+
 * 
   **Resize UDF**
 
@@ -225,6 +244,24 @@ User can refer to `UDF Writing HOW-TO GUIDE <https://github.com/open-edge-insigh
          "name": "dummy",
          "type": "python"
      }
+
+* 
+  **Multi Frame Dummy UDF**
+
+  Accepts the Frame object which is a list of frames and forwards the same without doing any processing. It's a
+  do-nothing UDF for working with multi-frame support.
+
+  ``UDF config``\ :
+
+  .. code-block:: javascript
+
+     {
+         "name": "multi_frame_dummy",
+         "type": "python"
+     }
+
+**Note**\ : When multi frame ingestion is used then the Frame object is a list of numpy frames else it is a single numpy frame. The udf type remains ``python`` for multi frame ingestion and single frame ingestion.
+
 
 * 
   **Jupyter Connector UDF**

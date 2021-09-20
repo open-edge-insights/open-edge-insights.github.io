@@ -2,10 +2,10 @@
 **Contents**
 
 
-* `ConfigMgr python examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/python/examples/#configmgr-python-examples>`_
+* `ConfigMgr python examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/python/examples/#configmgr-python-examples>`_
 
-  * `Pre-requisites <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/python/examples/#pre-requisites>`_
-  * `Running examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/python/examples/#running-examples>`_
+  * `Pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/python/examples/#pre-requisites>`_
+  * `Running examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/python/examples/#running-examples>`_
 
 ConfigMgr python examples
 =========================

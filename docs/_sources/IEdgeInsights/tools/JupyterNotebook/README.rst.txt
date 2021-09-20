@@ -2,10 +2,10 @@
 **Contents**
 
 
-* `Jupyter Notebook usage to develop python UDFs <http://localhost:7645/IEdgeInsights/tools/JupyterNotebook/#jupyter-notebook-usage-to-develop-python-udfs>`_
+* `Jupyter Notebook usage to develop python UDFs <https://open-edge-insights.github.io/IEdgeInsights/tools/JupyterNotebook/#jupyter-notebook-usage-to-develop-python-udfs>`_
 
-  * `Jupyter Notebook pre-requisites <http://localhost:7645/IEdgeInsights/tools/JupyterNotebook/#jupyter-notebook-pre-requisites>`_
-  * `Running Jupyter Notebook <http://localhost:7645/IEdgeInsights/tools/JupyterNotebook/#running-jupyter-notebook>`_
+  * `Jupyter Notebook pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/tools/JupyterNotebook/#jupyter-notebook-pre-requisites>`_
+  * `Running Jupyter Notebook <https://open-edge-insights.github.io/IEdgeInsights/tools/JupyterNotebook/#running-jupyter-notebook>`_
 
 Jupyter Notebook usage to develop python UDFs
 =============================================

@@ -2,10 +2,10 @@
 **Contents**
 
 
-* `Intel SafeString library <http://localhost:7645/IEdgeInsights/common/util/c/IntelSafeString/#intel-safestring-library>`_
+* `Intel SafeString library <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/IntelSafeString/#intel-safestring-library>`_
 
-  * `Compilation <http://localhost:7645/IEdgeInsights/common/util/c/IntelSafeString/#compilation>`_
-  * `Installation <http://localhost:7645/IEdgeInsights/common/util/c/IntelSafeString/#installation>`_
+  * `Compilation <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/IntelSafeString/#compilation>`_
+  * `Installation <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/IntelSafeString/#installation>`_
 
 Intel SafeString library
 ========================

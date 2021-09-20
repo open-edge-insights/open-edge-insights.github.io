@@ -7,7 +7,7 @@ Build EII stack
 
    #. This step is optional if one wants to use the EII pre-built
       container images itself and doesn't want to build from source.
-      For more details, refer: `Distribution of EII container images <http://localhost:7645/IEdgeInsights/#distribution-of-eii-container-images>`_
+      For more details, refer: `Distribution of EII container images <https://open-edge-insights.github.io/IEdgeInsights/#distribution-of-eii-container-images>`_
    #. Base EII services like ia_eiibase, ia_video_common etc., are required only at the build time and not at
       the runtime.
 

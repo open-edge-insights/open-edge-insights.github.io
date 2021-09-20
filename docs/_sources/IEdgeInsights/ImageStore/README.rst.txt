@@ -2,11 +2,11 @@
 **Contents**
 
 
-* `ImageStore Module <http://localhost:7645/IEdgeInsights/ImageStore/#imagestore-module>`_
+* `ImageStore Module <https://open-edge-insights.github.io/IEdgeInsights/ImageStore/#imagestore-module>`_
 
-  * `Configuration <http://localhost:7645/IEdgeInsights/ImageStore/#configuration>`_
+  * `Configuration <https://open-edge-insights.github.io/IEdgeInsights/ImageStore/#configuration>`_
 
-    * `Detailed description on each of the keys used <http://localhost:7645/IEdgeInsights/ImageStore/#detailed-description-on-each-of-the-keys-used>`_
+    * `Detailed description on each of the keys used <https://open-edge-insights.github.io/IEdgeInsights/ImageStore/#detailed-description-on-each-of-the-keys-used>`_
 
 ImageStore Module
 =================

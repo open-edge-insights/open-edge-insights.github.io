@@ -11,11 +11,43 @@
 Downloading and Installation from Opensource Github Repository
 ==============================================================
 
-For EII opensource download directly from Github repository, users can browse to this `link <https://github.com/open-edge-insights/eii-manifests>`__ to access GitHub and follow through the step by step guide from `README <https://github.com/open-edge-insights/eii-manifests/blob/master/README.md>`__ in EII Manifests to download all applicable EII repos. 
+All EII repos are accessible in github at `link <https://github.com/open-edge-insights/>`__ as can be seen in the snap below.
 
-.. figure:: image/fig4.2.png
+.. figure:: image/github_header.png
       :scale: 100%
       :align: center 
+
+Please follow the below steps to quickly get the EII codebase. For more information on the various manifest files, please refer: `README <https://github.com/open-edge-insights/eii-manifests/blob/master/README.md>`__
+
+1. Installing repo tool
+
+   .. code:: sh
+
+      curl https://storage.googleapis.com/git-repo-downloads/repo > repo
+      sudo mv repo /bin/repo
+      sudo chmod a+x /bin/repo
+
+2. Pulling in the eii-manifests repo and using a manifest file
+
+   -  Create a working directory
+
+      .. code:: sh
+
+         mkdir -p <work-dir>
+
+   -  Initialize the repository using ``repo`` tool.
+
+      .. code:: sh
+
+         cd <work-dir>
+         repo init -u "https://github.com/open-edge-insights/eii-manifests.git"
+
+3. Pull all the projects mentioned in the manifest xml file with the
+   default/specific revision mentioned for each project
+
+   .. code:: sh
+
+      repo sync
 
 .. include:: ../IEdgeInsights/eii-prerequisites-installation.rst
 

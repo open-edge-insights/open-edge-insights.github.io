@@ -2,14 +2,14 @@
 **Contents**
 
 
-* `EII Video Profiler <http://localhost:7645/IEdgeInsights/tools/VideoProfiler/#eii-video-profiler>`_
+* `EII Video Profiler <https://open-edge-insights.github.io/IEdgeInsights/tools/VideoProfiler/#eii-video-profiler>`_
 
-  * `EII Video Profiler pre-requisites <http://localhost:7645/IEdgeInsights/tools/VideoProfiler/#eii-video-profiler-pre-requisites>`_
-  * `EII Video Profiler modes <http://localhost:7645/IEdgeInsights/tools/VideoProfiler/#eii-video-profiler-modes>`_
-  * `EII Video Profiler configurations <http://localhost:7645/IEdgeInsights/tools/VideoProfiler/#eii-video-profiler-configurations>`_
-  * `Running Video Profiler <http://localhost:7645/IEdgeInsights/tools/VideoProfiler/#running-video-profiler>`_
-  * `Optimizing EII Video pipeline by analysing Video Profiler results <http://localhost:7645/IEdgeInsights/tools/VideoProfiler/#optimizing-eii-video-pipeline-by-analysing-video-profiler-results>`_
-  * `Benchmarking with multi instance config <http://localhost:7645/IEdgeInsights/tools/VideoProfiler/#benchmarking-with-multi-instance-config>`_
+  * `EII Video Profiler pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/tools/VideoProfiler/#eii-video-profiler-pre-requisites>`_
+  * `EII Video Profiler modes <https://open-edge-insights.github.io/IEdgeInsights/tools/VideoProfiler/#eii-video-profiler-modes>`_
+  * `EII Video Profiler configurations <https://open-edge-insights.github.io/IEdgeInsights/tools/VideoProfiler/#eii-video-profiler-configurations>`_
+  * `Running Video Profiler <https://open-edge-insights.github.io/IEdgeInsights/tools/VideoProfiler/#running-video-profiler>`_
+  * `Optimizing EII Video pipeline by analysing Video Profiler results <https://open-edge-insights.github.io/IEdgeInsights/tools/VideoProfiler/#optimizing-eii-video-pipeline-by-analysing-video-profiler-results>`_
+  * `Benchmarking with multi instance config <https://open-edge-insights.github.io/IEdgeInsights/tools/VideoProfiler/#benchmarking-with-multi-instance-config>`_
 
 EII Video Profiler
 ==================

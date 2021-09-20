@@ -10,28 +10,28 @@ Contents:
 
 
 #. 
-   `Telegraf in brief <http://localhost:7645/IEdgeInsights/Telegraf/#Telegraf-in-brief>`_
+   `Telegraf in brief <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Telegraf-in-brief>`_
 
 #. 
-   `Telegraf's default configuration <http://localhost:7645/IEdgeInsights/Telegraf/#Telegrafs-default-configuration>`_
+   `Telegraf's default configuration <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Telegrafs-default-configuration>`_
 
 #. 
-   `MQTT sample configuration and tool to test it <http://localhost:7645/IEdgeInsights/Telegraf/#MQTT-sample-configuration-and-tool-to-test-it>`_
+   `MQTT sample configuration and tool to test it <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#MQTT-sample-configuration-and-tool-to-test-it>`_
 
 #. 
-   `Enabling EII message bus input plugin in Telegraf <http://localhost:7645/IEdgeInsights/Telegraf/#Enabling-EII-message-bus-input-plugin-in-Telegraf>`_
+   `Enabling EII message bus input plugin in Telegraf <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Enabling-EII-message-bus-input-plugin-in-Telegraf>`_
 
 #. 
-   `Advanced: Multiple plugin sections of EII message bus input plugin <http://localhost:7645/IEdgeInsights/Telegraf/#Advanced-Multiple-plugin-sections-of-EII-message-bus-input-plugin>`_
+   `Advanced: Multiple plugin sections of EII message bus input plugin <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Advanced-Multiple-plugin-sections-of-EII-message-bus-input-plugin>`_
 
 #. 
-   `Enabling EII message bus Output plugin in Telegraf <http://localhost:7645/IEdgeInsights/Telegraf/#Enabling-EII-message-bus-output-plugin-in-Telegraf>`_
+   `Enabling EII message bus Output plugin in Telegraf <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Enabling-EII-message-bus-output-plugin-in-Telegraf>`_
 
 #. 
-   `Advanced: Multiple plugin sections of EII message bus output plugin <http://localhost:7645/IEdgeInsights/Telegraf/#Advanced-Multiple-plugin-sections-of-EII-message-bus-output-plugin>`_
+   `Advanced: Multiple plugin sections of EII message bus output plugin <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Advanced-Multiple-plugin-sections-of-EII-message-bus-output-plugin>`_
 
 #. 
-   `Optional: Adding multiple telegraf instances <http://localhost:7645/IEdgeInsights/Telegraf/#Optional-Adding-multiple-telegraf-instances>`_
+   `Optional: Adding multiple telegraf instances <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Optional-Adding-multiple-telegraf-instances>`_
 
 Telegraf in brief
 -----------------
@@ -255,7 +255,7 @@ Here, the value **'default'**  acts as a key in the file **\ `config.json <https
 *Note: 
 Since it’s telegraf input plugin, the telegraf’s parser configuration
 has to be in Telegraf.conf file. The more information of the telegraf json parser plugin can be be found at https://github.com/influxdata/telegraf/tree/master/plugins/parsers/json.*
-In case if there are multiple telegraf instances, then the location of the Telegraf configuration files would be different. For more details please refer the section `Optional: Adding multiple telegraf instance <http://localhost:7645/IEdgeInsights/Telegraf/#Optional-Adding-multiple-telegraf-instances>`_
+In case if there are multiple telegraf instances, then the location of the Telegraf configuration files would be different. For more details please refer the section `Optional: Adding multiple telegraf instance <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Optional-Adding-multiple-telegraf-instances>`_
 
 Advanced: Multiple plugin sections of EII message bus input plugin
 ------------------------------------------------------------------

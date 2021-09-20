@@ -264,7 +264,7 @@ configuration file to run the UDF in either your Video Ingesiton or Video Analyt
 instance. Then, you need to modify the environmental variables in the ``AzureBridge/.env``
 file to provide the connection information to enable the UDF to download your
 model from AzureML. Make sure to follow the instructions provided in the
-`Setting up AzureML <http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml>`_ section above to configure your
+`Setting up AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml>`_ section above to configure your
 workspace correctly so that the UDF can download your model.
 
 The sample ONNX UDF requires that the following configuration values be set for
@@ -334,7 +334,7 @@ a weird way when the values are populated into your deployment manifest leading
 to configuration errors.
 
 The ``tenantId``\ , ``clientId``\ , ``clientSecret``\ , and ``subscriptionId`` should all have
-been obtained when following the instructions in the `Setting up AzureML <http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml>`_
+been obtained when following the instructions in the `Setting up AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml>`_
 section.
 
 Please run the below steps when the ``sample_onnx`` UDF is failing with error like
@@ -346,8 +346,8 @@ Please run the below steps when the ``sample_onnx`` UDF is failing with error li
    $ az ad sp create-for-rbac --sdk-auth --name ml-auth
 
 The output of above command will be in json format. Please update the ``AML_`` env variables in ``AzureBridge/.env``
-as per above table and follow the steps `Step 3 <http://localhost:7645/IEdgeInsights/AzureBridge/#step-3---configuring-azure-iot-deployment-manifest>`_ and
-`Step 4 <http://localhost:7645/IEdgeInsights/AzureBridge/#step-4---deployment>`_ to see the ``sample_onnx`` UDF working fine.
+as per above table and follow the steps `Step 3 <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-3---configuring-azure-iot-deployment-manifest>`_ and
+`Step 4 <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-4---deployment>`_ to see the ``sample_onnx`` UDF working fine.
 
 **IMPORTANT NOTE:**
 

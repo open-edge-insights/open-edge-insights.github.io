@@ -1,75 +1,37 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Steps for writing native(c++) UDFs &mdash; EII Documentation v1.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../_static/contentui.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>Steps for writing native(c++) UDFs &mdash; EII Documentation v1.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/contentui.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
         <script src="../../../../_static/jquery.js"></script>
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/doctools.js"></script>
         <script src="../../../../_static/clipboard.min.js"></script>
         <script src="../../../../_static/copybutton.js"></script>
         <script src="../../../../_static/contentui.js"></script>
-    
-    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
-
-    
+    <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../../../index.html" class="icon icon-home"> EII Documentation
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,19 +39,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">INTRODUCTION:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">INTRODUCTION:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/introduction.html#terminology">Terminology</a><ul>
@@ -177,12 +128,19 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/release.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-6-new-features">EII v2.6 New Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#known-issues">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id1">Features</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">CORE LIBRARIES:</span></p>
+</li>
+</ul>
+<p><span class="caption-text">CORE LIBRARIES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/msgbus.html">EII Message Bus</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id1">EII Message Bus</a><ul>
@@ -270,7 +228,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
+<p><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/video.html">Working with Video Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#videoingestion-module">VideoIngestion Module</a><ul>
@@ -346,7 +304,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
+<p><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/timeseries.html">Working with Timeseries Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/timeseries.html#telegraf">Telegraf</a><ul>
@@ -398,7 +356,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">EXPORT SERVICES:</span></p>
+<p><span class="caption-text">EXPORT SERVICES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/azure.html">Azure Bridge</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#pre-requisites-setup">Pre-Requisites / Setup</a><ul>
@@ -464,7 +422,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">ADDITIONAL INFO:</span></p>
+<p><span class="caption-text">ADDITIONAL INFO:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pages/tools.html">EII Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
@@ -557,79 +515,38 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../index.html">EII Documentation</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li><strong>Steps for writing native(c++) UDFs</strong></li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../../../_sources/IEdgeInsights/common/video/udfs/steps-for-writing-nativec-udfs.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="steps-for-writing-native-c-udfs">
+             
+  <section id="steps-for-writing-native-c-udfs">
 <h1><strong>Steps for writing native(c++) UDFs</strong><a class="headerlink" href="#steps-for-writing-native-c-udfs" title="Permalink to this headline">¶</a></h1>
 <p>Every UDF writing has two major part to it.</p>
 <ul class="simple">
 <li><p>Writing actual pre/post processing logic using EII exposed APIs.</p></li>
 <li><p>Adding EII infra specific configuration component for deploying it</p></li>
 </ul>
-<div class="section" id="eii-apis-for-writing-native-udfs-c">
+<section id="eii-apis-for-writing-native-udfs-c">
 <h2><strong>EII APIs for Writing Native UDFs(c++)</strong><a class="headerlink" href="#eii-apis-for-writing-native-udfs-c" title="Permalink to this headline">¶</a></h2>
 <p>There are three APIs defined semantically to add the pre/post processing logic. These APIs must be implemented as method of a user defined class inherited from the Udf class named <a href="#id1"><span class="problematic" id="id2">**</span></a><em>BaseUdf</em><a href="#id3"><span class="problematic" id="id4">**</span></a>.</p>
 <ul>
@@ -653,14 +570,14 @@ The **DummyUdf** in the above code snippet is the user defined class and the con
 <blockquote>
 <div><p>The API to utilize the ingested input looks as below:</p>
 </div></blockquote>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span>   <span class="n">UdfRetCode</span>
-   <span class="nf">process</span><span class="p">(</span><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span><span class="o">&amp;</span> <span class="n">frame</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">Mat</span><span class="o">&amp;</span> <span class="n">outputFrame</span><span class="p">,</span> <span class="n">msg_envelope_t</span><span class="o">*</span> <span class="n">meta</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
-       <span class="c1">// Logic for processing the frame &amp; returning the inference result.</span>
-   <span class="p">}</span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="n">UdfRetCode</span><span class="w"></span>
+<span class="w">   </span><span class="nf">process</span><span class="p">(</span><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span><span class="o">&amp;</span><span class="w"> </span><span class="n">frame</span><span class="p">,</span><span class="w"> </span><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span><span class="o">&amp;</span><span class="w"> </span><span class="n">outputFrame</span><span class="p">,</span><span class="w"> </span><span class="n">msg_envelope_t</span><span class="o">*</span><span class="w"> </span><span class="n">meta</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="c1">// Logic for processing the frame &amp; returning the inference result.</span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
 
-<span class="n">This</span> <span class="n">function</span> <span class="n">is</span> <span class="n">a</span> <span class="k">override</span> <span class="n">method</span> <span class="n">which</span> <span class="n">user</span> <span class="n">need</span> <span class="n">to</span> <span class="n">define</span> <span class="n">in</span> <span class="n">its</span> <span class="n">UDF</span> <span class="n">file</span><span class="p">.</span>
+<span class="n">This</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">define</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">its</span><span class="w"> </span><span class="n">UDF</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="w"></span>
 
-<span class="n">The</span> <span class="o">*</span><span class="n">argument</span><span class="o">*</span> <span class="n">details</span> <span class="n">are</span> <span class="n">described</span> <span class="n">as</span> <span class="nl">below</span><span class="p">:</span>
+<span class="n">The</span><span class="w"> </span><span class="o">*</span><span class="n">argument</span><span class="o">*</span><span class="w"> </span><span class="n">details</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">described</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="nl">below</span><span class="p">:</span><span class="w"></span>
 </pre></div>
 </div>
 <ul>
@@ -682,21 +599,21 @@ The **DummyUdf** in the above code snippet is the user defined class and the con
 <blockquote>
 <div><p>The <strong>initialize_udf()</strong> function need to defined as follows to create a link between UdfLoader module and respective UDF. This function ensure UdfLoader to call proper constructor and process() function of respective UDF.</p>
 </div></blockquote>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span>   <span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
-       <span class="kt">void</span> <span class="o">*</span><span class="n">initialize_udf</span><span class="p">(</span><span class="n">config_t</span> <span class="o">*</span><span class="n">config</span><span class="p">)</span> <span class="p">{</span>
-           <span class="n">DummyUdf</span> <span class="o">*</span><span class="n">udf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DummyUdf</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
-           <span class="k">return</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">udf</span><span class="p">;</span>
-       <span class="p">}</span>
-   <span class="p">}</span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">initialize_udf</span><span class="p">(</span><span class="n">config_t</span><span class="w"> </span><span class="o">*</span><span class="n">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="n">DummyUdf</span><span class="w"> </span><span class="o">*</span><span class="n">udf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">DummyUdf</span><span class="p">(</span><span class="n">config</span><span class="p">);</span><span class="w"></span>
+<span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">udf</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
 
-<span class="n">The</span> <span class="o">**</span><span class="s">&quot;DummyUdf&quot;</span><span class="o">**</span> <span class="n">is</span> <span class="n">the</span> <span class="k">class</span> <span class="nc">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">user</span> <span class="n">defined</span> <span class="n">custom</span> <span class="n">UDF</span><span class="p">.</span>
+<span class="n">The</span><span class="w"> </span><span class="o">**</span><span class="s">&quot;DummyUdf&quot;</span><span class="o">**</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">class</span> <span class="nc">name</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">defined</span><span class="w"> </span><span class="n">custom</span><span class="w"> </span><span class="n">UDF</span><span class="p">.</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 </ul>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="eii-apis-for-writing-raw-native-udfs-c-for-multi-frame-support">
+<section id="eii-apis-for-writing-raw-native-udfs-c-for-multi-frame-support">
 <h2><strong>EII APIs for Writing Raw Native UDFs(c++) for Multi Frame Support</strong><a class="headerlink" href="#eii-apis-for-writing-raw-native-udfs-c-for-multi-frame-support" title="Permalink to this headline">¶</a></h2>
 <p>There are three APIs defined semantically to add the pre/post processing logic. These APIs must be implemented as method of a user defined class inherited from the Udf class named <a href="#id5"><span class="problematic" id="id6">**</span></a><em>RawUdf</em><a href="#id7"><span class="problematic" id="id8">**</span></a>.</p>
 <ul>
@@ -720,14 +637,14 @@ The **RealSenseUdf** in the above code snippet is the user defined class and the
 <blockquote>
 <div><p>The API to utilize the ingested input looks as below:</p>
 </div></blockquote>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span>   <span class="n">UdfRetCode</span>
-   <span class="nf">process</span><span class="p">(</span><span class="n">Frame</span><span class="o">*</span> <span class="n">frame</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
-       <span class="c1">// Logic for processing the frame &amp; returning the inference result.</span>
-   <span class="p">}</span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="n">UdfRetCode</span><span class="w"></span>
+<span class="w">   </span><span class="nf">process</span><span class="p">(</span><span class="n">Frame</span><span class="o">*</span><span class="w"> </span><span class="n">frame</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="c1">// Logic for processing the frame &amp; returning the inference result.</span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
 
-<span class="n">This</span> <span class="n">function</span> <span class="n">is</span> <span class="n">a</span> <span class="k">override</span> <span class="n">method</span> <span class="n">which</span> <span class="n">user</span> <span class="n">need</span> <span class="n">to</span> <span class="n">define</span> <span class="n">in</span> <span class="n">its</span> <span class="n">UDF</span> <span class="n">file</span><span class="p">.</span>
+<span class="n">This</span><span class="w"> </span><span class="n">function</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">define</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">its</span><span class="w"> </span><span class="n">UDF</span><span class="w"> </span><span class="n">file</span><span class="p">.</span><span class="w"></span>
 
-<span class="n">The</span> <span class="o">*</span><span class="n">argument</span><span class="o">*</span> <span class="n">details</span> <span class="n">are</span> <span class="n">described</span> <span class="n">as</span> <span class="nl">below</span><span class="p">:</span>
+<span class="n">The</span><span class="w"> </span><span class="o">*</span><span class="n">argument</span><span class="o">*</span><span class="w"> </span><span class="n">details</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">described</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="nl">below</span><span class="p">:</span><span class="w"></span>
 </pre></div>
 </div>
 <ul>
@@ -747,20 +664,20 @@ The **RealSenseUdf** in the above code snippet is the user defined class and the
 <blockquote>
 <div><p>The <strong>initialize_udf()</strong> function need to defined as follows to create a link between UdfLoader module and respective UDF. This function ensure UdfLoader to call proper constructor and process() function of respective UDF.</p>
 </div></blockquote>
-<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span>   <span class="k">extern</span> <span class="s">&quot;C&quot;</span> <span class="p">{</span>
-       <span class="kt">void</span> <span class="o">*</span><span class="n">initialize_udf</span><span class="p">(</span><span class="n">config_t</span> <span class="o">*</span><span class="n">config</span><span class="p">)</span> <span class="p">{</span>
-           <span class="n">RealSenseUdf</span> <span class="o">*</span><span class="n">udf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">RealSenseUdf</span><span class="p">(</span><span class="n">config</span><span class="p">);</span>
-           <span class="k">return</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">udf</span><span class="p">;</span>
-       <span class="p">}</span>
-   <span class="p">}</span>
+<div class="highlight-C++ notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="k">extern</span><span class="w"> </span><span class="s">&quot;C&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">initialize_udf</span><span class="p">(</span><span class="n">config_t</span><span class="w"> </span><span class="o">*</span><span class="n">config</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="n">RealSenseUdf</span><span class="w"> </span><span class="o">*</span><span class="n">udf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">RealSenseUdf</span><span class="p">(</span><span class="n">config</span><span class="p">);</span><span class="w"></span>
+<span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">)</span><span class="n">udf</span><span class="p">;</span><span class="w"></span>
+<span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
 
-<span class="n">The</span> <span class="o">**</span><span class="s">&quot;RealSenseUdf&quot;</span><span class="o">**</span> <span class="n">is</span> <span class="n">the</span> <span class="k">class</span> <span class="nc">name</span> <span class="n">of</span> <span class="n">the</span> <span class="n">user</span> <span class="n">defined</span> <span class="n">custom</span> <span class="n">UDF</span><span class="p">.</span>
+<span class="n">The</span><span class="w"> </span><span class="o">**</span><span class="s">&quot;RealSenseUdf&quot;</span><span class="o">**</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">class</span> <span class="nc">name</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="n">defined</span><span class="w"> </span><span class="n">custom</span><span class="w"> </span><span class="n">UDF</span><span class="p">.</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 </ul>
-</div>
-<div class="section" id="eii-infrastructure-related-changes">
+</section>
+<section id="eii-infrastructure-related-changes">
 <h2><strong>EII INFRASTRUCTURE RELATED CHANGES</strong><a class="headerlink" href="#eii-infrastructure-related-changes" title="Permalink to this headline">¶</a></h2>
 <p>This section describes the check-list one has to ensure to be completed before exercising C++ UDF.</p>
 <ol class="arabic simple">
@@ -774,51 +691,35 @@ The **RealSenseUdf** in the above code snippet is the user defined class and the
 <li><p>If the OpenVINO is used kindly follow the <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/common/video/udfs/native/safety_gear_demo">safety_gear_demo</a> example for proper linking of  <strong>cpu_extension.so</strong> shared object.</p></li>
 <li><p>An appropriate entry must exist for each UDF that need to be loaded as part of EII deployment. The UDF entry syntax is explained in detail in the following document <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md">UDF README</a></p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright (c) 2021 Intel Corporation.
-
-    </p>
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

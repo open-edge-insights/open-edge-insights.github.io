@@ -2,9 +2,9 @@
 **Contents**
 
 
-* `Azure Bridge Module <http://localhost:7645/IEdgeInsights/AzureBridge/modules/AzureBridge/#azure-bridge-module>`_
+* `Azure Bridge Module <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/modules/AzureBridge/#azure-bridge-module>`_
 
-  * `Running Unit Tests <http://localhost:7645/IEdgeInsights/AzureBridge/modules/AzureBridge/#running-unit-tests>`_
+  * `Running Unit Tests <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/modules/AzureBridge/#running-unit-tests>`_
 
 Azure Bridge Module
 ===================

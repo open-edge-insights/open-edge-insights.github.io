@@ -129,4 +129,4 @@ Here, the value **'default'**  acts as a key in the file **\ `config.json <https
 *Note: 
 Since it’s telegraf input plugin, the telegraf’s parser configuration
 has to be in Telegraf.conf file. The more information of the telegraf json parser plugin can be be found at https://github.com/influxdata/telegraf/tree/master/plugins/parsers/json.*
-In case if there are multiple telegraf instances, then the location of the Telegraf configuration files would be different. For more details please refer the section `Optional: Adding multiple telegraf instance <http://localhost:7645/IEdgeInsights/Telegraf/#Optional-Adding-multiple-telegraf-instances>`_
+In case if there are multiple telegraf instances, then the location of the Telegraf configuration files would be different. For more details please refer the section `Optional: Adding multiple telegraf instance <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Optional-Adding-multiple-telegraf-instances>`_

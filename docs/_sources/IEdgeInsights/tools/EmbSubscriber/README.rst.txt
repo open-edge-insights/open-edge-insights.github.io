@@ -2,11 +2,11 @@
 **Contents**
 
 
-* `EmbSubscriber <http://localhost:7645/IEdgeInsights/tools/EmbSubscriber/#embsubscriber>`_
+* `EmbSubscriber <https://open-edge-insights.github.io/IEdgeInsights/tools/EmbSubscriber/#embsubscriber>`_
 
-  * `EII pre-requisites <http://localhost:7645/IEdgeInsights/tools/EmbSubscriber/#eii-pre-requisites>`_
-  * `Running EmbSubscriber <http://localhost:7645/IEdgeInsights/tools/EmbSubscriber/#running-embsubscriber>`_
-  * `Running EmbSubscriber in IPC mode <http://localhost:7645/IEdgeInsights/tools/EmbSubscriber/#running-embsubscriber-in-ipc-mode>`_
+  * `EII pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/tools/EmbSubscriber/#eii-pre-requisites>`_
+  * `Running EmbSubscriber <https://open-edge-insights.github.io/IEdgeInsights/tools/EmbSubscriber/#running-embsubscriber>`_
+  * `Running EmbSubscriber in IPC mode <https://open-edge-insights.github.io/IEdgeInsights/tools/EmbSubscriber/#running-embsubscriber-in-ipc-mode>`_
 
 EmbSubscriber
 =============

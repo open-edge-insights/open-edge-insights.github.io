@@ -2,10 +2,10 @@
 **Contents**
 
 
-* `ConfigMgr cpp examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/go/ConfigMgr/examples/#configmgr-cpp-examples>`_
+* `ConfigMgr cpp examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/go/ConfigMgr/examples/#configmgr-cpp-examples>`_
 
-  * `Pre-requisites <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/go/ConfigMgr/examples/#pre-requisites>`_
-  * `Running examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/go/ConfigMgr/examples/#running-examples>`_
+  * `Pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/go/ConfigMgr/examples/#pre-requisites>`_
+  * `Running examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/go/ConfigMgr/examples/#running-examples>`_
 
 ConfigMgr cpp examples
 ======================

@@ -2,55 +2,55 @@
 **Contents**
 
 
-* `EII Message Bus <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#eii-message-bus>`_
+* `EII Message Bus <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#eii-message-bus>`_
 
-  * `Dependency Installation <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#dependency-installation>`_
-  * `Compilation <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#compilation>`_
+  * `Dependency Installation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#dependency-installation>`_
+  * `Compilation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#compilation>`_
 
-    * `Generating Documentation <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#generating-documentation>`_
-    * `Potential Compilation Issues <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#potential-compilation-issues>`_
+    * `Generating Documentation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#generating-documentation>`_
+    * `Potential Compilation Issues <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#potential-compilation-issues>`_
 
-  * `Installation <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#installation>`_
+  * `Installation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#installation>`_
 
-    * `Install Python Binding <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#install-python-binding>`_
-    * `Install Golang Binding <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#install-golang-binding>`_
+    * `Install Python Binding <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#install-python-binding>`_
+    * `Install Golang Binding <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#install-golang-binding>`_
 
-  * `Running Unit Tests <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#running-unit-tests>`_
-  * `Configuration <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#configuration>`_
+  * `Running Unit Tests <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#running-unit-tests>`_
+  * `Configuration <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#configuration>`_
 
-    * `ZeroMQ IPC Configuration <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#zeromq-ipc-configuration>`_
-    * `ZeroMQ TCP Configuration <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#zeromq-tcp-configuration>`_
+    * `ZeroMQ IPC Configuration <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#zeromq-ipc-configuration>`_
+    * `ZeroMQ TCP Configuration <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#zeromq-tcp-configuration>`_
 
-      * `Publishers <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#publishers>`_
-      * `Subscribers <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#subscribers>`_
-      * `Services <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#services>`_
-      * `Requesters <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#requesters>`_
-      * `Using ZAP Authentication <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#using-zap-authentication>`_
+      * `Publishers <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publishers>`_
+      * `Subscribers <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#subscribers>`_
+      * `Services <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#services>`_
+      * `Requesters <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#requesters>`_
+      * `Using ZAP Authentication <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#using-zap-authentication>`_
 
-    * `Additional ZeroMQ Configuration Properties <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#additional-zeromq-configuration-properties>`_
+    * `Additional ZeroMQ Configuration Properties <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#additional-zeromq-configuration-properties>`_
 
-  * `Example Usage <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#example-usage>`_
+  * `Example Usage <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#example-usage>`_
 
-    * `C Examples <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#c-examples>`_
+    * `C Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#c-examples>`_
 
-      * `Publisher Many Example <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#publisher-many-example>`_
+      * `Publisher Many Example <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publisher-many-example>`_
 
-    * `Python Examples <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#python-examples>`_
-    * `Go Examples <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#go-examples>`_
-    * `Running Go Examples without Installing <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#running-go-examples-without-installing>`_
-    * `Brokered Publish/Subscribe <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#brokered-publishsubscribe>`_
+    * `Python Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#python-examples>`_
+    * `Go Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#go-examples>`_
+    * `Running Go Examples without Installing <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#running-go-examples-without-installing>`_
+    * `Brokered Publish/Subscribe <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#brokered-publishsubscribe>`_
 
-  * `Security <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#security>`_
+  * `Security <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#security>`_
 
-    * `Using Only CurveZMQ Encryption <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#using-only-curvezmq-encryption>`_
+    * `Using Only CurveZMQ Encryption <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#using-only-curvezmq-encryption>`_
 
-      * `Publish/Subscribe <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#publishsubscribe>`_
-      * `Request/Response <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#requestresponse>`_
+      * `Publish/Subscribe <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publishsubscribe>`_
+      * `Request/Response <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#requestresponse>`_
 
-    * `Using ZAP Authentication <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#using-zap-authentication-1>`_
-    * `Disabling Security <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#disabling-security>`_
+    * `Using ZAP Authentication <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#using-zap-authentication-1>`_
+    * `Disabling Security <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#disabling-security>`_
 
-  * `Known issues <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#known-issues>`_
+  * `Known issues <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#known-issues>`_
 
 EII Message Bus
 ===============
@@ -163,7 +163,7 @@ be given to CMake for building the EII Message Bus.
 .. note::  These flags are in addition to any and all flags that are available
    for the ``cmake`` command. See the CMake documentation for additional flags.
 
-   **NOTE:** See the `Generating Documentation <http://localhost:7645/IEdgeInsights/common/libs/EIIMessageBus/#generating-documentation>`_
+   **NOTE:** See the `Generating Documentation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#generating-documentation>`_
    section.
 
 

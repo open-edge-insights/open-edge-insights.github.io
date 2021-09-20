@@ -1,5 +1,15 @@
 
 EII distributed services centralized logging using ELK
+======================================================
+
+Pre-requisites
+--------------
+
+
+* Generate the certificates required to run the Kibana Server using the following command
+  .. code-block::
+
+       $ ./generate_testserver_cert.sh test-server-ip
 
 
 #. 

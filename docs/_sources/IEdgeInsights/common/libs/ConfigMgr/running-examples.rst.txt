@@ -5,16 +5,16 @@ Running Examples
 The ConfigMgr library also supports Cpp APIs and Python & Go bindings. These APIs/bindings can be used in Cpp and Python/Go services in the EII stack to fetch required config/interfaces/msgbus config. 
 
 Examples will only be compiled if the ``WITH_EXAMPLES=ON`` option is specified while running CMake.
-Please refer `Examples installation <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-install-configMgr-with-examples,-test-suits-and-debug-build-enabled.>`_ 
+Please refer `Examples installation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###-install-configMgr-with-examples,-test-suits-and-debug-build-enabled.>`_ 
 
 Refer the interfaces of publisher and server in `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-core/blob/master/examples/configs/VideoAnalytics_interfaces.json>`_ and for subscriber and client, refer `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-core/blob/master/examples/configs/VideoAnalytics_interfaces.json>`_
 
 Examples on demonstrating the usage of these APIs in the bindings have been given in respective sections below.
 
 
-* `CPP Examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-cpp-examples>`_
-* `Python Examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-python-examples>`_
-* `Go Examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-go-examples>`_
+* `CPP Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###-cpp-examples>`_
+* `Python Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###-python-examples>`_
+* `Go Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###-go-examples>`_
 
 CPP Examples
 ^^^^^^^^^^^^

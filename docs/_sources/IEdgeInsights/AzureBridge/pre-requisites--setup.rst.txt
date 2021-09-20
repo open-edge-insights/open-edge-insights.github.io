@@ -9,7 +9,7 @@ you are going to deploy the Azure Bridge on.
 
 The following sections cover the setup for the first two environments listed.
 Setting up your system for a single-node deployment will be covered in the
-`Single-Node Azure IoT Edge Deployment <http://localhost:7645/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment>`_ section below.
+`Single-Node Azure IoT Edge Deployment <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment>`_ section below.
 
 .. note::  When you deploy with Azure IoT Hub you will also need to configure
    the Azure IoT Edge Runtime and EII on your target device.
@@ -24,7 +24,7 @@ which must be initialized.
 Primarily, you need an Azure Containter Registry instance, an Azure IoT Hub,
 as well as an Azure IoT Device. Additionally, if you wish to use the sample ONNX
 UDF in EII to download a ML/DL model from AzureML, then you must follow a few
-steps to get this configured as well. For these steps, see the `Setting up AzureML <http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml>`_
+steps to get this configured as well. For these steps, see the `Setting up AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml>`_
 section below.
 
 To create these instances, follow the guides provided by Microsoft below:

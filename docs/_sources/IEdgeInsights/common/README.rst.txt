@@ -2,11 +2,11 @@
 **Contents**
 
 
-* `eii_libs_installer <http://localhost:7645/IEdgeInsights/common/#eii_libs_installer>`_
+* `eii_libs_installer <https://open-edge-insights.github.io/IEdgeInsights/common/#eii_libs_installer>`_
 
-  * `Running the install script <http://localhost:7645/IEdgeInsights/common/#running-the-install-script>`_
+  * `Running the install script <https://open-edge-insights.github.io/IEdgeInsights/common/#running-the-install-script>`_
 
-    * `Steps: <http://localhost:7645/IEdgeInsights/common/#steps>`_
+    * `Steps: <https://open-edge-insights.github.io/IEdgeInsights/common/#steps>`_
 
 eii_libs_installer
 ==================

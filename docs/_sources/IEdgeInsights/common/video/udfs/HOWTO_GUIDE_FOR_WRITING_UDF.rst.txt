@@ -2,20 +2,20 @@
 **Contents**
 
 
-* `\ **How-To GUIDE for writing UDF for EII** <http://localhost:7645/IEdgeInsights/common/video/udfs/#how-to-guide-for-writing-udf-for-eii>`_
+* `\ **How-To GUIDE for writing UDF for EII** <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#how-to-guide-for-writing-udf-for-eii>`_
 
-  * `\ **Introduction** <http://localhost:7645/IEdgeInsights/common/video/udfs/#introduction>`_
-  * `\ **Steps for writing native(c++) UDFs** <http://localhost:7645/IEdgeInsights/common/video/udfs/#steps-for-writing-nativec-udfs>`_
+  * `\ **Introduction** <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#introduction>`_
+  * `\ **Steps for writing native(c++) UDFs** <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#steps-for-writing-nativec-udfs>`_
 
-    * `\ **EII APIs for Writing Native UDFs(c++)** <http://localhost:7645/IEdgeInsights/common/video/udfs/#eii-apis-for-writing-native-udfsc>`_
-    * `\ **EII APIs for Writing Raw Native UDFs(c++) for Multi Frame Support** <http://localhost:7645/IEdgeInsights/common/video/udfs/#eii-apis-for-writing-raw-native-udfsc-for-multi-frame-support>`_
-    * `\ **EII INFRASTRUCTURE RELATED CHANGES** <http://localhost:7645/IEdgeInsights/common/video/udfs/#eii-infrastructure-related-changes>`_
+    * `\ **EII APIs for Writing Native UDFs(c++)** <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#eii-apis-for-writing-native-udfsc>`_
+    * `\ **EII APIs for Writing Raw Native UDFs(c++) for Multi Frame Support** <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#eii-apis-for-writing-raw-native-udfsc-for-multi-frame-support>`_
+    * `\ **EII INFRASTRUCTURE RELATED CHANGES** <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#eii-infrastructure-related-changes>`_
 
-  * `\ **Steps for writing Python UDFs** <http://localhost:7645/IEdgeInsights/common/video/udfs/#steps-for-writing-python-udfs>`_
+  * `\ **Steps for writing Python UDFs** <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#steps-for-writing-python-udfs>`_
 
-    * `\ **Python APIs for writing UDF for EII** <http://localhost:7645/IEdgeInsights/common/video/udfs/#python-apis-for-writing-udf-for-eii>`_
-    * `\ **EII Infrastructure changes** <http://localhost:7645/IEdgeInsights/common/video/udfs/#eii-infrastructure-changes>`_
-    * `CONCLUSION <http://localhost:7645/IEdgeInsights/common/video/udfs/#conclusion>`_
+    * `\ **Python APIs for writing UDF for EII** <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#python-apis-for-writing-udf-for-eii>`_
+    * `\ **EII Infrastructure changes** <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#eii-infrastructure-changes>`_
+    * `CONCLUSION <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#conclusion>`_
 
 **How-To GUIDE for writing UDF for EII**
 ============================================

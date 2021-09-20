@@ -2,12 +2,12 @@
 **Contents**
 
 
-* `Software Trigger Utility for VideoIngestion Module <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utility-for-videoingestion-module>`_
+* `Software Trigger Utility for VideoIngestion Module <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utility-for-videoingestion-module>`_
 
-  * `Software Trigger Utilily pre-requisites <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_
-  * `Configuration file: <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#configuration-file>`_
-  * `Running Software Trigger Utility <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#running-software%C2%A0trigger%C2%A0utility>`_
-  * `Usage of Software Trigger Utility: <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#usage%C2%A0of%C2%A0software%C2%A0trigger%C2%A0utility>`_
+  * `Software Trigger Utilily pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_
+  * `Configuration file: <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#configuration-file>`_
+  * `Running Software Trigger Utility <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#running-software%C2%A0trigger%C2%A0utility>`_
+  * `Usage of Software Trigger Utility: <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#usage%C2%A0of%C2%A0software%C2%A0trigger%C2%A0utility>`_
 
 Software Trigger Utility for VideoIngestion Module
 ==================================================
@@ -82,7 +82,7 @@ Configuration file:
 
 ..
 
-   * In case one needs to change the values in `pre-requisites section <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_\ , then ensure to re-run the steps mentioned in `pre-requisites section <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_ to see the updated changes are getting applied ``OR`` one can choose to update the config key of SWTriggerUtility app via ETCD UI and then restart the application.
+   * In case one needs to change the values in `pre-requisites section <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_\ , then ensure to re-run the steps mentioned in `pre-requisites section <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_ to see the updated changes are getting applied ``OR`` one can choose to update the config key of SWTriggerUtility app via ETCD UI and then restart the application.
 
 
 **This utility works in both dev & prod mode.**  As a pre-requisite make sure to turn ON the flag corresponding to "dev_mode" to true/false in the config.json file.
@@ -102,7 +102,7 @@ Running Software Trigger Utility
       $ cd [WORKDIR]/IEdgeInsights/build/
       $ python3 builder.py -f usecases/video-streaming.yml
 
-   **NOTE**\ : The same yml file to which the **SWTriggerUtility** entry was added in `pre-requisites <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_ has to be selected while running `pre-requisites <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_
+   **NOTE**\ : The same yml file to which the **SWTriggerUtility** entry was added in `pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_ has to be selected while running `pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_
 
 #. 
    Run provisioning step as below:

@@ -2,21 +2,21 @@
 **Contents**
 
 
-* `Point-data (Time-series data) analytics introduction <http://localhost:7645/IEdgeInsights/Kapacitor/#point-data-time-series-data-analytics-introduction>`_
+* `Point-data (Time-series data) analytics introduction <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#point-data-time-series-data-analytics-introduction>`_
 
-  * `Starting the example <http://localhost:7645/IEdgeInsights/Kapacitor/#starting-the-example>`_
-  * `Purpose of Telegraf <http://localhost:7645/IEdgeInsights/Kapacitor/#purpose-of-telegraf>`_
-  * `Purpose of Kapacitor <http://localhost:7645/IEdgeInsights/Kapacitor/#purpose-of-kapacitor>`_
-  * `Custom UDFs available in the udfs directory <http://localhost:7645/IEdgeInsights/Kapacitor/#custom-udfs-available-in-the-udfs-directory>`_
-  * `Steps to configure the UDFs in kapacitor. <http://localhost:7645/IEdgeInsights/Kapacitor/#steps-to-configure-the-udfs-in-kapacitor>`_
-  * `Step to run the samples of multiple UDFs in a single task and multiple tasks using single UDF <http://localhost:7645/IEdgeInsights/Kapacitor/#step-to-run-the-samples-of-multiple-udfs-in-a-single-task-and-multiple-tasks-using-single-udf>`_
+  * `Starting the example <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#starting-the-example>`_
+  * `Purpose of Telegraf <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#purpose-of-telegraf>`_
+  * `Purpose of Kapacitor <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#purpose-of-kapacitor>`_
+  * `Custom UDFs available in the udfs directory <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#custom-udfs-available-in-the-udfs-directory>`_
+  * `Steps to configure the UDFs in kapacitor. <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#steps-to-configure-the-udfs-in-kapacitor>`_
+  * `Step to run the samples of multiple UDFs in a single task and multiple tasks using single UDF <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#step-to-run-the-samples-of-multiple-udfs-in-a-single-task-and-multiple-tasks-using-single-udf>`_
 
-* `Kapacitor input and output plugins <http://localhost:7645/IEdgeInsights/Kapacitor/#kapacitor-input-and-output-plugins>`_
+* `Kapacitor input and output plugins <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#kapacitor-input-and-output-plugins>`_
 
-  * `Purpose of plugins <http://localhost:7645/IEdgeInsights/Kapacitor/#purpose-of-plugins>`_
-  * `Using input plugin <http://localhost:7645/IEdgeInsights/Kapacitor/#using-input-plugin>`_
-  * `Using output plugin <http://localhost:7645/IEdgeInsights/Kapacitor/#using-output-plugin>`_
-  * `Using input/output plugin with RFC udf <http://localhost:7645/IEdgeInsights/Kapacitor/#using-inputoutput-plugin-with-rfc-udf>`_
+  * `Purpose of plugins <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#purpose-of-plugins>`_
+  * `Using input plugin <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#using-input-plugin>`_
+  * `Using output plugin <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#using-output-plugin>`_
+  * `Using input/output plugin with RFC udf <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#using-inputoutput-plugin-with-rfc-udf>`_
 
 Point-data (Time-series data) analytics introduction
 ====================================================

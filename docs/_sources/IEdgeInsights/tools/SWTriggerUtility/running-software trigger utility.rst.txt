@@ -14,7 +14,7 @@ Running Software Trigger Utility
       $ cd [WORKDIR]/IEdgeInsights/build/
       $ python3 builder.py -f usecases/video-streaming.yml
 
-   **NOTE**\ : The same yml file to which the **SWTriggerUtility** entry was added in `pre-requisites <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_ has to be selected while running `pre-requisites <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_
+   **NOTE**\ : The same yml file to which the **SWTriggerUtility** entry was added in `pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_ has to be selected while running `pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_
 
 #. 
    Run provisioning step as below:

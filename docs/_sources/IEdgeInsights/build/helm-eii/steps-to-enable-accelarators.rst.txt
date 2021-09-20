@@ -108,7 +108,7 @@ Steps to enable Accelarators
       python3 builder.py
 
 #. 
-   Follow the `Deployment Steps <http://localhost:7645/IEdgeInsights/build/helm-eii/##Provision-and-deploy-in-the-kubernetes-node>`_
+   Follow the `Deployment Steps <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/##Provision-and-deploy-in-the-kubernetes-node>`_
 
 #. 
    Verify the respecitve workloads are running based on the ``nodeSelector`` constraints.

@@ -9,7 +9,7 @@ Build and Push EII Containers
 After setting up your development system, build and push the EII containers
 to your Azure Contianer Registry instance. Note that the Azure Bridge only
 supports a few of the EII services currently. Before building and pushing your
-EII containers, be sure to look at the `Supported EII Services <http://localhost:7645/IEdgeInsights/AzureBridge/#supported-eii-services>`_
+EII containers, be sure to look at the `Supported EII Services <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#supported-eii-services>`_
 section below, so as to not build/push uneeded containers to your registry.
 
 To do this go to the ``../build/`` directory in the EII source code, modify the

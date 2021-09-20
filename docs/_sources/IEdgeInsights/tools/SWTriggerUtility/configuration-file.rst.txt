@@ -47,7 +47,7 @@ Configuration file:
 
 ..
 
-   * In case one needs to change the values in `pre-requisites section <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_\ , then ensure to re-run the steps mentioned in `pre-requisites section <http://localhost:7645/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_ to see the updated changes are getting applied ``OR`` one can choose to update the config key of SWTriggerUtility app via ETCD UI and then restart the application.
+   * In case one needs to change the values in `pre-requisites section <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_\ , then ensure to re-run the steps mentioned in `pre-requisites section <https://open-edge-insights.github.io/IEdgeInsights/tools/SWTriggerUtility/#software-trigger-utilily-pre-requisites>`_ to see the updated changes are getting applied ``OR`` one can choose to update the config key of SWTriggerUtility app via ETCD UI and then restart the application.
 
 
 **This utility works in both dev & prod mode.**  As a pre-requisite make sure to turn ON the flag corresponding to "dev_mode" to true/false in the config.json file.

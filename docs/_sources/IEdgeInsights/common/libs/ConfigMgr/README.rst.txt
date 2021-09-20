@@ -60,7 +60,7 @@ ConfigMgr parses the data from the kv store (eg: etcd) and the application envir
 It supports Publisher, Subscriber, Server and Client interfaces. Below are the examples for providing 
 different interfaces and different usecases.
 
-Please refer `different ways of giving endpoints <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###**Note**-"endpoint"-can-be-given-in-different-ways:>`_
+Please refer `different ways of giving endpoints <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###**Note**-"endpoint"-can-be-given-in-different-ways:>`_
 
 **Publisher Interface**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -116,7 +116,7 @@ Please refer `different ways of giving endpoints <http://localhost:7645/IEdgeIns
    * - ``EndPoint``
      - ``string`` or ``object``
      - Yes
-     - In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer `Different ways of specifying endpoint <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###**Note**-"endpoint"-can-be-given-in-different-ways:>`_
+     - In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer `Different ways of specifying endpoint <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###**Note**-"endpoint"-can-be-given-in-different-ways:>`_
    * - ``Topics``
      - ``array``
      - Yes
@@ -183,7 +183,7 @@ Please refer `different ways of giving endpoints <http://localhost:7645/IEdgeIns
    * - ``EndPoint``
      - ``string`` or ``object``
      - Yes
-     - In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In Case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer `Different ways of specifying endpoint <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###**Note**-"endpoint"-can-be-given-in-different-ways:>`_
+     - In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In Case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer `Different ways of specifying endpoint <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###**Note**-"endpoint"-can-be-given-in-different-ways:>`_
    * - ``PublisherAppName``
      - ``string``
      - Yes
@@ -244,7 +244,7 @@ Please refer `different ways of giving endpoints <http://localhost:7645/IEdgeIns
    * - ``EndPoint``
      - ``string`` or ``object``
      - Yes
-     - In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer `Different ways of specifying endpoint <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###**Note**-"endpoint"-can-be-given-in-different-ways:>`_
+     - In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer `Different ways of specifying endpoint <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###**Note**-"endpoint"-can-be-given-in-different-ways:>`_
    * - ``AllowedClients``
      - ``array``
      - Yes
@@ -302,7 +302,7 @@ Please refer `different ways of giving endpoints <http://localhost:7645/IEdgeIns
    * - ``EndPoint``
      - ``string`` or ``object``
      - Yes
-     - In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer `Different ways of specifying endpoint <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###**Note**-"endpoint"-can-be-given-in-different-ways:>`_
+     - In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer `Different ways of specifying endpoint <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###**Note**-"endpoint"-can-be-given-in-different-ways:>`_
 
 
 Overriding of Type and EndPoint:
@@ -642,16 +642,16 @@ Running Examples
 The ConfigMgr library also supports Cpp APIs and Python & Go bindings. These APIs/bindings can be used in Cpp and Python/Go services in the EII stack to fetch required config/interfaces/msgbus config. 
 
 Examples will only be compiled if the ``WITH_EXAMPLES=ON`` option is specified while running CMake.
-Please refer `Examples installation <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-install-configMgr-with-examples,-test-suits-and-debug-build-enabled.>`_ 
+Please refer `Examples installation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###-install-configMgr-with-examples,-test-suits-and-debug-build-enabled.>`_ 
 
 Refer the interfaces of publisher and server in `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-core/blob/master/examples/configs/VideoAnalytics_interfaces.json>`_ and for subscriber and client, refer `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-core/blob/master/examples/configs/VideoAnalytics_interfaces.json>`_
 
 Examples on demonstrating the usage of these APIs in the bindings have been given in respective sections below.
 
 
-* `CPP Examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-cpp-examples>`_
-* `Python Examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-python-examples>`_
-* `Go Examples <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-go-examples>`_
+* `CPP Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###-cpp-examples>`_
+* `Python Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###-python-examples>`_
+* `Go Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###-go-examples>`_
 
 CPP Examples
 ^^^^^^^^^^^^
@@ -848,7 +848,7 @@ Running Unit Tests
 
 * 
   The unit tests will only be compiled if the ``WITH_TESTS=ON`` option is specified when running CMake.
-  Please refer `Unit Test installation <http://localhost:7645/IEdgeInsights/common/libs/ConfigMgr/###-install-configMgr-with-examples,-test-suits-and-debug-build-enabled.>`_ installation.
+  Please refer `Unit Test installation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###-install-configMgr-with-examples,-test-suits-and-debug-build-enabled.>`_ installation.
 
 * 
   Provisioning should be done to start etcd server in dev/prod mode and to generate application specific certificates(only in prod mode).

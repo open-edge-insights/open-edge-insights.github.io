@@ -5,10 +5,10 @@
 **Contents**
 
 
-* `FactoryControlApp: <http://localhost:7645/IEdgeInsights/FactoryControlApp/#factorycontrolapp>`_
+* `FactoryControlApp: <https://open-edge-insights.github.io/IEdgeInsights/FactoryControlApp/#factorycontrolapp>`_
 
-  * `\ ``Pre-requisites`` <http://localhost:7645/IEdgeInsights/FactoryControlApp/#pre-requisites>`_
-  * `\ ``Service bring up`` <http://localhost:7645/IEdgeInsights/FactoryControlApp/#service-bring-up>`_
+  * `\ ``Pre-requisites`` <https://open-edge-insights.github.io/IEdgeInsights/FactoryControlApp/#pre-requisites>`_
+  * `\ ``Service bring up`` <https://open-edge-insights.github.io/IEdgeInsights/FactoryControlApp/#service-bring-up>`_
 
 FactoryControlApp:
 ==================

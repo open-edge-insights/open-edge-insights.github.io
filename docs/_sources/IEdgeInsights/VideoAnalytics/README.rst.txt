@@ -2,9 +2,9 @@
 **Contents**
 
 
-* `VideoAnalytics Module <http://localhost:7645/IEdgeInsights/VideoAnalytics/#videoanalytics-module>`_
+* `VideoAnalytics Module <https://open-edge-insights.github.io/IEdgeInsights/VideoAnalytics/#videoanalytics-module>`_
 
-  * `Configuration <http://localhost:7645/IEdgeInsights/VideoAnalytics/#configuration>`_
+  * `Configuration <https://open-edge-insights.github.io/IEdgeInsights/VideoAnalytics/#configuration>`_
 
 VideoAnalytics Module
 =====================

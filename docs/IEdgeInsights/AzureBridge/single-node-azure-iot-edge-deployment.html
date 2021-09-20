@@ -1,75 +1,37 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Single-Node Azure IoT Edge Deployment &mdash; EII Documentation v1.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/contentui.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>Single-Node Azure IoT Edge Deployment &mdash; EII Documentation v1.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/contentui.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/clipboard.min.js"></script>
         <script src="../../_static/copybutton.js"></script>
         <script src="../../_static/contentui.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> EII Documentation
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,19 +39,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">INTRODUCTION:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">INTRODUCTION:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../pages/introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/introduction.html#terminology">Terminology</a><ul>
@@ -177,12 +128,19 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../pages/release.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-6-new-features">EII v2.6 New Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#known-issues">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id1">Features</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">CORE LIBRARIES:</span></p>
+</li>
+</ul>
+<p><span class="caption-text">CORE LIBRARIES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../pages/msgbus.html">EII Message Bus</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id1">EII Message Bus</a><ul>
@@ -270,7 +228,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
+<p><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../pages/video.html">Working with Video Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#videoingestion-module">VideoIngestion Module</a><ul>
@@ -346,7 +304,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
+<p><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../pages/timeseries.html">Working with Timeseries Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/timeseries.html#telegraf">Telegraf</a><ul>
@@ -398,7 +356,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">EXPORT SERVICES:</span></p>
+<p><span class="caption-text">EXPORT SERVICES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../pages/azure.html">Azure Bridge</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#pre-requisites-setup">Pre-Requisites / Setup</a><ul>
@@ -464,7 +422,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">ADDITIONAL INFO:</span></p>
+<p><span class="caption-text">ADDITIONAL INFO:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../pages/tools.html">EII Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
@@ -557,72 +515,31 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">EII Documentation</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Single-Node Azure IoT Edge Deployment</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../_sources/IEdgeInsights/AzureBridge/single-node-azure-iot-edge-deployment.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="single-node-azure-iot-edge-deployment">
+             
+  <section id="single-node-azure-iot-edge-deployment">
 <h1>Single-Node Azure IoT Edge Deployment<a class="headerlink" href="#single-node-azure-iot-edge-deployment" title="Permalink to this headline">¶</a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -655,13 +572,13 @@ the following steps:</p>
 <li><p>Deployment</p></li>
 </ol>
 <p>Prior to deploying a single Azure IoT Edge node you must have already
-configured your Azure cloud instance (see instructions in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#azure-cloud-setup">Azure Cloud Setup</a>
+configured your Azure cloud instance (see instructions in the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#azure-cloud-setup">Azure Cloud Setup</a>
 section). Additionally, you need to have already built and pushed the EII services to your
-Azure Container Registry (follow the instructions in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/##build-and-push-eii-containers">Build and Push EII Containers</a>
+Azure Container Registry (follow the instructions in the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/##build-and-push-eii-containers">Build and Push EII Containers</a>
 section).</p>
 <p>Provided you have met these two prerequisites, follow the steps below to do a
 single node deployment with the Azure Bridge on the Azure IoT Edge Runtime.</p>
-<div class="section" id="step-1-provisioning">
+<section id="step-1-provisioning">
 <h2>Step 1 - Provisioning<a class="headerlink" href="#step-1-provisioning" title="Permalink to this headline">¶</a></h2>
 <p>The provisioning must take place on the node you wish to deploy your Azure IoT
 Edge modules onto.</p>
@@ -691,7 +608,7 @@ the <code class="docutils literal notranslate"><span class="pre">build/</span></
 </div>
 <p>This will stop and remove all of the previously running EII containers, allowing
 the Azure Bridge to run successfully.</p>
-<div class="section" id="expected-result">
+<section id="expected-result">
 <h3>Expected Result<a class="headerlink" href="#expected-result" title="Permalink to this headline">¶</a></h3>
 <p>When you have completed these steps, you should have the Azure IoT Edge Runtime
 installed (which includes Docker), and you should have the <code class="docutils literal notranslate"><span class="pre">ia_etcd</span></code> EII container
@@ -703,9 +620,9 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 75121173d4d8        ia_etcd:2.3         <span class="s2">&quot;./start_etcd.sh&quot;</span>   <span class="m">11</span> days ago         Up <span class="m">2</span> seconds                            ia_etcd
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="step-2-configuring-eii">
+</section>
+</section>
+<section id="step-2-configuring-eii">
 <h2>Step 2 - Configuring EII<a class="headerlink" href="#step-2-configuring-eii" title="Permalink to this headline">¶</a></h2>
 <p>This step should be done from your development system, and not the edge node you
 are deploying EII onto. The configuration you will do during this setup will
@@ -760,16 +677,16 @@ characters that get escaped in a weird way when the values are populated into
 your deployment manifest leading to configuration errors.</p>
 <p><strong>IMPORTANT NOTE #2:</strong></p>
 <p>If you wish to use the sample EII ONNX UDF, now is the time to configure the UDF
-to run. See the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#sample-eii-onnx-udf">Sample EII ONNX UDF</a> configuration section
+to run. See the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#sample-eii-onnx-udf">Sample EII ONNX UDF</a> configuration section
 below for how to configure the UDF.</p>
-<div class="section" id="id3">
+<section id="id3">
 <h3>Expected Result<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Once the following step has been completed, then you should have correctly configured
 <code class="docutils literal notranslate"><span class="pre">.env</span></code> files to deploying EII via Azure. If some of the values were incorrect, then
 you will encounter issues in the proceeding steps.</p>
-</div>
-</div>
-<div class="section" id="step-3-configuring-azure-iot-deployment-manifest">
+</section>
+</section>
+<section id="step-3-configuring-azure-iot-deployment-manifest">
 <h2>Step 3 - Configuring Azure IoT Deployment Manifest<a class="headerlink" href="#step-3-configuring-azure-iot-deployment-manifest" title="Permalink to this headline">¶</a></h2>
 <p>Once you have your target edge system provisioned and EII configured, you need to
 create your Azure IoT Hub deployment manifest. The Azure Bridge provides some
@@ -777,7 +694,7 @@ convenience scripts to ease this process.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>These steps should be done from your development system setup in
-the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a> section. Note, that for testing
+the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a> section. Note, that for testing
 and development purposes, these could be the same system.</p>
 </div>
 <p>To generate your deployment manifest template, execute the following command:</p>
@@ -842,17 +759,17 @@ ia_video_analytics manifest files as required.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<div class="section" id="id4">
+<section id="id4">
 <h3>Expected Result<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>If all of the commands above ran correctly, then you will have a valid <code class="docutils literal notranslate"><span class="pre">*.template.json</span></code>
 file and a valid <code class="docutils literal notranslate"><span class="pre">config/*.amd64.json</span></code> file.</p>
 <p>If, for some reason, these commands fail, revisit Step 2 and make sure all of your
 environmental variables are set correctly. And if that does not resolve your issue,
 verify that your development system is setup correctly by revisiting the
-<a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a> section.</p>
-</div>
-</div>
-<div class="section" id="step-4-deployment">
+<a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a> section.</p>
+</section>
+</section>
+<section id="step-4-deployment">
 <h2>Step 4 - Deployment<a class="headerlink" href="#step-4-deployment" title="Permalink to this headline">¶</a></h2>
 <p>Now that you have generated your deployment manifest, deploy the modules to your
 Azure IoT Edge Device using the Azure CLI command shown below:</p>
@@ -863,7 +780,7 @@ Azure IoT Edge Device using the Azure CLI command shown below:</p>
 on the console with information on the deployment which it just initiated. If it
 failed, then the Azure CLI will output information on the potential reason for the
 failure.</p>
-<div class="section" id="expected-results">
+<section id="expected-results">
 <h3>Expected Results<a class="headerlink" href="#expected-results" title="Permalink to this headline">¶</a></h3>
 <p>Provided all of the setups above ran correctly, your edge node should now be running
 your Azure IoT Edge modules, the Azure Bridge, and the EII services you
@@ -897,17 +814,17 @@ Simple Subscriber service using the following command:</p>
 </pre></div>
 </div>
 <p>For more debugging info, see the following section.</p>
-</div>
-</div>
-<div class="section" id="helpful-debugging-commands">
+</section>
+</section>
+<section id="helpful-debugging-commands">
 <h2>Helpful Debugging Commands<a class="headerlink" href="#helpful-debugging-commands" title="Permalink to this headline">¶</a></h2>
 <p>If you are encountering issues, the following commands can help with debugging:</p>
 <ul class="simple">
 <li><p><strong>Azure IoT Edge Runtime Daemon Logs:</strong> <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-u</span> <span class="pre">iotedge</span> <span class="pre">-f</span></code></p></li>
 <li><p><strong>Container Logs:</strong> <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">-f</span> <span class="pre">&lt;CONTAINER-NAME&gt;</span></code></p></li>
 </ul>
-</div>
-<div class="section" id="final-notes">
+</section>
+<section id="final-notes">
 <h2>Final Notes<a class="headerlink" href="#final-notes" title="Permalink to this headline">¶</a></h2>
 <p>When deploying with Azure IoT Edge Runtime there are many security considerations
 to be taken into account. Please consult the following Microsoft resources regarding
@@ -918,51 +835,35 @@ the security in your deployments.</p>
 <li><p><a class="reference external" href="https://docs.microsoft.com/en-us/azure/iot-edge/iot-edge-certs">IoT Edge Certificates</a></p></li>
 <li><p><a class="reference external" href="https://azure.microsoft.com/en-us/blog/securing-the-intelligent-edge/">Securing the Intelligent Edge blob post</a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright (c) 2021 Intel Corporation.
-
-    </p>
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

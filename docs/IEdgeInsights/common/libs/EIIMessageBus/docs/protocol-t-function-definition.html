@@ -1,75 +1,37 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
-  
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>protocol_t Function Definition &mdash; EII Documentation v1.0 documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../../_static/graphviz.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../../_static/tabs.css" type="text/css" />
-  <link rel="stylesheet" href="../../../../../_static/contentui.css" type="text/css" />
-
-  
-  
-
-  
-  
-
-  
-
-  
+  <title>protocol_t Function Definition &mdash; EII Documentation v1.0 documentation</title><link rel="stylesheet" href="../../../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../../_static/contentui.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../../../../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
+  <script id="documentation_options" data-url_root="../../../../../" src="../../../../../_static/documentation_options.js"></script>
         <script src="../../../../../_static/jquery.js"></script>
         <script src="../../../../../_static/underscore.js"></script>
         <script src="../../../../../_static/doctools.js"></script>
         <script src="../../../../../_static/clipboard.min.js"></script>
         <script src="../../../../../_static/copybutton.js"></script>
         <script src="../../../../../_static/contentui.js"></script>
-    
-    <script type="text/javascript" src="../../../../../_static/js/theme.js"></script>
-
-    
+    <script src="../../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../../../../index.html" class="icon icon-home"> EII Documentation
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,19 +39,8 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">INTRODUCTION:</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p><span class="caption-text">INTRODUCTION:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../pages/introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../pages/introduction.html#terminology">Terminology</a><ul>
@@ -177,12 +128,19 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../pages/release.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/release.html#eii-v2-6-new-features">EII v2.6 New Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/release.html#known-issues">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../../pages/release.html#id1">Features</a></li>
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">CORE LIBRARIES:</span></p>
+</li>
+</ul>
+<p><span class="caption-text">CORE LIBRARIES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../pages/msgbus.html">EII Message Bus</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../pages/msgbus.html#id1">EII Message Bus</a><ul>
@@ -270,7 +228,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
+<p><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../pages/video.html">Working with Video Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../pages/video.html#videoingestion-module">VideoIngestion Module</a><ul>
@@ -346,7 +304,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
+<p><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../pages/timeseries.html">Working with Timeseries Data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../pages/timeseries.html#telegraf">Telegraf</a><ul>
@@ -398,7 +356,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">EXPORT SERVICES:</span></p>
+<p><span class="caption-text">EXPORT SERVICES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../pages/azure.html">Azure Bridge</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../pages/azure.html#pre-requisites-setup">Pre-Requisites / Setup</a><ul>
@@ -464,7 +422,7 @@
 </ul>
 </li>
 </ul>
-<p class="caption"><span class="caption-text">ADDITIONAL INFO:</span></p>
+<p><span class="caption-text">ADDITIONAL INFO:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../../pages/tools.html">EII Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
@@ -557,178 +515,121 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../../../index.html">EII Documentation</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../../../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li><code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> Function Definition</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
             <a href="../../../../../_sources/IEdgeInsights/common/libs/EIIMessageBus/docs/protocol-t-function-definition.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="protocol-t-function-definition">
+             
+  <section id="protocol-t-function-definition">
 <h1><code class="docutils literal notranslate"><span class="pre">protocol_t</span></code> Function Definition<a class="headerlink" href="#protocol-t-function-definition" title="Permalink to this headline">¶</a></h1>
 <p>The following describes the purpose of each of the function pointers above.</p>
-<div class="section" id="destroy">
+<section id="destroy">
 <h2><code class="docutils literal notranslate"><span class="pre">destroy()</span></code><a class="headerlink" href="#destroy" title="Permalink to this headline">¶</a></h2>
 <p>Responsible for destroying the <code class="docutils literal notranslate"><span class="pre">proto_ctx</span></code> variable and freeing any memory
 used by the context.</p>
-</div>
-<div class="section" id="publisher-new">
+</section>
+<section id="publisher-new">
 <h2><code class="docutils literal notranslate"><span class="pre">publisher_new()</span></code><a class="headerlink" href="#publisher-new" title="Permalink to this headline">¶</a></h2>
 <p>Initializes a new publisher context for the given <code class="docutils literal notranslate"><span class="pre">topic</span></code>.</p>
-</div>
-<div class="section" id="publisher-publish">
+</section>
+<section id="publisher-publish">
 <h2><code class="docutils literal notranslate"><span class="pre">publisher_publish()</span></code><a class="headerlink" href="#publisher-publish" title="Permalink to this headline">¶</a></h2>
 <p>Publishes the given message value using the publisher context.</p>
-</div>
-<div class="section" id="publisher-destroy">
+</section>
+<section id="publisher-destroy">
 <h2><code class="docutils literal notranslate"><span class="pre">publisher_destroy()</span></code><a class="headerlink" href="#publisher-destroy" title="Permalink to this headline">¶</a></h2>
 <p>Destroys a context for a publisher freeing any sockets, memory, etc. used by
 the publisher.</p>
-</div>
-<div class="section" id="subscriber-new">
+</section>
+<section id="subscriber-new">
 <h2><code class="docutils literal notranslate"><span class="pre">subscriber_new()</span></code><a class="headerlink" href="#subscriber-new" title="Permalink to this headline">¶</a></h2>
 <p>Subscribe to the given topic and output a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> to use with the <code class="docutils literal notranslate"><span class="pre">recv_*</span></code>
 methods to receive the publications for the topic.</p>
-</div>
-<div class="section" id="service-new">
+</section>
+<section id="service-new">
 <h2><code class="docutils literal notranslate"><span class="pre">service_new()</span></code><a class="headerlink" href="#service-new" title="Permalink to this headline">¶</a></h2>
 <p>Create a new <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure which can be used to received requests
 from clients and send responses to received requests using the <code class="docutils literal notranslate"><span class="pre">response()</span></code>
 method.</p>
-</div>
-<div class="section" id="service-get">
+</section>
+<section id="service-get">
 <h2><code class="docutils literal notranslate"><span class="pre">service_get()</span></code><a class="headerlink" href="#service-get" title="Permalink to this headline">¶</a></h2>
 <p>Create a new <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure which can be used to issue requests to and
 received responses from the specified service.</p>
-</div>
-<div class="section" id="recv-ctx-destroy">
+</section>
+<section id="recv-ctx-destroy">
 <h2><code class="docutils literal notranslate"><span class="pre">recv_ctx_destroy()</span></code><a class="headerlink" href="#recv-ctx-destroy" title="Permalink to this headline">¶</a></h2>
 <p>Destroy a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure.</p>
-</div>
-<div class="section" id="request">
+</section>
+<section id="request">
 <h2><code class="docutils literal notranslate"><span class="pre">request()</span></code><a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h2>
 <p>Issue a request to the service using the given <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code>.</p>
-</div>
-<div class="section" id="response">
+</section>
+<section id="response">
 <h2><code class="docutils literal notranslate"><span class="pre">response()</span></code><a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h2>
 <p>Send a response to a requesting client using the given <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> structure.</p>
-</div>
-<div class="section" id="recv-wait">
+</section>
+<section id="recv-wait">
 <h2><code class="docutils literal notranslate"><span class="pre">recv_wait()</span></code><a class="headerlink" href="#recv-wait" title="Permalink to this headline">¶</a></h2>
 <p>Blocking function for receiving a message from a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> context structure.</p>
-</div>
-<div class="section" id="recv-timedwait">
+</section>
+<section id="recv-timedwait">
 <h2><code class="docutils literal notranslate"><span class="pre">recv_timedwait()</span></code><a class="headerlink" href="#recv-timedwait" title="Permalink to this headline">¶</a></h2>
 <p>Function for receiving messages from a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> context structure which
 times out after the given timeout. The timeout shall always be milliseconds.</p>
-</div>
-<div class="section" id="recv-nowait">
+</section>
+<section id="recv-nowait">
 <h2><code class="docutils literal notranslate"><span class="pre">recv_nowait()</span></code><a class="headerlink" href="#recv-nowait" title="Permalink to this headline">¶</a></h2>
 <p>Receive a message from a <code class="docutils literal notranslate"><span class="pre">recv_ctx_t</span></code> context structure if a message is available,
 otherwise return immediately.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright (c) 2021 Intel Corporation.
-
-    </p>
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

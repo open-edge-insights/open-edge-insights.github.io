@@ -2,27 +2,27 @@
 **Contents**
 
 
-* `ZeroMQ Broker <http://localhost:7645/IEdgeInsights/ZmqBroker/#zeromq-broker>`_
+* `ZeroMQ Broker <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#zeromq-broker>`_
 
-  * `Overview <http://localhost:7645/IEdgeInsights/ZmqBroker/#overview>`_
-  * `Security <http://localhost:7645/IEdgeInsights/ZmqBroker/#security>`_
+  * `Overview <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#overview>`_
+  * `Security <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#security>`_
 
-    * `IPC <http://localhost:7645/IEdgeInsights/ZmqBroker/#ipc>`_
-    * `TCP <http://localhost:7645/IEdgeInsights/ZmqBroker/#tcp>`_
+    * `IPC <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#ipc>`_
+    * `TCP <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#tcp>`_
 
-  * `Performance Implications <http://localhost:7645/IEdgeInsights/ZmqBroker/#performance-implications>`_
-  * `Configuration <http://localhost:7645/IEdgeInsights/ZmqBroker/#configuration>`_
+  * `Performance Implications <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#performance-implications>`_
+  * `Configuration <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#configuration>`_
 
-    * `Application/Service Configuration <http://localhost:7645/IEdgeInsights/ZmqBroker/#applicationservice-configuration>`_
-    * `Interface Configuration <http://localhost:7645/IEdgeInsights/ZmqBroker/#interface-configuration>`_
+    * `Application/Service Configuration <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#applicationservice-configuration>`_
+    * `Interface Configuration <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#interface-configuration>`_
 
-  * `Docker <http://localhost:7645/IEdgeInsights/ZmqBroker/#docker>`_
-  * `Connecting EII Services to the ZeroMQ Broker <http://localhost:7645/IEdgeInsights/ZmqBroker/#connecting-eii-services-to-the-zeromq-broker>`_
-  * `Bare Metal <http://localhost:7645/IEdgeInsights/ZmqBroker/#bare-metal>`_
+  * `Docker <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#docker>`_
+  * `Connecting EII Services to the ZeroMQ Broker <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#connecting-eii-services-to-the-zeromq-broker>`_
+  * `Bare Metal <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#bare-metal>`_
 
-    * `Compilation <http://localhost:7645/IEdgeInsights/ZmqBroker/#compilation>`_
-    * `Usage <http://localhost:7645/IEdgeInsights/ZmqBroker/#usage>`_
-    * `Running Unit Tests <http://localhost:7645/IEdgeInsights/ZmqBroker/#running-unit-tests>`_
+    * `Compilation <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#compilation>`_
+    * `Usage <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#usage>`_
+    * `Running Unit Tests <https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#running-unit-tests>`_
 
 ZeroMQ Broker
 =============

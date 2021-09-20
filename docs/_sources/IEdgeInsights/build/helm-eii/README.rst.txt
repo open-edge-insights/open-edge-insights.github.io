@@ -2,15 +2,15 @@
 **Contents**
 
 
-* `EII provision and deployment <http://localhost:7645/IEdgeInsights/build/helm-eii/#eii-provision-and-deployment>`_
+* `EII provision and deployment <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#eii-provision-and-deployment>`_
 
-  * `Pre requisites <http://localhost:7645/IEdgeInsights/build/helm-eii/#pre-requisites>`_
-  * `Update the helm charts directory <http://localhost:7645/IEdgeInsights/build/helm-eii/#update-the-helm-charts-directory>`_
-  * `Provision and deploy in the kubernetes node. <http://localhost:7645/IEdgeInsights/build/helm-eii/#provision-and-deploy-in-the-kubernetes-node>`_
-  * `Provision and deploy mode in times switching between dev and prod mode OR changing the usecase <http://localhost:7645/IEdgeInsights/build/helm-eii/#provision-and-deploy-mode-in-times-switching-between-dev-and-prod-mode-or-changing-the-usecase>`_
-  * `Steps to enable Accelarators <http://localhost:7645/IEdgeInsights/build/helm-eii/#steps-to-enable-accelarators>`_
-  * `Steps for Enabling GiGE Camera with helm <http://localhost:7645/IEdgeInsights/build/helm-eii/#steps-for-enabling-gige-camera-with-helm>`_
-  * `Accessing Web Visualizer and EtcdUI <http://localhost:7645/IEdgeInsights/build/helm-eii/#accessing-web-visualizer-and-etcdui>`_
+  * `Pre requisites <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#pre-requisites>`_
+  * `Update the helm charts directory <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#update-the-helm-charts-directory>`_
+  * `Provision and deploy in the kubernetes node. <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#provision-and-deploy-in-the-kubernetes-node>`_
+  * `Provision and deploy mode in times switching between dev and prod mode OR changing the usecase <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#provision-and-deploy-mode-in-times-switching-between-dev-and-prod-mode-or-changing-the-usecase>`_
+  * `Steps to enable Accelarators <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#steps-to-enable-accelarators>`_
+  * `Steps for Enabling GiGE Camera with helm <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#steps-for-enabling-gige-camera-with-helm>`_
+  * `Accessing Web Visualizer and EtcdUI <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#accessing-web-visualizer-and-etcdui>`_
 
 EII provision and deployment
 ============================
@@ -273,7 +273,7 @@ Steps to enable Accelarators
       python3 builder.py
 
 #. 
-   Follow the `Deployment Steps <http://localhost:7645/IEdgeInsights/build/helm-eii/##Provision-and-deploy-in-the-kubernetes-node>`_
+   Follow the `Deployment Steps <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/##Provision-and-deploy-in-the-kubernetes-node>`_
 
 #. 
    Verify the respecitve workloads are running based on the ``nodeSelector`` constraints.
@@ -345,7 +345,7 @@ Steps for Enabling GiGE Camera with helm
 
 
    #. 
-      Follow the `Deployment Steps <http://localhost:7645/IEdgeInsights/build/helm-eii/##Provision-and-deploy-in-the-kubernetes-node>`_
+      Follow the `Deployment Steps <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/##Provision-and-deploy-in-the-kubernetes-node>`_
 
    #. 
       Verify ``pod``\ ip & ``host`` ip are same as per Configured ``Ethernet`` interface by using below command.

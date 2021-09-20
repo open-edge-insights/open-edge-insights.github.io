@@ -5,11 +5,11 @@
 **Contents**
 
 
-* `OpcuaExport <http://localhost:7645/IEdgeInsights/OpcuaExport/#opcuaexport>`_
+* `OpcuaExport <https://open-edge-insights.github.io/IEdgeInsights/OpcuaExport/#opcuaexport>`_
 
-  * `Configuration <http://localhost:7645/IEdgeInsights/OpcuaExport/#configuration>`_
-  * `Service bring up <http://localhost:7645/IEdgeInsights/OpcuaExport/#service-bring-up>`_
-  * `Known issues <http://localhost:7645/IEdgeInsights/OpcuaExport/#known-issues>`_
+  * `Configuration <https://open-edge-insights.github.io/IEdgeInsights/OpcuaExport/#configuration>`_
+  * `Service bring up <https://open-edge-insights.github.io/IEdgeInsights/OpcuaExport/#service-bring-up>`_
+  * `Known issues <https://open-edge-insights.github.io/IEdgeInsights/OpcuaExport/#known-issues>`_
 
 OpcuaExport
 ===========

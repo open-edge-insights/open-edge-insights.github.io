@@ -2,12 +2,12 @@
 **Contents**
 
 
-* `EII TimeSeriesProfiler <http://localhost:7645/IEdgeInsights/tools/TimeSeriesProfiler/#eii-timeseriesprofiler>`_
+* `EII TimeSeriesProfiler <https://open-edge-insights.github.io/IEdgeInsights/tools/TimeSeriesProfiler/#eii-timeseriesprofiler>`_
 
-  * `EII pre-requisites <http://localhost:7645/IEdgeInsights/tools/TimeSeriesProfiler/#eii-pre-requisites>`_
-  * `EII TimeSeriesProfiler modes <http://localhost:7645/IEdgeInsights/tools/TimeSeriesProfiler/#eii-timeseriesprofiler-modes>`_
-  * `EII TimeSeriesProfiler configurations <http://localhost:7645/IEdgeInsights/tools/TimeSeriesProfiler/#eii-timeseriesprofiler-configurations>`_
-  * `Running TimeSeriesProfiler <http://localhost:7645/IEdgeInsights/tools/TimeSeriesProfiler/#running-timeseriesprofiler>`_
+  * `EII pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/tools/TimeSeriesProfiler/#eii-pre-requisites>`_
+  * `EII TimeSeriesProfiler modes <https://open-edge-insights.github.io/IEdgeInsights/tools/TimeSeriesProfiler/#eii-timeseriesprofiler-modes>`_
+  * `EII TimeSeriesProfiler configurations <https://open-edge-insights.github.io/IEdgeInsights/tools/TimeSeriesProfiler/#eii-timeseriesprofiler-configurations>`_
+  * `Running TimeSeriesProfiler <https://open-edge-insights.github.io/IEdgeInsights/tools/TimeSeriesProfiler/#running-timeseriesprofiler>`_
 
 EII TimeSeriesProfiler
 ======================
