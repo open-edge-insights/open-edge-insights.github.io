@@ -57,8 +57,8 @@
 <li class="toctree-l1"><a class="reference internal" href="running.html">Running Intel® Edge Insights for Industrial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="running.html#minimum-system-requirements">Minimum System Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#downloading-and-installation-from-opensource-github-repository">Downloading and Installation from Opensource Github Repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#generate-deployment-and-configuration-files">Generate deployment and configuration files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="running.html#eii-prerequisites-installation">EII Prerequisites installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#generating-consolidated-deployment-and-configuration-files">Generating consolidated deployment and configuration files:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#generating-consolidated-docker-compose-yml-and-eii-config-json-files">Generating consolidated docker-compose.yml and eii_config.json files:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#using-builder-script">Using builder script</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="running.html#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services">Running builder to generate the above listed consolidated files for all applicable EII services</a></li>
@@ -109,6 +109,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#eii-provision-and-deployment">EII provision and deployment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="running.html#pre-requisites">Pre requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#update-the-helm-charts-directory">Update the helm charts directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#provision-and-deploy-in-the-kubernetes-node">Provision and deploy in the kubernetes node.</a></li>
@@ -120,8 +123,16 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#eii-uninstaller">EII Uninstaller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#debugging">Debugging</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-through-the-logs">Debugging Through the Logs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-through-the-logs">Debugging Through the Logs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#working-with-eii-docker-containers">working with EII Docker* Containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#useful-docker-commands">Useful Docker* Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#gstreamer-valid-plugins-element">GStreamer Valid Plugins / Element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#debugging-the-video-ingestion-container">Debugging the Video Ingestion Container</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#enablement-of-x11-forwarding-for-eii-visualizer-container">Enablement of X11 Forwarding for EII Visualizer Container</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#debugging-options">Debugging options</a></li>
 </ul>
@@ -130,6 +141,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-1">EII v2.6.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6">EII v2.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release.html#features">Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="release.html#known-issues">Known Issues</a></li>
@@ -184,7 +199,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="eiiConfig.html">EII Configuration Management</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd">etcd*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd">etcd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#configmgr">ConfigMgr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#tool-to-generate-configuration-management-ui-service">Tool to Generate Configuration Management UI Service</a><ul>
@@ -243,26 +258,43 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#id4">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#eii-sample-udfs">EII Sample UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#custom-udfs">Custom Udfs</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#udf-writing-guide">UDF Writing Guide</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#sample-udfs">Sample UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#native-udfs">Native UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#chaining-of-udfs">Chaining of UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#combination-of-udfs-with-ingestors">Combination of UDFs with ingestors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#time-series-analytics">Time-series Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-multi-node-cluster-provision-and-deployment">EII multi node cluster provision and deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#without-orchestrator"><strong>Without orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#developing-python-udf-using-jupyter-notebook">Developing python UDF using Jupyter Notebook</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#jupyter-notebook-pre-requisites">Jupyter Notebook pre-requisites</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#running-jupyter-notebook">Running Jupyter Notebook</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-tools">EII tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#elk-usage-for-centralized-logging-of-eii-services-logs">ELK usage for centralized logging of EII services logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-uninstaller">EII Uninstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#debugging-options">Debugging options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#troubleshooting-guide">Troubleshooting guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-udfloader">EII UDFLoader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#introduction"><strong>Introduction</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#udf-configuration"><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">Configuration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#udf-writing-guide"><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">Writing</span> <span class="pre">Guide</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#sample-udfs"><code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">UDFs</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#native-udfs"><code class="docutils literal notranslate"><span class="pre">Native</span> <span class="pre">UDFs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#construction-of-metadata-in-udf"><code class="docutils literal notranslate"><span class="pre">Construction</span> <span class="pre">of</span> <span class="pre">Metadata</span> <span class="pre">in</span> <span class="pre">UDF</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#chaining-of-udfs"><code class="docutils literal notranslate"><span class="pre">Chaining</span> <span class="pre">of</span> <span class="pre">UDFs</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#combination-of-udfs-with-ingestors"><code class="docutils literal notranslate"><span class="pre">Combination</span> <span class="pre">of</span> <span class="pre">UDFs</span> <span class="pre">with</span> <span class="pre">ingestors</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -275,32 +307,21 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#web-visualizer-module">Web Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id39">Using Labels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#id43">Metadata Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id33">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#id37">Metadata Structure</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#imagestore-module">ImageStore Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id44">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id38">Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id46">Configuration</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#gigeconfigtool-and-export-settings-from-basler-pylon-feature-system">GigEConfigTool and Export Settings from Basler Pylon Feature System</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#generating-pylon-feature-system-file-pfs">Generating Pylon Feature System File (PFS)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#executing-gigeconfig-tool">Executing GigEConfig Tool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#discoverhistory">DiscoverHistory</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-discoverhistory-service">Steps to build and run DiscoverHistory service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#list-of-sample-select-queries">List of sample select queries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#to-run-the-tool-in-zmq-ipc-mode">To run the tool in zmq_ipc mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id40">Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -314,45 +335,30 @@
 <li class="toctree-l3"><a class="reference internal" href="#optional-adding-multiple-telegraf-instances">Optional: Adding multiple telegraf instances</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#enabling-eii-message-bus-input-plugin-in-telegraf">Enabling EII message bus input plugin in Telegraf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#enabling-eii-message-bus-output-plugin-in-telegraf">Enabling EII message bus Output plugin in Telegraf</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#using-input-plugin">Using input plugin</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin">Advanced: Multiple plugin sections of EII message bus output plugin</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#kapacitor">Kapacitor</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#starting-the-example">Starting the example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#purpose-of-kapacitor">Purpose of Kapacitor</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#kapacitor-input-and-output-plugins">Kapacitor input and output plugins</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="#purpose-of-kapacitor">Purpose of Kapacitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#purpose-of-plugins">Purpose of plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#using-input-plugin">Using input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">Using input plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-output-plugin">Using output plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#user-defined-functions">User-defined Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-udfs-available-in-the-udfs-directory">Custom UDFs available in the udfs directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#steps-to-configure-the-udfs-in-kapacitor">Steps to configure the UDFs in kapacitor.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id48">Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#id49">Steps to run the samples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id65">Steps to verify the results in single task with multiple UDFs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id66">Steps to verify the results in multiple tasks with single UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id55">Steps to run the samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id71">Steps to verify the results in single task with multiple UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id72">Steps to verify the results in multiple tasks with single UDF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#working-with-kapacitor">Working with Kapacitor*</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#influxdb">InfluxDB</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#configuring-influxdb">Configuring InfluxDB*</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#influxdbconnector-module">InfluxDBConnector Module</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#influxdbconnector-configuration">InfluxDBConnector Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#influxdbconnector-installation">InfluxDBConnector Installation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#eii-timeseriesprofiler">EII TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#eii-pre-requisites">EII pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#eii-timeseriesprofiler-modes">EII TimeSeriesProfiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#procedure-to-run-grafana">Procedure to run Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#steps-to-execute-query">Steps to execute query</a></li>
 </ul>
 </li>
 </ul>
@@ -406,8 +412,16 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="opcua.html">OpcuaExport Application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="opcua.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opcua.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opcua.html#opcuaexport">OpcuaExport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#opcua-client-apps">OPCUA client apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="opcua.html#note">Note:</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport</a><ul>
@@ -421,6 +435,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="restdata.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#faqs">FAQs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#for-setting-environment-proxy-settings">For setting environment proxy settings</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -463,33 +481,40 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#id39">Jupyter Notebook usage to develop python UDFs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#id40">Jupyter Notebook pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id45">Running Jupyter Notebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id45">Running Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id48">MQTT publisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id49">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id51">Software Trigger Utility for VideoIngestion Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id52">Software Trigger Utilily pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id56">Configuration file:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id59">Running Software Trigger Utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id50">MQTT publisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id51">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id62">EII TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id63">EII pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id66">EII TimeSeriesProfiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id70">EII TimeSeriesProfiler configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id71">Running TimeSeriesProfiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id53">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id54">Software Trigger Utilily pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id58">Configuration file:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id61">Running Software Trigger Utility</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id91">EII Video Profiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id92">EII Video Profiler pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id95">EII Video Profiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id100">EII Video Profiler configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id103">Running Video Profiler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id111">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id113">Benchmarking with multi instance config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id64">EII TimeSeriesProfiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id65">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id68">EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id72">EII TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id73">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id93">EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id94">EII Video Profiler pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id97">EII Video Profiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id102">EII Video Profiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id105">Running Video Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id113">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id115">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id117">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -1026,10 +1051,67 @@ Like any other EII service Telegraf has ‘config’ and ‘interfaces’  secti
 <span class="n">json_strict</span> <span class="o">=</span> <span class="n">true</span>
 </pre></div>
 </div>
+<section id="using-input-plugin">
+<h4>Using input plugin<a class="headerlink" href="#using-input-plugin" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>By default EII message bus input plugin is disabled. To Configure the EII input plugin, uncomment the following lines in <a href="#id28"><span class="problematic" id="id29">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf_devmode.conf">config/Telegraf/Telegraf_devmode.conf</a>** and  <a href="#id30"><span class="problematic" id="id31">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf_devmode.conf">config/Telegraf/Telegraf_devmode.conf</a>**</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="n">inputs</span><span class="o">.</span><span class="n">eii_msgbus</span><span class="p">]]</span>
+<span class="n">instance_name</span> <span class="o">=</span> <span class="s2">&quot;default&quot;</span>
+<span class="n">data_format</span> <span class="o">=</span> <span class="s2">&quot;json&quot;</span>
+<span class="n">json_strict</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">tag_keys</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;my_tag_1&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;my_tag_2&quot;</span>
+<span class="p">]</span>
+<span class="n">json_string_fields</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s2">&quot;field1&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;field2&quot;</span>
+<span class="p">]</span>
+<span class="n">json_name_key</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Edit <a class="reference external" href="https://github.com/open-edge-insights/ts-telegraf/blob/master/config.json">config.json</a> to add EII message bus input plugin.
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="o">...</span>
+      <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;topics_info&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s2">&quot;topic-pfx1:temperature:10:2&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;topic-pfx2:pressure::&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;topic-pfx3:humidity&quot;</span>
+          <span class="p">],</span>
+          <span class="s2">&quot;queue_len&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+          <span class="s2">&quot;num_worker&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+          <span class="s2">&quot;profiling&quot;</span><span class="p">:</span> <span class="s2">&quot;false&quot;</span>
+      <span class="p">},</span>
+      <span class="o">...</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s2">&quot;Subscribers&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+              <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;Type&quot;</span><span class="p">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;EndPoint&quot;</span><span class="p">:</span> <span class="s2">&quot;ia_zmq_broker:60515&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;Topics&quot;</span><span class="p">:</span> <span class="p">[</span>
+                  <span class="s2">&quot;*&quot;</span>
+              <span class="p">],</span>
+              <span class="s2">&quot;PublisherAppName&quot;</span><span class="p">:</span> <span class="s2">&quot;ZmqBroker&quot;</span>
+          <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="o">...</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
 </section>
 <section id="advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin">
 <h3>Advanced: Multiple plugin sections of EII message bus output plugin<a class="headerlink" href="#advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin" title="Permalink to this headline">¶</a></h3>
-<p>Like any other Telegraf plugin user can keep multiple configuration sections of the EII message bus output plugin in the <a href="#id28"><span class="problematic" id="id29">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf">config/Telegraf/Telegraf.conf</a>** file.</p>
+<p>Like any other Telegraf plugin user can keep multiple configuration sections of the EII message bus output plugin in the <a href="#id34"><span class="problematic" id="id35">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf">config/Telegraf/Telegraf.conf</a>** file.</p>
 <p><em>The Telegraf’s ETCD configuration for the same is</em></p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
     <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -1166,9 +1248,6 @@ ii) UDF and kapacitor interaction <a class="reference external" href="https://do
 and in developer mode the config file would be
 <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf">Kapacitor/config/kapacitor_devmode.conf</a></p></li>
 </ul>
-<section id="kapacitor-input-and-output-plugins">
-<h4>Kapacitor input and output plugins<a class="headerlink" href="#kapacitor-input-and-output-plugins" title="Permalink to this headline">¶</a></h4>
-</section>
 </section>
 <section id="purpose-of-plugins">
 <h3>Purpose of plugins<a class="headerlink" href="#purpose-of-plugins" title="Permalink to this headline">¶</a></h3>
@@ -1184,8 +1263,8 @@ an independent analytical engine.</p>
 </pre></div>
 </div>
 </section>
-<section id="using-input-plugin">
-<h3>Using input plugin<a class="headerlink" href="#using-input-plugin" title="Permalink to this headline">¶</a></h3>
+<section id="id38">
+<h3>Using input plugin<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>Configure the EII input plugin in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf">config/kapacitor_devmode.conf</a> and <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf">config/kapacitor_devmode.conf</a>
 For example:</p>
@@ -1434,7 +1513,7 @@ it is shown in the below example.</p>
 <li><p>begin_batch():</p></li>
 <li><p>point():</p></li>
 </ol>
-<p>For further details of these UDFs, kindly refer to URL: <a href="#id89"><span class="problematic" id="id90">`https://docs.influxdata.com/kapacitor/v1.5/guides/socket_udf/`_</span></a></p>
+<p>For further details of these UDFs, kindly refer to URL: <a class="reference external" href="https://docs.influxdata.com/kapacitor/v1.5/guides/socket_udf/">https://docs.influxdata.com/kapacitor/v1.5/guides/socket_udf/</a></p>
 <p><strong>Contents</strong></p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/samples/#introduction-to-samples-of-multiple-udfs-in-a-single-task-and-multiple-tasks-with-single-udf">Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF</a></p>
@@ -1445,8 +1524,6 @@ it is shown in the below example.</p>
 </ul>
 </li>
 </ul>
-<section id="id48">
-<h4>Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h4>
 <p>Implementation of 2 simple examples to showcase the use of a single task with multiple UDFs and multiple tasks with single UDF in Kapacitor.</p>
 <ul>
 <li><p>Sample implemented in single task with multiple UDFs.
@@ -1458,9 +1535,8 @@ MQTT Publisher is publishing 2 parameters (temperature and humidity). One TICK s
 <li><p>Samples directory contain 3 directories, kapacitor_config which is common to both the samples and the tick scripts and eii config for each sample is kept in respective directory.</p></li>
 </ul>
 </section>
-</section>
-<section id="id49">
-<h3>Steps to run the samples<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h3>
+<section id="id55">
+<h3>Steps to run the samples<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
 <li><p>It is recommended to take a backup of the following original files before running the below mentioned steps as it will replace the original file.</p></li>
 </ol>
@@ -1516,8 +1592,8 @@ $ cp single_udf_multi_tasks/tick_scripts/temperature_classifier.tick ../tick_scr
 <li><p>To start the mqtt-publisher with temperature and humidity data, please refer <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/README.md">tools/mqtt-publisher/README.md</a></p></li>
 </ol>
 </section>
-<section id="id65">
-<h3>Steps to verify the results in single task with multiple UDFs<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h3>
+<section id="id71">
+<h3>Steps to verify the results in single task with multiple UDFs<a class="headerlink" href="#id71" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>InfluxDBConnector logs output</p>
 <p>Command</p>
@@ -1595,8 +1671,8 @@ $ cp single_udf_multi_tasks/tick_scripts/temperature_classifier.tick ../tick_scr
 </li>
 </ul>
 </section>
-<section id="id66">
-<h3>Steps to verify the results in multiple tasks with single UDF<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h3>
+<section id="id72">
+<h3>Steps to verify the results in multiple tasks with single UDF<a class="headerlink" href="#id72" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>InfluxDBConnector logs output</p>
 <p>Command</p>
@@ -1729,16 +1805,87 @@ consideration the needs/provides pattern, four general node use cases can be def
 <p><strong>need a batch and provide a batch</strong> - for example, when identifying outliers in a batch of data.</p>
 <p><strong>need a stream and provide a batch</strong> - for example, when grouping together similar data points.</p>
 <p><strong>need a stream and provide a stream</strong> - for example, when applying a mathematical function like a logarithm to a value in a point</p>
-<p>More details and documentation on the TICK Scripting can be found at <a href="#id91"><span class="problematic" id="id92">`https://docs.influxdata.com/kapacitor/v1.4/tick/introduction/`_</span></a></p>
+<p>More details and documentation on the TICK Scripting can be found at <a class="reference external" href="https://docs.influxdata.com/kapacitor/v1.4/tick/introduction/">https://docs.influxdata.com/kapacitor/v1.4/tick/introduction/</a></p>
+<ol class="arabic simple">
+<li><p>Grafana is an open source metric analytics &amp; visualization suite. It is most commonly used for visualizing time series data for infrastructure and        application analytics but many use it in other domains including industrial sensors, home automation, weather, and process control.</p></li>
+<li><p>Grafana supports many different storage backends for our time series data (Data Source). Here in EII we are using InfluxDB as datasource.</p></li>
+<li><p>Grafana connects to the InfluxDB datasource which has been preconfigured as a part of grafana setup. The data source i.e. ia_influxdbconnector service must be running in order for grafana to collect time series data.</p></li>
+<li><p>Once the data source is working, we can visualize the incoming data using the preconfigured dashboard. We can aslo edit the dashboard as per our convenience.</p></li>
+</ol>
 <p>There is a sample application in EIIv2.x used for generating random temperature sensor data.
 This data is streamed through mqtt to influxDB with the high-level flow below explained in
 Section 10.3.1.</p>
 <p>The high-level flow of the data in the example can be seen as
-<strong>mqtt-temp-sensor?Telegraf?Influx?Kapacitor?Influx</strong>.</p>
+<strong>mqtt-temp-sensor -&gt; Telegraf -&gt; Influx -&gt; Kapacitor -&gt; Influx</strong>.</p>
 <p>The classified results can be visualized using Grafana as per the preconfigured example in Figure 8.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../_images/grafana-web-ui.png"><img alt="../_images/grafana-web-ui.png" src="../_images/grafana-web-ui.png" style="width: 521.5px; height: 296.5px;" /></a>
 </figure>
+</section>
+<section id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt><a class="reference external" href="https://github.com/open-edge-insights/ts-grafana/blob/master/dashboard.json">dashboard.json</a></dt><dd><p>This is the dashboard json file that is loaded when grafana starts. It has been preconfigured to display time-series data.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://github.com/open-edge-insights/ts-grafana/blob/master/dashboard_sample.yml">dashboard_sample.yml</a></dt><dd><p>This is the config file for all the dashboards. It specifies the path where all the dashboard json files will be looked for.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://github.com/open-edge-insights/ts-grafana/blob/master/datasource_sample.yml">datasource_sample.yml</a></dt><dd><p>This is the config file for setting up the datasource. It has got various fields for datasource configuration.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><a class="reference external" href="https://github.com/open-edge-insights/ts-grafana/blob/master/grafana_template.ini">grafana_template.ini</a></dt><dd><p>This is the config for Grafana itself. It specifies how grafana should start up, once it has been configured.</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>NOTE: The contents of these files can be edited according to the requirement.</p>
+</section>
+<section id="procedure-to-run-grafana">
+<h3>Procedure to run Grafana<a class="headerlink" href="#procedure-to-run-grafana" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Open <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/docker-compose.yml">docker-compose.yml</a> and uncomment ia_grafana.</p></li>
+<li><p>Check ia_influxdbconnector, ia_kapacitor, ia_telegraph are running for time-series data.</p></li>
+<li><p>Check <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/publisher_temp.sh">publisher</a> is running.</p></li>
+</ol>
+<p>#. Use “docker-compose build” to build image.
+#.</p>
+<blockquote>
+<div><p>Use “docker-compose up” to run the service.</p>
+<ul>
+<li><p><strong>Prod mode [To be followed when running in PROD mode, skip if DEV mode]</strong></p>
+<p>Import ‘ca_certificate.pem’ from ‘build/provision/Certificates/ca’ Directory to your Browser Certifcates.</p>
+<p>Steps to Import Certificates</p>
+<ul class="simple">
+<li><p>Go to <em>Settings</em> in Chrome</p></li>
+<li><p>Search <em>Manage Certificates</em> Under Privacy &amp; Security</p></li>
+<li><p>Select Manage Certificates Option</p></li>
+<li><p>Under <em>Authorities</em> Tab Click Import Button</p></li>
+<li><p>With Import Wizard navigate to
+<em>IEdgeInsights/build/provision/Certificates/ca</em> Dir</p></li>
+<li><p>Select <em>ca_certificate.pem</em> file</p></li>
+<li><p>Select All CheckBoxes and Click Import Button.</p></li>
+</ul>
+</li>
+<li><p><strong>Dev mode [To be followed when running in DEV mode]</strong></p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Once ia_grafana service is up, go to <a class="reference external" href="http:/">http:/</a>/&lt; host ip &gt;:3000 .</p></li>
+<li><p>Provide default username: “admin” and password: “admin”.</p></li>
+<li><p>On “Home Dashboard” page, click on Dashboards icon from the left corner.</p></li>
+<li><p>Click on Manage Dashboards tab, it will list out all the preconfigured dashboards.</p></li>
+<li><p>Click on “Point_Data_Dashboard” which is a preconfigured dashboard.</p></li>
+<li><p>Click on “Panel Title” and select the “edit” option.</p></li>
+<li><p>Now you will be on Point_Data_Dashboard page and here you can make modifications to the query.</p></li>
+</ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Using the MQTT default port 1883 may result in the following error:</p>
@@ -1750,277 +1897,31 @@ Section 10.3.1.</p>
 </div>
 <p>Access Grafana from the web browser at <a class="reference external" href="http://localhost:3000">http://localhost:3000</a></p>
 </section>
-</section>
-<section id="influxdb">
-<h2>InfluxDB<a class="headerlink" href="#influxdb" title="Permalink to this headline">¶</a></h2>
-<p>InfluxDB is EII only timeseries data store and forms the central connecting piece between other EII components</p>
-<section id="configuring-influxdb">
-<h3>Configuring InfluxDB*<a class="headerlink" href="#configuring-influxdb" title="Permalink to this headline">¶</a></h3>
-<p>The configuration parameters for the ‘influxdb’ section are:</p>
-<dl class="simple">
-<dt>Influxdb_port</dt><dd><p>The port parameter need not be modified unless the default port for the InfluxDB is changed.</p>
-</dd>
-<dt>retention</dt><dd><p>This field signifies the retention duration of the data stored in InfluxDB. The format is in the form of “1h30m5s”. It is recommended to keep a retention policy in accordance with the use case and the disk size.</p>
-</dd>
-<dt>username, password</dt><dd><p>Provides an option to change the default username and password used for accessing the InfluxDB database.</p>
-</dd>
-<dt>DBName</dt><dd><p>The default DB name in InfluxDB used for storing the timeseries data is ?datain?. This field can be used to change this default DB name.</p>
-</dd>
-<dt>ssl</dt><dd><p>When True, use HTTPS instead of HTTP to connect to InfluxDB.</p>
-</dd>
-<dt>verify_ssl</dt><dd><p>When True, verify SSL certificates for HTTPS requests</p>
-</dd>
-</dl>
-<section id="influxdbconnector-module">
-<h4>InfluxDBConnector Module<a class="headerlink" href="#influxdbconnector-module" title="Permalink to this headline">¶</a></h4>
+<section id="steps-to-execute-query">
+<h3>Steps to execute query<a class="headerlink" href="#steps-to-execute-query" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p>InfluxDBConnector will subscribe to the InfluxDB and start the zmq
-publisher, zmq subscriber threads, and zmq request reply thread
+<li><p>Once landed on the <code class="docutils literal notranslate"><span class="pre">Point_Data_Dashboard</span></code>, green spikes visible in the
+graph are the results of the default query</p></li>
+<li><p>In the “FROM” section of query, by default it will have ‘default
+point_classifier_results WHERE +’,
+click on ‘default_classifier_results’, drop down will open with the name of Measurements present in InfluxDB.
+If any other measurement is set the graph will switch to the measurement query results.</p></li>
+<li><p>In the “SELECT” section, by default it will have ‘field(temperature) mean() +’. Click on ‘temperature’, a drop down will
+open with the fields tags present in the schema of the measurements set in the FROM section.
+Select any options the graph will react accordingly.</p></li>
+</ol>
+<p>InfluxDBConnector service stores the timeseries/video metadata received over the EII messagebus to InfluxDB database.</p>
+<p>The high level logical flow of InfluxDBConnector service is as below:</p>
+<ol class="arabic simple">
+<li><p>InfluxDBConnector service will subscribe to the InfluxDB and start the EII messagebus
+publisher, EII messagebus subscriber threads, and EII messagebus request reply thread
 based on PubTopics, SubTopics and QueryTopics configuration.</p></li>
-<li><p>zmq subscriber thread connects to the PUB socket of zmq bus on which
+<li><p>EII messagebus subscriber thread connects to the PUB socket of messagebus on which
 the data is published by VideoAnalytics and push it to the InfluxDB</p></li>
-<li><p>zmq publisher thread will publish the point data ingested by the telegraf
+<li><p>EII messagebus publisher thread will publish the point data ingested by the telegraf
 and the classifier result coming out of the point data analytics.</p></li>
-<li><p>zmq reply request service will receive the InfluxDB select query and
+<li><p>EII messagebus reply request service will receive the InfluxDB select query and
 response with the historical data.</p></li>
-</ol>
-</section>
-</section>
-<section id="influxdbconnector-configuration">
-<h3>InfluxDBConnector Configuration<a class="headerlink" href="#influxdbconnector-configuration" title="Permalink to this headline">¶</a></h3>
-<p>All the InfluxDBConnector module configuration is added into EII ConfigMgr (distributed key-value data store) under AppName as mentioned in the environment section of this application’s service definition in docker-compose.
-If AppName is InfluxDBConnector, then the application’s configuration would look like as below for <strong>/InfluxDBConnector/config</strong> key in EII ConfigMgr:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;influxdb&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;retention&quot;</span><span class="p">:</span> <span class="s2">&quot;1h30m5s&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="s2">&quot;admin123&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;dbname&quot;</span><span class="p">:</span> <span class="s2">&quot;datain&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;ssl&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;verifySsl&quot;</span><span class="p">:</span> <span class="s2">&quot;False&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;8086&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>For more details on EII ConfigMgr and MessageBus endpoint configuration, visit <strong>EII ConfigMgr_and_MsgBus_Endpoint_Configuration.</strong></p>
-</section>
-<section id="influxdbconnector-installation">
-<h3>InfluxDBConnector Installation<a class="headerlink" href="#influxdbconnector-installation" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic simple">
-<li><p>Follow <strong>[WORK_DIR]/IEdgeInsights/build/provision/README.md</strong> for EII provisioning if not done already as part of EII stack setup</p></li>
-<li><p>Run InfluxDBConnector:</p></li>
-</ol>
-<blockquote>
-<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./[WORK_DIR]/InfluxDBConnector
-</pre></div>
-</div>
-<p>Build and run InfluxDBConnector as a container:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$  cd [WORK_DIR]/build
-$  docker-compose up --build ia_influxdbconnector
-</pre></div>
-</div>
-</div></blockquote>
-</section>
-</section>
-<section id="eii-timeseriesprofiler">
-<h2>EII TimeSeriesProfiler<a class="headerlink" href="#eii-timeseriesprofiler" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><p>This module calculates the SPS(samples per second) of any EII time-series modules based on the stream published by that respective module.</p></li>
-<li><p>This module calculates the average e2e time for every sample data to process and it’s breakup. The e2e time end to end time required
-for a metric from mqtt-publisher to TimeSeriesProfiler (mqtt-publisher-&gt;telegraf-&gt;influx-&gt;kapacitor-&gt;influx-&gt;influxdbconnector-&gt;
-TimeSeriesProfiler)</p></li>
-</ol>
-<section id="eii-pre-requisites">
-<h3>EII pre-requisites<a class="headerlink" href="#eii-pre-requisites" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic">
-<li><dl class="simple">
-<dt>TimeSeriesProfiler expects a set of config, interfaces &amp; public private keys to be present in ETCD as a pre-requisite.</dt><dd><p>To achieve this, please ensure an entry for TimeSeriesProfiler with its relative path from <a class="reference external" href="https://github.com/open-edge-insights/">IEdgeInsights</a> directory is set in the time-series.yml file present in <a class="reference external" href="https://github.com/open-edge-insights/">IEdgeInsights</a> directory. An example has been provided below:</p>
-</dd>
-</dl>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>AppContexts:
-- Grafana
-- InfluxDBConnector
-- Kapacitor
-- Telegraf
-- tools/TimeSeriesProfiler
-</pre></div>
-</div>
-</li>
-<li><p>With the above pre-requisite done, please run the below command:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 builder.py -f ./usecases/time-series.yml
-</pre></div>
-</div>
-</li>
-</ol>
-</section>
-<section id="eii-timeseriesprofiler-modes">
-<h3>EII TimeSeriesProfiler modes<a class="headerlink" href="#eii-timeseriesprofiler-modes" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">By</span> <span class="n">default</span> <span class="n">the</span> <span class="n">EII</span> <span class="n">TimeSeriesProfiler</span> <span class="n">supports</span> <span class="n">two</span> <span class="n">modes</span><span class="p">,</span> <span class="n">which</span> <span class="n">are</span> <span class="s1">&#39;sps&#39;</span> <span class="o">&amp;</span> <span class="s1">&#39;monitor&#39;</span> <span class="n">mode</span><span class="o">.</span>
-</pre></div>
-</div>
-<ol class="arabic">
-<li><p>SPS mode</p>
-<blockquote>
-<div><p>Enabled by setting the ‘mode’ key in <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config</a> to ‘sps’, this mode calculates the samples
-per second of any EII module by subscribing to that module’s respective stream.</p>
-</div></blockquote>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;mode&quot;</span>: <span class="s2">&quot;sps&quot;</span>
-</pre></div>
-</div>
-</li>
-<li><p>Monitor mode</p>
-<blockquote>
-<div><p>Enabled by setting the ‘mode’ key in <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config</a> to ‘monitor’, this mode calculates average &amp; per sample stats</p>
-<p>Refer the below exmaple config where TimeSeriesProfiler is used in monitor mode.</p>
-</div></blockquote>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;monitor&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;monitor_mode_settings&quot;</span><span class="o">:</span> <span class="p">{</span>
-                                <span class="s2">&quot;display_metadata&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-                                <span class="s2">&quot;per_sample_stats&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
-                                <span class="s2">&quot;avg_stats&quot;</span><span class="o">:</span> <span class="kc">true</span>
-                            <span class="p">},</span>
-    <span class="s2">&quot;total_number_of_samples&quot;</span> <span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
-    <span class="s2">&quot;export_to_csv&quot;</span> <span class="o">:</span> <span class="kc">false</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>       <span class="s2">&quot;mode&quot;</span>: <span class="s2">&quot;monitor&quot;</span>
-
-The stats to be displayed by the tool <span class="k">in</span> monitor_mode can be <span class="nb">set</span> <span class="k">in</span> the monitor_mode_settings key of <span class="sb">`</span>config.json &lt;https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json&gt;<span class="sb">`</span>_.
-</pre></div>
-</div>
-<ol class="arabic simple">
-<li><p>‘display_metadata’: Displays the raw meta-data with timestamps associated with every sample.</p></li>
-<li><p>‘per_sample_stats’: Continously displays the per sample metrics of every sample.</p></li>
-<li><p>‘avg_stats’: Continously displays the average metrics of every sample.</p></li>
-</ol>
-<blockquote>
-<div><p><strong>Note:</strong></p>
-<ul class="simple">
-<li><p>Pre-requisite for running in profiling or monitor mode: Time series containers should be running with PROFILING_MODE set to <strong>true</strong> in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">.env</a></p></li>
-<li><p>For running TimeSeriesProfiler in SPS mode, it is recommended to keep PROFILING_MODE set to false in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">.env</a> for better performance.</p></li>
-</ul>
-</div></blockquote>
-</li>
-</ol>
-</section>
-<section id="running-timeseriesprofiler">
-<h3>Running TimeSeriesProfiler<a class="headerlink" href="#running-timeseriesprofiler" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic">
-<li><p>Pre-requisite :</p>
-<p>Profiling UDF returns “ts_kapacitor_udf_entry” and “ts_kapacitor_udf_exit” timestamp.</p>
-<blockquote>
-<div><p>These 2 as examples to refer:</p>
-</div></blockquote>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs/profiling_udf.go">profiling_udf.go</a></p></li>
-<li><p><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs/rfc_classifier.py">rfc_classifier.py</a></p></li>
-</ol>
-</li>
-</ol>
-<ul>
-<li><p><strong>Additional:</strong> Adding timestamps in ingestion and UDFs:</p>
-<p>In case user wants to enable his/her own ingestion and UDFs, timestamps need to be added to ingestion and UDFs modules respectively.
-The TS Profiler needs three timestamps.</p>
-<ol class="arabic">
-<li><p>“ts” timestamp which is to be filled by the ingestor (done by the mqtt-publisher app).</p></li>
-<li><p>The udf to give “ts_kapacitor_udf_entry” and “ts_kapacitor_udf_exit” timestamps to profile the udf execution time.</p>
-<p>ts_kapacitor_udf_entry : timestamp in UDF before execution of the of the algorithm</p>
-<p>ts_kapacitor_udf_exit : timestamp in UDF after execution of the algorithm.</p>
-<p>The sample profiling UDFs can be referred at <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs/profiling_udf.go">profiling_udf.go</a> and <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs/rfc_classifier.py">rfc_classifier.py</a>.</p>
-</li>
-</ol>
-</li>
-<li><p>configuration required to run profiling_udf.go as profiling udf</p>
-<blockquote>
-<div><p>In <a href="#id73"><span class="problematic" id="id74">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json">Kapacitor config.json</a>** , update “task” key as below:</p>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   &quot;task&quot;: [{
-       &quot;tick_script&quot;: &quot;profiling_udf.tick&quot;,
-       &quot;task_name&quot;: &quot;profiling_udf&quot;,
-       &quot;udfs&quot;: [{
-          &quot;type&quot;: &quot;go&quot;,
-          &quot;name&quot;: &quot;profiling_udf&quot;
-       }]
-   }]
-
-In **\ `kapacitor.conf &lt;https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor.conf&gt;`_\ ** under udf section:
-</pre></div>
-</div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">udf</span><span class="o">.</span><span class="n">functions</span><span class="p">]</span>
-   <span class="p">[</span><span class="n">udf</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">profiling_udf</span><span class="p">]</span>
-     <span class="n">socket</span> <span class="o">=</span> <span class="s2">&quot;/tmp/profiling_udf&quot;</span>
-     <span class="n">timeout</span> <span class="o">=</span> <span class="s2">&quot;20s&quot;</span>
-</pre></div>
-</div>
-<ul>
-<li><blockquote>
-<div><p>configuration required to run rfc_classifier.py as profiler udf
-In <a href="#id75"><span class="problematic" id="id76">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json">Kapacitor config.json</a>** , update “task” key as below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;task&quot;</span><span class="p">:</span> <span class="p">[{</span>
-   <span class="p">{</span>
-    <span class="s2">&quot;tick_script&quot;</span><span class="p">:</span> <span class="s2">&quot;rfc_task.tick&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;task_name&quot;</span><span class="p">:</span> <span class="s2">&quot;random_forest_sample&quot;</span>
-    <span class="p">}</span>
-<span class="p">}]</span>
-</pre></div>
-</div>
-<p>In <a href="#id78"><span class="problematic" id="id79">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor.conf">kapacitor.conf</a>** under udf section:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">udf</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">rfc</span><span class="p">]</span>
-  <span class="n">prog</span> <span class="o">=</span> <span class="s2">&quot;python3.7&quot;</span>
-  <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-u&quot;</span><span class="p">,</span> <span class="s2">&quot;/EII/udfs/rfc_classifier.py&quot;</span><span class="p">]</span>
-  <span class="n">timeout</span> <span class="o">=</span> <span class="s2">&quot;60s&quot;</span>
-  <span class="p">[</span><span class="n">udf</span><span class="o">.</span><span class="n">functions</span><span class="o">.</span><span class="n">rfc</span><span class="o">.</span><span class="n">env</span><span class="p">]</span>
-     <span class="n">PYTHONPATH</span> <span class="o">=</span> <span class="s2">&quot;/EII/go/src/github.com/influxdata/kapacitor/udf/agent/py/&quot;</span>
-</pre></div>
-</div>
-<p>keep <a href="#id80"><span class="problematic" id="id81">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config.json</a>** file as following:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;total_number_of_samples&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
-    <span class="s2">&quot;export_to_csv&quot;</span><span class="p">:</span> <span class="s2">&quot;False&quot;</span>
-<span class="p">},</span>
-<span class="s2">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">&quot;Subscribers&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Type&quot;</span><span class="p">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;EndPoint&quot;</span><span class="p">:</span> <span class="s2">&quot;ia_influxdbconnector:65032&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;PublisherAppName&quot;</span><span class="p">:</span> <span class="s2">&quot;InfluxDBConnector&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Topics&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;rfc_results&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div></blockquote>
-<p>In <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">.env</a>:</p>
-<p>Set the profiling mode as true.</p>
-</li>
-</ul>
-</li>
-</ul>
-<ol class="arabic simple">
-<li><p>Set environment variables accordingly in <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config.json</a></p></li>
-<li><p>Set the required output stream/streams and appropriate stream config in <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config.json</a> file.</p></li>
-<li><p>To run this tool in IPC mode, User needs to modify subscribers interface section of <a href="#id86"><span class="problematic" id="id87">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config.json</a>** as following</p></li>
-</ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;EndPoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/EII/sockets&quot;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<ol class="arabic">
-<li><p>Refer <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md">README.md</a> to provision, build and run the tool along with the EII time-series recipe/stack.</p></li>
-<li><p>Run the following command to see the logs:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker logs -f ia_timeseries_profiler
-</pre></div>
-</div>
-</li>
 </ol>
 </section>
 </section>

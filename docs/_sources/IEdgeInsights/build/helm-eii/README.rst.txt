@@ -1,3 +1,6 @@
+.. role:: raw-html-m2r(raw)
+   :format: html
+
 
 **Contents**
 
@@ -18,43 +21,59 @@ EII provision and deployment
 For deployment of EII, helm charts are provided for both provision and deployment.
 
 .. note:: \ :
-   Same procedure has to be followed for single or multi node.
+
+
+   * Same procedure has to be followed for single or multi node.
+   * Please login/configure docker registry before running helm. This would be required when not using public docker hub for accessing images.
 
 
 Pre requisites
 --------------
 
+----
+
+**Note**\ :
+
+
+* K8s installation on single or multi node should be done as pre-requisite to continue the following deployment. Please note we
+  have tried the kubernetes cluster setup with ``kubeadm``\ , ``kubectl`` and ``kubelet`` packages on single and multi nodes with ``v1.22.2``.
+  One can refer tutorials like https://adamtheautomator.com/install-kubernetes-ubuntu/#Installing_Kubernetes_on_the_Master_and_Worker_Nodes and many other
+  online tutorials to setup kubernetes cluster on the web with host OS as ubuntu 18.04/20.04.
+* For helm installation, please refer `helm website <https://helm.sh/docs/intro/install/>`_
+
+----
+
 For preparing the necessary files required for the provision and deployment, user needs to execute the build and provision steps on an Ubuntu 18.04 / 20.04 machine.
 Follow the Docker pre-requisites, EII Pre-requisites, Provision EII and Build and Run EII mentioned in `README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ on the Ubuntu dev machine.
 
-.. note:: \ :
 
-   K8s installation on single or multi node should be done as pre-requisite to continue the following deployment.
-
-   builder.py need to be executed with the preferred usecase for generating the consolidated helm charts for the provisioning and deployment.
-
-   For helm installation refer `helm website <https://helm.sh/docs/intro/install/>`_.
-
-   **Note**\ :
-   To run eii services with helm in fresh system where EII services are going to run for the first time(no eiiuser is present on that system), user needs to run below steps:
+* 
+  To run EII services with helm in fresh system where EII services are going to run for the first time(no ``eiiuser`` is present on that system), user needs to run below steps:
 
 
-   #. Create eii user if not exists:
-      .. code-block:: sh
+  #. Create EII user if not exists:
+     .. code-block:: sh
 
-         $ set -a
-         $ source ../.env
-         $ set +a
-         $ groupadd $EII_USER_NAME -g $EII_UID
-         $ useradd -r -u $EII_UID -g $EII_USER_NAME $EII_USER_NAME
+        $ set -a
+        $ source ../.env
+        $ set +a
+        $ sudo groupadd $EII_USER_NAME -g $EII_UID
+        $ sudo useradd -r -u $EII_UID -g $EII_USER_NAME $EII_USER_NAME
 
-   #. Create required directory and change ownership to eiiuser
-      .. code-block:: sh
+  #. Create required directory and change ownership to EII user
+     .. code-block:: sh
 
-         $ mkdir -p $EII_INSTALL_PATH/data/influxdata
-         $ mkdir -p $EII_INSTALL_PATH/sockets/
-         $ chown -R $EII_USER_NAME:$EII_USER_NAME $EII_INSTALL_PATH
+        $ sudo mkdir -p $EII_INSTALL_PATH/data/influxdata
+        $ sudo mkdir -p $EII_INSTALL_PATH/sockets/
+        $ sudo chown -R $EII_USER_NAME:$EII_USER_NAME $EII_INSTALL_PATH
 
+* Execute `builder.py <https://github.com/open-edge-insights/eii-core/blob/master/README.md#using-builder-script>`_ with the preferred usecase for generating the consolidated helm charts for the provisioning and deployment.
+  As EII don't distribute all the docker images on docker hub, one would run into issues of those pods status showing ``ImagePullBackOff`` and few pods status like visualizer, factory ctrl etc., 
+  showing ``CrashLoopBackOff`` due to additional configuration required. For ``ImagePullBackOff`` issues, please follow the steps mentioned at [../README.md#distribution-of-eii-container-images]> (../README.\ :raw-html-m2r:`<br>`
+  md#distribution-of-eii-container-images) to push the images that are locally built to the docker registry of choice. Please ensure to update the ``DOCKER_REGISTRY`` value in ``[WORKDIR]/IEdgeInsights/build/.env``
+  file and re-run the `../builder.py <https://github.com/open-edge-insights/eii-core/blob/master/builder.py>`_ script to regenerate the helm charts for provision and deployment.
+
+----
 
 Update the helm charts directory
 --------------------------------
@@ -146,14 +165,9 @@ Provision and deploy mode in times switching between dev and prod mode OR changi
       $ cd [WORKDIR]/IEdgeInsights/build
       $ python3 builder.py -f usecases/<usecase>.yml
 
-.. note:: \ :
-   ``ia_kapacitor`` and ``ia_telegraf`` container images are not distributed via docker hub, so one won't be able to pull these images
-   for time-series use case upon using `../usecases/time-series.yml <https://github.com/open-edge-insights/eii-core/blob/master/usecases/time-series.yml`>`_ for deployment. For more details,
-   refer: [../README.md#distribution-of-eii-container-images]> (../README.md#distribution-of-eii-container-images).
+#. 
+   Remove the etcd storage directory
 
-
-
-#. Remove the etcd storage directory
    .. code-block:: sh
 
       $sudo rm -rf /opt/intel/eii/data/*
@@ -161,7 +175,7 @@ Provision and deploy mode in times switching between dev and prod mode OR changi
 Do helm install of provision and deploy charts as per previous section.
 
 .. note:: \ :
-   Please wait for all the pods terminated successfully, In times of re-deploy helm chart for eii-provision and eii-deploy
+    During re-deploy(\ ``helm uninstall`` and ``helm install``\ ) of helm chart for eii-provision and eii-deploy wait for all the pervious pods to terminated successfully.
 
 
 Steps to enable Accelarators
@@ -273,7 +287,7 @@ Steps to enable Accelarators
       python3 builder.py
 
 #. 
-   Follow the `Deployment Steps <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/##Provision-and-deploy-in-the-kubernetes-node>`_
+   Follow the `Deployment Steps <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#provision-and-deploy-in-the-kubernetes-node>`_
 
 #. 
    Verify the respecitve workloads are running based on the ``nodeSelector`` constraints.
@@ -345,7 +359,7 @@ Steps for Enabling GiGE Camera with helm
 
 
    #. 
-      Follow the `Deployment Steps <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/##Provision-and-deploy-in-the-kubernetes-node>`_
+      Follow the `Deployment Steps <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#provision-and-deploy-in-the-kubernetes-node>`_
 
    #. 
       Verify ``pod``\ ip & ``host`` ip are same as per Configured ``Ethernet`` interface by using below command.

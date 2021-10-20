@@ -11,7 +11,7 @@
 * `Generate deployment and configuration files <https://open-edge-insights.github.io/IEdgeInsights/#generate-deployment-and-configuration-files>`_
 
   * `1. Generating consolidated docker-compose.yml and eii_config.json files: <https://open-edge-insights.github.io/IEdgeInsights/#generating-consolidated-docker-composeyml-and-eii_configjson-files>`_
-  * `2. Using builder script <https://open-edge-insights.github.io/IEdgeInsights/#2-using-builder-script>`_
+  * `2. Using builder script <https://open-edge-insights.github.io/IEdgeInsights/#using-builder-script>`_
 
     * `2.1 Running builder to generate the above listed consolidated files for all applicable EII services <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services>`_
     * `2.2 Running builder to generate the above listed consolidated files for a subset of EII services: <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services>`_
@@ -53,6 +53,7 @@
   * `\ **With k8s orchestrator** <https://open-edge-insights.github.io/IEdgeInsights/#with-k8s-orchestrator>`_
 
 * `EII tools <https://open-edge-insights.github.io/IEdgeInsights/#eii-tools>`_
+* `ELK usage for centralized logging of EII services logs <https://open-edge-insights.github.io/IEdgeInsights/#elk-usage-for-centralized-logging-of-eii-services-logs>`_
 * `EII Uninstaller <https://open-edge-insights.github.io/IEdgeInsights/#eii-uninstaller>`_
 * `Debugging options <https://open-edge-insights.github.io/IEdgeInsights/#debugging-options>`_
 * `Troubleshooting guide <https://open-edge-insights.github.io/IEdgeInsights/#troubleshooting-guide>`_
@@ -217,8 +218,25 @@ Generate deployment and configuration files
 The section assumes the EII software is already downloaded from the release package or from git.
 Run all the below commands in this section from ``[WORKDIR]/IEdgeInsights/build/`` directory.
 
-Generating consolidated docker-compose.yml and eii_config.json files:
----------------------------------------------------------------------
+Generating consolidated deployment and configuration files:
+-----------------------------------------------------------
+
+.. note:: 
+
+
+   #. Whenever we make changes to individual EII app/service directories files as mentioned above in the description column
+        or in the `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file, it is required to re-run the ``builder.py`` script before provisioning and running
+        the EII stack to ensure that the changes done reflect in the required consolidated files.
+   #. Manual editing of above consolidated files is not recommended and we would recommend to do the required changes to
+        respective files in EII app/service directories and use `build/builder.py <https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py>`_ script to generate the conslidated ones.
+   #. This `eii_config.json <https://github.com/open-edge-insights/eii-core/blob/master/build/provision/config/eii_config.json>`_ script removes the subscriber or client interface for EII service/app(s) configuration in consolidated `eii_config.json <https://github.com/open-edge-insights/eii-core/blob/master/build/provision/config/eii_config.json>`_
+        if the corresponding publisher or server interface in any EII service/app(s) is missing based on the default ``builder.py`` execution or ``builder.py`` execution with ``-f`` switch.
+        **Please note if one runs into issues where the DNS server is being overwhelmed with DNS queries for the EII service/app name, most likely this would be happening if those EII services are intentionally
+        stopped, please ensure to restart those EII services/app(s). If the intention is to not have that application/service running, please execute the ``builder.py`` by providing usecase yml file with that application/service not
+        listed, so the corresponding subscriber/client interfaces from other EII service/app(s) are automatically removed before provisioning and deployment of EII stack. Please check
+        `#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services>`_ for selectively choosing required
+        EII services**
+
 
 EII is equipped with `builder <https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py>`_\ , a robust python tool to auto-generate the required configuration files to deploy EII services on single/multiple nodes. The tool is    capable of auto-generating the following consolidated files by fetching the respective files from EII service directories which are required to bring up different EII use-cases:
 
@@ -241,16 +259,6 @@ EII is equipped with `builder <https://github.com/open-edge-insights/eii-core/bl
      - Consolidated ``values.yaml`` of every app inside helm-eii/eii-deploy directory, which is required to deploy EII services via helm
    * - Template yaml files
      - Files copied from helm/templates directory of every app to helm-eii/eii-deploy/templates directory, which are required to deploy EII services via helm
-
-
-.. note:: 
-
-
-   #. Whenever we make changes to individual EII app/service directories files as mentioned above in the description column
-        or in the `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file, it is required to re-run the ``builder.py`` script before provisioning and running
-        the EII stack to ensure that the changes done reflect in the required consolidated files.
-   #. Manual editing of above consolidated files is not recommended and we would recommend to do the required changes to
-        respective files in EII app/service directories and use `build/builder.py <https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py>`_ script to generate the conslidated ones.
 
 
 Using builder script
@@ -430,21 +438,6 @@ Distribution of EII container images
 
 EII services are available as pre-built container images in docker hub at https://hub.docker.com/u/openedgeinsights
 
-and for the ones not listed there, one needs to do the build from source before running ``docker-compose up -d`` command.
-
-Eg:
-
-.. code-block:: sh
-
-   $ cd [WORKDIR]/IEdgeInsights/build
-   $ # Base images that needs to be built
-   $ docker-compose -f docker-compose-build.yml build ia_eiibase
-   $ docker-compose -f docker-compose-build.yml build ia_common
-   $ # Assuming here that the `python3 builder.py` step is been executed and ia_kapacitor
-   $ # service exists in the generated compose files and also, provisioning step is done
-   $ docker-compose -f docker-compose-build.yml build ia_kapacitor
-   $ docker-compose up -d
-
 Below are the list of pre-built container images that are accessible at https://hub.docker.com/u/openedgeinsights:
 
 
@@ -484,6 +477,26 @@ Below are the list of pre-built container images that are accessible at https://
 
 Additionally, we have ``openedgeinsights/ia_edgeinsights_src`` image available at the above docker hub
 location which consists of source code of GPL/LGPL/AGPL components of EII stack.
+
+For the EII docker images not listed on docker hub at above location, one needs to do the build from source
+before running ``docker-compose up -d`` command or bringing up the pod in kubernetes cluster on the build/development
+node.
+
+Eg:
+
+.. code-block:: sh
+
+   $ # Update the DOCKER_REGISTRY value in [WORKDIR]/IEdgeInsights/build/.env as DOCKER_RESISTRY=<docker_registry> (Make sure `docker login <docker_registry>` to the docker reigstry works)
+   $ cd [WORKDIR]/IEdgeInsights/build
+   $ # Base images that needs to be built
+   $ docker-compose -f docker-compose-build.yml build ia_eiibase
+   $ docker-compose -f docker-compose-build.yml build ia_common
+   $ # Assuming here that the `python3 builder.py` step is been executed and ia_kapacitor
+   $ # service exists in the generated compose files and also, provisioning step is done
+   $ docker-compose -f docker-compose-build.yml build ia_kapacitor
+   $ docker-compose up -d
+   $ # Push all the applicable EII images to <docker_registry>. Ensure to use the same DOCKER_REGISTRY value on the deployment machine while deployment
+   $ docker-compose -f docker-compose-push.yml push
 
 Provision
 =========
@@ -620,6 +633,12 @@ A successful run will open Visualizer UI with results of video analytics for all
 Push required EII images to docker registry
 -------------------------------------------
 
+.. note:: 
+   By default, the images gets published to hub.docker.com if DOCKER_REGISTRY is empty in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_. Please make sure to take off
+   ``openedgeinsights/`` org from the image name(s) while pushing to docker hub as it doesn't support repository/image name having multiple slashes.
+   This limitation doesn't exist in other docker registries like Azure Container Registry(ACR), Harbor registry etc.,
+
+
 Pushes all the EII service docker images in the ``build/docker-compose-push.yml``. Ensure to update the DOCKER_REGISTRY value in `.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file.
 
 .. code-block:: sh
@@ -750,6 +769,10 @@ Eg: Mount the two USB cameras connected to the host m/c with device node as ``vi
     The below link can be referred in case user observes ``global mutex initialization failed`` during device initialization of NCS2 stick
     https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html
 
+  * 
+    For VPU troubleshooting refer the below link:
+    https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting
+
 **To run on HDDL devices**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -823,18 +846,22 @@ Eg: Mount the two USB cameras connected to the host m/c with device node as ``vi
       Please verify the hddldaemon started on host m/c to verify if it is using the libraries of the correct OpenVINO version used in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_. One could enable the ``device_snapshot_mode`` to ``full`` in $HDDL_INSTALL_DIR/config/hddl_service.config on host m/c to get the complete snapshot of the hddl device.
 
     * 
+      For VPU troubleshooting refer the below link:
+      https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting
+
+    * 
       Please refer OpenVINO 2021.4 release notes in the below link for new features and changes from the previous versions.
       https://software.intel.com/content/www/us/en/develop/articles/openvino-relnotes.html
 
     * 
       Refer OpenVINO website in the below link to skim through known issues, limitations and troubleshooting
       https://docs.openvinotoolkit.org/2021.4/index.html
-      ### **To run on Intel(R) Processor Graphics (GPU/iGPU)**
 
-  ..
+**To run on Intel(R) Processor Graphics (GPU/iGPU)**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-     **Note**
-     The below step is required only for 11th gen Intel Processors
+.. note:: 
+   The below step is required only for 11th gen Intel Processors
 
 
   Upgrade the kernel version to 5.8 and install the required drivers from the below OpenVINO link:
@@ -858,6 +885,11 @@ The following are the two Custom Udfs workflow which EII supports:
 
 Time-series Analytics
 =====================
+
+.. note:: \ :
+   By default, ``ia_telegraf`` uses the mqtt plugin to talk to the ``ia_mqtt_broker`` service, so please make sure ``ia_mqtt_broker`` service is running and you are publishing the sample sensor data by
+   following the guide at https://github.com/open-edge-insights/eii-tools/blob/master/mqtt/README.md. If one does not want to run MQTT broker, please make sure to comment/remove the ``[[inputs.mqtt_consumer]]`` sections to avoid DNS queries on ``ia_mqtt_broker`` in the `respective conf files <https://github.com/open-edge-insights/ts-telegraf/tree/master/config/Telegraf>`_ based on DEV or PROD mode.
+
 
 For time-series data, a sample analytics flow uses Telegraf for ingestion, Influx DB for storage and Kapacitor for classification. This is demonstrated with an MQTT based ingestion of sample temperature sensor data and analytics with a Kapacitor UDF which does threshold detection on the input values.
 
@@ -913,6 +945,11 @@ EII stack has below set of tools which run as containers too:
 * `SWTriggerUtility <https://github.com/open-edge-insights/eii-tools/blob/master/SWTriggerUtility/README.md>`_
 * `TimeSeriesProfiler <https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/README.md>`_
 * `VideoProfiler <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/README.md>`_
+
+ELK usage for centralized logging of EII services logs
+======================================================
+
+Please find more details about this capability at `build/remote_logging/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/remote_logging/README.md>`_
 
 EII Uninstaller
 ===============

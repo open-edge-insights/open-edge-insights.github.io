@@ -604,7 +604,7 @@ Helpful Debugging Commands
 If you are encountering issues, the following commands can help with debugging:
 
 
-* **Azure IoT Edge Runtime Daemon Logs:** ``journalctl -u iotedge -f``
+* **Azure IoT Edge Runtime Daemon Logs:** ``sudo iotedge system logs -- -f``
 * **Container Logs:** ``docker logs -f <CONTAINER-NAME>``
 
 Final Notes
@@ -882,10 +882,12 @@ the required configuration for running this UDF.
 
 To use this UDF with EII, you need to modify your ``build/provision/config/eii_config.json``
 configuration file to run the UDF in either your Video Ingesiton or Video Analytics
-instance. Then, you need to modify the environmental variables in the ``AzureBridge/.env``
-file to provide the connection information to enable the UDF to download your
-model from AzureML. Make sure to follow the instructions provided in the
-`Setting up AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml>`_ section above to configure your
+instance. Please ensure to remove the existing PCB filter/classifier UDFs or any other UDFs
+in Video Ingestion and Video Analytics config keys in ``build/provision/config/eii_config.json`` as
+we are doing some basic pre-processing, inferencing and post-processing in the ONNX UDF itself.
+Then, you need to modify the environmental variables in the ``AzureBridge/.env`` file to provide the connection
+information to enable the UDF to download your model from AzureML. Make sure to follow the 
+instructions provided in the `Setting up AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml>`_ section above to configure your
 workspace correctly so that the UDF can download your model.
 
 The sample ONNX UDF requires that the following configuration values be set for

@@ -89,7 +89,7 @@ Place the following snippet at the bottom of the file â€œ/etc/audit/audit.rulesâ
        -w /usr/bin/containerd-shim-runc-v2 -p wa
            -w /usr/bin/runc -p wa
 
-**3) Enable execute access to the docker cli binary to only the current user / admin **
+**4) Enable execute access to the docker cli binary to only the current user / admin **
 
 Change the user ownership of Docker binary 
 
@@ -103,8 +103,23 @@ Change the permission of Docker binary
 
        sudo chmod 744 /usr/bin/docker
 
-Configuring the Docker Daemon as per Docker security recommendations
---------------------------------------------------------------------
+**5) Selectively mount only the required devices from ``/dev`` as mounting whole ``/dev`` is not recommended for production deployment
+
+Following devices under /dev filesystem will be needed based on use case for video ingestion
+and video analytics containers:
+
+
+* /dev/dri - GPU
+* /dev/ion - VPU
+* /dev/video* - USB camera devices
+
+**6) On the production system, please have the right firewall policies set for the containers port(s) that are getting published on the host machine
+     and are accessible outside. For more details, please refer guide like https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-with-ufw-on-ubuntu-20-04
+
+----
+
+Configuring as per Docker security recommendations
+--------------------------------------------------
 
 **Ensure security related parameter exists for Docker Daemon**
 
@@ -174,9 +189,26 @@ If you need to allow network access to the Docker socket you should run the dock
 
    sudo systemctl restart docker
 
-Please find more information about Docker bench security below. The Docker Bench for Security is a script that checks for dozens of common best-practices around deploying Docker containers in production.
+**Ensure Content trust for Docker is Enabled**
 
-https://github.com/docker/docker-bench-security
+User can verify images pull or deploy from a registry server by setting following env variables :
+
+.. code-block:: sh
+
+
+   $ export DOCKER_CONTENT_TRUST=1
+   $ export DOCKER_BUILDKIT=1
+
+**Note** 
+
+..
+
+   Please find more information about Docker bench security below. The Docker Bench for Security is a script that checks for dozens of common best-practices around deploying Docker containers in production.
+
+   https://github.com/docker/docker-bench-security
+
+
+----
 
 **Secure Docker registries**
 

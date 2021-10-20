@@ -3,7 +3,7 @@
 EII Configuration Management
 =============================
 
-etcd*
+etcd
 =====
 
 EII uses etcd (https://etcd.io/) for configuration management. etcd acts as a distributed key-value store for distributed systems. EII applications will contact etcd on startup and read their configurations as set by the user using the provisioning step/etcd UI. Because etcd is distributed, applications can receive their configuration on any node in the etcd cluster, regardless of where they might be deployed. 

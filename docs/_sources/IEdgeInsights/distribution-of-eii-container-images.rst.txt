@@ -4,21 +4,6 @@ Distribution of EII container images
 
 EII services are available as pre-built container images in docker hub at https://hub.docker.com/u/openedgeinsights
 
-and for the ones not listed there, one needs to do the build from source before running ``docker-compose up -d`` command.
-
-Eg:
-
-.. code-block:: sh
-
-   $ cd [WORKDIR]/IEdgeInsights/build
-   $ # Base images that needs to be built
-   $ docker-compose -f docker-compose-build.yml build ia_eiibase
-   $ docker-compose -f docker-compose-build.yml build ia_common
-   $ # Assuming here that the `python3 builder.py` step is been executed and ia_kapacitor
-   $ # service exists in the generated compose files and also, provisioning step is done
-   $ docker-compose -f docker-compose-build.yml build ia_kapacitor
-   $ docker-compose up -d
-
 Below are the list of pre-built container images that are accessible at https://hub.docker.com/u/openedgeinsights:
 
 
@@ -58,3 +43,23 @@ Below are the list of pre-built container images that are accessible at https://
 
 Additionally, we have ``openedgeinsights/ia_edgeinsights_src`` image available at the above docker hub
 location which consists of source code of GPL/LGPL/AGPL components of EII stack.
+
+For the EII docker images not listed on docker hub at above location, one needs to do the build from source
+before running ``docker-compose up -d`` command or bringing up the pod in kubernetes cluster on the build/development
+node.
+
+Eg:
+
+.. code-block:: sh
+
+   $ # Update the DOCKER_REGISTRY value in [WORKDIR]/IEdgeInsights/build/.env as DOCKER_RESISTRY=<docker_registry> (Make sure `docker login <docker_registry>` to the docker reigstry works)
+   $ cd [WORKDIR]/IEdgeInsights/build
+   $ # Base images that needs to be built
+   $ docker-compose -f docker-compose-build.yml build ia_eiibase
+   $ docker-compose -f docker-compose-build.yml build ia_common
+   $ # Assuming here that the `python3 builder.py` step is been executed and ia_kapacitor
+   $ # service exists in the generated compose files and also, provisioning step is done
+   $ docker-compose -f docker-compose-build.yml build ia_kapacitor
+   $ docker-compose up -d
+   $ # Push all the applicable EII images to <docker_registry>. Ensure to use the same DOCKER_REGISTRY value on the deployment machine while deployment
+   $ docker-compose -f docker-compose-push.yml push

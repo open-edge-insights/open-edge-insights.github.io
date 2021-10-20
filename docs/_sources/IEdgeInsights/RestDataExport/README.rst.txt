@@ -1,3 +1,6 @@
+.. role:: raw-html-m2r(raw)
+   :format: html
+
 
 **Contents**
 
@@ -12,6 +15,12 @@
     # RestDataExport
 
 RestDataExport service subscribes to any topic from EIIMessageBus and starts publishing meta data via POST requests to any external HTTP servers. It has an internal HTTP server running to respond to any GET requests for a required frame from any HTTP clients.
+
+..
+
+   IMPORTANT:
+   RestDataExport service can subscribe classified results from both VideoAnalytics(video) or InfluxDBConnector(time-series) use cases. Please ensure the required service to subscribe from is mentioned in the Subscribers configuration in `config.json <https://github.com/open-edge-insights/eii-rest-data-export/blob/master/config.json>`_.
+
 
 Configuration
 -------------
@@ -107,3 +116,20 @@ Please go through the below sections to have RestDataExport service built and la
 * `../README.md#generate-deployment-and-configuration-files <https://github.com/open-edge-insights/eii-core/blob/master/README.md#generate-deployment-and-configuration-files>`_
 * `../README.md#provision <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_
 * `../README.md#build-and-run-eii-videotimeseries-use-cases <https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases>`_
+
+FAQs
+----
+
+Following are some of the FAQs of RestDataExport
+
+For setting environment proxy settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+#. sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf (update host-ip)
+#. sudo vi /etc/systemd/system/docker.service.d/https-proxy.conf (update hot-ip)
+#. env | grep proxy
+#. export no_proxy=$no_proxy,\ :raw-html-m2r:`<host-ip>`
+#. sudo vi .docker/config.json (update host-ip in no_proxy)
+#. sudo systemctl daemon-reload
+#. sudo systemctl restart docker

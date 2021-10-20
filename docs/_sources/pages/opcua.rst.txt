@@ -1,59 +1,13 @@
-
 ========================
 OpcuaExport Application
 ========================
 
-OpcuaExport service subscribes to classified results from EII message bus(VideoAnalytics) and starts publishing meta data to opcua clients
+.. include:: ../IEdgeInsights/OpcuaExport/opcuaexport.rst
 
-Configuration
--------------
+.. include:: ../IEdgeInsights/OpcuaExport/configuration.rst
 
-For more details on Etcd secrets and messagebus endpoint configuration, visit `Etcd_Secrets_Configuration.html <https://github.com/open-edge-insights/eii-core/blob/master/Etcd_Secrets_Configuration.html>`_ and
-`MessageBus Configuration <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/README.html#interfaces>`_ respectively.
+.. include:: ../IEdgeInsights/OpcuaExport/service-bring-up.rst
 
-Service bring up
-----------------
+.. include:: ../IEdgeInsights/OpcuaExport/known-issues.rst
 
-
-* 
-  Please use below steps to generate opcua client certificates before running test client subscriber for production mode.
-
-
-  #. 
-     Append following key in `certs' in `build/provision/config/x509_cert_config.json <https://github.com/open-edge-insights/eii-core/blob/master/build/provision/config/x509_cert_config.json>`_ file.
-
-     .. code-block::
-
-                  {
-                    "opcua": {
-                      "client_alt_name": "",
-                      "output_format": "DER"
-                    }
-                  }
-
-
-     #. 
-        Please go through the below sections to have RestDataExport 
-        service built and launch it:
-
-
-        * `../README.html#generate-deployment-and-configuration-files <https://github.com/open-edge-insights/eii-core/blob/master/README.html#generate-deployment-and-configuration-files>`_
-        * `../README.html#provision <https://github.com/open-edge-insights/eii-core/blob/master/README.html#provision>`_
-        * `../README.html#build-and-run-eii-videotimeseries-use-cases <https://github.com/open-edge-insights/eii-core/blob/master/README.html#build-and-run-eii-videotimeseries-use-cases>`_
-
-     #. 
-        Update opcua client certificate access so that sample test program 
-        can access the certificates.
-
-        .. code-block:: sh
-
-              sudo chmod -R 755 ../../build/provision/Certificates/ca
-              sudo chmod -R 755 ../../build/provision/Certificates/opcua
-
-        ..
-
-           **Caution**\ : This step will make the certs insecure. Please do not do it on a production machine.
-
-
-* 
-  To run a test subscriber follow README at `OpcuaExport/OpcuaBusAbstraction/c/test <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-opcua-export/-/blob/master/OpcuaBusAbstraction/c/test>`_
+.. include:: ../IEdgeInsights/OpcuaExport/opcua-client-apps.rst

@@ -8,39 +8,25 @@ Service bring up
 
 
   #. 
-     Append following key in `certs' in `build/provision/config/x509_cert_config.json <https://github.com/open-edge-insights/eii-core/blob/master/build/provision/config/x509_cert_config.json>`_ file.
-
-     .. code-block::
-
-                  {
-                    "opcua": {
-                      "client_alt_name": "",
-                      "output_format": "DER"
-                    }
-                  }
+     Please go through the below sections to have OpcuaExport 
+     service built and launch it:
 
 
-     #. 
-        Please go through the below sections to have RestDataExport 
-        service built and launch it:
+     * `../README.md#generate-deployment-and-configuration-files <https://github.com/open-edge-insights/eii-core/blob/master/README.md#generate-deployment-and-configuration-files>`_
+     * `../README.md#provision <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_
+     * `../README.md#build-and-run-eii-videotimeseries-use-cases <https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases>`_
 
+  #. 
+     Update opcua client certificate access so that sample test program 
+     can access the certificates.
 
-        * `../README.md#generate-deployment-and-configuration-files <https://github.com/open-edge-insights/eii-core/blob/master/README.md#generate-deployment-and-configuration-files>`_
-        * `../README.md#provision <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_
-        * `../README.md#build-and-run-eii-videotimeseries-use-cases <https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases>`_
+     .. code-block:: sh
 
-     #. 
-        Update opcua client certificate access so that sample test program 
-        can access the certificates.
+             sudo chmod -R 755 ../../build/provision/Certificates
 
-        .. code-block:: sh
+     ..
 
-              sudo chmod -R 755 ../../build/provision/Certificates/ca
-              sudo chmod -R 755 ../../build/provision/Certificates/opcua
-
-        ..
-
-           **Caution**\ : This step will make the certs insecure. Please do not do it on a production machine.
+        **Caution**\ : This step will make the certs insecure. Please do not do it on a production machine.
 
 
 * 
