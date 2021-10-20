@@ -80,6 +80,10 @@ Eg: Mount the two USB cameras connected to the host m/c with device node as ``vi
     The below link can be referred in case user observes ``global mutex initialization failed`` during device initialization of NCS2 stick
     https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html
 
+  * 
+    For VPU troubleshooting refer the below link:
+    https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting
+
 **To run on HDDL devices**
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -153,18 +157,22 @@ Eg: Mount the two USB cameras connected to the host m/c with device node as ``vi
       Please verify the hddldaemon started on host m/c to verify if it is using the libraries of the correct OpenVINO version used in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_. One could enable the ``device_snapshot_mode`` to ``full`` in $HDDL_INSTALL_DIR/config/hddl_service.config on host m/c to get the complete snapshot of the hddl device.
 
     * 
+      For VPU troubleshooting refer the below link:
+      https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting
+
+    * 
       Please refer OpenVINO 2021.4 release notes in the below link for new features and changes from the previous versions.
       https://software.intel.com/content/www/us/en/develop/articles/openvino-relnotes.html
 
     * 
       Refer OpenVINO website in the below link to skim through known issues, limitations and troubleshooting
       https://docs.openvinotoolkit.org/2021.4/index.html
-      ### **To run on Intel(R) Processor Graphics (GPU/iGPU)**
 
-  ..
+**To run on Intel(R) Processor Graphics (GPU/iGPU)**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-     **Note**
-     The below step is required only for 11th gen Intel Processors
+.. note:: 
+   The below step is required only for 11th gen Intel Processors
 
 
   Upgrade the kernel version to 5.8 and install the required drivers from the below OpenVINO link:
@@ -188,6 +196,11 @@ The following are the two Custom Udfs workflow which EII supports:
 
 Time-series Analytics
 =====================
+
+.. note:: \ :
+   By default, ``ia_telegraf`` uses the mqtt plugin to talk to the ``ia_mqtt_broker`` service, so please make sure ``ia_mqtt_broker`` service is running and you are publishing the sample sensor data by
+   following the guide at https://github.com/open-edge-insights/eii-tools/blob/master/mqtt/README.md. If one does not want to run MQTT broker, please make sure to comment/remove the ``[[inputs.mqtt_consumer]]`` sections to avoid DNS queries on ``ia_mqtt_broker`` in the `respective conf files <https://github.com/open-edge-insights/ts-telegraf/tree/master/config/Telegraf>`_ based on DEV or PROD mode.
+
 
 For time-series data, a sample analytics flow uses Telegraf for ingestion, Influx DB for storage and Kapacitor for classification. This is demonstrated with an MQTT based ingestion of sample temperature sensor data and analytics with a Kapacitor UDF which does threshold detection on the input values.
 
@@ -243,6 +256,11 @@ EII stack has below set of tools which run as containers too:
 * `SWTriggerUtility <https://github.com/open-edge-insights/eii-tools/blob/master/SWTriggerUtility/README.md>`_
 * `TimeSeriesProfiler <https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/README.md>`_
 * `VideoProfiler <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/README.md>`_
+
+ELK usage for centralized logging of EII services logs
+======================================================
+
+Please find more details about this capability at `build/remote_logging/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/remote_logging/README.md>`_
 
 EII Uninstaller
 ===============

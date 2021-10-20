@@ -130,3 +130,5 @@ Content-Type - plaintext
 .. include:: ../IEdgeInsights/RestDataExport/pre-requisites.rst
 
 .. include:: ../IEdgeInsights/RestDataExport/service-bring-up.rst
+
+.. include:: ../IEdgeInsights/RestDataExport/faqs.rst

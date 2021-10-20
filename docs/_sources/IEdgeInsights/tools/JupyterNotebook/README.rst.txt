@@ -116,4 +116,5 @@ Running Jupyter Notebook
 
 
       * JupyterNotebook is not to be used with **CustomUDFs** like **GVASafetyGearIngestion** since they are specific to certain usecases only. Instead, the VideoIngestion pipeline can be modified to use GVA ingestor pipeline and config can be modifed to use **jupyter_connector** UDF.
+      * A sample opencv udf template is provided at `opencv_udf_template.ipynb <https://github.com/open-edge-insights/eii-tools/blob/master/JupyterNotebook/opencv_udf_template.ipynb>`_ to serve as an example for how a user can write an OpenCV UDF and modify it however required. This sample UDF uses OpenCV APIs to write a sample text on the frames, which can be visualized in the **Visualizer** display. Please ensure **encoding is disabled** when using this UDF since encoding enabled automatically removes the text added onto the frames.
 

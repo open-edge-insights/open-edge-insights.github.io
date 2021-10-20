@@ -51,7 +51,7 @@ Please follow the below steps to quickly get the EII codebase. For more informat
 
 .. include:: ../IEdgeInsights/eii-prerequisites-installation.rst
 
-.. include:: ../IEdgeInsights/generate-deployment-and-configuration-files.rst
+.. include:: ../IEdgeInsights/generating-consolidated-deployment-and-configuration-files.rst
 
 .. include:: ../IEdgeInsights/generating-consolidated-docker-composeyml-and-eii-configjson-files.rst
 
@@ -90,7 +90,7 @@ All components will communicate over non-encrypted channels in dev mode.
 Profiling Mode
 --------------
 
-Profiling mode is used to gather performance statistics. In this mode, each EII component makes a record of the time needed for processing any single frame. These statistics are gathered in the visualizer where the SI can see the end-to-end processing time for individual frames, as well as the end-to-end average time. To enable profiling mode in EII, set the environment variable **PROFILING** in the **[WORK_DIR]/IEdgeInsights/build/.env** file to **true**. 
+Profiling mode is used to gather performance statistics. In this mode, each EII component makes a record of the time needed for processing any single frame. These statistics are gathered in the visualizer where the SI can see the end-to-end processing time for individual frames, as well as the end-to-end average time. To enable profiling mode in EII, set the environment variable **PROFILING** in the **[WORK_DIR]/IEdgeInsights/build/.env** file to **true**. 
 
 For each EII services defined in the **[WORK_DIR]/IEdgeInsights/build/docker-compose.yml** file, there is an ENV to determine whether **PROFILING** should be enabled based on the setting in the **[WORK_DIR]/IEdgeInsights/build/.env** file. Figure 52 provides an example from the Visualizer service.
 
@@ -146,7 +146,7 @@ One of the below options could be tried out:
 
 * Use helm charts to provision the node and deploy EII services
 
-.. include:: ../IEdgeInsights/build/helm-eii/eii-provision-and-deployment--.rst
+.. include:: ../IEdgeInsights/build/helm-eii/eii-provision-and-deployment.rst
 
 .. include:: ../IEdgeInsights/build/helm-eii/pre-requisites.rst
 
@@ -204,7 +204,7 @@ Debugging Through the Logs
 For any service run in the EII stack, please use **docker logs -f <service_name>**
 
 working with EII Docker* Containers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 EII sets up the Docker containers using the docker-compose tool. If only minor changes are made in the user-defined functions without adding any new files, user can just restart the specific docker container by running **$ docker restart <Cointainer_ID>** in the build directory without rebuilding the whole EII container.
 
@@ -239,7 +239,7 @@ More details about the **docker-compose** and **docker-compose.yml** files is av
 
 
 Useful Docker* Commands
-~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^
 
 The following list includes the most used docker-compose commands. These commands should come in handy during development and debugging of the EII stack:
 
@@ -276,7 +276,7 @@ Debugging Video Ingestion Through gst-launch
 --------------------------------------------
 
 GStreamer Valid Plugins / Element
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There is attribute named "pipeline" in the EII ConfigMgr for VideoIngestion. This attribute is used to mention the source of the video frame. For example:
 
@@ -289,7 +289,7 @@ A list of valid GStreamer plugins or elements can be found at
 To know which plugins are installed, use the command **gst-inspect-1.0.** This command will display all installed plugins.
 
 Debugging the Video Ingestion Container 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::
     
@@ -299,7 +299,7 @@ If the SI modifies the value of the pipeline attribute (an attribute from the fa
 
 For example, consider a case in which the video_str attribute has been modified. The new value has an invalid GStreamer element or plugin, say: 
 
-    rtspsrc location=\"rtsp://localhost:8554/\" latency=100 ! rtph264depay ! :red:`h264parse123` ! avdec_h264 ! videoconvert ! appsink
+    rtspsrc location=\"rtsp://localhost:8554/\" latency=100 ! rtph264depay ! h264parse123 ! avdec_h264 ! videoconvert ! appsink
 
 Consequently, video ingestion starts showing: 
 
@@ -317,20 +317,20 @@ To debug this issue:
 
 #.	Use the below command and examine the logs.
 
-    gst-launch-1.0 **rtspsrc location=\"rtsp://localhost:8554/\" latency=100 ! rtph264depay ! :red:`h264parse123` ! avdec_h264 ! videoconvert ! appsink**
+    gst-launch-1.0 **rtspsrc location=\"rtsp://localhost:8554/\" latency=100 ! rtph264depay ! h264parse123 ! avdec_h264 ! videoconvert ! appsink**
 
-    The **bold text** in the command above is exactly the value of the pipeline attribute. Since, :red:`h264parse123` is not a valid GStreamer plugin or element, using the above command will result in a log with the following ERROR messages.
+    The **bold text** in the command above is exactly the value of the pipeline attribute. Since, h264parse123 is not a valid GStreamer plugin or element, using the above command will result in a log with the following ERROR messages.
 
     .. code-block::
 
-        0:00:00.018350108    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element "h264parse123"
-        0:00:00.018434694    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no sink [source=@0xe44080]
-        0:00:00.018473162    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element "avdec_h264"
-        0:00:00.018497100    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@(nil)]
-        0:00:00.019408613    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@0xe50f30]
+        0:00:00.018350108    85       0xe31750 ERROR           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element "h264parse123"
+        0:00:00.018434694    85       0xe31750 ERROR           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no sink [source=@0xe44080]
+        0:00:00.018473162    85       0xe31750 ERROR           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element "avdec_h264"
+        0:00:00.018497100    85       0xe31750 ERROR           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@(nil)]
+        0:00:00.019408613    85       0xe31750 ERROR           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@0xe50f30]
         WARNING: erroneous pipeline: no element "h264parse123"
 
-    Therefore, using the **gst-launch-1.0 command** line utility has revealed that there is no h264parse123 :red:`h264parse123`. Now we need to check whether the plugin is valid and whether it has been installed. The **gst-inspect-1.0** command can be used to check whether the plugin has been installed. 
+    Therefore, using the **gst-launch-1.0 command** line utility has revealed that there is no h264parse123. Now we need to check whether the plugin is valid and whether it has been installed. The **gst-inspect-1.0** command can be used to check whether the plugin has been installed. 
 
 Enablement of X11 Forwarding for EII Visualizer Container
 ---------------------------------------------------------

@@ -40,8 +40,6 @@ The Kapacitor will support UDFs that written in Python3 or Go*. The sample examp
       :scale: 50 %
       :align: center
 
-.. include:: ../IEdgeInsights/time-series-analytics.rst
-
 .. include:: ../IEdgeInsights/Kapacitor/point-data-time-series-data-analytics-introduction.rst
 
 .. include:: ../IEdgeInsights/Kapacitor/starting-the-example.rst
@@ -83,12 +81,12 @@ There are six interfaces exposed for UDFs to communicate with Kapacitor:
 #.	begin_batch():
 #.	point():
 
-For further details of these UDFs, kindly refer to URL: `https://docs.influxdata.com/kapacitor/v1.5/guides/socket_udf/`_
+For further details of these UDFs, kindly refer to URL: `<https://docs.influxdata.com/kapacitor/v1.5/guides/socket_udf/>`_
 
 .. include:: ../IEdgeInsights/Kapacitor/samples/README.rst
 
 Working with Kapacitor*
-----------------------
+-----------------------
 
 Kapacitor uses a **Domain Specific Language (DSL)** named TICK script to define tasks involving 
 the extraction, transformation and loading of data. One common task is defining alerts. TICK 
@@ -119,16 +117,16 @@ consideration the needs/provides pattern, four general node use cases can be def
 
 **need a stream and provide a stream** - for example, when applying a mathematical function like a logarithm to a value in a point
 
-More details and documentation on the TICK Scripting can be found at `https://docs.influxdata.com/kapacitor/v1.4/tick/introduction/`_
+More details and documentation on the TICK Scripting can be found at `<https://docs.influxdata.com/kapacitor/v1.4/tick/introduction/>`_
 
-.. include:: ../IEdgeInsights/Grafana/grafana-.rst
+.. include:: ../IEdgeInsights/Grafana/grafana.rst
 
 There is a sample application in EIIv2.x used for generating random temperature sensor data. 
 This data is streamed through mqtt to influxDB with the high-level flow below explained in 
 Section 10.3.1.
 
 The high-level flow of the data in the example can be seen as 
-**mqtt-temp-sensor?Telegraf?Influx?Kapacitor?Influx**.
+**mqtt-temp-sensor -> Telegraf -> Influx -> Kapacitor -> Influx**.
 
 The classified results can be visualized using Grafana as per the preconfigured example in Figure 8.
 
@@ -136,7 +134,9 @@ The classified results can be visualized using Grafana as per the preconfigured 
     :scale: 50 %
     :align: center
 
-.. include:: ../IEdgeInsights/Grafana/procedure-to-run-grafana-.rst
+.. include:: ../IEdgeInsights/Grafana/configuration.rst
+
+.. include:: ../IEdgeInsights/Grafana/procedure-to-run-grafana.rst
 
 .. note::
 
@@ -154,88 +154,6 @@ The classified results can be visualized using Grafana as per the preconfigured 
 
 Access Grafana from the web browser at http://localhost:3000
 
-.. include:: ../IEdgeInsights/Grafana/configuration-.rst
+.. include:: ../IEdgeInsights/Grafana/steps-to-execute-query.rst
 
-.. include:: ../IEdgeInsights/Grafana/prod-mode-to-be-followed-when-running-in-prod-mode-skip-if-dev-mode.rst
-
-.. include:: ../IEdgeInsights/Grafana/dev-mode-to-be-follwed-when-running-in-dev-mode.rst
-
-InfluxDB
-#########
-
-InfluxDB is EII only timeseries data store and forms the central connecting piece between other EII components
-
-Configuring InfluxDB*
----------------------
-
-The configuration parameters for the 'influxdb' section are:
-
-Influxdb_port
-    The port parameter need not be modified unless the default port for the InfluxDB is changed. 
-
-retention
-    This field signifies the retention duration of the data stored in InfluxDB. The format is in the form of "1h30m5s". It is recommended to keep a retention policy in accordance with the use case and the disk size.
-
-username, password
-    Provides an option to change the default username and password used for accessing the InfluxDB database. 
-
-DBName
-    The default DB name in InfluxDB used for storing the timeseries data is ?datain?. This field can be used to change this default DB name.
-
-ssl
-    When True, use HTTPS instead of HTTP to connect to InfluxDB.
-
-verify_ssl
-    When True, verify SSL certificates for HTTPS requests
-
-
-.. include:: ../IEdgeInsights/InfluxDBConnector/influxdbconnector-module.rst
-
-InfluxDBConnector Configuration
--------------------------------
-
-All the InfluxDBConnector module configuration is added into EII ConfigMgr (distributed key-value data store) under AppName as mentioned in the environment section of this application's service definition in docker-compose.
-If AppName is InfluxDBConnector, then the application's configuration would look like as below for **/InfluxDBConnector/config** key in EII ConfigMgr:
-
-.. code-block:: 
-
-    "influxdb": {
-        "retention": "1h30m5s",
-        "username": "admin",
-        "password": "admin123",
-        "dbname": "datain",
-        "ssl": "True",
-        "verifySsl": "False",
-        "port": "8086"
-    }
-
-
-For more details on EII ConfigMgr and MessageBus endpoint configuration, visit **EII ConfigMgr_and_MsgBus_Endpoint_Configuration.**
-
-InfluxDBConnector Installation
-------------------------------
-
-#.	Follow **[WORK_DIR]/IEdgeInsights/build/provision/README.md** for EII provisioning if not done already as part of EII stack setup
-#.	Run InfluxDBConnector:
-
-    .. code-block:: 
-
-        $ ./[WORK_DIR]/InfluxDBConnector
-
-    Build and run InfluxDBConnector as a container:
-
-    .. code-block:: 
-
-        $  cd [WORK_DIR]/build
-        $  docker-compose up --build ia_influxdbconnector
-
-EII TimeSeriesProfiler
-######################
-
-.. include:: ../IEdgeInsights/tools/TimeSeriesProfiler/eii-timeseriesprofiler.rst
-
-.. include:: ../IEdgeInsights/tools/TimeSeriesProfiler/eii-pre-requisites.rst
-
-.. include:: ../IEdgeInsights/tools/TimeSeriesProfiler/eii-timeseriesprofiler-modes.rst
-
-.. include:: ../IEdgeInsights/tools/TimeSeriesProfiler/running-timeseriesprofiler.rst
+.. include:: ../IEdgeInsights/InfluxDBConnector/influxdbconnector.rst

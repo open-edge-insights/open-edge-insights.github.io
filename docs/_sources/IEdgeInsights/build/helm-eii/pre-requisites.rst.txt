@@ -1,35 +1,51 @@
+.. role:: raw-html-m2r(raw)
+   :format: html
+
 
 Pre requisites
 --------------
 
+----
+
+**Note**\ :
+
+
+* K8s installation on single or multi node should be done as pre-requisite to continue the following deployment. Please note we
+  have tried the kubernetes cluster setup with ``kubeadm``\ , ``kubectl`` and ``kubelet`` packages on single and multi nodes with ``v1.22.2``.
+  One can refer tutorials like https://adamtheautomator.com/install-kubernetes-ubuntu/#Installing_Kubernetes_on_the_Master_and_Worker_Nodes and many other
+  online tutorials to setup kubernetes cluster on the web with host OS as ubuntu 18.04/20.04.
+* For helm installation, please refer `helm website <https://helm.sh/docs/intro/install/>`_
+
+----
+
 For preparing the necessary files required for the provision and deployment, user needs to execute the build and provision steps on an Ubuntu 18.04 / 20.04 machine.
 Follow the Docker pre-requisites, EII Pre-requisites, Provision EII and Build and Run EII mentioned in `README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ on the Ubuntu dev machine.
 
-.. note:: \ :
 
-   K8s installation on single or multi node should be done as pre-requisite to continue the following deployment.
-
-   builder.py need to be executed with the preferred usecase for generating the consolidated helm charts for the provisioning and deployment.
-
-   For helm installation refer `helm website <https://helm.sh/docs/intro/install/>`_.
-
-   **Note**\ :
-   To run eii services with helm in fresh system where EII services are going to run for the first time(no eiiuser is present on that system), user needs to run below steps:
+* 
+  To run EII services with helm in fresh system where EII services are going to run for the first time(no ``eiiuser`` is present on that system), user needs to run below steps:
 
 
-   #. Create eii user if not exists:
-      .. code-block:: sh
+  #. Create EII user if not exists:
+     .. code-block:: sh
 
-         $ set -a
-         $ source ../.env
-         $ set +a
-         $ groupadd $EII_USER_NAME -g $EII_UID
-         $ useradd -r -u $EII_UID -g $EII_USER_NAME $EII_USER_NAME
+        $ set -a
+        $ source ../.env
+        $ set +a
+        $ sudo groupadd $EII_USER_NAME -g $EII_UID
+        $ sudo useradd -r -u $EII_UID -g $EII_USER_NAME $EII_USER_NAME
 
-   #. Create required directory and change ownership to eiiuser
-      .. code-block:: sh
+  #. Create required directory and change ownership to EII user
+     .. code-block:: sh
 
-         $ mkdir -p $EII_INSTALL_PATH/data/influxdata
-         $ mkdir -p $EII_INSTALL_PATH/sockets/
-         $ chown -R $EII_USER_NAME:$EII_USER_NAME $EII_INSTALL_PATH
+        $ sudo mkdir -p $EII_INSTALL_PATH/data/influxdata
+        $ sudo mkdir -p $EII_INSTALL_PATH/sockets/
+        $ sudo chown -R $EII_USER_NAME:$EII_USER_NAME $EII_INSTALL_PATH
 
+* Execute `builder.py <https://github.com/open-edge-insights/eii-core/blob/master/README.md#using-builder-script>`_ with the preferred usecase for generating the consolidated helm charts for the provisioning and deployment.
+  As EII don't distribute all the docker images on docker hub, one would run into issues of those pods status showing ``ImagePullBackOff`` and few pods status like visualizer, factory ctrl etc., 
+  showing ``CrashLoopBackOff`` due to additional configuration required. For ``ImagePullBackOff`` issues, please follow the steps mentioned at [../README.md#distribution-of-eii-container-images]> (../README.\ :raw-html-m2r:`<br>`
+  md#distribution-of-eii-container-images) to push the images that are locally built to the docker registry of choice. Please ensure to update the ``DOCKER_REGISTRY`` value in ``[WORKDIR]/IEdgeInsights/build/.env``
+  file and re-run the `../builder.py <https://github.com/open-edge-insights/eii-core/blob/master/builder.py>`_ script to regenerate the helm charts for provision and deployment.
+
+----

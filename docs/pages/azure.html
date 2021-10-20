@@ -57,8 +57,8 @@
 <li class="toctree-l1"><a class="reference internal" href="running.html">Running Intel® Edge Insights for Industrial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="running.html#minimum-system-requirements">Minimum System Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#downloading-and-installation-from-opensource-github-repository">Downloading and Installation from Opensource Github Repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#generate-deployment-and-configuration-files">Generate deployment and configuration files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="running.html#eii-prerequisites-installation">EII Prerequisites installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#generating-consolidated-deployment-and-configuration-files">Generating consolidated deployment and configuration files:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#generating-consolidated-docker-compose-yml-and-eii-config-json-files">Generating consolidated docker-compose.yml and eii_config.json files:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#using-builder-script">Using builder script</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="running.html#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services">Running builder to generate the above listed consolidated files for all applicable EII services</a></li>
@@ -109,6 +109,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#eii-provision-and-deployment">EII provision and deployment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="running.html#pre-requisites">Pre requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#update-the-helm-charts-directory">Update the helm charts directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#provision-and-deploy-in-the-kubernetes-node">Provision and deploy in the kubernetes node.</a></li>
@@ -120,8 +123,16 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#eii-uninstaller">EII Uninstaller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#debugging">Debugging</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-through-the-logs">Debugging Through the Logs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-through-the-logs">Debugging Through the Logs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#working-with-eii-docker-containers">working with EII Docker* Containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#useful-docker-commands">Useful Docker* Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#gstreamer-valid-plugins-element">GStreamer Valid Plugins / Element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#debugging-the-video-ingestion-container">Debugging the Video Ingestion Container</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#enablement-of-x11-forwarding-for-eii-visualizer-container">Enablement of X11 Forwarding for EII Visualizer Container</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#debugging-options">Debugging options</a></li>
 </ul>
@@ -130,6 +141,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-1">EII v2.6.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6">EII v2.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release.html#features">Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="release.html#known-issues">Known Issues</a></li>
@@ -184,7 +199,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="eiiConfig.html">EII Configuration Management</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd">etcd*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd">etcd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#configmgr">ConfigMgr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#tool-to-generate-configuration-management-ui-service">Tool to Generate Configuration Management UI Service</a><ul>
@@ -243,26 +258,43 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#id4">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#eii-sample-udfs">EII Sample UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#custom-udfs">Custom Udfs</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#udf-writing-guide">UDF Writing Guide</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#sample-udfs">Sample UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#native-udfs">Native UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#chaining-of-udfs">Chaining of UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#combination-of-udfs-with-ingestors">Combination of UDFs with ingestors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#time-series-analytics">Time-series Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-multi-node-cluster-provision-and-deployment">EII multi node cluster provision and deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#without-orchestrator"><strong>Without orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#developing-python-udf-using-jupyter-notebook">Developing python UDF using Jupyter Notebook</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#jupyter-notebook-pre-requisites">Jupyter Notebook pre-requisites</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#running-jupyter-notebook">Running Jupyter Notebook</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-tools">EII tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#elk-usage-for-centralized-logging-of-eii-services-logs">ELK usage for centralized logging of EII services logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-uninstaller">EII Uninstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#debugging-options">Debugging options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#troubleshooting-guide">Troubleshooting guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-udfloader">EII UDFLoader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#introduction"><strong>Introduction</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#udf-configuration"><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">Configuration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#udf-writing-guide"><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">Writing</span> <span class="pre">Guide</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#sample-udfs"><code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">UDFs</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#native-udfs"><code class="docutils literal notranslate"><span class="pre">Native</span> <span class="pre">UDFs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#construction-of-metadata-in-udf"><code class="docutils literal notranslate"><span class="pre">Construction</span> <span class="pre">of</span> <span class="pre">Metadata</span> <span class="pre">in</span> <span class="pre">UDF</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#chaining-of-udfs"><code class="docutils literal notranslate"><span class="pre">Chaining</span> <span class="pre">of</span> <span class="pre">UDFs</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#combination-of-udfs-with-ingestors"><code class="docutils literal notranslate"><span class="pre">Combination</span> <span class="pre">of</span> <span class="pre">UDFs</span> <span class="pre">with</span> <span class="pre">ingestors</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -275,32 +307,21 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#web-visualizer-module">Web Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id39">Using Labels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#id43">Metadata Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id33">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#id37">Metadata Structure</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#imagestore-module">ImageStore Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id44">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id38">Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id46">Configuration</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#gigeconfigtool-and-export-settings-from-basler-pylon-feature-system">GigEConfigTool and Export Settings from Basler Pylon Feature System</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#generating-pylon-feature-system-file-pfs">Generating Pylon Feature System File (PFS)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#executing-gigeconfig-tool">Executing GigEConfig Tool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#discoverhistory">DiscoverHistory</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-discoverhistory-service">Steps to build and run DiscoverHistory service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#list-of-sample-select-queries">List of sample select queries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#to-run-the-tool-in-zmq-ipc-mode">To run the tool in zmq_ipc mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id40">Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -314,45 +335,30 @@
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#optional-adding-multiple-telegraf-instances">Optional: Adding multiple telegraf instances</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#enabling-eii-message-bus-input-plugin-in-telegraf">Enabling EII message bus input plugin in Telegraf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#enabling-eii-message-bus-output-plugin-in-telegraf">Enabling EII message bus Output plugin in Telegraf</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timeseries.html#using-input-plugin">Using input plugin</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin">Advanced: Multiple plugin sections of EII message bus output plugin</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="timeseries.html#kapacitor">Kapacitor</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#starting-the-example">Starting the example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="timeseries.html#kapacitor-input-and-output-plugins">Kapacitor input and output plugins</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-plugins">Purpose of plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#using-input-plugin">Using input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id38">Using input plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#using-output-plugin">Using output plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#user-defined-functions">User-defined Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#custom-udfs-available-in-the-udfs-directory">Custom UDFs available in the udfs directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#steps-to-configure-the-udfs-in-kapacitor">Steps to configure the UDFs in kapacitor.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="timeseries.html#id48">Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id49">Steps to run the samples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id65">Steps to verify the results in single task with multiple UDFs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id66">Steps to verify the results in multiple tasks with single UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id55">Steps to run the samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id71">Steps to verify the results in single task with multiple UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id72">Steps to verify the results in multiple tasks with single UDF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#working-with-kapacitor">Working with Kapacitor*</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="timeseries.html#influxdb">InfluxDB</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#configuring-influxdb">Configuring InfluxDB*</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#influxdbconnector-configuration">InfluxDBConnector Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#influxdbconnector-installation">InfluxDBConnector Installation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="timeseries.html#eii-timeseriesprofiler">EII TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#eii-pre-requisites">EII pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#eii-timeseriesprofiler-modes">EII TimeSeriesProfiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#procedure-to-run-grafana">Procedure to run Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#steps-to-execute-query">Steps to execute query</a></li>
 </ul>
 </li>
 </ul>
@@ -406,8 +412,16 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="opcua.html">OpcuaExport Application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="opcua.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opcua.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opcua.html#opcuaexport">OpcuaExport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#opcua-client-apps">OPCUA client apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="opcua.html#note">Note:</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport</a><ul>
@@ -421,6 +435,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="restdata.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#faqs">FAQs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#for-setting-environment-proxy-settings">For setting environment proxy settings</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -463,33 +481,40 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#id39">Jupyter Notebook usage to develop python UDFs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#id40">Jupyter Notebook pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id45">Running Jupyter Notebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id45">Running Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id48">MQTT publisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id49">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id51">Software Trigger Utility for VideoIngestion Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id52">Software Trigger Utilily pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id56">Configuration file:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id59">Running Software Trigger Utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id50">MQTT publisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id51">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id62">EII TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id63">EII pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id66">EII TimeSeriesProfiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id70">EII TimeSeriesProfiler configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id71">Running TimeSeriesProfiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id53">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id54">Software Trigger Utilily pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id58">Configuration file:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id61">Running Software Trigger Utility</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id91">EII Video Profiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id92">EII Video Profiler pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id95">EII Video Profiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id100">EII Video Profiler configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id103">Running Video Profiler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id111">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id113">Benchmarking with multi instance config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id64">EII TimeSeriesProfiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id65">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id68">EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id72">EII TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id73">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id93">EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id94">EII Video Profiler pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id97">EII Video Profiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id102">EII Video Profiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id105">Running Video Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id113">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id115">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id117">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -601,7 +626,7 @@ your Azure Cloud account, your development system, and also the node which
 you are going to deploy the Azure Bridge on.</p>
 <p>The following sections cover the setup for the first two environments listed.
 Setting up your system for a single-node deployment will be covered in the
-<a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a> section below.</p>
+<a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a> section below.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>When you deploy with Azure IoT Hub you will also need to configure
@@ -614,7 +639,7 @@ which must be initialized.</p>
 <p>Primarily, you need an Azure Containter Registry instance, an Azure IoT Hub,
 as well as an Azure IoT Device. Additionally, if you wish to use the sample ONNX
 UDF in EII to download a ML/DL model from AzureML, then you must follow a few
-steps to get this configured as well. For these steps, see the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml">Setting up AzureML</a>
+steps to get this configured as well. For these steps, see the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml">Setting up AzureML</a>
 section below.</p>
 <p>To create these instances, follow the guides provided by Microsoft below:</p>
 <div class="admonition note">
@@ -749,7 +774,7 @@ Subscriber Azure IoT Modules will be pushed to your ACR instance as well.</p>
 <p>After setting up your development system, build and push the EII containers
 to your Azure Contianer Registry instance. Note that the Azure Bridge only
 supports a few of the EII services currently. Before building and pushing your
-EII containers, be sure to look at the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#supported-eii-services">Supported EII Services</a>
+EII containers, be sure to look at the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#supported-eii-services">Supported EII Services</a>
 section below, so as to not build/push uneeded containers to your registry.</p>
 <p>To do this go to the <code class="docutils literal notranslate"><span class="pre">../build/</span></code> directory in the EII source code, modify the
 <code class="docutils literal notranslate"><span class="pre">DOCKER_REGISTRY</span></code> variable in the <code class="docutils literal notranslate"><span class="pre">../build/.env</span></code> file to point to your Azure
@@ -795,9 +820,9 @@ the following steps:</p>
 <li><p>Deployment</p></li>
 </ol>
 <p>Prior to deploying a single Azure IoT Edge node you must have already
-configured your Azure cloud instance (see instructions in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#azure-cloud-setup">Azure Cloud Setup</a>
+configured your Azure cloud instance (see instructions in the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#azure-cloud-setup">Azure Cloud Setup</a>
 section). Additionally, you need to have already built and pushed the EII services to your
-Azure Container Registry (follow the instructions in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/##build-and-push-eii-containers">Build and Push EII Containers</a>
+Azure Container Registry (follow the instructions in the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/##build-and-push-eii-containers">Build and Push EII Containers</a>
 section).</p>
 <p>Provided you have met these two prerequisites, follow the steps below to do a
 single node deployment with the Azure Bridge on the Azure IoT Edge Runtime.</p>
@@ -900,7 +925,7 @@ characters that get escaped in a weird way when the values are populated into
 your deployment manifest leading to configuration errors.</p>
 <p><strong>IMPORTANT NOTE #2:</strong></p>
 <p>If you wish to use the sample EII ONNX UDF, now is the time to configure the UDF
-to run. See the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#sample-eii-onnx-udf">Sample EII ONNX UDF</a> configuration section
+to run. See the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#sample-eii-onnx-udf">Sample EII ONNX UDF</a> configuration section
 below for how to configure the UDF.</p>
 <section id="id7">
 <h4>Expected Result<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
@@ -917,7 +942,7 @@ convenience scripts to ease this process.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>These steps should be done from your development system setup in
-the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a> section. Note, that for testing
+the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a> section. Note, that for testing
 and development purposes, these could be the same system.</p>
 </div>
 <p>To generate your deployment manifest template, execute the following command:</p>
@@ -953,26 +978,35 @@ command:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 tools/serialize_eii_config.py example.template.json ../build/provision/config/eii_config.json
 </pre></div>
 </div>
-<p><strong>IMPORTANT NOTE:</strong></p>
-<p>If you wish to have the AzureBridge subscribe and bridge data over an IPC
-socket coming from either Video Ingestion or Video Analytics, then you must
-change the user which the container operates under. By default, the AzureBridge
-container is configured to run as the <code class="docutils literal notranslate"><span class="pre">eiiuser</span></code> created during the installation of
-EII on your edge system. Both Video Ingestion and Video Analytics operate as root
-in order to access various accelerators on your system. This results in the
-IPC sockets for the communication with these modules being created as root. To
-have the AzureBridge subscribe it must also run as root. To change this, do
-the following steps:</p>
-<ol class="arabic simple">
-<li><p>Open your deployment manifest template</p></li>
-<li><dl class="simple">
-<dt>Under the following JSON key path: <code class="docutils literal notranslate"><span class="pre">modulesContent/modules/AzureBridge/settings/createOptions</span></code></dt><dd><p>delete the <code class="docutils literal notranslate"><span class="pre">User</span></code> key</p>
-</dd>
-</dl>
-</li>
-</ol>
-<p>This will cause the container to be launched as <code class="docutils literal notranslate"><span class="pre">root</span></code> by default allowing you to
-subscribe to IPC sockets created as root.</p>
+<p><strong>IMPORTANT NOTE:</strong>
+To run inference on MYRIAD device, root user permissions needs to be used at runtime. To enable root user at runtime in<span class="raw-html-m2r"><br></span>
+either ia_video_ingestion, ia_video_analytics add <code class="docutils literal notranslate"><span class="pre">&quot;User&quot;:</span> <span class="pre">&quot;root&quot;</span></code> key as below: command in the ia_video_ingestion or
+ia_video_analytics manifest files as required.</p>
+<p>Eg: To use MYRAID device in <code class="docutils literal notranslate"><span class="pre">config/templates/ia_video_analytics.template.json</span></code> manifest file, refer the below example</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="c1">// ... omitted ...</span>
+
+    <span class="s2">&quot;modules&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;ia_video_analytics&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="c1">// ... omitted ...</span>
+
+            <span class="s2">&quot;settings&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;createOptions&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="c1">// ... omitted ..</span>
+                    <span class="s2">&quot;User&quot;</span><span class="o">:</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Env&quot;</span><span class="o">:</span> <span class="p">[</span>
+                        <span class="c1">// ... omitted ...</span>
+                    <span class="p">]</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="c1">// ... omitted ...</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="c1">// ... omitted ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <section id="id9">
 <h4>Expected Result<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
 <p>If all of the commands above ran correctly, then you will have a valid <code class="docutils literal notranslate"><span class="pre">*.template.json</span></code>
@@ -980,7 +1014,7 @@ file and a valid <code class="docutils literal notranslate"><span class="pre">co
 <p>If, for some reason, these commands fail, revisit Step 2 and make sure all of your
 environmental variables are set correctly. And if that does not resolve your issue,
 verify that your development system is setup correctly by revisiting the
-<a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a> section.</p>
+<a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a> section.</p>
 </section>
 </section>
 <section id="step-4-deployment">
@@ -1034,7 +1068,7 @@ Simple Subscriber service using the following command:</p>
 <h3>Helpful Debugging Commands<a class="headerlink" href="#helpful-debugging-commands" title="Permalink to this headline">¶</a></h3>
 <p>If you are encountering issues, the following commands can help with debugging:</p>
 <ul class="simple">
-<li><p><strong>Azure IoT Edge Runtime Daemon Logs:</strong> <code class="docutils literal notranslate"><span class="pre">journalctl</span> <span class="pre">-u</span> <span class="pre">iotedge</span> <span class="pre">-f</span></code></p></li>
+<li><p><strong>Azure IoT Edge Runtime Daemon Logs:</strong> <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">iotedge</span> <span class="pre">system</span> <span class="pre">logs</span> <span class="pre">--</span> <span class="pre">-f</span></code></p></li>
 <li><p><strong>Container Logs:</strong> <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">-f</span> <span class="pre">&lt;CONTAINER-NAME&gt;</span></code></p></li>
 </ul>
 </section>
@@ -1072,7 +1106,7 @@ environment.</p>
 <p>The configuration of the EII Message Bus is done in a method similar to that of
 the other EII services, such as the Video Analytics service. To provided the
 configuration for the topics which the bridge should subscribe to,
-you must set the <code class="docutils literal notranslate"><span class="pre">Subscribers</span></code> list in the <a class="reference external" href="https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-azure-bridge/-/blob/master/modules//config.json">modules/AzureBridge/config.json</a>
+you must set the <code class="docutils literal notranslate"><span class="pre">Subscribers</span></code> list in the <a class="reference external" href="https://github.com/open-edge-insights/eii-azure-bridge/blob/master/modules//config.json">modules/AzureBridge/config.json</a>
 file. The list is comprised of JSON objects for every subscription you wish the
 Azure Bridge to establish. Below is an example of the configuration for
 subscribing to the the publications coming from the Video Analytics container.</p>
@@ -1190,9 +1224,9 @@ publications coming from the VideoIngestion container.</p>
 <li><p>Please follow <code class="docutils literal notranslate"><span class="pre">Step</span> <span class="pre">3</span> <span class="pre">-</span> <span class="pre">Configuring</span> <span class="pre">Azure</span> <span class="pre">IoT</span> <span class="pre">Deployment</span> <span class="pre">Manifest</span></code> above to generate the manifest
 template file and deployment manifest files. Ensure to remove all the <code class="docutils literal notranslate"><span class="pre">PUBLISHER_ENDPOINT</span></code>,
 <code class="docutils literal notranslate"><span class="pre">PUBLISHER_&lt;Name&gt;_ENDPOINT</span></code>, <code class="docutils literal notranslate"><span class="pre">SUBSCRIBER_ENDPOINT</span></code> and <code class="docutils literal notranslate"><span class="pre">SUBSCRIBER_&lt;Name&gt;_ENDPOINT</span></code> environmental
-variables from the generated deployment manifest template file i.e., <a class="reference external" href="https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-azure-bridge/-/blob/master/example.template.json">example.template.json</a>
+variables from the generated deployment manifest template file i.e., <a class="reference external" href="https://github.com/open-edge-insights/eii-azure-bridge/blob/master/example.template.json">example.template.json</a>
 as these ENVs are not applicable for IPC configuration. Additionally, update the
-<a class="reference external" href="https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-azure-bridge/-/blob/master/example.template.json">example.template.json</a> as per the recommendations mentioned in the
+<a class="reference external" href="https://github.com/open-edge-insights/eii-azure-bridge/blob/master/example.template.json">example.template.json</a> as per the recommendations mentioned in the
 <code class="docutils literal notranslate"><span class="pre">Important</span> <span class="pre">Note</span></code> section for IPC configuration. Please re-generate the deployment manifest file (<code class="docutils literal notranslate"><span class="pre">config/example.amd64.json</span></code>)
 by running the below command:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ iotedgedev genconfig -f example.template.json
@@ -1289,14 +1323,16 @@ page of the Azure documentation.</p>
 deep learning model. It also supports connecting to an AzureML Workspace to download
 the model and then run it. The source code for this UDF is in
 <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/common/video/udfs/python/sample_onnx/</span></code>, please also refer
-<code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">ONNX</span> <span class="pre">UDF</span></code> section in <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/common/video/udfs/README.html</span></code> for doing
+<code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">ONNX</span> <span class="pre">UDF</span></code> section in <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/common/video/udfs/README.md</span></code> for doing
 the required configuration for running this UDF.</p>
 <p>To use this UDF with EII, you need to modify your <code class="docutils literal notranslate"><span class="pre">build/provision/config/eii_config.json</span></code>
 configuration file to run the UDF in either your Video Ingesiton or Video Analytics
-instance. Then, you need to modify the environmental variables in the <code class="docutils literal notranslate"><span class="pre">AzureBridge/.env</span></code>
-file to provide the connection information to enable the UDF to download your
-model from AzureML. Make sure to follow the instructions provided in the
-<a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml">Setting up AzureML</a> section above to configure your
+instance. Please ensure to remove the existing PCB filter/classifier UDFs or any other UDFs
+in Video Ingestion and Video Analytics config keys in <code class="docutils literal notranslate"><span class="pre">build/provision/config/eii_config.json</span></code> as
+we are doing some basic pre-processing, inferencing and post-processing in the ONNX UDF itself.
+Then, you need to modify the environmental variables in the <code class="docutils literal notranslate"><span class="pre">AzureBridge/.env</span></code> file to provide the connection
+information to enable the UDF to download your model from AzureML. Make sure to follow the
+instructions provided in the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml">Setting up AzureML</a> section above to configure your
 workspace correctly so that the UDF can download your model.</p>
 <p>The sample ONNX UDF requires that the following configuration values be set for
 the UDF in your <code class="docutils literal notranslate"><span class="pre">eii_config.json</span></code> file:</p>
@@ -1380,7 +1416,7 @@ in single quotes, i.e. <code class="docutils literal notranslate"><span class="p
 a weird way when the values are populated into your deployment manifest leading
 to configuration errors.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">tenantId</span></code>, <code class="docutils literal notranslate"><span class="pre">clientId</span></code>, <code class="docutils literal notranslate"><span class="pre">clientSecret</span></code>, and <code class="docutils literal notranslate"><span class="pre">subscriptionId</span></code> should all have
-been obtained when following the instructions in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#setting-up-azureml">Setting up AzureML</a>
+been obtained when following the instructions in the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml">Setting up AzureML</a>
 section.</p>
 <p>Please run the below steps when the <code class="docutils literal notranslate"><span class="pre">sample_onnx</span></code> UDF is failing with error like
 <code class="docutils literal notranslate"><span class="pre">The</span> <span class="pre">provided</span> <span class="pre">client</span> <span class="pre">secret</span> <span class="pre">keys</span> <span class="pre">are</span> <span class="pre">expired.</span> <span class="pre">Visit</span> <span class="pre">the</span> <span class="pre">Azure</span> <span class="pre">Portal</span> <span class="pre">to</span> <span class="pre">create</span> <span class="pre">new</span> <span class="pre">keys</span> <span class="pre">for</span> <span class="pre">your</span> <span class="pre">app</span></code>:</p>
@@ -1389,8 +1425,8 @@ $ az ad sp create-for-rbac --sdk-auth --name ml-auth
 </pre></div>
 </div>
 <p>The output of above command will be in json format. Please update the <code class="docutils literal notranslate"><span class="pre">AML_</span></code> env variables in <code class="docutils literal notranslate"><span class="pre">AzureBridge/.env</span></code>
-as per above table and follow the steps <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#step-3---configuring-azure-iot-deployment-manifest">Step 3</a> and
-<a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#step-4---deployment">Step 4</a> to see the <code class="docutils literal notranslate"><span class="pre">sample_onnx</span></code> UDF working fine.</p>
+as per above table and follow the steps <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-3---configuring-azure-iot-deployment-manifest">Step 3</a> and
+<a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-4---deployment">Step 4</a> to see the <code class="docutils literal notranslate"><span class="pre">sample_onnx</span></code> UDF working fine.</p>
 <p><strong>IMPORTANT NOTE:</strong></p>
 <p>If your system is behind a proxy, you may run into an issue where the download of
 your ONNX model from AzureML times out. This may happen even if the proxy is set
@@ -1567,11 +1603,11 @@ see <a class="reference external" href="https://docs.microsoft.com/en-us/azure/i
 <section id="azure-iot-edge-simulator">
 <h2>Azure IoT Edge Simulator<a class="headerlink" href="#azure-iot-edge-simulator" title="Permalink to this headline">¶</a></h2>
 <p>Microsoft provides a simluator for the Azure IoT Edge Runtime. During the
-setup of your development system (covered in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a>
+setup of your development system (covered in the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup">Development System Setup</a>
 section), the simulator is automatically installed on your system.</p>
 <p>Additionally, the Azure Bridge provides the <code class="docutils literal notranslate"><span class="pre">./tools/run-simulator.sh</span></code> script
 to easily use the simulator with the bridge.</p>
-<p>To do this, follow steps 1 - 3 in the <a class="reference external" href="http://localhost:7645/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a>
+<p>To do this, follow steps 1 - 3 in the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a>
 section above. Then, instead of step 4, run the following command to setup
 the simulator:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo env <span class="s2">&quot;PATH=</span><span class="nv">$PATH</span><span class="s2">&quot;</span> iotedgehubdev setup -c <span class="s2">&quot;&lt;edge-device-connection-string&gt;&quot;</span>

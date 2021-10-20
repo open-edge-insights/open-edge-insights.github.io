@@ -2,6 +2,27 @@
 Release Notes
 #############
 
+**********
+EII v2.6.1
+**********
+EII v2.6.1 is a bugfix release on top of EII v2.6 release
+
+Bug fixes
+=========
+
+* Fixed ZMQ ZAP issue
+* Fixed "REQUEST_BUSY" issues seen with OpenVINO python and C++ inference
+  engine bindings in EII udfs by protecting the critical section (Using
+  OpenVINO data runtime image 2021.4.1)
+* Fixed OpcuaExport service issue in ansible deployment
+* Fixed golang installation in baremetal
+* Fixed and added more documentation around DNS issue
+* Prefix DOCKER_REGISTRY to provisioning images
+* Fixed helm environment failure for OpcuaExport service
+* Further added improvements to READMEs
+* Fixed Visualizer not displaying text added in JupyterNotebook issue
+* Enabled support for third party OPCUA GUI clients to connect to OpcuaExport service
+
 ********
 EII v2.6
 ********

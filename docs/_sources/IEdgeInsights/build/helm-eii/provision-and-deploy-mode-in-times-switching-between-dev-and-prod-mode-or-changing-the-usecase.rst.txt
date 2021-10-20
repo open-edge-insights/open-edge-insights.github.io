@@ -14,14 +14,9 @@ Provision and deploy mode in times switching between dev and prod mode OR changi
       $ cd [WORKDIR]/IEdgeInsights/build
       $ python3 builder.py -f usecases/<usecase>.yml
 
-.. note:: \ :
-   ``ia_kapacitor`` and ``ia_telegraf`` container images are not distributed via docker hub, so one won't be able to pull these images
-   for time-series use case upon using `../usecases/time-series.yml <https://github.com/open-edge-insights/eii-core/blob/master/usecases/time-series.yml`>`_ for deployment. For more details,
-   refer: [../README.md#distribution-of-eii-container-images]> (../README.md#distribution-of-eii-container-images).
+#. 
+   Remove the etcd storage directory
 
-
-
-#. Remove the etcd storage directory
    .. code-block:: sh
 
       $sudo rm -rf /opt/intel/eii/data/*
@@ -29,5 +24,5 @@ Provision and deploy mode in times switching between dev and prod mode OR changi
 Do helm install of provision and deploy charts as per previous section.
 
 .. note:: \ :
-   Please wait for all the pods terminated successfully, In times of re-deploy helm chart for eii-provision and eii-deploy
+    During re-deploy(\ ``helm uninstall`` and ``helm install``\ ) of helm chart for eii-provision and eii-deploy wait for all the pervious pods to terminated successfully.
 

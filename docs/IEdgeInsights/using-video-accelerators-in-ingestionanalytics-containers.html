@@ -55,8 +55,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../pages/running.html">Running Intel® Edge Insights for Industrial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/running.html#downloading-and-installation-from-opensource-github-repository">Downloading and Installation from Opensource Github Repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#eii-prerequisites-installation">EII Prerequisites installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#generate-deployment-and-configuration-files">Generate deployment and configuration files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#eii-prerequisites-installation">EII Prerequisites installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#generating-consolidated-deployment-and-configuration-files">Generating consolidated deployment and configuration files:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/running.html#generating-consolidated-docker-compose-yml-and-eii-config-json-files">Generating consolidated docker-compose.yml and eii_config.json files:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/running.html#using-builder-script">Using builder script</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../pages/running.html#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services">Running builder to generate the above listed consolidated files for all applicable EII services</a></li>
@@ -107,6 +107,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/running.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#eii-provision-and-deployment">EII provision and deployment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../pages/running.html#pre-requisites">Pre requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/running.html#update-the-helm-charts-directory">Update the helm charts directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/running.html#provision-and-deploy-in-the-kubernetes-node">Provision and deploy in the kubernetes node.</a></li>
@@ -118,8 +121,16 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/running.html#eii-uninstaller">EII Uninstaller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/running.html#debugging">Debugging</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#debugging-through-the-logs">Debugging Through the Logs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#debugging-through-the-logs">Debugging Through the Logs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/running.html#working-with-eii-docker-containers">working with EII Docker* Containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/running.html#useful-docker-commands">Useful Docker* Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/running.html#gstreamer-valid-plugins-element">GStreamer Valid Plugins / Element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/running.html#debugging-the-video-ingestion-container">Debugging the Video Ingestion Container</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/running.html#enablement-of-x11-forwarding-for-eii-visualizer-container">Enablement of X11 Forwarding for EII Visualizer Container</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/running.html#debugging-options">Debugging options</a></li>
 </ul>
@@ -128,6 +139,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/release.html#eii-v2-6-1">EII v2.6.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/release.html#eii-v2-6">EII v2.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../pages/release.html#features">Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/release.html#known-issues">Known Issues</a></li>
@@ -182,7 +197,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/eiiConfig.html">EII Configuration Management</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#etcd">etcd*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#etcd">etcd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#configmgr">ConfigMgr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#tool-to-generate-configuration-management-ui-service">Tool to Generate Configuration Management UI Service</a><ul>
@@ -241,26 +256,43 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../pages/video.html#id4">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#eii-sample-udfs">EII Sample UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#custom-udfs">Custom Udfs</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#udf-writing-guide">UDF Writing Guide</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#sample-udfs">Sample UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#native-udfs">Native UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#chaining-of-udfs">Chaining of UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#combination-of-udfs-with-ingestors">Combination of UDFs with ingestors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#time-series-analytics">Time-series Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#eii-multi-node-cluster-provision-and-deployment">EII multi node cluster provision and deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#without-orchestrator"><strong>Without orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#developing-python-udf-using-jupyter-notebook">Developing python UDF using Jupyter Notebook</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#jupyter-notebook-pre-requisites">Jupyter Notebook pre-requisites</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#running-jupyter-notebook">Running Jupyter Notebook</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#eii-tools">EII tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#elk-usage-for-centralized-logging-of-eii-services-logs">ELK usage for centralized logging of EII services logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#eii-uninstaller">EII Uninstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#debugging-options">Debugging options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#troubleshooting-guide">Troubleshooting guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#eii-udfloader">EII UDFLoader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#introduction"><strong>Introduction</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#udf-configuration"><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">Configuration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#udf-writing-guide"><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">Writing</span> <span class="pre">Guide</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#sample-udfs"><code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">UDFs</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#native-udfs"><code class="docutils literal notranslate"><span class="pre">Native</span> <span class="pre">UDFs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#construction-of-metadata-in-udf"><code class="docutils literal notranslate"><span class="pre">Construction</span> <span class="pre">of</span> <span class="pre">Metadata</span> <span class="pre">in</span> <span class="pre">UDF</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#chaining-of-udfs"><code class="docutils literal notranslate"><span class="pre">Chaining</span> <span class="pre">of</span> <span class="pre">UDFs</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#combination-of-udfs-with-ingestors"><code class="docutils literal notranslate"><span class="pre">Combination</span> <span class="pre">of</span> <span class="pre">UDFs</span> <span class="pre">with</span> <span class="pre">ingestors</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -273,32 +305,21 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/video.html#web-visualizer-module">Web Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../pages/video.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#id39">Using Labels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#id43">Metadata Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#id33">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#id37">Metadata Structure</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/video.html#imagestore-module">ImageStore Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#id44">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#id38">Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../pages/video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#id46">Configuration</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#gigeconfigtool-and-export-settings-from-basler-pylon-feature-system">GigEConfigTool and Export Settings from Basler Pylon Feature System</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#generating-pylon-feature-system-file-pfs">Generating Pylon Feature System File (PFS)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#executing-gigeconfig-tool">Executing GigEConfig Tool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#discoverhistory">DiscoverHistory</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#steps-to-build-and-run-discoverhistory-service">Steps to build and run DiscoverHistory service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#list-of-sample-select-queries">List of sample select queries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#to-run-the-tool-in-zmq-ipc-mode">To run the tool in zmq_ipc mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#id40">Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -312,45 +333,30 @@
 <li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#optional-adding-multiple-telegraf-instances">Optional: Adding multiple telegraf instances</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#enabling-eii-message-bus-input-plugin-in-telegraf">Enabling EII message bus input plugin in Telegraf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#enabling-eii-message-bus-output-plugin-in-telegraf">Enabling EII message bus Output plugin in Telegraf</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/timeseries.html#using-input-plugin">Using input plugin</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin">Advanced: Multiple plugin sections of EII message bus output plugin</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#kapacitor">Kapacitor</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#starting-the-example">Starting the example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../pages/timeseries.html#kapacitor-input-and-output-plugins">Kapacitor input and output plugins</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#purpose-of-plugins">Purpose of plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#using-input-plugin">Using input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#id38">Using input plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#using-output-plugin">Using output plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#user-defined-functions">User-defined Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#custom-udfs-available-in-the-udfs-directory">Custom UDFs available in the udfs directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#steps-to-configure-the-udfs-in-kapacitor">Steps to configure the UDFs in kapacitor.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../pages/timeseries.html#id48">Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#id49">Steps to run the samples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#id65">Steps to verify the results in single task with multiple UDFs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#id66">Steps to verify the results in multiple tasks with single UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#id55">Steps to run the samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#id71">Steps to verify the results in single task with multiple UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#id72">Steps to verify the results in multiple tasks with single UDF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#working-with-kapacitor">Working with Kapacitor*</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#influxdb">InfluxDB</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#configuring-influxdb">Configuring InfluxDB*</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../pages/timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#influxdbconnector-configuration">InfluxDBConnector Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#influxdbconnector-installation">InfluxDBConnector Installation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#eii-timeseriesprofiler">EII TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#eii-pre-requisites">EII pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#eii-timeseriesprofiler-modes">EII TimeSeriesProfiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#procedure-to-run-grafana">Procedure to run Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#steps-to-execute-query">Steps to execute query</a></li>
 </ul>
 </li>
 </ul>
@@ -404,8 +410,16 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/opcua.html">OpcuaExport Application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../pages/opcua.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/opcua.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/opcua.html#opcuaexport">OpcuaExport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/opcua.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/opcua.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/opcua.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/opcua.html#opcua-client-apps">OPCUA client apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/opcua.html#note">Note:</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../pages/restdata.html">RestDataExport</a><ul>
@@ -419,6 +433,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/restdata.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/restdata.html#faqs">FAQs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/restdata.html#for-setting-environment-proxy-settings">For setting environment proxy settings</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -461,33 +479,40 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#id39">Jupyter Notebook usage to develop python UDFs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id40">Jupyter Notebook pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id45">Running Jupyter Notebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id45">Running Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#id48">MQTT publisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id49">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#id51">Software Trigger Utility for VideoIngestion Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id52">Software Trigger Utilily pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id56">Configuration file:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id59">Running Software Trigger Utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#id50">MQTT publisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id51">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#id62">EII TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id63">EII pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id66">EII TimeSeriesProfiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id70">EII TimeSeriesProfiler configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id71">Running TimeSeriesProfiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#id53">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id54">Software Trigger Utilily pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id58">Configuration file:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id61">Running Software Trigger Utility</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#id91">EII Video Profiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id92">EII Video Profiler pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id95">EII Video Profiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id100">EII Video Profiler configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id103">Running Video Profiler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id111">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id113">Benchmarking with multi instance config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#id64">EII TimeSeriesProfiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id65">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id68">EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id72">EII TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id73">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#id93">EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id94">EII Video Profiler pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id97">EII Video Profiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id102">EII Video Profiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id105">Running Video Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id113">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id115">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#id117">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -604,6 +629,8 @@ dmesg &gt; dmesg.txt
 </li>
 <li><p>The below link can be referred in case user observes <code class="docutils literal notranslate"><span class="pre">global</span> <span class="pre">mutex</span> <span class="pre">initialization</span> <span class="pre">failed</span></code> during device initialization of NCS2 stick
 <a class="reference external" href="https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html">https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html</a></p></li>
+<li><p>For VPU troubleshooting refer the below link:
+<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting">https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting</a></p></li>
 </ul>
 </li>
 </ul>
@@ -663,22 +690,28 @@ services using OpenVINO with HDDL (<code class="docutils literal notranslate"><s
 <li><p><strong>Troubleshooting issues for HDDL devices</strong></p>
 <ul class="simple">
 <li><p>Please verify the hddldaemon started on host m/c to verify if it is using the libraries of the correct OpenVINO version used in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a>. One could enable the <code class="docutils literal notranslate"><span class="pre">device_snapshot_mode</span></code> to <code class="docutils literal notranslate"><span class="pre">full</span></code> in $HDDL_INSTALL_DIR/config/hddl_service.config on host m/c to get the complete snapshot of the hddl device.</p></li>
+<li><p>For VPU troubleshooting refer the below link:
+<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting">https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting</a></p></li>
 <li><p>Please refer OpenVINO 2021.4 release notes in the below link for new features and changes from the previous versions.
 <a class="reference external" href="https://software.intel.com/content/www/us/en/develop/articles/openvino-relnotes.html">https://software.intel.com/content/www/us/en/develop/articles/openvino-relnotes.html</a></p></li>
 <li><p>Refer OpenVINO website in the below link to skim through known issues, limitations and troubleshooting
-<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/index.html">https://docs.openvinotoolkit.org/2021.4/index.html</a>
-### <strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></p></li>
+<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/index.html">https://docs.openvinotoolkit.org/2021.4/index.html</a></p></li>
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+</section>
+<section id="to-run-on-intel-r-processor-graphics-gpu-igpu">
+<h2><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong><a class="headerlink" href="#to-run-on-intel-r-processor-graphics-gpu-igpu" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <blockquote>
-<div><p><strong>Note</strong>
-The below step is required only for 11th gen Intel Processors</p>
+<div><p>The below step is required only for 11th gen Intel Processors</p>
 </div></blockquote>
 <p>Upgrade the kernel version to 5.8 and install the required drivers from the below OpenVINO link:
 <a class="reference external" href="https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps">https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps</a></p>
-</li>
-</ul>
+</div>
 </section>
 </section>
 <section id="custom-udfs">
@@ -692,6 +725,12 @@ The below step is required only for 11th gen Intel Processors</p>
 <p>For running custom udfs either in VI or VA one must refer <a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/docs/custom_udfs_doc.md">VideoIngestion/docs/custom_udfs_doc.md</a></p>
 </li>
 </ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>:
+By default, <code class="docutils literal notranslate"><span class="pre">ia_telegraf</span></code> uses the mqtt plugin to talk to the <code class="docutils literal notranslate"><span class="pre">ia_mqtt_broker</span></code> service, so please make sure <code class="docutils literal notranslate"><span class="pre">ia_mqtt_broker</span></code> service is running and you are publishing the sample sensor data by
+following the guide at <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/mqtt/README.md">https://github.com/open-edge-insights/eii-tools/blob/master/mqtt/README.md</a>. If one does not want to run MQTT broker, please make sure to comment/remove the <code class="docutils literal notranslate"><span class="pre">[[inputs.mqtt_consumer]]</span></code> sections to avoid DNS queries on <code class="docutils literal notranslate"><span class="pre">ia_mqtt_broker</span></code> in the <a class="reference external" href="https://github.com/open-edge-insights/ts-telegraf/tree/master/config/Telegraf">respective conf files</a> based on DEV or PROD mode.</p>
+</div>
 <p>For time-series data, a sample analytics flow uses Telegraf for ingestion, Influx DB for storage and Kapacitor for classification. This is demonstrated with an MQTT based ingestion of sample temperature sensor data and analytics with a Kapacitor UDF which does threshold detection on the input values.</p>
 <p>The services mentioned in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/time-series.yml">build/usecases/time-series.yml</a> will be available in the consolidated <code class="docutils literal notranslate"><span class="pre">build/docker-compose.yml</span></code> and consolidated <code class="docutils literal notranslate"><span class="pre">build/provision/config/eii_config.json</span></code> of the EII stack for timeseries use case when built via <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> as called out in previous steps.</p>
 <p>This will enable building of Telegraf and the Kapacitor based analytics containers.
@@ -734,6 +773,7 @@ deploy EII services</p></li>
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/README.md">TimeSeriesProfiler</a></p></li>
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/README.md">VideoProfiler</a></p></li>
 </ul>
+<p>Please find more details about this capability at <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/remote_logging/README.md">build/remote_logging/README.md</a></p>
 <p>The uninstaller script automates the removal of all the EII Docker configuration installed on a system. This uninstaller will perform the following tasks:</p>
 <ol class="arabic simple">
 <li><p><strong>Stops and removes all EII running and stopped containers</strong></p></li>

@@ -57,8 +57,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Running Intel® Edge Insights for Industrial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#minimum-system-requirements">Minimum System Requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#downloading-and-installation-from-opensource-github-repository">Downloading and Installation from Opensource Github Repository</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#eii-prerequisites-installation">EII Prerequisites installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#generate-deployment-and-configuration-files">Generate deployment and configuration files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#eii-prerequisites-installation">EII Prerequisites installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generating-consolidated-deployment-and-configuration-files">Generating consolidated deployment and configuration files:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#generating-consolidated-docker-compose-yml-and-eii-config-json-files">Generating consolidated docker-compose.yml and eii_config.json files:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#using-builder-script">Using builder script</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services">Running builder to generate the above listed consolidated files for all applicable EII services</a></li>
@@ -109,6 +109,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#eii-provision-and-deployment">EII provision and deployment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pre-requisites">Pre requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#update-the-helm-charts-directory">Update the helm charts directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#provision-and-deploy-in-the-kubernetes-node">Provision and deploy in the kubernetes node.</a></li>
@@ -120,8 +123,16 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#eii-uninstaller">EII Uninstaller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#debugging">Debugging</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#debugging-through-the-logs">Debugging Through the Logs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-through-the-logs">Debugging Through the Logs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#working-with-eii-docker-containers">working with EII Docker* Containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#useful-docker-commands">Useful Docker* Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gstreamer-valid-plugins-element">GStreamer Valid Plugins / Element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#debugging-the-video-ingestion-container">Debugging the Video Ingestion Container</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#enablement-of-x11-forwarding-for-eii-visualizer-container">Enablement of X11 Forwarding for EII Visualizer Container</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#debugging-options">Debugging options</a></li>
 </ul>
@@ -130,6 +141,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-1">EII v2.6.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6">EII v2.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release.html#features">Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="release.html#known-issues">Known Issues</a></li>
@@ -184,7 +199,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="eiiConfig.html">EII Configuration Management</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd">etcd*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd">etcd</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#configmgr">ConfigMgr</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#tool-to-generate-configuration-management-ui-service">Tool to Generate Configuration Management UI Service</a><ul>
@@ -243,26 +258,43 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#id4">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#eii-sample-udfs">EII Sample UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#custom-udfs">Custom Udfs</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#udf-writing-guide">UDF Writing Guide</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#sample-udfs">Sample UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#native-udfs">Native UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#chaining-of-udfs">Chaining of UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#combination-of-udfs-with-ingestors">Combination of UDFs with ingestors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#time-series-analytics">Time-series Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-multi-node-cluster-provision-and-deployment">EII multi node cluster provision and deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#without-orchestrator"><strong>Without orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#developing-python-udf-using-jupyter-notebook">Developing python UDF using Jupyter Notebook</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#jupyter-notebook-pre-requisites">Jupyter Notebook pre-requisites</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#running-jupyter-notebook">Running Jupyter Notebook</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-tools">EII tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#elk-usage-for-centralized-logging-of-eii-services-logs">ELK usage for centralized logging of EII services logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-uninstaller">EII Uninstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#debugging-options">Debugging options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#troubleshooting-guide">Troubleshooting guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#eii-udfloader">EII UDFLoader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#introduction"><strong>Introduction</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#udf-configuration"><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">Configuration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#udf-writing-guide"><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">Writing</span> <span class="pre">Guide</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#sample-udfs"><code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">UDFs</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#native-udfs"><code class="docutils literal notranslate"><span class="pre">Native</span> <span class="pre">UDFs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#construction-of-metadata-in-udf"><code class="docutils literal notranslate"><span class="pre">Construction</span> <span class="pre">of</span> <span class="pre">Metadata</span> <span class="pre">in</span> <span class="pre">UDF</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#chaining-of-udfs"><code class="docutils literal notranslate"><span class="pre">Chaining</span> <span class="pre">of</span> <span class="pre">UDFs</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#combination-of-udfs-with-ingestors"><code class="docutils literal notranslate"><span class="pre">Combination</span> <span class="pre">of</span> <span class="pre">UDFs</span> <span class="pre">with</span> <span class="pre">ingestors</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -275,32 +307,21 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#web-visualizer-module">Web Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id39">Using Labels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#id43">Metadata Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id33">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#id37">Metadata Structure</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#imagestore-module">ImageStore Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id44">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id38">Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id46">Configuration</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#gigeconfigtool-and-export-settings-from-basler-pylon-feature-system">GigEConfigTool and Export Settings from Basler Pylon Feature System</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#generating-pylon-feature-system-file-pfs">Generating Pylon Feature System File (PFS)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#executing-gigeconfig-tool">Executing GigEConfig Tool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#discoverhistory">DiscoverHistory</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-discoverhistory-service">Steps to build and run DiscoverHistory service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#list-of-sample-select-queries">List of sample select queries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#to-run-the-tool-in-zmq-ipc-mode">To run the tool in zmq_ipc mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id40">Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -314,45 +335,30 @@
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#optional-adding-multiple-telegraf-instances">Optional: Adding multiple telegraf instances</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#enabling-eii-message-bus-input-plugin-in-telegraf">Enabling EII message bus input plugin in Telegraf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#enabling-eii-message-bus-output-plugin-in-telegraf">Enabling EII message bus Output plugin in Telegraf</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timeseries.html#using-input-plugin">Using input plugin</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin">Advanced: Multiple plugin sections of EII message bus output plugin</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="timeseries.html#kapacitor">Kapacitor</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#starting-the-example">Starting the example</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="timeseries.html#kapacitor-input-and-output-plugins">Kapacitor input and output plugins</a></li>
-</ul>
-</li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#purpose-of-plugins">Purpose of plugins</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#using-input-plugin">Using input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id38">Using input plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#using-output-plugin">Using output plugin</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#user-defined-functions">User-defined Functions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#custom-udfs-available-in-the-udfs-directory">Custom UDFs available in the udfs directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#steps-to-configure-the-udfs-in-kapacitor">Steps to configure the UDFs in kapacitor.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="timeseries.html#id48">Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id49">Steps to run the samples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id65">Steps to verify the results in single task with multiple UDFs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id66">Steps to verify the results in multiple tasks with single UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id55">Steps to run the samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id71">Steps to verify the results in single task with multiple UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#id72">Steps to verify the results in multiple tasks with single UDF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="timeseries.html#working-with-kapacitor">Working with Kapacitor*</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="timeseries.html#influxdb">InfluxDB</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#configuring-influxdb">Configuring InfluxDB*</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#influxdbconnector-configuration">InfluxDBConnector Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#influxdbconnector-installation">InfluxDBConnector Installation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="timeseries.html#eii-timeseriesprofiler">EII TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#eii-pre-requisites">EII pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#eii-timeseriesprofiler-modes">EII TimeSeriesProfiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="timeseries.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#procedure-to-run-grafana">Procedure to run Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#steps-to-execute-query">Steps to execute query</a></li>
 </ul>
 </li>
 </ul>
@@ -406,8 +412,16 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="opcua.html">OpcuaExport Application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="opcua.html#configuration">Configuration</a></li>
-<li class="toctree-l2"><a class="reference internal" href="opcua.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="opcua.html#opcuaexport">OpcuaExport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#opcua-client-apps">OPCUA client apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="opcua.html#note">Note:</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport</a><ul>
@@ -421,6 +435,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="restdata.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#faqs">FAQs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#for-setting-environment-proxy-settings">For setting environment proxy settings</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -463,33 +481,40 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#id39">Jupyter Notebook usage to develop python UDFs</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#id40">Jupyter Notebook pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id45">Running Jupyter Notebook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id45">Running Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id48">MQTT publisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id49">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id51">Software Trigger Utility for VideoIngestion Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id52">Software Trigger Utilily pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id56">Configuration file:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id59">Running Software Trigger Utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id50">MQTT publisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id51">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id62">EII TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id63">EII pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id66">EII TimeSeriesProfiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id70">EII TimeSeriesProfiler configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id71">Running TimeSeriesProfiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id53">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id54">Software Trigger Utilily pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id58">Configuration file:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id61">Running Software Trigger Utility</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#id91">EII Video Profiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id92">EII Video Profiler pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id95">EII Video Profiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id100">EII Video Profiler configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id103">Running Video Profiler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id111">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id113">Benchmarking with multi instance config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id64">EII TimeSeriesProfiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id65">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id68">EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id72">EII TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id73">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#id93">EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id94">EII Video Profiler pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id97">EII Video Profiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id102">EII Video Profiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id105">Running Video Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id113">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id115">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id117">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -721,11 +746,70 @@ Different use cases...
 </ul>
 </li>
 </ol>
+<section id="generating-consolidated-deployment-and-configuration-files">
+<h3>Generating consolidated deployment and configuration files:<a class="headerlink" href="#generating-consolidated-deployment-and-configuration-files" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Whenever we make changes to individual EII app/service directories files as mentioned above in the description column</dt><dd><p>or in the <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a> file, it is required to re-run the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script before provisioning and running
+the EII stack to ensure that the changes done reflect in the required consolidated files.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Manual editing of above consolidated files is not recommended and we would recommend to do the required changes to</dt><dd><p>respective files in EII app/service directories and use <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py">build/builder.py</a> script to generate the conslidated ones.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>This <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/provision/config/eii_config.json">eii_config.json</a> script removes the subscriber or client interface for EII service/app(s) configuration in consolidated <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/provision/config/eii_config.json">eii_config.json</a></dt><dd><p>if the corresponding publisher or server interface in any EII service/app(s) is missing based on the default <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> execution or <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> execution with <code class="docutils literal notranslate"><span class="pre">-f</span></code> switch.
+<strong>Please note if one runs into issues where the DNS server is being overwhelmed with DNS queries for the EII service/app name, most likely this would be happening if those EII services are intentionally
+stopped, please ensure to restart those EII services/app(s). If the intention is to not have that application/service running, please execute the ``builder.py`` by providing usecase yml file with that application/service not
+listed, so the corresponding subscriber/client interfaces from other EII service/app(s) are automatically removed before provisioning and deployment of EII stack. Please check
+`#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services &lt;https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services&gt;`_ for selectively choosing required
+EII services</strong></p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<p>EII is equipped with <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py">builder</a>, a robust python tool to auto-generate the required configuration files to deploy EII services on single/multiple nodes. The tool is    capable of auto-generating the following consolidated files by fetching the respective files from EII service directories which are required to bring up different EII use-cases:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>file name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>docker-compose.yml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file used to launch EII docker containers in a given single node using <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> tool</p></td>
+</tr>
+<tr class="row-odd"><td><p>docker-compose.override.yml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">docker-compose-dev.override.yml</span></code> of every app that is generated only in DEV mode for EII deployment on a given single node using <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> tool</p></td>
+</tr>
+<tr class="row-even"><td><p>docker-compose-build.yml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">docker-compose-build.yml</span></code> file having EII base images and <code class="docutils literal notranslate"><span class="pre">depends_on</span></code> and <code class="docutils literal notranslate"><span class="pre">build</span></code> keys required for building EII services</p></td>
+</tr>
+<tr class="row-odd"><td><p>docker-compose-push.yml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">docker-compose-push.yml</span></code> file (same as <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file with just dummy <code class="docutils literal notranslate"><span class="pre">build</span></code> key added), used for pushing EII services to docker registry</p></td>
+</tr>
+<tr class="row-even"><td><p>eii_config.json</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">config.json</span></code> of every app which will be put into etcd during provisioning</p></td>
+</tr>
+<tr class="row-odd"><td><p>values.yaml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> of every app inside helm-eii/eii-deploy directory, which is required to deploy EII services via helm</p></td>
+</tr>
+<tr class="row-even"><td><p>Template yaml files</p></td>
+<td><p>Files copied from helm/templates directory of every app to helm-eii/eii-deploy/templates directory, which are required to deploy EII services via helm</p></td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="generate-deployment-and-configuration-files">
-<h2>Generate deployment and configuration files<a class="headerlink" href="#generate-deployment-and-configuration-files" title="Permalink to this headline">¶</a></h2>
-<p>The section assumes the EII software is already downloaded from the release package or from git.
-Run all the below commands in this section from <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/build/</span></code> directory.</p>
 <section id="generating-consolidated-docker-compose-yml-and-eii-config-json-files">
 <h3>Generating consolidated docker-compose.yml and eii_config.json files:<a class="headerlink" href="#generating-consolidated-docker-compose-yml-and-eii-config-json-files" title="Permalink to this headline">¶</a></h3>
 <p>EII is equipped with <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py">builder</a>, a robust python tool to auto-generate the required configuration files to deploy EII services on single/multiple nodes. The tool is    capable of auto-generating the following consolidated files by fetching the respective files from EII service directories which are required to bring up different EII use-cases:</p>
@@ -922,18 +1006,6 @@ The above command only <code class="docutils literal notranslate"><span class="p
 <section id="distribution-of-eii-container-images">
 <h2>Distribution of EII container images<a class="headerlink" href="#distribution-of-eii-container-images" title="Permalink to this headline">¶</a></h2>
 <p>EII services are available as pre-built container images in docker hub at <a class="reference external" href="https://hub.docker.com/u/openedgeinsights">https://hub.docker.com/u/openedgeinsights</a></p>
-<p>and for the ones not listed there, one needs to do the build from source before running <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">up</span> <span class="pre">-d</span></code> command.</p>
-<p>Eg:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="o">[</span>WORKDIR<span class="o">]</span>/IEdgeInsights/build
-$ <span class="c1"># Base images that needs to be built</span>
-$ docker-compose -f docker-compose-build.yml build ia_eiibase
-$ docker-compose -f docker-compose-build.yml build ia_common
-$ <span class="c1"># Assuming here that the `python3 builder.py` step is been executed and ia_kapacitor</span>
-$ <span class="c1"># service exists in the generated compose files and also, provisioning step is done</span>
-$ docker-compose -f docker-compose-build.yml build ia_kapacitor
-$ docker-compose up -d
-</pre></div>
-</div>
 <p>Below are the list of pre-built container images that are accessible at <a class="reference external" href="https://hub.docker.com/u/openedgeinsights">https://hub.docker.com/u/openedgeinsights</a>:</p>
 <ol class="arabic simple">
 <li><p><strong>Provisioning images</strong></p>
@@ -969,6 +1041,23 @@ $ docker-compose up -d
 </ol>
 <p>Additionally, we have <code class="docutils literal notranslate"><span class="pre">openedgeinsights/ia_edgeinsights_src</span></code> image available at the above docker hub
 location which consists of source code of GPL/LGPL/AGPL components of EII stack.</p>
+<p>For the EII docker images not listed on docker hub at above location, one needs to do the build from source
+before running <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">up</span> <span class="pre">-d</span></code> command or bringing up the pod in kubernetes cluster on the build/development
+node.</p>
+<p>Eg:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="c1"># Update the DOCKER_REGISTRY value in [WORKDIR]/IEdgeInsights/build/.env as DOCKER_RESISTRY=&lt;docker_registry&gt; (Make sure `docker login &lt;docker_registry&gt;` to the docker reigstry works)</span>
+$ <span class="nb">cd</span> <span class="o">[</span>WORKDIR<span class="o">]</span>/IEdgeInsights/build
+$ <span class="c1"># Base images that needs to be built</span>
+$ docker-compose -f docker-compose-build.yml build ia_eiibase
+$ docker-compose -f docker-compose-build.yml build ia_common
+$ <span class="c1"># Assuming here that the `python3 builder.py` step is been executed and ia_kapacitor</span>
+$ <span class="c1"># service exists in the generated compose files and also, provisioning step is done</span>
+$ docker-compose -f docker-compose-build.yml build ia_kapacitor
+$ docker-compose up -d
+$ <span class="c1"># Push all the applicable EII images to &lt;docker_registry&gt;. Ensure to use the same DOCKER_REGISTRY value on the deployment machine while deployment</span>
+$ docker-compose -f docker-compose-push.yml push
+</pre></div>
+</div>
 </section>
 <section id="list-of-all-eii-services">
 <h2>List of All EII Services<a class="headerlink" href="#list-of-all-eii-services" title="Permalink to this headline">¶</a></h2>
@@ -1020,7 +1109,7 @@ location which consists of source code of GPL/LGPL/AGPL components of EII stack.
 </section>
 <section id="profiling-mode">
 <h3>Profiling Mode<a class="headerlink" href="#profiling-mode" title="Permalink to this headline">¶</a></h3>
-<p>Profiling mode is used to gather performance statistics. In this mode, each EII component makes a record of the time needed for processing any single frame. These statistics are gathered in the visualizer where the SI can see the end-to-end processing time for individual frames, as well as the end-to-end average time. To enable profiling mode in EII, set the environment variable <strong>PROFILING</strong> in the <strong>[WORK_DIR]/IEdgeInsights/build/.env</strong> file to <strong>true</strong>.</p>
+<p>Profiling mode is used to gather performance statistics. In this mode, each EII component makes a record of the time needed for processing any single frame. These statistics are gathered in the visualizer where the SI can see the end-to-end processing time for individual frames, as well as the end-to-end average time. To enable profiling mode in EII, set the environment variable <strong>PROFILING</strong> in the <strong>[WORK_DIR]/IEdgeInsights/build/.env</strong> file to <strong>true</strong>.</p>
 <p>For each EII services defined in the <strong>[WORK_DIR]/IEdgeInsights/build/docker-compose.yml</strong> file, there is an ENV to determine whether <strong>PROFILING</strong> should be enabled based on the setting in the <strong>[WORK_DIR]/IEdgeInsights/build/.env</strong> file. Figure 52 provides an example from the Visualizer service.</p>
 <figure class="align-center">
 <a class="reference internal image-reference" href="../_images/profiling-mode.png"><img alt="../_images/profiling-mode.png" src="../_images/profiling-mode.png" style="width: 347.0px; height: 318.0px;" /></a>
@@ -1099,6 +1188,12 @@ $ docker-compose up -d
 </section>
 <section id="push-required-eii-images-to-docker-registry">
 <h3>Push required EII images to docker registry<a class="headerlink" href="#push-required-eii-images-to-docker-registry" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, the images gets published to hub.docker.com if DOCKER_REGISTRY is empty in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a>. Please make sure to take off
+<code class="docutils literal notranslate"><span class="pre">openedgeinsights/</span></code> org from the image name(s) while pushing to docker hub as it doesn’t support repository/image name having multiple slashes.
+This limitation doesn’t exist in other docker registries like Azure Container Registry(ACR), Harbor registry etc.,</p>
+</div>
 <p>Pushes all the EII service docker images in the <code class="docutils literal notranslate"><span class="pre">build/docker-compose-push.yml</span></code>. Ensure to update the DOCKER_REGISTRY value in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">.env</a> file.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ docker-compose -f docker-compose-push.yml push
 </pre></div>
@@ -1499,40 +1594,63 @@ This will execute all the steps of EII as prequisite, build, provision, deploy f
 <li><p>Use helm charts to provision the node and deploy EII services</p></li>
 </ul>
 </section>
-<section id="pre-requisites">
-<h3>Pre requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h3>
-<p>For preparing the necessary files required for the provision and deployment, user needs to execute the build and provision steps on an Ubuntu 18.04 / 20.04 machine.
-Follow the Docker pre-requisites, EII Pre-requisites, Provision EII and Build and Run EII mentioned in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md">README.md</a> on the Ubuntu dev machine.</p>
+</section>
+<section id="eii-provision-and-deployment">
+<h2>EII provision and deployment<a class="headerlink" href="#eii-provision-and-deployment" title="Permalink to this headline">¶</a></h2>
+<p>For deployment of EII, helm charts are provided for both provision and deployment.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>:</p>
-<p>K8s installation on single or multi node should be done as pre-requisite to continue the following deployment.</p>
-<p>builder.py need to be executed with the preferred usecase for generating the consolidated helm charts for the provisioning and deployment.</p>
-<p>For helm installation refer <a class="reference external" href="https://helm.sh/docs/intro/install/">helm website</a>.</p>
-<p><strong>Note</strong>:
-To run eii services with helm in fresh system where EII services are going to run for the first time(no eiiuser is present on that system), user needs to run below steps:</p>
+<ul class="simple">
+<li><p>Same procedure has to be followed for single or multi node.</p></li>
+<li><p>Please login/configure docker registry before running helm. This would be required when not using public docker hub for accessing images.</p></li>
+</ul>
+</div>
+<section id="pre-requisites">
+<h3>Pre requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h3>
+<hr class="docutils" />
+<p><strong>Note</strong>:</p>
+<ul class="simple">
+<li><p>K8s installation on single or multi node should be done as pre-requisite to continue the following deployment. Please note we
+have tried the kubernetes cluster setup with <code class="docutils literal notranslate"><span class="pre">kubeadm</span></code>, <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> and <code class="docutils literal notranslate"><span class="pre">kubelet</span></code> packages on single and multi nodes with <code class="docutils literal notranslate"><span class="pre">v1.22.2</span></code>.
+One can refer tutorials like <a class="reference external" href="https://adamtheautomator.com/install-kubernetes-ubuntu/#Installing_Kubernetes_on_the_Master_and_Worker_Nodes">https://adamtheautomator.com/install-kubernetes-ubuntu/#Installing_Kubernetes_on_the_Master_and_Worker_Nodes</a> and many other
+online tutorials to setup kubernetes cluster on the web with host OS as ubuntu 18.04/20.04.</p></li>
+<li><p>For helm installation, please refer <a class="reference external" href="https://helm.sh/docs/intro/install/">helm website</a></p></li>
+</ul>
+<hr class="docutils" />
+<p>For preparing the necessary files required for the provision and deployment, user needs to execute the build and provision steps on an Ubuntu 18.04 / 20.04 machine.
+Follow the Docker pre-requisites, EII Pre-requisites, Provision EII and Build and Run EII mentioned in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md">README.md</a> on the Ubuntu dev machine.</p>
+<ul>
+<li><p>To run EII services with helm in fresh system where EII services are going to run for the first time(no <code class="docutils literal notranslate"><span class="pre">eiiuser</span></code> is present on that system), user needs to run below steps:</p>
 <ol class="arabic">
-<li><p>Create eii user if not exists:
+<li><p>Create EII user if not exists:
 .. code-block:: sh</p>
 <blockquote>
 <div><p>$ set -a
 $ source ../.env
 $ set +a
-$ groupadd $EII_USER_NAME -g $EII_UID
-$ useradd -r -u $EII_UID -g $EII_USER_NAME $EII_USER_NAME</p>
+$ sudo groupadd $EII_USER_NAME -g $EII_UID
+$ sudo useradd -r -u $EII_UID -g $EII_USER_NAME $EII_USER_NAME</p>
 </div></blockquote>
 </li>
-<li><p>Create required directory and change ownership to eiiuser
+<li><p>Create required directory and change ownership to EII user
 .. code-block:: sh</p>
 <blockquote>
-<div><p>$ mkdir -p $EII_INSTALL_PATH/data/influxdata
-$ mkdir -p $EII_INSTALL_PATH/sockets/
-$ chown -R $EII_USER_NAME:$EII_USER_NAME $EII_INSTALL_PATH</p>
+<div><p>$ sudo mkdir -p $EII_INSTALL_PATH/data/influxdata
+$ sudo mkdir -p $EII_INSTALL_PATH/sockets/
+$ sudo chown -R $EII_USER_NAME:$EII_USER_NAME $EII_INSTALL_PATH</p>
 </div></blockquote>
 </li>
 </ol>
-</div>
+</li>
+<li><p>Execute <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md#using-builder-script">builder.py</a> with the preferred usecase for generating the consolidated helm charts for the provisioning and deployment.
+As EII don’t distribute all the docker images on docker hub, one would run into issues of those pods status showing <code class="docutils literal notranslate"><span class="pre">ImagePullBackOff</span></code> and few pods status like visualizer, factory ctrl etc.,
+showing <code class="docutils literal notranslate"><span class="pre">CrashLoopBackOff</span></code> due to additional configuration required. For <code class="docutils literal notranslate"><span class="pre">ImagePullBackOff</span></code> issues, please follow the steps mentioned at [../README.md#distribution-of-eii-container-images]&gt; (../README.<span class="raw-html-m2r"><br></span>
+md#distribution-of-eii-container-images) to push the images that are locally built to the docker registry of choice. Please ensure to update the <code class="docutils literal notranslate"><span class="pre">DOCKER_REGISTRY</span></code> value in <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/build/.env</span></code>
+file and re-run the <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/builder.py">../builder.py</a> script to regenerate the helm charts for provision and deployment.</p></li>
+</ul>
 </section>
+<hr class="docutils" />
 <section id="update-the-helm-charts-directory">
 <h3>Update the helm charts directory<a class="headerlink" href="#update-the-helm-charts-directory" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
@@ -1611,27 +1729,17 @@ $ python3 builder.py -f usecases/&lt;usecase&gt;.yml
 </pre></div>
 </div>
 </li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>:
-<code class="docutils literal notranslate"><span class="pre">ia_kapacitor</span></code> and <code class="docutils literal notranslate"><span class="pre">ia_telegraf</span></code> container images are not distributed via docker hub, so one won’t be able to pull these images
-for time-series use case upon using <cite>../usecases/time-series.yml &lt;https://github.com/open-edge-insights/eii-core/blob/master/usecases/time-series.yml</cite>&gt;`_ for deployment. For more details,
-refer: [../README.md#distribution-of-eii-container-images]&gt; (../README.md#distribution-of-eii-container-images).</p>
+<li><p>Remove the etcd storage directory</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nv">$sudo</span> rm -rf /opt/intel/eii/data/*
+</pre></div>
 </div>
-<ol class="arabic">
-<li><p>Remove the etcd storage directory
-.. code-block:: sh</p>
-<blockquote>
-<div><p>$sudo rm -rf /opt/intel/eii/data/*</p>
-</div></blockquote>
 </li>
 </ol>
 <p>Do helm install of provision and deploy charts as per previous section.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>:
-Please wait for all the pods terminated successfully, In times of re-deploy helm chart for eii-provision and eii-deploy</p>
+During re-deploy(<code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">uninstall</span></code> and <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">install</span></code>) of helm chart for eii-provision and eii-deploy wait for all the pervious pods to terminated successfully.</p>
 </div>
 </section>
 <section id="steps-to-enable-accelarators">
@@ -1729,7 +1837,7 @@ python3 builder.py
 </pre></div>
 </div>
 </li>
-<li><p>Follow the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/##Provision-and-deploy-in-the-kubernetes-node">Deployment Steps</a></p></li>
+<li><p>Follow the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#provision-and-deploy-in-the-kubernetes-node">Deployment Steps</a></p></li>
 <li><p>Verify the respecitve workloads are running based on the <code class="docutils literal notranslate"><span class="pre">nodeSelector</span></code> constraints.</p></li>
 </ol>
 </section>
@@ -1788,7 +1896,7 @@ gige_camera: <span class="nb">true</span>
 </pre></div>
 </div>
 <ol class="arabic simple">
-<li><p>Follow the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/##Provision-and-deploy-in-the-kubernetes-node">Deployment Steps</a></p></li>
+<li><p>Follow the <a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#provision-and-deploy-in-the-kubernetes-node">Deployment Steps</a></p></li>
 <li><p>Verify <code class="docutils literal notranslate"><span class="pre">pod</span></code>ip &amp; <code class="docutils literal notranslate"><span class="pre">host</span></code> ip are same as per Configured <code class="docutils literal notranslate"><span class="pre">Ethernet</span></code> interface by using below command.</p></li>
 </ol>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ kubectl -n eii <span class="nb">exec</span> -it &lt;pod_name&gt; -- ip -d address
@@ -1866,12 +1974,16 @@ Usage: ./eii_uninstaller.sh <span class="o">[</span>-h<span class="o">]</span> <
 <section id="debugging-through-the-logs">
 <h3>Debugging Through the Logs<a class="headerlink" href="#debugging-through-the-logs" title="Permalink to this headline">¶</a></h3>
 <p>For any service run in the EII stack, please use <strong>docker logs -f &lt;service_name&gt;</strong></p>
+<section id="working-with-eii-docker-containers">
+<h4>working with EII Docker* Containers<a class="headerlink" href="#working-with-eii-docker-containers" title="Permalink to this headline">¶</a></h4>
 <p>EII sets up the Docker containers using the docker-compose tool. If only minor changes are made in the user-defined functions without adding any new files, user can just restart the specific docker container by running <strong>$ docker restart &lt;Cointainer_ID&gt;</strong> in the build directory without rebuilding the whole EII container.</p>
 <p>Other useful commands when using the make tool are:</p>
 <p><strong>docker-compose build</strong> : Will build the images for EII components, however will not start the EII</p>
 <p><strong>docker-compose up –build</strong> : Will build the images for EII components and starts EII</p>
 <p><strong>docker-compose up</strong> :  Will starts EII.</p>
 <p><strong>docker-compose down</strong> : Will stop the EII.</p>
+<section id="compose-files">
+<h5>Compose Files<a class="headerlink" href="#compose-files" title="Permalink to this headline">¶</a></h5>
 <p>Docker compose is a tool used to define and run multiple container applications using Docker. It is a wrapper around Docker that is responsible for creating a network and adding the containers to that network. By default, the bridge network is used, unless otherwise specified in the <strong>docker-compose.yml</strong> or <strong>docker-compose.yaml</strong> file.</p>
 <p>More details about the <strong>docker-compose</strong> and <strong>docker-compose.yml</strong> files is available at</p>
 <p><a class="reference external" href="https://docs.docker.com/compose/">Docker compose</a></p>
@@ -1880,6 +1992,10 @@ Usage: ./eii_uninstaller.sh <span class="o">[</span>-h<span class="o">]</span> <
 <p><a class="reference external" href="https://docs.docker.com/engine/reference/builder/">Dockerfile reference</a></p>
 <p><a class="reference external" href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">Best practices for writing Dockerfiles</a></p>
 <p><a class="reference external" href="https://docs.docker.com/engine/reference/builder/">Docker commands</a></p>
+</section>
+</section>
+<section id="useful-docker-commands">
+<h4>Useful Docker* Commands<a class="headerlink" href="#useful-docker-commands" title="Permalink to this headline">¶</a></h4>
 <p>The following list includes the most used docker-compose commands. These commands should come in handy during development and debugging of the EII stack:</p>
 <ul class="simple">
 <li><p><strong>docker-compose build</strong>  Builds all the service containers at the same time. To build a single service container, use <strong>docker-compose build [serv_cont_name]</strong>.</p></li>
@@ -1911,13 +2027,19 @@ Usage: ./eii_uninstaller.sh <span class="o">[</span>-h<span class="o">]</span> <
 <p>For example: <strong>docker-exec -it ia_data_analytics /bin/bash</strong></p>
 </div></blockquote>
 </section>
+</section>
 <section id="debugging-video-ingestion-through-gst-launch">
 <h3>Debugging Video Ingestion Through gst-launch<a class="headerlink" href="#debugging-video-ingestion-through-gst-launch" title="Permalink to this headline">¶</a></h3>
+<section id="gstreamer-valid-plugins-element">
+<h4>GStreamer Valid Plugins / Element<a class="headerlink" href="#gstreamer-valid-plugins-element" title="Permalink to this headline">¶</a></h4>
 <p>There is attribute named “pipeline” in the EII ConfigMgr for VideoIngestion. This attribute is used to mention the source of the video frame. For example:</p>
 <p>“pipeline”: “rtspsrc location=&quot;<a class="reference external" href="rtsp://localhost:8554/">rtsp://localhost:8554/</a>&quot; latency=100 ! <strong>rtph264depay ! h264parse ! mfxdecode ! videoconvert ! appsink</strong>”.</p>
 <p>The <strong>bold text</strong> in the above example are the GStreamer element/plugins.</p>
 <p>A list of valid GStreamer plugins or elements can be found at</p>
 <p>To know which plugins are installed, use the command <strong>gst-inspect-1.0.</strong> This command will display all installed plugins.</p>
+</section>
+<section id="debugging-the-video-ingestion-container">
+<h4>Debugging the Video Ingestion Container<a class="headerlink" href="#debugging-the-video-ingestion-container" title="Permalink to this headline">¶</a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>These steps should only be followed if pipeline has been modified by the SI.</p>
@@ -1925,7 +2047,7 @@ Usage: ./eii_uninstaller.sh <span class="o">[</span>-h<span class="o">]</span> <
 <p>If the SI modifies the value of the pipeline attribute (an attribute from the factory.json file) which causes video ingestion to stop working, use the <strong>gst-launch-1.0</strong> command inside the video ingestion container. To get the granular logs from this command line utility, set the environment variable <strong>GST_DEBUG</strong>. The value can range from 1 to 5.</p>
 <p>For example, consider a case in which the video_str attribute has been modified. The new value has an invalid GStreamer element or plugin, say:</p>
 <blockquote>
-<div><p>rtspsrc location=&quot;<a class="reference external" href="rtsp://localhost:8554/">rtsp://localhost:8554/</a>&quot; latency=100 ! rtph264depay ! <a href="#id14"><span class="problematic" id="id15">:red:`h264parse123`</span></a> ! avdec_h264 ! videoconvert ! appsink</p>
+<div><p>rtspsrc location=&quot;<a class="reference external" href="rtsp://localhost:8554/">rtsp://localhost:8554/</a>&quot; latency=100 ! rtph264depay ! h264parse123 ! avdec_h264 ! videoconvert ! appsink</p>
 </div></blockquote>
 <p>Consequently, video ingestion starts showing:</p>
 <blockquote>
@@ -1940,18 +2062,19 @@ Usage: ./eii_uninstaller.sh <span class="o">[</span>-h<span class="o">]</span> <
 <li><p>Use the below command and examine the logs.</p></li>
 </ol>
 <blockquote>
-<div><p>gst-launch-1.0 <strong>rtspsrc location=&quot;rtsp://localhost:8554/&quot; latency=100 ! rtph264depay ! :red:`h264parse123` ! avdec_h264 ! videoconvert ! appsink</strong></p>
-<p>The <strong>bold text</strong> in the command above is exactly the value of the pipeline attribute. Since, <a href="#id16"><span class="problematic" id="id17">:red:`h264parse123`</span></a> is not a valid GStreamer plugin or element, using the above command will result in a log with the following ERROR messages.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>0:00:00.018350108    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element &quot;h264parse123&quot;
-0:00:00.018434694    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no sink [source=@0xe44080]
-0:00:00.018473162    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element &quot;avdec_h264&quot;
-0:00:00.018497100    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@(nil)]
-0:00:00.019408613    85       0xe31750 :red:`ERROR`           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@0xe50f30]
-WARNING: erroneous pipeline: no element &quot;h264parse123&quot;
+<div><p>gst-launch-1.0 <strong>rtspsrc location=&quot;rtsp://localhost:8554/&quot; latency=100 ! rtph264depay ! h264parse123 ! avdec_h264 ! videoconvert ! appsink</strong></p>
+<p>The <strong>bold text</strong> in the command above is exactly the value of the pipeline attribute. Since, h264parse123 is not a valid GStreamer plugin or element, using the above command will result in a log with the following ERROR messages.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.018350108</span>    <span class="mi">85</span>       <span class="mh">0xe31750</span> <span class="n">ERROR</span>           <span class="n">GST_PIPELINE</span> <span class="n">grammar</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="mi">716</span><span class="p">:</span><span class="n">priv_gst_parse_yyparse</span><span class="p">:</span> <span class="n">no</span> <span class="n">element</span> <span class="s2">&quot;h264parse123&quot;</span>
+<span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.018434694</span>    <span class="mi">85</span>       <span class="mh">0xe31750</span> <span class="n">ERROR</span>           <span class="n">GST_PIPELINE</span> <span class="n">grammar</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="mi">801</span><span class="p">:</span><span class="n">priv_gst_parse_yyparse</span><span class="p">:</span> <span class="n">link</span> <span class="n">has</span> <span class="n">no</span> <span class="n">sink</span> <span class="p">[</span><span class="n">source</span><span class="o">=@</span><span class="mh">0xe44080</span><span class="p">]</span>
+<span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.018473162</span>    <span class="mi">85</span>       <span class="mh">0xe31750</span> <span class="n">ERROR</span>           <span class="n">GST_PIPELINE</span> <span class="n">grammar</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="mi">716</span><span class="p">:</span><span class="n">priv_gst_parse_yyparse</span><span class="p">:</span> <span class="n">no</span> <span class="n">element</span> <span class="s2">&quot;avdec_h264&quot;</span>
+<span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.018497100</span>    <span class="mi">85</span>       <span class="mh">0xe31750</span> <span class="n">ERROR</span>           <span class="n">GST_PIPELINE</span> <span class="n">grammar</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="mi">801</span><span class="p">:</span><span class="n">priv_gst_parse_yyparse</span><span class="p">:</span> <span class="n">link</span> <span class="n">has</span> <span class="n">no</span> <span class="n">source</span> <span class="p">[</span><span class="n">sink</span><span class="o">=@</span><span class="p">(</span><span class="n">nil</span><span class="p">)]</span>
+<span class="mi">0</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mf">00.019408613</span>    <span class="mi">85</span>       <span class="mh">0xe31750</span> <span class="n">ERROR</span>           <span class="n">GST_PIPELINE</span> <span class="n">grammar</span><span class="o">.</span><span class="n">y</span><span class="p">:</span><span class="mi">801</span><span class="p">:</span><span class="n">priv_gst_parse_yyparse</span><span class="p">:</span> <span class="n">link</span> <span class="n">has</span> <span class="n">no</span> <span class="n">source</span> <span class="p">[</span><span class="n">sink</span><span class="o">=@</span><span class="mh">0xe50f30</span><span class="p">]</span>
+<span class="n">WARNING</span><span class="p">:</span> <span class="n">erroneous</span> <span class="n">pipeline</span><span class="p">:</span> <span class="n">no</span> <span class="n">element</span> <span class="s2">&quot;h264parse123&quot;</span>
 </pre></div>
 </div>
-<p>Therefore, using the <strong>gst-launch-1.0 command</strong> line utility has revealed that there is no h264parse123 <a href="#id18"><span class="problematic" id="id19">:red:`h264parse123`</span></a>. Now we need to check whether the plugin is valid and whether it has been installed. The <strong>gst-inspect-1.0</strong> command can be used to check whether the plugin has been installed.</p>
+<p>Therefore, using the <strong>gst-launch-1.0 command</strong> line utility has revealed that there is no h264parse123. Now we need to check whether the plugin is valid and whether it has been installed. The <strong>gst-inspect-1.0</strong> command can be used to check whether the plugin has been installed.</p>
 </div></blockquote>
+</section>
 </section>
 <section id="enablement-of-x11-forwarding-for-eii-visualizer-container">
 <h3>Enablement of X11 Forwarding for EII Visualizer Container<a class="headerlink" href="#enablement-of-x11-forwarding-for-eii-visualizer-container" title="Permalink to this headline">¶</a></h3>

@@ -2,15 +2,41 @@
 EII distributed services centralized logging using ELK
 ======================================================
 
+"ELK" is the acronym for three open source projects: Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and analytics engine. Logstash is a server‑side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a "stash" like Elasticsearch. Kibana lets users visualize data with charts and graphs in Elasticsearch. 
+
+The guide below demonstrates how the logs of EII services running in distributed environment can be centralized via ELK stack. It allows you to search all the logs in a single place.
+
 Pre-requisites
 --------------
 
 
-* Generate the certificates required to run the Kibana Server using the following command
-  .. code-block::
+#. 
+   EII centralized logging using ELK expects a set of config, interfaces & public private keys to be present in ETCD as a pre-requisite.
+   To achieve this, please ensure an entry for ``remote_logging`` with its relative path from `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory is set in the use-case yml file present in `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory. An example has been provided below:
 
-       $ ./generate_testserver_cert.sh test-server-ip
+   .. code-block:: sh
 
+          AppContexts:
+          - Grafana
+          - InfluxDBConnector
+          - Kapacitor
+          - Telegraf
+          - build/remote_logging
+
+#. 
+   With the above pre-requisite done, please run the below command:
+
+   .. code-block:: sh
+
+           python3 builder.py -f ./usecases/<use-case>.yml
+
+
+#. 
+   Generate the certificates required to run the Kibana Server using the following command
+
+   .. code-block::
+
+       $ ./generate_kibana_certs.sh test-server-ip
 
 #. 
    The EII centralized logging architecture can be visualized as eii-containers--->rsyslog--->logstash--->elasticsearch--->kibana
@@ -34,7 +60,7 @@ Pre-requisites
 
 #. 
    The rsyslog has to forward the received logs from containers to logstash.
-   The file named 'eii.conf' has to be copyied into the directory name '/etc/rsyslog.d/'
+   The file named 'eii.conf' has to be copied into the directory name '/etc/rsyslog.d/'
    After copying this file, install rsyslog module using the below command(The rsyslog module
    installation is one time activity).
 
@@ -65,30 +91,31 @@ Pre-requisites
 
       $ sudo sysctl -w vm.max_map_count=262144
 
-   To start in dev mode, elk.yml can be used.
+#. 
+   Refer `README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ to provision and run the services
 
    .. code-block:: sh
 
-      $ docker-compose -f elk.yml up -d
+      $ docker-compose -f docker-compose-build.yml build 
+      $ docker-compose -f docker-compose.yml up -d # this will work in both DEV or PROD mode automatically
 
-   To start in prod mode, elk_prod.yml can be used.
-
-   .. code-block:: sh
-
-      $ docker-compose -f elk_prod.yml up -d
-
-   Pleas visit `https://localhost:5601 <https://localhost:5601>`_ for viewing the logs in KIBANA.
-   Note:
+   Please visit `https://host-ip:5601 <https://host-ip:5601>`_ for viewing the logs in KIBANA UI.
+   Create new index pattern with the elasticsearch indices\ ``logstash`` pattern
 
    ..
 
       **NOTE**\ : The certificate attached to kibana is self signed and has to be accepted in
       browser as an exception. The attached certificates are sample certificates only and need to
       be replaced for production environment.
-
-      To access Kibana UI in external machines, replace 'localhost' in `.env <https://github.com/open-edge-insights/eii-core/blob/master/env>`_ with the
-      actual IP address of the machine where kibana is running.
+      host-ip : Actual IP address of the machine where kibana is running
 
 
 #. 
    After above 4 steps, please start/restart the EII services.
+   Note:
+
+   ..
+
+      **NOTE**\ : In case of logs are not showing in the KIBANA UI, restart the rsyslog service
+      using the command ``sudo systemctl restart rsyslog``
+

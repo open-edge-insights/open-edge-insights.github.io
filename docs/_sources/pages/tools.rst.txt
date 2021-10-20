@@ -20,6 +20,29 @@ EII stack has below set of tools which run as containers too:
 
 .. include:: ../IEdgeInsights/tools/JupyterNotebook/README.rst
 
+Creating UDF in Jupyter Notebook
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#.
+  After running `main.ipynb <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/JupyterNotebook/main.ipynb>`_ , select `udf_template.ipynb <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/JupyterNotebook/udf_template.ipynb>`_ to start creating our own python UDF.
+
+.. figure:: image/udf_template.png
+    :scale: 50 %
+    :align: center
+
+#.
+  Edit the process method in the Udf class
+
+.. figure:: image/udf_edited.png
+    :scale: 50 %
+    :align: center
+
+#.
+  Run the cell 
+
+#.
+  Check the output on the visualizer
+
 .. include:: ../IEdgeInsights/tools/mqtt/README.rst
 
 .. include:: ../IEdgeInsights/tools/SWTriggerUtility/README.rst
@@ -27,3 +50,5 @@ EII stack has below set of tools which run as containers too:
 .. include:: ../IEdgeInsights/tools/TimeSeriesProfiler/README.rst
 
 .. include:: ../IEdgeInsights/tools/VideoProfiler/README.rst
+
+.. include:: ../IEdgeInsights/build/remote_logging/README.rst
