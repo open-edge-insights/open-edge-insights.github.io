@@ -19,7 +19,6 @@ Intel® Edge Insights for Industrial
 
    pages/msgbus
    pages/eiiConfig
-   pages/api
    
 .. toctree::
    :maxdepth: 2

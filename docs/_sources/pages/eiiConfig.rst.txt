@@ -79,3 +79,5 @@ By default, after the user provision EII on the edge devices, the configMgr UI s
 .. include:: ../IEdgeInsights/common/libs/ConfigMgr/running-examples.rst
 
 .. include:: ../IEdgeInsights/common/libs/ConfigMgr/running-unit-tests.rst
+
+.. include:: ./api_config.rst

@@ -1,0 +1,8 @@
+API Documentation
+=================
+
+* `C API  <../api/c/eiimsgbus/pages.html>`_
+
+* `Python API  <../api/eii_msgbus.html>`_
+
+* `GoLang API  <../api/go/eiimsgbus/index.html>`_
