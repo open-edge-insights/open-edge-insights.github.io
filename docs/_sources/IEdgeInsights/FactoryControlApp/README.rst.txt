@@ -35,10 +35,6 @@ The config about Adamcontroller (IO module) like port, IP address, register bits
     a. On the left-hand side pannel, right click on ``Ethernet`` and select ``Search Device``\ :raw-html-m2r:`<br>`
     b. io_module will be detected (ADAM-6050) under Ethernet, click on it and go to ``Network`` tab and set the ``<ip_address>`` to the io_module.\ :raw-html-m2r:`<br>`
 
-.. note:: \ : For the circuit connections of the lab > setup, refer 4.5 (4.5.2 IO module) in the
-   document `HW_Configuration.pdf <https://github.com/open-edge-insights/eii-factoryctrl/blob/master/HW_Configuration.pdf>`_
-
-
 ``Service bring up``
 ------------------------
 

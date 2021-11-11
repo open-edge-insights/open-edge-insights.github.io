@@ -20,4 +20,4 @@
 
 .. include:: ../IEdgeInsights/common/libs/EIIMessageBus/known-issues.rst
 
-
+.. include:: ./api_msgbus.rst
