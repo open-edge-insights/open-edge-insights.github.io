@@ -67,6 +67,32 @@ Known Issues
 #. Encoding cannot be enabled with native PCL udf	
 #. NativePCLIngestion CustomUDF throws warnings while processing rs2 depth frames
 
+**********
+EII v2.5.2
+**********
+EII v2.5.2 is a bugfix release on top of EII v2.5.1 release
+
+Bug fixes
+=========
+
+* Fixed ZMQ ZAP issue
+* Fixed "REQUEST_BUSY" issues seen with OpenVINO python and C++ inference
+  engine bindings in EII udfs by protecting the critical section (Using
+  OpenVINO data runtime image 2021.4.1)
+* Fixed issue around `cmake` existence check in eii_libs_installer.sh script
+* Fixed InfluxDBConnector and RestDataExport issues in k8s environment
+
+**********
+EII v2.5.1
+**********
+EII v2.5.1 is a bugfix release on top of EII v2.5 release
+
+Bug fix
+=======
+
+* Fixed the issue around updating the ~/.docker/config.json behind proxy network in pre_requisite.sh script
+  (Only https://github.com/open-edge-insights/eii-core repo has been changed in this release)
+
 ********
 EII v2.5
 ********
