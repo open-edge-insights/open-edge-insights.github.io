@@ -150,8 +150,16 @@
 <li class="toctree-l3"><a class="reference internal" href="#known-issues">Known Issues</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#eii-v2-5-2">EII v2.5.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#eii-v2-5-1">EII v2.5.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bug-fix">Bug fix</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -642,10 +650,36 @@ OpenVINO data runtime image 2021.4.1)</p></li>
 </ol>
 </section>
 </section>
+<section id="eii-v2-5-2">
+<h2>EII v2.5.2<a class="headerlink" href="#eii-v2-5-2" title="Permalink to this headline">¶</a></h2>
+<p>EII v2.5.2 is a bugfix release on top of EII v2.5.1 release</p>
+<section id="id1">
+<h3>Bug fixes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed ZMQ ZAP issue</p></li>
+<li><p>Fixed “REQUEST_BUSY” issues seen with OpenVINO python and C++ inference
+engine bindings in EII udfs by protecting the critical section (Using
+OpenVINO data runtime image 2021.4.1)</p></li>
+<li><p>Fixed issue around <cite>cmake</cite> existence check in eii_libs_installer.sh script</p></li>
+<li><p>Fixed InfluxDBConnector and RestDataExport issues in k8s environment</p></li>
+</ul>
+</section>
+</section>
+<section id="eii-v2-5-1">
+<h2>EII v2.5.1<a class="headerlink" href="#eii-v2-5-1" title="Permalink to this headline">¶</a></h2>
+<p>EII v2.5.1 is a bugfix release on top of EII v2.5 release</p>
+<section id="bug-fix">
+<h3>Bug fix<a class="headerlink" href="#bug-fix" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed the issue around updating the ~/.docker/config.json behind proxy network in pre_requisite.sh script
+(Only <a class="reference external" href="https://github.com/open-edge-insights/eii-core">https://github.com/open-edge-insights/eii-core</a> repo has been changed in this release)</p></li>
+</ul>
+</section>
+</section>
 <section id="eii-v2-5">
 <h2>EII v2.5<a class="headerlink" href="#eii-v2-5" title="Permalink to this headline">¶</a></h2>
-<section id="id1">
-<h3>Features<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<section id="id2">
+<h3>Features<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>Added eis-messagebus-go repo for EII-EdgeX integration</p></li>
 <li><p>Added pre-requisite installer script (to install docker-ce, docker-compose etc.,) and EII uninstaller script</p></li>
