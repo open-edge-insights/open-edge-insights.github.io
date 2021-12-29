@@ -33,7 +33,7 @@ There are three APIs defined semantically to add the pre/post processing logic. 
                        };
            };
 
-    The **DummyUdf** in the above code snippet is the user defined class and the constructor of the class initialize the UDF's specific data-structure. The only argument passed to this function is **config** which depicts configuration details mentioned in the ``config.json`` file of apps liks VideoIngestion and VideoAnalytics which process UDFs. The API to consume **config** is defined in `Util README <https://github.com/open-edge-insights/eii-core/blob/master/common/util/c/README.md>`_
+    The **DummyUdf** in the above code snippet is the user defined class and the constructor of the class initialize the UDF's specific data-structure. The only argument passed to this function is **config** which depicts configuration details mentioned in the ``config.json`` file of apps liks VideoIngestion and VideoAnalytics which process UDFs. The API to consume **config** is defined in `Util README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_
 
 
 * 
@@ -60,7 +60,7 @@ There are three APIs defined semantically to add the pre/post processing logic. 
     **Argument 2(cv::Mat &outputFrame)**\ : It represents the modified frame by the user. This can be used if user need to pass a modified frame forward.
 
   * 
-    **Argument 3(msg_envelope_t* meta)**\ : It represents the inference result returned by UDF. The user need to fill the **msg_envelope_t** structure as described in following `\ **EIIMsgEnv README** <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/EIIMsgEnv/README.md>`_. There are sample code suggested in the README which explains the API usage in detail.
+    **Argument 3(msg_envelope_t* meta)**\ : It represents the inference result returned by UDF. The user need to fill the **msg_envelope_t** structure as described in following `\ **EIIMsgEnv README** <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_. There are sample code suggested in the README which explains the API usage in detail.
 
     The *return* code details are  described as below:
 
@@ -112,7 +112,7 @@ There are three APIs defined semantically to add the pre/post processing logic. 
                        };
            };
 
-    The **RealSenseUdf** in the above code snippet is the user defined class and the constructor of the class initialize the UDF's specific data-structure. The only argument passed to this function is **config** which depicts configuration details mentioned in the ``config.json`` file of apps liks VideoIngestion and VideoAnalytics which process UDFs. The API to consume **config** is defined in `Util README <https://github.com/open-edge-insights/eii-core/blob/master/common/util/c/README.md>`_
+    The **RealSenseUdf** in the above code snippet is the user defined class and the constructor of the class initialize the UDF's specific data-structure. The only argument passed to this function is **config** which depicts configuration details mentioned in the ``config.json`` file of apps liks VideoIngestion and VideoAnalytics which process UDFs. The API to consume **config** is defined in `Util README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_
 
 
 * 
@@ -175,10 +175,10 @@ This section describes the check-list one has to ensure to be completed before e
 
 
    * [ Dummy UDF's CMakeLists.txt file] (./native/dummy/CMakeLists.txt)
-   * `Safety Gear Demo CMakeLists.txt file <https://github.com/open-edge-insights/eii-core/blob/master/native/safety_gear_demo/CMakeLists.txt>`_
+   * `Safety Gear Demo CMakeLists.txt file <https://github.com/open-edge-insights/eii-core/blob/master/CMakeLists.txt>`_
 
 #. 
-   If the OpenVINO is used kindly follow the `safety_gear_demo <https://github.com/open-edge-insights/eii-core/blob/master/common/video/udfs/native/safety_gear_demo>`_ example for proper linking of  **cpu_extension.so** shared object.
+   If the OpenVINO is used kindly follow the `safety_gear_demo <https://github.com/open-edge-insights/eii-core/blob/master/safety_gear_demo>`_ example for proper linking of  **cpu_extension.so** shared object.
 
 #. 
    An appropriate entry must exist for each UDF that need to be loaded as part of EII deployment. The UDF entry syntax is explained in detail in the following document `UDF README <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_

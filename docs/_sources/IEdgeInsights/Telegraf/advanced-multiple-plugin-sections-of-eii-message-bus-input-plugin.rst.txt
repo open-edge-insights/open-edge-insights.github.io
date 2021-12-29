@@ -2,7 +2,7 @@
 Advanced: Multiple plugin sections of EII message bus input plugin
 ------------------------------------------------------------------
 
-Like any other Telegraf plugin user can keep multiple configuration sections of the EII message bus input plugin in the **\ `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_\ ** file.
+Like any other Telegraf plugin user can keep multiple configuration sections of the EII message bus input plugin in the **\ `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_\ ** file.
 
 Let's have an example for the same. Let's assume there are two EII apps, one with the AppName "EII_APP1" and another with the AppName "EII_APP2", which are publishing the data to eii message bus.
 *The Telegraf's ETCD configuration for the same is*
@@ -78,7 +78,7 @@ Using input plugin
 
 
 * 
-  By default EII message bus input plugin is disabled. To Configure the EII input plugin, uncomment the following lines in **\ `config/Telegraf/Telegraf_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf_devmode.conf>`_\ ** and  **\ `config/Telegraf/Telegraf_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf_devmode.conf>`_\ **
+  By default EII message bus input plugin is disabled. To Configure the EII input plugin, uncomment the following lines in **\ `config/Telegraf/Telegraf_devmode.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf_devmode.conf>`_\ ** and  **\ `config/Telegraf/Telegraf_devmode.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf_devmode.conf>`_\ **
 
   .. code-block::
 

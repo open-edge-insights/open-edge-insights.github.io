@@ -10,7 +10,7 @@ Step 3 Choosing the EII services to run on worker node.
 
 #. This software works only on python3+ version.
 #. 
-   Please update the `config.json <https://github.com/open-edge-insights/eii-core/blob/master/config.json>`_ file
+   Please update the `config.json <https://github.com/open-edge-insights/eii-core/blob/master/build/deploy/config.json>`_ file
 
    .. code-block::
 
@@ -30,5 +30,5 @@ Step 3 Choosing the EII services to run on worker node.
          Please validate the json.
 
       #. 
-         Please ensure that you have updated the DOCKER_REGISTRY in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/env>`_ file
+         Please ensure that you have updated the DOCKER_REGISTRY in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file
 

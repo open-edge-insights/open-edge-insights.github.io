@@ -2,11 +2,11 @@
 **Contents**
 
 
-* `ImageStore Module <https://open-edge-insights.github.io/IEdgeInsights/ImageStore/#imagestore-module>`_
+* `ImageStore Module <#imagestore-module>`__
 
-  * `Configuration <https://open-edge-insights.github.io/IEdgeInsights/ImageStore/#configuration>`_
+  * `Configuration <#configuration>`__
 
-    * `Detailed description on each of the keys used <https://open-edge-insights.github.io/IEdgeInsights/ImageStore/#detailed-description-on-each-of-the-keys-used>`_
+    * `Detailed description on each of the keys used <#detailed-description-on-each-of-the-keys-used>`__
 
 ImageStore Module
 =================

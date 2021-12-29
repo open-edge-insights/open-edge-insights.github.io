@@ -2,24 +2,24 @@
 **Contents**
 
 
-* `Developing Protocols <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#developing-protocols>`_
+* `Developing Protocols <#developing-protocols>`__
 
-  * `Overview <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#overview>`_
-  * `\ ``protocol_t`` Function Definition <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#protocol_t-function-definition>`_
+  * `Overview <#overview>`__
+  * `\ ``protocol_t`` Function Definition <#protocol_t-function-definition>`__
 
-    * `\ ``destroy()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#destroy>`_
-    * `\ ``publisher_new()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#publisher_new>`_
-    * `\ ``publisher_publish()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#publisher_publish>`_
-    * `\ ``publisher_destroy()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#publisher_destroy>`_
-    * `\ ``subscriber_new()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#subscriber_new>`_
-    * `\ ``service_new()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#service_new>`_
-    * `\ ``service_get()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#service_get>`_
-    * `\ ``recv_ctx_destroy()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_ctx_destroy>`_
-    * `\ ``request()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#request>`_
-    * `\ ``response()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#response>`_
-    * `\ ``recv_wait()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_wait>`_
-    * `\ ``recv_timedwait()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_timedwait>`_
-    * `\ ``recv_nowait()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#recv_nowait>`_
+    * `\ ``destroy()`` <#destroy>`__
+    * `\ ``publisher_new()`` <#publisher_new>`__
+    * `\ ``publisher_publish()`` <#publisher_publish>`__
+    * `\ ``publisher_destroy()`` <#publisher_destroy>`__
+    * `\ ``subscriber_new()`` <#subscriber_new>`__
+    * `\ ``service_new()`` <#service_new>`__
+    * `\ ``service_get()`` <#service_get>`__
+    * `\ ``recv_ctx_destroy()`` <#recv_ctx_destroy>`__
+    * `\ ``request()`` <#request>`__
+    * `\ ``response()`` <#response>`__
+    * `\ ``recv_wait()`` <#recv_wait>`__
+    * `\ ``recv_timedwait()`` <#recv_timedwait>`__
+    * `\ ``recv_nowait()`` <#recv_nowait>`__
 
 Developing Protocols
 ====================
@@ -105,7 +105,7 @@ For each of the functions in the structure the first ``ctx`` parameter will
 always be the value of the ``proto_ctx`` variable.
 
 For more information on the purpose of each of the function pointers in the
-``protocol_t`` structure see the `\ ``protocol_t`` Function Definition <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#protocol_t-function-definition>`_.
+``protocol_t`` structure see the `\ ``protocol_t`` Function Definition <#protocol_t-function-definition>`__.
 
 The rest of this section will cover the initial setup of a project to add a new
 protocol to the EII Message Bus, including the ideal code structure for the C

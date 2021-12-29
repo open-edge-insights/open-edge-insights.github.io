@@ -2,12 +2,12 @@
 **Contents**
 
 
-* `EII UDFLoader <https://open-edge-insights.github.io/IEdgeInsights/common/video/UDFLoader/#eii-udfloader>`_
+* `EII UDFLoader <#eii-udfloader>`__
 
-  * `Dependency Installation <https://open-edge-insights.github.io/IEdgeInsights/common/video/UDFLoader/#dependency-installation>`_
-  * `Compilation <https://open-edge-insights.github.io/IEdgeInsights/common/video/UDFLoader/#compilation>`_
-  * `Installation <https://open-edge-insights.github.io/IEdgeInsights/common/video/UDFLoader/#installation>`_
-  * `Running Unit Tests <https://open-edge-insights.github.io/IEdgeInsights/common/video/UDFLoader/#running-unit-tests>`_
+  * `Dependency Installation <#dependency-installation>`__
+  * `Compilation <#compilation>`__
+  * `Installation <#installation>`__
+  * `Running Unit Tests <#running-unit-tests>`__
 
 EII UDFLoader
 =============

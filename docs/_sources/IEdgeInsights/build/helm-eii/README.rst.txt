@@ -5,15 +5,15 @@
 **Contents**
 
 
-* `EII provision and deployment <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#eii-provision-and-deployment>`_
+* `EII provision and deployment <#eii-provision-and-deployment>`__
 
-  * `Pre requisites <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#pre-requisites>`_
-  * `Update the helm charts directory <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#update-the-helm-charts-directory>`_
-  * `Provision and deploy in the kubernetes node. <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#provision-and-deploy-in-the-kubernetes-node>`_
-  * `Provision and deploy mode in times switching between dev and prod mode OR changing the usecase <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#provision-and-deploy-mode-in-times-switching-between-dev-and-prod-mode-or-changing-the-usecase>`_
-  * `Steps to enable Accelarators <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#steps-to-enable-accelarators>`_
-  * `Steps for Enabling GiGE Camera with helm <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#steps-for-enabling-gige-camera-with-helm>`_
-  * `Accessing Web Visualizer and EtcdUI <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#accessing-web-visualizer-and-etcdui>`_
+  * `Pre requisites <#pre-requisites>`__
+  * `Update the helm charts directory <#update-the-helm-charts-directory>`__
+  * `Provision and deploy in the kubernetes node. <#provision-and-deploy-in-the-kubernetes-node>`__
+  * `Provision and deploy mode in times switching between dev and prod mode OR changing the usecase <#provision-and-deploy-mode-in-times-switching-between-dev-and-prod-mode-or-changing-the-usecase>`__
+  * `Steps to enable Accelarators <#steps-to-enable-accelarators>`__
+  * `Steps for Enabling GiGE Camera with helm <#steps-for-enabling-gige-camera-with-helm>`__
+  * `Accessing Web Visualizer and EtcdUI <#accessing-web-visualizer-and-etcdui>`__
 
 EII provision and deployment
 ============================
@@ -71,7 +71,7 @@ Follow the Docker pre-requisites, EII Pre-requisites, Provision EII and Build an
   As EII don't distribute all the docker images on docker hub, one would run into issues of those pods status showing ``ImagePullBackOff`` and few pods status like visualizer, factory ctrl etc., 
   showing ``CrashLoopBackOff`` due to additional configuration required. For ``ImagePullBackOff`` issues, please follow the steps mentioned at [../README.md#distribution-of-eii-container-images]> (../README.\ :raw-html-m2r:`<br>`
   md#distribution-of-eii-container-images) to push the images that are locally built to the docker registry of choice. Please ensure to update the ``DOCKER_REGISTRY`` value in ``[WORKDIR]/IEdgeInsights/build/.env``
-  file and re-run the `../builder.py <https://github.com/open-edge-insights/eii-core/blob/master/builder.py>`_ script to regenerate the helm charts for provision and deployment.
+  file and re-run the `../builder.py <https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py>`_ script to regenerate the helm charts for provision and deployment.
 
 ----
 
@@ -150,12 +150,44 @@ Copy the helm charts in helm-eii/ directory to the node.
 
 The EII is now successfully deployed.
 
-Provision and deploy mode in times switching between dev and prod mode OR changing the usecase
-----------------------------------------------------------------------------------------------
+For running helm charts and deploying kube pods with specific namespace
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: \ : By default all our helm charts are deployed with ``default`` namespace, below commands will help us to deploy helm chart and kube pods with specific namespace
+
+   .. code-block:: sh
+
+          helm install --set namespace=<namespace> <helm_app_name> <helm_charts_directory>/ --namespace <namespace> --create-namespace
+
+     For Eg.:
+
+
+   * For Deploying ``eii-provision`` helm chart with ``eii`` namespace.
+     .. code-block:: sh
+
+          helm install --set namespace=eii eii-provision eii-provision/ --namespace eii --create-namespace
+
+   * For Deploying ``eii-deploy`` helm chart with ``eii`` namespace.
+     .. code-block:: sh
+
+          helm install --set namespace=eii eii-deploy eii-deploy/ --namespace eii --create-namespace
+
+   * Now all the ``pods`` and ``helm`` charts are deployed under ``eii`` namespace
+   * For listing ``helm charts`` deployed with specific namespace
+     .. code-block:: sh
+
+          helm ls -n <namespace>
+
+   * For listing ``kube pods`` deployed with specific namespace
+     .. code-block:: sh
+
+          kubectl get pods -n <namespace>
+     ## Provision and deploy mode in times switching between dev and prod mode OR changing the usecase
+
 
 
 #. 
-   Set the DEV_MODE as "true/false" in  `.env <https://github.com/open-edge-insights/eii-core/blob/master/env>`_ depending on dev or prod mode.
+   Set the DEV_MODE as "true/false" in  `.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ depending on dev or prod mode.
 
 #. 
    Run builder to copy templates file to eii-deploy/templates directory and generate consolidated values.yaml file for eii-services:
@@ -287,7 +319,7 @@ Steps to enable Accelarators
       python3 builder.py
 
 #. 
-   Follow the `Deployment Steps <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#provision-and-deploy-in-the-kubernetes-node>`_
+   Follow the `Deployment Steps <#provision-and-deploy-in-the-kubernetes-node>`__
 
 #. 
    Verify the respecitve workloads are running based on the ``nodeSelector`` constraints.
@@ -359,7 +391,7 @@ Steps for Enabling GiGE Camera with helm
 
 
    #. 
-      Follow the `Deployment Steps <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#provision-and-deploy-in-the-kubernetes-node>`_
+      Follow the `Deployment Steps <#provision-and-deploy-in-the-kubernetes-node>`__
 
    #. 
       Verify ``pod``\ ip & ``host`` ip are same as per Configured ``Ethernet`` interface by using below command.

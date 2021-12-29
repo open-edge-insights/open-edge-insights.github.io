@@ -15,7 +15,7 @@ Generating consolidated deployment and configuration files:
         **Please note if one runs into issues where the DNS server is being overwhelmed with DNS queries for the EII service/app name, most likely this would be happening if those EII services are intentionally
         stopped, please ensure to restart those EII services/app(s). If the intention is to not have that application/service running, please execute the ``builder.py`` by providing usecase yml file with that application/service not
         listed, so the corresponding subscriber/client interfaces from other EII service/app(s) are automatically removed before provisioning and deployment of EII stack. Please check
-        `#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services>`_ for selectively choosing required
+        `#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services <#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services>`__ for selectively choosing required
         EII services**
 
 

@@ -4,19 +4,19 @@ Generic Camera Plugin
 
 
 #. 
-   `Overview <http://localhost:7645/IEdgeInsights/VideoIngestion/src-gst-gencamsrc/#overview>`_
+   `Overview <#overview>`__
 
 #. 
-   `Versioning <http://localhost:7645/IEdgeInsights/VideoIngestion/src-gst-gencamsrc/#versioning>`_
+   `Versioning <#versioning>`__
 
 #. 
-   `Build <http://localhost:7645/IEdgeInsights/VideoIngestion/src-gst-gencamsrc/#build>`_
+   `Build <#build>`__
 
 #. 
-   `Clean <http://localhost:7645/IEdgeInsights/VideoIngestion/src-gst-gencamsrc/#clean>`_
+   `Clean <#clean>`__
 
 #. 
-   `Usage <http://localhost:7645/IEdgeInsights/VideoIngestion/src-gst-gencamsrc/#usage>`_
+   `Usage <#usage>`__
 
 #. 
-   `Troubleshooting <http://localhost:7645/IEdgeInsights/VideoIngestion/src-gst-gencamsrc/#troubleshooting>`_
+   `Troubleshooting <#troubleshooting>`__

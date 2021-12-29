@@ -1,0 +1,4 @@
+# DiscoverHistory tool
+
+You can get history metadata and images from the InfluxDB and ImageStore containers using the DiscoverHistory tool.
+

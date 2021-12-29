@@ -51,6 +51,8 @@ In this case, the VideoIngestion component is also able to execute the video dat
 
 .. include:: ../IEdgeInsights/common/video/udfs/chaining-of-udfs.rst
 
+.. include:: ../IEdgeInsights/custom-udfs.rst
+
 .. include:: ../IEdgeInsights/Visualizer/native-visualizer-module.rst
 
 .. include:: ../IEdgeInsights/Visualizer/steps-to-build-and-run-visualizer.rst

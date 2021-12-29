@@ -85,7 +85,7 @@ Running builder to generate multi instance configs:
      $ python3 builder.py -v 3 -f usecases/video-streaming.yml
 
 .. note:: 
-   This multi-instance feature support of Builder works only for the video pipeline i.e., **usecases/video-streaming.yml** use case alone and not with any other use case yml files like **usecases/video-streaming-storage.yml** etc., Also, it doesn't work for cases without ``-f`` switch too. In other words, only the above example works with ``-v`` taking in any +ve number
+   This multi-instance feature support of Builder works only for the video pipeline i.e., **usecases/video-streaming.yml** use case alone and not with any other use case yml files like **usecases/video-streaming-storage.yml** and so on. Also, it doesn't work for cases without ``-f`` switch. In other words, only the above example works with ``-v`` taking in any +ve number. To learn more about using this feature with the DiscoverHistory tool, see `Multi-instance feature support for the builder script with the DiscoverHistory tool <https://github.com/open-edge-insights/eii-tools/blob/master/DiscoverHistory/README.md#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool>`_.
 
 
 Running builder to generate benchmarking configs:

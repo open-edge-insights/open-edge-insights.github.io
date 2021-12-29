@@ -2,23 +2,23 @@
 **Contents**
 
 
-* `Ansible based EII Prequisites setup, provisioning, build & deployment <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#ansible-based-eii-prequisites-setup-provisioning-build--deployment>`_
-* `Installing Ansible on Ubuntu {Control node} <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#installing-ansible-on-ubuntu-control-node>`_
-* `Prerequisite step needed for all the control/worker nodes. <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#prerequisite-step-needed-for-all-the-controlworker-nodes>`_
+* `Ansible based EII Prequisites setup, provisioning, build & deployment <#ansible-based-eii-prequisites-setup-provisioning-build-deployment>`__
+* `Installing Ansible on Ubuntu {Control node} <#installing-ansible-on-ubuntu-control-node>`__
+* `Prerequisite step needed for all the control/worker nodes. <#prerequisite-step-needed-for-all-the-controlworker-nodes>`__
 
-  * `Generate SSH KEY for all nodes <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#generate-ssh-key-for-all-nodes>`_
+  * `Generate SSH KEY for all nodes <#generate-ssh-key-for-all-nodes>`__
 
-* `Adding SSH Authorized Key from control node to all the nodes <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#adding-ssh-authorized-key-from-control-node-to-all-the-nodes>`_
+* `Adding SSH Authorized Key from control node to all the nodes <#adding-ssh-authorized-key-from-control-node-to-all-the-nodes>`__
 
-  * `Configure Sudoers file to accept NO PASSWORD for sudo operation. <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#configure-sudoers-file-to-accept-no-password-for-sudo-operation>`_
+  * `Configure Sudoers file to accept NO PASSWORD for sudo operation. <#configure-sudoers-file-to-accept-no-password-for-sudo-operation>`__
 
-* `Updating the leader & worker node's information for using remote hosts <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#updating-the-leader--worker-nodes-information-for-using-remote-hosts>`_
-* `Updating the EII Source Folder, Usecase & Proxy Settings in Group Variables <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#updating-the-eii-source-folder-usecase--proxy-settings-in-group-variables>`_
-* `Non-orchestrated multi node deployment (without k8s) <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#non-orchestrated-multi-node-deployment-without-k8s>`_
-* `Select EII services to run on a particular node in multinode deployment <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment>`_
-* `Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes <#execute-ansible-playbook-from-eii_workdiriedgeinsightsbuildansible-control-node-to-deploy-eii-services-in-singlemulti-nodes>`_
+* `Updating the leader & worker node's information for using remote hosts <#updating-the-leader-worker-nodes-information-for-using-remote-hosts>`__
+* `Updating the EII Source Folder, Usecase & Proxy Settings in Group Variables <#updating-the-eii-source-folder-usecase-proxy-settings-in-group-variables>`__
+* `Non-orchestrated multi node deployment (without k8s) <#non-orchestrated-multi-node-deployment-without-k8s>`__
+* `Select EII services to run on a particular node in multinode deployment <#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment>`__
+* `Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes <#execute-ansible-playbook-from-eii_workdiriedgeinsightsbuildansible-control-node-to-deploy-eii-services-in-singlemulti-nodes>`__
 
-  * `Deploying EII Using Helm in Kubernetes (k8s) environment <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#deploying-eii-using-helm-in-kubernetes-k8s-environment>`_
+  * `Deploying EII Using Helm in Kubernetes (k8s) environment <#deploying-eii-using-helm-in-kubernetes-k8s-environment>`__
 
 Ansible based EII Prequisites setup, provisioning, build & deployment
 ---------------------------------------------------------------------
@@ -234,7 +234,7 @@ Updating the EII Source Folder, Usecase & Proxy Settings in Group Variables
       #. By default it will be ``video-streaming``\ , For other usecases refer the ``../usecases`` folder and update only names without ``.yml`` extension
       #. For ``all`` usecase, it will bring up all ``default`` services of eii.
       #. ``ia_kapacitor`` and ``ia_telegraf`` container images are not distributed via docker hub, so one won't be able to pull these images
-         for time-series use case upon using `../usecases/time-series.yml <https://github.com/open-edge-insights/eii-core/blob/master/usecases/time-series.yml`>`_ for deployment. For more details,
+         for time-series use case upon using `../usecases/time-series.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/time-series.yml`>`_ for deployment. For more details,
          refer: [../README.md#distribution-of-eii-container-images]> (../README.md#distribution-of-eii-container-images).
 
 
@@ -253,7 +253,7 @@ Non-orchestrated multi node deployment (without k8s)
 Below configuration changes need to be made for multi node deployment without k8s
 
 
-#. Set ``multi_node: true`` in ``group_vars/all.yml`` to enable multinode deployment and ``false`` to enable single node deployment. Update ``vars/vars.yml`` to the services to run on a specific node in case of multi_node deployment by following `this <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#Select-EII-services-to-run-on-a-particular-node-in-multinode-deployment>`_\ , where in single node deployment all the services based on the ``usecase`` chosen will be deployed. 
+#. Set ``multi_node: true`` in ``group_vars/all.yml`` to enable multinode deployment and ``false`` to enable single node deployment. Update ``vars/vars.yml`` to the services to run on a specific node in case of multi_node deployment by following `this <#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment>`__\ , where in single node deployment all the services based on the ``usecase`` chosen will be deployed. 
 #. Update ``docker`` registry details in following section if using a custom/private registry
    .. code-block:: sh
 

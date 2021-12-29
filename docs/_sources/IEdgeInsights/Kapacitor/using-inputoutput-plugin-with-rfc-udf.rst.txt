@@ -20,7 +20,7 @@ Using input/output plugin with RFC udf
          ]
 
 * 
-  Modify the `rfc_task.tick <https://github.com/open-edge-insights/eii-core/blob/master/tick_scripts/rfc_task.tick>`_ as below, for example:
+  Modify the `rfc_task.tick <https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts/rfc_task.tick>`_ as below, for example:
 
   .. code-block::
 

@@ -2,11 +2,16 @@
 Time-series Analytics
 =====================
 
+.. note:: \ :
+   By default, ``ia_telegraf`` uses the mqtt plugin to talk to the ``ia_mqtt_broker`` service, so please make sure ``ia_mqtt_broker`` service is running and you are publishing the sample sensor data by
+   following the guide at https://github.com/open-edge-insights/eii-tools/blob/master/mqtt/README.md. If one does not want to run MQTT broker, please make sure to comment/remove the ``[[inputs.mqtt_consumer]]`` sections to avoid DNS queries on ``ia_mqtt_broker`` in the `respective conf files <https://github.com/open-edge-insights/ts-telegraf/tree/master/config/Telegraf>`_ based on DEV or PROD mode.
+
+
 For time-series data, a sample analytics flow uses Telegraf for ingestion, Influx DB for storage and Kapacitor for classification. This is demonstrated with an MQTT based ingestion of sample temperature sensor data and analytics with a Kapacitor UDF which does threshold detection on the input values.
 
-The services mentioned in `build/eii_config.json <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/eii_config.json>`_ will be available in the consolidated `build/eii_config.json <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/eii_config.json>`_ and consolidated `build/eii_config.json <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-core/-/blob/master/build/eii_config.json>`_ of the EII stack for timeseries use case when built via ``builder.py`` as called out in previous steps.
+The services mentioned in `build/usecases/time-series.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/time-series.yml>`_ will be available in the consolidated ``build/docker-compose.yml`` and consolidated ``build/provision/config/eii_config.json`` of the EII stack for timeseries use case when built via ``builder.py`` as called out in previous steps.
 
 This will enable building of Telegraf and the Kapacitor based analytics containers.
-More details on enabling this mode can be referred from `Kapacitor/README.html <http://localhost:7645/IEdgeInsights/Kapacitor/README.html>`_
+More details on enabling this mode can be referred from `Kapacitor/README.md <https://github.com/open-edge-insights/ts-kapacitor/blob/master/README.md>`_
 
-The sample temperature sensor can be simulated using the `tools/mqtt-temp-sensor <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-tools/-/blob/master/mqtt-temp-sensor>`_ application.
+The sample temperature sensor can be simulated using the `tools/mqtt/README.md <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/README.md>`_ application.

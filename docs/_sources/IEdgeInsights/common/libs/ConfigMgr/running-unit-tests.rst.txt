@@ -8,7 +8,7 @@ Running Unit Tests
 
 * 
   The unit tests will only be compiled if the ``WITH_TESTS=ON`` option is specified when running CMake.
-  Please refer `Unit Test installation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/###-install-configMgr-with-examples,-test-suits-and-debug-build-enabled.>`_ installation.
+  Please refer `Unit Test installation <#-install-configmgr-with-examples,-test-suits-and-debug-build-enabled.>`__ installation.
 
 * 
   Provisioning should be done to start etcd server in dev/prod mode and to generate application specific certificates(only in prod mode).

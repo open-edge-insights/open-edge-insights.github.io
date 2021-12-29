@@ -2,12 +2,12 @@
 **Contents**
 
 
-* `EII Utils <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/#eii-utils>`_
+* `EII Utils <#eii-utils>`__
 
-  * `Dependency Installation <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/#dependency-installation>`_
-  * `Compilation <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/#compilation>`_
-  * `Installation <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/#installation>`_
-  * `Running Unit Tests <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/#running-unit-tests>`_
+  * `Dependency Installation <#dependency-installation>`__
+  * `Compilation <#compilation>`__
+  * `Installation <#installation>`__
+  * `Running Unit Tests <#running-unit-tests>`__
 
 EII Utils
 =========
@@ -47,8 +47,8 @@ command:
 Additionally, EIIUtils depends on the below libraries. Follow their documentation to install them.
 
 
-* `IntelSafeString <https://github.com/open-edge-insights/eii-core/blob/master/libs/IntelSafeString/README.md>`_
-* `EIIMsgEnv <https://github.com/open-edge-insights/eii-core/blob/master/libs/EIIMsgEnv/README.md>`_
+* `IntelSafeString <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_
+* `EIIMsgEnv <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_
 
 Compilation
 -----------

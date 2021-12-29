@@ -80,7 +80,7 @@ For each of the functions in the structure the first ``ctx`` parameter will
 always be the value of the ``proto_ctx`` variable.
 
 For more information on the purpose of each of the function pointers in the
-``protocol_t`` structure see the `\ ``protocol_t`` Function Definition <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/docs/#protocol_t-function-definition>`_.
+``protocol_t`` structure see the `\ ``protocol_t`` Function Definition <#protocol_t-function-definition>`__.
 
 The rest of this section will cover the initial setup of a project to add a new
 protocol to the EII Message Bus, including the ideal code structure for the C

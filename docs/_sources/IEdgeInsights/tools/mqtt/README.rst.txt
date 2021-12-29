@@ -2,9 +2,9 @@
 **Contents**
 
 
-* `MQTT publisher <https://open-edge-insights.github.io/IEdgeInsights/tools/mqtt/#mqtt-publisher>`_
+* `MQTT publisher <#mqtt-publisher>`__
 
-  * `Usage <https://open-edge-insights.github.io/IEdgeInsights/tools/mqtt/#usage>`_
+  * `Usage <#usage>`__
 
 MQTT publisher
 ==============
@@ -47,7 +47,7 @@ Usage
         $ docker-compose build
         $ docker-compose up -d
 
-**Note** By default the tool publishes temperature data. If the user wants to publish other data, he/she needs to modify the command option in "ia_mqtt_publisher" service in  `docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/publisher/docker-compose.yml>`_ accordingly and recreate the container using ``docker-compose up -d`` command from publisher directory.
+**Note** By default the tool publishes temperature data. If the user wants to publish other data, he/she needs to modify the command option in "ia_mqtt_publisher" service in  `docker-compose.yml <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt/publisher/docker-compose.yml>`_ accordingly and recreate the container using ``docker-compose up -d`` command from publisher directory.
 
 
 * 

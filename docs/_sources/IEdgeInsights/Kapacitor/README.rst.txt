@@ -2,21 +2,21 @@
 **Contents**
 
 
-* `Point-data (Time-series data) analytics introduction <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#point-data-time-series-data-analytics-introduction>`_
+* `Point-data (Time-series data) analytics introduction <#point-data-time-series-data-analytics-introduction>`__
 
-  * `Starting the example <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#starting-the-example>`_
-  * `Purpose of Telegraf <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#purpose-of-telegraf>`_
-  * `Purpose of Kapacitor <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#purpose-of-kapacitor>`_
-  * `Custom UDFs available in the udfs directory <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#custom-udfs-available-in-the-udfs-directory>`_
-  * `Steps to configure the UDFs in kapacitor. <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#steps-to-configure-the-udfs-in-kapacitor>`_
-  * `Step to run the samples of multiple UDFs in a single task and multiple tasks using single UDF <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#step-to-run-the-samples-of-multiple-udfs-in-a-single-task-and-multiple-tasks-using-single-udf>`_
+  * `Starting the example <#starting-the-example>`__
+  * `Purpose of Telegraf <#purpose-of-telegraf>`__
+  * `Purpose of Kapacitor <#purpose-of-kapacitor>`__
+  * `Custom UDFs available in the udfs directory <#custom-udfs-available-in-the-udfs-directory>`__
+  * `Steps to configure the UDFs in kapacitor. <#steps-to-configure-the-udfs-in-kapacitor>`__
+  * `Step to run the samples of multiple UDFs in a single task and multiple tasks using single UDF <#step-to-run-the-samples-of-multiple-udfs-in-a-single-task-and-multiple-tasks-using-single-udf>`__
 
-* `Kapacitor input and output plugins <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#kapacitor-input-and-output-plugins>`_
+* `Kapacitor input and output plugins <#kapacitor-input-and-output-plugins>`__
 
-  * `Purpose of plugins <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#purpose-of-plugins>`_
-  * `Using input plugin <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#using-input-plugin>`_
-  * `Using output plugin <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#using-output-plugin>`_
-  * `Using input/output plugin with RFC udf <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/#using-inputoutput-plugin-with-rfc-udf>`_
+  * `Purpose of plugins <#purpose-of-plugins>`__
+  * `Using input plugin <#using-input-plugin>`__
+  * `Using output plugin <#using-output-plugin>`__
+  * `Using input/output plugin with RFC udf <#using-inputoutput-plugin-with-rfc-udf>`__
 
 Point-data (Time-series data) analytics introduction
 ====================================================
@@ -155,12 +155,12 @@ Purpose of Kapacitor
   and sends back the results to Influx.
 
 * 
-  The sample Go UDF is at `go_classifier.go <https://github.com/open-edge-insights/eii-core/blob/master/udfs/go_classifier.go>`_ and
-  the tick script  is at `go_point_classifier.tick <https://github.com/open-edge-insights/eii-core/blob/master/tick_scripts/go_point_classifier.tick>`_
+  The sample Go UDF is at `go_classifier.go <https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs/go_classifier.go>`_ and
+  the tick script  is at `go_point_classifier.tick <https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts/go_point_classifier.tick>`_
 
 * 
-  The sample Python UDF is at `py_classifier.py <https://github.com/open-edge-insights/eii-core/blob/master/udfs/py_classifier.py>`_ and
-  the tick script  is at `py_point_classifier.tick <https://github.com/open-edge-insights/eii-core/blob/master/tick_scripts/py_point_classifier.tick>`_
+  The sample Python UDF is at `py_classifier.py <https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs/py_classifier.py>`_ and
+  the tick script  is at `py_point_classifier.tick <https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts/py_point_classifier.tick>`_
 
   For more details, on Kapacitor and UDF, please refer below links
   i)  Writing a sample UDF at `anomaly detection <https://docs.influxdata.com/kapacitor/v1.5/guides/anomaly_detection/>`_
@@ -168,9 +168,9 @@ Purpose of Kapacitor
 
 * 
   In production mode the Kapacitor config file is
-  `Kapacitor/config/kapacitor.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor.conf>`_
+  `Kapacitor/config/kapacitor.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor.conf>`_
   and in developer mode the config file would be
-  `Kapacitor/config/kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_
+  `Kapacitor/config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_
 
 Custom UDFs available in the `udfs <https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs>`_ directory
 ------------------------------------------------------------------------------------------------------------------------
@@ -215,7 +215,7 @@ Steps to configure the UDFs in kapacitor.
   For python UDFs, if any external python package dependency needs to be installed. To install the python package using pip, it can be added in the `conda_requirements.txt <https://github.com/open-edge-insights/ts-kapacitor/blob/master/conda_requirements.txt>`_ file and to install the python package using conda, it can be added in the `conda_requirements.txt <https://github.com/open-edge-insights/ts-kapacitor/blob/master/conda_requirements.txt>`_ file.
 
 * 
-  Modify the udf section in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_.
+  Modify the udf section in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_.
   Mention the custom UDF in the conf
   for example
 
@@ -276,7 +276,7 @@ Steps to configure the UDFs in kapacitor.
 
   #. 
      go/python based UDF should listen on the same socket file as mentioned in the the udf section in the
-     `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_.
+     `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_.
      For example
 
      .. code-block::
@@ -287,7 +287,7 @@ Steps to configure the UDFs in kapacitor.
 
   #. 
      In case of process based UDFs, provide the correct path of the code within the container
-     in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_.
+     in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_.
      By default, the files and directories will be copied into the container under "/EII" director. It is recommended to keep the custom UDFs
      in the `udfs <https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs>`_ directory, the path of the custom UDF will be "/EII/udfs/customUDF_name" as shown in below example.
      If the UDF is kept in different path please modify the path in the args accordingly.
@@ -339,7 +339,7 @@ Using input plugin
 
 
 * 
-  Configure the EII input plugin in `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_ and `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_
+  Configure the EII input plugin in `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_ and `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_
   For example:
 
   .. code-block::
@@ -399,7 +399,7 @@ Using input plugin
 
 * 
   Create/modify a tick script to process the data and configure the same in `config.json <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json>`_.
-  For example, use the stock `tick_scripts/eii_input_plugin_logging.tick <https://github.com/open-edge-insights/eii-core/blob/master/tick_scripts/eii_input_plugin_logging.tick>`_ which logs the data received from 'eii'
+  For example, use the stock `tick_scripts/eii_input_plugin_logging.tick <https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts/eii_input_plugin_logging.tick>`_ which logs the data received from 'eii'
   storage onto the kapacitor log file (residing in the container at /tmp/log/kapacitor/kapacitor.log).
 
   .. code-block::
@@ -507,7 +507,7 @@ Using input/output plugin with RFC udf
          ]
 
 * 
-  Modify the `rfc_task.tick <https://github.com/open-edge-insights/eii-core/blob/master/tick_scripts/rfc_task.tick>`_ as below, for example:
+  Modify the `rfc_task.tick <https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts/rfc_task.tick>`_ as below, for example:
 
   .. code-block::
 

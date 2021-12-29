@@ -2,7 +2,7 @@
 **Contents**
 
 
-* `GVA (GStreamer Video Analytics) <http://localhost:7645/IEdgeInsights/VideoIngestion/docs/#gva-gstreamer-video-analytics>`_
+* `GVA (GStreamer Video Analytics) <#gva-gstreamer-video-analytics>`__
 
 GVA (GStreamer Video Analytics)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -10,7 +10,7 @@ GVA (GStreamer Video Analytics)
 VI module supports the usage of GVA (Gstreamer Video Analytics) plugins with ``gstreamer`` ingestor. `GVA <https://github.com/openvinotoolkit/dlstreamer_gst>`_ is
 a collection of GStreamer elements to enable CNN model based video analytics capabilities (such as object detection, classification, recognition) in GStreamer framework.
 
-**Refer `CustomUdfs-GVASafetyGearIngestion <https://github.com/open-edge-insights/eii-core/blob/master/CustomUdfs/GVASafetyGearIngestion/README.md>`_ to refer GVA based CustomUdf container added for SafetyGear sample.**
+**Refer `CustomUdfs-GVASafetyGearIngestion <https://github.com/open-edge-insights/video-custom-udfs/blob/master/GVASafetyGearIngestion/README.md>`_ to refer GVA based CustomUdf container added for SafetyGear sample.**
 
 GVA use case configurations with different cameras:
 

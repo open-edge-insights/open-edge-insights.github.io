@@ -59,22 +59,23 @@ Eg: Mount the two USB cameras connected to the host m/c with device node as ``vi
 
        lsusb | grep "03e7" (03e7 is the VendorID and 2485 is one of the  productID for MyriadX)
 
-    ```sh
-    dmesg > dmesg.txt
-    [ 3818.214919] usb 3-4: new high-speed USB device number 10 using xhci_hcd
-    [ 3818.363542] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
-    [ 3818.363546] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
-    [ 3818.363548] usb 3-4: Product: Movidius MyriadX
-    [ 3818.363550] usb 3-4: Manufacturer: Movidius Ltd.
-    [ 3818.363552] usb 3-4: SerialNumber: 03e72485
-    [ 3829.153556] usb 3-4: USB disconnect, device number 10
-    [ 3831.134804] usb 3-4: new high-speed USB device number 11 using xhci_hcd
-    [ 3831.283430] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
-    [ 3831.283433] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
-    [ 3831.283436] usb 3-4: Product: Movidius MyriadX
-    [ 3831.283438] usb 3-4: Manufacturer: Movidius Ltd.
-    [ 3831.283439] usb 3-4: SerialNumber: 03e72485
-    [ 3906.460590] usb 3-4: USB disconnect, device number 11
+    .. code-block:: sh
+
+       dmesg > dmesg.txt
+       [ 3818.214919] usb 3-4: new high-speed USB device number 10 using xhci_hcd
+       [ 3818.363542] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
+       [ 3818.363546] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+       [ 3818.363548] usb 3-4: Product: Movidius MyriadX
+       [ 3818.363550] usb 3-4: Manufacturer: Movidius Ltd.
+       [ 3818.363552] usb 3-4: SerialNumber: 03e72485
+       [ 3829.153556] usb 3-4: USB disconnect, device number 10
+       [ 3831.134804] usb 3-4: new high-speed USB device number 11 using xhci_hcd
+       [ 3831.283430] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
+       [ 3831.283433] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+       [ 3831.283436] usb 3-4: Product: Movidius MyriadX
+       [ 3831.283438] usb 3-4: Manufacturer: Movidius Ltd.
+       [ 3831.283439] usb 3-4: SerialNumber: 03e72485
+       [ 3906.460590] usb 3-4: USB disconnect, device number 11
 
   * 
     The below link can be referred in case user observes ``global mutex initialization failed`` during device initialization of NCS2 stick
@@ -177,192 +178,3 @@ Eg: Mount the two USB cameras connected to the host m/c with device node as ``vi
 
   Upgrade the kernel version to 5.8 and install the required drivers from the below OpenVINO link:
   https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps
-
-Custom Udfs
------------
-
-The following are the two Custom Udfs workflow which EII supports:
-
-
-#. 
-   Build / Run custom udfs as standalone applications
-
-   For running custom udfs as standalone application one must download the video-custom-udfs repo and refer `CustomUdfs/README.md <https://github.com/open-edge-insights/video-custom-udfs/blob/master/README.md>`_
-
-#. 
-   Build / Run custom udfs in VI or VA
-
-   For running custom udfs either in VI or VA one must refer `VideoIngestion/docs/custom_udfs_doc.md <https://github.com/open-edge-insights/video-ingestion/blob/master/docs/custom_udfs_doc.md>`_
-
-Time-series Analytics
-=====================
-
-.. note:: \ :
-   By default, ``ia_telegraf`` uses the mqtt plugin to talk to the ``ia_mqtt_broker`` service, so please make sure ``ia_mqtt_broker`` service is running and you are publishing the sample sensor data by
-   following the guide at https://github.com/open-edge-insights/eii-tools/blob/master/mqtt/README.md. If one does not want to run MQTT broker, please make sure to comment/remove the ``[[inputs.mqtt_consumer]]`` sections to avoid DNS queries on ``ia_mqtt_broker`` in the `respective conf files <https://github.com/open-edge-insights/ts-telegraf/tree/master/config/Telegraf>`_ based on DEV or PROD mode.
-
-
-For time-series data, a sample analytics flow uses Telegraf for ingestion, Influx DB for storage and Kapacitor for classification. This is demonstrated with an MQTT based ingestion of sample temperature sensor data and analytics with a Kapacitor UDF which does threshold detection on the input values.
-
-The services mentioned in `build/usecases/time-series.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/time-series.yml>`_ will be available in the consolidated ``build/docker-compose.yml`` and consolidated ``build/provision/config/eii_config.json`` of the EII stack for timeseries use case when built via ``builder.py`` as called out in previous steps.
-
-This will enable building of Telegraf and the Kapacitor based analytics containers.
-More details on enabling this mode can be referred from `Kapacitor/README.md <https://github.com/open-edge-insights/ts-kapacitor/blob/master/README.md>`_
-
-The sample temperature sensor can be simulated using the `tools/mqtt/README.md <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/README.md>`_ application.
-
-EII multi node cluster provision and deployment
-===============================================
-
-**Without orchestrator**
-----------------------------
-
-By default EII is provisioned with single node cluster.
-
-One of the below options could be tried out:
-
-
-* [\ ``Recommended``\ ] For deploying through ansible playbook on multiple nodes automatically, please refer `build/ansible/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/ansible/README.md#updating-the-eii-source-folder-usecase--proxy-settings-in-group-variables>`_
-* In order to deploy EII on multiple nodes using docker registry and provision ETCD, please follow `build/deploy/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/deploy/README.md>`_.
-
-**With k8s orchestrator**
------------------------------
-
-One of the below options could be tried out:
-
-
-* [\ ``Recommended``\ ] For deploying through ansible playbook on multiple nodes automatically, please refer `build/ansible/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/ansible/README.md##deploying-eii-using-helm-in-kubernetes-k8s-environment>`_
-* Please refer `build/helm-eii/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/helm-eii/README.md>`_ on using helm charts to provision the node and
-  deploy EII services
-
-EII tools
-=========
-
-EII stack has below set of tools which run as containers too:
-
-
-* Benchmarking
-
-  * `Video Benchmarking <https://github.com/open-edge-insights/eii-tools/blob/master/Benchmarking/video-benchmarking-tool/README.md>`_
-  * `Time-series Benchmarking <https://github.com/open-edge-insights/eii-tools/blob/master/Benchmarking/time-series-benchmarking-tool/README.md>`_
-
-* `DiscoverHistory <https://github.com/open-edge-insights/eii-tools/blob/master/DiscoverHistory/README.md>`_
-* `EmbPublisher <https://github.com/open-edge-insights/eii-tools/blob/master/EmbPublisher/README.md>`_
-* `EmbSubscriber <https://github.com/open-edge-insights/eii-tools/blob/master/EmbSubscriber/README.md>`_
-* `GigEConfig <https://github.com/open-edge-insights/eii-tools/blob/master/GigEConfig/README.md>`_
-* `HttpTestServer <https://github.com/open-edge-insights/eii-tools/blob/master/HttpTestServer/README.md>`_
-* `JupyterNotebook <https://github.com/open-edge-insights/eii-tools/blob/master/JupyterNotebook/README.md>`_
-* `mqtt <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/README.md>`_
-* `SWTriggerUtility <https://github.com/open-edge-insights/eii-tools/blob/master/SWTriggerUtility/README.md>`_
-* `TimeSeriesProfiler <https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/README.md>`_
-* `VideoProfiler <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/README.md>`_
-
-ELK usage for centralized logging of EII services logs
-======================================================
-
-Please find more details about this capability at `build/remote_logging/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/remote_logging/README.md>`_
-
-EII Uninstaller
-===============
-
-The uninstaller script automates the removal of all the EII Docker configuration installed on a system. This uninstaller will perform the following tasks:
-
-
-#. **Stops and removes all EII running and stopped containers**
-#. **Removes all EII docker volumes**
-#. **Removes all EII docker images [Optional]**
-#. **Removes all EII install directory**
-
-Run the below commmand from ``[WORKDIR]/IEdgeInsights/build/`` directory.
-
-.. code-block:: sh
-
-   $ ./eii_uninstaller.sh -h
-   Usage: ./eii_uninstaller.sh [-h] [-d]
-
-    This script uninstalls previous EII version.
-    Where:
-       -h show the help
-       -d triggers the deletion of docker images (by default it will not trigger)
-
-    Example:
-     1) Deleting only EII Containers and Volumes
-       $ ./eii_uninstaller.sh
-
-     2) Deleting EII Containers, Volumes and Images
-       $ export EII_VERSION=2.4
-       $ ./eii_uninstaller.sh -d
-       above example will delete EII containers, volumes and all the docker images having 2.4 version.
-
-Debugging options
-=================
-
-
-#. 
-   To check if all the EII images are built successfully, use cmd: ``docker images|grep ia`` and
-   to check if all containers are running, use cmd: ``docker ps`` (\ ``one should see all the dependency containers and EII containers up and running``\ ). If you see issues where the build is failing due to non-reachability to Internet, please ensure you have correctly configured proxy settings and restarted docker service. Even after doing this, if you are running into the same issue, please add below instrcutions to all the dockerfiles in ``build\dockerfiles`` at the top after the LABEL instruction and retry the building EII images:
-
-   .. code-block:: sh
-
-       ENV http_proxy http://proxy.iind.intel.com:911
-       ENV https_proxy http://proxy.iind.intel.com:911
-
-#. 
-   ``docker ps`` should list all the enabled containers which are included in docker-compose.yml
-
-#. 
-   To verify if the default video pipeline with EII is working fine i.e., from video ingestion->video analytics->visualizer, please check the visualizer UI
-
-#. 
-   ``/opt/intel/eii`` root directory gets created - This is the installation path for EII:
-
-
-   * ``data/`` - stores the backup data for persistent imagestore and influxdb
-   * ``sockets/`` - stores the IPC ZMQ socket files
-
-----
-
-**Note**\ :
-
-
-#. 
-   Few useful docker-compose and docker commands:
-
-
-   * ``docker-compose -f docker-compose-build.yml build`` - builds all the service containers. To build a single service container, use ``docker-compose -f docker-compose-build.yml build [serv_cont_name]``
-   * ``docker-compose down`` - stops and removes the service containers
-   * ``docker-compose up -d`` - brings up the service containers by picking the changes done in ``docker-compose.yml``
-   * ``docker ps`` - check running containers
-   * ``docker ps -a`` - check running and stopped containers
-   * ``docker stop $(docker ps -a -q)`` - stops all the containers
-   * ``docker rm $(docker ps -a -q)`` - removes all the containers. Useful when you run into issue of already container is in use.
-   * `docker compose cli <https://docs.docker.com/compose/reference/overview/>`_
-   * `docker compose reference <https://docs.docker.com/compose/compose-file/>`_
-   * `docker cli <https://docs.docker.com/engine/reference/commandline/cli/#configuration-files>`_
-
-#. 
-   If you want to run the docker images separately i.e, one by one, run the command ``docker-compose run --no-deps [service_cont_name]`` Eg: ``docker-compose run --name ia_video_ingestion --no-deps      ia_video_ingestion`` to run VI container and the switch ``--no-deps`` will not bring up it's dependencies mentioned in the docker-compose file. If the container is not launching, there could be
-   some issue with entrypoint program which could be overrided by providing this extra switch ``--entrypoint /bin/bash`` before the service container name in the docker-compose run command above, this would let one inside the container and run the actual entrypoint program from the container's terminal to rootcause the issue. If the container is running and one wants to get inside, use cmd: ``docker-compose exec [service_cont_name] /bin/bash`` or ``docker exec -it [cont_name] /bin/bash``
-
-#. 
-   Best way to check logs of containers is to use command: ``docker logs -f [cont_name]``. If one wants to see all the docker-compose service container logs at once, then just run
-   ``docker-compose logs -f``
-
-----
-
-Troubleshooting guide
-=====================
-
-
-#. Please refer to `TROUBLESHOOT.md <https://github.com/open-edge-insights/eii-core/blob/master/TROUBLESHOOT.md>`_ guide for any troubleshooting tips related to EII configuration and installation
-#. 
-   If any issues are observed w.r.t the python package installation then manually install the python packages as shown below :
-
-   **Note**\ : It is highly recommended that you use a python virtual environment to install the python packages, so that the system python installation doesn't get
-   altered. Details on setting up and using python virtual environment can be found here: https://www.geeksforgeeks.org/python-virtual-environment/
-
-   .. code-block:: sh
-
-       $ cd [WORKDIR]/IEdgeInsights/build
-       # Install requirements for builder.py
-       $ pip3 install -r requirements.txt

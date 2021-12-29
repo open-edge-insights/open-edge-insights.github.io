@@ -61,10 +61,10 @@ For reference user can find example UDFs code in below mentioned links
 
 
 * 
-  `PCB_FILTER <https://github.com/open-edge-insights/eii-core/blob/master/pcb/pcb_filter.py>`_
+  `PCB_FILTER <https://github.com/open-edge-insights/eii-core/blob/master/pcb_filter.py>`_
 
 * 
-  `PCB_CLASSIFIER <https://github.com/open-edge-insights/eii-core/blob/master/pcb/pcb_classifier.py>`_
+  `PCB_CLASSIFIER <https://github.com/open-edge-insights/eii-core/blob/master/pcb_classifier.py>`_
 
 * 
   `Dummy UDF <https://github.com/open-edge-insights/video-common/blob/master/udfs/dummy.py>`_

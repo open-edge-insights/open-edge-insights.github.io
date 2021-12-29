@@ -1,5 +1,3 @@
 
 EII multi node cluster provision and deployment
 ===============================================
-
-By default EII is provisioned with Single node cluster. In order to deploy EII on multiple nodes using docker registry and provision ETCD cluster, please follow `build/deploy/README.html <http://localhost:7645/IEdgeInsights/build/deploy/README.html>`_

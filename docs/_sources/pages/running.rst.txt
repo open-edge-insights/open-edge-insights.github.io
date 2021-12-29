@@ -135,14 +135,14 @@ By default EII is provisioned with single node cluster.
 
 .. include:: ../IEdgeInsights/build/ansible/execute-ansible-playbook-from-eii-workdiriedgeinsightsbuildansible-control-node-to-deploy-eii-services-in-singlemulti-nodes.rst
 
-* In order to deploy EII on multiple nodes using docker registry and provision ETCD, please follow `build/deploy/README.html <http://localhost:7645/IEdgeInsights/build/deploy/README.html>`_.
+* In order to deploy EII on multiple nodes using docker registry and provision ETCD, please follow `build/deploy/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/deploy/README.md>`_.
 
 **With k8s orchestrator**
 -----------------------------
 
 One of the below options could be tried out:
 
-* [\ ``Recommended``\ ] For deploying through ansible playbook on multiple nodes automatically, please refer `build/ansible/README.html <http://localhost:7645/IEdgeInsights/build/ansible/README.html##deploying-eii-using-helm-in-kubernetes-k8s-environment>`_
+* [\ ``Recommended``\ ] For deploying through ansible playbook on multiple nodes automatically, please refer `build/ansible/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/ansible/README.md#deploying-eii-using-helm-in-kubernetes-k8s-environment>`_
 
 * Use helm charts to provision the node and deploy EII services
 
@@ -162,38 +162,7 @@ One of the below options could be tried out:
 
 .. include:: ../IEdgeInsights/build/helm-eii/accessing-web-visualizer-and-etcdui.rst
 
-
-EII Uninstaller
-===============
-
-The uninstaller script automates the removal of all the EII Docker configuration installed on a system. This uninstaller will perform the following tasks:
-
-
-#. **Stops and removes all EII running and stopped containers**
-#. **Removes all EII docker volumes**
-#. **Removes all EII docker images [Optional]**
-#. **Removes all EII install directory**
-
-Run the below commmand from ``[WORKDIR]/IEdgeInsights/build/`` directory.
-
-.. code-block:: sh
-
-   $ ./eii_uninstaller.sh -h
-   Usage: ./eii_uninstaller.sh [-h] [-d]
-
-    This script uninstalls previous EII version.
-    Where:
-       -h show the help
-       -d triggers the deletion of docker images (by default it will not trigger)
-
-    Example:
-     1) Deleting only EII Containers and Volumes
-       $ ./eii_uninstaller.sh
-
-     2) Deleting EII Containers, Volumes and Images
-       $ export EII_VERSION=2.4
-       $ ./eii_uninstaller.sh -d
-       above example will delete EII containers, volumes and all the docker images having 2.4 version.
+.. include:: ../IEdgeInsights/eii-uninstaller.rst
 
 Debugging
 =========

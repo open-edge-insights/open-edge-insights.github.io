@@ -2,13 +2,13 @@
 **Contents**
 
 
-* `Introduction <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#introduction>`_
-* `UDF Container Directory Layout <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#udf-container-directory-layout>`_
-* `Deploy Process <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#deploy-process>`_
-* `Sample UDFs Directory <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#sample-udfs-directory>`_
+* `Introduction <#introduction>`__
+* `UDF Container Directory Layout <#udf-container-directory-layout>`__
+* `Deploy Process <#deploy-process>`__
+* `Sample UDFs Directory <#sample-udfs-directory>`__
 
-  * `GVASafetyGearIngestion <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#gvasafetygearingestion>`_
-  * `NativePclIngestion <https://open-edge-insights.github.io/IEdgeInsights/CustomUdfs/#nativepclingestion>`_
+  * `GVASafetyGearIngestion <#gvasafetygearingestion>`__
+  * `NativePclIngestion <#nativepclingestion>`__
 
 Introduction
 ============

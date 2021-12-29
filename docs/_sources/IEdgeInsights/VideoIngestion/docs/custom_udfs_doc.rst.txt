@@ -5,7 +5,7 @@
 **Contents**
 
 
-* `Adding custom udfs in VideoIngestion/VideoAnalytics: <http://localhost:7645/IEdgeInsights/VideoIngestion/docs/#adding-custom-udfs-in-videoingestionvideoanalytics>`_
+* `Adding custom udfs in VideoIngestion/VideoAnalytics: <#adding-custom-udfs-in-videoingestionvideoanalytics>`__
 
 Adding custom udfs in VideoIngestion/VideoAnalytics:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

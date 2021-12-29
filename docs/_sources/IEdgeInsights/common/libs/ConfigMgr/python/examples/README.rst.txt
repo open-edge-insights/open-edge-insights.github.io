@@ -2,10 +2,10 @@
 **Contents**
 
 
-* `ConfigMgr python examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/python/examples/#configmgr-python-examples>`_
+* `ConfigMgr python examples <#configmgr-python-examples>`__
 
-  * `Pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/python/examples/#pre-requisites>`_
-  * `Running examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/python/examples/#running-examples>`_
+  * `Pre-requisites <#pre-requisites>`__
+  * `Running examples <#running-examples>`__
 
 ConfigMgr python examples
 =========================
@@ -15,10 +15,10 @@ Pre-requisites
 
 
 #. 
-   Please ensure you use the interfaces provided at `examples <https://github.com/open-edge-insights/eii-core/blob/master/examples>`_ for VideoIngestion, VideoAnalytics & Visualizer respectively. If not provisioned using these as the interfaces, please use EtcdUI to update these interfaces at runtime.
+   Please ensure you use the interfaces provided at `examples <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/examples>`_ for VideoIngestion, VideoAnalytics & Visualizer respectively. If not provisioned using these as the interfaces, please use EtcdUI to update these interfaces at runtime.
 
 #. 
-   Ensure you comment/uncomment the required lines for DEV_PROD mode accordingly in `env.sh <https://github.com/open-edge-insights/eii-core/blob/master/examples/env.sh>`_.
+   Ensure you comment/uncomment the required lines for DEV_PROD mode accordingly in `env.sh <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/examples/env.sh>`_.
 
 #. 
    Run this command from the build/examples directory after installing ConfigMgr WITH_EXAMPLES set to ON:

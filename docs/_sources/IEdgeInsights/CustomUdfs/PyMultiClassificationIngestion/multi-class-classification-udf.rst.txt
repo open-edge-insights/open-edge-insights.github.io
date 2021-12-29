@@ -6,7 +6,7 @@ This UDF accepts the frame, and classifies object in frame into different cataeg
 
 .. note:: \ : For a successful execution user can stream a sample video file
    `classification_vid.avi <https://github.com/open-edge-insights/video-custom-udfs/blob/master/PyMultiClassificationIngestion/classification_vid.avi>`_.
-   For using camera classification will work correctly if the model has been trained for the object earlier. It is currently trained with some subset of imageNet database. The labels for which it is trained already trained can be found in following `label file <https://github.com/open-edge-insights/eii-core/blob/master/sample_classification/ref/squeezenet1.1.labels>`_
+   For using camera classification will work correctly if the model has been trained for the object earlier. It is currently trained with some subset of imageNet database. The labels for which it is trained already trained can be found in following `label file <https://github.com/open-edge-insights/video-custom-udfs/blob/master/PyMultiClassificationIngestion/sample_classification/ref/squeezenet1.1.labels>`_
 
 
    ``UDF config``\ :

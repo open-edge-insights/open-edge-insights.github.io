@@ -2,8 +2,8 @@
 **Contents**
 
 
-* `RTSP Camera <http://localhost:7645/IEdgeInsights/VideoIngestion/docs/#rtsp-camera>`_
-* `RTSP Simulated Camera <http://localhost:7645/IEdgeInsights/VideoIngestion/docs/#rtsp-simulated-camera>`_
+* `RTSP Camera <#rtsp-camera>`__
+* `RTSP Simulated Camera <#rtsp-simulated-camera>`__
 
 RTSP Camera
 ^^^^^^^^^^^

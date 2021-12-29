@@ -3,7 +3,7 @@ Common EII services
 -------------------
 
 
-#. `EtcdUI <https://github.com/open-edge-insights/eii-core/blob/master/EtcdUI/README.md>`_
+#. `EtcdUI <https://github.com/open-edge-insights/eii-etcd-ui/blob/master/README.md>`_
 #. `InfluxDBConnector <https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/README.md>`_
 #. `OpcuaExport <https://github.com/open-edge-insights/eii-opcua-export/blob/master/README.md>`_ - Optional service to read from VideoAnalytics container to publish data to opcua clients
 #. `RestDataExport <https://github.com/open-edge-insights/eii-rest-data-export/blob/master/README.md>`_ - Optional service to read the metadata and image blob from InfluxDBConnector and ImageStore services respectively

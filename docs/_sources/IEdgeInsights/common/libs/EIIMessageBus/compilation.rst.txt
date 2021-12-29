@@ -57,7 +57,7 @@ be given to CMake for building the EII Message Bus.
 .. note::  These flags are in addition to any and all flags that are available
    for the ``cmake`` command. See the CMake documentation for additional flags.
 
-   **NOTE:** See the `Generating Documentation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#generating-documentation>`_
+   **NOTE:** See the `Generating Documentation <#generating-documentation>`__
    section.
 
 

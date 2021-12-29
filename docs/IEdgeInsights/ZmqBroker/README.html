@@ -112,7 +112,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#eii-provision-and-deployment">EII provision and deployment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#pre-requisites">Pre requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#update-the-helm-charts-directory">Update the helm charts directory</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#provision-and-deploy-in-the-kubernetes-node">Provision and deploy in the kubernetes node.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#provision-and-deploy-in-the-kubernetes-node">Provision and deploy in the kubernetes node.</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/running.html#for-running-helm-charts-and-deploying-kube-pods-with-specific-namespace">For running helm charts and deploying kube pods with specific namespace</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#provision-and-deploy-mode-in-times-switching-between-dev-and-prod-mode-or-changing-the-usecase">Provision and deploy mode in times switching between dev and prod mode OR changing the usecase</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#steps-to-enable-accelarators">Steps to enable Accelarators</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#steps-for-enabling-gige-camera-with-helm">Steps for Enabling GiGE Camera with helm</a></li>
@@ -139,6 +142,10 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../pages/release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-6-2">EII v2.6.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#fixes">Fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-6-1">EII v2.6.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#bug-fixes">Bug fixes</a></li>
 </ul>
@@ -148,8 +155,12 @@
 <li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#known-issues">Known Issues</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id1">Fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id1">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id2">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -157,7 +168,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id2">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id3">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -169,7 +180,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id1">EII Message Bus</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#compilation">Compilation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id2">Generating Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#generating-documentation">Generating Documentation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
 </ul>
 </li>
@@ -195,7 +206,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#security">Security</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id3">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id2">Using ZAP Authentication</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#disabling-security">Disabling Security</a></li>
 </ul>
 </li>
@@ -228,16 +239,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#id9">ZmqBroker:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#id10">Subscriber</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#id11">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#id6">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#id7">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#id8">Publisher</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#id13">CPP Examples</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#id14">Python Examples</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#id15">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#cpp-examples">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#go-examples">Go Examples</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
@@ -267,20 +278,8 @@
 <li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#custom-udfs">Custom Udfs</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#time-series-analytics">Time-series Analytics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#eii-multi-node-cluster-provision-and-deployment">EII multi node cluster provision and deployment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#without-orchestrator"><strong>Without orchestrator</strong></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#eii-tools">EII tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#elk-usage-for-centralized-logging-of-eii-services-logs">ELK usage for centralized logging of EII services logs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#eii-uninstaller">EII Uninstaller</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#debugging-options">Debugging options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#troubleshooting-guide">Troubleshooting guide</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#eii-udfloader">EII UDFLoader</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#dependency-installation">Dependency Installation</a></li>
@@ -299,6 +298,7 @@
 <li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#combination-of-udfs-with-ingestors"><code class="docutils literal notranslate"><span class="pre">Combination</span> <span class="pre">of</span> <span class="pre">UDFs</span> <span class="pre">with</span> <span class="pre">ingestors</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#custom-udfs">Custom Udfs</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#native-visualizer-module">Native Visualizer Module</a><ul>
@@ -309,21 +309,21 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#web-visualizer-module">Web Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#id33">Using Labels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#id37">Metadata Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#id28">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#id32">Metadata Structure</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#imagestore-module">ImageStore Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#id38">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#id33">Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#id40">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#id35">Configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -354,9 +354,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#custom-udfs-available-in-the-udfs-directory">Custom UDFs available in the udfs directory</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#steps-to-configure-the-udfs-in-kapacitor">Steps to configure the UDFs in kapacitor.</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#id55">Steps to run the samples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#id71">Steps to verify the results in single task with multiple UDFs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#id72">Steps to verify the results in multiple tasks with single UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#steps-to-run-the-samples">Steps to run the samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#steps-to-verify-the-results-in-single-task-with-multiple-udfs">Steps to verify the results in single task with multiple UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#steps-to-verify-the-results-in-multiple-tasks-with-single-udf">Steps to verify the results in multiple tasks with single UDF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#working-with-kapacitor">Working with Kapacitor*</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#configuration">Configuration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#procedure-to-run-grafana">Procedure to run Grafana</a></li>
@@ -371,24 +371,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../../pages/azure.html">Azure Bridge</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#pre-requisites-setup">Pre-Requisites / Setup</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#azure-cloud-setup">Azure Cloud Setup</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#id1">Setting up AzureML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#setting-up-azureml">Setting up AzureML</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#development-system-setup">Development System Setup</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#build-and-push-eii-containers">Build and Push EII Containers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#id2">Single-Node Azure IoT Edge Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-1-provisioning">Step 1 - Provisioning</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#expected-result">Expected Result</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-2-configuring-eii">Step 2 - Configuring EII</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#id7">Expected Result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#id3">Expected Result</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-3-configuring-azure-iot-deployment-manifest">Step 3 - Configuring Azure IoT Deployment Manifest</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#id9">Expected Result</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#id4">Expected Result</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-4-deployment">Step 4 - Deployment</a><ul>
@@ -400,8 +400,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#configuration">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#id11">Azure Bridge</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#id14">Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#id5">Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#sample-eii-onnx-udf">Sample EII ONNX UDF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#simple-subscriber">Simple Subscriber</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#eii-etcd-pre-load">EII ETCD Pre-Load</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#azure-blob-storage">Azure Blob Storage</a></li>
@@ -409,7 +409,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#id22">Supported EII Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#supported-eii-services">Supported EII Services</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#additional-resources">Additional Resources</a></li>
 </ul>
 </li>
@@ -449,29 +449,35 @@
 <li class="toctree-l1"><a class="reference internal" href="../../pages/tools.html">EII Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#discoverhistory">DiscoverHistory</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#steps-to-build-and-run-discoverhistory-service">Steps to build and run DiscoverHistory service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#list-of-sample-select-queries">List of sample select queries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#to-run-the-tool-in-zmq-ipc-mode">To run the tool in zmq_ipc mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#discoverhistory-tool">DiscoverHistory tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#build-and-run-the-discoverhistory-tool">Build and run the DiscoverHistory tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#run-the-discoverhistory-tool-in-the-prod-mode">Run the DiscoverHistory tool in the PROD mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#run-the-discoverhistory-tool-in-the-dev-mode">Run the DiscoverHistory tool in the DEV mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#run-the-discoverhistory-tool-in-the-zmq-ipc-mode">Run the DiscoverHistory tool in the zmq_ipc mode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#sample-select-queries">Sample select queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the Builder script with the DiscoverHistory tool</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id16">How to integrate this tool with video/timeseries use case.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id17">Configuration of the tool.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id18">Running EmbPublisher in IPC mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#id22">EmbSubscriber</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id23">EII pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id26">Running EmbSubscriber</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id27">Running EmbSubscriber in IPC mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#eii-pre-requisites">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-embsubscriber">Running EmbSubscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-embsubscriber-in-ipc-mode">Running EmbSubscriber in IPC mode</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#id31">EII GigEConfig tool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id32">Generating PFS(Pylon Feature Stream) File</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id33">Running GigEConfig Tool</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#id34">Usage of GigEConfig tool:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#id36">Execution of GigEConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#eii-gigeconfig-tool">EII GigEConfig tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#generating-pfs-pylon-feature-stream-file">Generating PFS(Pylon Feature Stream) File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-gigeconfig-tool">Running GigEConfig Tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#usage-of-gigeconfig-tool">Usage of GigEConfig tool:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#execution-of-gigeconfig">Execution of GigEConfig</a></li>
 </ul>
 </li>
 </ul>
@@ -481,42 +487,42 @@
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#starting-httptestserver">Starting HttpTestServer</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#id39">Jupyter Notebook usage to develop python UDFs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id40">Jupyter Notebook pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id45">Running Jupyter Notebook</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#jupyter-notebook-usage-to-develop-python-udfs">Jupyter Notebook usage to develop python UDFs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#jupyter-notebook-pre-requisites">Jupyter Notebook pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-jupyter-notebook">Running Jupyter Notebook</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#id50">MQTT publisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id51">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#mqtt-publisher">MQTT publisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#usage">Usage</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#id53">Software Trigger Utility for VideoIngestion Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id54">Software Trigger Utilily pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id58">Configuration file:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id61">Running Software Trigger Utility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#software-trigger-utilily-pre-requisites">Software Trigger Utilily pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#configuration-file">Configuration file:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-software-trigger-utility">Running Software Trigger Utility</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#id64">EII TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id65">EII pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id68">EII TimeSeriesProfiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id72">EII TimeSeriesProfiler configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id73">Running TimeSeriesProfiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#eii-timeseriesprofiler">EII TimeSeriesProfiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id49">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#eii-timeseriesprofiler-modes">EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#eii-timeseriesprofiler-configurations">EII TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#id93">EII Video Profiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id94">EII Video Profiler pre-requisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id97">EII Video Profiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id102">EII Video Profiler configurations</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id105">Running Video Profiler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id113">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id115">Benchmarking with multi instance config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#eii-video-profiler">EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#eii-video-profiler-pre-requisites">EII Video Profiler pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#eii-video-profiler-modes">EII Video Profiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#eii-video-profiler-configurations">EII Video Profiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-video-profiler">Running Video Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#id117">Pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#pre-requisites">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -560,7 +566,7 @@
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
       <li>ZeroMQ Broker</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/IEdgeInsights/ZmqBroker/README.rst.txt" rel="nofollow"> View page source</a>
+              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/IEdgeInsights/ZmqBroker/README.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -570,38 +576,38 @@
              
   <p><strong>Contents</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#zeromq-broker">ZeroMQ Broker</a></p>
+<li><p><a class="reference external" href="#zeromq-broker">ZeroMQ Broker</a></p>
 <ul>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#overview">Overview</a></p></li>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#security">Security</a></p>
+<li><p><a class="reference external" href="#overview">Overview</a></p></li>
+<li><p><a class="reference external" href="#security">Security</a></p>
 <ul>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#ipc">IPC</a></p></li>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#tcp">TCP</a></p></li>
+<li><p><a class="reference external" href="#ipc">IPC</a></p></li>
+<li><p><a class="reference external" href="#tcp">TCP</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#performance-implications">Performance Implications</a></p></li>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#configuration">Configuration</a></p>
+<li><p><a class="reference external" href="#performance-implications">Performance Implications</a></p></li>
+<li><p><a class="reference external" href="#configuration">Configuration</a></p>
 <ul>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#applicationservice-configuration">Application/Service Configuration</a></p></li>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#interface-configuration">Interface Configuration</a></p></li>
+<li><p><a class="reference external" href="#applicationservice-configuration">Application/Service Configuration</a></p></li>
+<li><p><a class="reference external" href="#interface-configuration">Interface Configuration</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#docker">Docker</a></p></li>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#connecting-eii-services-to-the-zeromq-broker">Connecting EII Services to the ZeroMQ Broker</a></p></li>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#bare-metal">Bare Metal</a></p>
+<li><p><a class="reference external" href="#docker">Docker</a></p></li>
+<li><p><a class="reference external" href="#connecting-eii-services-to-the-zeromq-broker">Connecting EII Services to the ZeroMQ Broker</a></p></li>
+<li><p><a class="reference external" href="#bare-metal">Bare Metal</a></p>
 <ul>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#compilation">Compilation</a></p></li>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#usage">Usage</a></p></li>
-<li><p><a class="reference external" href="https://open-edge-insights.github.io/IEdgeInsights/ZmqBroker/#running-unit-tests">Running Unit Tests</a></p></li>
-</ul>
-</li>
+<li><p><a class="reference external" href="#compilation">Compilation</a></p></li>
+<li><p><a class="reference external" href="#usage">Usage</a></p></li>
+<li><p><a class="reference external" href="#running-unit-tests">Running Unit Tests</a></p></li>
 </ul>
 </li>
 </ul>
-<section id="id1">
-<h1>ZeroMQ Broker<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<section id="id2">
-<h2>Overview<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</li>
+</ul>
+<section id="zeromq-broker">
+<h1>ZeroMQ Broker<a class="headerlink" href="#zeromq-broker" title="Permalink to this headline">¶</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>The ZeroMQ Broker provides the ability to proxy data coming over the
 EII Message Bus ZeroMQ protocol plugin for publishers and subscribers.
 Traditionally, each EII Message Bus ZeroMQ publisher has its own IPC socket
@@ -661,8 +667,8 @@ configuration) for each of its sockets. Messages are sent from publishers into
 the <strong>frontend</strong> socket and then relayed onto the <strong>backend</strong> socket which
 forwards the messages onto the subscribers.</p>
 </section>
-<section id="id3">
-<h2>Security<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<section id="security">
+<h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
 <p>The security for the broker depends on whether the broker is using TCP or IPC
 for its respective sockets.</p>
 <div class="admonition note">
@@ -671,15 +677,15 @@ for its respective sockets.</p>
 the <strong>backend</strong> being an IPC socket (and vice-versa).</p>
 </div>
 <p>The following sections cover the security for the TCP and IPC modes.</p>
-<section id="id4">
-<h3>IPC<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<section id="ipc">
+<h3>IPC<a class="headerlink" href="#ipc" title="Permalink to this headline">¶</a></h3>
 <p>When the broker is using an IPC socket (for either the <strong>frontend</strong> or <strong>backend</strong>
 sockets), the ability to send/receive messages shall be handled by Linux file
 permissions. There is no encryption which shall occur for the messages sent
 over IPC sockets.</p>
 </section>
-<section id="id5">
-<h3>TCP<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<section id="tcp">
+<h3>TCP<a class="headerlink" href="#tcp" title="Permalink to this headline">¶</a></h3>
 <p>For TCP connections, ZeroMQ offers mechanisms for both encryption and authentication.
 This is accomplished via elliptical curve keys generated when EII is provisioned.
 These keys provide the encryption and authentication via the ZAP protocol and a
@@ -700,8 +706,8 @@ receive. Essentially what this means, is that the broker does not do authenticat
 on a per topic/stream basis, only on a connection basis.</p>
 </section>
 </section>
-<section id="id6">
-<h2>Performance Implications<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<section id="performance-implications">
+<h2>Performance Implications<a class="headerlink" href="#performance-implications" title="Permalink to this headline">¶</a></h2>
 <p>When using the ZeroMQ Broker it is important to understand the implications
 on the performance of the networking in the EII platform.</p>
 <p>By using the broker, an extra network hop is incurred for all messages sent
@@ -715,8 +721,8 @@ connect to the broker. Publishers which are not configured to connect to the
 broker will still bind to their respective IPC socket or TCP (host, port)
 combination.</p>
 </section>
-<section id="id7">
-<h2>Configuration<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The JSON schema for the configuration properties of the ZeroMQ
@@ -752,8 +758,8 @@ the, “docker-compose.yml”, file. These are provided to the service from the,
 “build/.env”, file. See the EII User Guide for more details.</p>
 <p>The following two sections cover that various configuration properties the
 broker supports for interfaces and application configuration.</p>
-<section id="id8">
-<h3>Application/Service Configuration<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<section id="application-service-configuration">
+<h3>Application/Service Configuration<a class="headerlink" href="#application-service-configuration" title="Permalink to this headline">¶</a></h3>
 <p>The broker supports two configuration parameters; one for the Linux scheduler
 policy and the other for the scheduler priority. These two properties are
 applied to the main thread which is running the ZeroMQ proxy.</p>
@@ -811,8 +817,8 @@ with the broker, but that is covered in the next section.</p>
 priority to <code class="docutils literal notranslate"><span class="pre">42</span></code>. As stated before, this can also be left entirely empty and the
 broker thread will default to the Linux default thread scheduling policy/priority.</p>
 </section>
-<section id="id9">
-<h3>Interface Configuration<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<section id="interface-configuration">
+<h3>Interface Configuration<a class="headerlink" href="#interface-configuration" title="Permalink to this headline">¶</a></h3>
 <p>The configuration of the networking interfaces for the ZeroMQ Broker is
 divided into two sections, “Subscribers”, and, “Publishers”. The, “Subscribers”,
 sections sets the configuration for the <strong>frontend</strong> socket (since it subscribes
@@ -912,8 +918,8 @@ broker can use an IPC socket for the frontend and TCP for the backend).</p>
 </ol>
 </section>
 </section>
-<section id="id10">
-<h2>Docker<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<section id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
 <p>The ZeroMQ Broker is integrated into the EII docker-compose ecosystem. To
 build and use the Docker container, follow the defined building / provisioning
 instructions for EII.</p>
@@ -923,8 +929,8 @@ include the broker into the resulting docker-compose.yml file and it will
 include the broker’s configuration into the <code class="docutils literal notranslate"><span class="pre">eii_config.json</span></code> which shall
 be used when provisioning.</p>
 </section>
-<section id="id11">
-<h2>Connecting EII Services to the ZeroMQ Broker<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<section id="connecting-eii-services-to-the-zeromq-broker">
+<h2>Connecting EII Services to the ZeroMQ Broker<a class="headerlink" href="#connecting-eii-services-to-the-zeromq-broker" title="Permalink to this headline">¶</a></h2>
 <p>In order to connect EII Services, such as the VideoIngestion or VideoAnalytics
 services, user must edit their interfaces configuration to tell them the
 broker instance to connect to. Namely, you need to add two keys to the,
@@ -986,14 +992,14 @@ changing the endpoint to point to ZmqBroker along with PublisherAppName.</p>
 </pre></div>
 </div>
 </section>
-<section id="id12">
-<h2>Bare Metal<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<section id="bare-metal">
+<h2>Bare Metal<a class="headerlink" href="#bare-metal" title="Permalink to this headline">¶</a></h2>
 <p><strong>IMPORTANT NOTE:</strong></p>
 <p>Running the broker using bare-metal is not recommended for production environments.
 This way of running the broker is meant purely for development and debugging
 purposes.</p>
-<section id="id13">
-<h3>Compilation<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<section id="compilation">
+<h3>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h3>
 <p>The ZeroMQ Broker is written in C++ and as such utilizes the CMake build
 system for building the binary for the broker.</p>
 <p>The ZeroMQ Broker has the following dependencies:</p>
@@ -1030,8 +1036,8 @@ $ make
 </pre></div>
 </div>
 </section>
-<section id="id14">
-<h3>Usage<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
 <p>After building the ZeroMQ Broker you will have a binary named, “zmq-broker”.
 Use this binary to run the ZeroMQ Broker.</p>
 <p>The ZeroMQ Broker can be configured from the EII Configuration Manager as
@@ -1276,8 +1282,8 @@ user wishes. For more examples of configurations, see the JSON files in the,
 “tests/configs/”, directory.</p>
 </div>
 </section>
-<section id="id15">
-<h3>Running Unit Tests<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<section id="running-unit-tests">
+<h3>Running Unit Tests<a class="headerlink" href="#running-unit-tests" title="Permalink to this headline">¶</a></h3>
 <p>If the ZeroMQ Broker was built with the <code class="docutils literal notranslate"><span class="pre">-DWITH_TESTS=ON</span></code> flag set for the
 CMake command, then do the following to run the unit tests:</p>
 <div class="admonition note">

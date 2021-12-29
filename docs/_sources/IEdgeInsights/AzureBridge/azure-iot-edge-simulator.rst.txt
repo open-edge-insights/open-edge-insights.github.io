@@ -3,13 +3,13 @@ Azure IoT Edge Simulator
 ------------------------
 
 Microsoft provides a simluator for the Azure IoT Edge Runtime. During the
-setup of your development system (covered in the `Development System Setup <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup>`_
+setup of your development system (covered in the `Development System Setup <#development-system-setup>`__
 section), the simulator is automatically installed on your system.
 
 Additionally, the Azure Bridge provides the ``./tools/run-simulator.sh`` script
 to easily use the simulator with the bridge.
 
-To do this, follow steps 1 - 3 in the `Single-Node Azure IoT Edge Deployment <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#single-node-azure-iot-edge-deployment>`_
+To do this, follow steps 1 - 3 in the `Single-Node Azure IoT Edge Deployment <#single-node-azure-iot-edge-deployment>`__
 section above. Then, instead of step 4, run the following command to setup
 the simulator:
 

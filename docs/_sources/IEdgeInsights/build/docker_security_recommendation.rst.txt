@@ -2,8 +2,8 @@
 **Contents**
 
 
-* `\ **Configuring the Host as per Docker security recommendations.** <https://open-edge-insights.github.io/IEdgeInsights/build/#configuring-the-host-as-per-docker-security-recommendations>`_
-* `Configuring the Docker Daemon as per Docker security recommendations <https://open-edge-insights.github.io/IEdgeInsights/build/#configuring-the-docker-daemon-as-per-docker-security-recommendations>`_
+* `\ **Configuring the Host as per Docker security recommendations.** <#configuring-the-host-as-per-docker-security-recommendations>`__
+* `Configuring the Docker Daemon as per Docker security recommendations <#configuring-the-docker-daemon-as-per-docker-security-recommendations>`__
 
 **Configuring the Host as per Docker security recommendations.**
 --------------------------------------------------------------------

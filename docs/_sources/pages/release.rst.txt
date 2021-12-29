@@ -3,6 +3,25 @@ Release Notes
 #############
 
 **********
+EII v2.6.2
+**********
+
+EII v2.6.2 is a bugfix release on top of EII v2.6.1 release.
+
+.. note:: 
+
+   We recommend EII users (customers) using `EII ELK feature` (https://github.com/open-edge-insights/eii-core/tree/v2.6.1/build/remote_logging#eii-distributed-services-centralized-logging-using-elk) to upgrade to this version.
+
+Fixes
+=====
+
+* [SECURITY] Updated the docker image version of ELK (Elasticsearch, Logstash and Kibana) stack 
+  to use the recommended ones as per https://www.elastic.co/blog/new-elasticsearch-and-logstash-releases-upgrade-apache-log4j2 
+  where log4j package has been updated to latest version
+* Minor README updates
+
+
+**********
 EII v2.6.1
 **********
 EII v2.6.1 is a bugfix release on top of EII v2.6 release
@@ -66,6 +85,24 @@ Known Issues
 
 #. Encoding cannot be enabled with native PCL udf	
 #. NativePCLIngestion CustomUDF throws warnings while processing rs2 depth frames
+
+**********
+EII v2.5.3
+**********
+
+EII v2.5.3 is a bugfix release on top of EII v2.5.2 release.
+
+.. note:: 
+
+   We recommend EII users (customers) using `EII ELK feature` (https://github.com/open-edge-insights/eii-core/tree/v2.5.2/build/remote_logging#eii-distributed-services-centralized-logging-using-elk) to upgrade to this version.
+
+Fixes
+=====
+
+* [SECURITY] Updated the docker image version of ELK (Elasticsearch, Logstash and Kibana) stack 
+  to use the recommended ones as per https://www.elastic.co/blog/new-elasticsearch-and-logstash-releases-upgrade-apache-log4j2 
+  where log4j package has been updated to latest version
+* EtcdUI service intermittent build issue is been fixed
 
 **********
 EII v2.5.2

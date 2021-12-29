@@ -3,7 +3,7 @@ Telegraf's default configuration
 --------------------------------
 
 
-#. Telegraf starts with the default configuration which is present at `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_ (for the dev mode the name is 'Telegraf_devmode.conf'). By default the below plugins are enabled.
+#. Telegraf starts with the default configuration which is present at `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_ (for the dev mode the name is 'Telegraf_devmode.conf'). By default the below plugins are enabled.
 
    * MQTT input plugin (\ **[[inputs.mqtt_consumer]]**\ )
    * EII message bus input plugin (\ **[[inputs.eii_msgbus]]**\ )

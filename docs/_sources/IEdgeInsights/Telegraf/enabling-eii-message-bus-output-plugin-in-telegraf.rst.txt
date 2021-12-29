@@ -10,7 +10,7 @@ Configuration of the plugin is divided into two parts
 
 
 #. ETCD configuration
-#. Configuration in Telegraf.conf file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_
+#. Configuration in Telegraf.conf file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_
 
 **ETCD configuration**
 Since this is eii message bus plugin and so it’s part of EII framework, message bus configuration and plugin’s topic specific configuration is kept into etcd.
@@ -45,7 +45,7 @@ Below is the sample configuration
 **Brief description of the configuration**.
 Like any other EII service Telegraf has 'config' and 'interfaces'  sections.  "interfaces" are the eii interface details. Let's have more information of "config" section.
 
-config :  Contains eii messagebus output plugin (\ **"publisher"**\ ). In the above sample configuration, the **"publisher"** is an instance name. This instance name is referenced from the Telegraf's configuration file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_
+config :  Contains eii messagebus output plugin (\ **"publisher"**\ ). In the above sample configuration, the **"publisher"** is an instance name. This instance name is referenced from the Telegraf's configuration file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_
 
 
 * measurements : This is an array of measurements configuration, where user specifies, which measurement data should be published in msgbus.

@@ -2,9 +2,9 @@
 **Contents**
 
 
-* `\ ``InfluxDBConnector Module`` <https://open-edge-insights.github.io/IEdgeInsights/InfluxDBConnector/#influxdbconnector-module>`_
+* `\ ``InfluxDBConnector Module`` <#influxdbconnector-module>`__
 
-  * `\ ``Configuration`` <https://open-edge-insights.github.io/IEdgeInsights/InfluxDBConnector/#configuration>`_
+  * `\ ``Configuration`` <#configuration>`__
 
 InfluxDBConnector
 =================

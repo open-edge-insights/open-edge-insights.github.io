@@ -2,55 +2,55 @@
 **Contents**
 
 
-* `EII Message Bus <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#eii-message-bus>`_
+* `EII Message Bus <#eii-message-bus>`__
 
-  * `Dependency Installation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#dependency-installation>`_
-  * `Compilation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#compilation>`_
+  * `Dependency Installation <#dependency-installation>`__
+  * `Compilation <#compilation>`__
 
-    * `Generating Documentation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#generating-documentation>`_
-    * `Potential Compilation Issues <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#potential-compilation-issues>`_
+    * `Generating Documentation <#generating-documentation>`__
+    * `Potential Compilation Issues <#potential-compilation-issues>`__
 
-  * `Installation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#installation>`_
+  * `Installation <#installation>`__
 
-    * `Install Python Binding <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#install-python-binding>`_
-    * `Install Golang Binding <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#install-golang-binding>`_
+    * `Install Python Binding <#install-python-binding>`__
+    * `Install Golang Binding <#install-golang-binding>`__
 
-  * `Running Unit Tests <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#running-unit-tests>`_
-  * `Configuration <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#configuration>`_
+  * `Running Unit Tests <#running-unit-tests>`__
+  * `Configuration <#configuration>`__
 
-    * `ZeroMQ IPC Configuration <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#zeromq-ipc-configuration>`_
-    * `ZeroMQ TCP Configuration <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#zeromq-tcp-configuration>`_
+    * `ZeroMQ IPC Configuration <#zeromq-ipc-configuration>`__
+    * `ZeroMQ TCP Configuration <#zeromq-tcp-configuration>`__
 
-      * `Publishers <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publishers>`_
-      * `Subscribers <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#subscribers>`_
-      * `Services <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#services>`_
-      * `Requesters <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#requesters>`_
-      * `Using ZAP Authentication <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#using-zap-authentication>`_
+      * `Publishers <#publishers>`__
+      * `Subscribers <#subscribers>`__
+      * `Services <#services>`__
+      * `Requesters <#requesters>`__
+      * `Using ZAP Authentication <#using-zap-authentication>`__
 
-    * `Additional ZeroMQ Configuration Properties <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#additional-zeromq-configuration-properties>`_
+    * `Additional ZeroMQ Configuration Properties <#additional-zeromq-configuration-properties>`__
 
-  * `Example Usage <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#example-usage>`_
+  * `Example Usage <#example-usage>`__
 
-    * `C Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#c-examples>`_
+    * `C Examples <#c-examples>`__
 
-      * `Publisher Many Example <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publisher-many-example>`_
+      * `Publisher Many Example <#publisher-many-example>`__
 
-    * `Python Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#python-examples>`_
-    * `Go Examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#go-examples>`_
-    * `Running Go Examples without Installing <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#running-go-examples-without-installing>`_
-    * `Brokered Publish/Subscribe <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#brokered-publishsubscribe>`_
+    * `Python Examples <#python-examples>`__
+    * `Go Examples <#go-examples>`__
+    * `Running Go Examples without Installing <#running-go-examples-without-installing>`__
+    * `Brokered Publish/Subscribe <#brokered-publishsubscribe>`__
 
-  * `Security <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#security>`_
+  * `Security <#security>`__
 
-    * `Using Only CurveZMQ Encryption <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#using-only-curvezmq-encryption>`_
+    * `Using Only CurveZMQ Encryption <#using-only-curvezmq-encryption>`__
 
-      * `Publish/Subscribe <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publishsubscribe>`_
-      * `Request/Response <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#requestresponse>`_
+      * `Publish/Subscribe <#publishsubscribe>`__
+      * `Request/Response <#requestresponse>`__
 
-    * `Using ZAP Authentication <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#using-zap-authentication-1>`_
-    * `Disabling Security <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#disabling-security>`_
+    * `Using ZAP Authentication <#using-zap-authentication-1>`__
+    * `Disabling Security <#disabling-security>`__
 
-  * `Known issues <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#known-issues>`_
+  * `Known issues <#known-issues>`__
 
 EII Message Bus
 ===============
@@ -163,7 +163,7 @@ be given to CMake for building the EII Message Bus.
 .. note::  These flags are in addition to any and all flags that are available
    for the ``cmake`` command. See the CMake documentation for additional flags.
 
-   **NOTE:** See the `Generating Documentation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#generating-documentation>`_
+   **NOTE:** See the `Generating Documentation <#generating-documentation>`__
    section.
 
 

@@ -2,8 +2,8 @@
 **Contents**
 
 
-* `\ ``Camera independent Software Trigger way of video ingestion`` <http://localhost:7645/IEdgeInsights/VideoIngestion/docs/#camera-independent-software-trigger-way-of-video-ingestion>`_
-* `\ ``Generic Server in VideoIngestion`` <http://localhost:7645/IEdgeInsights/VideoIngestion/docs/#generic-server-in-videoingestion>`_
+* `\ ``Camera independent Software Trigger way of video ingestion`` <#camera-independent-software-trigger-way-of-video-ingestion>`__
+* `\ ``Generic Server in VideoIngestion`` <#generic-server-in-videoingestion>`__
 
 ``Camera independent Software Trigger way of video ingestion``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

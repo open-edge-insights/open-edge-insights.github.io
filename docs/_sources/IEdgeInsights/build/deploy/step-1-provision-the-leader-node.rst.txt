@@ -21,7 +21,7 @@ Step 1 Provision the Leader node
      #. Generating bundles to deploy EII services on new/worker nodes.
 
 
-For running EII in multi node, we have to identify one node to run ETCD server (this node is called as ``leader`` node). For a leader node, ETCD_NAME in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/env>`_ must be set to ``leader``. Rest other nodes are ``Worker`` nodes which doesn't run ETCD server, instead all the worker nodes remotely connect to the ETCD server running on the ``Leader`` node only. Make sure the ``date`` and ``time`` are in sync in all nodes.
+For running EII in multi node, we have to identify one node to run ETCD server (this node is called as ``leader`` node). For a leader node, ETCD_NAME in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ must be set to ``leader``. Rest other nodes are ``Worker`` nodes which doesn't run ETCD server, instead all the worker nodes remotely connect to the ETCD server running on the ``Leader`` node only. Make sure the ``date`` and ``time`` are in sync in all nodes.
 
 Provision the Leader node using the below command:
 

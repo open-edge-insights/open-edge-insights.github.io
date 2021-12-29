@@ -4,7 +4,7 @@ MQTT sample configuration and tool to test it.
 
 
 * 
-  To test with MQTT publisher in k8s helm environment, Please update 'MQTT_BROKER_HOST' Environment Variables in `values.yaml <https://github.com/open-edge-insights/eii-core/blob/master/helm/values.yaml>`_ with HOST IP address of the system where MQTT Broker is running.
+  To test with MQTT publisher in k8s helm environment, Please update 'MQTT_BROKER_HOST' Environment Variables in `values.yaml <https://github.com/open-edge-insights/ts-telegraf/blob/master/helm/values.yaml>`_ with HOST IP address of the system where MQTT Broker is running.
 
 * 
   To test with remote mqtt broker in docker environment, Please update 'MQTT_BROKER_HOST' Environment Variables in `docker-compose.yml <https://github.com/open-edge-insights/ts-telegraf/blob/master/docker-compose.yml>`_ with HOST IP address of the system where MQTT Broker is running.
@@ -58,7 +58,7 @@ MQTT sample configuration and tool to test it.
 
       $ cd ../tools/mqtt/publisher/
 
-   change the command option in `docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/tools/mqtt/publisher/docker-compose.yml>`_ to:
+   change the command option in `docker-compose.yml <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt/publisher/docker-compose.yml>`_ to:
 
   .. code-block:: sh
 

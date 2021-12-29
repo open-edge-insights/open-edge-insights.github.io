@@ -4,17 +4,17 @@ Multi-node Provisioning & Deployment
 
 Perform the below steps  to achieve provisioning & deployment on multiple nodes
 
-`Step 1 Provision the Leader node <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-1-provision-the-leader-node>`_
+`Step 1 Provision the Leader node <#step-1-provision-the-leader-node>`__
 
-`Step 2 Set up Docker Registry URL then Build and Push Images <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-2-set-up-docker-registry-url-then-build-and-push-images>`_
+`Step 2 Set up Docker Registry URL then Build and Push Images <#step-2-set-up-docker-registry-url-then-build-and-push-images>`__
 
-`Step 3 Choosing the EII services to run on worker node <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-3-choosing-the-eii-services-to-run-on-worker-node>`_
+`Step 3 Choosing the EII services to run on worker node <#step-3-choosing-the-eii-services-to-run-on-worker-node>`__
 
-`Step 4 Provisioning the worker node <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-4-provisioning-the-worker-node>`_
+`Step 4 Provisioning the worker node <#step-4-provisioning-the-worker-node>`__
 
-`Step 5 Creating eii bundle for worker node <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-5-creating-eii-bundle-for-worker-node>`_
+`Step 5 Creating eii bundle for worker node <#step-5-creating-eii-bundle-for-worker-node>`__
 
-`Step 6 EII-Multinode deployment <https://open-edge-insights.github.io/IEdgeInsights/build/deploy/#step-6-eii-multinode-deployment>`_
+`Step 6 EII-Multinode deployment <#step-6-eii-multinode-deployment>`__
 
 Step 1 Provision the Leader node
 ================================
@@ -38,7 +38,7 @@ Step 1 Provision the Leader node
      #. Generating bundles to deploy EII services on new/worker nodes.
 
 
-For running EII in multi node, we have to identify one node to run ETCD server (this node is called as ``leader`` node). For a leader node, ETCD_NAME in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/env>`_ must be set to ``leader``. Rest other nodes are ``Worker`` nodes which doesn't run ETCD server, instead all the worker nodes remotely connect to the ETCD server running on the ``Leader`` node only. Make sure the ``date`` and ``time`` are in sync in all nodes.
+For running EII in multi node, we have to identify one node to run ETCD server (this node is called as ``leader`` node). For a leader node, ETCD_NAME in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ must be set to ``leader``. Rest other nodes are ``Worker`` nodes which doesn't run ETCD server, instead all the worker nodes remotely connect to the ETCD server running on the ``Leader`` node only. Make sure the ``date`` and ``time`` are in sync in all nodes.
 
 Provision the Leader node using the below command:
 
@@ -60,7 +60,7 @@ Follow below steps:
 
 
 * 
-  Please update docker registry url in DOCKER_REGISTRY variable in  `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/env>`_ on any node(leader/worker). Please use full registry URL with a traliling /
+  Please update docker registry url in DOCKER_REGISTRY variable in  `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ on any node(leader/worker). Please use full registry URL with a traliling /
 
 * 
   Building EII images and pushing the same to docker registry.
@@ -83,7 +83,7 @@ Step 3 Choosing the EII services to run on worker node.
 
 #. This software works only on python3+ version.
 #. 
-   Please update the `config.json <https://github.com/open-edge-insights/eii-core/blob/master/config.json>`_ file
+   Please update the `config.json <https://github.com/open-edge-insights/eii-core/blob/master/build/deploy/config.json>`_ file
 
    .. code-block::
 
@@ -103,7 +103,7 @@ Step 3 Choosing the EII services to run on worker node.
          Please validate the json.
 
       #. 
-         Please ensure that you have updated the DOCKER_REGISTRY in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/env>`_ file
+         Please ensure that you have updated the DOCKER_REGISTRY in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file
 
 
 Step 4 Provisioning the worker node

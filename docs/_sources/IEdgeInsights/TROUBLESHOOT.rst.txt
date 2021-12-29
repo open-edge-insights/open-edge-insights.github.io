@@ -2,11 +2,11 @@
 **Contents**
 
 
-* `Troubleshooting <https://open-edge-insights.github.io/IEdgeInsights/#troubleshooting>`_
+* `Troubleshooting <#troubleshooting>`__
 
-  * `Contents <https://open-edge-insights.github.io/IEdgeInsights/#contents>`_
-  * `1. "host" network_mode is incompatible with port_bindings during docker-compose up <https://open-edge-insights.github.io/IEdgeInsights/#1-host-network_mode-is-incompatible-with-port_bindings-during-docker-compose-up>`_
-  * `2. eii_libs_installer.sh script failing during bare-metal execution <https://open-edge-insights.github.io/IEdgeInsights/#2-eii_libs_installersh-script-failing-during-bare-metal-execution>`_
+  * `Contents <#contents>`__
+  * `1. "host" network_mode is incompatible with port_bindings during docker-compose up <#1-host-network_mode-is-incompatible-with-port_bindings-during-docker-compose-up>`__
+  * `2. eii_libs_installer.sh script failing during bare-metal execution <#2-eii_libs_installersh-script-failing-during-bare-metal-execution>`__
 
 Troubleshooting
 ===============
@@ -17,8 +17,8 @@ Contents
 --------
 
 
-#. `"host" network_mode is incompatible with port_bindings during docker-compose up <https://open-edge-insights.github.io/IEdgeInsights/#1-host-network_mode-is-incompatible-with-port_bindings-during-docker-compose-up>`_
-#. `eii_libs_installer.sh script failing during bare-metal execution <https://open-edge-insights.github.io/IEdgeInsights/#2-eii_libs_installersh-script-failing-during-bare-metal-execution>`_
+#. `"host" network_mode is incompatible with port_bindings during docker-compose up <#1-host-network_mode-is-incompatible-with-port_bindings-during-docker-compose-up>`__
+#. `eii_libs_installer.sh script failing during bare-metal execution <#2-eii_libs_installersh-script-failing-during-bare-metal-execution>`__
 
 1. "host" network_mode is incompatible with port_bindings during docker-compose up
 ----------------------------------------------------------------------------------

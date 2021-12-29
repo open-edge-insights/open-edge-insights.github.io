@@ -39,9 +39,9 @@ the following steps:
 #. Deployment
 
 Prior to deploying a single Azure IoT Edge node you must have already
-configured your Azure cloud instance (see instructions in the `Azure Cloud Setup <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#azure-cloud-setup>`_
+configured your Azure cloud instance (see instructions in the `Azure Cloud Setup <#azure-cloud-setup>`__
 section). Additionally, you need to have already built and pushed the EII services to your
-Azure Container Registry (follow the instructions in the `Build and Push EII Containers <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/##build-and-push-eii-containers>`_
+Azure Container Registry (follow the instructions in the `Build and Push EII Containers <#build-and-push-eii-containers>`__
 section).
 
 Provided you have met these two prerequisites, follow the steps below to do a
@@ -152,7 +152,7 @@ your deployment manifest leading to configuration errors.
 **IMPORTANT NOTE #2:**
 
 If you wish to use the sample EII ONNX UDF, now is the time to configure the UDF
-to run. See the `Sample EII ONNX UDF <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#sample-eii-onnx-udf>`_ configuration section
+to run. See the `Sample EII ONNX UDF <#sample-eii-onnx-udf>`__ configuration section
 below for how to configure the UDF.
 
 Expected Result
@@ -170,7 +170,7 @@ create your Azure IoT Hub deployment manifest. The Azure Bridge provides some
 convenience scripts to ease this process.
 
 .. note::  These steps should be done from your development system setup in
-   the `Development System Setup <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup>`_ section. Note, that for testing
+   the `Development System Setup <#development-system-setup>`__ section. Note, that for testing
    and development purposes, these could be the same system.
 
 
@@ -256,7 +256,7 @@ file and a valid ``config/*.amd64.json`` file.
 If, for some reason, these commands fail, revisit Step 2 and make sure all of your
 environmental variables are set correctly. And if that does not resolve your issue,
 verify that your development system is setup correctly by revisiting the
-`Development System Setup <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#development-system-setup>`_ section.
+`Development System Setup <#development-system-setup>`__ section.
 
 Step 4 - Deployment
 ^^^^^^^^^^^^^^^^^^^

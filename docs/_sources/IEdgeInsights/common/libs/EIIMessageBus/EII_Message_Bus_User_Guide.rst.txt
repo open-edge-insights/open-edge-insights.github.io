@@ -2,56 +2,56 @@
 **Contents**
 
 
-* `EII Message Bus User Guide <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#eii-message-bus-user-guide>`_
+* `EII Message Bus User Guide <#eii-message-bus-user-guide>`__
 
-  * `Overview <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#overview>`_
-  * `EII Message Bus Architecture <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#eii-message-bus-architecture>`_
-  * `EII Message Bus Usage <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#eii-message-bus-usage>`_
+  * `Overview <#overview>`__
+  * `EII Message Bus Architecture <#eii-message-bus-architecture>`__
+  * `EII Message Bus Usage <#eii-message-bus-usage>`__
 
-    * `Compilation & Installation <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#compilation--installation>`_
-    * `Configuration <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#configuration>`_
+    * `Compilation & Installation <#compilation-installation>`__
+    * `Configuration <#configuration>`__
 
-      * `ZeroMQ IPC Configuration <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#zeromq-ipc-configuration>`_
-      * `ZeroMQ TCP Configuration <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#zeromq-tcp-configuration>`_
+      * `ZeroMQ IPC Configuration <#zeromq-ipc-configuration>`__
+      * `ZeroMQ TCP Configuration <#zeromq-tcp-configuration>`__
 
-        * `Publishers <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publishers>`_
-        * `Subscribers <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#subscribers>`_
-        * `Services <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#services>`_
-        * `Requesters <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#requesters>`_
-        * `Using ZAP Authentication <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#using-zap-authentication>`_
+        * `Publishers <#publishers>`__
+        * `Subscribers <#subscribers>`__
+        * `Services <#services>`__
+        * `Requesters <#requesters>`__
+        * `Using ZAP Authentication <#using-zap-authentication>`__
 
-    * `Python Tutorial <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#python-tutorial>`_
+    * `Python Tutorial <#python-tutorial>`__
 
-      * `Publish/Subscribe <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publishsubscribe>`_
-      * `Request/Response <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#requestresponse>`_
-      * `Request/Response <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#requestresponse-1>`_
+      * `Publish/Subscribe <#publishsubscribe>`__
+      * `Request/Response <#requestresponse>`__
+      * `Request/Response <#requestresponse-1>`__
 
-    * `Go Tutorial <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#go-tutorial>`_
+    * `Go Tutorial <#go-tutorial>`__
 
-      * `Publish/Subscribe <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publishsubscribe-1>`_
-      * `Request/Response <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#requestresponse-2>`_
+      * `Publish/Subscribe <#publishsubscribe-1>`__
+      * `Request/Response <#requestresponse-2>`__
 
-  * `EII Message Bus Development <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#eii-message-bus-development>`_
+  * `EII Message Bus Development <#eii-message-bus-development>`__
 
-    * `Developing Protocols <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#developing-protocols>`_
+    * `Developing Protocols <#developing-protocols>`__
 
-      * `Overview <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#overview-1>`_
-      * `Adding a New Protocol <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#adding-a-new-protocol>`_
-      * `\ ``protocol_t`` Function Definition <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#protocol_t-function-definition>`_
+      * `Overview <#overview-1>`__
+      * `Adding a New Protocol <#adding-a-new-protocol>`__
+      * `\ ``protocol_t`` Function Definition <#protocol_t-function-definition>`__
 
-        * `\ ``destroy()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#destroy>`_
-        * `\ ``publisher_new()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publisher_new>`_
-        * `\ ``publisher_publish()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publisher_publish>`_
-        * `\ ``publisher_destroy()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#publisher_destroy>`_
-        * `\ ``subscriber_new()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#subscriber_new>`_
-        * `\ ``service_new()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#service_new>`_
-        * `\ ``service_get()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#service_get>`_
-        * `\ ``recv_ctx_destroy()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#recv_ctx_destroy>`_
-        * `\ ``request()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#request>`_
-        * `\ ``response()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#response>`_
-        * `\ ``recv_wait()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#recv_wait>`_
-        * `\ ``recv_timedwait()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#recv_timedwait>`_
-        * `\ ``recv_nowait()`` <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#recv_nowait>`_
+        * `\ ``destroy()`` <#destroy>`__
+        * `\ ``publisher_new()`` <#publisher_new>`__
+        * `\ ``publisher_publish()`` <#publisher_publish>`__
+        * `\ ``publisher_destroy()`` <#publisher_destroy>`__
+        * `\ ``subscriber_new()`` <#subscriber_new>`__
+        * `\ ``service_new()`` <#service_new>`__
+        * `\ ``service_get()`` <#service_get>`__
+        * `\ ``recv_ctx_destroy()`` <#recv_ctx_destroy>`__
+        * `\ ``request()`` <#request>`__
+        * `\ ``response()`` <#response>`__
+        * `\ ``recv_wait()`` <#recv_wait>`__
+        * `\ ``recv_timedwait()`` <#recv_timedwait>`__
+        * `\ ``recv_nowait()`` <#recv_nowait>`__
 
 EII Message Bus User Guide
 ==========================
@@ -769,7 +769,7 @@ For each of the functions in the structure the first ``ctx`` parameter will
 always be the value of the ``proto_ctx`` variable.
 
 For more information on the purpose of each of the function pointers in the
-``protocol_t`` structure see the `\ ``protocol_t`` Function Definition <https://open-edge-insights.github.io/IEdgeInsights/common/libs/EIIMessageBus/#protocol_t-function-definition>`_.
+``protocol_t`` structure see the `\ ``protocol_t`` Function Definition <#protocol_t-function-definition>`__.
 
 The rest of this section will cover the initial setup of a project to add a new
 protocol to the EII Message Bus, including the ideal code structure for the C

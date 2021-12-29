@@ -53,10 +53,10 @@ Video Ingestion Contents
 #. `Generic Server <https://github.com/open-edge-insights/video-ingestion/blob/master/docs/generic_server_doc.md>`_
 #. `Gstreamer Video Analytics <https://github.com/open-edge-insights/video-ingestion/blob/master/docs/gva_doc.md>`_
 #. `RUN GVA elements in VI or VA <https://github.com/open-edge-insights/video-ingestion/blob/master/models/README.md>`_
-#. `GenICam GigE/USB3.0 Camera Support <http://localhost:7645/IEdgeInsights/VideoIngestion/#genicam-gige-or-usb3-camera>`_
-#. `RTSP Camera Support <http://localhost:7645/IEdgeInsights/VideoIngestion/#rtsp-camera>`_
+#. `GenICam GigE/USB3.0 Camera Support <#genicam-gige-or-usb3-camera>`__
+#. `RTSP Camera Support <#rtsp-camera>`__
 #. 
-   `USB Camera Support <http://localhost:7645/IEdgeInsights/VideoIngestion/#usb-camera>`_
+   `USB Camera Support <#usb-camera>`__
 
    ----
 

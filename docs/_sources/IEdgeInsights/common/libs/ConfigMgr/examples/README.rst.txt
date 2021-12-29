@@ -2,11 +2,11 @@
 **Contents**
 
 
-* `ConfigMgr cpp examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/examples/#configmgr-cpp-examples>`_
+* `ConfigMgr cpp examples <#configmgr-cpp-examples>`__
 
-  * `Pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/examples/#pre-requisites>`_
-  * `Running C API examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/examples/#running-c-api-examples>`_
-  * `Running Cpp API examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/examples/#running-cpp-api-examples>`_
+  * `Pre-requisites <#pre-requisites>`__
+  * `Running C API examples <#running-c-api-examples>`__
+  * `Running Cpp API examples <#running-cpp-api-examples>`__
 
 ConfigMgr cpp examples
 ======================
@@ -19,7 +19,7 @@ Pre-requisites
    Please ensure you use the interfaces provided in this directory for VideoIngestion, VideoAnalytics & Visualizer respectively. If not provisioned using these as the interfaces, please use EtcdUI to update these interfaces at runtime.
 
 #. 
-   Ensure you comment/uncomment the required lines for DEV_PROD mode accordingly in `env.sh <https://github.com/open-edge-insights/eii-core/blob/master/env.sh>`_.
+   Ensure you comment/uncomment the required lines for DEV_PROD mode accordingly in `env.sh <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/examples/env.sh>`_.
 
 #. 
    Run this command from the build/examples directory after installing ConfigMgr WITH_EXAMPLES set to ON:

@@ -2,10 +2,10 @@
 **Contents**
 
 
-* `ConfigMgr cpp examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/go/ConfigMgr/examples/#configmgr-cpp-examples>`_
+* `ConfigMgr cpp examples <#configmgr-cpp-examples>`__
 
-  * `Pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/go/ConfigMgr/examples/#pre-requisites>`_
-  * `Running examples <https://open-edge-insights.github.io/IEdgeInsights/common/libs/ConfigMgr/go/ConfigMgr/examples/#running-examples>`_
+  * `Pre-requisites <#pre-requisites>`__
+  * `Running examples <#running-examples>`__
 
 ConfigMgr cpp examples
 ======================
@@ -18,7 +18,7 @@ Pre-requisites
    Ensure you run builder & provision with Go Sample Apps enabled.
 
 #. 
-   Ensure you comment/uncomment the required lines for DEV_PROD mode accordingly in `go_env.sh <https://github.com/open-edge-insights/eii-core/blob/master/go_env.sh>`_.
+   Ensure you comment/uncomment the required lines for DEV_PROD mode accordingly in `go_env.sh <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/go/ConfigMgr/examples/go_env.sh>`_.
 
 #. 
    Run this command from the build/examples directory after installing ConfigMgr WITH_EXAMPLES set to ON:

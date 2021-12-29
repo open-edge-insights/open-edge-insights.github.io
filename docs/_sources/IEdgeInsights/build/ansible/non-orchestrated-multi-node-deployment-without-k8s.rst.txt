@@ -5,7 +5,7 @@ Non-orchestrated multi node deployment (without k8s)
 Below configuration changes need to be made for multi node deployment without k8s
 
 
-#. Set ``multi_node: true`` in ``group_vars/all.yml`` to enable multinode deployment and ``false`` to enable single node deployment. Update ``vars/vars.yml`` to the services to run on a specific node in case of multi_node deployment by following `this <https://open-edge-insights.github.io/IEdgeInsights/build/ansible/#Select-EII-services-to-run-on-a-particular-node-in-multinode-deployment>`_\ , where in single node deployment all the services based on the ``usecase`` chosen will be deployed. 
+#. Set ``multi_node: true`` in ``group_vars/all.yml`` to enable multinode deployment and ``false`` to enable single node deployment. Update ``vars/vars.yml`` to the services to run on a specific node in case of multi_node deployment by following `this <#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment>`__\ , where in single node deployment all the services based on the ``usecase`` chosen will be deployed. 
 #. Update ``docker`` registry details in following section if using a custom/private registry
    .. code-block:: sh
 

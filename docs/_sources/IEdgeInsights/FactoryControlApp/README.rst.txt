@@ -5,10 +5,10 @@
 **Contents**
 
 
-* `FactoryControlApp: <https://open-edge-insights.github.io/IEdgeInsights/FactoryControlApp/#factorycontrolapp>`_
+* `FactoryControlApp: <#factorycontrolapp>`__
 
-  * `\ ``Pre-requisites`` <https://open-edge-insights.github.io/IEdgeInsights/FactoryControlApp/#pre-requisites>`_
-  * `\ ``Service bring up`` <https://open-edge-insights.github.io/IEdgeInsights/FactoryControlApp/#service-bring-up>`_
+  * `\ ``Pre-requisites`` <#pre-requisites>`__
+  * `\ ``Service bring up`` <#service-bring-up>`__
 
 FactoryControlApp:
 ==================

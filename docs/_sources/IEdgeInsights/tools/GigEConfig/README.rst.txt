@@ -2,13 +2,13 @@
 **Contents**
 
 
-* `EII GigEConfig tool <https://open-edge-insights.github.io/IEdgeInsights/tools/GigEConfig/#eii-gigeconfig-tool>`_
+* `EII GigEConfig tool <#eii-gigeconfig-tool>`__
 
-  * `Generating PFS(Pylon Feature Stream) File <https://open-edge-insights.github.io/IEdgeInsights/tools/GigEConfig/#generating-pfspylon-feature-stream-file>`_
-  * `Running GigEConfig Tool <https://open-edge-insights.github.io/IEdgeInsights/tools/GigEConfig/#running-gigeconfig-tool>`_
+  * `Generating PFS(Pylon Feature Stream) File <#generating-pfspylon-feature-stream-file>`__
+  * `Running GigEConfig Tool <#running-gigeconfig-tool>`__
 
-    * `Usage of GigEConfig tool: <https://open-edge-insights.github.io/IEdgeInsights/tools/GigEConfig/#usage-of-gigeconfig-tool>`_
-    * `Execution of GigEConfig <https://open-edge-insights.github.io/IEdgeInsights/tools/GigEConfig/#execution-of-gigeconfig>`_
+    * `Usage of GigEConfig tool: <#usage-of-gigeconfig-tool>`__
+    * `Execution of GigEConfig <#execution-of-gigeconfig>`__
 
 EII GigEConfig tool
 ===================

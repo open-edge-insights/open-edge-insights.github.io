@@ -34,7 +34,7 @@ Procedure to run Grafana
 ------------------------
 
 
-#. Open `docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/docker-compose.yml>`_ and uncomment ia_grafana.
+#. Open `docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/docker-compose.yml>`_ and uncomment ia_grafana.
 #. Check ia_influxdbconnector, ia_kapacitor, ia_telegraph are running for time-series data.
 #. Check `publisher <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/publisher_temp.sh>`_ is running.
 #. Use "docker-compose build" to build image.

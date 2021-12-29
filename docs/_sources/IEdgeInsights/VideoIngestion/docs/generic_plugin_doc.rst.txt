@@ -2,8 +2,8 @@
 **Contents**
 
 
-* `\ ``Generic Plugin`` <http://localhost:7645/IEdgeInsights/VideoIngestion/docs/#generic-plugin>`_
-* `\ ``Adding new GigE camera support to VideoIngestion`` <http://localhost:7645/IEdgeInsights/VideoIngestion/docs/#adding-new-gige-camera-support-to-videoingestion>`_
+* `\ ``Generic Plugin`` <#generic-plugin>`__
+* `\ ``Adding new GigE camera support to VideoIngestion`` <#adding-new-gige-camera-support-to-videoingestion>`__
 
 ``Generic Plugin``
 ~~~~~~~~~~~~~~~~~~~~~~

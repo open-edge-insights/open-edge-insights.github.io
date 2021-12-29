@@ -4,7 +4,7 @@ Using input plugin
 
 
 * 
-  Configure the EII input plugin in `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_ and `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_
+  Configure the EII input plugin in `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_ and `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_
   For example:
 
   .. code-block::
@@ -64,7 +64,7 @@ Using input plugin
 
 * 
   Create/modify a tick script to process the data and configure the same in `config.json <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json>`_.
-  For example, use the stock `tick_scripts/eii_input_plugin_logging.tick <https://github.com/open-edge-insights/eii-core/blob/master/tick_scripts/eii_input_plugin_logging.tick>`_ which logs the data received from 'eii'
+  For example, use the stock `tick_scripts/eii_input_plugin_logging.tick <https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts/eii_input_plugin_logging.tick>`_ which logs the data received from 'eii'
   storage onto the kapacitor log file (residing in the container at /tmp/log/kapacitor/kapacitor.log).
 
   .. code-block::

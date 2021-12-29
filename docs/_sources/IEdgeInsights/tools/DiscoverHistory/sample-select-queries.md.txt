@@ -1,0 +1,28 @@
+## Sample select queries
+
+The following table shows the samples for the select queries and its details:
+
+| Select Query      | Details      |
+|  ---  |  ---  |
+| "select * from camera1_stream_results order by desc limit 10"      | This query will return latest 10 records.      |
+| "select height,img_handle from camera1_stream_results order by desc limit 10"      |       |
+| "select * from camera1_stream_results where time>='2019-08-30T07:25:39Z' AND time<='2019-08-30T07:29:00Z'"      | This query will return all the records between the given time frame, which is (time>='2019-08-30T07:25:39Z' and time<='2019-08-30T07:29:00Z')      |
+| "select * from camera1_stream_results where time>=now()-1h"      | This query will return all the records from the current time, going back upto last 1 hour.      |
+|       |       |
+
+> Note
+> Include the following parameters in the query to get the good and the bad frames:
+>
+> - *img_handle
+> - *defects
+> - *encoding_level
+> - *encoding_type
+> - *height
+> - *width
+> - *channel
+>
+> The following examples shows how to include the parameters:
+>
+> - "select img_handle, defects, encoding_level, encoding_type, height, width, channel from camera1_stream_results order by desc limit 10"
+> - "select * from camera1_stream_results order by desc limit 10"
+

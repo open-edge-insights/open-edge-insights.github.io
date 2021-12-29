@@ -2,7 +2,7 @@
 **Contents**
 
 
-* `Using GVA elements in VideoIngestion <http://localhost:7645/IEdgeInsights/VideoIngestion/models/#using-gva-elements-in-videoingestion>`_
+* `Using GVA elements in VideoIngestion <#using-gva-elements-in-videoingestion>`__
 
 Using GVA elements in VideoIngestion
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

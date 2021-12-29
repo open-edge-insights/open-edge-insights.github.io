@@ -2,11 +2,11 @@
 **Contents**
 
 
-* `Native Visualizer Module <https://open-edge-insights.github.io/IEdgeInsights/Visualizer/#native-visualizer-module>`_
+* `Native Visualizer Module <#native-visualizer-module>`__
 
-  * `Steps to build and run visualizer <https://open-edge-insights.github.io/IEdgeInsights/Visualizer/#steps-to-build-and-run-visualizer>`_
-  * `Using Labels <https://open-edge-insights.github.io/IEdgeInsights/Visualizer/#using-labels>`_
-  * `Metadata Structure <https://open-edge-insights.github.io/IEdgeInsights/Visualizer/#metadata-structure>`_
+  * `Steps to build and run visualizer <#steps-to-build-and-run-visualizer>`__
+  * `Using Labels <#using-labels>`__
+  * `Metadata Structure <#metadata-structure>`__
 
 Native Visualizer Module
 ========================

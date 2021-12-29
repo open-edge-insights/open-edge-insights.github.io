@@ -15,7 +15,7 @@ Steps for running a benchmarking test case:
    Configure **\ `TimeSeriesProfiler README.md <https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/README.md>`_\ ** file to recieve rfc_results according to **\ `TimeSeriesProfiler README.md <https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/README.md>`_\ **.
 
 #. 
-   change the "command" option in MQTT publisher **\ `docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/mqtt/publisher/docker-compose.yml>`_ to:
+   change the "command" option in MQTT publisher **\ `docker-compose.yml <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt/publisher/docker-compose.yml>`_ to:
 
    .. code-block:: sh
 

@@ -5,17 +5,17 @@
 **Contents**
 
 
-* `\ ``UDF Configuration`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#udf-configuration>`_
-* `\ ``UDF Writing Guide`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#udf-writing-guide>`_
-* `\ ``Sample UDFs`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#sample-udfs>`_
+* `\ ``UDF Configuration`` <#udf-configuration>`__
+* `\ ``UDF Writing Guide`` <#udf-writing-guide>`__
+* `\ ``Sample UDFs`` <#sample-udfs>`__
 
-  * `\ ``Native UDFs`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#native-udfs>`_
-  * `\ ``Python UDFs`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#python-udfs>`_
+  * `\ ``Native UDFs`` <#native-udfs>`__
+  * `\ ``Python UDFs`` <#python-udfs>`__
 
-* `\ ``Construction of Metadata in UDF`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#construction-of-metadata-in-udf>`_
-* `\ ``Chaining of UDFs`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#chaining-of-udfs>`_
+* `\ ``Construction of Metadata in UDF`` <#construction-of-metadata-in-udf>`__
+* `\ ``Chaining of UDFs`` <#chaining-of-udfs>`__
 
-  * `\ ``Combination of UDFs with ingestors`` <https://open-edge-insights.github.io/IEdgeInsights/common/video/udfs/#combination-of-udfs-with-ingestors>`_
+  * `\ ``Combination of UDFs with ingestors`` <#combination-of-udfs-with-ingestors>`__
 
 ``EII Sample UDFs``
 

@@ -12,7 +12,7 @@ If you do not have PCM on your system, those columns will be blank in the output
 
 
    * 
-     For running the gstreamer pipeline mentioned in `sample_test/config.json <https://github.com/open-edge-insights/eii-core/blob/master/sample_test/config.json>`_ one needs to copy the required model files to [WORKDIR]/IEdgeInsights/VideoIngestion/models by referring `sample_test/config.json <https://github.com/open-edge-insights/eii-core/blob/master/sample_test/config.json>`_.
+     For running the gstreamer pipeline mentioned in `sample_test/config.json <https://github.com/open-edge-insights/eii-tools/blob/master/Benchmarking/video-benchmarking-tool/sample_test/config.json>`_ one needs to copy the required model files to [WORKDIR]/IEdgeInsights/VideoIngestion/models by referring `sample_test/config.json <https://github.com/open-edge-insights/eii-tools/blob/master/Benchmarking/video-benchmarking-tool/sample_test/config.json>`_.
 
    * 
      For using ``MYRIAD`` device for inference please add ``user: root`` in docker-compose.yml file for VI. If IPC mode is used then ``user: root`` needs to be added for VideoProfiler docker-compose.yml file as well.

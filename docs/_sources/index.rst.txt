@@ -2,6 +2,7 @@
 Intel® Edge Insights for Industrial
 ====================================
 
+Source code for Intel Edge Insights for Industrial is maintained in the `Open Edge Insights GitHub organization <https://github.com/open-edge-insights>`_.
 
 .. toctree::
    :maxdepth: 2

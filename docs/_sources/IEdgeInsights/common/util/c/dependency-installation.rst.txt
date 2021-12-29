@@ -32,5 +32,5 @@ command:
 Additionally, EIIUtils depends on the below libraries. Follow their documentation to install them.
 
 
-* `IntelSafeString <https://github.com/open-edge-insights/eii-core/blob/master/libs/IntelSafeString/README.md>`_
-* `EIIMsgEnv <https://github.com/open-edge-insights/eii-core/blob/master/libs/EIIMsgEnv/README.md>`_
+* `IntelSafeString <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_
+* `EIIMsgEnv <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_

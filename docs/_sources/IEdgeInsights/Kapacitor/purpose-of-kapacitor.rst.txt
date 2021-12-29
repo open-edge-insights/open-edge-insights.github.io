@@ -16,12 +16,12 @@ Purpose of Kapacitor
   and sends back the results to Influx.
 
 * 
-  The sample Go UDF is at `go_classifier.go <https://github.com/open-edge-insights/eii-core/blob/master/udfs/go_classifier.go>`_ and
-  the tick script  is at `go_point_classifier.tick <https://github.com/open-edge-insights/eii-core/blob/master/tick_scripts/go_point_classifier.tick>`_
+  The sample Go UDF is at `go_classifier.go <https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs/go_classifier.go>`_ and
+  the tick script  is at `go_point_classifier.tick <https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts/go_point_classifier.tick>`_
 
 * 
-  The sample Python UDF is at `py_classifier.py <https://github.com/open-edge-insights/eii-core/blob/master/udfs/py_classifier.py>`_ and
-  the tick script  is at `py_point_classifier.tick <https://github.com/open-edge-insights/eii-core/blob/master/tick_scripts/py_point_classifier.tick>`_
+  The sample Python UDF is at `py_classifier.py <https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs/py_classifier.py>`_ and
+  the tick script  is at `py_point_classifier.tick <https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts/py_point_classifier.tick>`_
 
   For more details, on Kapacitor and UDF, please refer below links
   i)  Writing a sample UDF at `anomaly detection <https://docs.influxdata.com/kapacitor/v1.5/guides/anomaly_detection/>`_
@@ -29,6 +29,6 @@ Purpose of Kapacitor
 
 * 
   In production mode the Kapacitor config file is
-  `Kapacitor/config/kapacitor.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor.conf>`_
+  `Kapacitor/config/kapacitor.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor.conf>`_
   and in developer mode the config file would be
-  `Kapacitor/config/kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_
+  `Kapacitor/config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_

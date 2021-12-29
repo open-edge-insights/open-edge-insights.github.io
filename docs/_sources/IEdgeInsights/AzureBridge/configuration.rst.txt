@@ -25,7 +25,7 @@ environment.
 The configuration of the EII Message Bus is done in a method similar to that of
 the other EII services, such as the Video Analytics service. To provided the
 configuration for the topics which the bridge should subscribe to,
-you must set the ``Subscribers`` list in the `modules/AzureBridge/config.json <https://github.com/open-edge-insights/eii-azure-bridge/blob/master/modules//config.json>`_
+you must set the ``Subscribers`` list in the `modules/AzureBridge/config.json <https://github.com/open-edge-insights/eii-azure-bridge/blob/master/modules/AzureBridge/config.json>`_
 file. The list is comprised of JSON objects for every subscription you wish the
 Azure Bridge to establish. Below is an example of the configuration for
 subscribing to the the publications coming from the Video Analytics container.
@@ -266,7 +266,7 @@ in Video Ingestion and Video Analytics config keys in ``build/provision/config/e
 we are doing some basic pre-processing, inferencing and post-processing in the ONNX UDF itself.
 Then, you need to modify the environmental variables in the ``AzureBridge/.env`` file to provide the connection
 information to enable the UDF to download your model from AzureML. Make sure to follow the 
-instructions provided in the `Setting up AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml>`_ section above to configure your
+instructions provided in the `Setting up AzureML <#setting-up-azureml>`__ section above to configure your
 workspace correctly so that the UDF can download your model.
 
 The sample ONNX UDF requires that the following configuration values be set for
@@ -336,7 +336,7 @@ a weird way when the values are populated into your deployment manifest leading
 to configuration errors.
 
 The ``tenantId``\ , ``clientId``\ , ``clientSecret``\ , and ``subscriptionId`` should all have
-been obtained when following the instructions in the `Setting up AzureML <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#setting-up-azureml>`_
+been obtained when following the instructions in the `Setting up AzureML <#setting-up-azureml>`__
 section.
 
 Please run the below steps when the ``sample_onnx`` UDF is failing with error like
@@ -348,8 +348,8 @@ Please run the below steps when the ``sample_onnx`` UDF is failing with error li
    $ az ad sp create-for-rbac --sdk-auth --name ml-auth
 
 The output of above command will be in json format. Please update the ``AML_`` env variables in ``AzureBridge/.env``
-as per above table and follow the steps `Step 3 <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-3---configuring-azure-iot-deployment-manifest>`_ and
-`Step 4 <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/#step-4---deployment>`_ to see the ``sample_onnx`` UDF working fine.
+as per above table and follow the steps `Step 3 <#step-3-configuring-azure-iot-deployment-manifest>`__ and
+`Step 4 <#step-4-deployment>`__ to see the ``sample_onnx`` UDF working fine.
 
 **IMPORTANT NOTE:**
 

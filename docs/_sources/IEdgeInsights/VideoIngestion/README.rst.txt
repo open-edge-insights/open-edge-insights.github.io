@@ -2,18 +2,18 @@
 **Contents**
 
 
-* `VideoIngestion Module <http://localhost:7645/IEdgeInsights/VideoIngestion/#videoingestion-module>`_
+* `VideoIngestion Module <#videoingestion-module>`__
 
-  * `Configuration <http://localhost:7645/IEdgeInsights/VideoIngestion/#configuration>`_
+  * `Configuration <#configuration>`__
 
-    * `Ingestor config <http://localhost:7645/IEdgeInsights/VideoIngestion/#ingestor-config>`_
-    * `Video Ingestion Contents <http://localhost:7645/IEdgeInsights/VideoIngestion/#video-ingestion-contents>`_
+    * `Ingestor config <#ingestor-config>`__
+    * `Video Ingestion Contents <#video-ingestion-contents>`__
 
-      * `Camera Configuration <http://localhost:7645/IEdgeInsights/VideoIngestion/#camera-configuration>`_
-      * `GenICam GigE or USB3 Camera <http://localhost:7645/IEdgeInsights/VideoIngestion/#genicam-gige-or-usb3-camera>`_
-      * `RTSP Camera <http://localhost:7645/IEdgeInsights/VideoIngestion/#rtsp-camera>`_
-      * `USB Camera <http://localhost:7645/IEdgeInsights/VideoIngestion/#usb-camera>`_
-      * `RealSense Depth Camera <http://localhost:7645/IEdgeInsights/VideoIngestion/#realsense-depth-camera>`_
+      * `Camera Configuration <#camera-configuration>`__
+      * `GenICam GigE or USB3 Camera <#genicam-gige-or-usb3-camera>`__
+      * `RTSP Camera <#rtsp-camera>`__
+      * `USB Camera <#usb-camera>`__
+      * `RealSense Depth Camera <#realsense-depth-camera>`__
 
 VideoIngestion Module
 =====================
@@ -122,10 +122,10 @@ Video Ingestion Contents
 #. `Generic Server <https://github.com/open-edge-insights/video-ingestion/blob/master/docs/generic_server_doc.md>`_
 #. `Gstreamer Video Analytics <https://github.com/open-edge-insights/video-ingestion/blob/master/docs/gva_doc.md>`_
 #. `RUN GVA elements in VI or VA <https://github.com/open-edge-insights/video-ingestion/blob/master/models/README.md>`_
-#. `GenICam GigE/USB3.0 Camera Support <http://localhost:7645/IEdgeInsights/VideoIngestion/#genicam-gige-or-usb3-camera>`_
-#. `RTSP Camera Support <http://localhost:7645/IEdgeInsights/VideoIngestion/#rtsp-camera>`_
+#. `GenICam GigE/USB3.0 Camera Support <#genicam-gige-or-usb3-camera>`__
+#. `RTSP Camera Support <#rtsp-camera>`__
 #. 
-   `USB Camera Support <http://localhost:7645/IEdgeInsights/VideoIngestion/#usb-camera>`_
+   `USB Camera Support <#usb-camera>`__
 
    ----
 

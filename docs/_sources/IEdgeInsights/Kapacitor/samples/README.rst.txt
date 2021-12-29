@@ -2,11 +2,11 @@
 **Contents**
 
 
-* `Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/samples/#introduction-to-samples-of-multiple-udfs-in-a-single-task-and-multiple-tasks-with-single-udf>`_
+* `Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF <#introduction-to-samples-of-multiple-udfs-in-a-single-task-and-multiple-tasks-with-single-udf>`__
 
-  * `Steps to run the samples <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/samples/#steps-to-run-the-samples>`_
-  * `Steps to verify the results in single task with multiple UDFs <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/samples/#steps-to-verify-the-results-in-single-task-with-multiple-udfs>`_
-  * `Steps to verify the results in multiple tasks with single UDF <https://open-edge-insights.github.io/IEdgeInsights/Kapacitor/samples/#steps-to-verify-the-results-in-multiple-tasks-with-single-udf>`_
+  * `Steps to run the samples <#steps-to-run-the-samples>`__
+  * `Steps to verify the results in single task with multiple UDFs <#steps-to-verify-the-results-in-single-task-with-multiple-udfs>`__
+  * `Steps to verify the results in multiple tasks with single UDF <#steps-to-verify-the-results-in-multiple-tasks-with-single-udf>`__
 
 Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF
 ============================================================================================

@@ -5,58 +5,58 @@
 **Contents**
 
 
-* `Introduction <https://open-edge-insights.github.io/IEdgeInsights/#introduction>`_
-* `Minimum System Requirements <https://open-edge-insights.github.io/IEdgeInsights/#minimum-system-requirements>`_
-* `EII Prerequisites installation <https://open-edge-insights.github.io/IEdgeInsights/#eii-prerequisites-installation>`_
-* `Generate deployment and configuration files <https://open-edge-insights.github.io/IEdgeInsights/#generate-deployment-and-configuration-files>`_
+* `Introduction <#introduction>`__
+* `Minimum System Requirements <#minimum-system-requirements>`__
+* `EII Prerequisites installation <#eii-prerequisites-installation>`__
+* `Generate deployment and configuration files <#generate-deployment-and-configuration-files>`__
 
-  * `1. Generating consolidated docker-compose.yml and eii_config.json files: <https://open-edge-insights.github.io/IEdgeInsights/#generating-consolidated-docker-composeyml-and-eii_configjson-files>`_
-  * `2. Using builder script <https://open-edge-insights.github.io/IEdgeInsights/#using-builder-script>`_
+  * `Generating consolidated deployment and configuration files: <#generating-consolidated-deployment-and-configuration-files>`__
+  * `Using builder script <#using-builder-script>`__
 
-    * `2.1 Running builder to generate the above listed consolidated files for all applicable EII services <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services>`_
-    * `2.2 Running builder to generate the above listed consolidated files for a subset of EII services: <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services>`_
-    * `2.3 Running builder to generate multi instance configs: <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-multi-instance-configs>`_
-    * `2.4 Running builder to generate benchmarking configs: <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-benchmarking-configs>`_
+    * `Running builder to generate the above listed consolidated files for all applicable EII services <#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services>`__
+    * `Running builder to generate the above listed consolidated files for a subset of EII services: <#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services>`__
+    * `Running builder to generate multi instance configs: <#running-builder-to-generate-multi-instance-configs>`__
+    * `Running builder to generate benchmarking configs: <#running-builder-to-generate-benchmarking-configs>`__
 
-  * `3. Adding new EII service so it gets picked up by Builder <https://open-edge-insights.github.io/IEdgeInsights/#adding-new-eii-service-so-it-gets-picked-up-by-builder>`_
+  * `Adding new EII service so it gets picked up by Builder <#adding-new-eii-service-so-it-gets-picked-up-by-builder>`__
 
-* `Distribution of EII container images <https://open-edge-insights.github.io/IEdgeInsights/#distribution-of-eii-container-images>`_
-* `Provision <https://open-edge-insights.github.io/IEdgeInsights/#provision>`_
-* `Build and Run EII video/timeseries use cases <https://open-edge-insights.github.io/IEdgeInsights/#build-and-run-eii-videotimeseries-use-cases>`_
+* `Distribution of EII container images <#distribution-of-eii-container-images>`__
+* `Provision <#provision>`__
+* `Build and Run EII video/timeseries use cases <#build-and-run-eii-videotimeseries-use-cases>`__
 
-  * `Build EII stack <https://open-edge-insights.github.io/IEdgeInsights/#build-eii-stack>`_
-  * `Run EII services <https://open-edge-insights.github.io/IEdgeInsights/#run-eii-services>`_
-  * `Push required EII images to docker registry <https://open-edge-insights.github.io/IEdgeInsights/#push-required-eii-images-to-docker-registry>`_
+  * `Build EII stack <#build-eii-stack>`__
+  * `Run EII services <#run-eii-services>`__
+  * `Push required EII images to docker registry <#push-required-eii-images-to-docker-registry>`__
 
-* `List of All EII Services <https://open-edge-insights.github.io/IEdgeInsights/#list-of-all-eii-services>`_
+* `List of All EII Services <#list-of-all-eii-services>`__
 
-  * `Common EII services <https://open-edge-insights.github.io/IEdgeInsights/#common-eii-services>`_
-  * `Video related services <https://open-edge-insights.github.io/IEdgeInsights/#video-related-services>`_
-  * `Timeseries related services <https://open-edge-insights.github.io/IEdgeInsights/#timeseries-related-services>`_
+  * `Common EII services <#common-eii-services>`__
+  * `Video related services <#video-related-services>`__
+  * `Timeseries related services <#timeseries-related-services>`__
 
-* `Video pipeline Analytics <https://open-edge-insights.github.io/IEdgeInsights/#video-pipeline-analytics>`_
+* `Video pipeline Analytics <#video-pipeline-analytics>`__
 
-  * `Enable camera based Video Ingestion <https://open-edge-insights.github.io/IEdgeInsights/#enable-camera-based-video-ingestion>`_
-  * `Using video accelerators in ingestion/analytics containers <https://open-edge-insights.github.io/IEdgeInsights/#using-video-accelerators-in-ingestionanalytics-containers>`_
+  * `Enable camera based Video Ingestion <#enable-camera-based-video-ingestion>`__
+  * `Using video accelerators in ingestion/analytics containers <#using-video-accelerators-in-ingestionanalytics-containers>`__
 
-    * `\ **To run on USB devices** <https://open-edge-insights.github.io/IEdgeInsights/#to-run-on-usb-devices>`_
-    * `\ **To run on MYRIAD devices** <https://open-edge-insights.github.io/IEdgeInsights/#to-run-on-myriad-devices>`_
-    * `\ **To run on HDDL devices** <https://open-edge-insights.github.io/IEdgeInsights/#to-run-on-hddl-devices>`_
-    * `\ **To run on Intel(R) Processor Graphics (GPU/iGPU)** <https://open-edge-insights.github.io/IEdgeInsights/#to-run-on-intelr-processor-graphics-gpuigpu>`_
+    * `\ **To run on USB devices** <#to-run-on-usb-devices>`__
+    * `\ **To run on MYRIAD devices** <#to-run-on-myriad-devices>`__
+    * `\ **To run on HDDL devices** <#to-run-on-hddl-devices>`__
+    * `\ **To run on Intel(R) Processor Graphics (GPU/iGPU)** <#to-run-on-intelr-processor-graphics-gpuigpu>`__
 
-  * `Custom Udfs <https://open-edge-insights.github.io/IEdgeInsights/#custom-udfs>`_
+  * `Custom Udfs <#custom-udfs>`__
 
-* `Time-series Analytics <https://open-edge-insights.github.io/IEdgeInsights/#time-series-analytics>`_
-* `EII multi node cluster provision and deployment <https://open-edge-insights.github.io/IEdgeInsights/#eii-multi-node-cluster-provision-and-deployment>`_
+* `Time-series Analytics <#time-series-analytics>`__
+* `EII multi node cluster provision and deployment <#eii-multi-node-cluster-provision-and-deployment>`__
 
-  * `\ **Without orchestrator** <https://open-edge-insights.github.io/IEdgeInsights/#without-orchestrator>`_
-  * `\ **With k8s orchestrator** <https://open-edge-insights.github.io/IEdgeInsights/#with-k8s-orchestrator>`_
+  * `\ **Without orchestrator** <#without-orchestrator>`__
+  * `\ **With k8s orchestrator** <#with-k8s-orchestrator>`__
 
-* `EII tools <https://open-edge-insights.github.io/IEdgeInsights/#eii-tools>`_
-* `ELK usage for centralized logging of EII services logs <https://open-edge-insights.github.io/IEdgeInsights/#elk-usage-for-centralized-logging-of-eii-services-logs>`_
-* `EII Uninstaller <https://open-edge-insights.github.io/IEdgeInsights/#eii-uninstaller>`_
-* `Debugging options <https://open-edge-insights.github.io/IEdgeInsights/#debugging-options>`_
-* `Troubleshooting guide <https://open-edge-insights.github.io/IEdgeInsights/#troubleshooting-guide>`_
+* `EII tools <#eii-tools>`__
+* `ELK usage for centralized logging of EII services logs <#elk-usage-for-centralized-logging-of-eii-services-logs>`__
+* `EII Uninstaller <#eii-uninstaller>`__
+* `Debugging options <#debugging-options>`__
+* `Troubleshooting guide <#troubleshooting-guide>`__
 
 Introduction
 ============
@@ -234,7 +234,7 @@ Generating consolidated deployment and configuration files:
         **Please note if one runs into issues where the DNS server is being overwhelmed with DNS queries for the EII service/app name, most likely this would be happening if those EII services are intentionally
         stopped, please ensure to restart those EII services/app(s). If the intention is to not have that application/service running, please execute the ``builder.py`` by providing usecase yml file with that application/service not
         listed, so the corresponding subscriber/client interfaces from other EII service/app(s) are automatically removed before provisioning and deployment of EII stack. Please check
-        `#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services <https://open-edge-insights.github.io/IEdgeInsights/#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services>`_ for selectively choosing required
+        `#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services <#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services>`__ for selectively choosing required
         EII services**
 
 
@@ -347,7 +347,7 @@ Running builder to generate multi instance configs:
      $ python3 builder.py -v 3 -f usecases/video-streaming.yml
 
 .. note:: 
-   This multi-instance feature support of Builder works only for the video pipeline i.e., **usecases/video-streaming.yml** use case alone and not with any other use case yml files like **usecases/video-streaming-storage.yml** etc., Also, it doesn't work for cases without ``-f`` switch too. In other words, only the above example works with ``-v`` taking in any +ve number
+   This multi-instance feature support of Builder works only for the video pipeline i.e., **usecases/video-streaming.yml** use case alone and not with any other use case yml files like **usecases/video-streaming-storage.yml** and so on. Also, it doesn't work for cases without ``-f`` switch. In other words, only the above example works with ``-v`` taking in any +ve number. To learn more about using this feature with the DiscoverHistory tool, see `Multi-instance feature support for the builder script with the DiscoverHistory tool <https://github.com/open-edge-insights/eii-tools/blob/master/DiscoverHistory/README.md#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool>`_.
 
 
 Running builder to generate benchmarking configs:
@@ -595,7 +595,7 @@ Build EII stack
 
    #. This step is optional if one wants to use the EII pre-built
       container images itself and doesn't want to build from source.
-      For more details, refer: `Distribution of EII container images <https://open-edge-insights.github.io/IEdgeInsights/#distribution-of-eii-container-images>`_
+      For more details, refer: `Distribution of EII container images <#distribution-of-eii-container-images>`__
    #. Base EII services like ia_eiibase, ia_video_common etc., are required only at the build time and not at
       the runtime.
 
@@ -654,7 +654,7 @@ Common EII services
 -------------------
 
 
-#. `EtcdUI <https://github.com/open-edge-insights/eii-core/blob/master/EtcdUI/README.md>`_
+#. `EtcdUI <https://github.com/open-edge-insights/eii-etcd-ui/blob/master/README.md>`_
 #. `InfluxDBConnector <https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/README.md>`_
 #. `OpcuaExport <https://github.com/open-edge-insights/eii-opcua-export/blob/master/README.md>`_ - Optional service to read from VideoAnalytics container to publish data to opcua clients
 #. `RestDataExport <https://github.com/open-edge-insights/eii-rest-data-export/blob/master/README.md>`_ - Optional service to read the metadata and image blob from InfluxDBConnector and ImageStore services respectively
@@ -748,22 +748,23 @@ Eg: Mount the two USB cameras connected to the host m/c with device node as ``vi
 
        lsusb | grep "03e7" (03e7 is the VendorID and 2485 is one of the  productID for MyriadX)
 
-    ```sh
-    dmesg > dmesg.txt
-    [ 3818.214919] usb 3-4: new high-speed USB device number 10 using xhci_hcd
-    [ 3818.363542] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
-    [ 3818.363546] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
-    [ 3818.363548] usb 3-4: Product: Movidius MyriadX
-    [ 3818.363550] usb 3-4: Manufacturer: Movidius Ltd.
-    [ 3818.363552] usb 3-4: SerialNumber: 03e72485
-    [ 3829.153556] usb 3-4: USB disconnect, device number 10
-    [ 3831.134804] usb 3-4: new high-speed USB device number 11 using xhci_hcd
-    [ 3831.283430] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
-    [ 3831.283433] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
-    [ 3831.283436] usb 3-4: Product: Movidius MyriadX
-    [ 3831.283438] usb 3-4: Manufacturer: Movidius Ltd.
-    [ 3831.283439] usb 3-4: SerialNumber: 03e72485
-    [ 3906.460590] usb 3-4: USB disconnect, device number 11
+    .. code-block:: sh
+
+       dmesg > dmesg.txt
+       [ 3818.214919] usb 3-4: new high-speed USB device number 10 using xhci_hcd
+       [ 3818.363542] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
+       [ 3818.363546] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+       [ 3818.363548] usb 3-4: Product: Movidius MyriadX
+       [ 3818.363550] usb 3-4: Manufacturer: Movidius Ltd.
+       [ 3818.363552] usb 3-4: SerialNumber: 03e72485
+       [ 3829.153556] usb 3-4: USB disconnect, device number 10
+       [ 3831.134804] usb 3-4: new high-speed USB device number 11 using xhci_hcd
+       [ 3831.283430] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
+       [ 3831.283433] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+       [ 3831.283436] usb 3-4: Product: Movidius MyriadX
+       [ 3831.283438] usb 3-4: Manufacturer: Movidius Ltd.
+       [ 3831.283439] usb 3-4: SerialNumber: 03e72485
+       [ 3906.460590] usb 3-4: USB disconnect, device number 11
 
   * 
     The below link can be referred in case user observes ``global mutex initialization failed`` during device initialization of NCS2 stick

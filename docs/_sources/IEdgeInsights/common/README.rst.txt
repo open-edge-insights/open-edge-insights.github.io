@@ -2,11 +2,11 @@
 **Contents**
 
 
-* `eii_libs_installer <https://open-edge-insights.github.io/IEdgeInsights/common/#eii_libs_installer>`_
+* `eii_libs_installer <#eii_libs_installer>`__
 
-  * `Running the install script <https://open-edge-insights.github.io/IEdgeInsights/common/#running-the-install-script>`_
+  * `Running the install script <#running-the-install-script>`__
 
-    * `Steps: <https://open-edge-insights.github.io/IEdgeInsights/common/#steps>`_
+    * `Steps: <#steps>`__
 
 eii_libs_installer
 ==================

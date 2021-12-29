@@ -13,7 +13,7 @@ Steps to configure the UDFs in kapacitor.
   For python UDFs, if any external python package dependency needs to be installed. To install the python package using pip, it can be added in the `conda_requirements.txt <https://github.com/open-edge-insights/ts-kapacitor/blob/master/conda_requirements.txt>`_ file and to install the python package using conda, it can be added in the `conda_requirements.txt <https://github.com/open-edge-insights/ts-kapacitor/blob/master/conda_requirements.txt>`_ file.
 
 * 
-  Modify the udf section in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_.
+  Modify the udf section in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_.
   Mention the custom UDF in the conf
   for example
 
@@ -74,7 +74,7 @@ Steps to configure the UDFs in kapacitor.
 
   #. 
      go/python based UDF should listen on the same socket file as mentioned in the the udf section in the
-     `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_.
+     `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_.
      For example
 
      .. code-block::
@@ -85,7 +85,7 @@ Steps to configure the UDFs in kapacitor.
 
   #. 
      In case of process based UDFs, provide the correct path of the code within the container
-     in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/kapacitor_devmode.conf>`_.
+     in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_ and in the `kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_.
      By default, the files and directories will be copied into the container under "/EII" director. It is recommended to keep the custom UDFs
      in the `udfs <https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs>`_ directory, the path of the custom UDF will be "/EII/udfs/customUDF_name" as shown in below example.
      If the UDF is kept in different path please modify the path in the args accordingly.

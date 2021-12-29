@@ -46,6 +46,6 @@ Follow the Docker pre-requisites, EII Pre-requisites, Provision EII and Build an
   As EII don't distribute all the docker images on docker hub, one would run into issues of those pods status showing ``ImagePullBackOff`` and few pods status like visualizer, factory ctrl etc., 
   showing ``CrashLoopBackOff`` due to additional configuration required. For ``ImagePullBackOff`` issues, please follow the steps mentioned at [../README.md#distribution-of-eii-container-images]> (../README.\ :raw-html-m2r:`<br>`
   md#distribution-of-eii-container-images) to push the images that are locally built to the docker registry of choice. Please ensure to update the ``DOCKER_REGISTRY`` value in ``[WORKDIR]/IEdgeInsights/build/.env``
-  file and re-run the `../builder.py <https://github.com/open-edge-insights/eii-core/blob/master/builder.py>`_ script to regenerate the helm charts for provision and deployment.
+  file and re-run the `../builder.py <https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py>`_ script to regenerate the helm charts for provision and deployment.
 
 ----

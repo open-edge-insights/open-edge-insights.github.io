@@ -2,7 +2,7 @@
 **Contents**
 
 
-* `GStreamer Ingestor <http://localhost:7645/IEdgeInsights/VideoIngestion/docs/#gstreamer-ingestor>`_
+* `GStreamer Ingestor <#gstreamer-ingestor>`__
 
 GStreamer Ingestor
 ^^^^^^^^^^^^^^^^^^

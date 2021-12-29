@@ -2,10 +2,10 @@
 **Contents**
 
 
-* `Intel SafeString library <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/IntelSafeString/#intel-safestring-library>`_
+* `Intel SafeString library <#intel-safestring-library>`__
 
-  * `Compilation <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/IntelSafeString/#compilation>`_
-  * `Installation <https://open-edge-insights.github.io/IEdgeInsights/common/util/c/IntelSafeString/#installation>`_
+  * `Compilation <#compilation>`__
+  * `Installation <#installation>`__
 
 Intel SafeString library
 ========================

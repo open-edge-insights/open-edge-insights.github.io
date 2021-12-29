@@ -5,13 +5,13 @@
 **Contents**
 
 
-* `Contributing to IEdgeInsights <https://open-edge-insights.github.io/IEdgeInsights/#contributing-to-iedgeinsights>`_
+* `Contributing to IEdgeInsights <#contributing-to-iedgeinsights>`__
 
-  * `Merge Requests <https://open-edge-insights.github.io/IEdgeInsights/#merge-requests>`_
+  * `Merge Requests <#merge-requests>`__
 
-    * `Commit and MR Hygiene <https://open-edge-insights.github.io/IEdgeInsights/#commit-and-mr-hygiene>`_
-    * `Minimum requirements for a MR <https://open-edge-insights.github.io/IEdgeInsights/#minimum-requirements-for-a-mr>`_
-    * `Review Process <https://open-edge-insights.github.io/IEdgeInsights/#review-process>`_
+    * `Commit and MR Hygiene <#commit-and-mr-hygiene>`__
+    * `Minimum requirements for a MR <#minimum-requirements-for-a-mr>`__
+    * `Review Process <#review-process>`__
 
 Contributing to IEdgeInsights
 =============================

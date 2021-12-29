@@ -18,7 +18,7 @@ Note:
 
 
 * 
-  To connect with OPCUA client apps, User needs to take backup `opcua_client_certificate.der <https://github.com/open-edge-insights/eii-core/blob/master/build/provision/Certificates/opcua/opcua_client_certificate.der>`_ and copy OPCUA client apps certificate to it.
+  To connect with OPCUA client apps, User needs to take backup `opcua_client_certificate.der <https://github.com/open-edge-insights/eii-core/blob/master/opcua_client_certificate.der>`_ and copy OPCUA client apps certificate to it.
 
   .. code-block:: sh
 
@@ -29,7 +29,7 @@ Note:
 
 * 
   Running in Kubernetes Environment
-  To connect with OPCUA client apps, User needs to copy OPCUA client apps certificate to `opcua_client_certificate.der <https://github.com/open-edge-insights/eii-core/blob/master/build/helm-eii/eii-provision/Certificates/opcua/opcua_client_certificate.der>`_.
+  To connect with OPCUA client apps, User needs to copy OPCUA client apps certificate to `opcua_client_certificate.der <https://github.com/open-edge-insights/eii-core/blob/master/opcua_client_certificate.der>`_.
 
 Install provision and deploy helm chart
 

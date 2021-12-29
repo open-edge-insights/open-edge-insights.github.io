@@ -5,7 +5,7 @@
 **Contents**
 
 
-* `Basler Camera <http://localhost:7645/IEdgeInsights/VideoIngestion/docs/#basler-camera>`_
+* `Basler Camera <#basler-camera>`__
 
 Basler Camera
 ^^^^^^^^^^^^^

@@ -2,12 +2,12 @@
 **Contents**
 
 
-* `Web Visualizer Module <https://open-edge-insights.github.io/IEdgeInsights/WebVisualizer/#web-visualizer-module>`_
+* `Web Visualizer Module <#web-visualizer-module>`__
 
-  * `Steps to build and run web visualizer <https://open-edge-insights.github.io/IEdgeInsights/WebVisualizer/#steps-to-build-and-run-web-visualizer>`_
-  * `Using Labels <https://open-edge-insights.github.io/IEdgeInsights/WebVisualizer/#using-labels>`_
+  * `Steps to build and run web visualizer <#steps-to-build-and-run-web-visualizer>`__
+  * `Using Labels <#using-labels>`__
 
-    * `Metadata Structure <https://open-edge-insights.github.io/IEdgeInsights/WebVisualizer/#metadata-structure>`_
+    * `Metadata Structure <#metadata-structure>`__
       # Web Visualizer Module
 
 Web Visualizer ia a web based app to view the classified images/metadata coming out of EII.

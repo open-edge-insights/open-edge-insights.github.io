@@ -2,9 +2,9 @@
 **Contents**
 
 
-* `Azure Bridge Module <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/modules/AzureBridge/#azure-bridge-module>`_
+* `Azure Bridge Module <#azure-bridge-module>`__
 
-  * `Running Unit Tests <https://open-edge-insights.github.io/IEdgeInsights/AzureBridge/modules/AzureBridge/#running-unit-tests>`_
+  * `Running Unit Tests <#running-unit-tests>`__
 
 Azure Bridge Module
 ===================

@@ -5,13 +5,13 @@
 **Contents**
 
 
-* `RestDataExport <https://open-edge-insights.github.io/IEdgeInsights/RestDataExport/#restdataexport>`_
+* `RestDataExport <#restdataexport>`__
 
-  * `Configuration <https://open-edge-insights.github.io/IEdgeInsights/RestDataExport/#configuration>`_
+  * `Configuration <#configuration>`__
 
-    * `Pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/RestDataExport/#pre-requisites>`_
+    * `Pre-requisites <#pre-requisites>`__
 
-  * `Service bring up <https://open-edge-insights.github.io/IEdgeInsights/RestDataExport/#service-bring-up>`_
+  * `Service bring up <#service-bring-up>`__
     # RestDataExport
 
 RestDataExport service subscribes to any topic from EIIMessageBus and starts publishing meta data via POST requests to any external HTTP servers. It has an internal HTTP server running to respond to any GET requests for a required frame from any HTTP clients.

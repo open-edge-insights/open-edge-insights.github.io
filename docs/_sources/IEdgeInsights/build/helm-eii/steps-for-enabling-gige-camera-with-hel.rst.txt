@@ -66,7 +66,7 @@ Steps for Enabling GiGE Camera with helm
 
 
    #. 
-      Follow the `Deployment Steps <https://open-edge-insights.github.io/IEdgeInsights/build/helm-eii/#provision-and-deploy-in-the-kubernetes-node>`_
+      Follow the `Deployment Steps <#provision-and-deploy-in-the-kubernetes-node>`__
 
    #. 
       Verify ``pod``\ ip & ``host`` ip are same as per Configured ``Ethernet`` interface by using below command.

@@ -2,10 +2,10 @@
 **Contents**
 
 
-* `About tool <http://localhost:7645/IEdgeInsights/tools/EmbPublisher/#about-tool>`_
-* `How to integrate this tool with video/timeseries use case. <http://localhost:7645/IEdgeInsights/tools/EmbPublisher/#how-to-integrate-this-tool-with-videotimeseries-use-case>`_
-* `Configuration of the tool. <http://localhost:7645/IEdgeInsights/tools/EmbPublisher/#configuration-of-the-tool>`_
-* `Running EmbPublisher in IPC mode <http://localhost:7645/IEdgeInsights/tools/EmbPublisher/#running-embpublisher-in-ipc-mode>`_
+* `About tool <#about-tool>`__
+* `How to integrate this tool with video/timeseries use case. <#how-to-integrate-this-tool-with-videotimeseries-use-case>`__
+* `Configuration of the tool. <#configuration-of-the-tool>`__
+* `Running EmbPublisher in IPC mode <#running-embpublisher-in-ipc-mode>`__
 
 EmbPublisher
 ============

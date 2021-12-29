@@ -10,28 +10,28 @@ Contents:
 
 
 #. 
-   `Telegraf in brief <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Telegraf-in-brief>`_
+   `Telegraf in brief <#telegraf-in-brief>`__
 
 #. 
-   `Telegraf's default configuration <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Telegrafs-default-configuration>`_
+   `Telegraf's default configuration <#telegrafs-default-configuration>`__
 
 #. 
-   `MQTT sample configuration and tool to test it <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#MQTT-sample-configuration-and-tool-to-test-it>`_
+   `MQTT sample configuration and tool to test it <#mqtt-sample-configuration-and-tool-to-test-it>`__
 
 #. 
-   `Enabling EII message bus input plugin in Telegraf <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Enabling-EII-message-bus-input-plugin-in-Telegraf>`_
+   `Enabling EII message bus input plugin in Telegraf <#enabling-eii-message-bus-input-plugin-in-telegraf>`__
 
 #. 
-   `Advanced: Multiple plugin sections of EII message bus input plugin <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Advanced-Multiple-plugin-sections-of-EII-message-bus-input-plugin>`_
+   `Advanced: Multiple plugin sections of EII message bus input plugin <#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin>`__
 
 #. 
-   `Enabling EII message bus Output plugin in Telegraf <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Enabling-EII-message-bus-output-plugin-in-Telegraf>`_
+   `Enabling EII message bus Output plugin in Telegraf <#enabling-eii-message-bus-output-plugin-in-telegraf>`__
 
 #. 
-   `Advanced: Multiple plugin sections of EII message bus output plugin <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Advanced-Multiple-plugin-sections-of-EII-message-bus-output-plugin>`_
+   `Advanced: Multiple plugin sections of EII message bus output plugin <#advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin>`__
 
 #. 
-   `Optional: Adding multiple telegraf instances <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Optional-Adding-multiple-telegraf-instances>`_
+   `Optional: Adding multiple telegraf instances <#optional-adding-multiple-telegraf-instances>`__
 
 Telegraf in brief
 -----------------
@@ -44,7 +44,7 @@ Telegraf's default configuration
 --------------------------------
 
 
-#. Telegraf starts with the default configuration which is present at `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_ (for the dev mode the name is 'Telegraf_devmode.conf'). By default the below plugins are enabled.
+#. Telegraf starts with the default configuration which is present at `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_ (for the dev mode the name is 'Telegraf_devmode.conf'). By default the below plugins are enabled.
 
    * MQTT input plugin (\ **[[inputs.mqtt_consumer]]**\ )
    * EII message bus input plugin (\ **[[inputs.eii_msgbus]]**\ )
@@ -57,7 +57,7 @@ MQTT sample configuration and tool to test it.
 
 
 * 
-  To test with MQTT publisher in k8s helm environment, Please update 'MQTT_BROKER_HOST' Environment Variables in `values.yaml <https://github.com/open-edge-insights/eii-core/blob/master/helm/values.yaml>`_ with HOST IP address of the system where MQTT Broker is running.
+  To test with MQTT publisher in k8s helm environment, Please update 'MQTT_BROKER_HOST' Environment Variables in `values.yaml <https://github.com/open-edge-insights/ts-telegraf/blob/master/helm/values.yaml>`_ with HOST IP address of the system where MQTT Broker is running.
 
 * 
   To test with remote mqtt broker in docker environment, Please update 'MQTT_BROKER_HOST' Environment Variables in `docker-compose.yml <https://github.com/open-edge-insights/ts-telegraf/blob/master/docker-compose.yml>`_ with HOST IP address of the system where MQTT Broker is running.
@@ -111,7 +111,7 @@ MQTT sample configuration and tool to test it.
 
       $ cd ../tools/mqtt/publisher/
 
-   change the command option in `docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/tools/mqtt/publisher/docker-compose.yml>`_ to:
+   change the command option in `docker-compose.yml <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt/publisher/docker-compose.yml>`_ to:
 
   .. code-block:: sh
 
@@ -157,7 +157,7 @@ Configuration of the plugin is divided into two parts
 
 
 #. ETCD configuration
-#. Configuration in Telegraf.conf file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_
+#. Configuration in Telegraf.conf file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_
 
 **ETCD configuration**
 
@@ -204,7 +204,7 @@ Below is the sample configuration
 
 Like any other EII service Telegraf has 'config' and 'interfaces'  sections.  "interfaces" are the eii interface details. Let's have more information of "config" section.
 
-config :  Contains the configuration of the influxdb (\ **"influxdb"**\ ) and  eii messagebus input plugin (\ **"default"**\ ). In the above sample configuration, the **"default"** is an instance name. This instance name is referenced from the Telegraf's configuration file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_
+config :  Contains the configuration of the influxdb (\ **"influxdb"**\ ) and  eii messagebus input plugin (\ **"default"**\ ). In the above sample configuration, the **"default"** is an instance name. This instance name is referenced from the Telegraf's configuration file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_
 
 
 * 
@@ -255,12 +255,12 @@ Here, the value **'default'**  acts as a key in the file **\ `config.json <https
 *Note: 
 Since it’s telegraf input plugin, the telegraf’s parser configuration
 has to be in Telegraf.conf file. The more information of the telegraf json parser plugin can be be found at https://github.com/influxdata/telegraf/tree/master/plugins/parsers/json.*
-In case if there are multiple telegraf instances, then the location of the Telegraf configuration files would be different. For more details please refer the section `Optional: Adding multiple telegraf instance <https://open-edge-insights.github.io/IEdgeInsights/Telegraf/#Optional-Adding-multiple-telegraf-instances>`_
+In case if there are multiple telegraf instances, then the location of the Telegraf configuration files would be different. For more details please refer the section `Optional: Adding multiple telegraf instance <#optional-adding-multiple-telegraf-instances>`__
 
 Advanced: Multiple plugin sections of EII message bus input plugin
 ------------------------------------------------------------------
 
-Like any other Telegraf plugin user can keep multiple configuration sections of the EII message bus input plugin in the **\ `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_\ ** file.
+Like any other Telegraf plugin user can keep multiple configuration sections of the EII message bus input plugin in the **\ `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_\ ** file.
 
 Let's have an example for the same. Let's assume there are two EII apps, one with the AppName "EII_APP1" and another with the AppName "EII_APP2", which are publishing the data to eii message bus.
 *The Telegraf's ETCD configuration for the same is*
@@ -336,7 +336,7 @@ Using input plugin
 
 
 * 
-  By default EII message bus input plugin is disabled. To Configure the EII input plugin, uncomment the following lines in **\ `config/Telegraf/Telegraf_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf_devmode.conf>`_\ ** and  **\ `config/Telegraf/Telegraf_devmode.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf_devmode.conf>`_\ **
+  By default EII message bus input plugin is disabled. To Configure the EII input plugin, uncomment the following lines in **\ `config/Telegraf/Telegraf_devmode.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf_devmode.conf>`_\ ** and  **\ `config/Telegraf/Telegraf_devmode.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf_devmode.conf>`_\ **
 
   .. code-block::
 
@@ -399,7 +399,7 @@ Configuration of the plugin is divided into two parts
 
 
 #. ETCD configuration
-#. Configuration in Telegraf.conf file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_
+#. Configuration in Telegraf.conf file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_
 
 **ETCD configuration**
 Since this is eii message bus plugin and so it’s part of EII framework, message bus configuration and plugin’s topic specific configuration is kept into etcd.
@@ -434,7 +434,7 @@ Below is the sample configuration
 **Brief description of the configuration**.
 Like any other EII service Telegraf has 'config' and 'interfaces'  sections.  "interfaces" are the eii interface details. Let's have more information of "config" section.
 
-config :  Contains eii messagebus output plugin (\ **"publisher"**\ ). In the above sample configuration, the **"publisher"** is an instance name. This instance name is referenced from the Telegraf's configuration file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_
+config :  Contains eii messagebus output plugin (\ **"publisher"**\ ). In the above sample configuration, the **"publisher"** is an instance name. This instance name is referenced from the Telegraf's configuration file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_
 
 
 * measurements : This is an array of measurements configuration, where user specifies, which measurement data should be published in msgbus.
@@ -456,7 +456,7 @@ Here, the value **'publisher'**  acts as a key in the file **\ `config.json <htt
 Advanced: Multiple plugin sections of EII message bus output plugin
 -------------------------------------------------------------------
 
-Like any other Telegraf plugin user can keep multiple configuration sections of the EII message bus output plugin in the **\ `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/eii-core/blob/master/config/Telegraf/Telegraf.conf>`_\ ** file.
+Like any other Telegraf plugin user can keep multiple configuration sections of the EII message bus output plugin in the **\ `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_\ ** file.
 
 *The Telegraf's ETCD configuration for the same is*
 

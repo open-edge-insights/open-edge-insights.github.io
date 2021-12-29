@@ -2,12 +2,12 @@
 **Contents**
 
 
-* `EII TimeSeriesProfiler <https://open-edge-insights.github.io/IEdgeInsights/tools/TimeSeriesProfiler/#eii-timeseriesprofiler>`_
+* `EII TimeSeriesProfiler <#eii-timeseriesprofiler>`__
 
-  * `EII pre-requisites <https://open-edge-insights.github.io/IEdgeInsights/tools/TimeSeriesProfiler/#eii-pre-requisites>`_
-  * `EII TimeSeriesProfiler modes <https://open-edge-insights.github.io/IEdgeInsights/tools/TimeSeriesProfiler/#eii-timeseriesprofiler-modes>`_
-  * `EII TimeSeriesProfiler configurations <https://open-edge-insights.github.io/IEdgeInsights/tools/TimeSeriesProfiler/#eii-timeseriesprofiler-configurations>`_
-  * `Running TimeSeriesProfiler <https://open-edge-insights.github.io/IEdgeInsights/tools/TimeSeriesProfiler/#running-timeseriesprofiler>`_
+  * `EII pre-requisites <#eii-pre-requisites>`__
+  * `EII TimeSeriesProfiler modes <#eii-timeseriesprofiler-modes>`__
+  * `EII TimeSeriesProfiler configurations <#eii-timeseriesprofiler-configurations>`__
+  * `Running TimeSeriesProfiler <#running-timeseriesprofiler>`__
 
 EII TimeSeriesProfiler
 ======================
