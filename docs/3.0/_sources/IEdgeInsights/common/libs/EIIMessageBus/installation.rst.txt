@@ -1,0 +1,60 @@
+
+Installation
+------------
+
+If you wish to install the EII Message Bus on your system, execute the
+following command after building the library:
+
+.. code-block:: sh
+
+   $ sudo make install
+
+By default, this command will install the EII Message Bus C library into
+``/opt/intel/eii/lib``. On some platforms this is not included in the ``LD_LIBRARY_PATH``
+by default. As a result, you must add this directory to you ``LD_LIBRARY_PATH``\ ,
+otherwise you will encounter issues using the EII Message Bus. This can
+be accomplished with the following ``export``\ :
+
+.. code-block:: sh
+
+   $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/eii/lib
+
+.. note::  You can also specify a different library prefix to CMake through
+   the ``CMAKE_INSTALL_PREFIX`` flag. If different installation path is given via
+   ``CMAKE_INSTALL_PREFIX``\ , then ``$LD_LIBRARY_PATH`` should be appended by
+   $CMAKE_INSTALL_PREFIX/lib.
+
+
+Install Python Binding
+^^^^^^^^^^^^^^^^^^^^^^
+
+To install the Python binding for the EII Message Bus execute the following
+commands:
+
+.. code-block:: sh
+
+   # Change directories into the python/ directory
+   $ cd python/
+
+   # Install the Python package
+   $ sudo python3 setup.py install
+
+.. note::  In order for the installation to be successful, you must have run
+   the ``install.sh`` script with the ``--cython`` flag when installing the
+   message bus dependencies.
+
+
+Install Golang Binding
+^^^^^^^^^^^^^^^^^^^^^^
+
+To install the Golang binding for the EII Message Bus execute the following
+command:
+
+.. code-block:: sh
+
+   # Copy the Golang source to your $GOPATH/src directory
+   $ cp -a go/EIIMessageBus/ $GOPATH/src/
+
+.. note::  The above command assumes Golang is installed and configured on
+   the target system.
+

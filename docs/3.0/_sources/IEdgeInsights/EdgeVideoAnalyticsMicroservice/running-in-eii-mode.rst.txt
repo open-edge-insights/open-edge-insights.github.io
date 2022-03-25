@@ -1,0 +1,6 @@
+
+Running in EII mode
+-------------------
+
+
+* Please refer `README <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/README.md>`_ for running Edge Video Analytics Microservice in EII mode

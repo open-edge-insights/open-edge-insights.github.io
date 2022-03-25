@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuring the Docker Daemon as per Docker security recommendations &mdash; OEI Documentation v1.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/contentui.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/contentui.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> OEI Documentation
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+  
+              <p><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/introduction.html">Introduction to OEI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/running.html">Run Open Edge Insights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#about-open-edge-insights">About Open Edge Insights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#video-pipeline-analytics">Video pipeline Analytics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#time-series-analytics">Time-series Analytics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#oei-multi-node-cluster-deployment">OEI multi-node cluster deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#oei-tools">OEI tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#oei-uninstaller">OEI Uninstaller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#debugging-options">Debugging options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#web-deployment-tool">Web Deployment Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#troubleshooting-guide">Troubleshooting guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#oei-v3-0">OEI v3.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-6-2">EII v2.6.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#fixes">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-6-1">EII v2.6.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id1">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id2">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id3">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#bug-fix">Bug fix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id4">Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Core Libraries:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/msgbus.html">Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id1">Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#generating-documentation">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id2">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id3">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id4">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id5">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id6">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id7">Packaging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id9">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id10">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id11">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id12">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id13">Running Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id14">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id15">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id16">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id17">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id18">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id19">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id20">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id21">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id22">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id23">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id24">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id25">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id26">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id27">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id28">Running Go Examples without Installing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id29">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id30">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id33">Using Only CurveZMQ Encryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id34">Publish/Subscribe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id35">Request/Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id36">Using ZAP Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id37">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id38">Known issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id39">Generation of python .whl file (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/eiiConfig.html">OEI Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/eiiConfig.html#configmgr">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#configmgr-installation">ConfigMgr Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#using-system-grpc">Using System gRPC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#generating-documentation">Generating Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#publisher-interface">Publisher Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#subscriber-interface">Subscriber Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#server-interface"><strong>Server Interface</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#client-interface"><strong>Client Interface</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#cpp-examples">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#go-examples">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#creation-of-grpc-zip-file-optional">Creation of grpc .zip file (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/eiiConfig.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Video Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/video.html">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#videoingestion-module">VideoIngestion Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#oei-udfloader">OEI UDFLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#oei-sample-udfs">OEI Sample UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#udf-writing-guide">UDF Writing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#sample-udfs">Sample UDFs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#chaining-of-udfs">Chaining of UDFs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#native-visualizer-module">Native Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#web-visualizer-module">Web Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Time-Series Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/timeseries.html">Working with Time series Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/timeseries.html#telegraf">Telegraf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/timeseries.html#point-data-time-series-data-analytics-introduction">Point-data (Time-series data) analytics introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/timeseries.html#grafana">Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/timeseries.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Export Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#prerequisites-and-setup">Prerequisites and Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#azure-cloud-setup">Azure Cloud Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#setting-up-azureml">Setting up AzureML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#important">Important</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#development-system-setup">Development System Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#build-and-push-oei-containers">Build and Push OEI Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-1-provisioning">Step 1 - Provisioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#expected-result">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-2-configuring-eii">Step 2 - Configuring EII</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#id3">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-3-configuring-azure-iot-deployment-manifest">Step 3 - Configuring Azure IoT Deployment Manifest</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#id4">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-4-deployment">Step 4 - Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#helpful-debugging-commands">Helpful Debugging Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#final-notes">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#id5">Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#sample-eii-onnx-udf">Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#simple-subscriber">Simple Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#eii-etcd-pre-load">EII ETCD Pre-Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#azure-blob-storage">Azure Blob Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#azure-deployment-manifest">Azure Deployment Manifest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#supported-oei-services">Supported OEI Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/opcua.html#opcuaexport">OpcuaExport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/restdata.html">RestDataExport service</a></li>
+</ul>
+<p><span class="caption-text">Additional Info:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tools.html">OEI Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#discoverhistory-tool">DiscoverHistory tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#configuration-of-the-tool">Configuration of the tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#gigeconfig-tool">GigEConfig tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#generating-pfs-pylon-feature-stream-file">Generating PFS (Pylon Feature Stream) File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#running-gigeconfig-tool">Running GigEConfig Tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#develop-python-user-defined-functions-using-jupyter-notebook">Develop Python User Defined Functions using Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#prerequisites-for-using-jupyter-notebooks">Prerequisites for using Jupyter Notebooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#run-jupyter-notebook-from-web-browsers">Run Jupyter Notebook from web browsers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#run-jupyter-notebook-using-visual-studio-code">Run Jupyter Notebook using Visual Studio Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#mqtt-publisher">MQTT publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#oei-video-profiler">OEI Video Profiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#oei-video-profiler-prerequisites">OEI Video Profiler prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#oei-video-profiler-modes">OEI Video Profiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#oei-video-profiler-configurations">OEI Video Profiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#run-video-profiler">Run Video Profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#running-videoprofiler-in-helm-usecase">Running VideoProfiler in helm usecase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#optimizing-oei-video-pipeline-by-analysing-video-profiler-results">Optimizing OEI Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi-instance config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/sample.html">OEI Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/sample.html#eii-sample-apps">EII Sample Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OEI Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+  <!-- 3.0 -->
+  
+  
+
+  <li><a href="../../index.html">3.0</a> &raquo;</li>
+  
+  <li>Configuring the Docker Daemon as per Docker security recommendations</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/IEdgeInsights/build/configuring-the-docker-daemon-as-per-docker-security-recommendations.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configuring-the-docker-daemon-as-per-docker-security-recommendations">
+<h1>Configuring the Docker Daemon as per Docker security recommendations<a class="headerlink" href="#configuring-the-docker-daemon-as-per-docker-security-recommendations" title="Permalink to this headline">¶</a></h1>
+<p><strong>Ensure security related parameter exists for Docker Daemon</strong></p>
+<p>This section deals with the configuration of the Docker daemon. Create a configuration file for the daemon called daemon.json, to which we’ll add some security-related configuration parameters.</p>
+<p>To begin, open up the configuration file in your favorite editor:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">daemon</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<p>This will present you with a blank text file. Paste in the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;icc&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">&quot;log-driver&quot;</span><span class="p">:</span> <span class="s2">&quot;syslog&quot;</span><span class="p">,</span>
+<span class="s2">&quot;live-restore&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+<span class="s2">&quot;userland-proxy&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+<span class="s2">&quot;no-new-privileges&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+<span class="s2">&quot;userns-remap&quot;</span><span class="p">:</span> <span class="s2">&quot;default&quot;</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Save and close the file, then restart the Docker daemon so it picks up this new configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">docker</span>
+</pre></div>
+</div>
+<p><strong>Ensure that authorization for Docker client commands is enabled</strong></p>
+<p>If you need to allow network access to the Docker socket you should run the docker daemon with <a class="reference external" href="https://docs.docker.com/engine/extend/plugins_authorization/">authorization-plugin</a> by following the steps below.</p>
+<ol class="arabic simple">
+<li><p>Create an empty policy definition that will allow all requests.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">policies</span>
+<span class="n">cat</span> <span class="o">&gt;&gt;</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">policies</span><span class="o">/</span><span class="n">authz</span><span class="o">.</span><span class="n">rego</span> <span class="o">&lt;&lt;</span> <span class="n">EOF</span>
+<span class="n">package</span> <span class="n">docker</span><span class="o">.</span><span class="n">authz</span>
+
+<span class="n">allow</span> <span class="o">=</span> <span class="n">true</span>
+<span class="n">EOF</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Install a plugin or <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/plugin_create/">create one plugin</a>.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">plugin</span> <span class="n">install</span> <span class="o">&lt;</span><span class="n">plugin</span><span class="o">&gt;</span>
+<span class="k">for</span> <span class="n">eg</span><span class="p">:</span>
+<span class="n">docker</span> <span class="n">plugin</span> <span class="n">install</span> <span class="n">openpolicyagent</span><span class="o">/</span><span class="n">opa</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">authz</span><span class="o">-</span><span class="n">v2</span><span class="p">:</span><span class="mf">0.4</span> <span class="n">opa</span><span class="o">-</span><span class="n">args</span><span class="o">=</span><span class="s2">&quot;-policy-file /opa/policies/authz.rego&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Configure the Docker daemon to use the plugin for authorization by appending following in /etc/docker/daemon.json.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;authorization-plugins&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;&lt;plugin_name&gt;&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>Restart the docker daemon.</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">docker</span>
+</pre></div>
+</div>
+<p>Please find more information about Docker bench security below. The Docker Bench for Security is a script that checks for dozens of common best-practices around deploying Docker containers in production.</p>
+<p><a class="reference external" href="https://github.com/docker/docker-bench-security">https://github.com/docker/docker-bench-security</a></p>
+<p><strong>Secure Docker registries</strong></p>
+<p>Do not use insecure registries: Docker considers a private registry either secure or insecure. By default, registries are considered secure. A secure registry uses TLS. A copy of registry’s CA certificate is placed on the Docker host at ‘/etc/docker/certs.d//’ directory. Do not use any insecure registries in the production environment.
+Disable operations on legacy registry (v1): The latest Docker registry is v2. Restrict all operations on the legacy registry version (v1).</p>
+<p><strong>Configure TLS authentication for the Docker daemon</strong></p>
+<p>Configure TLS authentication to restrict access to Docker daemon via IP and port. It is possible to make the Docker daemon to listen on a specific IP and port and any other Unix socket other than default Unix socket. Hence, do not bind the Docker daemon to another IP/port or a Unix socket.</p>
+<p>If you must expose the Docker daemon via a network socket, configure TLS authentication for the daemon and Docker Swarm APIs (if using). This would restrict the connections to your Docker daemon over the network to a limited number of clients who could successfully authenticate over TLS. Manage and guard certificates and keys for Docker daemon and Docker clients.</p>
+<p><strong>Secure daemon configuration files</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Set</span> <span class="n">docker</span><span class="o">.</span><span class="n">service</span> <span class="n">file</span> <span class="n">ownership</span> <span class="n">to</span> <span class="n">root</span><span class="p">:</span><span class="n">root</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">docker</span><span class="o">.</span><span class="n">service</span> <span class="n">file</span> <span class="n">permissions</span> <span class="n">to</span> <span class="mi">644</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">restrictive</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">docker</span><span class="o">.</span><span class="n">socket</span> <span class="n">file</span> <span class="n">ownership</span> <span class="n">to</span> <span class="n">root</span><span class="p">:</span><span class="n">root</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">docker</span><span class="o">.</span><span class="n">socket</span> <span class="n">file</span> <span class="n">permissions</span> <span class="n">to</span> <span class="mi">644</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">restrictive</span><span class="o">.</span>
+<span class="n">Set</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">docker</span> <span class="n">directory</span> <span class="n">ownership</span> <span class="n">to</span> <span class="n">root</span><span class="p">:</span><span class="n">root</span><span class="o">.</span>
+<span class="n">Set</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">docker</span> <span class="n">directory</span> <span class="n">permissions</span> <span class="n">to</span> <span class="mi">755</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">restrictive</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">registry</span> <span class="n">certificate</span> <span class="n">file</span> <span class="n">ownership</span> <span class="n">to</span> <span class="n">root</span><span class="p">:</span><span class="n">root</span><span class="o">.</span>
+<span class="n">Registry</span> <span class="n">certificate</span> <span class="n">files</span> <span class="n">are</span> <span class="n">usually</span> <span class="n">found</span> <span class="n">under</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">certs</span><span class="o">.</span><span class="n">d</span><span class="o">/</span> <span class="n">directory</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">registry</span> <span class="n">certificate</span> <span class="n">file</span> <span class="n">permissions</span> <span class="n">to</span> <span class="mi">444</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">restrictive</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">TLS</span> <span class="n">CA</span> <span class="n">certificate</span> <span class="n">file</span> <span class="n">ownership</span> <span class="n">to</span> <span class="n">root</span><span class="p">:</span><span class="n">root</span><span class="o">.</span>
+<span class="n">TLS</span> <span class="n">CA</span> <span class="n">certificate</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">file</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">passed</span> <span class="n">alongwith</span><span class="o">--</span><span class="n">tlscacert</span> <span class="n">parameter</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">TLS</span> <span class="n">CA</span> <span class="n">certificate</span> <span class="n">file</span> <span class="n">permissions</span> <span class="n">to</span> <span class="mi">444</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">restrictive</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">Docker</span> <span class="n">server</span> <span class="n">certificate</span> <span class="n">file</span> <span class="n">ownership</span> <span class="n">to</span> <span class="n">root</span><span class="p">:</span><span class="n">root</span><span class="o">.</span>
+<span class="n">Docker</span> <span class="n">server</span> <span class="n">certificate</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">file</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">passed</span> <span class="n">alongwith</span><span class="o">--</span><span class="n">tlscert</span> <span class="n">parameter</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">Docker</span> <span class="n">server</span> <span class="n">certificate</span> <span class="n">file</span> <span class="n">permissions</span> <span class="n">to</span> <span class="mi">444</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">restrictive</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">Docker</span> <span class="n">server</span> <span class="n">certificate</span> <span class="n">key</span> <span class="n">file</span> <span class="n">ownership</span> <span class="n">to</span> <span class="n">root</span><span class="p">:</span><span class="n">root</span><span class="o">.</span>
+<span class="n">Docker</span> <span class="n">server</span> <span class="n">certificate</span> <span class="n">key</span> <span class="n">file</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">file</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">passed</span> <span class="n">alongwith</span><span class="o">--</span><span class="n">tlskey</span> <span class="n">parameter</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">Docker</span> <span class="n">server</span> <span class="n">certificate</span> <span class="n">key</span> <span class="n">file</span> <span class="n">permissions</span> <span class="n">to</span> <span class="mf">400.</span>
+<span class="n">Set</span> <span class="n">Docker</span> <span class="n">socket</span> <span class="n">file</span> <span class="n">ownership</span> <span class="n">to</span> <span class="n">root</span><span class="p">:</span><span class="n">docker</span><span class="o">.</span>
+<span class="n">Docker</span> <span class="n">daemon</span> <span class="n">runs</span> <span class="k">as</span> <span class="s1">&#39;root&#39;</span><span class="o">.</span> <span class="n">The</span> <span class="n">default</span> <span class="n">Unix</span> <span class="n">socket</span> <span class="n">hence</span> <span class="n">must</span> <span class="n">be</span> <span class="n">owned</span> <span class="n">by</span> <span class="s1">&#39;root&#39;</span><span class="o">.</span> <span class="n">Additionally</span><span class="p">,</span> <span class="n">the</span> <span class="n">Docker</span> <span class="n">installer</span> <span class="n">creates</span> <span class="n">a</span> <span class="n">Unix</span> <span class="n">group</span> <span class="n">called</span> <span class="s1">&#39;docker&#39;</span><span class="o">.</span> <span class="n">You</span> <span class="n">can</span> <span class="n">add</span> <span class="n">users</span> <span class="n">to</span> <span class="n">this</span> <span class="n">group</span><span class="p">,</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">those</span> <span class="n">users</span> <span class="n">would</span> <span class="n">be</span> <span class="n">able</span> <span class="n">to</span> <span class="n">read</span> <span class="ow">and</span> <span class="n">write</span> <span class="n">to</span> <span class="n">the</span> <span class="n">default</span> <span class="n">Docker</span> <span class="n">Unix</span> <span class="n">socket</span><span class="o">.</span> <span class="n">The</span> <span class="n">membership</span> <span class="n">to</span> <span class="n">the</span> <span class="s1">&#39;docker&#39;</span> <span class="n">group</span> <span class="n">should</span> <span class="n">be</span> <span class="n">tightly</span> <span class="n">controlled</span> <span class="n">by</span> <span class="n">the</span> <span class="n">system</span> <span class="n">administrator</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">Docker</span> <span class="n">socket</span> <span class="n">file</span> <span class="n">permissions</span> <span class="n">to</span> <span class="mi">660</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">restrictive</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">daemon</span><span class="o">.</span><span class="n">json</span> <span class="n">file</span> <span class="n">ownership</span> <span class="n">to</span> <span class="n">root</span><span class="p">:</span><span class="n">root</span><span class="o">.</span>
+<span class="n">Set</span> <span class="n">daemon</span><span class="o">.</span><span class="n">json</span> <span class="n">file</span> <span class="n">permissions</span> <span class="n">to</span> <span class="mi">644</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">restrictive</span><span class="o">.</span>
+<span class="n">Set</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">docker</span> <span class="n">file</span> <span class="n">ownership</span> <span class="n">to</span> <span class="n">root</span><span class="p">:</span><span class="n">root</span><span class="o">.</span>
+<span class="n">Set</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">docker</span> <span class="n">file</span> <span class="n">permissions</span> <span class="n">to</span> <span class="mi">644</span> <span class="ow">or</span> <span class="n">more</span> <span class="n">restrictive</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Configure Linux Security Modules</strong></p>
+<p>AppArmor protects the Linux OS and applications from various threats by enforcing security policy which is also known as AppArmor profile. You can create your own AppArmor profile for containers or use the Docker’s default AppArmor profile. This would enforce security policies on the containers as defined in the profile.
+Do not disable AppArmor Profile</p>
+<p>AppArmor is an effective and easy-to-use Linux application security system. It is available on quite a few Linux distributions by default such as Debian and Ubuntu.
+The container (process) would have set of restrictions as defined in AppArmor profile. If your AppArmor profile is mis-configured, then the container may not entirely work as expected.</p>
+<p><strong>Restrict containers from acquiring additional privileges</strong></p>
+<p>Restrict the container from acquiring additional privileges via suid or sgid bits.no_new_priv prevents LSMs like SELinux from transitioning to process labels that have access not allowed to the current process.</p>
+<p>This can be achieved by configuring the flag no-new-privileges in the docker daemon as mentioned in the documentation: <a class="reference external" href="https://docs.docker.com/engine/reference/commandline/dockerd/">https://docs.docker.com/engine/reference/commandline/dockerd/</a></p>
+<p><strong>Only allow trusted users to control the Docker daemon</strong></p>
+<p>Remove any users from the ‘docker’ group that are not trusted. Additionally, do not create a mapping of sensitive directories on the host to the container volumes. The impact is that the rights to build and execute containers as a normal user would be restricted. The Docker daemon currently requires ‘root’ privileges. If the user are added to the ‘docker’ group, it gives them full ‘root’ access rights.</p>
+<p><strong>Audit the Docker daemon and its files</strong></p>
+<p>Follow these guidelines to audit Docker daemon and important Docker files and directories:
+Audit Docker daemon.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Audit</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">docker</span> <span class="n">directory</span><span class="p">:</span> <span class="n">It</span> <span class="n">holds</span> <span class="nb">all</span> <span class="n">the</span> <span class="n">information</span> <span class="n">about</span> <span class="n">containers</span><span class="o">.</span>
+<span class="n">Audit</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">docker</span> <span class="n">directory</span><span class="p">:</span> <span class="n">It</span> <span class="n">holds</span> <span class="n">various</span> <span class="n">certificates</span> <span class="ow">and</span> <span class="n">keys</span> <span class="n">used</span> <span class="k">for</span> <span class="n">TLS</span> <span class="n">communication</span> <span class="n">between</span> <span class="n">Docker</span> <span class="n">daemon</span> <span class="ow">and</span> <span class="n">Docker</span> <span class="n">client</span><span class="o">.</span>
+<span class="n">Audit</span> <span class="n">docker</span><span class="o">.</span><span class="n">service</span> <span class="n">file</span><span class="p">:</span> <span class="n">The</span> <span class="n">docker</span><span class="o">.</span><span class="n">service</span> <span class="n">file</span> <span class="n">might</span> <span class="n">be</span> <span class="n">present</span> <span class="k">if</span> <span class="n">the</span> <span class="n">daemon</span> <span class="n">parameters</span> <span class="n">have</span> <span class="n">been</span> <span class="n">changed</span> <span class="n">by</span> <span class="n">an</span> <span class="n">administrator</span><span class="o">.</span> <span class="n">It</span> <span class="n">holds</span> <span class="n">various</span> <span class="n">parameters</span> <span class="k">for</span> <span class="n">Docker</span> <span class="n">daemon</span><span class="o">.</span>
+<span class="n">Audit</span> <span class="n">docker</span><span class="o">.</span><span class="n">socket</span> <span class="n">file</span><span class="p">:</span> <span class="n">It</span> <span class="n">holds</span> <span class="n">various</span> <span class="n">parameters</span> <span class="k">for</span> <span class="n">Docker</span> <span class="n">daemon</span> <span class="n">socket</span><span class="o">.</span>
+<span class="n">Audit</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">default</span><span class="o">/</span><span class="n">docker</span> <span class="n">file</span><span class="p">:</span> <span class="n">It</span> <span class="n">holds</span> <span class="n">various</span> <span class="n">parameters</span> <span class="k">for</span> <span class="n">Docker</span> <span class="n">daemon</span><span class="o">.</span>
+<span class="n">Audit</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">docker</span><span class="o">/</span><span class="n">daemon</span><span class="o">.</span><span class="n">json</span> <span class="n">file</span><span class="p">:</span> <span class="n">It</span> <span class="n">holds</span> <span class="n">various</span> <span class="n">parameters</span> <span class="k">for</span> <span class="n">Docker</span> <span class="n">daemon</span><span class="o">.</span>
+<span class="n">Audit</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">containerd</span> <span class="n">file</span><span class="p">:</span> <span class="n">Docker</span> <span class="n">now</span> <span class="n">relies</span> <span class="n">on</span> <span class="n">containerd</span> <span class="ow">and</span> <span class="n">runC</span> <span class="n">to</span> <span class="n">spawn</span> <span class="n">containers</span><span class="o">.</span>
+<span class="n">Audit</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">docker</span><span class="o">-</span><span class="n">runc</span> <span class="n">file</span><span class="p">:</span> <span class="n">Docker</span> <span class="n">now</span> <span class="n">relies</span> <span class="n">on</span> <span class="n">containerd</span> <span class="ow">and</span> <span class="n">runC</span> <span class="n">to</span> <span class="n">spawn</span> <span class="n">containers</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Note 1: Auditing generates quite big log files. Ensure to rotate and archive them periodically. Also, create a separate partition of audit to avoid filling root file system.
+Note 2: By default, Docker related files and directories are not audited. Some of these files may not be available on the system. In that case, the recommendations are not applicable.</p>
+<p><strong>Enable live restore</strong></p>
+<p>Enable –live-restore for full support of daemon-less containers in docker. It ensures that docker does not stop containers on shutdown or restore and properly reconnects to the container when restarted. This can be enabled by following the guide <a class="reference external" href="https://docs.docker.com/config/containers/live-restore/">https://docs.docker.com/config/containers/live-restore/</a> .</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

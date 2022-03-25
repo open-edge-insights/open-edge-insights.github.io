@@ -1,0 +1,81 @@
+
+Adding SSH Authorized Key from control node to all the nodes
+------------------------------------------------------------
+
+Please follow the steps to copy the generated keys from control node to all other nodes
+
+Execute the following command from ``control`` node.
+
+.. code-block:: sh
+
+       $ ssh-copy-id <USER_NAME>@<HOST_IP>
+
+For Eg.
+
+.. code-block:: sh
+
+       $ ssh-copy-id test@192.0.0.1
+
+       /usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/home/<username>/.ssh/id_rsa.pub"
+
+       Number of key(s) added: 1
+
+       Now try logging into the machine, with:   "ssh 'test@192.0.0.1'"
+       and check to make sure that only the key(s) you wanted were added.
+
+Configure Sudoers file to accept NO PASSWORD for sudo operation.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: 
+   Ansible need to execute some commands as ``sudo``. The below configuration is needed so that ``passwords`` need not be saved in the ansible inventory file ``hosts``
+
+
+Update ``sudoers`` file
+
+
+#. 
+   Open the ``sudoers`` file.
+
+   .. code-block:: sh
+
+           $ sudo visudo
+
+#. 
+   Append the following to the ``sudoers`` file
+
+   ..
+
+      **Note**
+      Please append to the last line of the ``sudoers`` file.
+
+
+   .. code-block:: sh
+
+          $ <ansible_non_root_user>  ALL=(ALL:ALL) NOPASSWD: ALL
+
+   For E.g:
+
+   If in control node, the current non root user is ``user1``\ , you should append as follows
+
+   .. code-block:: sh
+
+         user1 ALL=(ALL:ALL) NOPASSWD: ALL
+
+#. 
+   Save & Close the file
+
+#. 
+   For checking the ``sudo`` access for the enabled ``user``\ , please logout and login to the session again
+   check the following command.
+
+   .. code-block:: sh
+
+         $ sudo -l -U <ansible_non_root_user>
+
+   Now the above line authorizes ``user1`` user to do ``sudo`` operation in the control node without ``PASSWORD`` ask.
+
+   ..
+
+      **Note**
+      The same procedure applies to all other nodes where ansible connection is involved.
+

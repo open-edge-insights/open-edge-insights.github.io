@@ -1,0 +1,21 @@
+
+Import OEISampleAPP Flows
+-------------------------
+
+Complete the following steps to import the OEISampleApp workflows:
+
+
+#. 
+   Import the Workflow `flows.json <https://github.com/open-edge-insights/eii-tools/blob/master/NodeRedHttpClientApp/EIIUIBuilderSampleApp/flows.json>`_ file to the Node-RED dashboard using the ``menu`` icon on top-right corner as follows:
+
+
+   .. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/EIIUIBuilderSampleApp/images/imageimportnodes.png
+      :target: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/EIIUIBuilderSampleApp/images/imageimportnodes.png
+      :alt: images/imageimportnodes.png
+
+
+#. 
+   Click ``Import``.
+
+#. 
+   Update ``url`` in all nodes wherever applicable and use ``https`` if you are running RDE in the ``Prod`` mode.

@@ -1,0 +1,157 @@
+
+Configuring the Docker Daemon as per Docker security recommendations
+--------------------------------------------------------------------
+
+**Ensure security related parameter exists for Docker Daemon**
+
+This section deals with the configuration of the Docker daemon. Create a configuration file for the daemon called daemon.json, to which we’ll add some security-related configuration parameters.
+
+To begin, open up the configuration file in your favorite editor:
+
+.. code-block::
+
+       sudo nano /etc/docker/daemon.json
+
+This will present you with a blank text file. Paste in the following:
+
+.. code-block::
+
+       {
+           "icc": false,
+       "log-driver": "syslog",
+       "live-restore": true,
+       "userland-proxy": false,
+       "no-new-privileges": true,
+       "userns-remap": "default"
+
+       }
+
+Save and close the file, then restart the Docker daemon so it picks up this new configuration:
+
+.. code-block::
+
+       sudo systemctl restart docker
+
+**Ensure that authorization for Docker client commands is enabled**
+
+If you need to allow network access to the Docker socket you should run the docker daemon with `authorization-plugin <https://docs.docker.com/engine/extend/plugins_authorization/>`_ by following the steps below. 
+
+1) Create an empty policy definition that will allow all requests.
+
+.. code-block::
+
+   mkdir -p /etc/docker/policies
+   cat >>  /etc/docker/policies/authz.rego << EOF
+   package docker.authz
+
+   allow = true
+   EOF
+
+2) Install a plugin or `create one plugin <https://docs.docker.com/engine/reference/commandline/plugin_create/>`_.
+
+.. code-block::
+
+   docker plugin install <plugin>
+   for eg:
+   docker plugin install openpolicyagent/opa-docker-authz-v2:0.4 opa-args="-policy-file /opa/policies/authz.rego"
+
+3) Configure the Docker daemon to use the plugin for authorization by appending following in /etc/docker/daemon.json.
+
+.. code-block::
+
+
+   {
+       "authorization-plugins": ["<plugin_name>"]
+   }
+
+4) Restart the docker daemon.
+
+.. code-block::
+
+   sudo systemctl restart docker
+
+Please find more information about Docker bench security below. The Docker Bench for Security is a script that checks for dozens of common best-practices around deploying Docker containers in production.
+
+https://github.com/docker/docker-bench-security
+
+**Secure Docker registries**
+
+Do not use insecure registries: Docker considers a private registry either secure or insecure. By default, registries are considered secure. A secure registry uses TLS. A copy of registry's CA certificate is placed on the Docker host at '/etc/docker/certs.d//' directory. Do not use any insecure registries in the production environment.
+Disable operations on legacy registry (v1): The latest Docker registry is v2. Restrict all operations on the legacy registry version (v1).
+
+**Configure TLS authentication for the Docker daemon**
+
+Configure TLS authentication to restrict access to Docker daemon via IP and port. It is possible to make the Docker daemon to listen on a specific IP and port and any other Unix socket other than default Unix socket. Hence, do not bind the Docker daemon to another IP/port or a Unix socket.
+
+If you must expose the Docker daemon via a network socket, configure TLS authentication for the daemon and Docker Swarm APIs (if using). This would restrict the connections to your Docker daemon over the network to a limited number of clients who could successfully authenticate over TLS. Manage and guard certificates and keys for Docker daemon and Docker clients.
+
+**Secure daemon configuration files**
+
+.. code-block::
+
+   Set docker.service file ownership to root:root.
+   Set docker.service file permissions to 644 or more restrictive.
+   Set docker.socket file ownership to root:root.
+   Set docker.socket file permissions to 644 or more restrictive.
+   Set /etc/docker directory ownership to root:root.
+   Set /etc/docker directory permissions to 755 or more restrictive.
+   Set registry certificate file ownership to root:root.
+   Registry certificate files are usually found under /etc/docker/certs.d/ directory.
+   Set registry certificate file permissions to 444 or more restrictive.
+   Set TLS CA certificate file ownership to root:root.
+   TLS CA certificate file is the file that is passed alongwith--tlscacert parameter.
+   Set TLS CA certificate file permissions to 444 or more restrictive.
+   Set Docker server certificate file ownership to root:root.
+   Docker server certificate file is the file that is passed alongwith--tlscert parameter.
+   Set Docker server certificate file permissions to 444 or more restrictive.
+   Set Docker server certificate key file ownership to root:root.
+   Docker server certificate key file is the file that is passed alongwith--tlskey parameter.
+   Set Docker server certificate key file permissions to 400.
+   Set Docker socket file ownership to root:docker.
+   Docker daemon runs as 'root'. The default Unix socket hence must be owned by 'root'. Additionally, the Docker installer creates a Unix group called 'docker'. You can add users to this group, and then those users would be able to read and write to the default Docker Unix socket. The membership to the 'docker' group should be tightly controlled by the system administrator.
+   Set Docker socket file permissions to 660 or more restrictive.
+   Set daemon.json file ownership to root:root.
+   Set daemon.json file permissions to 644 or more restrictive.
+   Set /etc/default/docker file ownership to root:root.
+   Set /etc/default/docker file permissions to 644 or more restrictive.
+
+**Configure Linux Security Modules**
+
+AppArmor protects the Linux OS and applications from various threats by enforcing security policy which is also known as AppArmor profile. You can create your own AppArmor profile for containers or use the Docker's default AppArmor profile. This would enforce security policies on the containers as defined in the profile.
+Do not disable AppArmor Profile
+
+AppArmor is an effective and easy-to-use Linux application security system. It is available on quite a few Linux distributions by default such as Debian and Ubuntu.
+The container (process) would have set of restrictions as defined in AppArmor profile. If your AppArmor profile is mis-configured, then the container may not entirely work as expected.
+
+**Restrict containers from acquiring additional privileges**
+
+Restrict the container from acquiring additional privileges via suid or sgid bits.no_new_priv prevents LSMs like SELinux from transitioning to process labels that have access not allowed to the current process.
+
+This can be achieved by configuring the flag no-new-privileges in the docker daemon as mentioned in the documentation: https://docs.docker.com/engine/reference/commandline/dockerd/
+
+**Only allow trusted users to control the Docker daemon**
+
+Remove any users from the 'docker' group that are not trusted. Additionally, do not create a mapping of sensitive directories on the host to the container volumes. The impact is that the rights to build and execute containers as a normal user would be restricted. The Docker daemon currently requires 'root' privileges. If the user are added to the 'docker' group, it gives them full 'root' access rights.
+
+**Audit the Docker daemon and its files**
+
+Follow these guidelines to audit Docker daemon and important Docker files and directories:
+Audit Docker daemon.
+
+.. code-block::
+
+   Audit /var/lib/docker directory: It holds all the information about containers.
+   Audit /etc/docker directory: It holds various certificates and keys used for TLS communication between Docker daemon and Docker client.
+   Audit docker.service file: The docker.service file might be present if the daemon parameters have been changed by an administrator. It holds various parameters for Docker daemon.
+   Audit docker.socket file: It holds various parameters for Docker daemon socket.
+   Audit /etc/default/docker file: It holds various parameters for Docker daemon.
+   Audit /etc/docker/daemon.json file: It holds various parameters for Docker daemon.
+   Audit /usr/bin/docker-containerd file: Docker now relies on containerd and runC to spawn containers.
+   Audit /usr/bin/docker-runc file: Docker now relies on containerd and runC to spawn containers.
+
+Note 1: Auditing generates quite big log files. Ensure to rotate and archive them periodically. Also, create a separate partition of audit to avoid filling root file system.
+Note 2: By default, Docker related files and directories are not audited. Some of these files may not be available on the system. In that case, the recommendations are not applicable.
+
+**Enable live restore**
+
+Enable --live-restore for full support of daemon-less containers in docker. It ensures that docker does not stop containers on shutdown or restore and properly reconnects to the container when restarted. This can be enabled by following the guide https://docs.docker.com/config/containers/live-restore/ .

@@ -1,0 +1,64 @@
+
+Run Jupyter Notebook from web browsers
+--------------------------------------
+
+Perform the following steps to develop UDF using the Jupyter Notebook from a web browser:
+
+
+#. 
+   In the terminal, run the following command:
+
+   .. code-block:: sh
+
+           python3 builder.py -f usecases/video-streaming.yml
+
+#. 
+   Refer the `IEdgeInsights/README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ to provision, build and run the tool along with the OEI recipe or stack.
+
+#. 
+   To see the logs, run the following command:
+
+   .. code-block:: sh
+
+           docker logs -f ia_jupyter_notebook
+
+#. 
+   In the browser, from the logs, copy and paste the URL along with the token. Refer to the following sample URL:
+
+   .. code-block:: sh
+
+           http://127.0.0.1:8888/?token=5839f4d1425ecf4f4d0dd5971d1d61b7019ff2700804b973
+
+   ..
+
+      **Note:**
+
+      If you are accessing the server remotely, replace the IP address '127.0.0.1' with the host IP.
+
+
+#. 
+   After launching the ``Jupyter Notebook`` service in a browser, from the list of available files, run the `main.ipynb <https://github.com/open-edge-insights/eii-tools/blob/master/JupyterNotebook/main.ipynb>`_ file. Ensure that the ``Python3.8`` kernel is selected.
+
+#. 
+   If required, to experiment and test the UDF, you can modify and rerun the process method of the `udf_template.ipynb <https://github.com/open-edge-insights/eii-tools/blob/master/JupyterNotebook/udf_template.ipynb>`_ file.
+
+#. 
+   To send parameters to the custom UDF, add them in the ``jupyter_connector`` UDF config provided to either ``VideoIngestion`` or ``VideoAnalytics``. You can access the parameters in the `udf_template.ipynb <https://github.com/open-edge-insights/eii-tools/blob/master/JupyterNotebook/udf_template.ipynb>`_ constructor in the ``udf_config`` parameter.
+
+   ..
+
+      **Note:**
+
+      The ``udf_config`` parameter is a dictionary (dict) that contains all these parameters. For more information, refer to the sample UDF from the `pcb_filter.py <https://github.com/open-edge-insights/video-common/blob/master/udfs/python/pcb/pcb_filter.py>`_ file.
+      After modifying or creating a new UDF, run ``main.ipynb`` and then, restart **VideoIngestion** or **VideoAnalytics** with which you have enabled the ``Jupyter Notebook`` service.
+
+
+#. 
+   To save or export the UDF, click **Download as** and then, select **(.py)**.
+
+   ..
+
+      **Note:**
+
+      To use the downloaded UDF, place it in the `../../common/video/udfs/python <https://github.com/open-edge-insights/video-common/blob/master/udfs/python>`_ directory or integrate it with the ``Custom UDFs``.
+

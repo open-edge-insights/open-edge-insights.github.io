@@ -1,0 +1,47 @@
+
+Azure IoT Edge Simulator
+------------------------
+
+Microsoft provides a simluator for the Azure IoT Edge Runtime. During the
+setup of your development system (covered in the `Development System Setup <#development-system-setup>`__
+section), the simulator is automatically installed on your system.
+
+Additionally, the Azure Bridge provides the ``./tools/run-simulator.sh`` script
+to easily use the simulator with the bridge.
+
+To do this, follow steps 1 - 3 in the `Single-Node Azure IoT Edge Deployment <#single-node-azure-iot-edge-deployment>`__
+section above. Then, instead of step 4, run the following command to setup
+the simulator:
+
+.. code-block:: sh
+
+   $ sudo env "PATH=$PATH" iotedgehubdev setup -c "<edge-device-connection-string>"
+
+**NOTE:** The ``env "PATH=$PATH"`` above ensures that the ``PATH`` env variable set in 
+the regular user context gets exported to ``sudo`` environment.
+
+Next, start the simulator with your deployment manifest template using the
+following command:
+
+.. code-block:: sh
+
+   $ ./tools/run-simulator.sh ./example.template.json
+
+If everything is running smoothly, you should see messages being printed in the
+Simple Subscriber service using the following command:
+
+.. code-block:: sh
+
+   $ docker logs -f SimpleSubscriber
+
+**IMPORTANT NOTE:**
+
+You *cannot* run both the Azure IoT Edge Runtime and the simulator simultaneously
+on the same system. If you are using the same system, first stop the Azure IoT Edge
+Runtime daemon with the following command:
+
+.. code-block:: sh
+
+   $ sudo iotedge system stop
+
+Then, run the simulator as specified above.

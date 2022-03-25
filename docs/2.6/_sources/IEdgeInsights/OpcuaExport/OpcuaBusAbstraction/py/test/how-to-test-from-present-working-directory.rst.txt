@@ -1,0 +1,68 @@
+
+How to Test from present working directory
+------------------------------------------
+
+1. Pre-requisite
+^^^^^^^^^^^^^^^^
+
+.. note:: \ :
+   The ``Pre-requisite`` section below is ``only`` needed if executing from
+   the IEI repo. It should not be run from IEI dist libs path
+   (/opt/intel/iei/dist_libs). If run, it would fail and one may have to re-create
+   dist_libs to overcome any issue thereafter.
+
+
+.. code-block:: sh
+
+     sudo apt-get install libmbedtls-dev
+     make clean
+     make build_safestring_lib
+     make build
+
+2. Testing with security enabled
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* Start publisher, publish and destroy
+
+.. code-block:: sh
+
+   make pub
+
+
+* Start subscriber, subscribe and destroy
+
+.. code-block:: sh
+
+   make sub
+
+3. Testing with security disabled
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* Start publisher, publish and destroy
+
+.. code-block:: sh
+
+   make pub_insecure
+
+
+* Start subscriber, subscribe and destroy
+
+.. code-block:: sh
+
+   make sub_insecure
+
+4. Remove all binaries/object files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: sh
+
+   make clean
+
+5. To view the documentation navigate to the below link
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code-block:: sh
+
+   /opt/intel/iei/dist_libs/OpcuaBusAbstraction/py/doc/html/index.html

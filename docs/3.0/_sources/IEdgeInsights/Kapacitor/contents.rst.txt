@@ -1,0 +1,21 @@
+
+Contents
+========
+
+
+* `Contents <#contents>`__
+
+  * `Point-data (Time series data) analytics introduction <#point-data-time-series-data-analytics-introduction>`__
+
+    * `Starting the example <#starting-the-example>`__
+    * `Purpose of Telegraf <#purpose-of-telegraf>`__
+    * `Purpose of Kapacitor <#purpose-of-kapacitor>`__
+    * `Custom UDFs available in the udfs directory <#custom-udfs-available-in-the-udfs-directory>`__
+    * `Steps to configure the UDFs in Kapacitor <#steps-to-configure-the-udfs-in-kapacitor>`__
+    * `Steps to run the samples of multiple UDFs in a single task and multiple tasks using single UDF <#steps-to-run-the-samples-of-multiple-udfs-in-a-single-task-and-multiple-tasks-using-single-udf>`__
+    * `Kapacitor input and output plugins <#kapacitor-input-and-output-plugins>`__
+
+      * `Purpose of plugins <#purpose-of-plugins>`__
+      * `Using input plugin <#using-input-plugin>`__
+      * `Using output plugin <#using-output-plugin>`__
+      * `Using input/output plugin with RFC UDF <#using-inputoutput-plugin-with-rfc-udf>`__

@@ -1,0 +1,180 @@
+
+Using video accelerators in ingestion/analytics containers
+----------------------------------------------------------
+
+EII supports running inference on ``CPU``\ , ``GPU``\ , ``MYRIAD``\ (NCS2), and ``HDDL`` devices by accepting ``device`` value ("CPU"|"GPU"|"MYRIAD"|"HDDL"), part of the ``udf`` object configuration in ``udfs``
+key. The ``device`` field in UDF config of ``udfs`` key in ``VideoIngestion`` and ``VideoAnalytics`` configs can either be changed in the ``build/provision/config/eii_config.json``
+before provisioning (or re-provision it again after the change to the apps config.json, re-running ``builder.py`` script and then re-running the provisioning script) or at run-time via EtcdUI. For more details on the udfs config,
+check `common/udfs/README.md <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_.
+
+.. note:: 
+   There is an initial delay of upto ~30s while running inference on ``GPU`` (only for the first frame) as dynamically certain packages get created during runtime.
+
+
+**To run on USB devices**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For actual deployment in case USB camera is required then mount the device node of the USB camera for ``ia_video_ingestion`` service. When multiple USB cameras are connected to host m/c the required camera should be identified with the device node and mounted.
+
+Eg: Mount the two USB cameras connected to the host m/c with device node as ``video0`` and ``video1``
+
+.. code-block:: yaml
+
+     ia_video_ingestion:
+       ...
+       devices:
+         - "/dev/dri"
+         - "/dev/video0:/dev/video0"
+         - "/dev/video1:/dev/video1"
+
+.. note:: 
+   /dev/dri is needed for Graphic drivers
+
+
+**To run on MYRIAD devices**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* 
+  To run inference on ``MYRIAD`` device ``root`` user permissions needs to be used at runtime. To enable root user at runtime in either ``ia_video_ingestion``\ , ``ia_video_analytics`` or any of the custom udf services add ``user: root`` command in the respective docker-compose.yml file.
+
+  Eg: To use ``MYRAID`` device in ``ia_video_analytics`` service refer the below example
+
+  .. code-block:: yaml
+
+      ia_video_analytics:
+        ...
+        user: root
+
+* 
+  **Troubleshooting issues for MYRIAD(NCS2) devices**
+
+
+  * 
+    Following is an workaround can be excercised if in case user observes ``NC_ERROR`` during device initialization of NCS2 stick.
+    While running EII if NCS2 devices failed to initialize properly then user can re-plug the device for the init to happen freshly.
+    User can verify the successfull initialization by executing ***dmesg**** & **\ *lsusb*\ **  as below:
+
+    .. code-block:: sh
+
+       lsusb | grep "03e7" (03e7 is the VendorID and 2485 is one of the  productID for MyriadX)
+
+    .. code-block:: sh
+
+       dmesg > dmesg.txt
+       [ 3818.214919] usb 3-4: new high-speed USB device number 10 using xhci_hcd
+       [ 3818.363542] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
+       [ 3818.363546] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+       [ 3818.363548] usb 3-4: Product: Movidius MyriadX
+       [ 3818.363550] usb 3-4: Manufacturer: Movidius Ltd.
+       [ 3818.363552] usb 3-4: SerialNumber: 03e72485
+       [ 3829.153556] usb 3-4: USB disconnect, device number 10
+       [ 3831.134804] usb 3-4: new high-speed USB device number 11 using xhci_hcd
+       [ 3831.283430] usb 3-4: New USB device found, idVendor=03e7, idProduct=2485
+       [ 3831.283433] usb 3-4: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+       [ 3831.283436] usb 3-4: Product: Movidius MyriadX
+       [ 3831.283438] usb 3-4: Manufacturer: Movidius Ltd.
+       [ 3831.283439] usb 3-4: SerialNumber: 03e72485
+       [ 3906.460590] usb 3-4: USB disconnect, device number 11
+
+  * 
+    The below link can be referred in case user observes ``global mutex initialization failed`` during device initialization of NCS2 stick
+    https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html
+
+  * 
+    For VPU troubleshooting refer the below link:
+    https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting
+
+**To run on HDDL devices**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* 
+  Download the full package for OpenVINO toolkit for Linux version "2021.4"
+  (\ ``OPENVINO_IMAGE_VERSION`` used in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_\ ) from the official website
+  (https://software.intel.com/en-us/openvino-toolkit/choose-download/free-download-linux).
+  Please refer to the OpenVINO links below for to install and running the HDDL daemon on host.
+
+
+  #. OpenVINO install:
+     https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux.html#install-openvino
+  #. 
+     HDDL daemon setup:
+     https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux_ivad_vpu.html
+
+     **NOTE**\ :
+     -------------
+
+
+     * 
+       OpenVINO 2021.4 installation creates a symbolic link to latest installation with
+       filename as ``openvino_2021`` instead of ``openvino``. Hence one can create a symbolic link with filename as ``openvino`` to the latest installation using the below steps.
+
+       .. code-block:: sh
+
+          $ cd /opt/intel
+          $ sudo ln -s <OpenVINO latest installation> openvino
+
+       Eg: sudo ln -s openvino_2021.4.582 openvino
+
+       In case there are older versions of OpenVINO installed on the host system please un-install them.
+
+  #. 
+     Running hddldaemon:
+     Refer the below command to run the hddldaemon once the setup is done(it should run in a different terminal or in the background on the host system where inference would be done)
+
+     .. code-block:: sh
+
+        $ source /opt/intel/openvino/bin/setupvars.sh
+        $ $HDDL_INSTALL_DIR/bin/hddldaemon
+
+  #. Changing ownership of hddl files on host system.
+     Before running inference with EII, ownership of hddl files should be changed to the value of ``EII_USER_NAME`` key set in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_.
+     Refer the below command to set the ownership of hddl files on the host system.\ ``EII_USER_NAME=eiiuser`` in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_.
+     .. code-block::
+
+        $ sudo chown -R eiiuser /var/tmp/hddl_*
+
+
+  * 
+    For actual deployment one could choose to mount only the required devices for
+    services using OpenVINO with HDDL (\ ``ia_video_analytics`` or ``ia_video_ingestion``\ ) in ``build/docker-compose.yml``.
+
+    Eg: Mount only the Graphics and HDDL ion device for ``ia_video_anaytics`` service
+
+    .. code-block::
+
+         ia_video_analytics:
+           ...
+           devices:
+                   - "/dev/dri"
+                   - "/dev/ion:/dev/ion"
+
+  * 
+    **Troubleshooting issues for HDDL devices**
+
+
+    * 
+      Please verify the hddldaemon started on host m/c to verify if it is using the libraries of the correct OpenVINO version used in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_. One could enable the ``device_snapshot_mode`` to ``full`` in $HDDL_INSTALL_DIR/config/hddl_service.config on host m/c to get the complete snapshot of the hddl device.
+
+    * 
+      For VPU troubleshooting refer the below link:
+      https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting
+
+    * 
+      Please refer OpenVINO 2021.4 release notes in the below link for new features and changes from the previous versions.
+      https://software.intel.com/content/www/us/en/develop/articles/openvino-relnotes.html
+
+    * 
+      Refer OpenVINO website in the below link to skim through known issues, limitations and troubleshooting
+      https://docs.openvinotoolkit.org/2021.4/index.html
+
+**To run on Intel(R) Processor Graphics (GPU/iGPU)**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: 
+   The below step is required only for 11th gen Intel Processors
+
+
+  Upgrade the kernel version to 5.8 and install the required drivers from the below OpenVINO link:
+  https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps

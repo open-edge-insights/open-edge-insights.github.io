@@ -1,0 +1,13 @@
+
+Default Values
+--------------
+
+
+* alias = model_name
+* version = 1
+* precision = all available precisions
+* model-proc = model_name.json
+
+If a local model-proc is not specified, the tool will download the
+corresponding model-proc file from the DL streamer repository (if one
+exists).

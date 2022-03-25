@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Working with Video Data &mdash; OEI Documentation v1.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/contentui.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Working with Time series Data" href="timeseries.html" />
+    <link rel="prev" title="OEI Configuration Management" href="eiiConfig.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OEI Documentation
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+  
+              <p><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to OEI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Run Open Edge Insights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="running.html#about-open-edge-insights">About Open Edge Insights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#video-pipeline-analytics">Video pipeline Analytics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#time-series-analytics">Time-series Analytics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#oei-multi-node-cluster-deployment">OEI multi-node cluster deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#oei-tools">OEI tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#oei-uninstaller">OEI Uninstaller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#debugging-options">Debugging options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#web-deployment-tool">Web Deployment Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#troubleshooting-guide">Troubleshooting guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release.html#oei-v3-0">OEI v3.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-2">EII v2.6.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#fixes">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-1">EII v2.6.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id1">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-3">EII v2.5.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id2">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-2">EII v2.5.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id3">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-1">EII v2.5.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#bug-fix">Bug fix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id4">Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Core Libraries:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="msgbus.html">Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id1">Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#generating-documentation">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id2">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id3">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id4">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id5">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id6">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id7">Packaging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id9">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id10">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id11">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id12">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id13">Running Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id14">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id15">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id16">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id17">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id18">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id19">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id20">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id21">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id22">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id23">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id24">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id25">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id26">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id27">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id28">Running Go Examples without Installing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id29">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id30">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id33">Using Only CurveZMQ Encryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id34">Publish/Subscribe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id35">Request/Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id36">Using ZAP Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id37">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id38">Known issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id39">Generation of python .whl file (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msgbus.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="eiiConfig.html">OEI Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#configmgr">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#configmgr-installation">ConfigMgr Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#using-system-grpc">Using System gRPC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#generating-documentation">Generating Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#publisher-interface">Publisher Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#subscriber-interface">Subscriber Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#server-interface"><strong>Server Interface</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#client-interface"><strong>Client Interface</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#cpp-examples">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#go-examples">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#creation-of-grpc-zip-file-optional">Creation of grpc .zip file (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Video Analytics Pipeline:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#videoingestion-module">VideoIngestion Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#videoanalytics-module">VideoAnalytics Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#oei-udfloader">OEI UDFLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#oei-sample-udfs">OEI Sample UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-defined-function-udf">User Defined Function (UDF)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#udf-writing-guide">UDF Writing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sample-udfs">Sample UDFs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#chaining-of-udfs">Chaining of UDFs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#native-visualizer-module">Native Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#web-visualizer-module">Web Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Time-Series Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">Working with Time series Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#telegraf">Telegraf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#point-data-time-series-data-analytics-introduction">Point-data (Time-series data) analytics introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timeseries.html#grafana">Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="timeseries.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Export Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#prerequisites-and-setup">Prerequisites and Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#azure-cloud-setup">Azure Cloud Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="azure.html#setting-up-azureml">Setting up AzureML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="azure.html#important">Important</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#development-system-setup">Development System Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#build-and-push-oei-containers">Build and Push OEI Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#step-1-provisioning">Step 1 - Provisioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="azure.html#expected-result">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#step-2-configuring-eii">Step 2 - Configuring EII</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="azure.html#id3">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#step-3-configuring-azure-iot-deployment-manifest">Step 3 - Configuring Azure IoT Deployment Manifest</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="azure.html#id4">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#step-4-deployment">Step 4 - Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="azure.html#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#helpful-debugging-commands">Helpful Debugging Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#final-notes">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#id5">Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#sample-eii-onnx-udf">Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#simple-subscriber">Simple Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#eii-etcd-pre-load">EII ETCD Pre-Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#azure-blob-storage">Azure Blob Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#azure-deployment-manifest">Azure Deployment Manifest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#supported-oei-services">Supported OEI Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="opcua.html#opcuaexport">OpcuaExport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport service</a></li>
+</ul>
+<p><span class="caption-text">Additional Info:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">OEI Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#discoverhistory-tool">DiscoverHistory tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#embpublisher">EmbPublisher</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#configuration-of-the-tool">Configuration of the tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#embsubscriber">EmbSubscriber</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#gigeconfig-tool">GigEConfig tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#generating-pfs-pylon-feature-stream-file">Generating PFS (Pylon Feature Stream) File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#running-gigeconfig-tool">Running GigEConfig Tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#develop-python-user-defined-functions-using-jupyter-notebook">Develop Python User Defined Functions using Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#prerequisites-for-using-jupyter-notebooks">Prerequisites for using Jupyter Notebooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#run-jupyter-notebook-from-web-browsers">Run Jupyter Notebook from web browsers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#run-jupyter-notebook-using-visual-studio-code">Run Jupyter Notebook using Visual Studio Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#mqtt-publisher">MQTT publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#oei-video-profiler">OEI Video Profiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#oei-video-profiler-prerequisites">OEI Video Profiler prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#oei-video-profiler-modes">OEI Video Profiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#oei-video-profiler-configurations">OEI Video Profiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#run-video-profiler">Run Video Profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#running-videoprofiler-in-helm-usecase">Running VideoProfiler in helm usecase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#optimizing-oei-video-pipeline-by-analysing-video-profiler-results">Optimizing OEI Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi-instance config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sample.html">OEI Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sample.html#eii-sample-apps">EII Sample Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OEI Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+  <!-- 3.0 -->
+  
+  
+
+  <li><a href="../index.html">3.0</a> &raquo;</li>
+  
+  <li>Working with Video Data</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/pages/video.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="working-with-video-data">
+<h1>Working with Video Data<a class="headerlink" href="#working-with-video-data" title="Permalink to this headline">¶</a></h1>
+<section id="videoingestion-module">
+<h2>VideoIngestion Module<a class="headerlink" href="#videoingestion-module" title="Permalink to this headline">¶</a></h2>
+<p>The VideoIngestion(VI) module is mainly responsibly for ingesting the video frames
+coming from a video source like video file or basler/RTSP/USB camera
+into the EII stack for further processing. Additionally, by having VI run with
+classifier and post-processing UDFs, VI can perform the job of VA(VideoAnalytics)
+service also.</p>
+<a class="reference external image-reference" href="https://raw.githubusercontent.com/open-edge-insights/video-ingestion/master/img/fig_9_1.png"><img alt="Video Ingestion Diagram" src="https://raw.githubusercontent.com/open-edge-insights/video-ingestion/master/img/fig_9_1.png" /></a>
+<p>The high level logical flow of VideoIngestion pipeline is as below:</p>
+<ol class="arabic simple">
+<li><p>App reads the application configuration via EII Configuration Manager which
+has details of <code class="docutils literal notranslate"><span class="pre">ingestor</span></code>, <code class="docutils literal notranslate"><span class="pre">encoding</span></code> and <code class="docutils literal notranslate"><span class="pre">udfs</span></code>.</p></li>
+<li><p>Based on the ingestor configuration, app reads the video frames from
+the video file or camera.</p></li>
+<li><p>[<code class="docutils literal notranslate"><span class="pre">Optional</span></code>] The read frames are passed onto one or more chained native/python
+UDFs for doing any pre-processing (passing thru UDFs is an optional thing and
+not required if one doesn’t want to perform any pre-processing on the
+ingested frames). With chaining of UDFs supported, one can also have
+classifier UDFs and any post-processing UDFs like resize etc., configured in
+<code class="docutils literal notranslate"><span class="pre">udfs</span></code> key to get the classified results. One can refer
+<a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md">../common/video/udfs/README.md</a> for more details.</p></li>
+<li><p>App gets the msgbus endpoint configuration from system environment and
+based on the configuration, app publishes the data on the mentioned topic
+on EII MessageBus.</p></li>
+</ol>
+<hr class="docutils" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>:
+Below usecases are suitable for single node deployment where one can avoid the
+overhead of VA(VideoAnalytics) service.</p>
+<ol class="arabic simple">
+<li><p>If VI(VideoIngestion) service is configured with an UDF that does the
+classification, then one may choose to not to have VA service as all
+pre-processing, classification and any post-processing can be handled in VI
+itself with the usage of multiple UDFs.</p></li>
+<li><p>If VI(VideoIngestion) service is using GVA(Gstreamer Video Analytics)
+elements also, then one may choose to not to have VA service as all
+pre-processing, classification and any post-processing(using vappi gstreamer
+elements) can be done in gstreamer pipeline itself. Also, the post-processing
+here can be configured by having multiple UDFs in VI if needed.</p></li>
+</ol>
+</div>
+</section>
+<hr class="docutils" />
+<section id="videoanalytics-module">
+<h2>VideoAnalytics Module<a class="headerlink" href="#videoanalytics-module" title="Permalink to this headline">¶</a></h2>
+<p>The VideoAnalytics module is mainly responsibly for running the classifier UDFs
+and doing the required inferencing on the chosen Intel(R) Hardware
+(CPU, GPU, VPU, HDDL) using openVINO.</p>
+<p>The high level logical flow of VideoAnalytics pipeline is as below:</p>
+<ol class="arabic simple">
+<li><p>App reads the application configuration via EII Configuration Manager which
+has details of <code class="docutils literal notranslate"><span class="pre">encoding</span></code> and <code class="docutils literal notranslate"><span class="pre">udfs</span></code>.</p></li>
+<li><p>App gets the msgbus endpoint configuration from system environment.</p></li>
+<li><p>Based on above two configurations, app subscribes to the published topic/stream
+coming from VideoIngestion module.</p></li>
+<li><p>The frames received in the subscriber are passed onto one or more chained
+native/python UDFs for running inferencing and doing any post-processing as
+required. One can refer <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md">UDFs README</a> for more details</p></li>
+<li><p>The frames coming out of chained udfs are published on the different topic/stream
+on EII MessageBus.</p></li>
+</ol>
+<section id="using-video-accelerators-in-ingestion-analytics-containers">
+<h3>Using video accelerators in ingestion/analytics containers<a class="headerlink" href="#using-video-accelerators-in-ingestion-analytics-containers" title="Permalink to this headline">¶</a></h3>
+<p>EII supports running inference on <code class="docutils literal notranslate"><span class="pre">CPU</span></code>, <code class="docutils literal notranslate"><span class="pre">GPU</span></code>, <code class="docutils literal notranslate"><span class="pre">MYRIAD</span></code>(NCS2), and <code class="docutils literal notranslate"><span class="pre">HDDL</span></code> devices by accepting <code class="docutils literal notranslate"><span class="pre">device</span></code> value (“CPU”|”GPU”|”MYRIAD”|”HDDL”), part of the <code class="docutils literal notranslate"><span class="pre">udf</span></code> object configuration in <code class="docutils literal notranslate"><span class="pre">udfs</span></code>
+key. The <code class="docutils literal notranslate"><span class="pre">device</span></code> field in UDF config of <code class="docutils literal notranslate"><span class="pre">udfs</span></code> key in <code class="docutils literal notranslate"><span class="pre">VideoIngestion</span></code> and <code class="docutils literal notranslate"><span class="pre">VideoAnalytics</span></code> configs can either be changed in the <code class="docutils literal notranslate"><span class="pre">build/provision/config/eii_config.json</span></code>
+before provisioning (or re-provision it again after the change to the apps config.json, re-running <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script and then re-running the provisioning script) or at run-time via EtcdUI. For more details on the udfs config,
+check <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md">common/udfs/README.md</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is an initial delay of upto ~30s while running inference on <code class="docutils literal notranslate"><span class="pre">GPU</span></code> (only for the first frame) as dynamically certain packages get created during runtime.</p>
+</div>
+<section id="to-run-on-usb-devices">
+<h4><strong>To run on USB devices</strong><a class="headerlink" href="#to-run-on-usb-devices" title="Permalink to this headline">¶</a></h4>
+<p>For actual deployment in case USB camera is required then mount the device node of the USB camera for <code class="docutils literal notranslate"><span class="pre">ia_video_ingestion</span></code> service. When multiple USB cameras are connected to host m/c the required camera should be identified with the device node and mounted.</p>
+<p>Eg: Mount the two USB cameras connected to the host m/c with device node as <code class="docutils literal notranslate"><span class="pre">video0</span></code> and <code class="docutils literal notranslate"><span class="pre">video1</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ia_video_ingestion</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">devices</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="s">&quot;/dev/dri&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="s">&quot;/dev/video0:/dev/video0&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="s">&quot;/dev/video1:/dev/video1&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>/dev/dri is needed for Graphic drivers</p>
+</div>
+</section>
+<section id="to-run-on-myriad-devices">
+<h4><strong>To run on MYRIAD devices</strong><a class="headerlink" href="#to-run-on-myriad-devices" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>To run inference on <code class="docutils literal notranslate"><span class="pre">MYRIAD</span></code> device <code class="docutils literal notranslate"><span class="pre">root</span></code> user permissions needs to be used at runtime. To enable root user at runtime in either <code class="docutils literal notranslate"><span class="pre">ia_video_ingestion</span></code>, <code class="docutils literal notranslate"><span class="pre">ia_video_analytics</span></code> or any of the custom udf services add <code class="docutils literal notranslate"><span class="pre">user:</span> <span class="pre">root</span></code> command in the respective docker-compose.yml file.</p>
+<p>Eg: To use <code class="docutils literal notranslate"><span class="pre">MYRAID</span></code> device in <code class="docutils literal notranslate"><span class="pre">ia_video_analytics</span></code> service refer the below example</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ia_video_analytics</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Troubleshooting issues for MYRIAD(NCS2) devices</strong></p>
+<ul>
+<li><p>Following is an workaround can be excercised if in case user observes <code class="docutils literal notranslate"><span class="pre">NC_ERROR</span></code> during device initialization of NCS2 stick.
+While running EII if NCS2 devices failed to initialize properly then user can re-plug the device for the init to happen freshly.
+User can verify the successfull initialization by executing <strong>*dmesg**</strong> &amp; <a href="#id1"><span class="problematic" id="id2">**</span></a><em>lsusb</em>**  as below:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>lsusb <span class="p">|</span> grep <span class="s2">&quot;03e7&quot;</span> <span class="o">(</span>03e7 is the VendorID and <span class="m">2485</span> is one of the  productID <span class="k">for</span> MyriadX<span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>dmesg &gt; dmesg.txt
+<span class="o">[</span> <span class="m">3818</span>.214919<span class="o">]</span> usb <span class="m">3</span>-4: new high-speed USB device number <span class="m">10</span> using xhci_hcd
+<span class="o">[</span> <span class="m">3818</span>.363542<span class="o">]</span> usb <span class="m">3</span>-4: New USB device found, <span class="nv">idVendor</span><span class="o">=</span>03e7, <span class="nv">idProduct</span><span class="o">=</span><span class="m">2485</span>
+<span class="o">[</span> <span class="m">3818</span>.363546<span class="o">]</span> usb <span class="m">3</span>-4: New USB device strings: <span class="nv">Mfr</span><span class="o">=</span><span class="m">1</span>, <span class="nv">Product</span><span class="o">=</span><span class="m">2</span>, <span class="nv">SerialNumber</span><span class="o">=</span><span class="m">3</span>
+<span class="o">[</span> <span class="m">3818</span>.363548<span class="o">]</span> usb <span class="m">3</span>-4: Product: Movidius MyriadX
+<span class="o">[</span> <span class="m">3818</span>.363550<span class="o">]</span> usb <span class="m">3</span>-4: Manufacturer: Movidius Ltd.
+<span class="o">[</span> <span class="m">3818</span>.363552<span class="o">]</span> usb <span class="m">3</span>-4: SerialNumber: 03e72485
+<span class="o">[</span> <span class="m">3829</span>.153556<span class="o">]</span> usb <span class="m">3</span>-4: USB disconnect, device number <span class="m">10</span>
+<span class="o">[</span> <span class="m">3831</span>.134804<span class="o">]</span> usb <span class="m">3</span>-4: new high-speed USB device number <span class="m">11</span> using xhci_hcd
+<span class="o">[</span> <span class="m">3831</span>.283430<span class="o">]</span> usb <span class="m">3</span>-4: New USB device found, <span class="nv">idVendor</span><span class="o">=</span>03e7, <span class="nv">idProduct</span><span class="o">=</span><span class="m">2485</span>
+<span class="o">[</span> <span class="m">3831</span>.283433<span class="o">]</span> usb <span class="m">3</span>-4: New USB device strings: <span class="nv">Mfr</span><span class="o">=</span><span class="m">1</span>, <span class="nv">Product</span><span class="o">=</span><span class="m">2</span>, <span class="nv">SerialNumber</span><span class="o">=</span><span class="m">3</span>
+<span class="o">[</span> <span class="m">3831</span>.283436<span class="o">]</span> usb <span class="m">3</span>-4: Product: Movidius MyriadX
+<span class="o">[</span> <span class="m">3831</span>.283438<span class="o">]</span> usb <span class="m">3</span>-4: Manufacturer: Movidius Ltd.
+<span class="o">[</span> <span class="m">3831</span>.283439<span class="o">]</span> usb <span class="m">3</span>-4: SerialNumber: 03e72485
+<span class="o">[</span> <span class="m">3906</span>.460590<span class="o">]</span> usb <span class="m">3</span>-4: USB disconnect, device number <span class="m">11</span>
+</pre></div>
+</div>
+</li>
+<li><p>The below link can be referred in case user observes <code class="docutils literal notranslate"><span class="pre">global</span> <span class="pre">mutex</span> <span class="pre">initialization</span> <span class="pre">failed</span></code> during device initialization of NCS2 stick
+<a class="reference external" href="https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html">https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html</a></p></li>
+<li><p>For VPU troubleshooting refer the below link:
+<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting">https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="to-run-on-hddl-devices">
+<h4><strong>To run on HDDL devices</strong><a class="headerlink" href="#to-run-on-hddl-devices" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>Download the full package for OpenVINO toolkit for Linux version “2021.4”
+(<code class="docutils literal notranslate"><span class="pre">OPENVINO_IMAGE_VERSION</span></code> used in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a>) from the official website
+(<a class="reference external" href="https://software.intel.com/en-us/openvino-toolkit/choose-download/free-download-linux">https://software.intel.com/en-us/openvino-toolkit/choose-download/free-download-linux</a>).
+Please refer to the OpenVINO links below for to install and running the HDDL daemon on host.</p>
+<ol class="arabic">
+<li><p>OpenVINO install:
+<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux.html#install-openvino">https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux.html#install-openvino</a></p></li>
+<li><p>HDDL daemon setup:
+<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux_ivad_vpu.html">https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux_ivad_vpu.html</a></p>
+<ul>
+<li><p>OpenVINO 2021.4 installation creates a symbolic link to latest installation with
+filename as <code class="docutils literal notranslate"><span class="pre">openvino_2021</span></code> instead of <code class="docutils literal notranslate"><span class="pre">openvino</span></code>. Hence one can create a symbolic link with filename as <code class="docutils literal notranslate"><span class="pre">openvino</span></code> to the latest installation using the below steps.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/intel
+$ sudo ln -s &lt;OpenVINO latest installation&gt; openvino
+</pre></div>
+</div>
+<p>Eg: sudo ln -s openvino_2021.4.582 openvino</p>
+<p>In case there are older versions of OpenVINO installed on the host system please un-install them.</p>
+</li>
+</ul>
+</li>
+<li><p>Running hddldaemon:
+Refer the below command to run the hddldaemon once the setup is done(it should run in a different terminal or in the background on the host system where inference would be done)</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> /opt/intel/openvino/bin/setupvars.sh
+$ <span class="nv">$HDDL_INSTALL_DIR</span>/bin/hddldaemon
+</pre></div>
+</div>
+</li>
+<li><p>Changing ownership of hddl files on host system.
+Before running inference with EII, ownership of hddl files should be changed to the value of <code class="docutils literal notranslate"><span class="pre">EII_USER_NAME</span></code> key set in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a>.
+Refer the below command to set the ownership of hddl files on the host system.<code class="docutils literal notranslate"><span class="pre">EII_USER_NAME=eiiuser</span></code> in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a>.
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo chown -R eiiuser /var/tmp/hddl_*
+</pre></div>
+</div>
+</li>
+</ol>
+<ul>
+<li><p>For actual deployment one could choose to mount only the required devices for
+services using OpenVINO with HDDL (<code class="docutils literal notranslate"><span class="pre">ia_video_analytics</span></code> or <code class="docutils literal notranslate"><span class="pre">ia_video_ingestion</span></code>) in <code class="docutils literal notranslate"><span class="pre">build/docker-compose.yml</span></code>.</p>
+<p>Eg: Mount only the Graphics and HDDL ion device for <code class="docutils literal notranslate"><span class="pre">ia_video_anaytics</span></code> service</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ia_video_analytics</span><span class="p">:</span>
+  <span class="o">...</span>
+  <span class="n">devices</span><span class="p">:</span>
+          <span class="o">-</span> <span class="s2">&quot;/dev/dri&quot;</span>
+          <span class="o">-</span> <span class="s2">&quot;/dev/ion:/dev/ion&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Troubleshooting issues for HDDL devices</strong></p>
+<ul class="simple">
+<li><p>Please verify the hddldaemon started on host m/c to verify if it is using the libraries of the correct OpenVINO version used in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a>. One could enable the <code class="docutils literal notranslate"><span class="pre">device_snapshot_mode</span></code> to <code class="docutils literal notranslate"><span class="pre">full</span></code> in $HDDL_INSTALL_DIR/config/hddl_service.config on host m/c to get the complete snapshot of the hddl device.</p></li>
+<li><p>For VPU troubleshooting refer the below link:
+<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting">https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting</a></p></li>
+<li><p>Please refer OpenVINO 2021.4 release notes in the below link for new features and changes from the previous versions.
+<a class="reference external" href="https://software.intel.com/content/www/us/en/develop/articles/openvino-relnotes.html">https://software.intel.com/content/www/us/en/develop/articles/openvino-relnotes.html</a></p></li>
+<li><p>Refer OpenVINO website in the below link to skim through known issues, limitations and troubleshooting
+<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/index.html">https://docs.openvinotoolkit.org/2021.4/index.html</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="to-run-on-intel-r-processor-graphics-gpu-igpu">
+<h4><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong><a class="headerlink" href="#to-run-on-intel-r-processor-graphics-gpu-igpu" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<blockquote>
+<div><p>The below step is required only for 11th gen Intel Processors</p>
+</div></blockquote>
+<p>Upgrade the kernel version to 5.8 and install the required drivers from the below OpenVINO link:
+<a class="reference external" href="https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps">https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps</a></p>
+</div>
+</section>
+</section>
+<section id="oei-udfloader">
+<h3>OEI UDFLoader<a class="headerlink" href="#oei-udfloader" title="Permalink to this headline">¶</a></h3>
+<p>UDFLoader is a library providing APIs for loading and executing native and python UDFs.</p>
+</section>
+<section id="oei-sample-udfs">
+<h3>OEI Sample UDFs<a class="headerlink" href="#oei-sample-udfs" title="Permalink to this headline">¶</a></h3>
+<p>Open Edge Insights (OEI) supports loading and executing of native(c++) and python UDFs. In here,
+one can find the sample native and python UDFs(User Defined Functions) to be used with OEI components
+like VideoIngestion and VideoAnalytics. The UDFs can modify the frame, drop the frame and generate meta-data from the frame.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.</p>
+</div>
+</section>
+<section id="user-defined-function-udf">
+<h3>User Defined Function (UDF)<a class="headerlink" href="#user-defined-function-udf" title="Permalink to this headline">¶</a></h3>
+<p>An UDF is a chunk of user code that acts as a filter, preprocessor, or classifier for a given data input coming from the OEI. The User Defined Function (UDF) Loader Library provides a common API for loading C++ and Python UDFs.</p>
+<p>The library itself is written in C++ and provides an abstraction layer for loading and calling UDFs. Additionally, the library defines a common interface inheritable by all UDFs (whether written in C++ or Python).</p>
+<p>The overall block diagram for the library is shown in the following figure.</p>
+<a class="reference external image-reference" href="https://raw.githubusercontent.com/open-edge-insights/open-edge-insights.github.io/main/docs/_images/fig_9_4.png"><img alt="User-Defined Function Loader Library Block Design" src="https://raw.githubusercontent.com/open-edge-insights/open-edge-insights.github.io/main/docs/_images/fig_9_4.png" /></a>
+<p>In this case, the VideoIngestion component is also able to execute the video data classifier algorithm by including the classifier UDF into the VideoIngestion configuration. By defining the Classifier UDF in the VideoIngestion component, the VideoAnalytics component become optional</p>
+<section id="udf-configuration">
+<h4>UDF Configuration<a class="headerlink" href="#udf-configuration" title="Permalink to this headline">¶</a></h4>
+<p>Below is the JSON schema for UDF json object configuration:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;additionalProperties&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;max_jobs&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Number of queued UDF jobs&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="mf">20</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;max_workers&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Number of threads acting on queued jobs&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;integer&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="mf">4</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;udfs&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Array of UDF config objects&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;array&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;UDF config object&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;properties&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;UDF type&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;native&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;raw_native&quot;</span>
+              <span class="p">]</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Unique UDF name&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;device&quot;</span><span class="o">:</span> <span class="p">{</span>
+              <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Device on which inference occurs&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;enum&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;CPU&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;GPU&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;HDDL&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;MYRIAD&quot;</span>
+              <span class="p">]</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;additionalProperties&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="s2">&quot;required&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;type&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span>
+          <span class="p">]</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>One can use <a class="reference external" href="https://www.jsonschemavalidator.net/">JSON validator tool</a> for
+validating the UDF configuration object against the above schema.</p>
+<p>Example UDF configuration:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="s2">&quot;max_jobs&quot;</span><span class="o">:</span> <span class="mf">20</span><span class="p">,</span>
+  <span class="s2">&quot;max_workers&quot;</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span>
+  <span class="s2">&quot;udfs&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;native&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;dummy&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pcb.pcb_filter&quot;</span>
+    <span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="udf-writing-guide">
+<h4>UDF Writing Guide<a class="headerlink" href="#udf-writing-guide" title="Permalink to this headline">¶</a></h4>
+<p>User can refer to <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/HOWTO_GUIDE_FOR_WRITING_UDF.md">UDF Writing HOW-TO GUIDE</a> for an detailed explanation of process to write an custom UDF.</p>
+</section>
+<section id="sample-udfs">
+<h4>Sample UDFs<a class="headerlink" href="#sample-udfs" title="Permalink to this headline">¶</a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The UDF config of these go as json objects in the <code class="docutils literal notranslate"><span class="pre">udfs</span></code> key in
+the overall UDF configuration object</p>
+</div>
+<section id="native-udfs">
+<h5>Native UDFs<a class="headerlink" href="#native-udfs" title="Permalink to this headline">¶</a></h5>
+<ul>
+<li><p><strong>Dummy UDF</strong></p>
+<p>Accepts the frame and forwards the same without doing any processing. It’s a
+do-nothing UDF.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">config</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;dummy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;native&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Raw Dummy UDF</strong></p>
+<p>Accepts the Frame object and forwards the same without doing any processing. It’s a
+do-nothing UDF for working with multi-frame support.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">config</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;raw_dummy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;raw_native&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">raw_native</span></code> udf type has been added to support multi-frame ingestion support.RealSense usecase requires multi-frame ingestion for color and depth frames.</p>
+<ul>
+<li><p><strong>Resize UDF</strong></p>
+<p>Accepts the frame, resizes it based on the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> params.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">config</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;resize&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;native&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;width&quot;</span><span class="o">:</span> <span class="mf">600</span><span class="p">,</span>
+    <span class="s2">&quot;height&quot;</span><span class="o">:</span> <span class="mf">600</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>FPS UDF</strong></p>
+<p>FPS udf can be used to measure the total number of frames received every second. It can be used in VideoIngestion and VideoAnalytics
+application by adding the below configuration in the udf configuration. It can also be chained with other udfs in which case the FPS result will be affected depending on the other udfs used.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">config</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;fps&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;native&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Config</span> <span class="pre">for</span> <span class="pre">chaining</span> <span class="pre">fps</span> <span class="pre">udf</span> <span class="pre">with</span> <span class="pre">other</span> <span class="pre">udfs</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;udfs&quot;</span><span class="o">:</span> <span class="p">[{</span>
+     <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;dummy&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;native&quot;</span>
+ <span class="p">},</span>
+ <span class="p">{</span>
+     <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;fps&quot;</span><span class="p">,</span>
+     <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;native&quot;</span>
+ <span class="p">}]</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><strong>Note</strong> The fps results will be logged in <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> LOG_LEVEL, added to the metadata with the AppName as the key and will be
+displayed in the visualizer.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Sample Realsense UDF</strong></p>
+<p>Accepts the color and depth frame, converts to rs2::frame type by using rs2::software_device simulation, enables a color filter on the depth frame using rs2::colorizer.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">config</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;sample_realsense&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;raw_native&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="python-udfs">
+<h5>Python UDFs<a class="headerlink" href="#python-udfs" title="Permalink to this headline">¶</a></h5>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Additional properties/keys other than <code class="docutils literal notranslate"><span class="pre">name</span></code> and <code class="docutils literal notranslate"><span class="pre">type</span></code> in the UDF
+config are the parameters of the python UDF constructor</p>
+</div>
+<ul>
+<li><p><strong>Dummy UDF</strong></p>
+<p>Accepts the frame and forwards the same without doing any processing. It’s a
+do-nothing UDF.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">config</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;dummy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;python&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Multi Frame Dummy UDF</strong></p>
+<p>Accepts the Frame object which is a list of frames and forwards the same without doing any processing. It’s a
+do-nothing UDF for working with multi-frame support.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">config</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;multi_frame_dummy&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;python&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Note:</strong> When multi frame ingestion is used then the Frame object is a list of numpy frames else it is a single numpy frame. The udf type remains <code class="docutils literal notranslate"><span class="pre">python</span></code> for multi frame ingestion and single frame ingestion.</p>
+<ul>
+<li><p><strong>Jupyter Connector UDF</strong></p>
+<p>Accepts the frame and publishes it to the OEI JupyterNotebook service which processes the frame and publishes it back to the jupyter_connector UDF.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">config</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jupyter_connector&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;python&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>PCB Filter UDF</strong></p>
+<p>Accepts the frame and based on if <code class="docutils literal notranslate"><span class="pre">pcb</span></code> board is at the center in the frame or not,
+it forwards or drops the frame. It basically sends out only the key frames forward
+for further processing and not all frames it receives.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">config</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pcb.pcb_filter&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;training_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;false&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;scale_ratio&quot;</span><span class="o">:</span> <span class="mf">4</span><span class="p">,</span>
+    <span class="s2">&quot;n_total_px&quot;</span><span class="o">:</span> <span class="mf">300000</span><span class="p">,</span>
+    <span class="s2">&quot;n_left_px&quot;</span><span class="o">:</span> <span class="mf">1000</span><span class="p">,</span>
+    <span class="s2">&quot;n_right_px&quot;</span><span class="o">:</span> <span class="mf">1000</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Refer <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/python/pcb/README.md">python/pcb/README.md</a> for more information.</p>
+</li>
+<li><p><strong>PCB Classifier UDF</strong></p>
+<p>Accepts the frame, uses openvino inference engine APIs to determine whether it’s
+a <code class="docutils literal notranslate"><span class="pre">good</span></code> pcb with no defects or <code class="docutils literal notranslate"><span class="pre">bad</span></code> pcb with defects. Metadata associated with
+the frame is populated accordingly.</p>
+<p><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">config</span></code>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;pcb.pcb_classifier&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;device&quot;</span><span class="o">:</span> <span class="s2">&quot;CPU&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ref_img&quot;</span><span class="o">:</span> <span class="s2">&quot;common/video/udfs/python/pcb/ref/ref.png&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ref_config_roi&quot;</span><span class="o">:</span> <span class="s2">&quot;common/video/udfs/python/pcb/ref/roi_2.json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;model_xml&quot;</span><span class="o">:</span> <span class="s2">&quot;common/video/udfs/python/pcb/ref/model_2.xml&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;model_bin&quot;</span><span class="o">:</span> <span class="s2">&quot;common/video/udfs/python/pcb/ref/model_2.bin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Refer <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/python/pcb/README.md">python/pcb/README.md</a> for more information.</p>
+<blockquote>
+<div><p><strong>Note:</strong> The above config works for both “CPU” and “GPU” devices after setting appropriate <code class="docutils literal notranslate"><span class="pre">device</span></code> value.
+Please set the “device” value appropriately based on the device used for inferencing.</p>
+</div></blockquote>
+</li>
+<li><p><strong>Sample ONNX UDF</strong></p>
+<p>This UDF mainly demonstrates the model deployment on edge devices via AzureBridge service only.</p>
+<p>Please follow the below steps:</p>
+<ul class="simple">
+<li><p>Configure the sample ONNX UDF by following <a class="reference external" href="https://github.com/open-edge-insights/eii-azure-bridge/blob/master/README.md#sample-eii-onnx-8">Sample ONNX UDF configuration guide</a></p></li>
+<li><p>Follow <a class="reference external" href="https://github.com/open-edge-insights/eii-azure-bridge/blob/master/README.md#single-node-azure-iot-edge-deployment">Single-Node Azure IOT Edge Deployment</a> to deploy the required modules</p></li>
+</ul>
+<p>For more details on AzureBridge setup, please refer <a class="reference external" href="https://github.com/open-edge-insights/eii-azure-bridge/blob/master/README.md">AzureBridge README.md</a></p>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="construction-of-metadata-in-udf">
+<h4>Construction of Metadata in UDF<a class="headerlink" href="#construction-of-metadata-in-udf" title="Permalink to this headline">¶</a></h4>
+<p>If OEI Visualizer/WebVisualizer clients are used for visualizing the classified frames, then please follow the metadata guidelines mentioned in <a href="#id7"><span class="problematic" id="id8">**</span></a><code class="docutils literal notranslate"><span class="pre">Metadata</span> <span class="pre">Structure</span></code>** in <a class="reference external" href="https://github.com/open-edge-insights/video-native-visualizer/blob/master/README.md">Visualizer</a> / <a class="reference external" href="https://github.com/open-edge-insights/video-web-visualizer/blob/master/README.md">WebVisualizer</a> README respectively.</p>
+<p><strong>Note</strong>: User has to make sure that the data with in meta data should be of type list, tuple, dict or primitive data types (int, float, string or bool). Also, data with in list, tuple, dict
+must contain only primitive data types.
+Eg: Any data is of type “numpy.float” or “numpy.int” should be type-casted to float and int respectively.</p>
+</section>
+<section id="chaining-of-udfs">
+<h4>Chaining of UDFs<a class="headerlink" href="#chaining-of-udfs" title="Permalink to this headline">¶</a></h4>
+<p>One can chain multiple native/python UDFs in the <code class="docutils literal notranslate"><span class="pre">udfs</span></code> key. The way chaining
+works here is the output of the UDF listed first would send the modified frame
+and metadata to the subsequent UDF and so on. One such classic example is having
+<code class="docutils literal notranslate"><span class="pre">pcb.pcb_filter</span></code> and <code class="docutils literal notranslate"><span class="pre">pcb.pcb_classifier</span></code> in VideoIngestion service config to
+do both the pre-processing and the classification logic without the need of
+VideoAnalytics service.</p>
+<section id="combination-of-udfs-with-ingestors">
+<h5>Combination of UDFs with ingestors<a class="headerlink" href="#combination-of-udfs-with-ingestors" title="Permalink to this headline">¶</a></h5>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Ingestor</p></th>
+<th class="head"><p>Chaining UDFs for pcb demo usecase</p></th>
+<th class="head"><p>Chaining UDFs for worker safety gear usecase</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>opencv/gstreamer</p></td>
+<td><p><span class="raw-html-m2r"><br></span><span class="raw-html-m2r"><br></span>Combination of resize (native), pcb filter (python) and<span class="raw-html-m2r"><br></span>pcb classifier (python) can be used as <span class="raw-html-m2r"><br></span>per the need.</p></td>
+<td><p><span class="raw-html-m2r"><br></span><span class="raw-html-m2r"><br></span><span class="raw-html-m2r"><br></span>Combination of resize (native) and worker safety gear classifier (native/python) <span class="raw-html-m2r"><br></span> can be used as per the need.</p></td>
+</tr>
+<tr class="row-odd"><td><p>gstreamer with GVA(Gstreamer Video Analytics) elements</p></td>
+<td><p>Not Applicable</p></td>
+<td><p><span class="raw-html-m2r"><br></span>Any post-processing UDFs can be used as all<span class="raw-html-m2r"><br></span>the pre-processing and classification is <span class="raw-html-m2r"><br></span>happening in the gstreamer pipeline itself</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Dummy UDF can also be used for above use cases for testing chaining UDFs
+feature but as such there is no value add as it’s a do-nothing UDF.
+In DEV Mode python udfs changes can be tested by restarting containers, no need to rebuild.</p>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="native-visualizer-module">
+<h2>Native Visualizer Module<a class="headerlink" href="#native-visualizer-module" title="Permalink to this headline">¶</a></h2>
+<p>Native Visualizer ia a native app to view the classified images/metadata coming out of EII.</p>
+</section>
+<section id="web-visualizer-module">
+<h2>Web Visualizer Module<a class="headerlink" href="#web-visualizer-module" title="Permalink to this headline">¶</a></h2>
+<p>Web Visualizer ia a web based app to view the classified images/metadata coming out of EII.</p>
+</section>
+<section id="imagestore-module">
+<h2>ImageStore Module<a class="headerlink" href="#imagestore-module" title="Permalink to this headline">¶</a></h2>
+<p>The Image Store component of EII comes as a separate container which primarily
+subscribes to the stream that comes out of the VideoAnalytics app via EII
+MessageBus and stores the frame into minio for historical analysis.</p>
+<p>The high level logical flow of ImageStore is as below:</p>
+<ol class="arabic">
+<li><p>The messagebus subscriber in ImageStore will subscribe to the VideoAnalytics
+published classified result (metadata, frame) on the messagebus.
+The img_handle is extracted out of the metadata and is used as the key and
+the frame is stored as a value for that key in minio persistent storage.</p></li>
+<li><p>For historical analysis of the stored classified images, ImageStore starts
+the messagebus server which provides the read and store interfaces.
+The payload format is as follows for:</p>
+<ul>
+<li><p>Store interface:
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Request: map (&quot;command&quot;: &quot;store&quot;,&quot;img_handle&quot;:&quot;$handle_name&quot;),[]byte($binaryImage)
+Response : map (&quot;img_handle&quot;:&quot;$handle_name&quot;, &quot;error&quot;:&quot;$error_msg&quot;) (&quot;error&quot; is optional and available only in case of error in execution.)
+</pre></div>
+</div>
+</li>
+<li><p>Read interface:
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Request : map (&quot;command&quot;: &quot;read&quot;, &quot;img_handle&quot;:&quot;$handle_name&quot;)
+Response : map (&quot;img_handle&quot;:&quot;$handle_name&quot;, &quot;error&quot;:&quot;$error_msg&quot;),[]byte($binaryImage) (&quot;error&quot; is optional and available only in case of error in execution. And $binaryImage is available only in case of successful read)
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ol>
+<section id="influxdbconnector-module">
+<h3>InfluxDBConnector Module<a class="headerlink" href="#influxdbconnector-module" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>InfluxDBConnector will subscribe to the InfluxDB and start the zmq
+publisher, zmq subscriber threads, and zmq request reply thread
+based on PubTopics, SubTopics and QueryTopics configuration.</p></li>
+<li><p>zmq subscriber thread connects to the PUB socket of zmq bus on which
+the data is published by VideoAnalytics and push it to the InfluxDB</p></li>
+<li><p>zmq publisher thread will publish the point data ingested by the telegraf
+and the classifier result coming out of the point data analytics.</p></li>
+<li><p>zmq reply request service will receive the InfluxDB select query and
+response with the historical data.</p></li>
+</ol>
+<section id="configuration">
+<h4>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h4>
+<p>All the InfluxDBConnector module configuration are added into etcd (distributed
+key-value data store) under <code class="docutils literal notranslate"><span class="pre">AppName</span></code> as mentioned in the
+environment section of this app’s service definition in docker-compose.</p>
+<dl class="simple">
+<dt>If <code class="docutils literal notranslate"><span class="pre">AppName</span></code> is <code class="docutils literal notranslate"><span class="pre">InfluxDBConnector</span></code>, then the app’s config would look like as below</dt><dd><p>for <code class="docutils literal notranslate"><span class="pre">/InfluxDBConnector/config</span></code> key in Etcd:</p>
+</dd>
+</dl>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;influxdb&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;retention&quot;</span><span class="p">:</span> <span class="s2">&quot;1h30m5s&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;dbname&quot;</span><span class="p">:</span> <span class="s2">&quot;datain&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ssl&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;verifySsl&quot;</span><span class="p">:</span> <span class="s2">&quot;False&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;8086&quot;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<p>In case of nested json data, by default InfluxDBConnector will flatten the nested json and push
+the flat data to InfluxDB, In order to avoid the flattening of any particular nested key please mention the
+tag key in the <a href="#id9"><span class="problematic" id="id10">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/config.json">config.json</a>** file. Currently “defects” key is ignored from flattening. Every key to be ignored has to be in newline.</p>
+<blockquote>
+<div><p>for example,</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ignore_keys</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Key1&quot;</span><span class="p">,</span> <span class="s2">&quot;Key2&quot;</span><span class="p">,</span> <span class="s2">&quot;Key3&quot;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>By default, all the keys in the data schema will be pushed to InfluxDB as fields. In case if tags are present in data schema,
+it can be mentioned in the <a href="#id11"><span class="problematic" id="id12">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/config.json">config.json</a>** file then the data pushed to InfluxDB, will have fields and tags both.
+Currently, no tags are present in the data scheme and tag_keys is kept blank in the config file.</p>
+<p>for example,</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tag_keys</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Tag1&quot;</span><span class="p">,</span> <span class="s2">&quot;Tag2&quot;</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>For more details on Etcd secrets and messagebus endpoint configuration, visit <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/Etcd_Secrets_Configuration.md">Etcd_Secrets_Configuration.md</a> and
+<a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/README.md#interfaces">MessageBus Configuration</a> respectively.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

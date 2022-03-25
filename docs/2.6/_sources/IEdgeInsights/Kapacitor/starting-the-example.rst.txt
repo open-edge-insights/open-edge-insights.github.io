@@ -1,0 +1,42 @@
+
+Starting the example
+--------------------
+
+
+#. 
+   To start the mqtt-temp-sensor, please refer `tools/mqtt-publisher/README.md <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt/README.md>`_.
+
+#. 
+   In case, if SI wants to use the IEdgeInsights only for Point Data Analytics,
+   then comment Video use case containers ia_video_ingestion and ia_video_analytics in ``../build/docker-compose.yml``
+
+#. 
+   Starting the EII.
+   To start the EII in production mode, provisioning is required. For more information on provisioning
+   please refer the `README <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_.
+   After provisioning, please follow the below commands
+
+   .. code-block::
+
+      cd build
+      docker-compose -f docker-compose-build.yml build
+      docker-compose up -d
+
+   To start the EII in developer mode, please refer to the `README <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_.
+
+#. 
+   To verify the output please check the output of below command
+
+   .. code-block::
+
+      docker logs -f ia_influxdbconnector
+
+   Below is the snapshot of sample output of the ia_influxdbconnector command.
+
+   .. code-block::
+
+      I0822 09:03:01.705940       1 pubManager.go:111] Published message: map[data:point_classifier_results,host=ia_telegraf,topic=temperature/simulated/0 temperature=19.29358085726703,ts=1566464581.6201317 1566464581621377117]
+      I0822 09:03:01.927094       1 pubManager.go:111] Published message: map[data:point_classifier_results,host=ia_telegraf,topic=temperature/simulated/0 temperature=19.29358085726703,ts=1566464581.6201317 1566464581621377117]
+      I0822 09:03:02.704000       1 pubManager.go:111] Published message: map[data:point_data,host=ia_telegraf,topic=temperature/simulated/0 ts=1566464582.6218634,temperature=27.353740759929877 1566464582622771952]
+
+   The data can be visualized using the Grafana dashboard, to know more refer `Grafana/README.md <https://github.com/open-edge-insights/ts-grafana/blob/master/README.md>`_

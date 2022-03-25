@@ -1,0 +1,41 @@
+
+Sample UDFs Directory
+=====================
+
+In the CustomUdfs directory, there are 5 sample UDfs implemented and they related asshown below. These samples are created to showcase different use case.
+
+.. code-block:: bash
+
+   .
+   ├── NativeSafetyGearAnalytics
+   ├── NativeSafetyGearIngestion
+
+   ├── PyMultiClassificationIngestion
+
+   ├── PySafetyGearAnalytics
+   ├── PySafetyGearIngestion
+
+   └── README.md
+
+The `docker-compose.yml <https://github.com/open-edge-insights/video-custom-udfs/blob/master/NativeSafetyGearAnalytics/docker-compose.yml>`_ container has used `docker-compose.yml <https://github.com/open-edge-insights/video-custom-udfs/blob/master/NativeSafetyGearAnalytics/docker-compose.yml>`_ UDF which is defined in VideoIngestion container. user can define its own preprocessing UDF and add to config.json file to modify it. The results are posted to a eii-msgbus topic which is subscribed by `docker-compose.yml <https://github.com/open-edge-insights/video-custom-udfs/blob/master/NativeSafetyGearAnalytics/docker-compose.yml>`_ containers. The configs can be seen in `docker-compose.yml <https://github.com/open-edge-insights/video-custom-udfs/blob/master/NativeSafetyGearAnalytics/docker-compose.yml>`_ file.
+
+Refer `NativeSafetyGearIngestion-README <https://github.com/open-edge-insights/video-custom-udfs/blob/master/NativeSafetyGearIngestion/README.md>`_ for more information on the udf configs.
+Refer `NativeSafetyGearAnalytics-README <https://github.com/open-edge-insights/video-custom-udfs/blob/master/NativeSafetyGearAnalytics/README.md>`_ for more information on the udf configs.
+
+The `PySafetyGearAnalytics <https://github.com/open-edge-insights/video-custom-udfs/blob/master/PySafetyGearAnalytics>`_ & `PySafetyGearAnalytics <https://github.com/open-edge-insights/video-custom-udfs/blob/master/PySafetyGearAnalytics>`_ are the same use-case but showcases the python variant of ingestion and analytics UDF containers
+
+Refer `PySafetyGearIngestion-README <https://github.com/open-edge-insights/video-custom-udfs/blob/master/PySafetyGearIngestion/README.md>`_ for more information on the udf configs.
+Refer `PySafetyGearAnalytics-README <https://github.com/open-edge-insights/video-custom-udfs/blob/master/PySafetyGearAnalytics/README.md>`_ for more information on the udf configs.
+
+The `PyMultiClassificationIngestion <https://github.com/open-edge-insights/video-custom-udfs/blob/master/PyMultiClassificationIngestion>`_ showcases a UDF wherein everything is performed inside VideoIngestion containers, hence this is something user executes when it doesn't want to involve the eii-msgbus to be involved for data transfer between containers thereby achieving faster processing of the pipeline.
+
+Refer `PyMultiClassificationIngestion-README <https://github.com/open-edge-insights/video-custom-udfs/blob/master/PyMultiClassificationIngestion/README.md>`_ for more information on the udf configs.
+
+**Notes**\ :
+
+
+* 
+  It is not mandatory to have Ingestion containers for every analytics UDF, UDFs are connected to each other via MSGBUS topics. Hence we can always use stock VideoIngestion container as long as Custom Analytic UDF container can read and churn the data it receives.
+
+* 
+  User shouldn't remove VI & VA containers before first time build of custom UDF as it will fail to build custom UDFs. Once these UDFs are functional user can always get rid of running VI & VA containers. While removing the VI and VA containers, user need to make necessary chnages in the **../build/docker-compose.yml** files based on the way it is written for e.g. user may need to remove **depends_on** keyword if custom container has it for VI and VA containers.

@@ -1,0 +1,27 @@
+
+Running EmbSubscriber in IPC mode
+---------------------------------
+
+User needs to modify interface section of **\ `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/EmbSubscriber/config.json>`_\ ** to run in IPC mode as following
+
+.. code-block::
+
+   {
+     "config": {},
+     "interfaces": {
+       "Subscribers": [
+         {
+           "Name": "TestSub",
+           "PublisherAppName": "Telegraf",
+           "Type": "zmq_ipc",
+           "EndPoint": {
+                     "SocketDir": "/EII/sockets",
+                     "SocketFile": "telegraf-out"
+            },
+           "Topics": [
+             "*"
+           ]
+         }
+       ]
+     }
+   }

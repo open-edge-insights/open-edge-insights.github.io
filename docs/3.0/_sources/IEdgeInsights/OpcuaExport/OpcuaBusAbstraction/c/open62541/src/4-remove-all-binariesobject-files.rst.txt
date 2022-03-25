@@ -1,0 +1,7 @@
+
+4. Remove all binaries/object files
+-----------------------------------
+
+.. code-block:: sh
+
+   make clean

@@ -1,0 +1,23 @@
+
+Generation of python .whl file (Optional)
+-----------------------------------------
+
+**Note:** This is an optional as we have already hosted .whl file. If user wants to create .whl file freshly, then complete the following steps.
+
+
+#. 
+   Installation of ``wheel``
+
+   .. code-block:: sh
+
+       pip3 install –upgrade setuptools wheel
+
+#. 
+   Navigate to ``[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr/python`` and run the following command:
+
+   .. code-block:: sh
+
+       python3 setup_packaging.py sdist bdist_wheel --plat-name=manylinux2014_x86_64
+
+#. 
+   ConfigMgr .whl package will be created in the ``dist`` folder.

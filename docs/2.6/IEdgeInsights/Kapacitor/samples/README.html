@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF &mdash; OEI Documentation v1.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/contentui.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/clipboard.min.js"></script>
+        <script src="../../../_static/copybutton.js"></script>
+        <script src="../../../_static/contentui.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> OEI Documentation
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+  
+              <p><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/introduction.html">Introduction to OEI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/running.html">Run Open Edge Insights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#about-open-edge-insights">About Open Edge Insights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#video-pipeline-analytics">Video pipeline Analytics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#time-series-analytics">Time-series Analytics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#oei-multi-node-cluster-deployment">OEI multi-node cluster deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#oei-tools">OEI tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#oei-uninstaller">OEI Uninstaller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#debugging-options">Debugging options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#web-deployment-tool">Web Deployment Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#troubleshooting-guide">Troubleshooting guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#oei-v3-0">OEI v3.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-6-2">EII v2.6.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#fixes">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-6-1">EII v2.6.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id1">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id2">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id3">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#bug-fix">Bug fix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id4">Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Core Libraries:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/msgbus.html">Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id1">Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#generating-documentation">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id2">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id3">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id4">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id5">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id6">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id7">Packaging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id9">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id10">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id11">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id12">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id13">Running Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id14">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id15">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id16">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id17">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id18">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id19">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id20">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id21">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id22">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id23">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id24">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id25">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id26">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id27">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id28">Running Go Examples without Installing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id29">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id30">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id33">Using Only CurveZMQ Encryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id34">Publish/Subscribe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id35">Request/Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id36">Using ZAP Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id37">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id38">Known issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id39">Generation of python .whl file (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/eiiConfig.html">OEI Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#configmgr">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#configmgr-installation">ConfigMgr Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#using-system-grpc">Using System gRPC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#generating-documentation">Generating Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#publisher-interface">Publisher Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#subscriber-interface">Subscriber Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#server-interface"><strong>Server Interface</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#client-interface"><strong>Client Interface</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#cpp-examples">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#go-examples">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#creation-of-grpc-zip-file-optional">Creation of grpc .zip file (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Video Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/video.html">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#videoingestion-module">VideoIngestion Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#oei-udfloader">OEI UDFLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#oei-sample-udfs">OEI Sample UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#udf-writing-guide">UDF Writing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#sample-udfs">Sample UDFs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#chaining-of-udfs">Chaining of UDFs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#native-visualizer-module">Native Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#web-visualizer-module">Web Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Time-Series Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/timeseries.html">Working with Time series Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/timeseries.html#telegraf">Telegraf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/timeseries.html#point-data-time-series-data-analytics-introduction">Point-data (Time-series data) analytics introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/timeseries.html#grafana">Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/timeseries.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Export Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#prerequisites-and-setup">Prerequisites and Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#azure-cloud-setup">Azure Cloud Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/azure.html#setting-up-azureml">Setting up AzureML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/azure.html#important">Important</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#development-system-setup">Development System Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#build-and-push-oei-containers">Build and Push OEI Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#step-1-provisioning">Step 1 - Provisioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/azure.html#expected-result">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#step-2-configuring-eii">Step 2 - Configuring EII</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/azure.html#id3">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#step-3-configuring-azure-iot-deployment-manifest">Step 3 - Configuring Azure IoT Deployment Manifest</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/azure.html#id4">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#step-4-deployment">Step 4 - Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/azure.html#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#helpful-debugging-commands">Helpful Debugging Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#final-notes">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#id5">Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#sample-eii-onnx-udf">Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#simple-subscriber">Simple Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#eii-etcd-pre-load">EII ETCD Pre-Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#azure-blob-storage">Azure Blob Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#azure-deployment-manifest">Azure Deployment Manifest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#supported-oei-services">Supported OEI Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/opcua.html#opcuaexport">OpcuaExport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/restdata.html">RestDataExport service</a></li>
+</ul>
+<p><span class="caption-text">Additional Info:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/tools.html">OEI Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#discoverhistory-tool">DiscoverHistory tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#gigeconfig-tool">GigEConfig tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#generating-pfs-pylon-feature-stream-file">Generating PFS (Pylon Feature Stream) File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#running-gigeconfig-tool">Running GigEConfig Tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#develop-python-user-defined-functions-using-jupyter-notebook">Develop Python User Defined Functions using Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#prerequisites-for-using-jupyter-notebooks">Prerequisites for using Jupyter Notebooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#run-jupyter-notebook-from-web-browsers">Run Jupyter Notebook from web browsers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#run-jupyter-notebook-using-visual-studio-code">Run Jupyter Notebook using Visual Studio Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#mqtt-publisher">MQTT publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#oei-video-profiler">OEI Video Profiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#oei-video-profiler-prerequisites">OEI Video Profiler prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#oei-video-profiler-modes">OEI Video Profiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#oei-video-profiler-configurations">OEI Video Profiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#run-video-profiler">Run Video Profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#running-videoprofiler-in-helm-usecase">Running VideoProfiler in helm usecase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#optimizing-oei-video-pipeline-by-analysing-video-profiler-results">Optimizing OEI Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi-instance config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/sample.html">OEI Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/sample.html#eii-sample-apps">EII Sample Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">OEI Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+  <!-- 3.0 -->
+  
+  
+
+  <li><a href="../../../index.html">3.0</a> &raquo;</li>
+  
+  <li>Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/IEdgeInsights/Kapacitor/samples/README.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p><strong>Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="#introduction-to-samples-of-multiple-udfs-in-a-single-task-and-multiple-tasks-with-single-udf">Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF</a></p>
+<ul>
+<li><p><a class="reference external" href="#steps-to-run-the-samples">Steps to run the samples</a></p></li>
+<li><p><a class="reference external" href="#steps-to-verify-the-results-in-single-task-with-multiple-udfs">Steps to verify the results in single task with multiple UDFs</a></p></li>
+<li><p><a class="reference external" href="#steps-to-verify-the-results-in-multiple-tasks-with-single-udf">Steps to verify the results in multiple tasks with single UDF</a></p></li>
+</ul>
+</li>
+</ul>
+<section id="introduction-to-samples-of-multiple-udfs-in-a-single-task-and-multiple-tasks-with-single-udf">
+<h1>Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF<a class="headerlink" href="#introduction-to-samples-of-multiple-udfs-in-a-single-task-and-multiple-tasks-with-single-udf" title="Permalink to this headline">¶</a></h1>
+<p>Implementation of 2 simple examples to showcase the use of a single task with multiple UDFs and multiple tasks with single UDF in Kapacitor.</p>
+<ul>
+<li><p>Sample implemented in single task with multiple UDFs.
+MQTT Publisher is publishing 2 parameters (temperature and humidity). TICK script is calling 2 UDFs (one written in GO, another one in python), Go-based UDF is filtering the data based on the condition (i.e. temperature &gt; 25), similarly for the python based UDF the condition is set to “humidity &gt; 25”, filtered data is written back to “point_classifier_results” measurement in InfluxDB.</p></li>
+<li><p>Sample implemented in multiple tasks with single UDF.
+MQTT Publisher is publishing 2 parameters (temperature and humidity). One TICK script is calling Go UDF, it is filtering the data based on the condition “temperature &gt; 25” and the data is written back to “point_classifier_results” measurement.</p>
+<p>Second TICK script is calling python UDF, it is filtering the data based on the condition “humidity &gt; 25” and the data is written back to “humidity_classifier_results” measurement.</p>
+</li>
+<li><p>Samples directory contain 3 directories, kapacitor_config which is common to both the samples and the tick scripts and eii config for each sample is kept in respective directory.</p></li>
+</ul>
+<section id="steps-to-run-the-samples">
+<h2>Steps to run the samples<a class="headerlink" href="#steps-to-run-the-samples" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>It is recommended to take a backup of the following original files before running the below mentioned steps as it will replace the original file.</p></li>
+</ol>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config">config</a> directory.</p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json">config.json</a> file.</p></li>
+</ul>
+<ol class="arabic">
+<li><p>Copy the sample <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config">config</a> or <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config">config</a> files based on prod or dev mode configuration of EII in the <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config">config</a> directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp kapacitor_config/kapacitor.conf kapacitor_config/kapacitor_devmode.conf ../config/
+</pre></div>
+</div>
+</li>
+<li><p>To run the multiple UDFs in a single task sample</p></li>
+</ol>
+<ul>
+<li><p>Copy the <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json">config.json</a> file and replace the <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json">config.json</a> file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp multi_udfs_single_task/eii_config/config.json ../config.json
+</pre></div>
+</div>
+</li>
+<li><p>Copy the <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts">tick_scripts</a> and paste it in the <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts">tick_scripts</a> directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp multi_udfs_single_task/tick_scripts/point_classifier.tick ../tick_scripts/
+</pre></div>
+</div>
+</li>
+</ul>
+<ol class="arabic simple">
+<li><p>To run the multiple tasks with single UDF</p></li>
+</ol>
+<ul>
+<li><p>Copy the <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json">config.json</a> file and replace the <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json">config.json</a> file.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp single_udf_multi_tasks/eii_config/config.json ../config.json
+</pre></div>
+</div>
+</li>
+<li><p>Copy the <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts">tick_scripts</a> and <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts">tick_scripts</a> and paste it in the <a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts">tick_scripts</a> directory.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cp single_udf_multi_tasks/tick_scripts/humidity_classifier.tick ../tick_scripts/
+
+$ cp single_udf_multi_tasks/tick_scripts/temperature_classifier.tick ../tick_scripts/
+</pre></div>
+</div>
+</li>
+</ul>
+<ol class="arabic simple">
+<li><p>Please go through the below sections to bring up EII stack:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md#generate-deployment-and-configuration-files">../README.md#generate-deployment-and-configuration-files</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision">../README.md#provision</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases">../README.md#build-and-run-eii-videotimeseries-use-cases</a></p></li>
+</ul>
+</li>
+<li><p>To start the mqtt-publisher with temperature and humidity data, please refer <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/README.md">tools/mqtt-publisher/README.md</a></p></li>
+</ol>
+</section>
+<section id="steps-to-verify-the-results-in-single-task-with-multiple-udfs">
+<h2>Steps to verify the results in single task with multiple UDFs<a class="headerlink" href="#steps-to-verify-the-results-in-single-task-with-multiple-udfs" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>InfluxDBConnector logs output</p>
+<p>Command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker logs -f ia_influxdbconnector
+</pre></div>
+</div>
+<p>Output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I0717</span> <span class="mi">00</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">46.636838</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">humidity</span><span class="o">=</span><span class="mf">28.57107003902059</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594927426.634632</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">26.655493463976832</span> <span class="mi">1594927426635557092</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0717</span> <span class="mi">00</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">46.639011</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_classifier_results</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">humidity</span><span class="o">=</span><span class="mf">28.57107003902059</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">26.655493463976832</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594927426.634632</span> <span class="mi">1594927426635557092</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0717</span> <span class="mi">00</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">47.638366</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">22.619720484770554</span><span class="p">,</span><span class="n">humidity</span><span class="o">=</span><span class="mf">16.731963502272897</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594927427.6358457</span> <span class="mi">1594927427636952571</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0717</span> <span class="mi">00</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">48.642098</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">ts</span><span class="o">=</span><span class="mf">1594927428.6372812</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">17.571037421047784</span><span class="p">,</span><span class="n">humidity</span><span class="o">=</span><span class="mf">23.928420142806388</span> <span class="mi">1594927428640200053</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0717</span> <span class="mi">00</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">49.640132</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">ts</span><span class="o">=</span><span class="mf">1594927429.6386497</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">13.926727845681501</span><span class="p">,</span><span class="n">humidity</span><span class="o">=</span><span class="mf">14.61523554472623</span> <span class="mi">1594927429639197778</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0717</span> <span class="mi">00</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">50.641966</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">ts</span><span class="o">=</span><span class="mf">1594927430.6400163</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">29.535498572099197</span><span class="p">,</span><span class="n">humidity</span><span class="o">=</span><span class="mf">17.40839676245851</span> <span class="mi">1594927430640922707</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0717</span> <span class="mi">00</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">51.644246</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">ts</span><span class="o">=</span><span class="mf">1594927431.6406047</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">22.014647866484523</span><span class="p">,</span><span class="n">humidity</span><span class="o">=</span><span class="mf">23.24245661794304</span> <span class="mi">1594927431641579125</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0717</span> <span class="mi">00</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">52.643982</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">ts</span><span class="o">=</span><span class="mf">1594927432.641993</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">16.77923134191675</span><span class="p">,</span><span class="n">humidity</span><span class="o">=</span><span class="mf">18.01282784469746</span> <span class="mi">1594927432642890643</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0717</span> <span class="mi">00</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">53.644850</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">ts</span><span class="o">=</span><span class="mf">1594927433.642745</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">11.96364985814431</span><span class="p">,</span><span class="n">humidity</span><span class="o">=</span><span class="mf">24.91437844150262</span> <span class="mi">1594927433643691025</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0717</span> <span class="mi">00</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">54.646171</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">27.031131147255834</span><span class="p">,</span><span class="n">humidity</span><span class="o">=</span><span class="mf">29.017961635659024</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594927434.6439903</span> <span class="mi">1594927434644892174</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0717</span> <span class="mi">00</span><span class="p">:</span><span class="mi">53</span><span class="p">:</span><span class="mf">54.648654</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_classifier_results</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">humidity</span><span class="o">=</span><span class="mf">29.017961635659024</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">27.031131147255834</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594927434.6439903</span> <span class="mi">1594927434644892174</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Check data in the InfluxDB</p></li>
+</ol>
+<ul>
+<li><p>Enter in the container using the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker exec -it ia_influxdbconnector bash
+</pre></div>
+</div>
+</li>
+<li><p>Use the following to enter into the database</p>
+<p>prod mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ influx -ssl -unsafeSsl -username &quot;username&quot; -password &quot;password&quot; -database &quot;database_name&quot;
+</pre></div>
+</div>
+<p>dev mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ influx -username &quot;username&quot; -password &quot;password&quot; -database &quot;database_name&quot;
+</pre></div>
+</div>
+<p>replace the “username”, “database”, and “password” keys with your DB username, password and DB name.`</p>
+</li>
+<li><p>Use Influx CLI command to interact with DB.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ show measurements
+</pre></div>
+</div>
+<p>Output of the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">show</span> <span class="n">measurements</span>
+<span class="n">name</span><span class="p">:</span> <span class="n">measurements</span>
+<span class="n">name</span>
+<span class="o">----</span>
+<span class="n">point_classifier_results</span>
+<span class="n">point_data</span>
+</pre></div>
+</div>
+</li>
+<li><p>To see the data in point_classifier_results measurement use the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ select * from point_classifier_results
+</pre></div>
+</div>
+<p>Sample output of the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">point_classifier_results</span>
+<span class="n">time</span>                <span class="n">host</span>        <span class="n">humidity</span>           <span class="n">temperature</span>        <span class="n">topic</span>                   <span class="n">ts</span>
+<span class="o">----</span>                <span class="o">----</span>        <span class="o">--------</span>           <span class="o">-----------</span>        <span class="o">-----</span>                   <span class="o">--</span>
+<span class="mi">1594927630832507623</span> <span class="n">ia_telegraf</span> <span class="mf">29.855404019751816</span> <span class="mf">25.53367159780972</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594927630.8313158</span>
+<span class="mi">1594927641839961485</span> <span class="n">ia_telegraf</span> <span class="mf">29.913849074313813</span> <span class="mf">25.18000949751805</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594927641.8386183</span>
+<span class="mi">1594927644843838821</span> <span class="n">ia_telegraf</span> <span class="mf">26.631081501636743</span> <span class="mf">29.99623149385496</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594927644.842906</span>
+<span class="mi">1594927678873799703</span> <span class="n">ia_telegraf</span> <span class="mf">25.362676867888464</span> <span class="mf">25.420215215181166</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594927678.872921</span>
+<span class="mi">1594927703898638431</span> <span class="n">ia_telegraf</span> <span class="mf">27.55019173839383</span>  <span class="mf">26.603218492677055</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594927703.8980274</span>
+<span class="mi">1594927705900115913</span> <span class="n">ia_telegraf</span> <span class="mf">26.309594644310167</span> <span class="mf">25.68362497454113</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594927705.8995953</span>
+<span class="mi">1594927709904380759</span> <span class="n">ia_telegraf</span> <span class="mf">27.52768187637576</span>  <span class="mf">29.3945157174943</span>   <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594927709.9034615</span>
+<span class="mi">1594927744936530293</span> <span class="n">ia_telegraf</span> <span class="mf">26.844547285321887</span> <span class="mf">29.498420224006598</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594927744.9355264</span>
+<span class="mi">1594927753945020633</span> <span class="n">ia_telegraf</span> <span class="mf">25.71321771687117</span>  <span class="mf">25.07137538609002</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594927753.9441714</span>
+</pre></div>
+</div>
+<p>Here, both the temperature and himidity data is above 25</p>
+</li>
+</ul>
+</section>
+<section id="steps-to-verify-the-results-in-multiple-tasks-with-single-udf">
+<h2>Steps to verify the results in multiple tasks with single UDF<a class="headerlink" href="#steps-to-verify-the-results-in-multiple-tasks-with-single-udf" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>InfluxDBConnector logs output</p>
+<p>Command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker logs -f ia_influxdbconnector
+</pre></div>
+</div>
+<p>Output</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I0716</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">01.428896</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">humidity</span><span class="o">=</span><span class="mf">23.50196006313319</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594924081.4278295</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">25.758773258956786</span> <span class="mi">1594924081428303867</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0716</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">01.429801</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_classifier_results</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">humidity</span><span class="o">=</span><span class="mf">23.50196006313319</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">25.758773258956786</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594924081.4278295</span> <span class="mi">1594924081428303867</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0716</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">02.429889</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">humidity</span><span class="o">=</span><span class="mf">12.785272290966788</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594924082.4282343</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">25.88015317051446</span> <span class="mi">1594924082428980179</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0716</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">02.431062</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_classifier_results</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">humidity</span><span class="o">=</span><span class="mf">12.785272290966788</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">25.88015317051446</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594924082.4282343</span> <span class="mi">1594924082428980179</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0716</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">03.430484</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">humidity</span><span class="o">=</span><span class="mf">27.393076181834594</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594924083.4287212</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">18.16039229846337</span> <span class="mi">1594924083429552256</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0716</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">03.433508</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">humidity_classifier_results</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">humidity</span><span class="o">=</span><span class="mf">27.393076181834594</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">18.16039229846337</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594924083.4287212</span> <span class="mi">1594924083429552256</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0716</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">04.431786</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">27.32044250166733</span><span class="p">,</span><span class="n">humidity</span><span class="o">=</span><span class="mf">12.040910740537647</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594924084.430019</span> <span class="mi">1594924084430766594</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0716</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">04.433122</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_classifier_results</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">humidity</span><span class="o">=</span><span class="mf">12.040910740537647</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">27.32044250166733</span><span class="p">,</span><span class="n">ts</span><span class="o">=</span><span class="mf">1594924084.430019</span> <span class="mi">1594924084430766594</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+<span class="n">I0716</span> <span class="mi">23</span><span class="p">:</span><span class="mi">58</span><span class="p">:</span><span class="mf">05.431732</span>      <span class="mi">10</span> <span class="n">pubManager</span><span class="o">.</span><span class="n">go</span><span class="p">:</span><span class="mi">121</span><span class="p">]</span> <span class="n">Published</span> <span class="n">message</span><span class="p">:</span> <span class="nb">map</span><span class="p">[</span><span class="n">data</span><span class="p">:</span><span class="n">point_data</span><span class="p">,</span><span class="n">host</span><span class="o">=</span><span class="n">ia_telegraf</span><span class="p">,</span><span class="n">topic</span><span class="o">=</span><span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="n">ts</span><span class="o">=</span><span class="mf">1594924085.4304821</span><span class="p">,</span><span class="n">temperature</span><span class="o">=</span><span class="mf">24.03411329966985</span><span class="p">,</span><span class="n">humidity</span><span class="o">=</span><span class="mf">17.1642901921084</span> <span class="mi">1594924085431039073</span> <span class="n">idbconn_pub</span><span class="p">:</span><span class="n">true</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+<li><p>Check data in the InfluxDB</p></li>
+</ol>
+<ul>
+<li><p>Enter in the container using the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ docker exec -it ia_influxdbconnector bash
+</pre></div>
+</div>
+</li>
+<li><p>Use the following to enter into the database</p>
+<p>prod mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ influx -ssl -unsafeSsl -username &quot;username&quot; -password &quot;password&quot; -database &quot;database_name&quot;
+</pre></div>
+</div>
+<p>dev mode</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ influx -username &quot;username&quot; -password &quot;password&quot; -database &quot;database_name&quot;
+</pre></div>
+</div>
+<p>replace the “username”, “database”, and “password” keys with your DB username, password and DB name.`</p>
+</li>
+<li><p>Use Influx CLI command to interact with DB.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ show measurements
+</pre></div>
+</div>
+<p>Output of the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">show</span> <span class="n">measurements</span>
+<span class="n">name</span><span class="p">:</span> <span class="n">measurements</span>
+<span class="n">name</span>
+<span class="o">----</span>
+<span class="n">humidity_classifier_results</span>
+<span class="n">point_classifier_results</span>
+<span class="n">point_data</span>
+</pre></div>
+</div>
+</li>
+<li><p>To see the data in point_classifier_results measurement use the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ select * from point_classifier_results
+</pre></div>
+</div>
+<p>Sample output of the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">point_classifier_results</span>
+<span class="n">time</span>                <span class="n">host</span>        <span class="n">humidity</span>           <span class="n">temperature</span>        <span class="n">topic</span>                   <span class="n">ts</span>
+<span class="o">----</span>                <span class="o">----</span>        <span class="o">--------</span>           <span class="o">-----------</span>        <span class="o">-----</span>                   <span class="o">--</span>
+<span class="mi">1594923545769758418</span> <span class="n">ia_telegraf</span> <span class="mf">19.81604257073865</span>  <span class="mf">26.879897943430848</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923545.7691243</span>
+<span class="mi">1594923614838551423</span> <span class="n">ia_telegraf</span> <span class="mf">28.95738078521109</span>  <span class="mf">29.250270883294515</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923614.8377328</span>
+<span class="mi">1594923616840732537</span> <span class="n">ia_telegraf</span> <span class="mf">21.3038992065728</span>   <span class="mf">27.128756451611928</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923616.839861</span>
+<span class="mi">1594923621850408245</span> <span class="n">ia_telegraf</span> <span class="mf">24.17081234022867</span>  <span class="mf">28.12092358748019</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923621.8499172</span>
+<span class="mi">1594923622851693103</span> <span class="n">ia_telegraf</span> <span class="mf">16.991377116304164</span> <span class="mf">25.942235861646243</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923622.8506734</span>
+<span class="mi">1594923625853194299</span> <span class="n">ia_telegraf</span> <span class="mf">17.790742401040156</span> <span class="mf">26.029039405898416</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923625.8526921</span>
+<span class="mi">1594923627854797339</span> <span class="n">ia_telegraf</span> <span class="mf">18.636291434358817</span> <span class="mf">29.326483056022322</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923627.8538675</span>
+<span class="mi">1594923629861235060</span> <span class="n">ia_telegraf</span> <span class="mf">13.110781672981076</span> <span class="mf">26.452111132568664</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923629.8601944</span>
+<span class="mi">1594923636868340122</span> <span class="n">ia_telegraf</span> <span class="mf">27.663236146599328</span> <span class="mf">26.29884980515991</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923636.867832</span>
+<span class="mi">1594923647880734785</span> <span class="n">ia_telegraf</span> <span class="mf">25.3924565876123</span>   <span class="mf">28.078243101597526</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923647.8796468</span>
+<span class="mi">1594923648881486348</span> <span class="n">ia_telegraf</span> <span class="mf">12.022217148202829</span> <span class="mf">27.96651437168266</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923648.8805144</span>
+<span class="mi">1594923654886479873</span> <span class="n">ia_telegraf</span> <span class="mf">17.333022980266087</span> <span class="mf">28.368384241660806</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923654.8855999</span>
+<span class="mi">1594923655888191773</span> <span class="n">ia_telegraf</span> <span class="mf">29.70650230680635</span>  <span class="mf">26.11839631300789</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923655.8870778</span>
+<span class="mi">1594923656888741310</span> <span class="n">ia_telegraf</span> <span class="mf">17.591632563610442</span> <span class="mf">27.549975342107892</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594923656.8878617</span>
+</pre></div>
+</div>
+<p>Here, all the temperature data is above 25</p>
+</li>
+<li><p>To see the data in humidity_classifier_results measurement use the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ select * from humidity_classifier_results
+</pre></div>
+</div>
+<p>Sample output of the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">humidity_classifier_results</span>
+<span class="n">time</span>                <span class="n">host</span>        <span class="n">humidity</span>           <span class="n">temperature</span>        <span class="n">topic</span>                   <span class="n">ts</span>
+<span class="o">----</span>                <span class="o">----</span>        <span class="o">--------</span>           <span class="o">-----------</span>        <span class="o">-----</span>                   <span class="o">--</span>
+<span class="mi">1594922435670934407</span> <span class="n">ia_telegraf</span> <span class="mf">29.14477182235822</span>  <span class="mf">28.24835641087284</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922435.6704926</span>
+<span class="mi">1594922438672749397</span> <span class="n">ia_telegraf</span> <span class="mf">28.333961058034408</span> <span class="mf">23.79412059324136</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922438.6722746</span>
+<span class="mi">1594922440673573262</span> <span class="n">ia_telegraf</span> <span class="mf">28.403412014434576</span> <span class="mf">15.849326161213199</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922440.6730607</span>
+<span class="mi">1594922441674124435</span> <span class="n">ia_telegraf</span> <span class="mf">27.629699521677637</span> <span class="mf">13.964340936065131</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922441.6733868</span>
+<span class="mi">1594922451683956862</span> <span class="n">ia_telegraf</span> <span class="mf">26.31819680956764</span>  <span class="mf">11.757978239277323</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922451.6834583</span>
+<span class="mi">1594922452684404597</span> <span class="n">ia_telegraf</span> <span class="mf">26.942886935205237</span> <span class="mf">27.954762973394395</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922452.6838408</span>
+<span class="mi">1594922454685507436</span> <span class="n">ia_telegraf</span> <span class="mf">28.198384986303513</span> <span class="mf">21.958077952286747</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922454.6847117</span>
+<span class="mi">1594922459691136679</span> <span class="n">ia_telegraf</span> <span class="mf">28.928009573873968</span> <span class="mf">27.33375706494249</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922459.6906385</span>
+<span class="mi">1594922461692967897</span> <span class="n">ia_telegraf</span> <span class="mf">27.300210084769425</span> <span class="mf">21.84679722208667</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922461.6924229</span>
+<span class="mi">1594922464695220305</span> <span class="n">ia_telegraf</span> <span class="mf">26.031621145742253</span> <span class="mf">19.33596257126575</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922464.694672</span>
+<span class="mi">1594922465696773126</span> <span class="n">ia_telegraf</span> <span class="mf">25.312548153267265</span> <span class="mf">25.93090843830029</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922465.695979</span>
+<span class="mi">1594922466697439030</span> <span class="n">ia_telegraf</span> <span class="mf">29.384297962446905</span> <span class="mf">27.409752918067007</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922466.6964452</span>
+<span class="mi">1594922472701537004</span> <span class="n">ia_telegraf</span> <span class="mf">27.621241070234706</span> <span class="mf">26.68898759908584</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922472.7007167</span>
+<span class="mi">1594922473703266299</span> <span class="n">ia_telegraf</span> <span class="mf">28.558485895926765</span> <span class="mf">21.455033422854758</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922473.7021594</span>
+<span class="mi">1594922475704646142</span> <span class="n">ia_telegraf</span> <span class="mf">27.423792582269076</span> <span class="mf">12.596418464102804</span> <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922475.7040672</span>
+<span class="mi">1594922479707734013</span> <span class="n">ia_telegraf</span> <span class="mf">27.770484735726605</span> <span class="mf">19.20584244268835</span>  <span class="n">temperature</span><span class="o">/</span><span class="n">simulated</span><span class="o">/</span><span class="mi">0</span> <span class="mf">1594922479.706727</span>
+</pre></div>
+</div>
+<p>Here, all the humidity data is above 25</p>
+</li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

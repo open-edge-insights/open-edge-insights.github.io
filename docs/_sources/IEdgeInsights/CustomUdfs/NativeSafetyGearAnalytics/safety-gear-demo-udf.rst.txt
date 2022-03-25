@@ -55,22 +55,23 @@ the frame and any violations occuring.
 
      From:
 
-     .. code-block:: yml
+  .. code-block:: yml
 
-        ---snip---
-        build:
-         context: $PWD/../CustomUdfs/NativeSafetyGearAnalytics
-         dockerfile: $PWD/../CustomUdfs/NativeSafetyGearAnalytics/Dockerfile
-        ---snip---
+     ---snip---
+       build:
+           context: $PWD/../CustomUdfs/NativeSafetyGearAnalytics
+           dockerfile: $PWD/../CustomUdfs/NativeSafetyGearAnalytics/Dockerfile
+     ---snip---
 
-     To
+    To
 
-     .. code-block:: yml
+  .. code-block:: yml
 
-        -----snip-----
-        build:
-         context: $HOME/NativeSafetyGearAnalytics
-         dockerfile: $HOME/NativeSafetyGearAnalytics/Dockerfile
+       -----snip-----
+       build:
+           context: $HOME/NativeSafetyGearAnalytics
+           dockerfile: $HOME/NativeSafetyGearAnalytics/Dockerfile
+
 
   #. 
      Change the `video-streaming-all-udfs.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming-all-udfs.yml>`_ file to define the service with full path instead of relative path from IEdgeInsights as follows:

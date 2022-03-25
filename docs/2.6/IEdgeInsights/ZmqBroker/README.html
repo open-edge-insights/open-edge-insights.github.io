@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZeroMQ Broker &mdash; OEI Documentation v1.0 documentation</title><link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/contentui.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/clipboard.min.js"></script>
+        <script src="../../_static/copybutton.js"></script>
+        <script src="../../_static/contentui.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> OEI Documentation
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+  
+              <p><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/introduction.html">Introduction to OEI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/running.html">Run Open Edge Insights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#about-open-edge-insights">About Open Edge Insights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#video-pipeline-analytics">Video pipeline Analytics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#time-series-analytics">Time-series Analytics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#oei-multi-node-cluster-deployment">OEI multi-node cluster deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#oei-tools">OEI tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#oei-uninstaller">OEI Uninstaller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#debugging-options">Debugging options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/running.html#web-deployment-tool">Web Deployment Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/running.html#troubleshooting-guide">Troubleshooting guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#oei-v3-0">OEI v3.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-6-2">EII v2.6.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#fixes">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-6-1">EII v2.6.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id1">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id2">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id3">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#bug-fix">Bug fix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id4">Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Core Libraries:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/msgbus.html">Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id1">Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#generating-documentation">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id2">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id3">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id4">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id5">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id6">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id7">Packaging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id9">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id10">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id11">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id12">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id13">Running Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id14">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id15">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id16">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id17">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id18">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id19">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id20">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id21">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id22">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id23">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id24">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id25">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id26">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id27">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id28">Running Go Examples without Installing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id29">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id30">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id33">Using Only CurveZMQ Encryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id34">Publish/Subscribe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/msgbus.html#id35">Request/Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id36">Using ZAP Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/msgbus.html#id37">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id38">Known issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#id39">Generation of python .whl file (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/msgbus.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/eiiConfig.html">OEI Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/eiiConfig.html#configmgr">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#configmgr-installation">ConfigMgr Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#using-system-grpc">Using System gRPC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#generating-documentation">Generating Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#publisher-interface">Publisher Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#subscriber-interface">Subscriber Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#server-interface"><strong>Server Interface</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#client-interface"><strong>Client Interface</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#cpp-examples">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/eiiConfig.html#go-examples">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#creation-of-grpc-zip-file-optional">Creation of grpc .zip file (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/eiiConfig.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/eiiConfig.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Video Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/video.html">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#videoingestion-module">VideoIngestion Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#oei-udfloader">OEI UDFLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#oei-sample-udfs">OEI Sample UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#udf-writing-guide">UDF Writing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#sample-udfs">Sample UDFs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#chaining-of-udfs">Chaining of UDFs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#native-visualizer-module">Native Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#web-visualizer-module">Web Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/video.html#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/video.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Time-Series Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/timeseries.html">Working with Time series Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/timeseries.html#telegraf">Telegraf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/timeseries.html#point-data-time-series-data-analytics-introduction">Point-data (Time-series data) analytics introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/timeseries.html#grafana">Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/timeseries.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Export Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#prerequisites-and-setup">Prerequisites and Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#azure-cloud-setup">Azure Cloud Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#setting-up-azureml">Setting up AzureML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#important">Important</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#development-system-setup">Development System Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#build-and-push-oei-containers">Build and Push OEI Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-1-provisioning">Step 1 - Provisioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#expected-result">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-2-configuring-eii">Step 2 - Configuring EII</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#id3">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-3-configuring-azure-iot-deployment-manifest">Step 3 - Configuring Azure IoT Deployment Manifest</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#id4">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#step-4-deployment">Step 4 - Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/azure.html#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#helpful-debugging-commands">Helpful Debugging Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#final-notes">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#id5">Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#sample-eii-onnx-udf">Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#simple-subscriber">Simple Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#eii-etcd-pre-load">EII ETCD Pre-Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#azure-blob-storage">Azure Blob Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/azure.html#azure-deployment-manifest">Azure Deployment Manifest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#supported-oei-services">Supported OEI Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/azure.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/opcua.html#opcuaexport">OpcuaExport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/restdata.html">RestDataExport service</a></li>
+</ul>
+<p><span class="caption-text">Additional Info:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/tools.html">OEI Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#discoverhistory-tool">DiscoverHistory tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#configuration-of-the-tool">Configuration of the tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#gigeconfig-tool">GigEConfig tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#generating-pfs-pylon-feature-stream-file">Generating PFS (Pylon Feature Stream) File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#running-gigeconfig-tool">Running GigEConfig Tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#develop-python-user-defined-functions-using-jupyter-notebook">Develop Python User Defined Functions using Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#prerequisites-for-using-jupyter-notebooks">Prerequisites for using Jupyter Notebooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#run-jupyter-notebook-from-web-browsers">Run Jupyter Notebook from web browsers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#run-jupyter-notebook-using-visual-studio-code">Run Jupyter Notebook using Visual Studio Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#mqtt-publisher">MQTT publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#oei-video-profiler">OEI Video Profiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#oei-video-profiler-prerequisites">OEI Video Profiler prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#oei-video-profiler-modes">OEI Video Profiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#oei-video-profiler-configurations">OEI Video Profiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#run-video-profiler">Run Video Profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#running-videoprofiler-in-helm-usecase">Running VideoProfiler in helm usecase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#optimizing-oei-video-pipeline-by-analysing-video-profiler-results">Optimizing OEI Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi-instance config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/sample.html">OEI Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/sample.html#eii-sample-apps">EII Sample Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pages/security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">OEI Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+  <!-- 3.0 -->
+  
+  
+
+  <li><a href="../../index.html">3.0</a> &raquo;</li>
+  
+  <li>ZeroMQ Broker</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/IEdgeInsights/ZmqBroker/README.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p><strong>Contents</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="#zeromq-broker">ZeroMQ Broker</a></p>
+<ul>
+<li><p><a class="reference external" href="#overview">Overview</a></p></li>
+<li><p><a class="reference external" href="#security">Security</a></p>
+<ul>
+<li><p><a class="reference external" href="#ipc">IPC</a></p></li>
+<li><p><a class="reference external" href="#tcp">TCP</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#performance-implications">Performance Implications</a></p></li>
+<li><p><a class="reference external" href="#configuration">Configuration</a></p>
+<ul>
+<li><p><a class="reference external" href="#applicationservice-configuration">Application/Service Configuration</a></p></li>
+<li><p><a class="reference external" href="#interface-configuration">Interface Configuration</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="#docker">Docker</a></p></li>
+<li><p><a class="reference external" href="#connecting-eii-services-to-the-zeromq-broker">Connecting EII Services to the ZeroMQ Broker</a></p></li>
+<li><p><a class="reference external" href="#bare-metal">Bare Metal</a></p>
+<ul>
+<li><p><a class="reference external" href="#compilation">Compilation</a></p></li>
+<li><p><a class="reference external" href="#usage">Usage</a></p></li>
+<li><p><a class="reference external" href="#running-unit-tests">Running Unit Tests</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id="zeromq-broker">
+<h1>ZeroMQ Broker<a class="headerlink" href="#zeromq-broker" title="Permalink to this headline">¶</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The ZeroMQ Broker provides the ability to proxy data coming over the
+EII Message Bus ZeroMQ protocol plugin for publishers and subscribers.
+Traditionally, each EII Message Bus ZeroMQ publisher has its own IPC socket
+or TCP (host, port) combination. This broker allows for publishers to connect
+to the proxy’s publisher TCP or IPC socket for sending published messages and
+subscribers to connect to one central subscriber TCP or IPC socket
+to receive incoming messages from the broker.</p>
+<p>The ZeroMQ Broker builds off of the functionality provided by the ZeroMQ
+<code class="docutils literal notranslate"><span class="pre">zmq_proxy()</span></code> API, which uses two separate sockets and hands messages off from
+one socket to the other.</p>
+<p>The following diagram shows a high-level flow of how the ZeroMQ Broker
+functions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+-----------+</span>    <span class="o">+-----------+</span>    <span class="o">+-----------+</span>
+<span class="o">|</span> <span class="n">Publisher</span> <span class="o">|</span>    <span class="o">|</span> <span class="n">Publisher</span> <span class="o">|</span>    <span class="o">|</span> <span class="n">Publisher</span> <span class="o">|</span>
+<span class="o">+-----------+</span>    <span class="o">+-----------+</span>    <span class="o">+-----------+</span>
+<span class="o">|</span>  <span class="n">ZMQ_PUB</span>  <span class="o">|</span>    <span class="o">|</span>  <span class="n">ZMQ_PUB</span>  <span class="o">|</span>    <span class="o">|</span>  <span class="n">ZMQ_PUB</span>  <span class="o">|</span>
+<span class="o">+-----------+</span>    <span class="o">+-----------+</span>    <span class="o">+-----------+</span>
+   <span class="n">connect</span>          <span class="n">connect</span>          <span class="n">connect</span>
+     <span class="o">|</span>                <span class="o">|</span>                 <span class="o">|</span>
+     <span class="o">+----------------+-----------------+</span>
+                      <span class="o">|</span>
+                     <span class="n">bind</span>
+              <span class="o">+----------------+</span>
+              <span class="o">|</span>    <span class="n">ZMQ_XSUB</span>    <span class="o">|</span>
+              <span class="o">+----------------+</span>
+              <span class="o">|</span>     <span class="n">proxy</span>      <span class="o">|</span>
+              <span class="o">+----------------+</span>
+              <span class="o">|</span>    <span class="n">ZMQ_XPUB</span>    <span class="o">|</span>
+              <span class="o">+----------------+</span>
+                     <span class="n">bind</span>
+                      <span class="o">|</span>
+      <span class="o">+---------------+-------------------+</span>
+      <span class="o">|</span>               <span class="o">|</span>                   <span class="o">|</span>
+   <span class="n">connect</span>          <span class="n">connect</span>            <span class="n">connect</span>
+<span class="o">+------------+</span>    <span class="o">+------------+</span>    <span class="o">+------------+</span>
+<span class="o">|</span>  <span class="n">ZMQ_SUB</span>   <span class="o">|</span>    <span class="o">|</span>  <span class="n">ZMQ_SUB</span>   <span class="o">|</span>    <span class="o">|</span>  <span class="n">ZMQ_SUB</span>   <span class="o">|</span>
+<span class="o">+------------+</span>    <span class="o">+------------+</span>    <span class="o">+------------+</span>
+<span class="o">|</span> <span class="n">Subscriber</span> <span class="o">|</span>    <span class="o">|</span> <span class="n">Subscriber</span> <span class="o">|</span>    <span class="o">|</span> <span class="n">Subscriber</span> <span class="o">|</span>
+<span class="o">+------------+</span>    <span class="o">+------------+</span>    <span class="o">+------------+</span>
+</pre></div>
+</div>
+<p>As shown in the diagram above, the broker uses two ZeroMQ sockets:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>A socket for publishers to connect (i.e. the <code class="docutils literal notranslate"><span class="pre">ZMQ_XSUB</span></code> socket), which is</dt><dd><p>referred to as the <strong>frontend</strong> socket</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>A socket for the subscribers to connect to (i.e. the <code class="docutils literal notranslate"><span class="pre">ZMQ_XPUB</span></code> socket), which</dt><dd><p>is referred to as the <strong>backend</strong> socket</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>The broker binds to the TCP (host, port) or IPC socket file (based on its
+configuration) for each of its sockets. Messages are sent from publishers into
+the <strong>frontend</strong> socket and then relayed onto the <strong>backend</strong> socket which
+forwards the messages onto the subscribers.</p>
+</section>
+<section id="security">
+<h2>Security<a class="headerlink" href="#security" title="Permalink to this headline">¶</a></h2>
+<p>The security for the broker depends on whether the broker is using TCP or IPC
+for its respective sockets.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The broker can be used with the <strong>frontend</strong> being a TCP socket and
+the <strong>backend</strong> being an IPC socket (and vice-versa).</p>
+</div>
+<p>The following sections cover the security for the TCP and IPC modes.</p>
+<section id="ipc">
+<h3>IPC<a class="headerlink" href="#ipc" title="Permalink to this headline">¶</a></h3>
+<p>When the broker is using an IPC socket (for either the <strong>frontend</strong> or <strong>backend</strong>
+sockets), the ability to send/receive messages shall be handled by Linux file
+permissions. There is no encryption which shall occur for the messages sent
+over IPC sockets.</p>
+</section>
+<section id="tcp">
+<h3>TCP<a class="headerlink" href="#tcp" title="Permalink to this headline">¶</a></h3>
+<p>For TCP connections, ZeroMQ offers mechanisms for both encryption and authentication.
+This is accomplished via elliptical curve keys generated when EII is provisioned.
+These keys provide the encryption and authentication via the ZAP protocol and a
+list of allowed clients authentication is handled.</p>
+<p>The encryption and authentication is all handled under the hood by the EII
+Message Bus for publishers and subscribers which are connecting to the broker.
+Via the configuration of the broker’s messaging interfaces the broker has the
+required keys for decrypting messages and for determining whether or not a
+given publisher or subscriber is allowed to connect.</p>
+<p>See the configuration section for more details on listing out allowed clients
+and configuring the security for the ZeroMQ Broker.</p>
+<p><strong>IMPORTANT SECURITY IMPLICATION</strong></p>
+<p>For TCP connections, there is one important security implication to be aware
+of. The broker manages a single list of all of the publishers and subscribers
+which are allowed to connect. If a given subscriber can connect, then all of
+the data coming through that broker instance is available to that subscriber to
+receive. Essentially what this means, is that the broker does not do authentication
+on a per topic/stream basis, only on a connection basis.</p>
+</section>
+</section>
+<section id="performance-implications">
+<h2>Performance Implications<a class="headerlink" href="#performance-implications" title="Permalink to this headline">¶</a></h2>
+<p>When using the ZeroMQ Broker it is important to understand the implications
+on the performance of the networking in the EII platform.</p>
+<p>By using the broker, an extra network hop is incurred for all messages sent
+over the EII Message Bus ZeroMQ protocol plugin. This will increase the latency
+for the messages sent from the publishers connecting to the broker to the
+subscribers connecting to the broker.</p>
+<p><strong>IMPORTANT NOTE:</strong></p>
+<p>Having the broker running in an EII deployment does not make every message
+from publishers go through the broker. Each publisher must be configured to
+connect to the broker. Publishers which are not configured to connect to the
+broker will still bind to their respective IPC socket or TCP (host, port)
+combination.</p>
+</section>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The JSON schema for the configuration properties of the ZeroMQ
+Broker can be found in the, “schema.json”, file.</p>
+</div>
+<p>Configuration of the ZeroMQ Broker is predominantly accomplished from the
+EII Configuration Manager APIs. However, it can also be configured via JSON
+files, as described in the Usage section below. The configuration via JSON
+files is only for development/debugging purposes. This section will focus on
+the preduction configuration of the broker.</p>
+<p>The configuration of the broker falls into two main areas:</p>
+<ol class="arabic simple">
+<li><p><strong>Application/Service Configuration</strong> - Configuration of the runtime behavior</p></li>
+<li><dl class="simple">
+<dt><strong>Interface Configuration</strong> - Configuration of the networking interfaces</dt><dd><p>(i.e. frontend and backend sockets)</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>Aside from the interface and service configuration, there are two properties
+that are set via environmental variables: <code class="docutils literal notranslate"><span class="pre">AppName</span></code> and <code class="docutils literal notranslate"><span class="pre">DEV_MODE</span></code>. The
+<code class="docutils literal notranslate"><span class="pre">AppName</span></code> variable determines how the service quries its configuration using
+the Configuration Manager APIs. For docker-compose, this is set in the
+<code class="docutils literal notranslate"><span class="pre">environment</span></code> section of the, “docker-compose.yml”, file under the
+<code class="docutils literal notranslate"><span class="pre">ia_zmq_broker</span></code> section. The default value for this is <code class="docutils literal notranslate"><span class="pre">ZmqBroker</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">DEV_MODE</span></code> variable sets whether or not the broker will attempt to use
+certificates with the Configuration Manager APIs and over any TCP connections.
+This also is obtainerd from the <code class="docutils literal notranslate"><span class="pre">environment</span></code> section of the, “docker-compose.yml”,
+file.</p>
+<p><strong>IMPORTANT NOTE:</strong>
+There are some other configuration properties in the <code class="docutils literal notranslate"><span class="pre">environment</span></code> section of
+the, “docker-compose.yml”, file. These are provided to the service from the,
+“build/.env”, file. See the EII User Guide for more details.</p>
+<p>The following two sections cover that various configuration properties the
+broker supports for interfaces and application configuration.</p>
+<section id="application-service-configuration">
+<h3>Application/Service Configuration<a class="headerlink" href="#application-service-configuration" title="Permalink to this headline">¶</a></h3>
+<p>The broker supports two configuration parameters; one for the Linux scheduler
+policy and the other for the scheduler priority. These two properties are
+applied to the main thread which is running the ZeroMQ proxy.</p>
+<p>The configuration values must be specified in the config.json prior to running
+the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script or eii_config.json after using the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code>
+script.</p>
+<p>The table below specifies the details for these parameters. Note that neither of
+these are required in the configuration and should only be set if the user
+knows they need to have a certain scheduling policy and priority for the broker.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sched_policy</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Scheduling policy to set for the main thread. Must be: <code class="docutils literal notranslate"><span class="pre">SCHED_OTHER</span></code>, <code class="docutils literal notranslate"><span class="pre">SCHED_IDLE</span></code>, <code class="docutils literal notranslate"><span class="pre">SCHED_BATCH</span></code>, <code class="docutils literal notranslate"><span class="pre">SCHED_FIFO</span></code>, or <code class="docutils literal notranslate"><span class="pre">SCHED_RR</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sched_priority</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">integer</span></code></p></td>
+<td><p>Sets the priority for the thread. Must be between <code class="docutils literal notranslate"><span class="pre">0</span></code> and <code class="docutils literal notranslate"><span class="pre">99</span></code>. Only valid for <code class="docutils literal notranslate"><span class="pre">SCHED_FIFO</span></code> and <code class="docutils literal notranslate"><span class="pre">SCHED_RR</span></code> policies.</p></td>
+</tr>
+</tbody>
+</table>
+<p>An example of applying these two settings to the ZeroMQ Broker’s
+configuration is shown below. In this example, the configuration is an
+excerpt from the, ‘IEdgeInsights/build/provision/config/eii_config.json”,
+generated while using the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="c1">// ... omitted ...</span>
+
+    <span class="s2">&quot;/ZmqBroker/config&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;sched_policy&quot;</span><span class="o">:</span> <span class="s2">&quot;SCHED_FIFO&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;sched_priority&quot;</span><span class="o">:</span> <span class="mf">42</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ... omitted ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There will also be an <code class="docutils literal notranslate"><span class="pre">/ZmqBroker/interfaces</span></code> section associated
+with the broker, but that is covered in the next section.</p>
+</div>
+<p>The configuration above sets the Linux scheduler policy to <code class="docutils literal notranslate"><span class="pre">SCHED_FIFO</span></code> and its
+priority to <code class="docutils literal notranslate"><span class="pre">42</span></code>. As stated before, this can also be left entirely empty and the
+broker thread will default to the Linux default thread scheduling policy/priority.</p>
+</section>
+<section id="interface-configuration">
+<h3>Interface Configuration<a class="headerlink" href="#interface-configuration" title="Permalink to this headline">¶</a></h3>
+<p>The configuration of the networking interfaces for the ZeroMQ Broker is
+divided into two sections, “Subscribers”, and, “Publishers”. The, “Subscribers”,
+sections sets the configuration for the <strong>frontend</strong> socket (since it subscribes
+to the messages coming from publishers), and the, “Publishers”, section
+determines the configuration for the <strong>backend</strong> socket.</p>
+<p>The Configuration Manager API assumes that the, “Subscribers”, and, “Publishers”,
+section is a list. However, since the ZeroMQ Broker does not use multiple
+publisher and subscriber sockets, the lists must only contain one element.</p>
+<p>The single JSON object which is expected to be in the, “Subscribers”, and,
+“Publishers”, sections is essentially the same. An example is shown below of
+the interfaces configuration for a broker instance with TCP sockets for both
+the <strong>frontend</strong> and <strong>backend</strong>.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0:60514&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0:60515&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The primary difference to point out is that the, “Name”, and, “Topics”,
+fields are different. For the, “Subscribers”, the, “Name”, MUST be the
+string <code class="docutils literal notranslate"><span class="pre">frontend</span></code>, and the, “Topics”, list must only contain a single value in
+it, which is <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code>. For the, “Publishers”, object the same rules hold
+true. Note that, “AllowedClients”, also has a <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code> in it. If you wish to only
+allowed certain services to connect to the broker, then change this to a list
+of the app name’s of the services which are allowd to connect.</p>
+<p>This allows the broker to query specific configuration objects using the
+defined names <code class="docutils literal notranslate"><span class="pre">frontend</span></code> and <code class="docutils literal notranslate"><span class="pre">backend</span></code>. It is important to note that if the
+deployment needs to limit the services which can connect to the broker, then
+the, “AllowedClients”, list should be modified to contain only the app names of
+the services allowed to connect.</p>
+<p>For IPC sockets, the configuration is very similar, except that the, “EndPoint”,
+and, “Type”, values are different (as shown in the example below).</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;SocketDir&quot;</span><span class="o">:</span> <span class="s2">&quot;/tmp/socks&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SocketFile&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend-socket&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;SocketDir&quot;</span><span class="o">:</span> <span class="s2">&quot;/tmp/socks&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SocketFile&quot;</span><span class="o">:</span> <span class="s2">&quot;backend-socket&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the example above, note that the, “Type”, values is now <code class="docutils literal notranslate"><span class="pre">zmq_ipc</span></code> and the,
+“EndPoint”, is a JSON object which defines the socket directory and file to use
+for the sockets.</p>
+<p><strong>IMPORTANT NOTES:</strong></p>
+<p>There are two important notes to be aware of with the configurations presented
+above:</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>Although the configurations above showcase using IPC and TCP for both the</dt><dd><p>frontend and backend sockets they can be used in any combination (e.g. the
+broker can use an IPC socket for the frontend and TCP for the backend).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>When using IPC sockets, the name of the, “SocketFile”, must also be specified</dt><dd><p>for all subscribers or publishers which will be connecting to that socket.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</section>
+</section>
+<section id="docker">
+<h2>Docker<a class="headerlink" href="#docker" title="Permalink to this headline">¶</a></h2>
+<p>The ZeroMQ Broker is integrated into the EII docker-compose ecosystem. To
+build and use the Docker container, follow the defined building / provisioning
+instructions for EII.</p>
+<p>If you are using a YAML file with the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script, then make sure
+to add <code class="docutils literal notranslate"><span class="pre">ZmqBroker</span></code> under the <code class="docutils literal notranslate"><span class="pre">AppName</span></code> section of the YAML file. This will
+include the broker into the resulting docker-compose.yml file and it will
+include the broker’s configuration into the <code class="docutils literal notranslate"><span class="pre">eii_config.json</span></code> which shall
+be used when provisioning.</p>
+</section>
+<section id="connecting-eii-services-to-the-zeromq-broker">
+<h2>Connecting EII Services to the ZeroMQ Broker<a class="headerlink" href="#connecting-eii-services-to-the-zeromq-broker" title="Permalink to this headline">¶</a></h2>
+<p>In order to connect EII Services, such as the VideoIngestion or VideoAnalytics
+services, user must edit their interfaces configuration to tell them the
+broker instance to connect to. Namely, you need to add two keys to the,
+“Publishers”, configuration to have two additional keys:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">BrokerAppName</span></code> - This specifies the AppName of the targeted broker instance</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">brokered</span></code> - This tells the EII Message Bus that the given publisher instance</dt><dd><p>is brokered</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>As an example, below is the changes in the interfaces configuration for enabling
+the VideoIngestion and VideoAnalytics to communicate via ZmqBroker.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Though the example shows VideoIngestion and VideoAnalytics
+using the ZmqBroker, it is not recommended for video streaming use-cases
+due to the extra hop added to the video frames which will affect performance.</p>
+</div>
+<p>Changes to VideoIngestion/config.json which is a publisher.
+The following adds the, “BrokerAppName”, and, “brokered”, keys to the default
+publisher’s configuration.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;interfaces&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;camera1_stream&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;ia_zmq_broker:60514&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;brokered&quot;</span><span class="o">:</span> <span class="kc">true</span>
+            <span class="s2">&quot;BrokerAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;ZmqBroker&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>For the subscriber which is VideoAnalytics, there wont be much change other than
+changing the endpoint to point to ZmqBroker along with PublisherAppName.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;interfaces&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;ia_zmq_broker:60515&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;ZmqBroker&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;camera1_stream&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;zmq_recv_hwm&quot;</span><span class="o">:</span> <span class="mf">50</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="bare-metal">
+<h2>Bare Metal<a class="headerlink" href="#bare-metal" title="Permalink to this headline">¶</a></h2>
+<p><strong>IMPORTANT NOTE:</strong></p>
+<p>Running the broker using bare-metal is not recommended for production environments.
+This way of running the broker is meant purely for development and debugging
+purposes.</p>
+<section id="compilation">
+<h3>Compilation<a class="headerlink" href="#compilation" title="Permalink to this headline">¶</a></h3>
+<p>The ZeroMQ Broker is written in C++ and as such utilizes the CMake build
+system for building the binary for the broker.</p>
+<p>The ZeroMQ Broker has the following dependencies:</p>
+<ul class="simple">
+<li><p>CMake 3.15+</p></li>
+<li><p>IntelSafeString</p></li>
+<li><p>EIIUtils</p></li>
+<li><p>libzmq</p></li>
+<li><p>EIIConfigMgr</p></li>
+<li><p>EIIMessageBus (only required for unit tests)</p></li>
+</ul>
+<p>Prior to building the ZeroMQ Broker, you must install these libraries on
+the target system. This can be done using the, “common/eii_libs_installer.sh”
+script.</p>
+<p>Once the dependencies for the broker are installed on your system, run the
+following commands to build the ZeroMQ Broker.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Create the build directory</span>
+$ mkdir build/
+
+<span class="c1"># 2. Change directories into the newly created build/ directory</span>
+$ <span class="nb">cd</span> build/
+
+<span class="c1"># 3. Run the CMake command to setup the build environment (see subsections)</span>
+
+<span class="c1"># 3a. If you want to compile without the unit tests execute the following command</span>
+$ cmake ..
+
+<span class="c1"># 3b. If you wish to compile the unit tests, then execute the following (note:</span>
+<span class="c1"># it is recommended to build in Debug mode)</span>
+$ cmake -DCMAKE_BUILD_TYPE<span class="o">=</span>Debug -DWITH_TESTS<span class="o">=</span>ON ..
+
+<span class="c1"># 4. Build the ZeroMQ Broker binary</span>
+$ make
+</pre></div>
+</div>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<p>After building the ZeroMQ Broker you will have a binary named, “zmq-broker”.
+Use this binary to run the ZeroMQ Broker.</p>
+<p>The ZeroMQ Broker can be configured from the EII Configuration Manager as
+well as from environmental variables and JSON configuration files.</p>
+<p>To use the configuration obtained via the EII Configuration Manager, simply
+start the binary with no parameters; however, make sure to set the <code class="docutils literal notranslate"><span class="pre">AppName</span></code>
+and <code class="docutils literal notranslate"><span class="pre">DEV_MODE</span></code> environmental variables. As mentioned at the beginning of the,
+“Bare Metal”, section, this way of running the broker should only be done in
+development environments. As such, it is assumed that the <code class="docutils literal notranslate"><span class="pre">DEV_MODE</span></code> environmental
+variable will be set to <code class="docutils literal notranslate"><span class="pre">true</span></code> and no security shall be used with the Configuration
+Manager or over EII Message Bus ZeroMQ TCP connections. Additionall, for running
+in this way, the, “ia_etcd”, container must be running.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set DEV_MODE environmental variable to &quot;true&quot;</span>
+$ <span class="nb">export</span> <span class="nv">DEV_MODE</span><span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># Set the AppName environmental variable to &quot;ZmqBroker&quot;</span>
+$ <span class="nb">export</span> <span class="nv">AppName</span><span class="o">=</span>ZmqBroker
+
+<span class="c1"># Run the broker</span>
+$ ./zmq-broker
+</pre></div>
+</div>
+<p>The broker also supports receiving its configuration through JSON configuration
+files and environmental variables. To set the log level, Linux scheduler policy
+and priority set the following environmental variables (defined in Configuration
+section of this README).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">C_LOG_LEVEL</span></code> - Log level (will default to <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> log level)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCHED_POLCIY</span></code> - Scheduler policy</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SCHED_PRIORITY</span></code> - Scheduler priority</p></li>
+</ul>
+<p>Note that none of the above environmental variables are required to run the
+broker.</p>
+<p>When using JSON files, the broker will expect two positional command line
+arguments. The first will be the configuration of the <strong>frontend</strong> socket and
+the second will be for the <strong>backend</strong> configuration.</p>
+<blockquote>
+<div><p><strong>REMINDER:</strong> The <strong>frontend</strong> refers to the configuration for socket which
+publishers shall connect to, and the <strong>backend</strong> refers to the configuration
+for the socket which subscribers shall connect to.</p>
+</div></blockquote>
+<p>The contents of the JSON is analygous to the JSON configuration files used in
+the EII Message Bus (see the IEdgeInsights/common/libs/EIIMessageBus/README.md
+for more information). The contents of the JSON files depends on whether if
+the given socket is supposed to use TCP or IPC.</p>
+<p>For <strong>IPC</strong> configurations, the frontend and backend configurations need to look
+respectively as follows:</p>
+<p><strong>Frontend:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+
+    <span class="c1">// Socket directory to create the socket file in</span>
+    <span class="s2">&quot;socket_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+
+    <span class="c1">// Specifies the IPC endpoint config (i.e. socket directory and file)</span>
+    <span class="s2">&quot;&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">// IPC socket file to bind to for the frontend socket</span>
+        <span class="s2">&quot;socket_file&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend-sock&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><em>*NOTE:</em> This example configuration is stored in, “examples/ipc_frontend_example.json”,
+and can be used with the, “examples/configs/ipc_publisher_brokered.json”,
+EII Message Bus configuration file.</p>
+</div></blockquote>
+<p>The table below desribes the purpose of each key in the JSON configuration file.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p>Specifies the ZeroMQ protocol to use, must be either <code class="docutils literal notranslate"><span class="pre">zmq_ipc</span></code> or <code class="docutils literal notranslate"><span class="pre">zmq_tcp</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">socket_dir</span></code></p></td>
+<td><p>Specifies the directory in which to create all of the IPC socket files.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+<td><p>Gives the IPC socket file configuration for the frontend IPC socket.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">socket_file</span></code></p></td>
+<td><p>This key specifies the name of the socket file to bind to.</p></td>
+</tr>
+</tbody>
+</table>
+<p>For the <code class="docutils literal notranslate"><span class="pre">socket_file</span></code> key, when connecting a publisher, the publisher’s
+configuration must also use this same <code class="docutils literal notranslate"><span class="pre">socket_file</span></code> key in the configuration
+for it. Otherwise, it will fail to connect because it will attempt to
+bind/connect to its topic name (see the EII Message Bus’s documentation for
+more details).</p>
+<p><strong>Backend:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+
+    <span class="c1">// Socket directory to create the socket file in</span>
+    <span class="s2">&quot;socket_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+
+    <span class="c1">// Specifies the IPC endpoint config (i.e. socket directory and file)</span>
+    <span class="s2">&quot;&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">// IPC socket file to bind to for the backend socket</span>
+        <span class="s2">&quot;socket_file&quot;</span><span class="o">:</span> <span class="s2">&quot;backend-sock&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><em>*NOTE:</em> This example configuration is stored in, “examples/ipc_backend_example.json”,
+and can be used with the, “examples/configs/ipc_subscriber_brokered.json”,
+EII Message Bus configuration file.</p>
+</div></blockquote>
+<p>The configuration for the backend socket is the exact same as for the frontend.</p>
+<p>For <strong>TCP</strong> configurations, the frontend anc backend configurations need to look
+respectively as follows:</p>
+<p><strong>Frontend:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+
+    <span class="c1">// List of curve public keys for publishers allowed to connect to the</span>
+    <span class="c1">// frontend socket</span>
+    <span class="s2">&quot;allowed_clients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;4J4?(I13cwJgqi+T5nxg:Dyr5)l&amp;reK]cxxTfa9V&quot;</span><span class="p">],</span>
+
+    <span class="c1">// Specifies the configuration for the frontend socket</span>
+    <span class="s2">&quot;&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">// TCP host</span>
+        <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+
+        <span class="c1">// TCP port</span>
+        <span class="s2">&quot;port&quot;</span><span class="o">:</span> <span class="mf">5568</span><span class="p">,</span>
+
+        <span class="c1">// Server secret key to use for encryption / authentication</span>
+        <span class="s2">&quot;server_secret_key&quot;</span><span class="o">:</span> <span class="s2">&quot;H[J1%f:#?0Y1cpUL&lt;nEkPKm.]:n@JI&gt;j]*!u3N#9&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example configuration is stored in, “examples/tcp_frontend_example.json”,
+and can be used with the, “examples/configs/tcp_publisher_brokered_with_security.json”,
+EII Message Bus configuration file.</p>
+</div>
+<p>The table below desribes the purpose of each key in the JSON configuration file.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p>Specifies the ZeroMQ protocol to use, must be either <code class="docutils literal notranslate"><span class="pre">zmq_ipc</span></code> or <code class="docutils literal notranslate"><span class="pre">zmq_tcp</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">host</span></code></p></td>
+<td><p>TCP host.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">port</span></code></p></td>
+<td><p>TCP port.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">allowed_clients</span></code></p></td>
+<td><p>Specifies the list of public keys for the publishers which are allowed to connect.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code></p></td>
+<td><p>Gives security configuration for the frontend TCP socket.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">server_secret_key</span></code></p></td>
+<td><p>Secret key for the frontend socket for encryption / authentication.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>IMPORTANT NOTE</strong></p>
+<p>When using JSON files for the configuration of the ZeroMQ Broker, the JSON
+file is the configuration used by the EII Message Bus, rather than the normal
+EII interface configurations. This is why the JSON configuration differs
+from the configuration given via the <code class="docutils literal notranslate"><span class="pre">eii_config.json</span></code>. The JSON shown above
+for the frontend, and the following backend configuration, represent how the
+configuration manager alters that configuration to be in these forms.</p>
+<p><strong>Backend:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+
+    <span class="c1">// List of curve public keys for subscribers allowed to connect to the</span>
+    <span class="c1">// backend socket</span>
+    <span class="s2">&quot;allowed_clients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;y-G]27SC}{!mC4(]}=c=KH1M{x)Kd/{i%o]j7YT3&quot;</span><span class="p">],</span>
+
+    <span class="c1">// Specifies the configuration for the frontend socket</span>
+    <span class="s2">&quot;zmq_tcp_publish&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="c1">// TCP host</span>
+        <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+
+        <span class="c1">// TCP port (note that this is a different port from the frontend)</span>
+        <span class="s2">&quot;port&quot;</span><span class="o">:</span> <span class="mf">5569</span>
+
+        <span class="c1">// Server secret key to use for encryption / authentication</span>
+        <span class="s2">&quot;server_secret_key&quot;</span><span class="o">:</span> <span class="s2">&quot;qydUsM#PP4r&lt;E*2]&lt;]kbLRwk1IX:H^y{Gk56e:tc&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p><em>*NOTE:</em> This example configuration is stored in, “examples/tcp_backend_example.json”,
+and can be used with the, “examples/configs/tcp_subscriber_with_security.json”,
+EII Message Bus configuration file.</p>
+</div></blockquote>
+<p>All of the keys above have the same purpose and meaning as for the frontend
+configuration. Except, there is one key difference; instead of the empty string
+key, the backend configuration has the <code class="docutils literal notranslate"><span class="pre">zmq_tcp_publish</span></code> key. This is because
+the broker adopts the same configuration definitions as the EII Message Bus
+ZeroMQ protocol plugin. The ZeroMQ protocol plugin uses the <code class="docutils literal notranslate"><span class="pre">zmq_tcp_publish</span></code>
+key for setting the TCP (host, port) combinations for all publishers under a
+single message bus context. The broker uses the same configuration to keep it
+consistent between the two entities.</p>
+<p>Once the frontend and backend JSON configuration files have been created,
+run the broker binary as follows:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># IPC Example</span>
+$ ./zmq-broker examples/ipc_frontend_example.json examples/ipc_backend_example.json
+
+<span class="c1"># TCP Example</span>
+$ ./zmq-broker examples/tcp_frontend_example.json examples/tcp_backend_example.json
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is assumed the configurations are named, “frontend_config.json”,
+and, “backend_config.json”, respectively. These could be named anything the
+user wishes. For more examples of configurations, see the JSON files in the,
+“tests/configs/”, directory.</p>
+</div>
+</section>
+<section id="running-unit-tests">
+<h3>Running Unit Tests<a class="headerlink" href="#running-unit-tests" title="Permalink to this headline">¶</a></h3>
+<p>If the ZeroMQ Broker was built with the <code class="docutils literal notranslate"><span class="pre">-DWITH_TESTS=ON</span></code> flag set for the
+CMake command, then do the following to run the unit tests:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The commands below assume you are in the, “build/”, directory created
+when compiing the broker.</p>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Change directories into the tests/ directory</span>
+$ <span class="nb">cd</span> tests/
+
+<span class="c1"># 2. Execute the unit tests</span>
+$ ./broker-tests
+</pre></div>
+</div>
+<p>If you wish to run the unit tests with a different log level, then provide
+one of the following log levels: <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code>, <code class="docutils literal notranslate"><span class="pre">INFO</span></code>, <code class="docutils literal notranslate"><span class="pre">WARN</span></code>, <code class="docutils literal notranslate"><span class="pre">ERROR</span></code> with the
+command line argument <code class="docutils literal notranslate"><span class="pre">--log-level</span></code>. An example of using the <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> log
+level is shown below:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ./broker-tests --log-level DEBUG
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

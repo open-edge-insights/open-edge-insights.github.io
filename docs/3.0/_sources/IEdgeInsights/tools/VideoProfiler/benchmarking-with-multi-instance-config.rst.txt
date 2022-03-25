@@ -1,0 +1,23 @@
+
+Benchmarking with multi instance config
+---------------------------------------
+
+
+#. 
+   EII supports multi instance config generation for benchmarking purposes. This can be acheived by running the `builder.py <https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py>`_ with certain parameters, please refer to the **Multi instance config generation** section of **EII Pre-Requisites** in `README <https://github.com/open-edge-insights/eii-core/blob/master/README.md#eii-prerequisites-installation>`_ for more details.
+
+#. 
+   For running VideoProfiler for multiple streams, run the builder with the **-v** flag provided the pre-requisites mentioned above are done. Given below is an example for generating **6** streams config:
+
+   .. code-block:: sh
+
+           python3 builder.py -f usecases/video-streaming.yml -v 6
+
+   ..
+
+      **Note:**
+
+
+      * For multi instance monitor mode usecase, please ensure only **VideoIngestion** & **VideoAnalytics** are used as **AppName** for Publishers.
+      * Running **VideoProfiler** with **CustomUDFs** for monitor mode is supported for single stream only. If required for multiple streams, please ensure **VideoIngestion** & **VideoAnalytics** are used as **AppName**.
+

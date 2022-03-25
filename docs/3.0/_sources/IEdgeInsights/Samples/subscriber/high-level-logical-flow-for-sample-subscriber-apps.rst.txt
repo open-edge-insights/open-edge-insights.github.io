@@ -1,0 +1,12 @@
+
+High-level logical flow for sample subscriber apps
+--------------------------------------------------
+
+The high-level logical flow of a sample subscriber app is as below:
+
+
+#. 
+   Sample apps use the `ConfigMgr <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/src/cfgmgr.c>`_ APIs to construct the ``msgbus`` config from the ETCD. It fetches its private and public key and the publisher's public key. It then creates the subscriber object (which subscribes to the same topic : publish_test) and start receiving the data and prints the same onto a console.
+
+#. 
+   Client contacts the ETCD service and fetches its private key and the server's public key. Then it creates a client object and sends a request to the server and receives the response back.

@@ -1,0 +1,19 @@
+
+Performance Implications
+------------------------
+
+When using the ZeroMQ Broker it is important to understand the implications
+on the performance of the networking in the EII platform.
+
+By using the broker, an extra network hop is incurred for all messages sent
+over the EII Message Bus ZeroMQ protocol plugin. This will increase the latency
+for the messages sent from the publishers connecting to the broker to the
+subscribers connecting to the broker.
+
+**IMPORTANT NOTE:**
+
+Having the broker running in an EII deployment does not make every message
+from publishers go through the broker. Each publisher must be configured to
+connect to the broker. Publishers which are not configured to connect to the
+broker will still bind to their respective IPC socket or TCP (host, port)
+combination.

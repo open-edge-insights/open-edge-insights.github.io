@@ -1,0 +1,6 @@
+
+Accesing UI Builder
+-------------------
+
+Access UI Builder App from the following ``Endpoint``\ :
+http://url:port/uibuilder/

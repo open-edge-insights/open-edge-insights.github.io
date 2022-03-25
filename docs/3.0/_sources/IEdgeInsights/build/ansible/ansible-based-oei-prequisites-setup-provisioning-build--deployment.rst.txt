@@ -1,0 +1,13 @@
+
+Ansible based OEI Prequisites setup, provisioning, build & deployment
+---------------------------------------------------------------------
+
+Ansible is the automation engine which can enable Open Edge Insights (OEI) deployment across single nodes. We need one control node where ansible is installed and optional hosts. We can also use the control node itself to deploy OEI.
+
+.. note:: 
+
+
+   * In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.
+   * Ansible can execute the tasks on control node based on the playbooks defined
+   * There are 3 types of nodes - control node where ansible must be installed, OEI leader node where ETCD server will be running and optional worker nodes, all worker nodes remotely connect to ETCD server running on leader node. Control node and OEI leader node can be same.
+

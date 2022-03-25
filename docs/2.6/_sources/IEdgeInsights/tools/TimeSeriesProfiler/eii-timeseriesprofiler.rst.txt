@@ -1,0 +1,9 @@
+
+EII TimeSeriesProfiler
+======================
+
+
+#. This module calculates the SPS(samples per second) of any EII time-series modules based on the stream published by that respective module.
+#. This module calculates the average e2e time for every sample data to process and it's breakup. The e2e time end to end time required
+   for a metric from mqtt-publisher to TimeSeriesProfiler (mqtt-publisher->telegraf->influx->kapacitor->influx->influxdbconnector->
+   TimeSeriesProfiler)

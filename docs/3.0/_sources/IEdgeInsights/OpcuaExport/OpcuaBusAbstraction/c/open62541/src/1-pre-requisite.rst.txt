@@ -1,0 +1,8 @@
+
+1. Pre-requisite
+----------------
+
+.. code-block:: sh
+
+     make clean
+     make build_safestring_lib

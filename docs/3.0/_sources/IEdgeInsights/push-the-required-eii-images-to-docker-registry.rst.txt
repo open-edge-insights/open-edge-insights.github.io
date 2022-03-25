@@ -1,0 +1,13 @@
+
+Push the required EII images to docker registry
+-----------------------------------------------
+
+.. note:: 
+   By default, if ``DOCKER_REGISTRY`` is empty in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ then the images are published to hub.docker.com. Ensure to remove ``openedgeinsights/`` org from the image names while pushing to Docker Hub as repository or image names with multiple slashes are not supported. This limitation doesn't exist in other docker registries like Azure Container Registry(ACR), Harbor registry, and so on.
+
+
+Run the following command to push all the EII service docker images in the ``build/docker-compose-push.yml``. Ensure to update the DOCKER_REGISTRY value in `.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file.
+
+.. code-block:: sh
+
+   docker-compose -f docker-compose-push.yml push

@@ -1,0 +1,29 @@
+
+Build and Install
+-----------------
+
+Following is the command to build the plugin.
+
+.. code-block::
+
+   $ ./setup.sh
+
+This script does the following
+
+
+#. Downloads the GenICam runtime binaries (verision 3.1) from EMVA website
+#. Unzips the binary and except Linux64 for x86_64 tar ball, deletes all other files
+#. Untars Linux64 for x86_64 tar ball and copies to standard library path in Ubuntu, i.e., /usr/lib/x86_64-linux-gnu/
+#. Runs configure command to configure the project generating Makefile
+#. Calls make to build
+#. Installs the generated gencamsrc shared library to /usr/local/lib/gstreamer-1.0
+#. Sets the environment variable GST_PLUGIN_PATH to /usr/local/lib/gstreamer-1.0
+
+If plugin is installed successsfully, should be able to inspect it. 
+
+.. code-block::
+
+   $ gst-inspect-1.0 gencamsrc
+
+If it returns information about the plugin, then it's installed successfully 
+and can be used like any other gstreamer source.

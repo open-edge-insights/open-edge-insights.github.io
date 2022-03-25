@@ -1,0 +1,17 @@
+
+Running
+-------
+
+Run the following command to pull the prebuilt EII container images and Edge Video Analytics Microservice
+from Docker Hub and run the containers in the detached mode:
+
+.. code-block:: sh
+
+   # Start the docker containers
+   docker-compose up -d
+
+.. note:: 
+
+   The pre-built container image for Edge Video Analytics Microservice (https://hub.docker.com/r/intel/edge_video_analytics_microservice)
+   gets downloaded when one runs the docker-compose up -d if the image is not already present on the host system.
+

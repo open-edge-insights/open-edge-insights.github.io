@@ -1,0 +1,66 @@
+
+Run the Web Deployment Tool front end
+-------------------------------------
+
+This section provides details for running the Web Deployment Tool for various scenarios.
+
+Run the container without building
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To run the container without building it, run the following commands:
+
+.. code-block:: shell
+
+    cd [WORKDIR]/IEdgeInsights/DeploymentToolFrontend
+    ./run.sh
+
+Build and run container
+^^^^^^^^^^^^^^^^^^^^^^^
+
+To build and run the container, run any of the following commands:
+
+.. code-block:: shell
+
+   ./run.sh --build
+
+or
+
+.. code-block:: shell
+
+   ./run.sh -b
+
+To build and run with ``--no-cache`` or to provide any other build argument, append the build arguement after the previous commands. For example:
+
+.. code-block:: shell
+
+   ./run.sh --build --no-cache
+
+Restart the container
+^^^^^^^^^^^^^^^^^^^^^
+
+To restart the container, run any of the following commands:
+
+.. code-block:: shell
+
+    ./run.sh --restart
+
+or
+
+.. code-block:: shell
+
+    ./run.sh -r
+
+Bring down the container
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To bring down the container, run any of the following commands:
+
+.. code-block:: shell
+
+   ./run.sh --down
+
+or
+
+.. code-block:: shell
+
+   ./run.sh -d

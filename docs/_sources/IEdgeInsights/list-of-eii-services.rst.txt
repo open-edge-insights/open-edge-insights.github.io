@@ -1,0 +1,30 @@
+
+List of EII services
+--------------------
+
+Based on requirement, you can include or exclude the following EII services in the ``docker-compose`` file:  
+
+
+* Common EII services
+
+  * `EtcdUI <https://github.com/open-edge-insights/eii-etcd-ui/blob/master/README.md>`_
+  * `InfluxDBConnector <https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/README.md>`_
+  * `OpcuaExport <https://github.com/open-edge-insights/eii-opcua-export/blob/master/README.md>`_ - Optional service to read from the VideoAnalytics container to publish data to opcua clients.
+  * `RestDataExport <https://github.com/open-edge-insights/eii-rest-data-export/blob/master/README.md>`_ - Optional service to read the metadata and image blob from the InfluxDBConnector and ImageStore services respectively.
+
+* Video related services
+
+  * `VideoIngestion <https://github.com/open-edge-insights/video-ingestion/blob/master/README.md>`_
+  * `VideoAnalytics <https://github.com/open-edge-insights/video-analytics/blob/master/README.md>`_
+  * `Visualizer <https://github.com/open-edge-insights/video-native-visualizer/blob/master/README.md>`_
+  * `WebVisualizer <https://github.com/open-edge-insights/video-web-visualizer/blob/master/README.md>`_
+  * `ImageStore <https://github.com/open-edge-insights/video-imagestore/blob/master/README.md>`_
+  * `AzureBridge <https://github.com/open-edge-insights/eii-azure-bridge/blob/master/README.md>`_
+  * `FactoryControlApp <https://github.com/open-edge-insights/eii-factoryctrl/blob/master/README.md>`_ - Optional service to read from the VideoAnalytics container if one wants to control the light based on defective/non-defective data
+
+* Timeseries-related services
+
+  * `Telegraf <https://github.com/open-edge-insights/ts-telegraf/blob/master/README.md>`_
+  * `Kapacitor <https://github.com/open-edge-insights/ts-kapacitor/blob/master/README.md>`_
+  * `Grafana <https://github.com/open-edge-insights/ts-grafana/blob/master/README.md>`_
+  * `ZMQ Broker <https://github.com/open-edge-insights/eii-zmq-broker/blob/master/README.md>`_

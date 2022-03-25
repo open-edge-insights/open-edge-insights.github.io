@@ -1,0 +1,14 @@
+
+API Documentation
+-----------------
+
+  The tool auto-generates OpenAPI documentation for all the REST APIs it exposes.
+  This documentation can be accessed at its **/docs** endpoint.
+
+  for e.g.
+
+.. code-block::
+
+   ```
+   https://127.0.0.1:5100/docs
+   ```

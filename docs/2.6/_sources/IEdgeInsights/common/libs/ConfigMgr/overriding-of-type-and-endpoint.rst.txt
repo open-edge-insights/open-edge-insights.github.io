@@ -1,0 +1,99 @@
+
+Overriding of Type and EndPoint:
+--------------------------------
+
+In a given publisher, subscriber, client or server interfaces, the "Type" and "Endpoint" values mentioned in the respective interfaces can be overriden by setting them as env variables.
+
+Let's take publisher as an example having multiple endpoints and below is its interface:
+
+.. code-block:: javascript
+
+   {
+       "Publishers": [
+           {
+               "Name": "default",
+               "Type": "zmq_ipc",
+               "EndPoint": "/EII/sockets",
+               "Topics": [
+                   "camera1_stream"
+               ],
+               "AllowedClients": [
+                   "*"
+               ]
+           },
+           {
+               "Name": "example",
+               "Type": "zmq_tcp",
+               "EndPoint": "127.0.0.1:65015",
+               "Topics": [
+                   "*"
+               ],
+               "AllowedClients": [
+                   "Visualizer", "VideoAnalytics"
+               ]
+           }
+       ]
+   }
+
+Let's say we want to override the Type ("zmq_ipc") and Endpoint ("/EII/sockets") of the first publisher's interface (interface having "Name":"default"), then env variable should be set with below syntax.
+
+.. code-block:: sh
+
+   export PUBLISHER_default_TYPE="zmq_tcp"
+   export PUBLISHER_default_ENDPOINT="127.0.0.1:65013"
+
+In the above command ``default`` is the ``Name`` of the interface.
+
+Similarly, we can override subscriber's, client's and server's Type and Endpoint.
+
+.. code-block:: sh
+
+   export SUBSCRIBER_default_TYPE="zmq_tcp"
+   export SUBSCRIBER_default_ENDPOINT="127.0.0.1:65013"
+
+   export SERVER_default_TYPE="zmq_tcp"
+   export SERVER_default_ENDPOINT="127.0.0.1:65013"
+
+   export CLIENT_default_TYPE="zmq_tcp"
+   export CLIENT_default_ENDPOINT="127.0.0.1:65013"
+
+Let's take publisher as an example having single endpoint and below is its interface:
+
+.. code-block:: javascript
+
+   {
+       "Publishers": [
+           {
+               "Name": "default",
+               "Type": "zmq_ipc",
+               "EndPoint": "/EII/sockets",
+               "Topics": [
+                   "camera1_stream"
+               ],
+               "AllowedClients": [
+                   "*"
+               ]
+           }
+   }
+
+If we want to override the Type ("zmq_ipc") and Endpoint ("/EII/sockets") of publisher's interface, then env variable should be set with below syntax.
+
+.. code-block:: sh
+
+   export PUBLISHER_TYPE="zmq_tcp"
+   export PUBLISHER_ENDPOINT="127.0.0.1:65013"
+
+Similarly, we can override subscriber's, client's and server's Type and Endpoint.
+
+.. code-block:: sh
+
+   export SUBSCRIBER_TYPE="zmq_tcp"
+   export SUBSCRIBER_ENDPOINT="127.0.0.1:65013"
+
+   export SERVER_TYPE="zmq_tcp"
+   export SERVER_ENDPOINT="127.0.0.1:65013"
+
+   export CLIENT_TYPE="zmq_tcp"
+   export CLIENT_ENDPOINT="127.0.0.1:65013"
+
+Overriding feature of ConfigMgr will be used in orchestrated scenarios including Kubernetes.

@@ -1,0 +1,41 @@
+
+Troubleshooting
+---------------
+
+GenICam runtime binaries error
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If the pipeline returns error similar below, then GenICam runtime dependency is not resolved.
+
+.. code-block::
+
+   $ module_open failed: libGenApi_gcc42_v3_1.so: cannot open shared object file: No such file or directory
+
+In that case, download and copy the GenICam runtime binaries to standard path. The copied files are stored in the system after reboot.
+
+
+#. Download this file - https://www.emva.org/wp-content/uploads/GenICam_V3_1_0_public_data.zip
+#. Unzip to get runtime binaries and SDK files for multiple platforms
+#. Untar GenICam_Runtime_gcc42_Linux32_i86_v3_1_0.tgz file
+#. Under bin/Linux64_x64 directory, there will be shared libraries, copy all of them to usr/lib/x86_64-linux-gnu path
+
+GenTL producer error
+^^^^^^^^^^^^^^^^^^^^
+
+If the pipeline returns error similar below, then GenTL producer is not found.
+
+.. code-block::
+
+   $ No transport layers found in path
+
+In that case, set GENICAM_GENTL64_PATH environment variable to the GenTL producer installation path. Please install the compatible GenTL producer for the camera if not already done.
+
+For Basler camera, the GenTL producer can be downloaded from https://www.baslerweb.com/en/sales-support/downloads/software-downloads/pylon-5-0-12-linux-x86-64-bit-debian/
+
+Upon installation of this software, GenTL will be present in “/opt/pylon5/lib64/gentlproducer/gtl”, accordingly set the environment variable.
+
+.. code-block::
+
+   $ export GENICAM_GENTL64_PATH=/opt/pylon5/lib64/gentlproducer/gtl/
+
+This variable may be set variable in .bashrc file so that it is one-time and need not be set every time when the terminal is opened.

@@ -1,0 +1,21 @@
+
+Compilation
+-----------
+
+Utilizes CMake as the build tool for compiling the library. The simplest sequence of commands for building the library are
+shown below.
+
+.. code-block:: sh
+
+   $ mkdir build
+   $ cd build
+   $ cmake ..
+   $ make
+
+If you wish to compile in debug mode, then you can set
+the ``CMAKE_BUILD_TYPE`` to ``Debug`` when executing the ``cmake`` command (as shown
+below).
+
+.. code-block:: sh
+
+   $ cmake -DCMAKE_BUILD_TYPE=Debug ..

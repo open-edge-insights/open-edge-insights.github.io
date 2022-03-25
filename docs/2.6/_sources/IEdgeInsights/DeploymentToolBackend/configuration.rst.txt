@@ -1,0 +1,27 @@
+
+Configuration
+-------------
+
+
+* The backend server will run on the port defined at the env variable DEPLOYMENT_TOOL_BACKEND_PORT in docker-compose.yml
+* 
+  The backend server will run in dev mode (http/insecure) or prod mode (https/secure) depending on the env variable 'dev_mode' in docker-compose.yml.
+  By default prod mode is enabled.
+
+  .. code-block::
+
+     dev_mode: "false"
+
+* 
+  Logging can be configured by setting the env variable LOG_LEVEL in docker-compose.yml.
+
+  .. code-block::
+
+     LOG_LEVEL: "INFO"
+
+  The following log levels are supported:
+
+
+  * DEBUG
+  * INFO
+  * ERROR

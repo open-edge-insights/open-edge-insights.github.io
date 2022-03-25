@@ -1,0 +1,24 @@
+
+Provision OEI in the kubernetes node
+------------------------------------
+
+.. note::  Make sure you have ``deleted`` older certificates.
+
+
+   a. Execute ``eii-provision`` chart to provision OEI
+
+.. code-block:: sh
+
+     cd [WORKDIR]/IEdgeInsights/build/helm-eii
+     helm install eii-provision eii-provision/
+
+   b. Update permission of certificates dir incase of ``PROD`` mode
+
+.. code-block:: sh
+
+     cd [WORKDIR]/IEdgeInsights/build/helm-eii/
+     sudo chmod -R 777 eii-deploy/Certificates
+
+.. note:: 
+   The Certificates/ directory contains sensitive information. So post the installation of eii-provision helm chart, it is recommended to delete the Certificates from it.
+

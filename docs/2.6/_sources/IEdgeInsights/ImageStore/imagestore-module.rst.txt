@@ -1,0 +1,30 @@
+
+ImageStore Module
+=================
+
+The Image Store component of EII comes as a separate container which primarily
+subscribes to the stream that comes out of the VideoAnalytics app via EII
+MessageBus and stores the frame into minio for historical analysis.
+
+The high level logical flow of ImageStore is as below:
+
+
+#. The messagebus subscriber in ImageStore will subscribe to the VideoAnalytics
+   published classified result (metadata, frame) on the messagebus.
+   The img_handle is extracted out of the metadata and is used as the key and
+   the frame is stored as a value for that key in minio persistent storage.
+#. For historical analysis of the stored classified images, ImageStore starts
+   the messagebus server which provides the read and store interfaces.
+   The payload format is as follows for:
+
+   * Store interface:
+     .. code-block::
+
+           Request: map ("command": "store","img_handle":"$handle_name"),[]byte($binaryImage)
+           Response : map ("img_handle":"$handle_name", "error":"$error_msg") ("error" is optional and available only in case of error in execution.)
+
+   * Read interface:
+     .. code-block::
+
+           Request : map ("command": "read", "img_handle":"$handle_name")
+           Response : map ("img_handle":"$handle_name", "error":"$error_msg"),[]byte($binaryImage) ("error" is optional and available only in case of error in execution. And $binaryImage is available only in case of successful read)

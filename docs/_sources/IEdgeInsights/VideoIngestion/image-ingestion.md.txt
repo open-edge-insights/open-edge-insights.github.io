@@ -1,0 +1,54 @@
+# Image Ingestion
+
+The Image ingestion feature is mainly responsible for ingesting the images coming from a directory into the EII stack for further processing.  OpenCV ingestor is used for supporting image ingestion.
+The image formats supported by this module are jpg, jpeg, jpe, bmp and png.
+Please refer the below snip for configuring the [config.json](https://github.com/open-edge-insights/video-ingestion/blob/master/config.json) file for enabling the image ingestion feature.
+
+- `OpenCV Ingestor`
+
+     ```javascript
+     {
+      //
+      "ingestor": {
+        "type": "opencv",
+        "pipeline": "/app/img_dir/",
+        "poll_interval": 2,
+        "loop_video": true,
+        "image_ingestion": true
+      },
+      "sw_trigger": {
+            "init_state": "running"
+      },
+      "max_workers":1,
+      //
+     }
+     ```
+
+  The description of the keys being used in config.json is as given below:
+  - pipeline - Provides the path to the images directory that is volume mounted.
+  - poll_interval : Refers to the pull rate of image in second.Configure `poll_interval` value as per the need.
+  - loop_video : Would loop through the images directory.
+  - image_ingestion : Optional boolean key. It is required for enabling the image ingestion feature.
+
+  > **NOTE**
+  >
+  > - The image_ingestion key in the config.json needs to be set true for enabling the image ingestion feature.
+  > - Set the max_workers value to 1 `"max_workers":1` in config.json files for [VideoIngestion/config.json](https://github.com/open-edge-insights/video-ingestion/blob/master/config.json) and [VideoIngestion/config.json](https://github.com/open-edge-insights/video-ingestion/blob/master/config.json). This is needed to ensure that the images sequence is maintained. If `max_workers` is set more than 1, then more likely the images would be out of order due to those many multiple threads operating asynchronously.
+  > - If the resolution of the image is greater than `1920×1200`, then the image will be resized to `width = 1920` and `height = 1200`. The image is resized to reduce the loading time of the image in WebVisualier and Native Visualizer.  
+
+The images directory present on the host system needs to be volume mounted. This can be done by providing the absolute path of the images directory in the docker-compose file.
+Refer the below snip of `ia_video_ingestion` service to add the required changes in [docker-compose.yml](https://github.com/open-edge-insights/video-ingestion/blob/master/docker-compose.yml) file. Once the changes are made make sure [docker-compose.yml](https://github.com/open-edge-insights/video-ingestion/blob/master/docker-compose.yml) is executed before building and running the services.
+
+```yaml
+ia_video_ingestion:
+  ...
+  volume:
+    - "vol_eii_socket:${SOCKET_DIR}"
+    - "/var/tmp:/var/tmp"
+    # Add volume
+    # Please provide the absolute path to the images directory present in the host system for volume mounting the directory. Eg: -"home/directory_1/images_directory:/app/img_dir"
+    - "<path_to_images_directory>:/app/img_dir"
+    ...
+```
+
+----

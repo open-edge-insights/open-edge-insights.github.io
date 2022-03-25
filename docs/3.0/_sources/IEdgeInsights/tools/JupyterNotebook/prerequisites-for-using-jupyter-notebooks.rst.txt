@@ -1,0 +1,51 @@
+
+Prerequisites for using Jupyter Notebooks
+-----------------------------------------
+
+The following are the prerequisites for using Jupyter Notebook to develop UDFs:
+
+
+* 
+  Jupyter Notebook requires a set of configs, interfaces, and the public and private keys to be present in `IEdgeInsights <https://github.com/open-edge-insights/>`_. To meet this prerequisite, ensure that an entry for Jupyter Notebook with its relative path from the ``[IEdgeInsights](https://github.com/open-edge-insights/)`` directory is set in any of the ``.yml`` files present in the `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory.
+
+
+  * 
+    Refer the following example to add the entry in the `video-streaming.yml <https://github.com/open-edge-insights/eii-core/tree/master/build/usecases/video-streaming.yml>`_ file.
+
+    .. code-block:: yml
+
+           AppContexts:
+           ---snip---
+           - tools/JupyterNotebook
+
+* 
+  Ensure that in the config of either ``VideoIngestion`` or ``VideoAnalytics`` the `jupyter_connector <https://github.com/open-edge-insights/video-common/tree/master/udfs/python/jupyter_connector.py>`_ UDF is enabled to connect to Jupyter Notebook. Refer the following example to connect ``VideoIngestion`` to ``JupyterNotebook``. Change the config in the `config.json <https://github.com/open-edge-insights/video-ingestion/blob/master/config.json>`_\ :
+
+  .. code-block:: javascript
+
+           {
+               "config": {
+                   "encoding": {
+                       "type": "jpeg",
+                       "level": 95
+                   },
+                   "ingestor": {
+                       "type": "opencv",
+                       "pipeline": "./test_videos/pcb_d2000.avi",
+                       "loop_video": true,
+                       "queue_size": 10,
+                       "poll_interval": 0.2
+                   },
+                   "sw_trigger": {
+                       "init_state": "running"
+                   },
+                   "max_workers":4,
+                   "udfs": [{
+                       "name": "jupyter_connector",
+                       "type": "python",
+                       "param1": 1,
+                       "param2": 2.0,
+                       "param3": "str"
+                   }]
+               }
+           }

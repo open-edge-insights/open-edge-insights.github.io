@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example Usage &mdash; OEI Documentation v1.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/contentui.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script src="../../../../_static/contentui.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> OEI Documentation
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+  
+              <p><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/introduction.html">Introduction to OEI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/running.html">Run Open Edge Insights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#about-open-edge-insights">About Open Edge Insights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#video-pipeline-analytics">Video pipeline Analytics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#time-series-analytics">Time-series Analytics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#oei-multi-node-cluster-deployment">OEI multi-node cluster deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#oei-tools">OEI tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#oei-uninstaller">OEI Uninstaller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#debugging-options">Debugging options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#web-deployment-tool">Web Deployment Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#troubleshooting-guide">Troubleshooting guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#oei-v3-0">OEI v3.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-6-2">EII v2.6.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#fixes">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-6-1">EII v2.6.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id1">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id2">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id3">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#bug-fix">Bug fix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id4">Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Core Libraries:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/msgbus.html">Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id1">Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#generating-documentation">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id2">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id3">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id4">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id5">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id6">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id7">Packaging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id9">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id10">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id11">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id12">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id13">Running Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id14">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id15">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id16">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id17">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id18">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id19">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id20">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id21">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id22">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id23">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id24">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id25">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id26">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id27">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id28">Running Go Examples without Installing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id29">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id30">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id33">Using Only CurveZMQ Encryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id34">Publish/Subscribe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id35">Request/Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id36">Using ZAP Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id37">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id38">Known issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id39">Generation of python .whl file (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/eiiConfig.html">OEI Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#configmgr">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#configmgr-installation">ConfigMgr Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#using-system-grpc">Using System gRPC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#generating-documentation">Generating Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#publisher-interface">Publisher Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#subscriber-interface">Subscriber Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#server-interface"><strong>Server Interface</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#client-interface"><strong>Client Interface</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#cpp-examples">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#go-examples">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#creation-of-grpc-zip-file-optional">Creation of grpc .zip file (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Video Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/video.html">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#videoingestion-module">VideoIngestion Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#oei-udfloader">OEI UDFLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#oei-sample-udfs">OEI Sample UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#udf-writing-guide">UDF Writing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#sample-udfs">Sample UDFs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#chaining-of-udfs">Chaining of UDFs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#native-visualizer-module">Native Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#web-visualizer-module">Web Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Time-Series Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/timeseries.html">Working with Time series Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/timeseries.html#telegraf">Telegraf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/timeseries.html#point-data-time-series-data-analytics-introduction">Point-data (Time-series data) analytics introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/timeseries.html#grafana">Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/timeseries.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Export Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#prerequisites-and-setup">Prerequisites and Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#azure-cloud-setup">Azure Cloud Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#setting-up-azureml">Setting up AzureML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#important">Important</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#development-system-setup">Development System Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#build-and-push-oei-containers">Build and Push OEI Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#step-1-provisioning">Step 1 - Provisioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#expected-result">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#step-2-configuring-eii">Step 2 - Configuring EII</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#id3">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#step-3-configuring-azure-iot-deployment-manifest">Step 3 - Configuring Azure IoT Deployment Manifest</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#id4">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#step-4-deployment">Step 4 - Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#helpful-debugging-commands">Helpful Debugging Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#final-notes">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#id5">Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#sample-eii-onnx-udf">Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#simple-subscriber">Simple Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#eii-etcd-pre-load">EII ETCD Pre-Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#azure-blob-storage">Azure Blob Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#azure-deployment-manifest">Azure Deployment Manifest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#supported-oei-services">Supported OEI Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/opcua.html#opcuaexport">OpcuaExport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/restdata.html">RestDataExport service</a></li>
+</ul>
+<p><span class="caption-text">Additional Info:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/tools.html">OEI Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#discoverhistory-tool">DiscoverHistory tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#gigeconfig-tool">GigEConfig tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#generating-pfs-pylon-feature-stream-file">Generating PFS (Pylon Feature Stream) File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#running-gigeconfig-tool">Running GigEConfig Tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#develop-python-user-defined-functions-using-jupyter-notebook">Develop Python User Defined Functions using Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#prerequisites-for-using-jupyter-notebooks">Prerequisites for using Jupyter Notebooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#run-jupyter-notebook-from-web-browsers">Run Jupyter Notebook from web browsers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#run-jupyter-notebook-using-visual-studio-code">Run Jupyter Notebook using Visual Studio Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#mqtt-publisher">MQTT publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#oei-video-profiler">OEI Video Profiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#oei-video-profiler-prerequisites">OEI Video Profiler prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#oei-video-profiler-modes">OEI Video Profiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#oei-video-profiler-configurations">OEI Video Profiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#run-video-profiler">Run Video Profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#running-videoprofiler-in-helm-usecase">Running VideoProfiler in helm usecase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#optimizing-oei-video-pipeline-by-analysing-video-profiler-results">Optimizing OEI Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi-instance config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/sample.html">OEI Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/sample.html#eii-sample-apps">EII Sample Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">OEI Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+  <!-- 3.0 -->
+  
+  
+
+  <li><a href="../../../../index.html">3.0</a> &raquo;</li>
+  
+  <li>Example Usage</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/IEdgeInsights/common/libs/EIIMessageBus/example-usage.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-usage">
+<h1>Example Usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p><strong>IMPORTANT NOTE:</strong> Some of the example configurations contain public/private
+keys for the purpose of show how to use the message bus with security enabled.
+THESE KEYS SHOULD <strong>NEVER</strong> BE USED IN PRODUCTION.</p>
+<p><strong>NOTE:</strong> The examples will only be compiled if the <code class="docutils literal notranslate"><span class="pre">WITH_EXAMPLES=ON</span></code> option
+is set when CMake is executed during compilation.</p>
+</div></blockquote>
+<p>All of the examples provided for the EII Message Bus use a JSON configuration
+file to configure the EII Message Bus. There are several example configurations
+provided with the message bus for running in IPC and TCP mode accross the
+various different messaging patterns (i.e. Publish/Subscribe and Request/Response).
+All of these example configurations are in the <code class="docutils literal notranslate"><span class="pre">examples/configs/</span></code> directory.
+However, all of them are copied into the <code class="docutils literal notranslate"><span class="pre">examples/build/configs/</span></code> directory
+as well when build the examples.</p>
+<p>The table below specifies all of the provided example configurations.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Configuration</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ipc_example_config.json</p></td>
+<td><p>Configuration for IPC based communication. Works with all examples.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ipc_example_config_multi_topics.json</p></td>
+<td><p>Configuration for IPC based communication to be used with multi-topic publishing/subscribing. Works with publisher-many &amp; subscriber examples.</p></td>
+</tr>
+<tr class="row-even"><td><p>ipc_publisher_brokered.json</p></td>
+<td><p>Publisher configuration for IPC based communication using the ZeroMQ Broker.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ipc_subscriber_brokered.json</p></td>
+<td><p>Subscriber configuration for IPC based communication using the ZeroMQ Broker.</p></td>
+</tr>
+<tr class="row-even"><td><p>tcp_publisher_brokered_no_security.json</p></td>
+<td><p>TCP configuration for publishing with no security through the ZeroMQ Broker.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tcp_publisher_no_security.json</p></td>
+<td><p>TCP configuration for publishing with no security.</p></td>
+</tr>
+<tr class="row-even"><td><p>tcp_publisher_with_security_no_auth.json</p></td>
+<td><p>TCP configuration for publishing with key based auth without ZAP auth.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tcp_publisher_with_security_with_auth.json</p></td>
+<td><p>TCP configuration for publishing with key based auth and ZAP auth.</p></td>
+</tr>
+<tr class="row-even"><td><p>tcp_subscriber_no_security.json</p></td>
+<td><p>TCP configuration for subscribing to a topic with no security.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tcp_subscriber_no_security_prefix_match.json</p></td>
+<td><p>TCP configuration for subscribing to multiple topics which share a common prefix, with no security.</p></td>
+</tr>
+<tr class="row-even"><td><p>tcp_subscriber_with_security.json</p></td>
+<td><p>TCP configuration for subscribing to a topic with security enabled.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tcp_subscriber_with_security_prefix_match.json</p></td>
+<td><p>TCP configuration for subscribing to multiple topics which share a common prefix, with security.</p></td>
+</tr>
+<tr class="row-even"><td><p>tcp_service_server_no_security.json</p></td>
+<td><p>TCP configuration for a service server side (i.e. <code class="docutils literal notranslate"><span class="pre">echo-service</span></code>) without security.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tcp_service_server_with_security_no_auth.json</p></td>
+<td><p>TCP configuration for a service server side with key based auth without ZAP auth.</p></td>
+</tr>
+<tr class="row-even"><td><p>tcp_service_server_with_security_with_auth.json</p></td>
+<td><p>TCP configuration for a service server side with key based auth and ZAP auth.</p></td>
+</tr>
+<tr class="row-odd"><td><p>tcp_service_client_no_security.json</p></td>
+<td><p>TCP configuration for a service client side (i.e. <code class="docutils literal notranslate"><span class="pre">echo-client</span></code>) with no security.</p></td>
+</tr>
+<tr class="row-even"><td><p>tcp_service_client_with_security.json</p></td>
+<td><p>TCP configuration for a service client side with security enabled.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using the brokered examples, you must also launch the broker
+first. For more information on the broker and how to use it, see the
+ZmqBroker/README.md.</p>
+</div>
+<p>You will notice that for the publisher configurations and service server side
+configurations there are 3 configurations each, where as subscribers and service
+client side configurations only have 2. This is because for publishers and service
+server side applications there are two forms of security to enable: with ZAP authentication,
+and no ZAP authentication. In the configurations with ZAP authentication, an
+additional configuration value is provided which specifies the list of clients
+(i.e. subscribers or service client side connections) which are allowed to connect
+to the specified port. This list oporates as a whitelist of allowed client public
+keys. If a connection is attempted with a key not in that list, then the connection
+is denied.</p>
+<section id="c-examples">
+<h2>C Examples<a class="headerlink" href="#c-examples" title="Permalink to this headline">¶</a></h2>
+<p>There are currently 5 C examples:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/publisher.c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/subscriber.c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/echo_server.c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/echo_client.c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/publisher_many.c</span></code></p></li>
+</ol>
+<p>All of the C example executables are in the <code class="docutils literal notranslate"><span class="pre">build/examples/</span></code> directory. To run
+them, execute the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ./publisher ./configs/ipc_example_config.json
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tcp_example_config.json</span></code> can also be used in lieu of the IPC
+configuration file.</p>
+</div>
+<p>All of the examples follow the command structure above, i.e.
+<code class="docutils literal notranslate"><span class="pre">&lt;command&gt;</span> <span class="pre">&lt;json-config-file&gt;.json</span></code>, except for the <code class="docutils literal notranslate"><span class="pre">publisher_many.c</span></code>
+example. This example is explained more in-depth in the next section.</p>
+<section id="publisher-many-example">
+<h3>Publisher Many Example<a class="headerlink" href="#publisher-many-example" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">examples/publisher_many.c</span></code> example serves as a reference for implementing
+an application which contains many publishers. This also serves as a way of
+testing this functionality in the EII Message Bus.</p>
+<p>The example can be run with the following command (from the <code class="docutils literal notranslate"><span class="pre">build/examples/</span></code>
+directory):</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ./publisher-many ./configs/ipc_example_config.json <span class="m">5</span>
+</pre></div>
+</div>
+<p>In the case above, the example will create 5 publishers where the topic
+strings follow the pattern <code class="docutils literal notranslate"><span class="pre">pub-{0,N-1}</span></code> where <code class="docutils literal notranslate"><span class="pre">N</span></code> is the number of publishers
+specified through the CLI. Can replace this JSON config file with any other JSON
+config as mention in the table above.</p>
+<p>The behavior of how these topics are published depends on if the configuration
+is IPC or TCP (i.e. if <code class="docutils literal notranslate"><span class="pre">type</span></code> is set to <code class="docutils literal notranslate"><span class="pre">zmq_ipc</span></code> vs. <code class="docutils literal notranslate"><span class="pre">zmq_tcp</span></code> in the JSON
+configuration file).</p>
+<p>If IPC communication is being used, then each topic will be a different Unix
+socket file in the <code class="docutils literal notranslate"><span class="pre">socket_dir</span></code> directory specified in the configuration, if default IPC config file <code class="docutils literal notranslate"><span class="pre">ipc_example_config.json</span></code> is used. If the IPC config file <code class="docutils literal notranslate"><span class="pre">ipc_example_config_multi_topics.json</span></code> is used then each topic is published over
+the socket file that is mentioned in the configuration file. For example, in the
+default file <code class="docutils literal notranslate"><span class="pre">ipc_example_config_multi_topics.json</span></code>, all topics publish &amp; subscribe over the same socket file “multi-topics”. However, we can have each topic or a set of topics publish/subscribe over a different socket file.</p>
+<p>If TCP communication is being used, then each message will be published over
+the <code class="docutils literal notranslate"><span class="pre">host</span></code> and <code class="docutils literal notranslate"><span class="pre">port</span></code> specified under the <code class="docutils literal notranslate"><span class="pre">zmq_tcp_publish</span></code> JSON object in the
+configuration.</p>
+<p>In order to subscribe to the topics published by this example, use the
+<code class="docutils literal notranslate"><span class="pre">subscriber.c</span></code> example. If you are using TCP or even IPC with multiple topics subscription, then you will need to specify the topic in your configuration. For example, your JSON configuration will
+need to contain the following to subscribe to the <code class="docutils literal notranslate"><span class="pre">pub-0</span></code> topic:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;pub-0&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;host&quot;</span><span class="p">:</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;port&quot;</span><span class="p">:</span> <span class="mi">5569</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">host</span></code> and <code class="docutils literal notranslate"><span class="pre">port</span></code> are assumed above, they may be different.</p>
+</div>
+<p>In order to simplify the creation of the configuration for subscribing to
+topics over TCP, the <code class="docutils literal notranslate"><span class="pre">gen_tcp_sub_conf.py</span></code> helper script is provided. This
+Python script will generate a JSON file for you based on your TCP JSON
+configuration for the <code class="docutils literal notranslate"><span class="pre">publisher-many</span></code> example which contains all of the
+topics specified so you can subscribe to any of them.</p>
+<p>This helper script can be ran as follows:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 ./gen_tcp_sub_conf.py &lt;CONFIG-FILE-PATH&gt;/tcp_publisher_no_security.json output.json <span class="m">5</span>
+</pre></div>
+</div>
+<p>The command above uses the <code class="docutils literal notranslate"><span class="pre">tcp_publisher_no_security.json</span></code> for the <code class="docutils literal notranslate"><span class="pre">publisher-many</span></code>
+configuration. Then it generates all 5 topics and outputs them into the
+<code class="docutils literal notranslate"><span class="pre">output.json</span></code> file.</p>
+<p>After generating this configuration, you can use the <code class="docutils literal notranslate"><span class="pre">subscriber.c</span></code> example as
+shown below to subscribe to the <code class="docutils literal notranslate"><span class="pre">pub-1</span></code> topic:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ./subscriber output.json pub-1
+</pre></div>
+</div>
+<p>Similiarly for IPC mode of communicatin with multi topics, the sample JSON configuration would look like below:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>    <span class="p">{</span>
+    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;socket_dir&quot;</span><span class="p">:</span> <span class="s2">&quot;${CMAKE_CURRENT_BINARY_DIR}/.socks&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;pub-0&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;socket_file&quot;</span><span class="p">:</span> <span class="s2">&quot;multi-topics&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;pub-1&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;socket_file&quot;</span><span class="p">:</span> <span class="s2">&quot;multi-topics&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;pub-&quot;</span><span class="p">:</span> <span class="p">{</span>
+       <span class="nt">&quot;socket_file&quot;</span><span class="p">:</span> <span class="s2">&quot;multi-topics&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">pub-0</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">pub-1</span></code> are the PUB topics &amp; <code class="docutils literal notranslate"><span class="pre">pub-</span></code> is the SUB topics, where we have given just the prefix name. If we don’t intend to give the SUB topic prefix, we can as well give the entire SUB topic name. In this example all these topics communicate over a common socket file <code class="docutils literal notranslate"><span class="pre">multi-topics</span></code>.</p>
+</section>
+</section>
+<section id="python-examples">
+<h2>Python Examples<a class="headerlink" href="#python-examples" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Python examples will only be present if the <code class="docutils literal notranslate"><span class="pre">WITH_EXAMPLES=ON</span></code>
+and <code class="docutils literal notranslate"><span class="pre">WITH_PYTHON=ON</span></code> flags are set when CMake is executed during compilation.</p>
+</div>
+<p>There are currently 4 Python examples:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">python/examples/publisher.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python/examples/subscriber.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python/examples/echo_server.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">python/examples/echo_client.py</span></code></p></li>
+</ol>
+<p>To run the Python examples, go to the <code class="docutils literal notranslate"><span class="pre">build/examples/</span></code> directory. Then source
+the <code class="docutils literal notranslate"><span class="pre">source.sh</span></code> script that is in the examples directory.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> ./source.sh
+</pre></div>
+</div>
+<p>Then, execute one of the following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 ./publisher.py &lt;CONFIG-FILE-PATH&gt;/ipc_example_config.json
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tcp_example_config.json</span></code> can also be used in lieu of the IPC
+configuration file.</p>
+</div>
+<p>All of the examples follow the same command structure as the <code class="docutils literal notranslate"><span class="pre">publisher.py</span></code>
+script, i.e. <code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">&lt;python-script&gt;.py</span> <span class="pre">&lt;json-config-file&gt;.json</span></code>.</p>
+</section>
+<section id="go-examples">
+<h2>Go Examples<a class="headerlink" href="#go-examples" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><strong>IMPORANT NOTE:</strong> It is assumed that when compiling the C library prior to
+running the examples that the <code class="docutils literal notranslate"><span class="pre">WITH_GO=ON</span></code> flag was specified when executing
+the <code class="docutils literal notranslate"><span class="pre">cmake</span></code> command. It is also assume that, <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">make</span> <span class="pre">install</span></code> has been
+ran. If it has not and you do not wish to install the library, see the
+“Running Go Examples without Installing” section below.</p>
+</div></blockquote>
+<p>When the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">make</span> <span class="pre">install</span></code> command is executed on your system, the Go binding
+will be copied to your system’s <code class="docutils literal notranslate"><span class="pre">$GOPATH</span></code>. To execute the examples provided
+with the EII Message Bus Go binding go to the <code class="docutils literal notranslate"><span class="pre">$GOPATH/src/EIIMessageBus/examples</span></code>
+directory on your system in a terminal window.</p>
+<p>Once you are in this directory choose an example (i.e. publisher, subscriber,
+etc.) and <code class="docutils literal notranslate"><span class="pre">cd</span></code> into that directory. Then, to run the example execute the
+following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ go run main.go -configFile &lt;CONFIG-FILE&gt;.json -topic publish_test
+</pre></div>
+</div>
+<p>The example command above will run either the subscriber or publisher examples.
+For the echo-client and echo-server examples the <code class="docutils literal notranslate"><span class="pre">-topic</span></code> flag should be
+<code class="docutils literal notranslate"><span class="pre">-serviceName</span></code>.</p>
+<p>Additionally, there are example configurations provided in the
+<code class="docutils literal notranslate"><span class="pre">build/examples/configs/</span></code> directory after building the EII Message Bus library.</p>
+</section>
+<section id="running-go-examples-without-installing">
+<h2>Running Go Examples without Installing<a class="headerlink" href="#running-go-examples-without-installing" title="Permalink to this headline">¶</a></h2>
+<p>If you wish to run the Go binding examples with out installing the EII Message
+Bus library, then this can be accomplished by either copying or creating a
+soft-link to the <code class="docutils literal notranslate"><span class="pre">go/EIIMessageBus</span></code> directory in your <code class="docutils literal notranslate"><span class="pre">$GOPATH</span></code>. This can be
+accomplished with one of the commands shown below.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ cp -r go/EIIMessageBus/ <span class="nv">$GOPATH</span>/src
+
+<span class="c1"># OR</span>
+
+$ ln -s go/EIIMessageBus/ <span class="nv">$GOPATH</span>/src
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The command above assumes that you are currently in the
+EIIMessageBus source root directory.</p>
+</div>
+<p>Since it is assumed you have not ran the <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">make</span> <span class="pre">install</span></code> command to install
+the EII Message Bus library, you must set the environmental variables specified
+below prior to running the examples.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:<span class="nv">$MSGBUS_DIR</span>/build
+$ <span class="nb">export</span> <span class="nv">PKG_CONFIG_PATH</span><span class="o">=</span><span class="nv">$PKG_CONFIG_PATH</span>:<span class="nv">$MSGBUS_DIR</span>/build
+</pre></div>
+</div>
+<p>Note that in the <code class="docutils literal notranslate"><span class="pre">export</span></code> commands above the <code class="docutils literal notranslate"><span class="pre">$MSGBUS_DIR</span></code> variable represents
+the absolute path to the <code class="docutils literal notranslate"><span class="pre">libs/EIIMessageBus</span></code> directory. It is very important
+that this is the absolute path.</p>
+<p>Once you have exported these variables, once you have done these steps, you can
+run any of the Go examples as specified in the previous section.</p>
+</section>
+<section id="brokered-publish-subscribe">
+<h2>Brokered Publish/Subscribe<a class="headerlink" href="#brokered-publish-subscribe" title="Permalink to this headline">¶</a></h2>
+<p>EII provides a ZeroMQ Broker. Any of the publisher and subscriber examples can
+be used with this broker. There are three example JSON configuration provided
+to showcase the required configuration of the publishers/subscribers to connect
+to the broker. These examples are listed below:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ipc_publisher_brokered.json</span></code> - IPC brokered publisher configuration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ipc_subscriber_brokered.json</span></code> - IPC brokered subscriber configuration</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tcp_publisher_brokered_no_security.json</span></code> - TCP brokered publisher configuration</p></li>
+</ol>
+<p>Note that there is not TCP brokered subscriber configuration. This is because
+no configuration change is needed to connect a subscriber to the broker.</p>
+<p>For the publisher side of the configuration, it is important to note that in the
+IPC configuration, under the <code class="docutils literal notranslate"><span class="pre">publish-test</span></code> JSON object the configuration key
+<code class="docutils literal notranslate"><span class="pre">brokered</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>. Similarly, in the TCP configuration, under the
+<code class="docutils literal notranslate"><span class="pre">zmq_tcp_publish</span></code> JSON object the key <code class="docutils literal notranslate"><span class="pre">brokered</span></code> is also set to true. This
+tells the publisher to connect to the broker (vs. binding to the given socket
+configuration).</p>
+<p>Since there is no code change to use a brokered publisher or subscriber, the
+examples can be ran the same as before, just with these brokered configurations.
+An example of this is shown below:</p>
+<p><strong>IPC Example:</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start the publisher</span>
+$ ./publisher ./configs/ipc_publisher_brokered.json
+
+<span class="c1"># Start the subscriber</span>
+$ ./subscriber ./configs/ipc_subscriber_brokered.json
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These configurations work with the, “examples/ipc_frontend_example.json”,
+and, “examples/ipc_backend_example.json”, examples provided with the EII
+ZeroMQ Broker.</p>
+</div>
+<p><strong>TCP Example:</strong></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start the publisher</span>
+$ ./publisher ./configs/tcp_publisher_brokered_with_security.json
+
+<span class="c1"># Start the subscriber</span>
+$ ./subscriber ./configs/tcp_subscriber_with_security.json
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These configurations work with the, “examples/tcp_frontend_example.json”,
+and, “examples/tcp_backend_example.json”, examples provided with the EII
+ZeroMQ Broker.</p>
+</div>
+<p><strong>IMPORTANT NOTE:</strong></p>
+<p>Before runnint the examples below, you must start the ZeroMQ Broker. See
+the ZmqBroker/README.md for more details on configuring/launching the broker.
+Keep in mind that your broker configuration will impact the configuration
+needed for these examples.</p>
+<p>For example, in the <code class="docutils literal notranslate"><span class="pre">ipc_publisher_brokered.json</span></code> configuration file, if the
+socket for publishers to connect to is not named <code class="docutils literal notranslate"><span class="pre">frontend-sock</span></code> then this
+configuration file needs to be changed to reflect the different socket file
+name.</p>
+<p>To make this easy, the ZeroMQ Broker provides example configurations for TCP
+and IPC which use the same socket directory / files and (host, port) combinations
+to easily try out this feature.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

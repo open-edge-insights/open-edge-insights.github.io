@@ -1,0 +1,13 @@
+
+Ansible based EII Prequisites setup, provisioning, build & deployment
+---------------------------------------------------------------------
+
+Ansible is the automation engine which can enable EII deployment across single/multi nodes.
+We need one control node where ansible is installed and optional hosts. We can also use the control node itself to deploy EII
+
+.. note:: 
+
+
+   * Ansible can execute the tasks on control node based on the playbooks defined
+   * There are 3 types of nodes - control node where ansible must be installed, EII leader node where ETCD server will be running and optional worker nodes, all worker nodes remotely connect to ETCD server running on leader node. Control node and EII leader node can be same.
+

@@ -1,0 +1,82 @@
+
+Running the tool
+----------------
+
+
+* 
+  **Steps to run the tool**
+
+
+  * 
+    **To simply run the container (without building)**\ :
+
+    .. code-block:: shell
+
+       $ cd [WORKDIR]/IEdgeInsights/DeploymentToolFrontend
+       $ ./run.sh
+
+  * 
+    **To build and run**\ :
+
+    .. code-block:: shell
+
+       $ ./run.sh --build
+
+     or
+
+    .. code-block:: shell
+
+       $ ./run.sh -b
+
+    To build & run with --no-cache or to provide any other build argument, just append the same after the above commands.
+
+    for e.g. 
+
+    .. code-block:: shell
+
+       $ ./run.sh --build --no-cache
+
+  * 
+    **To restart the container:**
+
+    .. code-block:: shell
+
+       $ ./run.sh --restart
+
+     or
+
+    .. code-block:: shell
+
+       $ ./run.sh -r
+
+  * 
+    **To bring down the container:**
+
+    .. code-block:: shell
+
+       $ ./run.sh --down
+
+     or
+
+    .. code-block:: shell
+
+       $ ./run.sh -d
+
+  * 
+    **Launching the UI:**
+
+      To launch the UI, open your browser and navigate to http(s)://\<host-ip&gt;:\<host-port&gt;
+
+      For e.g.
+
+    .. code-block::
+
+         https://127.0.0.1:3100
+
+      when in prod mode, or
+
+    .. code-block::
+
+         http://127.0.0.1:3100
+
+      when in dev mode.

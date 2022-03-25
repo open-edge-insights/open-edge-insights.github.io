@@ -1,0 +1,53 @@
+
+VideoIngestion Module
+=====================
+
+The VideoIngestion(VI) module is mainly responsibly for ingesting the video frames
+coming from a video source like video file or basler/RTSP/USB camera
+into the EII stack for further processing. Additionally, by having VI run with
+classifier and post-processing UDFs, VI can perform the job of VA(VideoAnalytics)
+service also.
+
+
+.. image:: https://raw.githubusercontent.com/open-edge-insights/video-ingestion/master/img/fig_9_1.png
+   :target: https://raw.githubusercontent.com/open-edge-insights/video-ingestion/master/img/fig_9_1.png
+   :alt: Video Ingestion Diagram
+
+
+The high level logical flow of VideoIngestion pipeline is as below:
+
+
+#. App reads the application configuration via EII Configuration Manager which
+   has details of ``ingestor``\ , ``encoding`` and ``udfs``.
+#. Based on the ingestor configuration, app reads the video frames from
+   the video file or camera.
+#. [\ ``Optional``\ ] The read frames are passed onto one or more chained native/python
+   UDFs for doing any pre-processing (passing thru UDFs is an optional thing and
+   not required if one doesn't want to perform any pre-processing on the
+   ingested frames). With chaining of UDFs supported, one can also have
+   classifier UDFs and any post-processing UDFs like resize etc., configured in
+   ``udfs`` key to get the classified results. One can refer
+   `../common/video/udfs/README.md <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_ for more details.
+#. App gets the msgbus endpoint configuration from system environment and
+   based on the configuration, app publishes the data on the mentioned topic
+   on EII MessageBus.
+
+----
+
+.. note:: \ :
+   Below usecases are suitable for single node deployment where one can avoid the
+   overhead of VA(VideoAnalytics) service.
+
+
+   #. If VI(VideoIngestion) service is configured with an UDF that does the
+      classification, then one may choose to not to have VA service as all
+      pre-processing, classification and any post-processing can be handled in VI
+      itself with the usage of multiple UDFs.
+   #. If VI(VideoIngestion) service is using GVA(Gstreamer Video Analytics)
+      elements also, then one may choose to not to have VA service as all
+      pre-processing, classification and any post-processing(using vappi gstreamer
+      elements) can be done in gstreamer pipeline itself. Also, the post-processing
+      here can be configured by having multiple UDFs in VI if needed.
+
+
+----

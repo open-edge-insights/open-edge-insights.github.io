@@ -1,0 +1,20 @@
+.. role:: raw-html-m2r(raw)
+   :format: html
+
+
+FAQs
+----
+
+Following are some of the FAQs of RestDataExport
+
+For setting environment proxy settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+#. sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf (update host-ip)
+#. sudo vi /etc/systemd/system/docker.service.d/https-proxy.conf (update hot-ip)
+#. env | grep proxy
+#. export no_proxy=$no_proxy,\ :raw-html-m2r:`<host-ip>`
+#. sudo vi .docker/config.json (update host-ip in no_proxy)
+#. sudo systemctl daemon-reload
+#. sudo systemctl restart docker

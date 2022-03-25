@@ -1,0 +1,48 @@
+
+Run the Web Deployment Tool back end
+------------------------------------
+
+Web Deployment Tool (WDT) provides a graphical interface to set up and complete the deployment process for OEI services. The following sections provide details for the prerequisites and configuration for the Web GUI Deployment tool back end.
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+
+
+Prerequisites
+^^^^^^^^^^^^^
+
+Ensure that all the prerequisites for OEI are installed. For more details, refer to the `OEI ReadMe <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_.
+
+Configuration
+^^^^^^^^^^^^^
+
+The back-end server runs on the port value that you enter for the env variable ``DEPLOYMENT_TOOL_BACKEND_PORT`` in the ``docker-compose.yml`` file. Also, based on the value for the env variable ``dev_mode`` in the ``docker-compose.yml`` file, the back-end server will run in the ``DEV mode`` (http/insecure) or the ``PROD mode`` (https/secure). By default, the PROD mode is enabled. The following snippet shows the default value for the env variable ``env_mode``\ :
+
+.. code-block:: sh
+
+   dev_mode: "false"
+
+Configure Logging
+~~~~~~~~~~~~~~~~~
+
+Web Deployment Tool supports the following log levels:
+
+
+* Debug
+* Info
+* Error
+
+In the ``docker-compose.yml`` file, you can set the env variable ``LOG_LEVEL`` to configure logging. Refer to the following code snippet:
+
+.. code-block:: sh
+
+     LOG_LEVEL: "INFO"
+
+.. note:: 
+   You must enter your user credentials in the ``./creds.json`` file to log in to the Web Deployment Tool's back end. You must use the same user credentials to access the frontend of the Web Deployment tool. Refer to the following code snippet for the JSON format of the user credentials:
+
+
+.. code-block:: sh
+
+    {
+     "username" : "password"
+    }

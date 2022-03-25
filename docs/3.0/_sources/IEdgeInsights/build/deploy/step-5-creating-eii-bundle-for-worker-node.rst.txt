@@ -1,0 +1,50 @@
+
+Step 5 Creating eii bundle for worker node
+==========================================
+
+.. note:: \ : Before proceeding this step, please make sure, you have followed steps 1-4.
+
+
+.. code-block::
+
+       # Please ensure the following fields are correctly set in the leader node before generating the eii bundle:
+       ETCD_HOST=<IP address of leader node>
+       DOCKER_REGISTRY=<Docker registry details>
+
+       # commands to be executed on leader node:
+       $ cd build/deploy
+       $ sudo python3 generate_eii_bundle.py
+
+       This will generate the .tar.gz which has all the required artifacts by which eii services
+       can be started on worker node.
+
+**\ *Note*\ **\ :
+
+.. code-block::
+
+   1. Default Values of Bundle Name is "eii_bundle.tar.gz" and the tag name is "eii_bundle"
+
+   2. Using *-t* options you can give your custom tag name which will be used as same name for bundle generation.
+
+   3. Default values for docker-compose yml path is "../docker-compose.yml"
+
+
+For more help:
+
+.. code-block::
+
+   $sudo python3 generate_eii_bundle.py
+
+
+   usage: generate_eii_bundle.py [-h] [-f COMPOSE_FILE_PATH] [-t BUNDLE_TAG_NAME]
+
+   EII Bundle Generator: This Utility helps to Generate the bundle to deploy EII.
+
+   optional arguments:
+       -h, --help            show this help message and exit
+       -t BUNDLE_TAG_NAME    Tag Name used for Bundle Generation (default:eii_bundle)
+
+
+
+Now this bundle can be used to deploy an eii on worker node. This bundle has all the required artifacts to start the eii
+services on worker node.

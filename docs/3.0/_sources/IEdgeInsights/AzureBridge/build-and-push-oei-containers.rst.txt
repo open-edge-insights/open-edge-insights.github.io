@@ -1,0 +1,27 @@
+
+Build and Push OEI Containers
+-----------------------------
+
+.. note::  By following the steps below, the Azure Bridge and Simple
+   Subscriber Azure IoT Modules will be pushed to your ACR instance as well.
+
+
+After setting up your development system, build and push the OEI containers
+to your Azure Contianer Registry instance. Note that the Azure Bridge only
+supports a few of the OEI services currently. Before building and pushing your
+OEI containers, be sure to look at the `Supported OEI Services <#supported-oei-services>`__
+section below, so as to not build/push uneeded containers to your registry.
+
+To do this go to the ``../build/`` directory in the OEI source code, modify the
+``DOCKER_REGISTRY`` variable in the ``../build/.env`` file to point to your Azure
+Container Registry.
+
+Next, execute the following commands:
+
+.. code-block:: sh
+
+   python3 builder.py -f usecases/video-streaming-azure.yml
+   docker-compose -f docker-compose-build.yml build
+   docker-compose -f docker-compose-push.yml push
+
+For more detailed instructions on this process, see the OEI README and User Guide.

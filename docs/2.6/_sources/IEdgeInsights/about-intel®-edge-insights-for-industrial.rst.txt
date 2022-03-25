@@ -1,0 +1,5 @@
+
+About Intel® Edge Insights for Industrial
+-----------------------------------------
+
+Intel® Edge Insights for Industrial (EII) is a set of pre-validated ingredients for integrating video and time-series data analytics on edge compute nodes. EII includes modules to enable data collection, storage, and analytics for both time-series and video data.

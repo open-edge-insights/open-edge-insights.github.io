@@ -1,0 +1,29 @@
+
+Custom UDFs available in the `udfs <https://github.com/open-edge-insights/ts-kapacitor/blob/master/udfs>`_ directory
+------------------------------------------------------------------------------------------------------------------------
+
+
+* 
+  UNIX Socket based UDFs
+
+
+  #. 
+     go_classifier.go: Filter the points based on temperature (data > 20 and < 25 filtered out).
+
+  #. 
+     py_classifier.py: Filter the points based on temperature (data > 20 and < 25 filtered out).
+
+  #. 
+     profiling_udf.go: Add the profiling (time taken to process the data) data in the points.
+
+  #. 
+     temperature_classifier.go: Filter the points based on temperature (data < 25 filtered out).
+
+  #. 
+     humidity_classifier.py: Filter the points based on humidity (data < 25 filtered out).
+
+* 
+  Process based UDFs
+
+
+  #. rfc_classifier.py: Random Forest Classification algo sample. This UDF can be used as profiling udf as well.

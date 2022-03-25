@@ -1,0 +1,46 @@
+
+Security
+--------
+
+The security for the broker depends on whether the broker is using TCP or IPC
+for its respective sockets.
+
+.. note::  The broker can be used with the **frontend** being a TCP socket and
+   the **backend** being an IPC socket (and vice-versa).
+
+
+The following sections cover the security for the TCP and IPC modes.
+
+IPC
+^^^
+
+When the broker is using an IPC socket (for either the **frontend** or **backend**
+sockets), the ability to send/receive messages shall be handled by Linux file
+permissions. There is no encryption which shall occur for the messages sent
+over IPC sockets.
+
+TCP
+^^^
+
+For TCP connections, ZeroMQ offers mechanisms for both encryption and authentication.
+This is accomplished via elliptical curve keys generated when EII is provisioned.
+These keys provide the encryption and authentication via the ZAP protocol and a
+list of allowed clients authentication is handled.
+
+The encryption and authentication is all handled under the hood by the EII
+Message Bus for publishers and subscribers which are connecting to the broker.
+Via the configuration of the broker's messaging interfaces the broker has the
+required keys for decrypting messages and for determining whether or not a
+given publisher or subscriber is allowed to connect.
+
+See the configuration section for more details on listing out allowed clients
+and configuring the security for the ZeroMQ Broker.
+
+**IMPORTANT SECURITY IMPLICATION**
+
+For TCP connections, there is one important security implication to be aware
+of. The broker manages a single list of all of the publishers and subscribers
+which are allowed to connect. If a given subscriber can connect, then all of
+the data coming through that broker instance is available to that subscriber to
+receive. Essentially what this means, is that the broker does not do authentication
+on a per topic/stream basis, only on a connection basis.

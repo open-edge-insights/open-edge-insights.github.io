@@ -1,0 +1,39 @@
+
+Running examples
+----------------
+
+
+#. 
+   Running the Publisher example:
+
+   .. code-block:: sh
+
+           $ python3 publisher.py
+
+#. 
+   Running the Subscriber example:
+
+   .. code-block:: sh
+
+           $ python3 subscriber.py
+
+#. 
+   Running the Server example:
+
+   .. code-block:: sh
+
+           $ python3 echo_service.py
+
+#. 
+   Running the Client example:
+
+   .. code-block:: sh
+
+           $ python3 echo_client.py
+
+#. 
+   Running the GetConfig example:
+
+   .. code-block:: sh
+
+           $ python3 sample_get_value.py

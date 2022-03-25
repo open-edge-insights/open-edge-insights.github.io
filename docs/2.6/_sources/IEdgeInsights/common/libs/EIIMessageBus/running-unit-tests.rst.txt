@@ -1,0 +1,26 @@
+
+Running Unit Tests
+------------------
+
+.. note::  The unit tests will only be compiled if the ``WITH_TESTS=ON`` option
+   is specified when running CMake.
+
+
+Execute one of the following commands from the ``build/tests`` folder to execute
+the message bus unit tests.
+
+.. code-block:: sh
+
+   $ ./msgbus-tests
+   $ ./msg-envelope-tests
+   $ ./crc32-tests
+
+It is important to note that the ``msgbus-tests`` executable has an extra CLI
+option which the other unit test binaries do not have. This option allows for
+running the message bus tests to run over TCP rather than the IPC.
+
+To run the message bus tests over TCP, execute the following command:
+
+.. code-block:: sh
+
+   $ ./msgbus-tests --tcp

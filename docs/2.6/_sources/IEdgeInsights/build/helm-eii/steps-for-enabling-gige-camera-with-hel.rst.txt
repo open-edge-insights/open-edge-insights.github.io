@@ -1,0 +1,94 @@
+
+Steps for Enabling GiGE Camera with helm
+----------------------------------------
+
+**Note:** For more information on ``Multus`` please refer this git https://github.com/intel/multus-cni
+ Skip installing multus if it is already installed.
+
+
+#. 
+   Prequisites
+   For enabling gige camera with helm. Helm pod networks should be enabled ``Multus`` Network Interface
+   to attach host system network interface access by the pods for connected camera access.
+
+   **Note**\ : Please follow the below steps & make sure ``dhcp daemon`` is running fine.If there is an error on ``macvlan`` container creation on accessing the socket or if socket was not running. Please execute the below steps again
+
+   .. code-block:: sh
+
+      $ sudo rm -f /run/cni/dhcp.sock
+      $ cd /opt/cni/bin
+      $ sudo ./dhcp daemon
+
+   ### Setting up Multus CNI and Enabling it.
+
+
+   * Multus CNI is a container network interface (CNI) plugin for Kubernetes that enables attaching multiple network interfaces to pods. Typically, in Kubernetes each pod only has one network interface (apart from a loopback) -- with Multus you can create a multi-homed pod that has multiple interfaces. This is accomplished by Multus acting as a "meta-plugin", a CNI plugin that can call multiple other CNI plugins.
+
+
+   #. Get the name of the ``ethernet`` interface in which gige camera & host system connected
+      **Note**\ : Identify the network interface name by following command
+
+   .. code-block:: sh
+
+      $ ifconfig
+
+
+   #. Execute the Following Script with Identified ``ethernet`` interface name as Argument for ``Multus Network Setup``
+      **Note:** Pass the ``interface`` name without ``quotes``
+
+   .. code-block:: sh
+
+      $ cd [WORKDIR]/IEdgeInsights/build/helm-eii/gige_setup
+      $ sudo -E sh ./multus_setup.sh <interface_name>
+
+   ..
+
+      **Note**\ : Verify ``multus`` pod is in ``Running`` state
+
+      .. code-block:: sh
+
+           $ kubectl get pods --all-namespaces | grep -i multus
+
+
+
+   #. Set gige_camera to true in values.yaml
+
+   .. code-block:: sh
+
+      $ vi [WORKDIR]/IEdgeInsights/VideoIngestion/helm/values.yaml
+      .
+      .
+      .
+      gige_camera: true
+      .
+      .
+      .
+
+
+   #. 
+      Follow the `Deployment Steps <#provision-and-deploy-in-the-kubernetes-node>`__
+
+   #. 
+      Verify ``pod``\ ip & ``host`` ip are same as per Configured ``Ethernet`` interface by using below command.
+
+   .. code-block:: sh
+
+      $ kubectl -n eii exec -it <pod_name> -- ip -d address
+
+   **Note:**
+
+   User needs to deploy as root user for MYRIAD(NCS2) device and GenICam USB3.0 interface cameras.
+
+.. code-block::
+
+   apiVersion: apps/v1
+   kind: Deployment
+   ...
+   spec:
+       ...
+       spec:
+         ...
+         containers:
+           ....
+           securityContext:
+             runAsUser: 0

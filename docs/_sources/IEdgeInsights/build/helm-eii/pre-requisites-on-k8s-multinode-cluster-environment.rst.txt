@@ -1,0 +1,15 @@
+
+Pre requisites on K8s MultiNode Cluster Environment
+---------------------------------------------------
+
+.. note:: 
+
+
+   * For running OEI in Prod Mode, it is required to have self-signed certificates that are getting generated need to go in as kubernetes secrets. To make this happen, it is mandatory that ConfigManager Agent Pod & generating Certs Pod gets scheduled in k8s Cluster's Master/Control Plane node
+   * By default, OEI deployment charts are deployed in PROD mod and only ConfigManager Agent & generating Certs pods gets scheduled on Master/Control Plane node of K8s Cluster
+   * Ensure that the Master Node is *tainted* to schedule the pod
+
+
+.. code-block:: sh
+
+     kubectl taint nodes --all node-role.kubernetes.io/master-

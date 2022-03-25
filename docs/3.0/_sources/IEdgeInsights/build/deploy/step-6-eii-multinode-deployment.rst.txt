@@ -1,0 +1,18 @@
+
+Step 6 EII-Multinode deployment
+===============================
+
+.. note:: \ : Before proceeding this step, please make sure, you have followed steps 1-5. Please make sure to copy and untar the above bundle on a secure location having root only access as it contains secrets. Please ensure you mandatorily run the below commands with sudo option as shown below.
+
+
+.. code-block::
+
+       $ sudo tar -xvzf <eii_bundle gz generated in Step No. 5>
+       $ cd eii_bundle
+       $ docker-compose up -d
+
+       eq.
+
+       $ sudo tar -xvzf eii_bundle.tar.gz
+       $ cd eii_bundle
+       $ docker-compose up -d

@@ -1,0 +1,19 @@
+
+Object Entries
+--------------
+
+Object entries specfiy the model to download from the `Open Model
+Zoo <https://github.com/openvinotoolkit/open_model_zoo>`_ and one or
+more optional properties (alias, version, precision, local
+model-proc). If an optional property is not specified the downloader
+will use `default values <#default-values>`__.
+
+Example:
+
+.. code-block:: yaml
+
+   - model: yolo-v3-tf
+     alias: object_detection
+     version: 2
+     precision: [FP32,INT8]
+     model-proc: object_detection.json

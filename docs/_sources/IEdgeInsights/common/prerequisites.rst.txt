@@ -1,0 +1,48 @@
+
+Prerequisites
+-------------
+
+
+#. 
+   Libraries need to be installed in the system. Before generating packages, follow the steps for the `eii_libs_installer <#eii_libs_installer>`__.
+
+#. 
+   Install dependency packages:
+
+   .. code-block:: sh
+
+           sudo apt install -y rpm
+           pip3 install wheel==0.37.1
+
+#. 
+   Below are the dependencies for Python Fedora packages:
+
+   .. code-block:: sh
+
+           sudo apt install -y python3.9
+           sudo apt install -y python3.9-venv
+           python3.9 -m venv fedora_package
+           source fedora_package/bin/activate
+           sudo apt-get install python3.9-dev
+           deactivate
+
+#. 
+   Removal of root build folders of libraries.
+
+   .. code-block:: sh
+
+           sudo rm -rf util/c/build libs/EIIMessageBus/build libs/ConfigMgr/build libs/ConfigMgr/python/build libs/EIIMessageBus/python/build
+
+Steps
+^^^^^
+
+
+#. 
+   After completing the prerequisites, run the following command
+
+   .. code-block:: sh
+
+         CMAKE_INSTALL_PREFIX="/opt/intel/eii" ./libs_package_generator.sh
+
+#. 
+   After successful execution of above script, all the packages will be available under the folder ``./packages``

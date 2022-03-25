@@ -1,0 +1,5 @@
+
+Testing ImageStore service
+==========================
+
+go run ./ImageStoreServiceTest.go

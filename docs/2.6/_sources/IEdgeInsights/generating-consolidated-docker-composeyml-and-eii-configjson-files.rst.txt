@@ -1,0 +1,36 @@
+
+Generating consolidated docker-compose.yml and eii_config.json files:
+---------------------------------------------------------------------
+
+EII is equipped with `builder <https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py>`_\ , a robust python tool to auto-generate the required configuration files to deploy EII services on single/multiple nodes. The tool is    capable of auto-generating the following consolidated files by fetching the respective files from EII service directories which are required to bring up different EII use-cases:
+
+.. list-table::
+   :header-rows: 1
+
+   * - file name
+     - Description
+   * - docker-compose.yml
+     - Consolidated ``docker-compose.yml`` file used to launch EII docker containers in a given single node using ``docker-compose`` tool
+   * - docker-compose.override.yml
+     - Consolidated ``docker-compose-dev.override.yml`` of every app that is generated only in DEV mode for EII deployment on a given single node using ``docker-compose`` tool
+   * - docker-compose-build.yml
+     - Consolidated ``docker-compose-build.yml`` file having EII base images and ``depends_on`` and ``build`` keys required for building EII services
+   * - docker-compose-push.yml
+     - Consolidated ``docker-compose-push.yml`` file (same as ``docker-compose.yml`` file with just dummy ``build`` key added), used for pushing EII services to docker registry
+   * - eii_config.json
+     - Consolidated ``config.json`` of every app which will be put into etcd during provisioning
+   * - values.yaml
+     - Consolidated ``values.yaml`` of every app inside helm-eii/eii-deploy directory, which is required to deploy EII services via helm
+   * - Template yaml files
+     - Files copied from helm/templates directory of every app to helm-eii/eii-deploy/templates directory, which are required to deploy EII services via helm
+
+
+.. note:: 
+
+
+   #. Whenever we make changes to individual EII app/service directories files as mentioned above in the description column
+        or in the `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file, it is required to re-run the ``builder.py`` script before provisioning and running
+        the EII stack to ensure that the changes done reflect in the required consolidated files.
+   #. Manual editing of above consolidated files is not recommended and we would recommend to do the required changes to
+        respective files in EII app/service directories and use `build/builder.py <https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py>`_ script to generate the conslidated ones.
+

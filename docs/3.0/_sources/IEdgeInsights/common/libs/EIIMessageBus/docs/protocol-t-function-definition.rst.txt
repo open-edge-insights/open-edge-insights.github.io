@@ -1,0 +1,78 @@
+
+``protocol_t`` Function Definition
+--------------------------------------
+
+The following describes the purpose of each of the function pointers above.
+
+``destroy()``
+^^^^^^^^^^^^^^^^^
+
+Responsible for destroying the ``proto_ctx`` variable and freeing any memory
+used by the context.
+
+``publisher_new()``
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Initializes a new publisher context for the given ``topic``.
+
+``publisher_publish()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Publishes the given message value using the publisher context.
+
+``publisher_destroy()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Destroys a context for a publisher freeing any sockets, memory, etc. used by
+the publisher.
+
+``subscriber_new()``
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Subscribe to the given topic and output a ``recv_ctx_t`` to use with the ``recv_*``
+methods to receive the publications for the topic.
+
+``service_new()``
+^^^^^^^^^^^^^^^^^^^^^
+
+Create a new ``recv_ctx_t`` structure which can be used to received requests
+from clients and send responses to received requests using the ``response()``
+method.
+
+``service_get()``
+^^^^^^^^^^^^^^^^^^^^^
+
+Create a new ``recv_ctx_t`` structure which can be used to issue requests to and
+received responses from the specified service.
+
+``recv_ctx_destroy()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Destroy a ``recv_ctx_t`` structure.
+
+``request()``
+^^^^^^^^^^^^^^^^^
+
+Issue a request to the service using the given ``recv_ctx_t``.
+
+``response()``
+^^^^^^^^^^^^^^^^^^
+
+Send a response to a requesting client using the given ``recv_ctx_t`` structure.
+
+``recv_wait()``
+^^^^^^^^^^^^^^^^^^^
+
+Blocking function for receiving a message from a ``recv_ctx_t`` context structure.
+
+``recv_timedwait()``
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Function for receiving messages from a ``recv_ctx_t`` context structure which
+times out after the given timeout. The timeout shall always be milliseconds.
+
+``recv_nowait()``
+^^^^^^^^^^^^^^^^^^^^^
+
+Receive a message from a ``recv_ctx_t`` context structure if a message is available,
+otherwise return immediately.

@@ -1,0 +1,33 @@
+
+Service bring up
+----------------
+
+
+* 
+  Please use below steps to generate opcua client certificates before running test client subscriber for production mode.
+
+
+  #. 
+     Please go through the below sections to have OpcuaExport 
+     service built and launch it:
+
+
+     * `../README.md#generate-deployment-and-configuration-files <https://github.com/open-edge-insights/eii-core/blob/master/README.md#generate-deployment-and-configuration-files>`_
+     * `../README.md#provision <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_
+     * `../README.md#build-and-run-eii-videotimeseries-use-cases <https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases>`_
+
+  #. 
+     Update opcua client certificate access so that sample test program 
+     can access the certificates.
+
+     .. code-block:: sh
+
+             sudo chmod -R 755 ../../build/provision/Certificates
+
+     ..
+
+        **Caution**\ : This step will make the certs insecure. Please do not do it on a production machine.
+
+
+* 
+  To run a test subscriber follow README at `OpcuaExport/OpcuaBusAbstraction/c/test <https://github.com/open-edge-insights/eii-opcua-export/blob/master/OpcuaBusAbstraction/c/test>`_

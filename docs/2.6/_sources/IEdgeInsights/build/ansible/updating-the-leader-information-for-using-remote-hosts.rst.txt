@@ -1,0 +1,40 @@
+.. role:: raw-html-m2r(raw)
+   :format: html
+
+
+Updating the leader information for using remote hosts
+------------------------------------------------------
+
+.. note:: 
+   By ``default`` both control/leader node ``ansible_connection`` will be ``localhost`` in single node deployment.
+
+
+Please follow below steps to update the details of leader node for remote node scenario.
+
+
+* 
+  Update the hosts information in the inventory file ``hosts``
+
+  .. code-block:: sh
+
+           [group_name]
+           <nodename> ansible_connection=ssh ansible_host=<ipaddress> ansible_user=<machine_user_name>
+
+    For Eg:
+
+  .. code-block:: sh
+
+       [targets]
+       leader ansible_connection=ssh ansible_host=192.0.0.1  ansible_user=user1
+
+  ..
+
+     **Note**
+
+
+     * ``ansible_connection=ssh`` is mandatory when you are updating any remote hosts, which makes ansible to connect via ``ssh``.
+     * The above information is used by ansible to establish ssh connection to the nodes.
+     * control node will always be ``ansible_connection=local``\ , **don't update the control node's information**
+     * To deploy OEI in single , ``ansible_connection=local`` and ``ansible_host=localhost``
+     * To deploy OEI on remote node, ``ansible_connection=ssh`` and ``ansible_host=<remote_node_ip>`` and ``ansible_user``\ =\ :raw-html-m2r:`<username>`
+

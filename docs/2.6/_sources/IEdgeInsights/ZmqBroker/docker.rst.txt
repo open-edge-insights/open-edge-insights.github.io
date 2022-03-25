@@ -1,0 +1,13 @@
+
+Docker
+------
+
+The ZeroMQ Broker is integrated into the EII docker-compose ecosystem. To
+build and use the Docker container, follow the defined building / provisioning
+instructions for EII.
+
+If you are using a YAML file with the ``builder.py`` script, then make sure
+to add ``ZmqBroker`` under the ``AppName`` section of the YAML file. This will
+include the broker into the resulting docker-compose.yml file and it will
+include the broker's configuration into the ``eii_config.json`` which shall
+be used when provisioning.

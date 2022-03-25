@@ -1,0 +1,16 @@
+
+Contents
+========
+
+
+* `Contents <#contents>`__
+
+  * `OEI Video Profiler <#oei-video-profiler>`__
+
+    * `OEI Video Profiler prerequisites <#oei-video-profiler-prerequisites>`__
+    * `OEI Video Profiler modes <#oei-video-profiler-modes>`__
+    * `OEI Video Profiler configurations <#oei-video-profiler-configurations>`__
+    * `Run Video Profiler <#run-video-profiler>`__
+    * `Running VideoProfiler in helm usecase <#running-videoprofiler-in-helm-usecase>`__
+    * `Optimizing OEI Video pipeline by analysing Video Profiler results <#optimizing-oei-video-pipeline-by-analysing-video-profiler-results>`__
+    * `Benchmarking with multi-instance config <#benchmarking-with-multi-instance-config>`__

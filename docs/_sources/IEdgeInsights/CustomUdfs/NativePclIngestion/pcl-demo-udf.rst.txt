@@ -15,3 +15,10 @@ The code for generating PCD file has been commented intentionally. Interested us
    }
 
 Refer `udfs-README <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_ for more information on configs of other in-built udfs like dummy, fps and resize udfs.
+
+Known Issues/Limitations:
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* RealSense Software Device error for initial set of frames (non-blocking error)
+* Exception thrown by PCL APIs for certain RealSense frames (non-blocking error)

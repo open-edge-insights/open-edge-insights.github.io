@@ -1,0 +1,138 @@
+
+Steps to verify the results in multiple tasks with single UDF
+-------------------------------------------------------------
+
+
+#. 
+   InfluxDBConnector logs output
+
+   Command
+
+   .. code-block::
+
+      $ docker logs -f ia_influxdbconnector
+
+   Output
+
+   .. code-block::
+
+      I0716 23:58:01.428896      10 pubManager.go:121] Published message: map[data:point_data,host=ia_telegraf,topic=temperature/simulated/0 humidity=23.50196006313319,ts=1594924081.4278295,temperature=25.758773258956786 1594924081428303867 idbconn_pub:true]
+      I0716 23:58:01.429801      10 pubManager.go:121] Published message: map[data:point_classifier_results,host=ia_telegraf,topic=temperature/simulated/0 humidity=23.50196006313319,temperature=25.758773258956786,ts=1594924081.4278295 1594924081428303867 idbconn_pub:true]
+      I0716 23:58:02.429889      10 pubManager.go:121] Published message: map[data:point_data,host=ia_telegraf,topic=temperature/simulated/0 humidity=12.785272290966788,ts=1594924082.4282343,temperature=25.88015317051446 1594924082428980179 idbconn_pub:true]
+      I0716 23:58:02.431062      10 pubManager.go:121] Published message: map[data:point_classifier_results,host=ia_telegraf,topic=temperature/simulated/0 humidity=12.785272290966788,temperature=25.88015317051446,ts=1594924082.4282343 1594924082428980179 idbconn_pub:true]
+      I0716 23:58:03.430484      10 pubManager.go:121] Published message: map[data:point_data,host=ia_telegraf,topic=temperature/simulated/0 humidity=27.393076181834594,ts=1594924083.4287212,temperature=18.16039229846337 1594924083429552256 idbconn_pub:true]
+      I0716 23:58:03.433508      10 pubManager.go:121] Published message: map[data:humidity_classifier_results,host=ia_telegraf,topic=temperature/simulated/0 humidity=27.393076181834594,temperature=18.16039229846337,ts=1594924083.4287212 1594924083429552256 idbconn_pub:true]
+      I0716 23:58:04.431786      10 pubManager.go:121] Published message: map[data:point_data,host=ia_telegraf,topic=temperature/simulated/0 temperature=27.32044250166733,humidity=12.040910740537647,ts=1594924084.430019 1594924084430766594 idbconn_pub:true]
+      I0716 23:58:04.433122      10 pubManager.go:121] Published message: map[data:point_classifier_results,host=ia_telegraf,topic=temperature/simulated/0 humidity=12.040910740537647,temperature=27.32044250166733,ts=1594924084.430019 1594924084430766594 idbconn_pub:true]
+      I0716 23:58:05.431732      10 pubManager.go:121] Published message: map[data:point_data,host=ia_telegraf,topic=temperature/simulated/0 ts=1594924085.4304821,temperature=24.03411329966985,humidity=17.1642901921084 1594924085431039073 idbconn_pub:true]
+
+#. 
+   Check data in the InfluxDB
+
+
+* 
+  Enter in the container using the following command
+
+  .. code-block::
+
+     $ docker exec -it ia_influxdbconnector bash
+
+* 
+  Use the following to enter into the database
+
+  prod mode
+
+  .. code-block::
+
+     $ influx -ssl -unsafeSsl -username "username" -password "password" -database "database_name"
+
+  dev mode
+
+  .. code-block::
+
+     $ influx -username "username" -password "password" -database "database_name"
+
+  replace the "username", "database", and "password" keys with your DB username, password and DB name.`
+
+* 
+  Use Influx CLI command to interact with DB.
+
+  .. code-block::
+
+     $ show measurements
+
+  Output of the command
+
+  .. code-block::
+
+     > show measurements
+     name: measurements
+     name
+     ----
+     humidity_classifier_results
+     point_classifier_results
+     point_data
+
+* 
+  To see the data in point_classifier_results measurement use the following command
+
+  .. code-block::
+
+     $ select * from point_classifier_results
+
+  Sample output of the command
+
+  .. code-block::
+
+     name: point_classifier_results
+     time                host        humidity           temperature        topic                   ts
+     ----                ----        --------           -----------        -----                   --
+     1594923545769758418 ia_telegraf 19.81604257073865  26.879897943430848 temperature/simulated/0 1594923545.7691243
+     1594923614838551423 ia_telegraf 28.95738078521109  29.250270883294515 temperature/simulated/0 1594923614.8377328
+     1594923616840732537 ia_telegraf 21.3038992065728   27.128756451611928 temperature/simulated/0 1594923616.839861
+     1594923621850408245 ia_telegraf 24.17081234022867  28.12092358748019  temperature/simulated/0 1594923621.8499172
+     1594923622851693103 ia_telegraf 16.991377116304164 25.942235861646243 temperature/simulated/0 1594923622.8506734
+     1594923625853194299 ia_telegraf 17.790742401040156 26.029039405898416 temperature/simulated/0 1594923625.8526921
+     1594923627854797339 ia_telegraf 18.636291434358817 29.326483056022322 temperature/simulated/0 1594923627.8538675
+     1594923629861235060 ia_telegraf 13.110781672981076 26.452111132568664 temperature/simulated/0 1594923629.8601944
+     1594923636868340122 ia_telegraf 27.663236146599328 26.29884980515991  temperature/simulated/0 1594923636.867832
+     1594923647880734785 ia_telegraf 25.3924565876123   28.078243101597526 temperature/simulated/0 1594923647.8796468
+     1594923648881486348 ia_telegraf 12.022217148202829 27.96651437168266  temperature/simulated/0 1594923648.8805144
+     1594923654886479873 ia_telegraf 17.333022980266087 28.368384241660806 temperature/simulated/0 1594923654.8855999
+     1594923655888191773 ia_telegraf 29.70650230680635  26.11839631300789  temperature/simulated/0 1594923655.8870778
+     1594923656888741310 ia_telegraf 17.591632563610442 27.549975342107892 temperature/simulated/0 1594923656.8878617
+
+  Here, all the temperature data is above 25
+
+* 
+  To see the data in humidity_classifier_results measurement use the following command
+
+  .. code-block::
+
+     $ select * from humidity_classifier_results
+
+  Sample output of the command
+
+  .. code-block::
+
+     name: humidity_classifier_results
+     time                host        humidity           temperature        topic                   ts
+     ----                ----        --------           -----------        -----                   --
+     1594922435670934407 ia_telegraf 29.14477182235822  28.24835641087284  temperature/simulated/0 1594922435.6704926
+     1594922438672749397 ia_telegraf 28.333961058034408 23.79412059324136  temperature/simulated/0 1594922438.6722746
+     1594922440673573262 ia_telegraf 28.403412014434576 15.849326161213199 temperature/simulated/0 1594922440.6730607
+     1594922441674124435 ia_telegraf 27.629699521677637 13.964340936065131 temperature/simulated/0 1594922441.6733868
+     1594922451683956862 ia_telegraf 26.31819680956764  11.757978239277323 temperature/simulated/0 1594922451.6834583
+     1594922452684404597 ia_telegraf 26.942886935205237 27.954762973394395 temperature/simulated/0 1594922452.6838408
+     1594922454685507436 ia_telegraf 28.198384986303513 21.958077952286747 temperature/simulated/0 1594922454.6847117
+     1594922459691136679 ia_telegraf 28.928009573873968 27.33375706494249  temperature/simulated/0 1594922459.6906385
+     1594922461692967897 ia_telegraf 27.300210084769425 21.84679722208667  temperature/simulated/0 1594922461.6924229
+     1594922464695220305 ia_telegraf 26.031621145742253 19.33596257126575  temperature/simulated/0 1594922464.694672
+     1594922465696773126 ia_telegraf 25.312548153267265 25.93090843830029  temperature/simulated/0 1594922465.695979
+     1594922466697439030 ia_telegraf 29.384297962446905 27.409752918067007 temperature/simulated/0 1594922466.6964452
+     1594922472701537004 ia_telegraf 27.621241070234706 26.68898759908584  temperature/simulated/0 1594922472.7007167
+     1594922473703266299 ia_telegraf 28.558485895926765 21.455033422854758 temperature/simulated/0 1594922473.7021594
+     1594922475704646142 ia_telegraf 27.423792582269076 12.596418464102804 temperature/simulated/0 1594922475.7040672
+     1594922479707734013 ia_telegraf 27.770484735726605 19.20584244268835  temperature/simulated/0 1594922479.706727
+
+  Here, all the humidity data is above 25

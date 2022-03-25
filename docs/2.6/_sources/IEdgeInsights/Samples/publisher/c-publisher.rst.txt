@@ -1,0 +1,5 @@
+
+C++ publisher
+-------------
+
+The C++ publisher and server are supported in Ubuntu and Alpine operating systems or docker images. The C++ publisher runs in the independent containers ``ia_ubuntu_cpp_sample_pub`` and ``ia_alpine_cpp_sample_pub`` respectively.

@@ -1,0 +1,143 @@
+
+zmq_ipc Protocol usecase
+------------------------
+
+ZmqBroker:
+^^^^^^^^^^
+
+.. code-block:: javascript
+
+   {
+       "Publishers": [
+           {
+               "Name": "backend",
+               "Type": "zmq_ipc",
+               "EndPoint": {
+                   "SocketDir": "/EII/sockets",
+                   "SocketFile": "backend-socket"
+               },
+               "Topics": ["*"],
+               "AllowedClients": ["*"]
+           }
+       ],
+       "Subscribers": [
+           {
+               "Name": "frontend",
+               "Type": "zmq_ipc",
+               "EndPoint": {
+                   "SocketDir": "/EII/sockets",
+                   "SocketFile": "frontend-socket"
+               },
+               "PublisherAppName": "*",
+               "Topics": ["*"],
+               "AllowedClients": ["*"]
+           }
+       ]
+   }
+
+Subscriber
+^^^^^^^^^^
+
+.. code-block:: javascript
+
+   {
+       "Subscribers": [
+           {
+               "Name": "default",
+               "Type": "zmq_ipc",
+               "EndPoint": {
+                   "SocketDir" : "/EII/sockets",
+                   "SocketFile": "backend-socket"
+               },
+
+               // PublisherAppName will be "ZmqBroker" in case of brokered usecase 
+               "PublisherAppName": "ZmqBroker",
+
+               // Topics cannot be "*", if the only IPC directory is given
+               // if it Topics "*" to be used in ipc, then socket file should be given explicitly.
+               "Topics": [
+                   "*"
+               ]
+           }
+       ]
+   }
+
+Publisher
+^^^^^^^^^
+
+.. code-block:: javascript
+
+   {
+       "Publishers": [
+           {
+               "Name": "default",
+               "Type": "zmq_ipc",
+               "EndPoint": {
+                   "SocketDir" : "/EII/sockets",
+                   "SocketFile": "frontend-socket"
+               },
+               "Topics": [
+                   "camera1_stream"
+               ],
+
+               // With broker usecase, AllowedClients in Publisher's interface is not required, as it acts as a subscriber to X-SUB
+
+               // "brokered" and "BrokerAppName" should be added for ZmqBroker usecase
+               "brokered": true,
+               "BrokerAppName" : "ZmqBroker"
+           }
+       ]
+   }
+
+.. list-table::
+   :header-rows: 1
+
+   * - Key
+     - Type
+     - Required (Mandatory)
+     - Description
+   * - ``brokered``
+     - ``boolean``
+     - Yes
+     - (Required if publishing via ZmqBroker) Specifies if publisher is using broker or not. use "brokered": true for use with broker.
+   * - ``BrokerAppName``
+     - ``string``
+     - Yes
+     - (Required if publishing via ZmqBroker) Specifies ZeroMQ Broker app name
+
+
+**Note** "Endpoint" can be given in different ways:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* 
+  zmq_tcp Endpoint should look like below:
+
+  .. code-block:: javascript
+
+       "Endpoint":"127.0.0.1:65013"
+
+* 
+  zmq_ipc Endpoint have different ways of giving.
+
+
+  * 
+    Specifying just socket directory
+
+    .. code-block:: javascript
+
+         "Endpoint":"/EII/sockets"
+
+  * 
+    Specifying socket directory and socket file
+
+    .. code-block:: javascript
+
+         "Endpoint":{
+             "SocketDir" : "/EII/sockets",
+             "SocketFile": "socketfile"
+         }
+
+         or
+
+         "Endpoint":"/EII/sockets, socketfile"

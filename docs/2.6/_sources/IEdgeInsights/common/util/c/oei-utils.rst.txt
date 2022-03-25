@@ -1,0 +1,8 @@
+
+OEI Utils
+---------
+
+Open Edge Insights (OEI) Utils is a C library providing commonly used APIs across the C/C++ OEI modules, Message Bus, and Config Manager libraries.
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.
+

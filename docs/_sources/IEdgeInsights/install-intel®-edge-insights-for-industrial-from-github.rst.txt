@@ -1,0 +1,13 @@
+
+Install Intel® Edge Insights for Industrial from GitHub
+-------------------------------------------------------
+
+You can download and install EII from the `Open Edge Insights GitHub repository <https://github.com/open-edge-insights/>`_. For more information on manifest files, refer `Readme <https://github.com/open-edge-insights/eii-manifests/blob/master/README.md>`_.
+
+To install EII, perform the tasks in the following order:  
+
+
+* `Task 1: Get EII codebase from GitHub <#task-1-get-eii-codebase-from-github>`__  
+* `Task 2: Install prerequisites <#task-2-install-prerequisites>`__  
+* `Task 3: Generate deployment and configuration files <#task-3-generate-deployment-and-configuration-files>`__  
+* `Task 4: Build and run the EII video and timeseries use cases <#task-4-build-and-run-the-eii-video-and-timeseries-use-cases>`__

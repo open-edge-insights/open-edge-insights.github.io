@@ -1,0 +1,58 @@
+
+Advanced: Multiple plugin sections of EII message bus output plugin
+-------------------------------------------------------------------
+
+Like any other Telegraf plugin user can keep multiple configuration sections of the EII message bus output plugin in the **\ `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_\ ** file.
+
+*The Telegraf's ETCD configuration for the same is*
+
+.. code-block:: json
+
+   {
+       "config": {
+           "publisher1": {
+               "measurements": ["*"],
+               "profiling": "false"
+           },
+           "publisher2": {
+               "measurements": ["*"],
+               "profiling": "false"
+           }
+       },
+       "interfaces": {
+           "Publishers": [
+               {
+                   "Name": "publisher1",
+                   "Type": "zmq_tcp",
+                   "EndPoint": "0.0.0.0:65077",
+                   "Topics": [
+                       "*"
+                   ],
+                   "AllowedClients": [
+                       "*"
+                   ]
+               },
+               {
+                   "Name": "publisher2",
+                   "Type": "zmq_tcp",
+                   "EndPoint": "0.0.0.0:65078",
+                   "Topics": [
+                       "*"
+                   ],
+                   "AllowedClients": [
+                       "*"
+                   ]
+               }
+           ]
+       }
+   }
+
+*The Telegraf.conf configuration sections for the same is*
+
+.. code-block::
+
+   [[outputs.eii_msgbus]]
+   instance_name = "publisher1"
+
+   [[outputs.eii_msgbus]]
+   instance_name = "publisher2"

@@ -1,0 +1,24 @@
+
+Contents
+========
+
+
+* `Contents <#contents>`__
+
+  * `Ansible based OEI Prequisites setup, provisioning, build & deployment <#ansible-based-oei-prequisites-setup-provisioning-build-deployment>`__
+  * `Installing Ansible on Ubuntu {Control node} <#installing-ansible-on-ubuntu-control-node>`__
+  * `Prerequisite step needed for all the control/worker nodes <#prerequisite-step-needed-for-all-the-controlworker-nodes>`__
+
+    * `Generate SSH KEY for all nodes <#generate-ssh-key-for-all-nodes>`__
+
+  * `Adding SSH Authorized Key from control node to all the nodes <#adding-ssh-authorized-key-from-control-node-to-all-the-nodes>`__
+
+    * `Configure Sudoers file to accept NO PASSWORD for sudo operation <#configure-sudoers-file-to-accept-no-password-for-sudo-operation>`__
+
+  * `Updating the leader information for using remote hosts <#updating-the-leader-information-for-using-remote-hosts>`__
+  * `Updating the OEI Source Folder, Usecase & Proxy Settings in Group Variables <#updating-the-oei-source-folder-usecase-proxy-settings-in-group-variables>`__
+  * `Remote node deployment <#remote-node-deployment>`__
+  * `Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy OEI services in control node/remote node <#execute-ansible-playbook-from-eii_workdiriedgeinsightsbuildansible-control-node-to-deploy-oei-services-in-control-noderemote-node>`__
+
+    * `For Single Point of Execution <#for-single-point-of-execution>`__
+    * `Deploying OEI Using Helm in Kubernetes (k8s) environment <#deploying-oei-using-helm-in-kubernetes-k8s-environment>`__

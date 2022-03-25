@@ -1,0 +1,9 @@
+
+Screenshots
+-----------
+
+
+.. image:: https://github.com/evildecay/etcdkeeper/blob/master/screenshots/ui.png
+   :target: https://github.com/evildecay/etcdkeeper/blob/master/screenshots/ui.png
+   :alt: image
+

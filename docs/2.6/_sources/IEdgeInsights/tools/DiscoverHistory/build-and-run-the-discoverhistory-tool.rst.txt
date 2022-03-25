@@ -1,0 +1,76 @@
+
+Build and run the DiscoverHistory tool
+--------------------------------------
+
+This section provides information for building and running DiscoverHistory tool in various modes such as the PROD mode and the DEV mode. To run the DiscoverHistory tool base images should be on the same node. Ensure that on the node where the DiscoverHistory tool is running, the ``ia_common`` and ``ia_eiibase`` base images are also available. For scenario, where EII and DiscoverHistory tool are not running on the same node, then you must build the base images, ``ia_common`` and ``ia_eiibase``.
+
+Prerequisites
+^^^^^^^^^^^^^
+
+As a prerequisite to run the DiscoverHistory tool, a set of config, interfaces, public, and private keys should be present in etcd. To meet the prerequisite, ensure that an entry for the DiscoverHistory tool with its relative path from the ``[WORK_DIR]/IEdgeInsights]`` directory is set in the ``video-streaming-storage.yml`` file in the ``[WORK_DIR]/IEdgeInsights/build/usecases/`` directory. For more information, see the following example:
+
+.. code-block:: sh
+
+       AppContexts:
+       - VideoIngestion
+       - VideoAnalytics
+       - Visualizer
+       - WebVisualizer
+       - tools/DiscoverHistory
+       - ImageStore
+       - InfluxDBConnector
+
+Run the DiscoverHistory tool in the PROD mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After completing the prerequisites, perform the following steps to run the DiscoverHistory tool in the PROD mode:
+
+
+#. Open the ``config.json`` file.
+#. Enter the query for InfluxDB.
+#. 
+   Run the following command to generate the new ``docker-compose.yml`` that includes DiscoverHistory:
+
+   .. code-block:: sh
+
+          python3 builder.py -f usecases/video-streaming-storage.yml
+
+#. 
+   Provision, build, and run the DiscoverHistory tool along with the EII video-streaming-storage recipe or stack. For more information, refer to the `EII README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_.
+
+#. Check if the ``imagestore`` and ``influxdbconnector`` services are running.
+#. Locate the ``data`` and the ``frames`` directories from the following path:
+   ``/opt/intel/eii/tools_output``.
+   ..
+
+      Note: The ``frames`` directory will be created only if ``img_handle`` is part of the select statement.
+
+
+#. Use the ETCDUI to change the query in the configuration.
+#. 
+   Run the following command to start container with new configuration:
+
+   .. code-block:: sh
+
+         docker restart ia_discover_history
+
+Run the DiscoverHistory tool in the DEV mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After completing the prerequisites, perform the following steps to run the DiscoverHistory tool in the DEV mode:
+
+
+#. Open the [.env] file from the ``[WORK_DIR]/IEdgeInsights/build`` directory.
+#. Set the ``DEV_MODE`` variable as ``true``.
+
+Run the DiscoverHistory tool in the zmq_ipc mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After completing the prerequisites, to run the DiscoverHistory tool in the zmq_ipc mode, modify the interface section of the ``config.json`` file as follows:
+
+.. code-block:: json
+
+       {
+           "type": "zmq_ipc",
+           "EndPoint": "/EII/sockets"
+       }

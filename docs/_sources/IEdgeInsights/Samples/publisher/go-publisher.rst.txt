@@ -1,0 +1,5 @@
+
+Go publisher
+------------
+
+The Go publisher and server are supported in Ubuntu and Alpine operating systems or docker images. The Go publisher runs in the independent containers ``ia_ubuntu_go_sample_pub`` and ``ia_alpine_go_sample_pub`` respectively.
