@@ -1,0 +1,12 @@
+
+Downloading Models as part of Video Analytics Serving Build
+-----------------------------------------------------------
+
+The Video Analytics Serving build script downloads models listed in a
+yaml file that can be specified via the ``--models`` argument.
+
+Example:
+
+.. code-block:: bash
+
+   ./docker/build.sh --models models_list/models.list.yml

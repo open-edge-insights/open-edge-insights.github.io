@@ -1,0 +1,42 @@
+
+Usage
+-----
+
+
+* Run etcdkeeper.exe (windows version)
+* Run etcdkeeper.exe -auth (If enable etcd authentication)
+* `Download other platform releases <https://github.com/evildecay/etcdkeeper/releases>`_.
+  .. code-block::
+
+     Usage of etcdkeeper.exe:
+     -h string
+           host name or ip address (default: "0.0.0.0", the http server addreess, not etcd address)
+     -p int
+           port (default 8080)
+     -sep string
+           Separator (default "/")
+     -usetls
+           use tls (only v3)
+     -cacert string
+           verify certificates of TLS-enabled secure servers using this CA bundle (only v3)
+     -cert string
+           identify secure client using this TLS certificate file (only v3)
+     -key string
+           identify secure client using this TLS key file (only v3)
+     -auth bool
+           use etcd auth
+     -timeout int
+           ETCD client connect timeout
+
+* Open your browser and enter the address: http://127.0.0.1:8080/etcdkeeper
+* Click on the version of the title to select the version of ETCD. The default is V3. Reopening will remember your choice.
+* Right click on the tree node to add or delete.
+* Get data based on etcd user permissions.
+
+  * Just display the list according to the configured permissions, and there will be time to add the configuration permission features.
+  * Each time you restart etcdkeeper, you need to enter the root username and password for each etcd server address. 
+  * `enable etcdv3 authentication <https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/authentication.md>`_
+  * `enable etcdv2 authentication <https://github.com/etcd-io/etcd/blob/master/Documentation/v2/authentication.md>`_
+
+* Display the status information of etcd, version, data size.
+* Etcd address can be modified by default to the localhost. If you change, press the Enter key to take effect.

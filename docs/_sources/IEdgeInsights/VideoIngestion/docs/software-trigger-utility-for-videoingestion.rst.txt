@@ -1,0 +1,8 @@
+
+Software Trigger Utility for VideoIngestion
+-------------------------------------------
+
+The video ingestion process is autonomous. When the VideoIngestion microservice starts, the ingestion process starts automatically using the video source such as a video file or a camera. You cannot control the ingestion without stopping the ingestion microservice. The Software Trigger Utility allows you to start and stop video ingestion using the software triggers sent by the client application. You can control video ingestion from all the supported ingestors and camera configurations using the Software Trigger Utility.
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+

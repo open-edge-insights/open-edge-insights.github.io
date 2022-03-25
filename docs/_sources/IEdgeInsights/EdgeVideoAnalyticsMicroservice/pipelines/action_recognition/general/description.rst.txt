@@ -1,0 +1,62 @@
+
+Description
+-----------
+
+Pipeline
+^^^^^^^^
+
+A detailed description can be found `here <https://github.com/openvinotoolkit/open_model_zoo/tree/master/demos/action_recognition_demo/python#how-it-works>`_.
+
+Models
+^^^^^^
+
+A composite model is used, consisting of:
+
+
+* `action-recognition-0001-encoder <https://github.com/openvinotoolkit/open_model_zoo/tree/master/models/intel/action-recognition-0001/action-recognition-0001-encoder>`_
+* `action-recognition-0001-decoder <https://github.com/openvinotoolkit/open_model_zoo/tree/master/models/intel/action-recognition-0001/action-recognition-0001-decoder>`_
+
+These are based on (400 actions) models for `Kinetics-400 dataset <https://deepmind.com/research/open-source/kinetics>`_.
+
+Parameters
+^^^^^^^^^^
+
+The key parameters of `DLStreamer gvaactionrecognitionbin <https://github.com/openvinotoolkit/dlstreamer_gst/wiki/Action-Recognition>`_ element are the model and device parameters for each of the encoder and decoder models.
+
+..
+
+   Note: The inference devices are set to "CPU" by default in pipeline.json as default values in gvaactionrecognitionbin are empty strings.
+
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Definition
+   * - enc-model
+     - Path to encoder inference model network file
+   * - dec-model
+     - Path to decoder inference model network file
+   * - enc-device
+     - Encoder inference device i.e CPU/GPU
+   * - dec-device
+     - Decoder inference device i.e CPU/GPU
+
+
+Template
+^^^^^^^^
+
+Template is outlined in pipeline.json as follows:
+
+..
+
+   Note : gvametaconvert requires setting "add-tensor-data=true" as the inference details (label, confidence) determined by gvaactionrecognitionbin is available only inside the tensor data
+
+
+.. code-block:: json
+
+   template : "uridecodebin name=source ! videoconvert ! video/x-raw,format=BGRx",
+   " ! gvaactionrecognitionbin enc-model={models[action_recognition][encoder][network]} dec-model={models[action_recognition][decoder][network]} model-proc={models[action_recognition][decode[proc]} name=action_recognition",
+   " ! gvametaconvert add-tensor-data=true name=metaconvert",
+   " ! gvametapublish name=destination",
+   " ! appsink name=appsink"]

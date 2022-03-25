@@ -1,0 +1,26 @@
+
+Non-orchestrated multi node deployment (without k8s)
+----------------------------------------------------
+
+Below configuration changes need to be made for multi node deployment without k8s
+
+
+#. Set ``multi_node: true`` in ``group_vars/all.yml`` to enable multinode deployment and ``false`` to enable single node deployment. Update ``vars/vars.yml`` to the services to run on a specific node in case of multi_node deployment by following `this <#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment>`__\ , where in single node deployment all the services based on the ``usecase`` chosen will be deployed. 
+#. Update ``docker`` registry details in following section if using a custom/private registry
+   .. code-block:: sh
+
+           docker_registry="<regsitry_url>"
+           docker_login_user="<username>"
+           docker_login_passwd="<password>"
+
+   ..
+
+      **Note**
+      Use of ``docker_registry`` and ``build`` flags
+
+
+      * Update ``docker_registry`` details to use docker images from custom registry, optionally set ``build: true`` to push docker images to this registry
+      * Unset ``docker_registry`` details if you don't want to use custom registry and set ``build: true`` to save and load docker images from one node to another node
+
+
+#. If you are using images from docker hub, then set ``build: false`` and unset ``docker_registry`` details

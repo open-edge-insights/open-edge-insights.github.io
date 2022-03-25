@@ -1,0 +1,46 @@
+
+Running the image
+-----------------
+
+
+* 
+  Clone this repo.
+
+* 
+  Make the following files executable
+
+    ``chmod +x tools/model_downloader/model_downloader.sh docker/run.sh``
+
+* 
+  Download the required models. From the cloned repo, run the following commands. 
+
+    ``./tools/model_downloader/model_downloader.sh  --model-list <Path to model-list.yml>``
+
+* 
+  After downloading the models, you will have models directory in the base folder.
+
+.. code-block::
+
+   models/
+   ├── action_recognition
+   ├── audio_detection
+   ├── emotion_recognition
+   ├── face_detection_retail
+   ├── object_classification
+   └── object_detection
+
+
+* Add the following lines in the docker-compose.yml environment if you are behind a proxy.
+
+.. code-block::
+
+       - HTTP_PROXY=<IP>:<Port>/
+       - HTTPS_PROXY=<IP>:<Port>/
+       - NO_PROXY=localhost,127.0.0.1
+
+
+* 
+  Run ``sudo docker-compose up``.
+
+* 
+  Please refer to `Run the Edge Video Analytics Microservice <https://www.intel.com/content/www/us/en/developer/articles/technical/video-analytics-service.html#inpage-nav-3-1>`_ for more details.

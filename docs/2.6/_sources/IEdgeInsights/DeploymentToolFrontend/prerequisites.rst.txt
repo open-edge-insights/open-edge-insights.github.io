@@ -1,0 +1,10 @@
+
+Prerequisites
+-------------
+
+Complete the following prerequisites before using the Web Deployment tool:
+
+
+* Install the prerequisites for running OEI. For more details, refer to the `OEI ReadMe <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_.
+* `Prerequisites for video accelerators <https://github.com/open-edge-insights/eii-core#using-video-accelerators-in-ingestionanalytics-containers>`_
+* `Prerequisites for cameras <https://github.com/open-edge-insights/video-ingestion#camera-configuration>`_

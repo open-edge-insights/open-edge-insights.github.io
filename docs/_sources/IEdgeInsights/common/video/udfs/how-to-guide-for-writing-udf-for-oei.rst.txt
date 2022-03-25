@@ -1,0 +1,8 @@
+
+How-To guide for writing UDF for OEI
+------------------------------------
+
+This document describes stepwise instruction for writing a User defined Function(UDF) in C++/Python in order to make it deployable in OEI environment. It  explains APIs and configurational changes required in order to write an UDF for OEI.
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.
+

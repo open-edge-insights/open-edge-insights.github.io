@@ -1,0 +1,56 @@
+
+Output
+------
+
+Below is a sample of the inference results i.e metadata (json format):
+
+.. code-block:: json
+
+   {
+       "objects": [
+           {
+               "h": 432,
+               "tensors": [
+                   {
+                       "confidence": 0.005000564735382795,
+                       "label": "surfing crowd",
+                       "label_id": 336,
+                       "layer_name": "data",
+                       "layout": "ANY",
+                       "name": "action",
+                       "precision": "UNSPECIFIED"
+                   }
+               ],
+               "w": 768,
+               "x": 0,
+               "y": 0
+           }
+       ],
+       "resolution": {
+           "height": 432,
+           "width": 768
+       },
+       "source": "https://github.com/intel-iot-devkit/sample-videos/blob/master/person-bicycle-car-detection.mp4?raw=true",
+       "timestamp": 0
+   }
+
+The corresponding vaclient output resembles:
+
+.. code-block:: code
+
+    Timestamp <timestamp>
+   - <label> (<confidence>)
+
+For example:
+
+.. code-block:: code
+
+   Starting pipeline action_recognition/general, instance = 1
+   Timestamp 0
+   - surfing crowd (0.01)
+   Timestamp 83333333
+   - surfing crowd (0.01)
+   Timestamp 166666666
+   - surfing crowd (0.01)
+   Timestamp 250000000
+   - surfing crowd (0.01)

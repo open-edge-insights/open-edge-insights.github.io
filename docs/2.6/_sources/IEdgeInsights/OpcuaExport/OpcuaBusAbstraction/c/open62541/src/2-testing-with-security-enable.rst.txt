@@ -1,0 +1,17 @@
+
+2. Testing with security enabled
+--------------------------------
+
+
+* Start publisher, publish and destroy
+
+.. code-block:: sh
+
+   make pub
+
+
+* Start subscriber, subscribe and destroy
+
+.. code-block:: sh
+
+   make sub

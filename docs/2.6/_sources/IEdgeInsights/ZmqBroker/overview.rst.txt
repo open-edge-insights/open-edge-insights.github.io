@@ -1,0 +1,61 @@
+
+Overview
+--------
+
+The ZeroMQ Broker provides the ability to proxy data coming over the
+EII Message Bus ZeroMQ protocol plugin for publishers and subscribers.
+Traditionally, each EII Message Bus ZeroMQ publisher has its own IPC socket
+or TCP (host, port) combination. This broker allows for publishers to connect
+to the proxy's publisher TCP or IPC socket for sending published messages and
+subscribers to connect to one central subscriber TCP or IPC socket
+to receive incoming messages from the broker.
+
+The ZeroMQ Broker builds off of the functionality provided by the ZeroMQ
+``zmq_proxy()`` API, which uses two separate sockets and hands messages off from
+one socket to the other.
+
+The following diagram shows a high-level flow of how the ZeroMQ Broker
+functions.
+
+.. code-block::
+
+    +-----------+    +-----------+    +-----------+
+    | Publisher |    | Publisher |    | Publisher |
+    +-----------+    +-----------+    +-----------+
+    |  ZMQ_PUB  |    |  ZMQ_PUB  |    |  ZMQ_PUB  |
+    +-----------+    +-----------+    +-----------+
+       connect          connect          connect
+         |                |                 |
+         +----------------+-----------------+
+                          |
+                         bind
+                  +----------------+
+                  |    ZMQ_XSUB    |
+                  +----------------+
+                  |     proxy      |
+                  +----------------+
+                  |    ZMQ_XPUB    |
+                  +----------------+
+                         bind
+                          |
+          +---------------+-------------------+
+          |               |                   |
+       connect          connect            connect
+    +------------+    +------------+    +------------+
+    |  ZMQ_SUB   |    |  ZMQ_SUB   |    |  ZMQ_SUB   |
+    +------------+    +------------+    +------------+
+    | Subscriber |    | Subscriber |    | Subscriber |
+    +------------+    +------------+    +------------+
+
+As shown in the diagram above, the broker uses two ZeroMQ sockets:
+
+
+#. A socket for publishers to connect (i.e. the ``ZMQ_XSUB`` socket), which is
+    referred to as the **frontend** socket
+#. A socket for the subscribers to connect to (i.e. the ``ZMQ_XPUB`` socket), which
+    is referred to as the **backend** socket
+
+The broker binds to the TCP (host, port) or IPC socket file (based on its
+configuration) for each of its sockets. Messages are sent from publishers into
+the **frontend** socket and then relayed onto the **backend** socket which
+forwards the messages onto the subscribers.

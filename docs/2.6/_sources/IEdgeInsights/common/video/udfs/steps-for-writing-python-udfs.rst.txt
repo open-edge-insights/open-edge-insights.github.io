@@ -1,0 +1,94 @@
+
+**Steps for writing Python UDFs**
+-------------------------------------
+
+This section describes the process of writing a Python UDF. As discussed in the aforementioned scenario, it also has two aspects to it.
+
+
+* 
+  Writing the actual UDF. It needs knowledge EII exposed python APIs
+
+* 
+  Adding the UDF to EII framework by altering different configs.
+
+**Python APIs for writing UDF for EII**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+* 
+  **INITIALIZATION**
+
+    In case of Python the initialization callback is also same as the native case. User must create a **\ *Udf class*\ ** and the **\ *__init__()*\ ** function defined in class act as a initialization routine for custom UDF. A dummy constructor code is pasted below:
+
+  .. code-block:: Python
+
+       class Udf:
+       """Example UDF
+       """
+       def __init__(self):
+           """Constructor
+           """
+           # Add the initialization code in this method.
+
+* 
+  **PROCESS ACTUAL DATA**
+
+    The API used to process the actual frame looks as below.
+
+  .. code-block:: Python
+
+       process(self, frame, metadata):
+           # Process the frame in this method
+           # metadata can be used to return inference result
+
+    **Argument:**
+
+    *frame*\ : Image frame in numpy's ndarray format
+
+    *metadata*\ : An empty dictionary. Inference results can be inserted in this data structure.
+
+    **Return value:**
+
+    This function returns three values.
+
+    *1st Value* : Represents if the frame Need to be dropped or Not. It is boolean in nature. In case of failure user can return *True* in this positional return value.
+
+    *2nd Value* : It represents the actual modified frame if at all it has been modified. Hence the type is **numpy's ndarray**. If the frame is not modified user can return a *None* in this place.
+
+    *3rd Value* : Metadata is returned in this place. Hence the type is **dict**. In general user can return the passed argument as part of this function.
+
+For reference user can find example UDFs code in below mentioned links
+
+
+* 
+  `PCB_FILTER <https://github.com/open-edge-insights/eii-core/blob/master/pcb_filter.py>`_
+
+* 
+  `PCB_CLASSIFIER <https://github.com/open-edge-insights/eii-core/blob/master/pcb_classifier.py>`_
+
+* 
+  `Dummy UDF <https://github.com/open-edge-insights/video-common/blob/master/udfs/dummy.py>`_
+
+**EII Infrastructure changes**
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For any UDF to be utilized by the EII infrastructure, user must follow the below steps.
+
+
+* 
+  Corresponding UDF entry must be added to the ``config.json`` file of apps like VideoIngestion and VideoAnalytics.
+  The UDF entry syntax is explained in detail in the following document `UDF README <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_
+
+* 
+  All the python UDFs must be kept under `python udf directory <https://github.com/open-edge-insights/video-common/blob/master/udfs/python>`_. Additionally the entry *name* key must have the file hierarchy till the file name as the name of the udf. For example:
+  A file present in this path *./python/pcb/pcb_filter.py* must have the *name* field as *pcb.pcb_filter*.
+
+  ..
+
+     This syntax is described in detail in the `UDF README <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_.
+
+
+CONCLUSION
+^^^^^^^^^^
+
+The UDFs currently supported using python and C++. UDF uses in-memory message passing instead of sockets for the communication between the pipeline and UDFs making it faster in comparison. EII has many sample UDFs can be found in following paths `for python <https://github.com/open-edge-insights/video-common/blob/master/udfs/python>`_ & `for python <https://github.com/open-edge-insights/video-common/blob/master/udfs/python>`_

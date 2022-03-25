@@ -1,0 +1,87 @@
+
+Using input plugin
+------------------
+
+
+* 
+  Configure the EII input plugin in `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_ and `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_
+  For example:
+
+  .. code-block::
+
+     [eii]
+       enabled = true
+
+* 
+  Edit `config.json <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json>`_ to add a subscriber under interfaces.
+
+  For example, to receive data published by Telegraf:
+
+  **TCP mode**
+
+  .. code-block::
+
+         "Subscribers": [
+             {
+                 "Name": "telegraf_sub",
+                 "Type": "zmq_tcp",
+                 "EndPoint": "ia_telegraf:65077",
+                 "PublisherAppName": "Telegraf",
+                 "Topics": [
+                     "*"
+                 ]
+             }
+         ]
+
+  **IPC mode**
+
+  .. code-block::
+
+         "Subscribers": [
+             {
+                 "Name": "telegraf_sub",
+                 "Type": "zmq_ipc",
+                 "EndPoint": {
+                     "SocketDir": "/EII/sockets",
+                     "SocketFile": "telegraf-out"
+                 },
+                 "PublisherAppName": "Telegraf",
+                 "Topics": [
+                     "*"
+                 ]
+             }
+         ]
+
+  **Note: For IPC mode, we need to specify the 'EndPoint' as a dict of 'SocketDir' and 'SocketFile' in case
+  where 'Topics' is [*] (as in the above example).
+  In case of single topic the 'EndPoint' can be defined as below (as in the example of Kapacitor o/p plugin):**
+
+  .. code-block::
+
+     "EndPoint": "/EII/sockets"
+
+  The received data will be available in the 'eii' storage for the tick scripts to use.
+
+* 
+  Create/modify a tick script to process the data and configure the same in `config.json <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json>`_.
+  For example, use the stock `tick_scripts/eii_input_plugin_logging.tick <https://github.com/open-edge-insights/ts-kapacitor/blob/master/tick_scripts/eii_input_plugin_logging.tick>`_ which logs the data received from 'eii'
+  storage onto the kapacitor log file (residing in the container at /tmp/log/kapacitor/kapacitor.log).
+
+  .. code-block::
+
+         "task": [
+            {
+              "tick_script": "eii_input_plugin_logging.tick",
+              "task_name": "eii_input_plugin_logging"
+            }
+         ]
+
+* 
+  Do the `provisioning <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ and run the EII stack.
+
+  The subscribed data will now be available in the above logs file which can be viewed with the 
+  command below:
+
+  .. code-block::
+
+     docker exec ia_kapacitor tail -f /tmp/log/kapacitor/kapacitor.log

@@ -1,0 +1,17 @@
+
+Multi-instance feature support for the Builder script with the DiscoverHistory tool
+-----------------------------------------------------------------------------------
+
+The multi-instance feature support of Builder works only for the video pipeline (\ ``[WORK_DIR]/IEdgeInsights/build/usecase/video-streaming.yml``\ ). For more details, refer to the `EII core readme <https://github.com/open-edge-insights/eii-core/blob/master/README.md#running-builder-to-generate-multi-instance-configs>`_
+
+In the following example you can view how to change the configuration to use the builder.py script -v 2 feature with 2 instances of the DiscoverHistory tool enabled:
+
+.. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/DiscoverHistory/img/discoverHistoryTool-conf-change1.png
+   :target: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/DiscoverHistory/img/discoverHistoryTool-conf-change1.png
+   :alt: DiscoverHistory instance 1 interfaces
+
+
+.. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/DiscoverHistory/img/discoverHistoryTool-conf-change2.png
+   :target: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/DiscoverHistory/img/discoverHistoryTool-conf-change2.png
+   :alt: DiscoverHistory instance 2 interfaces
+

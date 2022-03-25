@@ -1,0 +1,22 @@
+
+Configuration
+-------------
+
+
+#. 
+   `dashboard.json <https://github.com/open-edge-insights/ts-grafana/blob/master/dashboard.json>`_
+    This is the dashboard json file that is loaded when grafana starts. It has been preconfigured to display time-series data. 
+
+#. 
+   `dashboard_sample.yml <https://github.com/open-edge-insights/ts-grafana/blob/master/dashboard_sample.yml>`_
+    This is the config file for all the dashboards. It specifies the path where all the dashboard json files will be looked for.
+
+#. 
+   `datasource_sample.yml <https://github.com/open-edge-insights/ts-grafana/blob/master/datasource_sample.yml>`_
+    This is the config file for setting up the datasource. It has got various fields for datasource configuration.
+
+#. 
+   `grafana_template.ini <https://github.com/open-edge-insights/ts-grafana/blob/master/grafana_template.ini>`_
+    This is the config for Grafana itself. It specifies how grafana should start up, once it has been configured.
+
+NOTE: The contents of these files can be edited according to the requirement.

@@ -1,0 +1,11 @@
+
+Web Deployment Tool API Documentation
+-------------------------------------
+
+The Web Deployment Tool auto-generates the OpenAPI documentation for all the REST APIs it exposes. This documentation can be accessed at its **/docs** endpoint.
+
+For example:
+
+.. code-block:: sh
+
+   https://127.0.0.1:5100/docs

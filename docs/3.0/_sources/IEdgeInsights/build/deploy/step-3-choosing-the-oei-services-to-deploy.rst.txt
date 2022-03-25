@@ -1,0 +1,29 @@
+
+Step 3 Choosing the OEI services to deploy
+------------------------------------------
+
+.. note::  This deployment bundle generated can be used to provision and also to deploy the OEI stack
+
+
+
+#. This software works only on Python3+ version.
+#. 
+   Update the `config.json <https://github.com/open-edge-insights/eii-core/blob/master/build/deploy/config.json>`_ file.
+
+   .. code-block:: sh
+
+          {
+              "docker_compose_file_version": "<docker_compose_file_version which is compose file version supported by deploying docker engine>",
+              "exclude_services": [list of services which you want exclude for your deployement]
+              "include_services": [list of services needed in final deployment docker-compose.yml]
+
+         }
+
+   **Note:**
+    >
+
+   ..
+
+      * Validate the json.
+      * Ensure that you have updated the DOCKER_REGISTRY in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file.
+

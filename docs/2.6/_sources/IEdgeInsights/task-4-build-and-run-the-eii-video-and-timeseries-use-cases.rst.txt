@@ -1,0 +1,24 @@
+
+Task 4: Build and run the EII video and timeseries use cases
+------------------------------------------------------------
+
+.. note:: 
+
+
+   * For running the EII services in the IPC mode, ensure that the same user is mentioned in the publisher and subscriber services.
+   * If the publisher service is running as root such as ``VI``\ , ``VA``\ , then the subscriber service should also run as root. For example, in the ``docker-compose.yml``\ file, if you have specified ``user: ${EII_UID}`` in the publisher service, then specify the same ``user: ${EII_UID}`` in the subscriber service. If you have not specified a user in the publisher service then don't specify the user in the subscriber service.
+   * If services needs to be running in multiple nodes in the TCP mode of communication, msgbus subscribers, and clients of ``AppName`` are required to configure the "EndPoint" in ``config.json`` with the ``HOST_IP`` and the ``PORT`` under ``Subscribers/Publishers`` or ``Clients/Servers`` interfaces section.
+   * Ensure that the port is being exposed in the ``docker-compose.yml`` of the respective ``AppName``.
+     For example, if the ``"EndPoint": <HOST_IP>:65012`` is configured in the ``config.json`` file, then expose the port ``65012`` in the ``docker-compose.yml`` file of the ``ia_video_ingestion`` service.
+
+
+.. code-block:: yaml
+
+       ia_video_ingestion:
+         ...
+         ports:
+           - 65012:65012
+
+Run all the following EII build and commands from the ``[WORKDIR]/IEdgeInsights/build/`` directory.
+
+EII supports the following use cases to run the services mentioned in the ``docker_compose.yml`` file. Refer to Task 2 to generate the docker_compose.yml file based on a specific use case. For more information and configuration, refer to the ``[WORK_DIR]/IEdgeInsights/README`` file.

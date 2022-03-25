@@ -1,0 +1,40 @@
+
+Deploy OEI in the kubernetes node
+---------------------------------
+
+.. note:: 
+
+
+   * OEI helm/k8s deployment does not support native visualizer. Remove ``visualizer.yml`` template, if exists as a part of your usecase from ``EII_HOME_DIR/build/helm-eii/eii-deploy/templates/visualizer.yml``
+   * OEI helm/k8s deployment ``Grafana`` application is not enabled for ``Video`` usecases. Only ``timeseries`` usecases are supported
+
+
+Copy the helm charts in helm-eii/ directory to the node.
+
+
+#. 
+   Install deploy helm chart
+
+   .. code-block:: sh
+
+      cd [WORKDIR]/IEdgeInsights/build/helm-eii/
+      helm install eii-deploy eii-deploy/
+
+   ..
+
+      **Note:** If one wants to set the ingestion pipeline for the video ingestion pod, please install the deploy helm chart as below:
+
+      .. code-block:: sh
+
+         helm install --set env.PIPELINE="<INGESTION_PIPELINE>" eii-deploy eii-deploy/
+
+      **Note:** ConfigMgrAgent service needs to be initialized before other services during runtime. In case other services are initialized before ConfigMgrAgent one might notice "cfgmgr initialization failed" exception. After generating this exception the services should restart and continue to run.
+
+
+   Verify all the pod are running:
+
+   .. code-block:: sh
+
+      kubectl get pods
+
+OEI is now successfully deployed.

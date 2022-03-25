@@ -1,0 +1,5 @@
+
+Testing ImageStore Persistent service. Test file location `persistentTest.go <https://github.com/open-edge-insights/video-imagestore/blob/master/go/examples/persistentTest.go>`_
+=====================================================================================================================================================================================
+
+go run ./persistentTest.go

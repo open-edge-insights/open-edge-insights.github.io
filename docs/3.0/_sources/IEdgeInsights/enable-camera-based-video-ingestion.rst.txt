@@ -1,0 +1,5 @@
+
+Enable camera based Video Ingestion
+-----------------------------------
+
+For detailed description on configuring different types of cameras and  filter algorithms, refer to the `VideoIngestion/README.md <https://github.com/open-edge-insights/video-ingestion/blob/master/README.md>`_.

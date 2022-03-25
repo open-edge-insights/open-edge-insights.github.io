@@ -1,0 +1,12 @@
+
+Setting Up NodeRed
+------------------
+
+  Node-RED provides various options to install and set up Node-RED in your environment. For more information on installation and setup, refer to the `Node-RED documenation <https://nodered.org/docs/getting-started/local>`_.
+
+.. note::  For quick setup, install using ``docker``
+
+   .. code-block:: sh
+
+         docker run -it -p 1880:1880 --name myNodeRed nodered/node-red
+

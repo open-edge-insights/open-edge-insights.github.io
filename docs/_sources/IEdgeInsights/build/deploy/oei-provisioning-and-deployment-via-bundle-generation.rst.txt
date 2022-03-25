@@ -1,0 +1,12 @@
+
+OEI provisioning and deployment via bundle generation
+=====================================================
+
+Perform the following steps to provision and deploy through bundle generation:
+
+
+* `OEI provisioning and deployment via bundle generation <#oei-provisioning-and-deployment-via-bundle-generation>`__
+
+  * `Step 1 Prerequisite <#step-1-prerequisite>`__
+  * `Step 2 Set up Docker Registry URL then Build and Push Images <#step-2-set-up-docker-registry-url-then-build-and-push-images>`__
+  * `Step 3 Choosing the OEI services to deploy <#step-3-choosing-the-oei-services-to-deploy>`__

@@ -1,0 +1,9 @@
+
+Supported EII Services
+----------------------
+
+Below is a list of services supported by the Azure Bridge:
+
+
+* Video Ingestion
+* Video Analytics

@@ -1,0 +1,36 @@
+
+Run the samples apps
+--------------------
+
+For default scenario, the sample custom UDF containers are not the mandatory containers to run. The ``builder.py`` script runs the ``sample-apps.yml`` from the `build/usecases <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases>`_ directory and adds all the sample apps containers. Refer to the following list to view the details of the sample apps containers:
+
+.. code-block:: yml
+
+       AppContexts:
+       # CPP sample apps for Ubuntu and Alpine operating systems or docker images
+       - Samples/publisher/cpp/ubuntu
+       - Samples/publisher/cpp/alpine
+       - Samples/subscriber/cpp/ubuntu
+       - Samples/subscriber/cpp/alpine
+
+       # Python sample apps for Ubuntu operating systems or docker images
+       - Samples/publisher/python/ubuntu
+       - Samples/subscriber/python/ubuntu
+
+       # Go sample apps for Ubuntu and Alpine operating systems or docker images
+       - Samples/publisher/go/ubuntu
+       - Samples/publisher/go/alpine
+       - Samples/subscriber/go/ubuntu
+       - Samples/subscriber/go/alpine
+
+
+#. 
+   To run the ``sample-apps.yml`` file, run the following command:
+
+   .. code-block:: sh
+
+       cd [WORKDIR]/IEdgeInsights/build
+       python3 builder.py -f ./usecases/sample-apps.yml file used>
+
+#. 
+   Refer to the `\ ``Build OEI stack`` <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ and the `\ ``Run OEI service`` <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ sections to build and run the sample apps.

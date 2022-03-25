@@ -1,0 +1,5 @@
+
+NodeRedHttpClientApp
+====================
+
+This Node-RED in-built http node based client App acts as client for the OEI RestDataExport and brings the OEI Classifier data to Node-RED ecosystem.

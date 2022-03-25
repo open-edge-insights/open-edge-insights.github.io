@@ -1,0 +1,5 @@
+
+Enabling message bus input plugin in Telegraf
+---------------------------------------------
+
+The purpose of this enablement is to allow telegraf received data from message bus and storing it into influxdb that able to be scalable.

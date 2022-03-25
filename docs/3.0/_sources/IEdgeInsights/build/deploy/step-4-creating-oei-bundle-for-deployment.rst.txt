@@ -1,0 +1,38 @@
+
+Step 4 Creating OEI bundle for deployment
+-----------------------------------------
+
+.. note::  Before proceeding this step, ensure that you have completed steps 1 to 3.
+
+
+.. code-block:: sh
+
+     # commands to be executed for bundle creation:
+     cd build/deploy
+     sudo python3 generate_eii_bundle.py -gb
+
+  This will generate the .tar.gz which has all the required artifacts
+
+**Note:**
+
+
+* Default Values of Bundle Name is "eii_bundle.tar.gz" and the tag name is "eii_bundle"
+* Using the ``-t`` options, you can give your custom tag name which will be used as same name for bundle generation.
+
+For more help:
+
+.. code-block::
+
+   $sudo python3 generate_eii_bundle.py
+
+
+   usage: generate_eii_bundle.py [-h] [-f COMPOSE_FILE_PATH] [-t BUNDLE_TAG_NAME]
+
+   OEI Bundle Generator: This utility helps to generate the bundle to deploy OEI.
+
+   optional arguments:
+       -h, --help            show this help message and exit
+       -t BUNDLE_TAG_NAME    Tag Name used for Bundle Generation (default:eii_bundle)
+
+
+Now this bundle can be used to deploy an OEI on the instance. This bundle has all the required artifacts to start the OEI services.

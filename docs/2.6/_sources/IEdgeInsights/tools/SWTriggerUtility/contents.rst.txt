@@ -1,0 +1,13 @@
+
+Contents
+========
+
+
+* `Contents <#contents>`__
+
+  * `Software Trigger Utility for VideoIngestion Module <#software-trigger-utility-for-videoingestion-module>`__
+
+    * `Software Trigger Utilily pre-requisites <#software-trigger-utilily-pre-requisites>`__
+    * `Configuration file <#configuration-file>`__
+    * `Running Software Trigger Utility <#running-softwaretriggerutility>`__
+    * `Usage of Software Trigger Utility <#usageofsoftwaretriggerutility>`__

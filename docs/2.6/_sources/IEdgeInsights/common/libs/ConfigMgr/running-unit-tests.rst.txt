@@ -1,0 +1,27 @@
+
+Running Unit Tests
+------------------
+
+.. note:: 
+
+
+
+* 
+  The unit tests will only be compiled if the ``WITH_TESTS=ON`` option is specified when running CMake.
+  Please refer `Unit Test installation <#-install-configmgr-with-examples,-test-suits-and-debug-build-enabled.>`__ installation.
+
+* 
+  Provisioning should be done to start etcd server in dev/prod mode and to generate application specific certificates(only in prod mode).
+
+Before executing any of the test files, please run below command from ``build/tests/``
+
+.. code-block:: sh
+
+    cd ../../examples/ && source ./env.sh && cd -
+
+
+* To run ConfigMgr unit tests
+  .. code-block::
+
+     $ ./config_manager_unit_tests
+     $ ./kvstore_client-tests

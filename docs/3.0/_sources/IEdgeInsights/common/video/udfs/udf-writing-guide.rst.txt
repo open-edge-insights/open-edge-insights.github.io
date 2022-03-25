@@ -1,0 +1,5 @@
+
+``UDF Writing Guide``
+-------------------------
+
+User can refer to `UDF Writing HOW-TO GUIDE <https://github.com/open-edge-insights/video-common/blob/master/udfs/HOWTO_GUIDE_FOR_WRITING_UDF.md>`_ for an detailed explanation of process to write an custom UDF.

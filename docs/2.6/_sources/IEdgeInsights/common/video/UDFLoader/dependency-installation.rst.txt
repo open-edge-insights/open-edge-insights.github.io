@@ -1,0 +1,11 @@
+
+Dependency Installation
+-----------------------
+
+UDFLoader depends on the below libraries. Follow their documentation to install them.
+
+
+* OpenCV - Run ``source /opt/intel/openvino/bin/setupvars.sh`` command
+* `EIIUtils <https://github.com/open-edge-insights/eii-c-utils/blob/master/README.md>`_
+* `IntelSafeString <https://github.com/open-edge-insights/eii-c-utils/blob/master/IntelSafeString/README.md>`_
+* Python3 Numpy package

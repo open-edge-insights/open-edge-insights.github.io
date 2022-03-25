@@ -1,0 +1,22 @@
+
+Steps for running Grafana in video usecase
+------------------------------------------
+
+
+#. 
+   Ensure the endpoint of the publisher you want to subscribe to is mentioned in **Subscribers** section of
+   `config <https://github.com/open-edge-insights/ts-grafana/blob/master/config.json>`_
+
+#. 
+   On "Home Dashboard" page, click on Dashboards icon from the left corner.
+   Click on Manage Dashboards tab, it will list out all the preconfigured dashboards.
+
+#. 
+   Select **EII Video and Time Series Dashboard**\ , you would be able to view multiple panels with topic names of the subscriber
+   as the panel names along with a time-series panel named Time Series.
+
+#. 
+   Hovering over the topic name, i.e, panel title will display multiple options, one of them being View.
+
+#. 
+   Click on View and you should be able to view the subscribed frames for each topic.

@@ -1,0 +1,171 @@
+
+Prerequisites and Setup
+-----------------------
+
+To use and develop with the Azure Bridge there are a few steps which must be taken to configure your environment. The setup must be done to configure your Azure Cloud account, your development system, and also the node which you are going to deploy the Azure Bridge on.
+
+The following sections cover the setup for the first two environments listed.
+Setting up your system for a single-node deployment will be covered in the
+`Single-Node Azure IoT Edge Deployment <#single-node-azure-iot-edge-deployment>`__ section below.
+
+.. note::  When you deploy with Azure IoT Hub you will also need to configure
+   the Azure IoT Edge Runtime and OEI on your target device.
+
+
+Azure Cloud Setup
+^^^^^^^^^^^^^^^^^
+
+Prior to using the Azure Bridge there are a few cloud services in Azure
+which must be initialized.
+
+Primarily, you need an Azure Containter Registry instance, an Azure IoT Hub,
+as well as an Azure IoT Device. Additionally, if you wish to use the sample ONNX
+UDF in OEI to download a ML/DL model from AzureML, then you must follow a few
+steps to get this configured as well. For these steps, see the `Setting up AzureML <#setting-up-azureml>`__
+section below.
+
+To create these instances, follow the guides provided by Microsoft below:
+
+.. note::  In the quickstart guides below it is recommended that you create an
+   Azure Resource Group. This is a good practice as it makes for easy clean up
+   of your Azure cloud environment.
+
+
+
+* `Create Azure Container Registry <https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal>`_
+* `Create Azure IoT Hub <https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal>`_
+* `Register an Azure IoT Device <https://docs.microsoft.com/en-us/azure/iot-edge/how-to-register-device>`_
+
+..
+
+   **IMPORTANT:**
+   In the tutorials above you will receive credentials/connection strings for your
+   Azure Container Registry, Azure IoT Hub, and Azure IoT Device. Save these for
+   later, as they will be important for setting up your development and single node
+   deployment showcased in this README.
+
+
+All of the tutorials provided above provide options for creating these instances
+via Visual Studio Code, the Azure Portal, or the Azure CLI. If you wish to use
+the Azure CLI, it is recommended that you follow the Development System Setup
+instructions below.
+
+Setting up AzureML
+~~~~~~~~~~~~~~~~~~
+
+To use the sample OEI ONNX UDF, you must do the following:
+
+
+#. Create an AzureML Workspace (see `these <https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace>`_
+    instructions provided by Microsoft)
+#. Configure Service Principle Authentication on your AzureML workspace by following
+    instructions provided `here <https://docs.microsoft.com/en-us/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication>`_
+
+Important
+~~~~~~~~~
+
+During the setup process provided for step 2 above, you will run a command similar
+to the following:
+
+.. code-block:: sh
+
+   az ad sp create-for-rbac --sdk-auth --name ml-auth
+
+After executing this command you will see a JSON blob printed to your console
+window. Save the ``clientId``\ , ``clientSecret``\ , ``subscriptionId``\ , and ``tenantId``
+for configuring the sample ONNX OEI UDF later.
+
+Pushing a Model to AzureML
+""""""""""""""""""""""""""
+
+If you already have an ONNX model you wish to push to your AzureML Workspace, then
+follow `these instructions <https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-existing-model>`_
+to push your model.
+
+If you do not have a model, and want an easy model to use, follow
+`this <https://notebooks.azure.com/azureml/projects/azureml-getting-started/html/how-to-use-azureml/deployment/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb>`_
+notebook provided my Microsoft to train a simple model to push to your AzureML Workspace.
+
+Also, you can find pre-trained models in the `ONNX Model Zoo <https://github.com/onnx/models>`_.
+
+Development System Setup
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The development system will be used for the following actions:
+
+
+* Building and pushing the OEI containers (including the bridge) to your Azure Container Registry
+* Creating your Azure IoT Hub deployment manifest
+* Deploying your manifest to a single node
+
+For testing purposes, your development system can serve to do the actions detailed
+above, as well as being the device you use for your single-node deployment. This
+should not be done in a production environment, but it can be helpful when
+familiarizing yourself with the Azure Bridge.
+
+First, setup your system for building OEI. To do this, follow the instructions
+detailed in the main OEI README and the OEI User Guide. At the end, you should
+have installed Docker, Docker Compose, and other OEI Python dependencies for
+the Builder script in the ``../build/`` directory.
+
+Once this is completed, install the required components to user the Azure CLI
+and development tools. The script ``./tools/install-dev-tools.sh`` automates this
+process. To run this script, execute the following command:
+
+.. note:: 
+
+
+   * It is highly recommended that you use a python virtual environment to install the python packages, so that the system python installation doesn't get altered. Details on setting up and using python virtual environment can be found here: https://www.geeksforgeeks.org/python-virtual-environment/
+   * If one encounter issues with conflicting dependencies between python packages, please upgrade the pip version: ``pip3 install -U pip`` and try.
+
+
+.. code-block:: sh
+
+   sudo -H -E -u ${USER} ./tools/install-dev-tools.sh
+
+Please set the ``PATH`` environmental variable as below in the terminal
+where you are using ``iotedgedev`` and ``iotedgehubdev`` commands:
+
+.. code-block:: sh
+
+   export PATH=~/.local/bin:$PATH
+
+.. note:: 
+
+
+   * 
+     The ``-u ${USER}`` flag above allows the Azure CLI to launch your browser (if it can) so you can login to your Azure account.
+
+   * 
+     Occasionally, pip's local cache can get corrupted. If this happens,
+     pip may ``SEGFAULT``. In the case that this happens, delete the ``~/.local`` directory
+     on your system and re-run the script mentioned above. You may consider creating
+     a backup of this directory just in case.
+
+
+While running this script you will be prompted to sign-in to your Azure
+account so you can run commands from the Azure CLI that interact with your
+Azure instance.
+
+This script will install the following tools:
+
+
+* Azure CLI
+* Azure CLI IoT Edge/Hub Extensions
+* Azure ``iotedgehubdev`` development tool
+* Azure ``iotedgedev`` development tool
+
+Next, login to your Azure Container Registry with the following command:
+
+.. code-block:: sh
+
+   az acr login --name <ACR Name>
+
+.. note::  Fill in ``<ACR Name>`` with the name of your Azure Container Registry
+
+
+**IMPORTANT NOTE:**
+
+Please see the list of supported services at the end of this README for the
+services which can be pushed to an ACR instance. Not all OEI services are
+supported by and validated to work with the Azure Bridge.

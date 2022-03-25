@@ -1,0 +1,37 @@
+
+Updating the leader & worker node's information for using remote hosts
+----------------------------------------------------------------------
+
+.. note:: 
+   By ``default`` both control/leader node ``ansible_connection`` will be ``localhost`` in single node deployment.
+
+
+Please follow below steps to update the details of leader/worker nodes for multi node scenario.
+
+
+* 
+  Update the hosts information in the inventory file ``hosts``
+
+  .. code-block::
+
+         [group_name]
+         <nodename> ansible_connection=ssh ansible_host=<ipaddress> ansible_user=<machine_user_name>
+
+  For Eg:
+
+  .. code-block::
+
+     [targets]
+     leader ansible_connection=ssh ansible_host=192.0.0.1  ansible_user=user1
+
+  ..
+
+     **Note**
+
+
+     * ``ansible_connection=ssh`` is mandatory when you are updating any remote hosts, which makes ansible to connect via ``ssh``.
+     * The above information is used by ansible to establish ssh connection to the nodes.
+     * control node will always be ``ansible_connection=local``\ , **don't update the control node's information**
+     * To deploy EII in single , ``ansible_connection=local`` and ``ansible_host=localhost``
+     * To deploy EII on multiple nodes, add hosts(worker1, worker2 etc..) details to the inventory file
+

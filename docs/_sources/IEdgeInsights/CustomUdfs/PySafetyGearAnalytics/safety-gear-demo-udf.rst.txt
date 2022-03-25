@@ -37,16 +37,15 @@ Safety Gear Demo UDF
 
   .. code-block::
 
-     ```json
-     {
-         "name": "safety_gear.safety_classifier",
-         "type": "python",
-         "device": "HDDL",
-         "model_xml": "./safety_gear/ref/frozen_inference_graph_fp16.xml",
-         "model_bin": "./safety_gear/ref/frozen_inference_graph_fp16.bin"
-     }
-     ```
-
+       ```json
+       {
+           "name": "safety_gear.safety_classifier",
+           "type": "python",
+           "device": "HDDL",
+           "model_xml": "./safety_gear/ref/frozen_inference_graph_fp16.xml",
+           "model_bin": "./safety_gear/ref/frozen_inference_graph_fp16.bin"
+       }
+       ```
 
 * 
   The UDFs are placed under `CustomUDFs <https://github.com/open-edge-insights/video-custom-udfs/blob/master/>`_ for the sake of maintaining modularity of code structure so that all sample UDFs can be clubbed at one place.
@@ -58,22 +57,23 @@ Safety Gear Demo UDF
 
      From:
 
-     .. code-block:: yml
+  .. code-block:: yml
 
-        ---snip---
-        build:
-         context: $PWD/../CustomUdfs/PySafetyGearAnalytics
-         dockerfile: $PWD/../CustomUdfs/PySafetyGearAnalytics/Dockerfile
-        ---snip---
+     ---snip---
+       build:
+           context: $PWD/../CustomUdfs/PySafetyGearAnalytics
+           dockerfile: $PWD/../CustomUdfs/PySafetyGearAnalytics/Dockerfile
+     ---snip---
 
-     To
+    To
 
-     .. code-block:: yml
+  .. code-block:: yml
 
-        -----snip-----
-        build:
-         context: $HOME/PySafetyGearAnalytics
-         dockerfile: $HOME/PySafetyGearAnalytics/Dockerfile
+       -----snip-----
+       build:
+           context: $HOME/PySafetyGearAnalytics
+           dockerfile: $HOME/PySafetyGearAnalytics/Dockerfile
+
 
   #. 
      Change the `video-streaming-all-udfs.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming-all-udfs.yml>`_ file to define the service with full path instead of relative path from IEdgeInsights as follows:

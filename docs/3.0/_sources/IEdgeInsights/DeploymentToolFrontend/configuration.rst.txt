@@ -1,0 +1,9 @@
+
+Configuration
+-------------
+
+The front-end server runs on the port value that you enter for the env variable ``PORT`` in the ``docker-compose.yml`` file. Based on the value for the env variable ``dev_mode`` in the ``docker-compose.yml`` file, the front-end server will run in the ``DEV mode`` (http/insecure) or the ``PROD mode`` (https/secure). By default the PROD mode is enabled. The following code snippet shows the default value for the env variable ``env_mode``\ :
+
+.. code-block:: sh
+
+   dev_mode: "false"

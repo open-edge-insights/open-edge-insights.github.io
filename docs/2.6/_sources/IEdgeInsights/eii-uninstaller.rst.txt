@@ -1,0 +1,32 @@
+
+EII Uninstaller
+===============
+
+The uninstaller script automates the removal of all the EII Docker configuration installed on a system. This uninstaller will perform the following tasks:
+
+
+#. **Stops and removes all EII running and stopped containers**
+#. **Removes all EII docker volumes**
+#. **Removes all EII docker images [Optional]**
+#. **Removes all EII install directory**
+
+Run the below commmand from ``[WORKDIR]/IEdgeInsights/build/`` directory.
+
+.. code-block:: sh
+
+   $ ./eii_uninstaller.sh -h
+   Usage: ./eii_uninstaller.sh [-h] [-d]
+
+    This script uninstalls previous EII version.
+    Where:
+       -h show the help
+       -d triggers the deletion of docker images (by default it will not trigger)
+
+    Example:
+     1) Deleting only EII Containers and Volumes
+       $ ./eii_uninstaller.sh
+
+     2) Deleting EII Containers, Volumes and Images
+       $ export EII_VERSION=2.4
+       $ ./eii_uninstaller.sh -d
+       above example will delete EII containers, volumes and all the docker images having 2.4 version.

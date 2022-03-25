@@ -1,0 +1,24 @@
+
+Libs package generation
+-----------------------
+
+OEI Core libraries (Message Bus, Config Manager and C Utils) are getting distributed as packages for easier integration with the applications built on top of OEI stack, so users don't have go through the pain of compiling these libraries from source or copying these built binaries from the OEI base images.
+
+The underlying C/C++ OEI core libraries are distributed as deb, rpm and apk packages for ubuntu, fedora and alpine OS or docker images respectively. This package installation is a must as this is where the underlying logic lies.
+
+The Python binding of these OEI core libraries are distributed as wheel packages, we have 2 specific multi-linux packages:
+
+
+#. Python3.8 compatible manylinux wheel package for Ubuntu
+#. Python3.9 compatible manylinux wheel package for Fedora
+
+Due to some challenges with underlying musl C library in alpine, we don't have a compatible Python wheel package to work on alpine.
+
+The golang binding of these OEI core libraries are distributed as GitHub repos `Config Manager Golang repo <https://github.com/open-edge-insights/eii-configmgr-go>`_ and `MessageBus Golang repo <https://github.com/open-edge-insights/eii-messagebus-go>`_ which gets referenced in the go.mod files of OEI services.
+
+.. note:: 
+
+
+For now, the core libraries distribution is exercised through the OEI sample apps accessible at `sample Apps <https://github.com/open-edge-insights/eii-samples>`_.
+
+The script libs_package_generator.sh when run natively on Ubuntu 20.04 OS system generates the required packages which can then be hosted to respective locations.

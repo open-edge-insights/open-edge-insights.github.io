@@ -1,0 +1,9 @@
+
+About Open Edge Insights
+------------------------
+
+Open Edge Insights (OEI) is a set of pre-validated ingredients for integrating video and time series data analytics on edge compute nodes. OEI includes modules to enable data collection, storage, and analytics for both time series and video data.
+
+.. note:: 
+   In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.
+

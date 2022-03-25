@@ -1,0 +1,30 @@
+
+Compilation
+-----------
+
+The EII Utils utilizes CMake as the build tool for compiling the C
+library. 
+
+CMAKE_INSTALL_PREFIX needs to be set for the build and installation:
+
+.. code-block:: sh
+
+       $ export CMAKE_INSTALL_PREFIX="/opt/intel/eii"
+
+The simplest sequence of commands for building the library are
+shown below.
+
+.. code-block:: sh
+
+   $ mkdir build
+   $ cd build
+   $ cmake -DCMAKE_INSTALL_INCLUDEDIR=$CMAKE_INSTALL_PREFIX/include -DCMAKE_INSTALL_PREFIX=$CMAKE_INSTALL_PREFIX ..
+   $ make
+
+If you wish to compile the EII Utils in debug mode, then you can set
+the ``CMAKE_BUILD_TYPE`` to ``Debug`` when executing the ``cmake`` command (as shown
+below).
+
+.. code-block:: sh
+
+   $ cmake -DCMAKE_INSTALL_INCLUDEDIR=$CMAKE_INSTALL_PREFIX/include -DCMAKE_INSTALL_PREFIX=$CMAKE_INSTALL_PREFIX -DCMAKE_BUILD_TYPE=Debug ..

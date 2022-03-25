@@ -1,0 +1,28 @@
+
+Editing Files of UI Builder
+---------------------------
+
+To make changes to the UI Builder files, complete the following steps:
+
+
+#. 
+   ``Double Click`` the UI Builder Node and edit and copy the content of the following files to the UI builder Node-RED files in the **Edit Files** section.
+
+
+   * `index.html <https://github.com/open-edge-insights/eii-tools/blob/master/NodeRedHttpClientApp/EIIUIBuilderSampleApp/index.html>`_
+   * `index.css <https://github.com/open-edge-insights/eii-tools/blob/master/NodeRedHttpClientApp/EIIUIBuilderSampleApp/index.css>`_
+   * `index.js <https://github.com/open-edge-insights/eii-tools/blob/master/NodeRedHttpClientApp/EIIUIBuilderSampleApp/index.js>`_
+
+
+   .. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/EIIUIBuilderSampleApp/images/img_edit_files.png
+      :target: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/EIIUIBuilderSampleApp/images/img_edit_files.png
+      :alt: img_edit_files.png
+
+
+#. 
+   Save the files
+
+   ..
+
+      **Note:** Ensure that the flow is deployed.
+

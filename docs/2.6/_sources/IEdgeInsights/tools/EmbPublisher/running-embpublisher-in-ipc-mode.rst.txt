@@ -1,0 +1,31 @@
+
+Running EmbPublisher in IPC mode
+================================
+
+User needs to modify interface section of **\ `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/EmbPublisher/config.json>`_\ ** to run in IPC mode as following
+
+.. code-block::
+
+     "interfaces": {
+       "Publishers": [
+         {
+           "Name": "TestPub",
+           "Type": "zmq_ipc",
+           "AllowedClients": [
+             "*"
+           ],
+           "EndPoint": {
+                   "SocketDir": "/EII/sockets",
+                   "SocketFile": "frontend-socket"
+               },
+           "Topics": [
+             "topic-pfx1",
+             "topic-pfx2",
+             "topic-pfx3",
+             "topic-pfx4"
+           ],
+           "BrokerAppName" : "ZmqBroker",
+           "brokered": true
+         }
+       ]
+     }

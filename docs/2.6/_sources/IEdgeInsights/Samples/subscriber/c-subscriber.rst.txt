@@ -1,0 +1,5 @@
+
+C++ subscriber
+--------------
+
+The C++ subscriber and client are supported in Ubuntu and Alpine operating systems or docker images. The C++ subscriber runs in the independent containers ``ia_ubuntu_cpp_sample_sub`` and ``ia_alpine_cpp_sample_sub`` respectively.

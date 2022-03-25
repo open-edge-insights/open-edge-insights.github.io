@@ -1,0 +1,55 @@
+
+Setting environment proxy settings
+----------------------------------
+
+To set the environment proxy settings for RDE, refer to the following:
+
+
+#. 
+   To update the host-ip for http, run the following command:
+
+   .. code-block:: sh
+
+      sudo vi /etc/systemd/system/docker.service.d/http-proxy.conf
+
+#. 
+   To update the host-ip for https, run the following command:
+
+   .. code-block:: sh
+
+      sudo vi /etc/systemd/system/docker.service.d/https-proxy.conf (update host-ip)
+
+#. 
+   To check if the proxy settings have been applied, run the following command:
+
+   .. code-block:: sh
+
+      env | grep proxy
+
+#. 
+   To update the ``no_proxy env`` variable, run the following command:
+
+   .. code-block:: sh
+
+      export no_proxy=$no_proxy,<host-ip>
+
+#. 
+   To update docker proxy settings, run the following command:
+
+   .. code-block:: sh
+
+      sudo vi ~/.docker/config.json (update host-ip in no_proxy)
+
+#. 
+   To reload the docker daemon, run the following command:
+
+   .. code-block:: sh
+
+      sudo systemctl daemon-reload
+
+#. 
+   To restart the docker service with the updated proxy configurations, run the following command:
+
+   .. code-block:: sh
+
+      sudo systemctl restart docker

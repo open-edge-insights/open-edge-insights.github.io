@@ -1,0 +1,21 @@
+
+Linking
+-------
+
+It is recommended to link to the library using the CMake build system. To do
+this you must use the ``find_package()`` method in CMake to find and include the
+package.
+
+The example below showcases how this can be accomplished.
+
+.. code-block:: cmake
+
+   # Find the package
+   find_package(EIIUtils REQUIRED)
+
+   # Add the include directories
+   include_directories(${EIIUtils_INCLUDE})
+
+   # Link to your executable (NOTE: 'src/example.cpp' is just an example path)
+   add_executable(example "src/example.cpp")
+   target_link_libraries(example ${EIIUtils_LIBRARIES})

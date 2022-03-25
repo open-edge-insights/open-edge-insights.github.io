@@ -1,0 +1,32 @@
+
+Building
+--------
+
+The Docker container for this service cannot be built by itself. It must be
+built in the context of the EII multi-repo project. Follow the instructions
+`here <https://github.com/open-edge-insights/eii-manifests>`_.
+
+Since the model files are large in size, they are not part of the repo.
+Download the required model files to be used for the pipeline mentioned in 
+`config <https://github.com/open-edge-insights/video-analytics/blob/master/Serving/config.json>`_ by referring https://github.com/intel/video-analytics-serving/tree/master/tools/model_downloader
+and have the downloaded model files placed in "/opt/intel/eii/models" 
+directory.
+
+.. code-block:: sh
+
+   # Execute the builder.py script
+   $ python3 buidler.py -f evas.yml
+
+   # Create some necessary items for the service
+   $ sudo mkdir -p /opt/intel/eii/models/
+
+   # Build the docker containers
+   $ docker-compose build
+
+   # Start the docker containers
+   $ docker-compose up -d
+
+This repository provides the VA Serving pipeline needed for using a URI source
+and sending the ingested frames using the EII MsgBus Publisher. The commands above
+which create the, "models/", directory and the, "pipelines/", install needed
+directories for the service to run and install the VA Serving pipeline.

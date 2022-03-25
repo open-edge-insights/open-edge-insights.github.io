@@ -1,0 +1,10 @@
+
+**With k8s orchestrator**
+-----------------------------
+
+One of the below options could be tried out:
+
+
+* [\ ``Recommended``\ ] For deploying through ansible playbook on multiple nodes automatically, please refer `build/ansible/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/ansible/README.md##deploying-eii-using-helm-in-kubernetes-k8s-environment>`_
+* Please refer `build/helm-eii/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/helm-eii/README.md>`_ on using helm charts to provision the node and
+  deploy EII services

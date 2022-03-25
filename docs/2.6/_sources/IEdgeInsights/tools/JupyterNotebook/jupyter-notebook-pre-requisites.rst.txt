@@ -1,0 +1,48 @@
+
+Jupyter Notebook pre-requisites
+-------------------------------
+
+
+#. 
+   Jupyter Notebook expects a set of config, interfaces & public private keys to be present in ETCD as a pre-requisite.
+
+
+   * To achieve this, please ensure an entry for Jupyter Notebook with its relative path from `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory is set in any of the .yml files present in `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory.
+   * An example has been provided below to add the entry in `video-streaming.yml <https://github.com/open-edge-insights/eii-core/tree/master/build/usecases/video-streaming.yml>`_
+     .. code-block:: yml
+
+          AppContexts:
+          ---snip---
+          - tools/JupyterNotebook
+
+#. 
+   Ensure the `jupyter_connector <https://github.com/open-edge-insights/video-common/tree/master/udfs/python/jupyter_connector.py>`_ UDF is enabled in the config of either **VideoIngestion** or **VideoAnalytics** to be connected to JupyterNotebook. An example has been provided here for connecting **VideoIngestion** to **JupyterNotebook**\ , the config to be changed being present at `config.json <https://github.com/open-edge-insights/video-ingestion/blob/master/config.json>`_\ :
+
+   .. code-block:: javascript
+
+           {
+               "config": {
+                   "encoding": {
+                       "type": "jpeg",
+                       "level": 95
+                   },
+                   "ingestor": {
+                       "type": "opencv",
+                       "pipeline": "./test_videos/pcb_d2000.avi",
+                       "loop_video": true,
+                       "queue_size": 10,
+                       "poll_interval": 0.2
+                   },
+                   "sw_trigger": {
+                       "init_state": "running"
+                   },
+                   "max_workers":4,
+                   "udfs": [{
+                       "name": "jupyter_connector",
+                       "type": "python",
+                       "param1": 1,
+                       "param2": 2.0,
+                       "param3": "str"
+                   }]
+               }
+           }

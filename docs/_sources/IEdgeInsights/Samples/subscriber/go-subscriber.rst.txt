@@ -1,0 +1,5 @@
+
+Go subscriber
+-------------
+
+The Go subscriber and client are supported in Ubuntu and Alpine operating systems or docker images.  The Go subscriber runs in the independent containers ``ia_ubuntu_go_sample_sub`` and ``ia_alpine_go_sample_sub`` respectively.

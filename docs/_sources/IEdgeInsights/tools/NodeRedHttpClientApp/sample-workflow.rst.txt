@@ -1,0 +1,30 @@
+
+Sample Workflow
+---------------
+
+The attached workflow document is sample workflow by updating the ``RestDataExport`` IP Address in the ``http request`` module,
+
+
+#. 
+   Import the Sample Workflow `flows.json <https://github.com/open-edge-insights/eii-tools/blob/master/NodeRedHttpClientApp/flows.json>`_ file to NodeRed dashboard using ``menu`` icon in top right corner as follows
+
+
+   .. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageimportnodes.png
+      :target: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageimportnodes.png
+      :alt: images/imageimportnodes.png
+
+
+#. 
+   Click ``Import``
+
+#. 
+   Update the ``URL`` of ``http request`` node with ``RestDataExport`` module running the machine IP Address
+
+   ..
+
+      **Note:**
+
+
+      * For detail, refer to [import export] (https://nodered.org/docs/user-guide/editor/workspace/import-export)
+      * The classifier results will be logged in the debug window.
+

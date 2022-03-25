@@ -1,0 +1,5 @@
+
+Edge Video Analytics Microservice
+=================================
+
+This repository contains the source code for Edge Video Analytics Microservice used for `Video Analytics Use Case <https://www.intel.com/content/www/us/en/developer/articles/technical/video-analytics-service.html>`_. For information on how to build the use case, please refer to the `Get Started <https://www.intel.com/content/www/us/en/developer/articles/technical/video-analytics-service.html#inpage-nav-3>`_ guide.

@@ -1,0 +1,8 @@
+
+Python subscriber
+-----------------
+
+The Python subscriber and client are supported are supported only in Ubuntu operating systems or docker images. The Python subscriber runs in the independent container ``ia_ubuntu_python_sample_sub``.
+
+.. note::  The subscriber containers comprises of both the subscriber and the client functionality.
+

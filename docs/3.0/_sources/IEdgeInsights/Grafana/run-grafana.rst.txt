@@ -1,0 +1,52 @@
+
+Run Grafana
+-----------
+
+Based on requirement, you can run Grafana in the ``Prod mode`` or the ``DEV mode``.
+
+Complete the following steps to run Grafana:
+
+
+#. Open the `docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/docker-compose.yml>`_ file.
+#. In the ``docker-compose.yml``\ , uncomment ia_grafana.
+#. Check if the ``ia_influxdbconnector``\ , ``ia_kapacitor``\ , and ``ia_telegraph`` services are running for the time-series data.
+#. Check if the `publisher <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/publisher_temp.sh>`_ service is running.
+#. Run the ``docker-compose build`` command to build image.
+#. Run the ``docker-compose up`` to start the service.
+
+Complete the previous steps and based on the mode that you want to run Grafana refer to the following sections:
+
+Run Grafana in the PROD mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::  Skip this section, if you are running Grafana in the DEV mode.
+
+
+To run Grafana in the PROD mode, import ``cacert.pem`` from the ``build/Certificates/rootca/`` directory to the browser certificates. Complete the following steps to import certificates:
+
+
+#. In Chrome browser, go to **Settings**.
+#. In **Search settings**\ , enter **Manage certificates**.
+#. Click **Security**.
+#. On the **Advanced** section, click **Manage certificates**.
+#. On the **Certificates** window, click the **Trusted Root Certification Authorities** tab.
+#. Click **Import**.
+#. On the **Certificate Import Wizard**\ , click **Next**.
+#. Click **Browse**.
+#. Go to the ``IEdgeInsights/build/Certificates/rootca/`` directory.
+#. Select the **cacert.pem** file.
+#. Select all checkboxes and then, click **Import**.
+
+Run Grafana in the DEV mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To run Grafana in the DEV mode, complete the following steps:
+
+
+#. After starting the ``ia_grafana`` service, go to ``http://< host ip >:3000``.
+#. Enter the default credentials details, username: "admin" and password: "admin".
+#. On the **Home Dashboard** page, on the left corner, click the Dashboards icon.
+#. Click the **Manage Dashboards** tab.
+#. From the list of preconfigured dashboards, click **Point_Data_Dashboard**.
+#. Click **Panel Title** and then, select **Edit**.
+#. On the **Point_Data_Dashboard** page, if required make modifications to the query.

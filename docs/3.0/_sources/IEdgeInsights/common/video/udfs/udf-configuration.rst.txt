@@ -1,0 +1,84 @@
+
+``UDF Configuration``
+-------------------------
+
+Below is the JSON schema for UDF json object configuration:
+
+.. code-block:: javascript
+
+   {
+     "type": "object",
+     "additionalProperties": false,
+     "properties": {
+       "max_jobs": {
+         "description": "Number of queued UDF jobs",
+         "type": "integer",
+         "default": 20
+       },
+       "max_workers": {
+         "description": "Number of threads acting on queued jobs",
+         "type": "integer",
+         "default": 4
+       },
+       "udfs": {
+         "description": "Array of UDF config objects",
+         "type": "array",
+         "items": [
+           {
+             "description": "UDF config object",
+             "type": "object",
+             "properties": {
+               "type": {
+                 "description": "UDF type",
+                 "type": "string",
+                 "enum": [
+                   "native",
+                   "python",
+                   "raw_native"
+                 ]
+               },
+               "name": {
+                 "description": "Unique UDF name",
+                 "type": "string"
+               },
+               "device": {
+                 "description": "Device on which inference occurs",
+                 "type": "string",
+                 "enum": [
+                   "CPU",
+                   "GPU",
+                   "HDDL",
+                   "MYRIAD"
+                 ]
+               }
+             },
+             "additionalProperties": true,
+             "required": [
+               "type",
+               "name"
+             ]
+           }
+         ]
+       }
+     }
+   }
+
+One can use `JSON validator tool <https://www.jsonschemavalidator.net/>`_ for
+validating the UDF configuration object against the above schema.
+
+Example UDF configuration:
+
+.. code-block:: javascript
+
+   {
+     "max_jobs": 20,
+     "max_workers": 4,
+     "udfs": [ {
+         "type": "native",
+         "name": "dummy"
+       },
+       {
+         "type": "python",
+         "name": "pcb.pcb_filter"
+       }]
+   }

@@ -1,0 +1,42 @@
+
+OEI Uninstaller
+---------------
+
+The OEI uninstaller script automates the removal of all the OEI Docker configuration that are installed on a system. The uninstaller performs the following tasks:
+
+
+* Stops and removes all the OEI running and stopped containers.
+* Removes all the OEI docker volumes.
+* Removes all the OEI docker images [Optional]
+* Removes all OEI install directory
+
+To run the uninstaller script, run the following commmand from the ``[WORKDIR]/IEdgeInsights/build/`` directory
+
+.. code-block:: sh
+
+   ./eii_uninstaller.sh -h
+
+Usage: ./eii_uninstaller.sh [-h] [-d]
+This script uninstalls the previous OEI version.
+Where:
+    -h show the help
+    -d triggers the deletion of docker images (by default it will not trigger)
+Example:
+
+
+* 
+  Run the following command to delete the OEI containers and volumes:
+
+  .. code-block:: sh
+
+         ./eii_uninstaller.sh
+
+* 
+  Run the following command to delete the OEI containers, volumes, and images:
+
+  .. code-block:: sh
+
+       export EII_VERSION=2.4
+       ./eii_uninstaller.sh -d
+
+The commands in the example will delete the version 2.4 OEI containers, volumes, and all the docker images.

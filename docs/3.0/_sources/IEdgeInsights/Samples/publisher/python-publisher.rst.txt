@@ -1,0 +1,8 @@
+
+Python publisher
+----------------
+
+The Python publisher and server are supported only in Ubuntu operating systems or docker images. The Python publisher will run in the independent containers ``ia_ubuntu_python_sample_pub``.
+
+.. note::  The sample publisher containers comprises of both the publisher and the server functionality.
+

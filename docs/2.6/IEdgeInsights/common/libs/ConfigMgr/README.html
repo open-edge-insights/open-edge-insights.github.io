@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConfigMgr &mdash; OEI Documentation v1.0 documentation</title><link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../../../_static/contentui.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script src="../../../../_static/clipboard.min.js"></script>
+        <script src="../../../../_static/copybutton.js"></script>
+        <script src="../../../../_static/contentui.js"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../../index.html" class="icon icon-home"> OEI Documentation
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+  
+              <p><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/introduction.html">Introduction to OEI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/running.html">Run Open Edge Insights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#about-open-edge-insights">About Open Edge Insights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#video-pipeline-analytics">Video pipeline Analytics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#time-series-analytics">Time-series Analytics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#oei-multi-node-cluster-deployment">OEI multi-node cluster deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#oei-tools">OEI tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#oei-uninstaller">OEI Uninstaller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#debugging-options">Debugging options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/running.html#web-deployment-tool">Web Deployment Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/running.html#troubleshooting-guide">Troubleshooting guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#oei-v3-0">OEI v3.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-6-2">EII v2.6.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#fixes">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-6-1">EII v2.6.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id1">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id2">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id3">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#bug-fix">Bug fix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id4">Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Core Libraries:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/msgbus.html">Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id1">Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#generating-documentation">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id2">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id3">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id4">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id5">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id6">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id7">Packaging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id9">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id10">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id11">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id12">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id13">Running Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id14">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id15">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id16">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id17">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id18">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id19">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id20">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id21">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id22">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id23">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id24">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id25">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id26">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id27">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id28">Running Go Examples without Installing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id29">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id30">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id33">Using Only CurveZMQ Encryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id34">Publish/Subscribe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/msgbus.html#id35">Request/Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id36">Using ZAP Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/msgbus.html#id37">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id38">Known issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#id39">Generation of python .whl file (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/msgbus.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/eiiConfig.html">OEI Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#configmgr">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#configmgr-installation">ConfigMgr Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#using-system-grpc">Using System gRPC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#generating-documentation">Generating Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#publisher-interface">Publisher Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#subscriber-interface">Subscriber Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#server-interface"><strong>Server Interface</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#client-interface"><strong>Client Interface</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#cpp-examples">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/eiiConfig.html#go-examples">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#creation-of-grpc-zip-file-optional">Creation of grpc .zip file (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/eiiConfig.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/eiiConfig.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Video Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/video.html">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#videoingestion-module">VideoIngestion Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#oei-udfloader">OEI UDFLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#oei-sample-udfs">OEI Sample UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#udf-writing-guide">UDF Writing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#sample-udfs">Sample UDFs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#chaining-of-udfs">Chaining of UDFs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#native-visualizer-module">Native Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#web-visualizer-module">Web Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/video.html#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/video.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Time-Series Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/timeseries.html">Working with Time series Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/timeseries.html#telegraf">Telegraf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/timeseries.html#point-data-time-series-data-analytics-introduction">Point-data (Time-series data) analytics introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/timeseries.html#grafana">Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/timeseries.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Export Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#prerequisites-and-setup">Prerequisites and Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#azure-cloud-setup">Azure Cloud Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#setting-up-azureml">Setting up AzureML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#important">Important</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#development-system-setup">Development System Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#build-and-push-oei-containers">Build and Push OEI Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#step-1-provisioning">Step 1 - Provisioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#expected-result">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#step-2-configuring-eii">Step 2 - Configuring EII</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#id3">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#step-3-configuring-azure-iot-deployment-manifest">Step 3 - Configuring Azure IoT Deployment Manifest</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#id4">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#step-4-deployment">Step 4 - Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/azure.html#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#helpful-debugging-commands">Helpful Debugging Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#final-notes">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#id5">Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#sample-eii-onnx-udf">Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#simple-subscriber">Simple Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#eii-etcd-pre-load">EII ETCD Pre-Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#azure-blob-storage">Azure Blob Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/azure.html#azure-deployment-manifest">Azure Deployment Manifest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#supported-oei-services">Supported OEI Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/azure.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/opcua.html#opcuaexport">OpcuaExport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/restdata.html">RestDataExport service</a></li>
+</ul>
+<p><span class="caption-text">Additional Info:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/tools.html">OEI Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#discoverhistory-tool">DiscoverHistory tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#gigeconfig-tool">GigEConfig tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#generating-pfs-pylon-feature-stream-file">Generating PFS (Pylon Feature Stream) File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#running-gigeconfig-tool">Running GigEConfig Tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#develop-python-user-defined-functions-using-jupyter-notebook">Develop Python User Defined Functions using Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#prerequisites-for-using-jupyter-notebooks">Prerequisites for using Jupyter Notebooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#run-jupyter-notebook-from-web-browsers">Run Jupyter Notebook from web browsers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#run-jupyter-notebook-using-visual-studio-code">Run Jupyter Notebook using Visual Studio Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#mqtt-publisher">MQTT publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#oei-video-profiler">OEI Video Profiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#oei-video-profiler-prerequisites">OEI Video Profiler prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#oei-video-profiler-modes">OEI Video Profiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#oei-video-profiler-configurations">OEI Video Profiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#run-video-profiler">Run Video Profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#running-videoprofiler-in-helm-usecase">Running VideoProfiler in helm usecase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#optimizing-oei-video-pipeline-by-analysing-video-profiler-results">Optimizing OEI Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi-instance config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/sample.html">OEI Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/sample.html#eii-sample-apps">EII Sample Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pages/security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">OEI Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+  <!-- 3.0 -->
+  
+  
+
+  <li><a href="../../../../index.html">3.0</a> &raquo;</li>
+  
+  <li>ConfigMgr</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/IEdgeInsights/common/libs/ConfigMgr/README.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configmgr">
+<h1>ConfigMgr<a class="headerlink" href="#configmgr" title="Permalink to this headline">¶</a></h1>
+<p>ConfigMgr (Config manager) provides CPP/Python/Golang APIs to:</p>
+<ul class="simple">
+<li><p>fetch an applications configs values from the KV store.</p></li>
+<li><p>fetch an applications interface values from KV store for pub, sub, server and client.</p></li>
+<li><p>watch on application’s config changes.</p></li>
+<li><p>generate EII MessageBus config.</p></li>
+<li><p>read and set /GlobalEnv variables.</p></li>
+<li><p>fetch env variables: appname, dev_mode</p></li>
+</ul>
+<p>All these data are stored into the kv store of EII during the provisioning phase and can be changed   dynamically by the admin.</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>The EIIUtils depends on CMake version 3.11+. For Ubuntu 18.04 this is not
+the default version installed via <code class="docutils literal notranslate"><span class="pre">apt-get</span></code>. To install the correct version
+of CMake and other ConfigMgr dependencies, please follow <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/common/README.md">eii_libs_installer README</a></p>
+<p>CMAKE_INSTALL_PREFIX needs to be set for the installation:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">CMAKE_INSTALL_PREFIX</span><span class="o">=</span><span class="s2">&quot;/opt/intel/eii&quot;</span>
+</pre></div>
+</div>
+<p>ConfigMgr installs to <code class="docutils literal notranslate"><span class="pre">/opt/intel/eii/lib/</span></code>. On some platforms this is not included in the <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code> by default. As a result, you must add this directory to your <code class="docutils literal notranslate"><span class="pre">LD_LIBRARY_PATH</span></code>,
+otherwise you will encounter issues using the ConfigMgr. This can
+be accomplished with the following <code class="docutils literal notranslate"><span class="pre">export</span></code>:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$LD_LIBRARY_PATH</span>:/opt/intel/eii/lib/
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can also specify a different library prefix to CMake through
+the <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code> flag. If different installation path is given via <code class="docutils literal notranslate"><span class="pre">CMAKE_INSTALL_PREFIX</span></code>, then <code class="docutils literal notranslate"><span class="pre">$LD_LIBRARY_PATH</span></code> should be appended by $CMAKE_INSTALL_PREFIX/lib.</p>
+</div>
+</section>
+<section id="install-configmgr-with-python-bindings-go-bindings-examples-test-suits-and-debug-build">
+<h2>Install ConfigMgr with Python bindings, Go bindings, Examples, Test suits and Debug Build.<a class="headerlink" href="#install-configmgr-with-python-bindings-go-bindings-examples-test-suits-and-debug-build" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ rm -rf build
+$ mkdir build
+$ <span class="nb">cd</span> build
+$ cmake -DCMAKE_INSTALL_INCLUDEDIR<span class="o">=</span><span class="nv">$CMAKE_INSTALL_PREFIX</span>/include -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$CMAKE_INSTALL_PREFIX</span> -DWITH_PYTHON<span class="o">=</span>ON -DWITH_GO<span class="o">=</span>ON -DWITH_EXAMPLES<span class="o">=</span>ON -DWITH_TESTS<span class="o">=</span>ON -DCMAKE_BUILD_TYPE<span class="o">=</span>Debug ..
+$ make
+$ sudo make install
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">WITH_PYTHON=ON</span></code>, <code class="docutils literal notranslate"><span class="pre">WITH_GO=ON</span></code>, <code class="docutils literal notranslate"><span class="pre">WITH_EXAMPLES=ON</span></code>, <code class="docutils literal notranslate"><span class="pre">WITH_TESTS=ON</span></code> and <code class="docutils literal notranslate"><span class="pre">CMAKE_BUILD_TYPE=Debug</span></code> to compile ConfigMgr with Python bindings, Go bindings, Examples, Unit Tests and Debug mode respectively.</p>
+</section>
+</section>
+<section id="interfaces">
+<h1>Interfaces<a class="headerlink" href="#interfaces" title="Permalink to this headline">¶</a></h1>
+<p>ConfigMgr parses the data from the kv store (eg: etcd) and the application environment variables for its functionality.
+It supports Publisher, Subscriber, Server and Client interfaces. Below are the examples for providing
+different interfaces and different usecases.</p>
+<p>Please refer <a class="reference external" href="#note-endpoint-can-be-given-in-different-ways">different ways of giving endpoints</a></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;camera1_stream&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:65015&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Visualizer&quot;</span><span class="p">,</span> <span class="s2">&quot;VideoAnalytics&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required (Mandatory)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Publishers</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Entire publisher interface will be added with in the array. Multiple publish endpoints can be added by adding elements in the array.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of different publisher interfaces</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Specifies ZeroMQ protocol (“zmq_tcp” or “zmq_ipc”) on which data will be published</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EndPoint</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code> or <code class="docutils literal notranslate"><span class="pre">object</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer <a class="reference external" href="#note-endpoint-can-be-given-in-different-ways">Different ways of specifying endpoint</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Topics</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Specifying the topics on which data will be published on. Multiple elements in this array can denote multiple topics published on the same endpoint</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">AllowedClients</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Specifying who can subscribe to the the topic on which data is published. If AllowedClients is “*”, then all the provisioned services can receive the data published.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+
+        <span class="c1">// tcp usecase</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:65013&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;VideoIngestion&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+
+        <span class="c1">// ipc usecase</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;.socks&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;VideoIngestion&quot;</span><span class="p">,</span>
+            <span class="c1">// Topics cannot be &quot;*&quot;, if the only IPC directory is given</span>
+            <span class="c1">// if it Topics &quot;*&quot; to be used in ipc, then socket file should be given explicitly.</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;camera1_stream&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required (Mandatory)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Subscribers</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Entire subscriber interface will be added with in the array. Multiple subscribe endpoints can be added by adding elements in the array</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of different subscriber interfaces</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Specifies ZeroMQ protocol (“zmq_tcp” or “zmq_ipc”) through which subscription happens</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EndPoint</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code> or <code class="docutils literal notranslate"><span class="pre">object</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In Case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer <a class="reference external" href="#note-endpoint-can-be-given-in-different-ways">Different ways of specifying endpoint</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">PublisherAppName</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Specifies the publisher’s AppName through which data will be received</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Topics</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Specifying the topics on which data will be published on. If Topics is “*”, the subscriber receives all the data published on the endpoint, irrespective of the topic names data is published on. Multiple elements in this array can denote multiple topics subscribed on the same endpoint</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Servers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="c1">// tcp usecase</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:9006&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;VideoAnalytics&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="c1">//ipc usecase</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;VideoAnalytics&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required (Mandatory)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Servers</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Entire server interface will be added with in the array. Multiple server endpoints can be added by adding elements in the array</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of different server interfaces</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Specifies ZeroMQ protocol (“zmq_tcp” or “zmq_ipc”) through which Server pushes data</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">EndPoint</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code> or <code class="docutils literal notranslate"><span class="pre">object</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer <a class="reference external" href="#note-endpoint-can-be-given-in-different-ways">Different ways of specifying endpoint</a></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">AllowedClients</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Specifying who can get data is from the Server. If AllowedClients is “*”, then all the provisioned services can connect to Server.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Clients&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="c1">// tcp usecase</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ServerAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;VideoIngestion&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:9006&quot;</span>
+        <span class="p">},</span>
+
+        <span class="c1">// ipc usecase</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ServerAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;VideoIngestion&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required (Mandatory)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">Clients</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Entire client interface will be added with in the array. Multiple client endpoints can be added by adding elements in the array</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Name</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Name of different client interfaces</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ServerAppName</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Server’s AppName to which client connection is established</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">Type</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>Specifies ZeroMQ protocol (“zmq_tcp” or “zmq_ipc”) through which client connection is established</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">EndPoint</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code> or <code class="docutils literal notranslate"><span class="pre">object</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>In case of TCP or IPC (socket directory only), endpoint should be string as shown in the above examples. In case IPC explicitly specifying socket file, either object or string can be used for EndPoint. Please refer <a class="reference external" href="#note-endpoint-can-be-given-in-different-ways">Different ways of specifying endpoint</a></p></td>
+</tr>
+</tbody>
+</table>
+<section id="overriding-of-type-and-endpoint">
+<h2>Overriding of Type and EndPoint:<a class="headerlink" href="#overriding-of-type-and-endpoint" title="Permalink to this headline">¶</a></h2>
+<p>In a given publisher, subscriber, client or server interfaces, the “Type” and “Endpoint” values mentioned in the respective interfaces can be overriden by setting them as env variables.</p>
+<p>Let’s take publisher as an example having multiple endpoints and below is its interface:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;camera1_stream&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;example&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:65015&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Visualizer&quot;</span><span class="p">,</span> <span class="s2">&quot;VideoAnalytics&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Let’s say we want to override the Type (“zmq_ipc”) and Endpoint (“/EII/sockets”) of the first publisher’s interface (interface having “Name”:”default”), then env variable should be set with below syntax.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PUBLISHER_default_TYPE</span><span class="o">=</span><span class="s2">&quot;zmq_tcp&quot;</span>
+<span class="nb">export</span> <span class="nv">PUBLISHER_default_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;127.0.0.1:65013&quot;</span>
+</pre></div>
+</div>
+<p>In the above command <code class="docutils literal notranslate"><span class="pre">default</span></code> is the <code class="docutils literal notranslate"><span class="pre">Name</span></code> of the interface.</p>
+<p>Similarly, we can override subscriber’s, client’s and server’s Type and Endpoint.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SUBSCRIBER_default_TYPE</span><span class="o">=</span><span class="s2">&quot;zmq_tcp&quot;</span>
+<span class="nb">export</span> <span class="nv">SUBSCRIBER_default_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;127.0.0.1:65013&quot;</span>
+
+<span class="nb">export</span> <span class="nv">SERVER_default_TYPE</span><span class="o">=</span><span class="s2">&quot;zmq_tcp&quot;</span>
+<span class="nb">export</span> <span class="nv">SERVER_default_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;127.0.0.1:65013&quot;</span>
+
+<span class="nb">export</span> <span class="nv">CLIENT_default_TYPE</span><span class="o">=</span><span class="s2">&quot;zmq_tcp&quot;</span>
+<span class="nb">export</span> <span class="nv">CLIENT_default_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;127.0.0.1:65013&quot;</span>
+</pre></div>
+</div>
+<p>Let’s take publisher as an example having single endpoint and below is its interface:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;camera1_stream&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If we want to override the Type (“zmq_ipc”) and Endpoint (“/EII/sockets”) of publisher’s interface, then env variable should be set with below syntax.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PUBLISHER_TYPE</span><span class="o">=</span><span class="s2">&quot;zmq_tcp&quot;</span>
+<span class="nb">export</span> <span class="nv">PUBLISHER_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;127.0.0.1:65013&quot;</span>
+</pre></div>
+</div>
+<p>Similarly, we can override subscriber’s, client’s and server’s Type and Endpoint.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SUBSCRIBER_TYPE</span><span class="o">=</span><span class="s2">&quot;zmq_tcp&quot;</span>
+<span class="nb">export</span> <span class="nv">SUBSCRIBER_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;127.0.0.1:65013&quot;</span>
+
+<span class="nb">export</span> <span class="nv">SERVER_TYPE</span><span class="o">=</span><span class="s2">&quot;zmq_tcp&quot;</span>
+<span class="nb">export</span> <span class="nv">SERVER_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;127.0.0.1:65013&quot;</span>
+
+<span class="nb">export</span> <span class="nv">CLIENT_TYPE</span><span class="o">=</span><span class="s2">&quot;zmq_tcp&quot;</span>
+<span class="nb">export</span> <span class="nv">CLIENT_ENDPOINT</span><span class="o">=</span><span class="s2">&quot;127.0.0.1:65013&quot;</span>
+</pre></div>
+</div>
+<p>Overriding feature of ConfigMgr will be used in orchestrated scenarios including Kubernetes.</p>
+</section>
+<section id="broker-usecase">
+<h2>Broker Usecase<a class="headerlink" href="#broker-usecase" title="Permalink to this headline">¶</a></h2>
+<p>If publisher and subscriber wants to communicate via broker(ZmqBroker), i.e., if publisher publish data to ZmqBroker and subscriber subscribes from ZmqBroker, then the interfaces of ZmqBroker, subscriber and publisher with respect to <code class="docutils literal notranslate"><span class="pre">zmq_tcp</span></code> and <code class="docutils literal notranslate"><span class="pre">zmq_ipc</span></code> protocol as follows.</p>
+</section>
+<section id="zmq-tcp-protocol-usecase">
+<h2>zmq_tcp Protocol usecase<a class="headerlink" href="#zmq-tcp-protocol-usecase" title="Permalink to this headline">¶</a></h2>
+<section id="zmqbroker">
+<h3>ZmqBroker:<a class="headerlink" href="#zmqbroker" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="c1">//X-PUB</span>
+    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:5568&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="c1">// X-SUB</span>
+    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:5569&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="subscriber">
+<h3>Subscriber<a class="headerlink" href="#subscriber" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:5568&quot;</span><span class="p">,</span>
+
+            <span class="c1">// PublisherAppName will be &quot;ZmqBroker&quot; in case of brokered usecase</span>
+            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;ZmqBroker&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="publisher">
+<h3>Publisher<a class="headerlink" href="#publisher" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:5569&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;camera1_stream&quot;</span>
+            <span class="p">],</span>
+            <span class="c1">// With broker usecase, AllowedClients in Publisher&#39;s interface is not required, as it acts as a subscriber to X-SUB</span>
+
+            <span class="c1">// &quot;brokered&quot; and &quot;BrokerAppName&quot; should be added for ZmqBroker usecase</span>
+            <span class="s2">&quot;brokered&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;BrokerAppName&quot;</span> <span class="o">:</span> <span class="s2">&quot;ZmqBroker&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="zmq-ipc-protocol-usecase">
+<h2>zmq_ipc Protocol usecase<a class="headerlink" href="#zmq-ipc-protocol-usecase" title="Permalink to this headline">¶</a></h2>
+<section id="id1">
+<h3>ZmqBroker:<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;SocketDir&quot;</span><span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SocketFile&quot;</span><span class="o">:</span> <span class="s2">&quot;backend-socket&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;SocketDir&quot;</span><span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SocketFile&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend-socket&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Subscriber<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;SocketDir&quot;</span> <span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SocketFile&quot;</span><span class="o">:</span> <span class="s2">&quot;backend-socket&quot;</span>
+            <span class="p">},</span>
+
+            <span class="c1">// PublisherAppName will be &quot;ZmqBroker&quot; in case of brokered usecase</span>
+            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;ZmqBroker&quot;</span><span class="p">,</span>
+
+            <span class="c1">// Topics cannot be &quot;*&quot;, if the only IPC directory is given</span>
+            <span class="c1">// if it Topics &quot;*&quot; to be used in ipc, then socket file should be given explicitly.</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;*&quot;</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Publisher<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;SocketDir&quot;</span> <span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SocketFile&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend-socket&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;camera1_stream&quot;</span>
+            <span class="p">],</span>
+
+            <span class="c1">// With broker usecase, AllowedClients in Publisher&#39;s interface is not required, as it acts as a subscriber to X-SUB</span>
+
+            <span class="c1">// &quot;brokered&quot; and &quot;BrokerAppName&quot; should be added for ZmqBroker usecase</span>
+            <span class="s2">&quot;brokered&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;BrokerAppName&quot;</span> <span class="o">:</span> <span class="s2">&quot;ZmqBroker&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Required (Mandatory)</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">brokered</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>(Required if publishing via ZmqBroker) Specifies if publisher is using broker or not. use “brokered”: true for use with broker.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">BrokerAppName</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></td>
+<td><p>Yes</p></td>
+<td><p>(Required if publishing via ZmqBroker) Specifies ZeroMQ Broker app name</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="note-endpoint-can-be-given-in-different-ways">
+<h3><strong>Note</strong> “Endpoint” can be given in different ways:<a class="headerlink" href="#note-endpoint-can-be-given-in-different-ways" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>zmq_tcp Endpoint should look like below:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Endpoint&quot;</span><span class="o">:</span><span class="s2">&quot;127.0.0.1:65013&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>zmq_ipc Endpoint have different ways of giving.</p>
+<ul>
+<li><p>Specifying just socket directory</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Endpoint&quot;</span><span class="o">:</span><span class="s2">&quot;/EII/sockets&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Specifying socket directory and socket file</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Endpoint&quot;</span><span class="o">:</span><span class="p">{</span>
+    <span class="s2">&quot;SocketDir&quot;</span> <span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;SocketFile&quot;</span><span class="o">:</span> <span class="s2">&quot;socketfile&quot;</span>
+<span class="p">}</span>
+
+<span class="nx">or</span>
+
+<span class="s2">&quot;Endpoint&quot;</span><span class="o">:</span><span class="s2">&quot;/EII/sockets, socketfile&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="running-examples">
+<h2>Running Examples<a class="headerlink" href="#running-examples" title="Permalink to this headline">¶</a></h2>
+<p>The ConfigMgr library also supports Cpp APIs and Python &amp; Go bindings. These APIs/bindings can be used in Cpp and Python/Go services in the EII stack to fetch required config/interfaces/msgbus config.</p>
+<p>Examples will only be compiled if the <code class="docutils literal notranslate"><span class="pre">WITH_EXAMPLES=ON</span></code> option is specified while running CMake.
+Please refer <a class="reference external" href="#-install-configmgr-with-examples,-test-suits-and-debug-build-enabled.">Examples installation</a></p>
+<p>Refer the interfaces of publisher and server in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/examples/configs/VideoAnalytics_interfaces.json">./examples/configs/VideoAnalytics_interfaces.json</a> and for subscriber and client, refer <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/examples/configs/VideoAnalytics_interfaces.json">./examples/configs/VideoAnalytics_interfaces.json</a></p>
+<p>Examples on demonstrating the usage of these APIs in the bindings have been given in respective sections below.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#-cpp-examples">CPP Examples</a></p></li>
+<li><p><a class="reference external" href="#-python-examples">Python Examples</a></p></li>
+<li><p><a class="reference external" href="#-go-examples">Go Examples</a></p></li>
+</ul>
+<section id="cpp-examples">
+<h3>CPP Examples<a class="headerlink" href="#cpp-examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ Navigate to <span class="o">[</span>WORKDIR<span class="o">]</span>/IEdgeInsights/common/libs/ConfigMgr
+$ sudo rm -rf build
+$ mkdir build
+$ <span class="nb">cd</span> build
+$ cmake -DCMAKE_INSTALL_INCLUDEDIR<span class="o">=</span><span class="nv">$CMAKE_INSTALL_PREFIX</span>/include -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$CMAKE_INSTALL_PREFIX</span> -DWITH_EXAMPLES<span class="o">=</span>ON ..
+$ make
+$ sudo make install
+</pre></div>
+</div>
+<p>There are currently 5 CPP examples:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/sample_pub.cpp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/sample_sub.cpp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/sample_server.cpp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/sample_client.cpp</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/sample_getvalue.cpp</span></code></p></li>
+</ol>
+<p>All of the Cpp example executables are in the <code class="docutils literal notranslate"><span class="pre">build/examples/</span></code> directory. To run
+them, execute the following command:</p>
+<p>Before executing any of the examples, please run below command from <code class="docutils literal notranslate"><span class="pre">build/examples/</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ../../examples/ <span class="o">&amp;&amp;</span> <span class="nb">source</span> ./env.sh <span class="o">&amp;&amp;</span> <span class="nb">cd</span> -
+</pre></div>
+</div>
+<p>Publisher example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ./pub
+</pre></div>
+</div>
+<p>Subscriber example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ./sub
+</pre></div>
+</div>
+<p>Server example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ./server
+</pre></div>
+</div>
+<p>Client example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ./client
+</pre></div>
+</div>
+<p>Sample_getvalue used to get the values from application’s config</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ ./sample_app
+</pre></div>
+</div>
+</section>
+<section id="python-examples">
+<h3>Python Examples<a class="headerlink" href="#python-examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ Navigate to <span class="o">[</span>WORKDIR<span class="o">]</span>/IEdgeInsights/common/libs/ConfigMgr
+$ sudo rm -rf build
+$ mkdir build
+$ <span class="nb">cd</span> build
+$ cmake -DCMAKE_INSTALL_INCLUDEDIR<span class="o">=</span><span class="nv">$CMAKE_INSTALL_PREFIX</span>/include -DCMAKE_INSTALL_PREFIX<span class="o">=</span><span class="nv">$CMAKE_INSTALL_PREFIX</span> -DWITH_PYTHON<span class="o">=</span>ON ..
+$ make
+$ sudo make install
+</pre></div>
+</div>
+<p>There are currently 5 Python examples:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/publisher.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/subscriber.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/echo_service.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/echo_client.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">examples/sample_get_value.py</span></code></p></li>
+</ol>
+<p>All of the py examples are in <code class="docutils literal notranslate"><span class="pre">python/examples/</span></code> directory. To run
+them, execute the following command:</p>
+<p>Before executing any of the examples, please run below command from <code class="docutils literal notranslate"><span class="pre">python/examples/</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ../../examples/ <span class="o">&amp;&amp;</span> <span class="nb">source</span> ./env.sh <span class="o">&amp;&amp;</span> <span class="nb">cd</span> -
+</pre></div>
+</div>
+<p>Publisher example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 publisher.py
+</pre></div>
+</div>
+<p>Subscriber example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 subscriber.py
+</pre></div>
+</div>
+<p>Server example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 echo_service.py
+</pre></div>
+</div>
+<p>Client example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 echo_client.py
+</pre></div>
+</div>
+<p>sample_get_value used to get the values from application’s config</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ python3 sample_get_value.py
+</pre></div>
+</div>
+</section>
+<section id="go-examples">
+<h3>Go Examples<a class="headerlink" href="#go-examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ Navigate to <span class="o">[</span>WORKDIR<span class="o">]</span>/IEdgeInsights/common/libs/ConfigMgr/go
+$ cp -r ConfigMgr/ <span class="nv">$GOPATH</span>/src
+$ <span class="nb">cd</span> ConfigMgr/examples
+$ <span class="nb">source</span> go_env.sh
+</pre></div>
+</div>
+<p>There are currently 5 Go examples:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">publisher.go</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">subscriber.go</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">echo_service.go</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">echo_client.go</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app_config.go</span></code></p></li>
+</ol>
+<p>All of the go examples are in <code class="docutils literal notranslate"><span class="pre">go/examples/</span></code> directory. To run
+them, execute the following command:</p>
+<p>Before executing any of the examples, please run below command from <code class="docutils literal notranslate"><span class="pre">go/ConfigMgr/examples/</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ../../../examples/ <span class="o">&amp;&amp;</span> <span class="nb">source</span> ./env.sh <span class="o">&amp;&amp;</span> <span class="nb">cd</span> -
+<span class="nb">source</span> ./go_env.sh
+</pre></div>
+</div>
+<p>Publisher example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ go build publisher.go
+$ ./publisher
+</pre></div>
+</div>
+<p>Subscriber example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ go build subscriber.go
+$ ./subscriber
+</pre></div>
+</div>
+<p>Server example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ go build echo_service.go
+$ ./echo_service
+</pre></div>
+</div>
+<p>Client example.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ go build echo_client.go
+$ ./echo_client
+</pre></div>
+</div>
+<p>app_config used to get the values from application’s config</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ go build app_config.go
+$ ./app_config
+</pre></div>
+</div>
+</section>
+</section>
+<section id="running-unit-tests">
+<h2>Running Unit Tests<a class="headerlink" href="#running-unit-tests" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The unit tests will only be compiled if the <code class="docutils literal notranslate"><span class="pre">WITH_TESTS=ON</span></code> option is specified when running CMake.
+Please refer <a class="reference external" href="#-install-configmgr-with-examples,-test-suits-and-debug-build-enabled.">Unit Test installation</a> installation.</p></li>
+<li><p>Provisioning should be done to start etcd server in dev/prod mode and to generate application specific certificates(only in prod mode).</p></li>
+</ul>
+<p>Before executing any of the test files, please run below command from <code class="docutils literal notranslate"><span class="pre">build/tests/</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ../../examples/ <span class="o">&amp;&amp;</span> <span class="nb">source</span> ./env.sh <span class="o">&amp;&amp;</span> <span class="nb">cd</span> -
+</pre></div>
+</div>
+<ul>
+<li><p>To run ConfigMgr unit tests
+.. code-block:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./config_manager_unit_tests
+$ ./kvstore_client-tests
+</pre></div>
+</div>
+<p>## Creation of grpc .deb file (Optional)</p>
+</li>
+</ul>
+<p><strong>Note</strong>: This is an optional as we have already created .deb file in the repo.
+If user wants to create .deb file freshly, then one has to follow this step.</p>
+<p>Navigate to <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr</span></code> and run the <code class="docutils literal notranslate"><span class="pre">grpc_deb.sh</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo ./grpc_deb.sh
+</pre></div>
+</div>
+<p>By executing the above script, <code class="docutils literal notranslate"><span class="pre">grpc-1.29.0-Linux.deb</span></code> will be created in
+<code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+
+RestDataExport
+==============
+
+RestDataExport service subscribes to any topic from EIIMessageBus and starts publishing meta data via POST requests to any external HTTP servers. It has an internal HTTP server running to respond to any GET requests for a required frame from any HTTP clients.
+
+..
+
+   IMPORTANT:
+   RestDataExport service can subscribe classified results from both VideoAnalytics(video) or InfluxDBConnector(time-series) use cases. Please ensure the required service to subscribe from is mentioned in the Subscribers configuration in `config.json <https://github.com/open-edge-insights/eii-rest-data-export/blob/master/config.json>`_.
+

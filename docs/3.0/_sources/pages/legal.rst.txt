@@ -1,0 +1,27 @@
+================
+Legal Disclaimer
+================
+
+You may not use or facilitate the use of this document in connection with any infringement or other legal analysis concerning Intel products described herein. You agree to grant Intel a non-exclusive, royalty-free license to any patent claim thereafter drafted which includes subject matter disclosed herein 
+
+No license (express or implied, by estoppel or otherwise) to any intellectual property rights is granted by this document. 
+
+All information provided here is subject to change without notice. Contact your Intel representative to obtain the latest Intel product specifications and roadmaps. 
+
+The products described may contain design defects or errors known as errata which may cause the product to deviate from published specifications. Current characterized errata are available on request. 
+
+Copies of documents which have an order number and are referenced in this document may be obtained by calling 1-800-548-4725 or by visiting:  `http://www.intel.com/design/literature.htm <http://www.intel.com/design/literature.htm>`_  
+
+Intel technologies’ features and benefits depend on system configuration and may require enabled hardware, software or service activation. Learn more at `http://www.intel.com/ <http://www.intel.com/>`_ or from the OEM or retailer. 
+
+No computer system can be absolutely secure. 
+
+Intel and the Intel logo are trademarks of Intel Corporation in the U.S. and/or other countries. 
+
+Code Names are only for use by Intel to identify products, platforms, programs, services, etc. (“products”) in development by Intel that have not been made commercially available to the public, i.e., announced, launched or shipped. They are never to be used as “commercial” names for products. Also, they are not intended to function as trademarks. 
+
+The Bluetooth® word mark and logos are registered trademarks owned by Bluetooth SIG, Inc. and any use of such marks by Intel is under license. 
+
+\*Other names and brands may be claimed as the property of others. 
+
+Copyright © 2021, Intel Corporation. All rights reserved. 

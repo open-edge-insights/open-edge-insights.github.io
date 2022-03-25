@@ -1,0 +1,9 @@
+
+Versioning
+----------
+
+The source code is versioned with the format of 3 numbers separated by points. The first number is major version, which in this case is 1. The second number is minor version, which increments for every release like engineering releases, alpha or PV etc., The third number is the revision number, which increments when a feature gets merged from a feature branch. It resets when the minor version number increments for a release.
+First engineering release version is v1.0.0
+Second engineering release version is v1.1.0
+Alpha release version is v1.2.0
+PV release version is v1.3.0

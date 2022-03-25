@@ -1,0 +1,43 @@
+
+Configuration of the tool.
+==========================
+
+Let us look at the sample configuration
+
+.. code-block::
+
+   {
+     "config": {
+       "pub_name": "TestPub",
+       "msg_file": "data1k.json",
+       "iteration": 10,
+       "interval": "5ms"
+     },
+     "interfaces": {
+       "Publishers": [
+         {
+           "Name": "TestPub",
+           "Type": "zmq_tcp",
+           "AllowedClients": [
+             "*"
+           ],
+           "EndPoint": "ia_zmq_broker:60514",
+           "Topics": [
+             "topic-pfx1",
+             "topic-pfx2",
+             "topic-pfx3",
+             "topic-pfx4"
+           ],
+           "BrokerAppName" : "ZmqBroker",
+           "brokered": true
+         }
+       ]
+     }
+   }
+
+
+* -pub_name : The name of the publisher in the interface.
+* -topics: The name of the topics seperated by comma, for which publisher need to be started.
+* -msg_file : The file containing the JSON data, which represents the single data point (files should be kept into directory named 'datafiles').
+* -num_itr : The number of iterations
+* -int_btw_itr: The interval between any two iterations

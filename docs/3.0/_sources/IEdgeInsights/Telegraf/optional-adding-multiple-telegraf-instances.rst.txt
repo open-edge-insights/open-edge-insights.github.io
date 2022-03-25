@@ -1,0 +1,223 @@
+.. role:: raw-html-m2r(raw)
+   :format: html
+
+
+Optional: Adding multiple telegraf instances
+--------------------------------------------
+
+
+* User can add multiple instances of Telegarf. For that user needs to add additional environment variable named 'ConfigInstance' in docker-compose.yml file. For  every additional telegraf instance, there has to be additional compose section in the docker-compose.yml file. 
+* 
+  The configuration for every instance has to be in the telegraf image. The standard to be followed is described as below. 
+
+    For instance named $ConfigInstance the telegraf configuration has to be kept in the repository at 
+    `config <https://github.com/open-edge-insights/ts-telegraf/blob/master/config>`_\ /$ConfigInstance/$ConfigInstance.conf (for production mode) and 
+    `config <https://github.com/open-edge-insights/ts-telegraf/blob/master/config>`_\ /$ConfigInstance/$ConfigInstance_devmode.conf (for developer mode).
+
+    The same files will be available inside the respective container at
+    '/etc/Telegraf/$ConfigInstance/$ConfigInstance.conf' (for production mode)
+    '/etc/Telegraf/$ConfigInstance/$ConfigInstance_devmode.conf' (for developer mode)
+
+Let's have some of the examples.
+
+Example1:
+For $ConfigInstance = 'Telegraf1'
+
+
+* The location of the Telegraf configuration would be
+  `config <https://github.com/open-edge-insights/ts-telegraf/blob/master/config>`_\ /Telegraf1/Telegraf1.conf (for production mode) and `config <https://github.com/open-edge-insights/ts-telegraf/blob/master/config>`_\ /Telegraf1/Telegraf1_devmode.conf (for developer mode)
+* The additional docker compose section which has to be manually added in the file 'docker-compose.yml' would be
+
+.. code-block::
+
+     ia_telegraf1:
+       depends_on:
+         - ia_common
+       build:
+         context: $PWD/../Telegraf
+         dockerfile: $PWD/../Telegraf/Dockerfile
+         args:
+           EII_VERSION: ${EII_VERSION}
+           EII_UID: ${EII_UID}
+           EII_USER_NAME: ${EII_USER_NAME}
+           TELEGRAF_SOURCE_TAG: ${TELEGRAF_SOURCE_TAG}
+           TELEGRAF_GO_VERSION: ${TELEGRAF_GO_VERSION}
+           UBUNTU_IMAGE_VERSION: ${UBUNTU_IMAGE_VERSION}
+           CMAKE_INSTALL_PREFIX: ${EII_INSTALL_PATH}
+       container_name: ia_telegraf1
+       hostname: ia_telegraf1
+       image: ${DOCKER_REGISTRY}ia_telegraf:${EII_VERSION}
+       restart: unless-stopped
+       ipc: "none"
+       security_opt:
+       - no-new-privileges
+       read_only: true
+       healthcheck:
+         test: ["CMD-SHELL", "exit", "0"]
+         interval: 5m
+       environment:
+         AppName: "Telegraf"
+         ConfigInstance: "Telegraf1"
+         CertType: "pem,zmq"
+         DEV_MODE: ${DEV_MODE}
+         no_proxy: "${ETCD_HOST},ia_influxdbconnector"
+         NO_PROXY: "${ETCD_HOST},ia_influxdbconnector"
+         ETCD_HOST: ${ETCD_HOST}
+         ETCD_CLIENT_PORT: ${ETCD_CLIENT_PORT}
+         MQTT_BROKER_HOST: 'ia_mqtt_broker'
+         INFLUX_SERVER: 'ia_influxdbconnector'
+         INFLUXDB_PORT: $INFLUXDB_PORT
+         ETCD_PREFIX: ${ETCD_PREFIX}
+       networks:
+         - eii
+       volumes:
+         - "vol_temp_telegraf:/tmp/"
+         - "vol_eii_socket:${SOCKET_DIR}"
+       secrets:
+         - ca_etcd
+         - etcd_Telegraf_cert
+         - etcd_Telegraf_key
+
+.. note:: \ : If user wants to add telegraf output plugin in telegraf instance, modify `docker-compose.yml <https://github.com/open-edge-insights/ts-telegraf/blob/master/docker-compose.yml>`_\ , `docker-compose.yml <https://github.com/open-edge-insights/ts-telegraf/blob/master/docker-compose.yml>`_ and telegraf configuration(.conf) files.
+
+
+   #. 
+      Add publisher configuration in `config.json <https://github.com/open-edge-insights/ts-telegraf/blob/master/config.json>`_\ :
+
+      .. code-block::
+
+         {
+            "config": {
+
+                ...,
+                "<output plugin instance_name>": {
+                    "measurements": ["*"],
+                    "profiling": "true"
+                }
+            },
+            "interfaces": {
+                ...,
+                "Publishers": [
+                    ...,
+                    {
+                        "Name": "<output plugin instance_name>",
+                        "Type": "zmq_tcp",
+                        "EndPoint": "0.0.0.0:<publisher port>",
+                        "Topics": [
+                            "*"
+                        ],
+                        "AllowedClients": [
+                            "*"
+                        ]
+                    }
+
+                ]
+            }
+         }
+
+      Example:
+
+      .. code-block::
+
+         {
+            "config": {
+
+                ...,
+                "publisher1": {
+                    "measurements": ["*"],
+                    "profiling": "true"
+                }
+            },
+            "interfaces": {
+                ...,
+                "Publishers": [
+                    ...,
+                    {
+                        "Name": "publisher1",
+                        "Type": "zmq_tcp",
+                        "EndPoint": "0.0.0.0:65078",
+                        "Topics": [
+                            "*"
+                        ],
+                        "AllowedClients": [
+                            "*"
+                        ]
+                    }
+
+                ]
+            }
+         }
+
+
+      #. 
+         Expose "publisher port" in `docker-compose.yml <https://github.com/open-edge-insights/ts-telegraf/blob/master/docker-compose.yml>`_ file:
+
+         .. code-block::
+
+            ia_telegraf<ConfigInstance number>:
+            ...
+            ports:
+              - <publisher port>:<publisher port>
+
+         Example:
+
+         .. code-block::
+
+            ia_telegraf<ConfigInstance number>:
+            ...
+            ports:
+              - 65078:65078
+
+      #. 
+         Add eii_msgbus output plugin in telegraf instance config file `config <https://github.com/open-edge-insights/ts-telegraf/blob/master/config>`_\ /$ConfigInstance/$ConfigInstance.conf (for production mode) and 
+         `config <https://github.com/open-edge-insights/ts-telegraf/blob/master/config>`_\ /$ConfigInstance/$ConfigInstance_devmode.conf (for developer mode).
+
+         [[outputs.eii_msgbus]]
+         instance_name = "\ :raw-html-m2r:`<publisher instance>`\ "
+
+      Example:
+      For $ConfigInstance = 'Telegraf1'
+
+      User needs to add following section in `config <https://github.com/open-edge-insights/ts-telegraf/blob/master/config>`_\ /Telegraf1/Telegraf1.conf (for production mode) and `config <https://github.com/open-edge-insights/ts-telegraf/blob/master/config>`_\ /Telegraf1/Telegraf1_devmode.conf (for developer mode) 
+
+       [[outputs.eii_msgbus]]
+       instance_name = "publisher1"
+
+
+
+* 
+  After that, user will need to run the **builder.py** script command to allow the changes of the dockerfile take place.
+
+  .. code-block::
+
+       $ cd [WORK_DIR]/IEdgeInsights/build
+       $ python3 builder.py
+
+* 
+  User will need to provision, build and bring up all the container again by using below command.
+
+  .. code-block::
+
+       $ cd [WORK_DIR]/IEdgeInsights/build/provision
+       $ sudo ./provision.sh ../docker-compose.yml
+       $ cd ../
+       $ docker-compose -f docker-compose-build.yml build
+       $ docker-compose up -d
+
+* 
+  Based on above example, user can check the telegraf service will have multiple  container as by using docker ps command.
+
+**Note**\ : It's been practice followed by many users, to keep the configuration in a modular way. One way to achieve the same could be keeping the additional configuration inside 'Telegraf/config/$ConfigInstance/telegraf.d. For example:
+
+create a directory 'telegraf.d' inside 'Telegraf/config/config/$ConfigInstance' :
+
+.. code-block::
+
+      $ mkdir config/$ConfigInstance/telegraf.d
+      $ cd config/$ConfigInstance/telegraf.d
+
+keep additional configuration files inside that directory and pass the whole command to start the Telegraf in docker-compose.yml file as following:
+
+.. code-block::
+
+       command: ["telegraf -config=/etc/Telegraf/$ConfigInstance/$ConfigInstance.conf -config-directory=/etc/Telegraf/$ConfigInstance/telegraf.d"]

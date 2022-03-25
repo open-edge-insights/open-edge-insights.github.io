@@ -1,0 +1,18 @@
+
+EII TimeSeriesProfiler configurations
+-------------------------------------
+
+
+#. 
+   total_number_of_samples
+
+    If mode is set to 'sps', the average SPS is calculated for the number of samples set by this variable.
+    If mode is set to 'monitor', the average stats is calculated for the number of samples set by this variable.
+    Setting it to (-1) will run the profiler forever unless terminated by stopping container TimeSeriesProfiler manually.
+    total_number_of_samples should never be set as (-1) for 'sps' mode.
+
+#. 
+   export_to_csv
+
+    Setting this switch to **true** exports csv files for the results obtained in TimeSeriesProfiler. For monitor_mode, runtime stats printed in the csv
+    are based on the the following precdence: avg_stats, per_sample_stats, display_metadata.

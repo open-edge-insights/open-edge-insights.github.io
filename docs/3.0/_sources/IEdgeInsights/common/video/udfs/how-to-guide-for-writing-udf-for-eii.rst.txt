@@ -1,0 +1,5 @@
+
+**How-To GUIDE for writing UDF for EII**
+============================================
+
+This document describes stepwise instruction for writing a User defined Function(UDF) in C++/Python in order to make it deployable in EII environment. It  explains APIs and configurational changes required in order to write an UDF for EII.

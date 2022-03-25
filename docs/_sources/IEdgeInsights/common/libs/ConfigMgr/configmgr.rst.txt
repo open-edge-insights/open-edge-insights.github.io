@@ -1,0 +1,18 @@
+
+ConfigMgr
+=========
+
+ConfigMgr or Config manager provides CPP, Python, and Golang APIs to:
+
+
+* fetch an applications configs values from the KV store.
+* fetch an applications interface values from the KV store for pub, sub, server, and client.
+* monitor application's config changes.
+* generate MessageBus config.
+* read and set the ``/GlobalEnv`` variables.
+* fetch the env variables: appname, dev_mode
+
+All the ConfigMgr operations related data is stored in the KV store of OEI during the provisioning phase. An admin can dynamically change these data.
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+

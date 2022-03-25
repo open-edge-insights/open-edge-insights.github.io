@@ -1,0 +1,26 @@
+
+Prerequisites
+-------------
+
+**Note**\ :
+
+
+* K8s installation on single or multi node should be done as pre-requisite to continue the following deployment. Please note we
+   have tried the kubernetes cluster setup with ``kubeadm``\ , ``kubectl`` and ``kubelet`` packages on single and multi nodes with ``v1.23.4``.
+   One can refer tutorials like https://adamtheautomator.com/install-kubernetes-ubuntu/#Installing_Kubernetes_on_the_Master_and_Worker_Nodes and many other
+   online tutorials to setup kubernetes cluster on the web with host OS as ubuntu 18.04/20.04.
+* For helm installation, please refer `helm website <https://helm.sh/docs/intro/install/>`_
+
+..
+
+   For time series usecase make sure ia_mqtt_broker & ia_mqtt_publisher are running.
+   Make sure 'MQTT_BROKER_HOST' Environment Variable is updated with HOST IP address of the system where MQTT Broker is running.
+
+
+For preparing the necessary files required for the provision and deployment, user needs to execute the build and provision steps on an Ubuntu 18.04 / 20.04 machine.
+Follow the Docker prerequisites, OEI Prerequisites, Provision OEI and Build and Run OEI mentioned in `README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ on the Ubuntu dev machine.
+
+  As OEI don't distribute all the docker images on docker hub, one would run into issues of those pods status showing ``ImagePullBackOff`` and few pods status like visualizer, factory ctrl etc.,
+  showing ``CrashLoopBackOff`` due to additional configuration required. For ``ImagePullBackOff`` issues, please follow the steps mentioned at [../README.md#distribution-of-eii-container-images]> (../README.
+  md#distribution-of-eii-container-images) to push the images that are locally built to the docker registry of choice. Ensure to update the ``DOCKER_REGISTRY`` value in ``[WORKDIR]/IEdgeInsights/build/.env``
+  file and re-run the `../builder.py <https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py>`_ script to regenerate the helm charts for provision and deployment.

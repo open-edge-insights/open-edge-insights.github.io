@@ -1,0 +1,133 @@
+
+Task 2: Install prerequisites
+-----------------------------
+
+The ``pre_requisites.sh`` script automates the installation and configuration of all the prerequisites required for building and running the EII stack. The prerequisites are as follows:
+
+
+* docker daemon
+* docker client
+* docker-compose
+* Python packages
+
+The ``pre-requisites.sh`` file performs the following:
+
+
+* Checks if docker and docker-compose is installed in the system. If required, it uninstalls the older version and installs the correct version of docker and docker-compose.
+* Configures the proxy settings for the docker client and docker daemon to connect to the internet.
+* Configures the proxy settings system-wide (/etc/environment) and for docker. If a system is running behind a proxy, then the script prompts users to enter the proxy address to configure the proxy settings.
+* Configures proxy setting for /etc/apt/apt.conf to enable apt updates and installations.
+
+.. note:: 
+
+
+   * The recommended version of the docker-compose is ``1.29.0``. In versions older than 1.29.0, the video use case docker-compose.yml files and the device_cgroup_rules command may not work.
+   * To use versions older than docker-compose 1.29.0, in the ``ia_video_ingestion`` and ``ia_video_analytics`` services, comment out the ``device_cgroup_rules`` command.
+   * 
+     You can comment out the ``device_cgroup_rules`` command in the ``ia_video_ingestion`` and ``ia_video_analytics`` services to use versions older than 1.29.0 of docker-compose. This can result in limited inference and device support. The following code sample shows how the ``device_cgroup_rules`` commands are commented out:
+
+     .. code-block:: sh
+
+         ia_video_ingestion:
+          ...
+           #device_cgroup_rules:
+              #- 'c 189:* rmw'
+              #- 'c 209:* rmw'
+
+   After modifying the ``docker-compose.yml`` file, refer to the ``Using builder script`` section. Before running the services using the ``docker-compose up`` command, rerun the ``builder.py`` script.
+
+
+Run the pre-requisite script
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To run the pre-requisite script, execute the following commands:
+
+.. code-block:: sh
+
+       cd [WORKDIR]/IEdgeInsights/build
+       sudo -E ./pre_requisites.sh --help
+
+         Usage :: sudo -E ./pre_requisites.sh [OPTION...]
+         List of available options...
+         --proxy         proxies, required when the gateway/edge node running EII (or any of EII profile) is connected behind proxy
+         --help / -h         display this help and exit
+
+.. note:: 
+   If the --proxy option is not provided, then script will run without proxy. Different use cases are as follows
+
+
+   * 
+     Runs without proxy
+
+     .. code-block:: sh
+
+           sudo -E ./pre_requisites.sh
+
+   * 
+     Runs with proxy
+
+     .. code-block:: sh
+
+          sudo -E ./pre_requisites.sh --proxy="proxy.intel.com:891"
+
+
+Optional steps
+^^^^^^^^^^^^^^
+
+
+* 
+  If required, you can enable full security for production deployments. Ensure that the host machine and docker daemon are configured per the security recommendation. For more info, see `build/docker_security_recommendation.md <https://github.com/open-edge-insights/eii-core/blob/master/build/docker_security_recommendation.md>`_.
+
+* 
+  If required, you can enable log rotation for docker containers using any of the following methods:  
+
+Method 1
+^^^^^^^^
+
+Set the logging driver as part of the docker daemon. This applies to all the docker containers by default.
+
+
+#. 
+   Configure the json-file driver as the default logging driver. For more info, see `JSON File logging driver <https://docs.docker.com/config/containers/logging/json-file/>`_. The sample json-driver configuration which can be copied to ``/etc/docker/daemon.json`` is as follows:
+
+   .. code-block:: json
+
+             {
+               "log-driver": "json-file",
+               "log-opts": {
+               "max-size": "10m",
+               "max-file": "5"
+               }
+           }
+
+#. 
+   Run the following command to reload the docker daemon:
+
+   .. code-block:: sh
+
+
+       sudo systemctl daemon-reload
+
+#. 
+   Run the following command to restart docker:
+
+   .. code-block:: sh
+
+
+       sudo systemctl restart docker
+
+Method 2
+^^^^^^^^
+
+Set logging driver as part of docker compose which is container specific. This overwrites the 1st option (i.e /etc/docker/daemon.json). The following example shows how to enable logging driver only for the video_ingestion service:
+
+.. code-block:: json
+
+       ia_video_ingestion:
+         ...
+         ...
+         logging:
+           driver: json-file
+           options:
+           max-size: 10m
+     max-file: 5

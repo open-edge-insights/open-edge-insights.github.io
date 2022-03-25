@@ -1,0 +1,67 @@
+.. role:: raw-html-m2r(raw)
+   :format: html
+
+
+Getting EII UDF Classifier results data to NodeRed Environment Using NodeRed HTTPClient
+---------------------------------------------------------------------------------------
+
+.. note:: \ : RestDataExport should be running already as a prerequisite.\ :raw-html-m2r:`<br>`
+   Please refer the RestDataExport `Readme <https://github.com/open-edge-insights/eii-rest-data-export>`_
+
+
+
+#. 
+   Drag the ``http request`` node of nodered's default nodes to your existing workflow.
+
+      
+   .. image:: ./images/imagehttprequestnode.png
+      :target: ./images/imagehttprequestnode.png
+      :alt: images/imagehttprequestnode.png
+
+
+#. 
+   Update the ``properties`` of node as below
+
+   DEV Mode:
+
+
+   * 
+     Please follow the below dialog properties for setting DEV Mode in NodeRed dashboard
+
+      
+     .. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imagedevmode.png
+        :target: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imagedevmode.png
+        :alt: images/imagedevmode.png
+
+
+   PROD Mode:
+
+
+   * 
+     Please follow the below dialog properties for setting DEV Mode in NodeRed dashboard
+
+      
+     .. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageprodmode.png
+        :target: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageprodmode.png
+        :alt: imageprodmode.png
+
+
+   * 
+     For Prod Mode TLS ``ca_certificate.pem`` import.
+      **Note**\ : This ``ca_certificate.pem`` will be part EII certificate bundle. Please refer ``EII/build/provision/Certificates/`` directory.
+
+      
+     .. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageprodmodetlscert.png
+        :target: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageprodmodetlscert.png
+        :alt: imageprodmodetlscert.png
+
+
+   ..
+
+      **Note**\ :
+
+
+      #. For ``DEV`` mode no need to enable/attach the certificates
+      #. Update the ``ip`` address as per ``RestDataExport`` module running machine ip.
+      #. For more details on NodeRed's ``http request`` module, please refer: https://stevesnoderedguide.com/node-red-http-request-node-beginners
+

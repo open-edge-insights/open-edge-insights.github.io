@@ -1,0 +1,163 @@
+
+Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy OEI services in control node/remote node
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+.. note:: 
+
+
+   * Updating messagebus endpoints to connect to interfaces is still the manual process. Make sure to update Application specific endpoints in ``[AppName]/config.json``
+   * After ``pre-requisites`` are successfully installed, please do logout and login to apply the changes
+   * By Default ``wait_time_for_config_mgr`` for waiting confimgr to up with provisioning done status will be set to ``20`` seconds
+   * If your system is slow or execution is delaying you can increase or decrease ``wait_time_for_config_mgr`` in ``group_vars/all.yml``
+
+
+For Single Point of Execution
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::  This will execute all the steps of OEI as prequisite, build, provision, deploy & setup all nodes for deployement usecase in one shot sequentialy.
+
+
+.. code-block:: sh
+
+      ansible-playbook eii.yml
+
+**Below steps are the individual execution of setups.**
+
+
+* 
+  Load ``.env`` values from template
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml --tags "load_env"
+
+* 
+  For OEI Prequisite Setup
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml --tags "prerequisites"
+
+  ..
+
+     **Note**
+     After ``pre-requisites`` are successfully installed, please do logout and login to apply the changes
+
+
+* 
+  To generate builder and config files, build images and push to registry
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml --tags "build"
+
+* 
+  To generate eii bundles for deployment
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml --tags "gen_bundles"
+
+* 
+  To deploy the eii modules
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml --tags "deploy"
+
+Deploying OEI Using Helm in Kubernetes (k8s) environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: 
+
+
+   * To Deploy OEI using helm in k8s aenvironment, ``k8s`` setup is a prerequisite.
+   * You need update the ``k8s`` leader machine as leader node in ``hosts`` file.
+   * Non ``k8s`` leader machine the ``helm`` deployment will fail.
+   * For ``helm`` deployment ``ansible-remotenode`` parameters will not applicable, Since node selection & pod selection will be done by ``k8s`` orchestrator.
+   * Make sure you are deleting ``/opt/intel/eii/data`` when switch from ``prod`` mode to ``dev`` mode in all your ``k8s`` ``worker`` nodes.
+   * Ignore the following message ``FAILED - RETRYING: [leader]: Wait for Provisioning is Done (5 retries left).``. It occurs during waiting time. It is not an error
+
+
+
+* 
+  Update the ``DEPLOYMENT_MODE`` flag as ``k8s`` in ``group_vars/all.yml`` file:
+
+
+  * 
+    Open ``group_vars/all.yml`` file
+
+    .. code-block:: sh
+
+           vi group_vars/all.yml
+
+  * 
+    Update the ``DEPLOYMENT_MODE`` flag as ``k8s``
+
+    .. code-block:: yml
+
+           ## Deploy in k8s mode using helm
+           DEPLOYMENT_MODE: "k8s"
+
+  * 
+    Save & Close
+
+* 
+  For Single Point of Execution
+
+  ..
+
+     **Note**
+     This will execute all the steps of OEI as prequisite, build, provision, deploy for a usecase in one shot sequentialy.
+
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml
+
+.. note:: 
+   Below steps are the individual execution of setups.
+
+
+
+* 
+  Load ``.env`` values from template
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml --tags "load_env"
+
+* 
+  For OEI Prequisite Setup
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml --tags "prerequisites"
+
+* 
+  For building OEI containers
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml --tags "build"
+
+* 
+  To generate Certificates in control node
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml --tags "gen_certs"
+
+* 
+  Prerequisites for deploy OEI using Ansible helm environment.
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml --tags "helm_k8s_prerequisites"
+
+* 
+  Provision and Deploy OEI Using Ansible helm environment
+
+  .. code-block:: sh
+
+       ansible-playbook eii.yml --tags "helm_k8s_deploy"

@@ -1,0 +1,23 @@
+
+Generation of python .whl file (Optional)
+-----------------------------------------
+
+**Note**\ : This is an optional as we have already hosted .whl file.
+If user wants to create .whl file freshly, then one has to follow below steps.
+
+
+#. 
+   Installation of ``wheel``
+
+   .. code-block:: sh
+
+       pip3 install –upgrade setuptools wheel
+
+#. 
+   Navigate to ``[WORKDIR]/IEdgeInsights/common/libs/EIIMessageBus/python`` and execute the below command
+
+   .. code-block:: sh
+
+       python3 setup_packaging.py sdist bdist_wheel --plat-name=manylinux2014_x86_64
+
+#. EIIMessageBus .whl package will be created in the folder ``dist`` as ``eii_msgbus-2.6-cp38-cp38-manylinux2014_x86_64.whl``

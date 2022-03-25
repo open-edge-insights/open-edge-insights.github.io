@@ -1,0 +1,5 @@
+
+EII Message Bus
+===============
+
+Message bus used between containers inside of EII.

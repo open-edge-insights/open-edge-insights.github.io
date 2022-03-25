@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Install Open Edge Insights from GitHub &mdash; OEI Documentation v1.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/contentui.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> OEI Documentation
+          </a>
+              <div class="version">
+                3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div>
+  
+              <p><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/introduction.html">Introduction to OEI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/introduction.html#terminology">Terminology</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/introduction.html#general-terminology">General Terminology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/running.html">Run Open Edge Insights</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#about-open-edge-insights">About Open Edge Insights</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#video-pipeline-analytics">Video pipeline Analytics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#time-series-analytics">Time-series Analytics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#oei-multi-node-cluster-deployment">OEI multi-node cluster deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#oei-tools">OEI tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#oei-uninstaller">OEI Uninstaller</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#debugging-options">Debugging options</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/running.html#web-deployment-tool">Web Deployment Tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/running.html#troubleshooting-guide">Troubleshooting guide</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/release.html#oei-v3-0">OEI v3.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/release.html#eii-v2-6-2">EII v2.6.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#fixes">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/release.html#eii-v2-6-1">EII v2.6.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#bug-fixes">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/release.html#eii-v2-6">EII v2.6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#id1">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#id2">Fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#id3">Bug fixes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#bug-fix">Bug fix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/release.html#eii-v2-5">EII v2.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/release.html#id4">Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Core Libraries:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/msgbus.html">Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#id1">Message Bus</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#generating-documentation">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#install-python-binding">Install Python Binding</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#install-golang-binding">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#zeromq-ipc-configuration">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#zeromq-tcp-configuration">ZeroMQ TCP Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#additional-zeromq-configuration-properties">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#example-usage">Example Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#c-examples">C Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#go-examples">Go Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#running-go-examples-without-installing">Running Go Examples without Installing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#brokered-publish-subscribe">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#security">Security</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#using-only-curvezmq-encryption">Using Only CurveZMQ Encryption</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#id2">Using ZAP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#disabling-security">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#id3">Dependency Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#id4">Compilation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id5">Generating Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id6">Potential Compilation Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#id7">Packaging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id9">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#id10">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id11">Install Python Binding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id12">Install Golang Binding</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#id13">Running Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#id14">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id15">ZeroMQ IPC Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id16">ZeroMQ TCP Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#id17">Publishers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#id18">Subscribers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#id19">Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#id20">Requesters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#id21">Using ZAP Authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id22">Additional ZeroMQ Configuration Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#id23">Example Usage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id24">C Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#id25">Publisher Many Example</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id26">Python Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id27">Go Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id28">Running Go Examples without Installing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id29">Brokered Publish/Subscribe</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#id30">Security</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id33">Using Only CurveZMQ Encryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#id34">Publish/Subscribe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/msgbus.html#id35">Request/Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id36">Using ZAP Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/msgbus.html#id37">Disabling Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#id38">Known issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#id39">Generation of python .whl file (Optional)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/msgbus.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/eiiConfig.html">OEI Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#configmgr">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#configmgr-installation">ConfigMgr Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#using-system-grpc">Using System gRPC</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#generating-documentation">Generating Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#packaging">Packaging</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#interfaces">Interfaces</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#publisher-interface">Publisher Interface</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#subscriber-interface">Subscriber Interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#server-interface"><strong>Server Interface</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#client-interface"><strong>Client Interface</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#cpp-examples">CPP Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#python-examples">Python Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/eiiConfig.html#go-examples">Go Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#creation-of-grpc-zip-file-optional">Creation of grpc .zip file (Optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/eiiConfig.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/eiiConfig.html#api-documentation">API Documentation</a></li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Video Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/video.html">Working with Video Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#videoingestion-module">VideoIngestion Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#oei-udfloader">OEI UDFLoader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#oei-sample-udfs">OEI Sample UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#udf-configuration">UDF Configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#udf-writing-guide">UDF Writing Guide</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#sample-udfs">Sample UDFs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#chaining-of-udfs">Chaining of UDFs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#native-visualizer-module">Native Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#web-visualizer-module">Web Visualizer Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/video.html#imagestore-module">ImageStore Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/video.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Time-Series Analytics Pipeline:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/timeseries.html">Working with Time series Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#telegraf">Telegraf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#point-data-time-series-data-analytics-introduction">Point-data (Time-series data) analytics introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/timeseries.html#grafana">Grafana</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/timeseries.html#configuration">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">Export Services:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/azure.html">Azure Bridge</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/azure.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/azure.html#prerequisites-and-setup">Prerequisites and Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#azure-cloud-setup">Azure Cloud Setup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/azure.html#setting-up-azureml">Setting up AzureML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/azure.html#important">Important</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#development-system-setup">Development System Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/azure.html#build-and-push-oei-containers">Build and Push OEI Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#step-1-provisioning">Step 1 - Provisioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/azure.html#expected-result">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#step-2-configuring-eii">Step 2 - Configuring EII</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/azure.html#id3">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#step-3-configuring-azure-iot-deployment-manifest">Step 3 - Configuring Azure IoT Deployment Manifest</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/azure.html#id4">Expected Result</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#step-4-deployment">Step 4 - Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/azure.html#expected-results">Expected Results</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#helpful-debugging-commands">Helpful Debugging Commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#final-notes">Final Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/azure.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#id5">Azure Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#sample-eii-onnx-udf">Sample EII ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#simple-subscriber">Simple Subscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#eii-etcd-pre-load">EII ETCD Pre-Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#azure-blob-storage">Azure Blob Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/azure.html#azure-deployment-manifest">Azure Deployment Manifest</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/azure.html#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/azure.html#supported-oei-services">Supported OEI Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/azure.html#additional-resources">Additional Resources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/opcua.html">OpcuaExport Application</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/opcua.html#opcuaexport">OpcuaExport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/restdata.html">RestDataExport service</a></li>
+</ul>
+<p><span class="caption-text">Additional Info:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pages/tools.html">OEI Tools</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#discoverhistory-tool">DiscoverHistory tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#embpublisher">EmbPublisher</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#configuration-of-the-tool">Configuration of the tool</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#gigeconfig-tool">GigEConfig tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#generating-pfs-pylon-feature-stream-file">Generating PFS (Pylon Feature Stream) File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#running-gigeconfig-tool">Running GigEConfig Tool</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#develop-python-user-defined-functions-using-jupyter-notebook">Develop Python User Defined Functions using Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#prerequisites-for-using-jupyter-notebooks">Prerequisites for using Jupyter Notebooks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#run-jupyter-notebook-from-web-browsers">Run Jupyter Notebook from web browsers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#run-jupyter-notebook-using-visual-studio-code">Run Jupyter Notebook using Visual Studio Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#mqtt-publisher">MQTT publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../pages/tools.html#oei-video-profiler">OEI Video Profiler</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#oei-video-profiler-prerequisites">OEI Video Profiler prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#oei-video-profiler-modes">OEI Video Profiler modes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#oei-video-profiler-configurations">OEI Video Profiler configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#run-video-profiler">Run Video Profiler</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#running-videoprofiler-in-helm-usecase">Running VideoProfiler in helm usecase</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#optimizing-oei-video-pipeline-by-analysing-video-profiler-results">Optimizing OEI Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi-instance config</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/sample.html">OEI Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/sample.html#eii-sample-apps">EII Sample Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pages/security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../pages/security.html#provisioning">Provisioning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/security.html#generating-keys-and-certificates">Generating Keys and Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/security.html#start-up-and-run-time">Start Up and Run Time</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pages/security.html#accessing-secrets">Accessing Secrets</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../pages/security.html#certificate-revocation">Certificate Revocation</a></li>
+</ul>
+</li>
+</ul>
+
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">OEI Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+  <!-- 3.0 -->
+  
+  
+
+  <li><a href="../index.html">3.0</a> &raquo;</li>
+  
+  <li>Install Open Edge Insights from GitHub</li>
+
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/IEdgeInsights/install-open-edge-insights-from-github.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="install-open-edge-insights-from-github">
+<h1>Install Open Edge Insights from GitHub<a class="headerlink" href="#install-open-edge-insights-from-github" title="Permalink to this headline">¶</a></h1>
+<p>You can download and install OEI from the <a class="reference external" href="https://github.com/open-edge-insights/">Open Edge Insights GitHub repository</a>. For more information on manifest files, refer <a class="reference external" href="https://github.com/open-edge-insights/eii-manifests/blob/master/README.md">Readme</a>.</p>
+<p>To install OEI, perform the tasks in the following order:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#task-1-get-oei-codebase-from-github">Task 1: Get OEI codebase from GitHub</a></p></li>
+<li><p><a class="reference external" href="#task-2-install-prerequisites">Task 2: Install prerequisites</a></p></li>
+<li><p><a class="reference external" href="#task-3-generate-deployment-and-configuration-files">Task 3: Generate deployment and configuration files</a></p></li>
+<li><p><a class="reference external" href="#task-4-build-and-run-the-oei-video-and-time-series-use-cases">Task 4: Build and run the OEI video and time series use cases</a></p></li>
+</ul>
+<section id="task-1-get-oei-codebase-from-github">
+<h2>Task 1: Get OEI codebase from GitHub<a class="headerlink" href="#task-1-get-oei-codebase-from-github" title="Permalink to this headline">¶</a></h2>
+<p>To get the OEI codebase, complete the following steps:</p>
+<ol class="arabic">
+<li><p>To install the repo tool, run the following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>curl https://storage.googleapis.com/git-repo-downloads/repo &gt; repo
+sudo mv repo /bin/repo
+sudo chmod a+x /bin/repo
+</pre></div>
+</div>
+</li>
+<li><p>To create a working directory, run the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir -p &lt;work-dir&gt;
+</pre></div>
+</div>
+</li>
+<li><p>To initialize the working directory using the repo tool, run the following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;work-dir&gt;
+repo init -u <span class="s2">&quot;https://github.com/open-edge-insights/eii-manifests.git&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>To pull all the projects mentioned in the manifest xml file, with the default or specific revision mentioned for each project, run the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>repo sync
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="task-2-install-prerequisites">
+<h2>Task 2: Install prerequisites<a class="headerlink" href="#task-2-install-prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">pre_requisites.sh</span></code> script automates the installation and configuration of all the prerequisites required for building and running the OEI stack. The prerequisites are as follows:</p>
+<ul class="simple">
+<li><p>docker daemon</p></li>
+<li><p>docker client</p></li>
+<li><p>docker-compose</p></li>
+<li><p>Python packages</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">pre-requisites.sh</span></code> file performs the following:</p>
+<ul class="simple">
+<li><p>Checks if docker and docker-compose is installed in the system. If required, it uninstalls the older version and installs the correct version of docker and docker-compose.</p></li>
+<li><p>Configures the proxy settings for the docker client and docker daemon to connect to the internet.</p></li>
+<li><p>Configures the proxy settings system-wide (/etc/environment) and for docker. If a system is running behind a proxy, then the script prompts users to enter the proxy address to configure the proxy settings.</p></li>
+<li><p>Configures proxy setting for /etc/apt/apt.conf to enable apt updates and installations.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul>
+<li><p>The recommended version of the docker-compose is <code class="docutils literal notranslate"><span class="pre">1.29.0</span></code>. In versions older than 1.29.0, the video use case docker-compose.yml files and the device_cgroup_rules command may not work.</p></li>
+<li><p>To use versions older than docker-compose 1.29.0, in the <code class="docutils literal notranslate"><span class="pre">ia_video_ingestion</span></code> and <code class="docutils literal notranslate"><span class="pre">ia_video_analytics</span></code> services, comment out the <code class="docutils literal notranslate"><span class="pre">device_cgroup_rules</span></code> command.</p></li>
+<li><p>You can comment out the <code class="docutils literal notranslate"><span class="pre">device_cgroup_rules</span></code> command in the <code class="docutils literal notranslate"><span class="pre">ia_video_ingestion</span></code> and <code class="docutils literal notranslate"><span class="pre">ia_video_analytics</span></code> services to use versions older than 1.29.0 of docker-compose. This can result in limited inference and device support. The following code sample shows how the <code class="docutils literal notranslate"><span class="pre">device_cgroup_rules</span></code> commands are commented out:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ia_video_ingestion:
+ ...
+  <span class="c1">#device_cgroup_rules:</span>
+     <span class="c1">#- &#39;c 189:* rmw&#39;</span>
+     <span class="c1">#- &#39;c 209:* rmw&#39;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>After modifying the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file, refer to the <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">the</span> <span class="pre">Builder</span> <span class="pre">script</span></code> section. Before running the services using the <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">up</span></code> command, rerun the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script.</p>
+</div>
+<section id="run-the-pre-requisite-script">
+<h3>Run the pre-requisite script<a class="headerlink" href="#run-the-pre-requisite-script" title="Permalink to this headline">¶</a></h3>
+<p>To run the pre-requisite script, execute the following commands:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="o">[</span>WORKDIR<span class="o">]</span>/IEdgeInsights/build
+sudo -E ./pre_requisites.sh --help
+  Usage :: sudo -E ./pre_requisites.sh <span class="o">[</span>OPTION...<span class="o">]</span>
+  List of available options...
+  --proxy         proxies, required when the gateway/edge node running OEI <span class="o">(</span>or any of OEI profile<span class="o">)</span> is connected behind proxy
+  --help / -h         display this <span class="nb">help</span> and <span class="nb">exit</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the –proxy option is not provided, then script will run without proxy. Different use cases are as follows:</p>
+<ul>
+<li><p>Runs without proxy</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo -E ./pre_requisites.sh
+</pre></div>
+</div>
+</li>
+<li><p>Runs with proxy</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo -E ./pre_requisites.sh --proxy<span class="o">=</span><span class="s2">&quot;proxy.intel.com:891&quot;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section id="optional-steps">
+<h3>Optional steps<a class="headerlink" href="#optional-steps" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>If required, you can enable full security for production deployments. Ensure that the host machine and docker daemon are configured per the security recommendation. For more info, see <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/docker_security_recommendation.md">build/docker_security_recommendation.md</a>.</p></li>
+<li><p>If required, you can enable log rotation for docker containers using any of the following methods:</p></li>
+</ul>
+<section id="method-1">
+<h4>Method 1<a class="headerlink" href="#method-1" title="Permalink to this headline">¶</a></h4>
+<p>Set the logging driver as part of the docker daemon. This applies to all the docker containers by default.</p>
+<ol class="arabic">
+<li><p>Configure the json-file driver as the default logging driver. For more info, see <a class="reference external" href="https://docs.docker.com/config/containers/logging/json-file/">JSON File logging driver</a>. The sample json-driver configuration which can be copied to <code class="docutils literal notranslate"><span class="pre">/etc/docker/daemon.json</span></code> is as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>  <span class="p">{</span>
+    <span class="nt">&quot;log-driver&quot;</span><span class="p">:</span> <span class="s2">&quot;json-file&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;log-opts&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;max-size&quot;</span><span class="p">:</span> <span class="s2">&quot;10m&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;max-file&quot;</span><span class="p">:</span> <span class="s2">&quot;5&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Run the following command to reload the docker daemon:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo systemctl daemon-reload
+</pre></div>
+</div>
+</li>
+<li><p>Run the following command to restart docker:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>sudo systemctl restart docker
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="method-2">
+<h4>Method 2<a class="headerlink" href="#method-2" title="Permalink to this headline">¶</a></h4>
+<p>Set logging driver as part of docker compose which is container specific. This overwrites the 1st option (i.e /etc/docker/daemon.json). The following example shows how to enable the logging driver only for the video_ingestion service:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>  ia_video_ingestion:
+    ...
+    ...
+    logging:
+      driver: json-file
+      options:
+      max-size: 10m
+max-file: 5
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="task-3-generate-deployment-and-configuration-files">
+<h2>Task 3: Generate deployment and configuration files<a class="headerlink" href="#task-3-generate-deployment-and-configuration-files" title="Permalink to this headline">¶</a></h2>
+<p>After downloading OEI from the release package or Git, run the commands mentioned in this section from the <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/build/</span></code> directory.</p>
+<section id="use-the-builder-script">
+<h3>Use the Builder script<a class="headerlink" href="#use-the-builder-script" title="Permalink to this headline">¶</a></h3>
+<p>To use the Builder script, run the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 builder.py -h
+usage: builder.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>-f YML_FILE<span class="o">]</span> <span class="o">[</span>-v VIDEO_PIPELINE_INSTANCES<span class="o">]</span>
+                    <span class="o">[</span>-d OVERRIDE_DIRECTORY<span class="o">]</span>
+optional arguments:
+    -h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+    -f YML_FILE, --yml_file YML_FILE
+                        Optional config file <span class="k">for</span> list of services to include.
+                        Eg: python3 builder.py -f video-streaming.yml
+                        <span class="o">(</span>default: None<span class="o">)</span>
+    -v VIDEO_PIPELINE_INSTANCES, --video_pipeline_instances VIDEO_PIPELINE_INSTANCES
+                        Optional number of video pipeline instances to be
+                        created. Eg: python3 builder.py -v <span class="m">6</span> <span class="o">(</span>default:
+                        <span class="m">1</span><span class="o">)</span>
+    -d OVERRIDE_DIRECTORY, --override_directory OVERRIDE_DIRECTORY
+                        Optional directory consisting of benchmarking
+                        configs to be present <span class="k">in</span> each app directory. Eg:
+                        python3 builder.py -d benchmarking <span class="o">(</span>default:
+                        None<span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="generate-consolidated-files-for-all-applicable-oei-services">
+<h3>Generate consolidated files for all applicable OEI services<a class="headerlink" href="#generate-consolidated-files-for-all-applicable-oei-services" title="Permalink to this headline">¶</a></h3>
+<p>Using the Builder tool, OEI auto-generates the configuration files that are required for deploying the OEI services on a single or multiple nodes. The Builder tool auto-generates the consolidated files by getting the relevant files from the OEI service directories that are required for different OEI use-cases. The Builder tool parses the top-level directories under the <code class="docutils literal notranslate"><span class="pre">IEdgeInsights</span></code> directory to generate the consolidated files.</p>
+<p>The following table shows the list of consolidated files and their details:</p>
+<p>Table: Consolidated files</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>file name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>docker-compose.yml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file used to launch OEI docker containers in each single node using the <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> tool</p></td>
+</tr>
+<tr class="row-odd"><td><p>docker-compose.override.yml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">docker-compose-dev.override.yml</span></code> of every app that is generated only in DEV mode for OEI deployment on a given single node using <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> tool</p></td>
+</tr>
+<tr class="row-even"><td><p>docker-compose-build.yml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">docker-compose-build.yml</span></code> file having OEI base images and <code class="docutils literal notranslate"><span class="pre">depends_on</span></code> and <code class="docutils literal notranslate"><span class="pre">build</span></code> keys required for building OEI services</p></td>
+</tr>
+<tr class="row-odd"><td><p>docker-compose-push.yml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">docker-compose-push.yml</span></code> file (same as <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file with just dummy <code class="docutils literal notranslate"><span class="pre">build</span></code> key added), used for pushing OEI services to docker registry</p></td>
+</tr>
+<tr class="row-even"><td><p>eii_config.json</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">config.json</span></code> of every app which will be put into etcd during provisioning</p></td>
+</tr>
+<tr class="row-odd"><td><p>values.yaml</p></td>
+<td><p>Consolidated <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> of every app inside helm-eii/eii-deploy directory, which is required to deploy OEI services via helm</p></td>
+</tr>
+<tr class="row-even"><td><p>Template yaml files</p></td>
+<td><p>Files copied from helm/templates directory of every app to helm-eii/eii-deploy/templates directory, which are required to deploy OEI services via helm</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If you modify an individual OEI app/service directory files, make sure to re-run the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script before running the OEI stack to regenerate the updated consolidated files as above.</p></li>
+<li><p>Manual editing of consolidated files is not recommended. Instead make changes to the respective files in the OEI app/service directories and use the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script to generate the consolidated files.</p></li>
+<li><p>Enter the secret credentials in the <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">Service</span> <span class="pre">credentials</span></code> section of the <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">.env</a> file if you are trying to run that OEI app/service. In case the required credentials are not present, the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script would be prompting till all the required credentails are entered. Please protect this <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">.env</a> file from being read by other users by applying a suitable file access mask.</p></li>
+<li><p>The <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/builder_config.json">builder_config.json</a> is the config file for the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script and it contains the following keys:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">subscriber_list</span></code>: This key contains a list of services that act as a subscriber to the stream being published.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">publisher_list</span></code>: This key contains a list of services that publishes a stream of data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">include_services</span></code>: This key contains the mandatory list of services that are required to be included when the Builder is run without the <code class="docutils literal notranslate"><span class="pre">-f</span></code> flag.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exclude_services</span></code>: This key contains the mandatory list of services that are required to be excluded when the Builder is run without the <code class="docutils literal notranslate"><span class="pre">-f</span></code> flag.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">increment_rtsp_port</span></code>: This is a boolean key used for incrementing the port number for the RTSP stream pipelines.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>To generate the consolidated files, run the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 builder.py
+</pre></div>
+</div>
+</section>
+<section id="generate-consolidated-files-for-a-subset-of-oei-services">
+<h3>Generate consolidated files for a subset of OEI services<a class="headerlink" href="#generate-consolidated-files-for-a-subset-of-oei-services" title="Permalink to this headline">¶</a></h3>
+<p>Builder uses a yml file for configuration. The config yml file consists of a list of services to include. You can mention the service name as the path relative to <code class="docutils literal notranslate"><span class="pre">IEdgeInsights</span></code> or full path to the service in the config yml file.
+To include only a certain number of services in the OEI stack, you can add the -f or yml_file flag of builder.py. You can find the examples of yml files for different use cases as follows:</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming-azure.yml">Azure</a></p>
+<p>The following example shows running Builder with the -f flag:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 builder.py -f usecases/video-streaming.yml
+</pre></div>
+</div>
+</li>
+<li><p><strong>Main use cases</strong></p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Usecase</p></th>
+<th class="head"><p>yaml file</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Video + Timeseries</p></td>
+<td><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-timeseries.yml">build/usecases/video-timeseries.yml</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Video</p></td>
+<td><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video.yml">build/usecases/video.yml</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Timeseries</p></td>
+<td><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/time-series.yml">build/usecases/time-series.yml</a></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><strong>Video pipeline sub use cases</strong></p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Usecase</p></th>
+<th class="head"><p>yaml file</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Video streaming</p></td>
+<td><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming.yml">build/usecases/video-streaming.yml</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Video streaming and historical</p></td>
+<td><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming-storage.yml">build/usecases/video-streaming-storage.yml</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Video streaming with AzureBridge</p></td>
+<td><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming-azure.yml">build/usecases/video-streaming-azure.yml</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Video streaming and custom udfs</p></td>
+<td><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming-all-udfs.yml">build/usecases/video-streaming-all-udfs.yml</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>When you run the multi-instance config, a <code class="docutils literal notranslate"><span class="pre">build/multi_instance</span></code> directory is created in the build directory. Based on the number of <code class="docutils literal notranslate"><span class="pre">video_pipeline_instances</span></code> specified, that many directories of VideoIngestion and VideoAnalytics is created in the <code class="docutils literal notranslate"><span class="pre">build/multi_instance</span></code> directory.</p>
+<p>The following section provides an example for running the Builder to generate the multi-instance boiler plate config for 3 streams of <strong>video-streaming</strong> use case.</p>
+</section>
+<section id="generate-multi-instance-configs-using-the-builder">
+<h3>Generate multi-instance configs using the Builder<a class="headerlink" href="#generate-multi-instance-configs-using-the-builder" title="Permalink to this headline">¶</a></h3>
+<p>If required, you can generate the multi-instance <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">config.json</span></code> files using the Builder. You can use the <code class="docutils literal notranslate"><span class="pre">-v</span></code> or <code class="docutils literal notranslate"><span class="pre">video_pipeline_instances</span></code> flag of the Builder to generate boiler plate config for the multiple -stream use cases. The <code class="docutils literal notranslate"><span class="pre">-v</span></code> or <code class="docutils literal notranslate"><span class="pre">video_pipeline_instances</span></code> flag creates the multi-stream boiler plate config for the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">eii_config.json</span></code> files.</p>
+<p>The following example shows running builder to generate the multi-instance boiler plate config for 3 streams of video-streaming use case:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 builder.py -v <span class="m">3</span> -f usecases/video-streaming.yml
+</pre></div>
+</div>
+<p>Using the previous command for 3 instances, the <code class="docutils literal notranslate"><span class="pre">build/multi_instance</span></code> directory consists of VideoIngestion1, VideoIngestion2, VideoIngestion3 and VideoAnalytics1, VideoAnalytics2, VideoAnalytics3 directories. Initially each directory will have the default <code class="docutils literal notranslate"><span class="pre">config.json</span></code> and the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> files that are present within the <code class="docutils literal notranslate"><span class="pre">VideoIngestion</span></code> and the <code class="docutils literal notranslate"><span class="pre">VideoAnalytics</span></code> directories.</p>
+<div class="highlight-example notranslate"><div class="highlight"><pre><span></span>      ./build/multi_instance/
+      |-- VideoAnalytics1
+      |   |-- config.json
+      |   `-- docker-compose.yml
+      |-- VideoAnalytics2
+      |   |-- config.json
+      |   `-- docker-compose.yml
+      |-- VideoAnalytics3
+      |   |-- config.json
+      |   `-- docker-compose.yml
+      |-- VideoIngestion1
+      |   |-- config.json
+      |   `-- docker-compose.yml
+      |-- VideoIngestion2
+      |   |-- config.json
+      |   `-- docker-compose.yml
+      `-- VideoIngestion3
+          |-- config.json
+          `-- docker-compose.yml
+
+You can edit the configs of each of these streams within the ``build/multi_instance`` directory. To generate the consolidated ``docker compose`` and ``eii_config.json`` file, rerun the ``builder.py`` command.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>The multi-instance feature support of Builder works only for the video pipeline i.e., <strong>usecases/video-streaming.yml</strong> use case alone and not with any other use case yml files like <strong>usecases/video-streaming-storage.yml</strong> and so on. Also, it doesn’t work for cases without the <code class="docutils literal notranslate"><span class="pre">-f</span></code> switch. The previous example will work with any positive number for <code class="docutils literal notranslate"><span class="pre">-v</span></code>. To learn more about using the multi-instance feature with the DiscoverHistory tool, see <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/DiscoverHistory/README.md#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the builder script with the DiscoverHistory tool</a>.</p></li>
+<li><p>If you are running the multi-instance config for the first time, it is recommended to not change the default <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file and the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file in the <code class="docutils literal notranslate"><span class="pre">VideoIngestion</span></code> and <code class="docutils literal notranslate"><span class="pre">VideoAnalytics</span></code> directories.</p></li>
+<li><p>If you are not running the multi-instance config for the first time, the existing <code class="docutils literal notranslate"><span class="pre">config.json</span></code> and <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> files in the <code class="docutils literal notranslate"><span class="pre">build/multi_instance</span></code> directory will be used to generate the consolidated <code class="docutils literal notranslate"><span class="pre">eii-config.json</span></code> and <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code> files.</p></li>
+<li><p>The docker-compose.yml files present within the <code class="docutils literal notranslate"><span class="pre">build/multi_instance</span></code> directory will have the updated service_name, container_name, hostname, AppName, ports and secrets for that respective instance.</p></li>
+<li><p>The config.json file in the <code class="docutils literal notranslate"><span class="pre">build/multi_instance</span></code> directory will have the updated Name, Type, Topics, Endpoint, PublisherAppname, ServerAppName and AllowedClients for the interfaces section and incremented rtsp port number for the config section of that respective instance.</p></li>
+<li><p>Ensure that all the containers are down before running the multi-instance configuration. Run the <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">down</span></code> command before running <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> for the multi-instance configuration.</p></li>
+</ul>
+</div>
+</section>
+<section id="generate-benchmarking-configs-using-builder">
+<h3>Generate benchmarking configs using Builder<a class="headerlink" href="#generate-benchmarking-configs-using-builder" title="Permalink to this headline">¶</a></h3>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">-d</span></code> or the <code class="docutils literal notranslate"><span class="pre">override_directory</span></code> flag to provide a different set of <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> and <code class="docutils literal notranslate"><span class="pre">config.json</span></code> files other than the existing files in every service directory. The <code class="docutils literal notranslate"><span class="pre">-d</span></code> or the <code class="docutils literal notranslate"><span class="pre">override_directory</span></code> flag indicates to search for the required set of files within a directory provided by the flag.
+For example, to pick files from a directory named benchmarking, you can run the following command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 builder.py -d benchmarking
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>If you use the override directory feature of the builder then include all the 3 files mentioned in the previous example. If you do not include a file in the override directory then the Builder will omit that service in the final config that is generated.</p></li>
+<li><p>Adding the <code class="docutils literal notranslate"><span class="pre">AppName</span></code> of the subscriber or client container in the <code class="docutils literal notranslate"><span class="pre">subscriber_list</span> <span class="pre">of</span> <span class="pre">builder_config.json</span></code> allows you to spawn a single subscriber or client container that is subscribing or receiving on multiple publishers or server containers.</p></li>
+<li><p>Multiple containers specified by the <code class="docutils literal notranslate"><span class="pre">-v</span></code> flag is spawned for services that are not mentioned in the <code class="docutils literal notranslate"><span class="pre">subscriber_list</span></code>. For example, if you run Builder with <code class="docutils literal notranslate"><span class="pre">–v</span> <span class="pre">3</span></code> option and <code class="docutils literal notranslate"><span class="pre">Visualizer</span></code> is not added in the <code class="docutils literal notranslate"><span class="pre">subscriber_list</span></code> of <code class="docutils literal notranslate"><span class="pre">builder_config.json</span></code> then 3 instances of Visualizer are spawned. Each instance subscribes to 3 VideoAnalytics services. If Visualizer is added in the <code class="docutils literal notranslate"><span class="pre">subscriber_list</span></code> of <code class="docutils literal notranslate"><span class="pre">builder_config.json</span></code>, a single Visualizer instance subscribing to 3 multiple VideoAnalytics is spawned.</p></li>
+</ul>
+</div>
+</section>
+<section id="add-oei-services">
+<h3>Add OEI services<a class="headerlink" href="#add-oei-services" title="Permalink to this headline">¶</a></h3>
+<p>This section provides information about adding a new service, subscribing to the <a class="reference external" href="https://github.com/open-edge-insights/video-analytics">VideoAnalytics</a>, and publishing it on a new port.
+Add a service to the OEI stack as a new directory in the <a class="reference external" href="https://github.com/open-edge-insights/">IEdgeInsights</a> directory. The Builder registers and runs any service present in its own directory in the <a class="reference external" href="https://github.com/open-edge-insights/">IEdgeInsights</a> directory. The directory should contain the following:</p>
+<ul class="simple">
+<li><p>A <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file to deploy the service as a docker container. The <code class="docutils literal notranslate"><span class="pre">AppName</span></code> is present in the <code class="docutils literal notranslate"><span class="pre">environment</span></code> section in the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file. Before adding the <code class="docutils literal notranslate"><span class="pre">AppName</span></code> to the main <code class="docutils literal notranslate"><span class="pre">build/eii_config.json</span></code>, it is appended to the <code class="docutils literal notranslate"><span class="pre">config</span></code> and <code class="docutils literal notranslate"><span class="pre">interfaces</span></code> as <code class="docutils literal notranslate"><span class="pre">/AppName/config</span></code> and <code class="docutils literal notranslate"><span class="pre">/AppName/interfaces</span></code>.</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file that contains the required config for the service to run after it is deployed. The <code class="docutils literal notranslate"><span class="pre">config.json</span></code> consists of the following:</p>
+<ul>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">config</span></code> section, which includes the configuration-related parameters that are required to run the application.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">interfaces</span></code> section, which includes the configuration of how the service interacts with other services of the OEI stack.</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more information on adding new OEI services, refer to the OEI sample apps at <a class="reference external" href="https://github.com/open-edge-insights/eii-samples/blob/master/README.md">Samples</a> written in C++, python, and Golang using the OEI core libraries.
+The following example shows how to write the <strong>config.json</strong> for any new service, subscribe to <strong>VideoAnalytics</strong>, and publish on a new port:</p>
+</div>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;paramOne&quot;</span><span class="o">:</span> <span class="s2">&quot;Value&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;paramTwo&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mf">1</span><span class="p">,</span> <span class="mf">2</span><span class="p">,</span> <span class="mf">3</span><span class="p">],</span>
+        <span class="s2">&quot;paramThree&quot;</span><span class="o">:</span> <span class="mf">4000</span><span class="p">,</span>
+        <span class="s2">&quot;paramFour&quot;</span><span class="o">:</span> <span class="kc">true</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;interfaces&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:65013&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;VideoAnalytics&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;camera1_stream_results&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:65113&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;publish_stream&quot;</span>
+                <span class="p">],</span>
+                <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;ClientOne&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ClientTwo&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;ClientThree&quot;</span>
+                <span class="p">]</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file consists of the following key and values:</p>
+<ul class="simple">
+<li><p>value of the <code class="docutils literal notranslate"><span class="pre">config</span></code> key is the config required by the service to run.</p></li>
+<li><p>value of the <code class="docutils literal notranslate"><span class="pre">interfaces</span></code> key is the config required by the service to interact with other services of OEI stack over the Message Bus.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">Subscribers</span></code> value in the <code class="docutils literal notranslate"><span class="pre">interfaces</span></code> section denotes that this service should act as a subscriber to the stream being published by the value specified by <code class="docutils literal notranslate"><span class="pre">PublisherAppName</span></code> on the endpoint mentioned in value specified by <code class="docutils literal notranslate"><span class="pre">EndPoint</span></code> on topics specified in value of <code class="docutils literal notranslate"><span class="pre">Topic</span></code> key.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">Publishers</span></code> value in the <code class="docutils literal notranslate"><span class="pre">interfaces</span></code> section denotes that this service publishes a stream of data after obtaining and processing it from <code class="docutils literal notranslate"><span class="pre">VideoAnalytics</span></code>. The stream is published on the endpoint mentioned in value of <code class="docutils literal notranslate"><span class="pre">EndPoint</span></code> key on topics mentioned in the value of <code class="docutils literal notranslate"><span class="pre">Topics</span></code> key.</p></li>
+<li><p>the services mentioned in the value of <code class="docutils literal notranslate"><span class="pre">AllowedClients</span></code> are the only clients that can subscribe to the published stream, if it is published securely over the Message Bus.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Like the interface keys, OEI services can also have “Servers” and “Clients” interface keys. For more information, refer <a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/config.json">config.json</a> of the <code class="docutils literal notranslate"><span class="pre">VideoIngestion</span></code> service and <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/SWTriggerUtility/config.json">config.json</a> of SWTriggerUtility tool.</p></li>
+<li><p>For more information on the <code class="docutils literal notranslate"><span class="pre">interfaces</span></code> key responsible for the Message Bus endpoint configuration, refer <a class="reference external" href="https://github.com/open-edge-insights/eii-configmgr/blob/master/README.md#interfaces">common/libs/ConfigMgr/README.md#interfaces</a>.</p></li>
+<li><p>For the etcd secrets configuration, in the new OEI service or app <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file, add the following volume mounts with the right <code class="docutils literal notranslate"><span class="pre">AppName</span></code> env value:</p></li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">...</span>
+ <span class="nt">volumes</span><span class="p">:</span>
+   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./Certificates/[AppName]:/run/secrets/[AppName]:ro</span>
+   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./Certificates/rootca/cacert.pem:/run/secrets/rootca/cacert.pem:ro</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="distribute-the-oei-container-images">
+<h3>Distribute the OEI container images<a class="headerlink" href="#distribute-the-oei-container-images" title="Permalink to this headline">¶</a></h3>
+<p>The OEI services are available as pre-built container images in the Docker Hub at <a class="reference external" href="https://hub.docker.com/u/openedgeinsights">https://hub.docker.com/u/openedgeinsights</a>. To access the services that are not available in the Docker Hub, build from source before running the <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">up</span> <span class="pre">-d</span></code> command.
+For example:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># Update the DOCKER_REGISTRY value in [WORKDIR]/IEdgeInsights/build/.env as DOCKER_RESISTRY=&lt;docker_registry&gt; (Make sure `docker login &lt;docker_registry&gt;` to the docker reigstry works)</span>
+<span class="nb">cd</span> <span class="o">[</span>WORKDIR<span class="o">]</span>/IEdgeInsights/build
+<span class="c1"># Base images that needs to be built</span>
+docker-compose -f docker-compose-build.yml build ia_eiibase
+docker-compose -f docker-compose-build.yml build ia_common
+<span class="c1"># Assuming here that the `python3 builder.py` step has been executed and ia_kapacitor</span>
+<span class="c1"># Service exists in the generated compose files</span>
+docker-compose -f docker-compose-build.yml build ia_kapacitor
+docker-compose up -d
+<span class="c1"># Push all the applicable OEI images to &lt;docker_registry&gt;. Ensure to use the same DOCKER_REGISTRY value on the deployment machine while deployment</span>
+docker-compose -f docker-compose-push.yml push
+</pre></div>
+</div>
+<p>The list of pre-built container images that are accessible at <a class="reference external" href="https://hub.docker.com/u/openedgeinsights">https://hub.docker.com/u/openedgeinsights</a> is as follows:</p>
+<ul class="simple">
+<li><p><strong>Provisioning images</strong></p>
+<ul>
+<li><p>openedgeinsights/ia_configmgr_agent</p></li>
+</ul>
+</li>
+<li><p><strong>Common OEI images applicable for video and time series use cases</strong></p>
+<ul>
+<li><p>openedgeinsights/ia_etcd_ui</p></li>
+<li><p>openedgeinsights/ia_influxdbconnector</p></li>
+<li><p>openedgeinsights/ia_rest_export</p></li>
+<li><p>openedgeinsights/ia_opcua_export</p></li>
+</ul>
+</li>
+<li><p><strong>Video pipeline images</strong></p>
+<ul>
+<li><p>openedgeinsights/ia_video_ingestion</p></li>
+<li><p>openedgeinsights/ia_video_analytics</p></li>
+<li><p>openedgeinsights/ia_web_visualizer</p></li>
+<li><p>openedgeinsights/ia_visualizer</p></li>
+<li><p>openedgeinsights/ia_imagestore</p></li>
+<li><p>openedgeinsights/ia_azure_bridge</p></li>
+<li><p>openedgeinsights/ia_azure_simple_subscriber</p></li>
+</ul>
+</li>
+<li><p><strong>Time series pipeline images</strong></p>
+<ul>
+<li><p>openedgeinsights/ia_grafana</p></li>
+<li><p>openedgeinsights/ia_telegraf</p></li>
+<li><p>openedgeinsights/ia_kapacitor</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Additionally, we have <code class="docutils literal notranslate"><span class="pre">openedgeinsights/ia_edgeinsights_src</span></code> image available at <a class="reference external" href="https://hub.docker.com/u/openedgeinsights">https://hub.docker.com/u/openedgeinsights</a> which consists of source code of the GPL/LGPL/AGPL components of the OEI stack.</p>
+</div>
+</section>
+<section id="list-of-oei-services">
+<h3>List of OEI services<a class="headerlink" href="#list-of-oei-services" title="Permalink to this headline">¶</a></h3>
+<p>Based on requirement, you can include or exclude the following OEI services in the <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/build/docker-compose.yml</span></code> file:</p>
+<ul class="simple">
+<li><p>Provisioning Service - This service is a prerequisite and cannot be excluded from the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file.</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-configmgr-agent/blob/master/README.md">ConfigMgrAgent</a></p></li>
+</ul>
+</li>
+<li><p>Common OEI services</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-etcd-ui/blob/master/README.md">EtcdUI</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/README.md">InfluxDBConnector</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-opcua-export/blob/master/README.md">OpcuaExport</a> - Optional service to read from the VideoAnalytics container to publish data to opcua clients.</p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-rest-data-export/blob/master/README.md">RestDataExport</a> - Optional service to read the metadata and image blob from the InfluxDBConnector and ImageStore services respectively.</p></li>
+</ul>
+</li>
+<li><p>Video related services</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/README.md">VideoIngestion</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/video-analytics/blob/master/README.md">VideoAnalytics</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/video-native-visualizer/blob/master/README.md">Visualizer</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/video-web-visualizer/blob/master/README.md">WebVisualizer</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/video-imagestore/blob/master/README.md">ImageStore</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-azure-bridge/blob/master/README.md">AzureBridge</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-factoryctrl/blob/master/README.md">FactoryControlApp</a> - Optional service to read from the VideoAnalytics container if you want to control the light based on the defective or non-defective data</p></li>
+</ul>
+</li>
+<li><p>Time series-related services</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/ts-telegraf/blob/master/README.md">Telegraf</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/README.md">Kapacitor</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/ts-grafana/blob/master/README.md">Grafana</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-zmq-broker/blob/master/README.md">ZMQ Broker</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="task-4-build-and-run-the-oei-video-and-time-series-use-cases">
+<h2>Task 4: Build and run the OEI video and time series use cases<a class="headerlink" href="#task-4-build-and-run-the-oei-video-and-time-series-use-cases" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>For running the OEI services in the IPC mode, ensure that the same user is mentioned in the publisher and subscriber services.</p></li>
+<li><p>If the publisher service is running as root such as <code class="docutils literal notranslate"><span class="pre">VI</span></code>, <code class="docutils literal notranslate"><span class="pre">VA</span></code>, then the subscriber service should also run as root. For example, in the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code>file, if you have specified <code class="docutils literal notranslate"><span class="pre">user:</span> <span class="pre">${EII_UID}</span></code> in the publisher service, then specify the same <code class="docutils literal notranslate"><span class="pre">user:</span> <span class="pre">${EII_UID}</span></code> in the subscriber service. If you have not specified a user in the publisher service then don’t specify the user in the subscriber service.</p></li>
+<li><p>If services needs to be running in multiple nodes in the TCP mode of communication, msgbus subscribers, and clients of <code class="docutils literal notranslate"><span class="pre">AppName</span></code> are required to configure the “EndPoint” in <code class="docutils literal notranslate"><span class="pre">config.json</span></code> with the <code class="docutils literal notranslate"><span class="pre">HOST_IP</span></code> and the <code class="docutils literal notranslate"><span class="pre">PORT</span></code> under <code class="docutils literal notranslate"><span class="pre">Subscribers/Publishers</span></code> or <code class="docutils literal notranslate"><span class="pre">Clients/Servers</span></code> interfaces section.</p></li>
+<li><p>Ensure that the port is being exposed in the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> of the respective <code class="docutils literal notranslate"><span class="pre">AppName</span></code>.
+For example, if the <code class="docutils literal notranslate"><span class="pre">&quot;EndPoint&quot;:</span> <span class="pre">&lt;HOST_IP&gt;:65012</span></code> is configured in the <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file, then expose the port <code class="docutils literal notranslate"><span class="pre">65012</span></code> in the <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> file of the <code class="docutils literal notranslate"><span class="pre">ia_video_ingestion</span></code> service.</p></li>
+</ul>
+</div>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ia_video_ingestion</span><span class="p">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">...</span>
+  <span class="l l-Scalar l-Scalar-Plain">ports</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">65012:65012</span>
+</pre></div>
+</div>
+<p>Run all the following OEI build and commands from the <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/build/</span></code> directory.
+OEI supports the following use cases to run the services mentioned in the <code class="docutils literal notranslate"><span class="pre">docker_compose.yml</span></code> file. Refer to Task 2 to generate the docker_compose.yml file based on a specific use case. For more information and configuration, refer to the <code class="docutils literal notranslate"><span class="pre">[WORK_DIR]/IEdgeInsights/README.md</span></code> file.</p>
+<section id="build-the-oei-stack">
+<h3>Build the OEI stack<a class="headerlink" href="#build-the-oei-stack" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>This is an optional step if you want to use the OEI pre-built container images and don’t want to build from source. For more details, refer: <a class="reference external" href="#distribution-of-oii-container-images">Distribution of OEI container images</a></p></li>
+<li><p>Base OEI services like <code class="docutils literal notranslate"><span class="pre">ia_eiibase</span></code>, <code class="docutils literal notranslate"><span class="pre">ia_video_common</span></code>, and so on, are needed only at the build time and not at the runtime.
+Run the following command to build all OEI services in the <code class="docutils literal notranslate"><span class="pre">build/docker-compose-build.yml</span></code> along with the base OEI services.</p></li>
+</ul>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker-compose -f docker-compose-build.yml build
+</pre></div>
+</div>
+<p>If any of the services fails during the build, then run the following command to build the service again:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker-compose -f docker-compose-build.yml build --no-cache &lt;service name&gt;
+</pre></div>
+</div>
+</section>
+<section id="run-oei-services">
+<h3>Run OEI services<a class="headerlink" href="#run-oei-services" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ensure to run <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">down</span></code> from  <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build">build</a> directory prior to bringing up OEI stack
+in order to remove running containers and avoid sync issues where other services have come up before <code class="docutils literal notranslate"><span class="pre">ia_configmgr_agent</span></code>
+container has completed the provisioning step
+If the images tagged with the <code class="docutils literal notranslate"><span class="pre">EII_VERSION</span></code> label, as in the <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a> do not exist locally in the system but are available in the Docker Hub, then the images will be pulled during the <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">up</span></code>command.</p>
+</div>
+<section id="oei-provisioning">
+<h4>OEI Provisioning<a class="headerlink" href="#oei-provisioning" title="Permalink to this headline">¶</a></h4>
+<p>The OEI provisioning is taken care by the <code class="docutils literal notranslate"><span class="pre">ia_configmgr_agent</span></code> service which gets lauched as part of the OEI stack. For more details on the ConfigMgr Agent component, refer to the <a class="reference external" href="https://github.com/open-edge-insights/eii-configmgr-agent/blob/master/README.md">Readme</a>.</p>
+<section id="start-oei-in-dev-mode">
+<h5>Start OEI in Dev mode<a class="headerlink" href="#start-oei-in-dev-mode" title="Permalink to this headline">¶</a></h5>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>By default, OEI is provisioned in the secure mode.</p></li>
+<li><p>It is recommended to not use OEI in the Dev mode in a production environment. In the Dev mode, all security features, communication to and from the etcd server over the gRPC protocol, and the communication between the OEI services/apps over the ZMQ protocol are disabled.</p></li>
+<li><p>By default, the OEI empty certificates folder <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/Certificates]">Certificates</a> will be created in the DEV mode. This happens because of docker bind mounts but it is not an issue.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">EII_INSTALL_PATH</span></code> in the <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a> remains protected both in the DEV and the PROD mode with the Linux group permissions.</p></li>
+</ul>
+</div>
+<p>Starting OEI in the Dev mode eases the development phase for System Integrators (SI). In the Dev mode, all components communicate over non-encrypted channels. To enable the Dev mode, set the environment variable <code class="docutils literal notranslate"><span class="pre">DEV_MODE</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> in the <code class="docutils literal notranslate"><span class="pre">[WORK_DIR]/IEdgeInsights/build/.env</span></code> file. The default value of this variable is <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p>
+<p>To provision OEI in the developer mode, complete the following steps:</p>
+<ol class="arabic simple">
+<li><p>Update <code class="docutils literal notranslate"><span class="pre">DEV_MODE=true</span></code> in <code class="docutils literal notranslate"><span class="pre">[WORK_DIR]/IEdgeInsights/build/.env</span></code>.</p></li>
+<li><p>Rerun the <code class="docutils literal notranslate"><span class="pre">build/builder.py</span></code> to regenerate the consolidated files.</p></li>
+</ol>
+</section>
+<section id="start-oei-in-profiling-mode">
+<h5>Start OEI in Profiling mode<a class="headerlink" href="#start-oei-in-profiling-mode" title="Permalink to this headline">¶</a></h5>
+<p>The Profiling mode is used for collecting the performance statistics in OEI. In this mode, each OEI component makes a record of the time needed for processing any single frame. These statistics are collected in the visualizer where System Integrtors (SI) can see the end-to-end processing time and the end-to-end average time for individual frames.</p>
+<p>To enable the Profiling mode, in the <code class="docutils literal notranslate"><span class="pre">[WORK_DIR]/IEdgeInsights/build/.env</span></code> file, set the environment variable <code class="docutils literal notranslate"><span class="pre">PROFILING</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+</section>
+<section id="run-oei-provisioning-service-and-rest-of-the-oei-stack-services">
+<h5>Run OEI provisioning service and rest of the OEI stack services<a class="headerlink" href="#run-oei-provisioning-service-and-rest-of-the-oei-stack-services" title="Permalink to this headline">¶</a></h5>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Use the <a class="reference external" href="https://github.com/open-edge-insights/eii-etcd-ui/blob/master/README.md">Etcd UI</a> to make the changes to the service configs post starting the OEI services.</p></li>
+<li><p>As seen in the <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/eii_start.sh">build/eii_start.sh</a>, OEI provisioning and deployment happens in a 2 step process where you need to wait for the initialization of the provisioning container (<code class="docutils literal notranslate"><span class="pre">ia_configmgr_agent</span></code>) before bringing up the rest of the stack. Don’t use commands like <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">restart</span></code> as it will randomly restart all the services leading to issues. To restart any service, use command like <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">restart</span> <span class="pre">[container_name]</span></code> or <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">restart</span> <span class="pre">[container_name]</span></code>.</p></li>
+</ul>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># The optional TIMEOUT argument passed below is in seconds and if not provided it will wait</span>
+<span class="c1"># till the &quot;Provisioning is Done&quot; message show up in `ia_configmgr_agent` logs before</span>
+<span class="c1"># bringing up rest of the OEI stack</span>
+<span class="nb">cd</span> <span class="o">[</span>WORK_DIR<span class="o">]</span>/IEdgeInsights/build
+./eii_start.sh <span class="o">[</span>TIMEOUT<span class="o">]</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1"># To start the native visualizer service, run this command once in the terminal</span>
+xhost +
+</pre></div>
+</div>
+<p>On successful run, the Visualizer UI is displays the results of video analytics for all video use cases.</p>
+</section>
+</section>
+</section>
+<section id="push-the-required-oei-images-to-docker-registry">
+<h3>Push the required OEI images to docker registry<a class="headerlink" href="#push-the-required-oei-images-to-docker-registry" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, if <code class="docutils literal notranslate"><span class="pre">DOCKER_REGISTRY</span></code> is empty in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a> then the images are published to hub.docker.com. Ensure to remove <code class="docutils literal notranslate"><span class="pre">openedgeinsights/</span></code> org from the image names while pushing to Docker Hub, as the repository or image names with multiple slashes are not supported. This limitation doesn’t exist in other docker registries like the Azure Container Registry (ACR), Harbor registry, and so on.</p>
+</div>
+<p>Run the following command to push all the OEI service docker images in the <code class="docutils literal notranslate"><span class="pre">build/docker-compose-push.yml</span></code>. Ensure to update the <code class="docutils literal notranslate"><span class="pre">DOCKER_REGISTRY</span></code> value in the <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">.env</a> file.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker-compose -f docker-compose-push.yml push
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> OEI</span>
+      v: 3.0
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Document Versions</dt>
+        
+          <dd><a href="/3.0/">3.0</a></dd>
+        
+          <dd><a href="/2.6/">2.6</a></dd>
+        
+      </dl>
+    </div>
+  </div><script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

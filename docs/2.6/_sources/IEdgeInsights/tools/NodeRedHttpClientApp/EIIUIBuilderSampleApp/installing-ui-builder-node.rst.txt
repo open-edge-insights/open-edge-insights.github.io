@@ -1,0 +1,15 @@
+
+Installing UI Builder Node
+--------------------------
+
+Go to the ``Palette Manager`` and install the UI Builder.
+
+
+.. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/EIIUIBuilderSampleApp/images/img_pallet.png
+   :target: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/EIIUIBuilderSampleApp/images/img_pallet.png
+   :alt: img_pallet.png
+
+
+.. note:: 
+   For more details on Pallete Manager, refer to the `Pallete Manager <https://nodered.org/docs/user-guide/editor/palette/manager>`_ documentation.
+

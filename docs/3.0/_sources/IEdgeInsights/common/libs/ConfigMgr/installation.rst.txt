@@ -1,0 +1,25 @@
+
+Installation
+------------
+
+The EIIUtils depends on CMake version 3.11+. For Ubuntu 18.04 this is not
+the default version installed via ``apt-get``. To install the correct version
+of CMake and other ConfigMgr dependencies, please follow `eii_libs_installer README <https://github.com/open-edge-insights/eii-core/blob/master/common/README.md>`_
+
+CMAKE_INSTALL_PREFIX needs to be set for the installation:
+
+.. code-block:: sh
+
+       $ export CMAKE_INSTALL_PREFIX="/opt/intel/eii"
+
+ConfigMgr installs to ``/opt/intel/eii/lib/``. On some platforms this is not included in the ``LD_LIBRARY_PATH`` by default. As a result, you must add this directory to your ``LD_LIBRARY_PATH``\ ,
+otherwise you will encounter issues using the ConfigMgr. This can
+be accomplished with the following ``export``\ :
+
+.. code-block:: sh
+
+   $ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/eii/lib/
+
+.. note::  You can also specify a different library prefix to CMake through
+   the ``CMAKE_INSTALL_PREFIX`` flag. If different installation path is given via ``CMAKE_INSTALL_PREFIX``\ , then ``$LD_LIBRARY_PATH`` should be appended by $CMAKE_INSTALL_PREFIX/lib.
+

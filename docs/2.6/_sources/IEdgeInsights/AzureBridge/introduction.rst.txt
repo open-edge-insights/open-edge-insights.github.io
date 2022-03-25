@@ -1,0 +1,32 @@
+
+Introduction
+------------
+
+.. note:: 
+
+
+   * In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+   * For the various scripts and commands mentioned in this document to work, place the source code for this project in the ``IEdgeInsights`` directory in the source code for OEI.
+
+
+The Azure Bridge serves as a connector between OEI and the Microsoft Azure IoT Edge Runtime ecosystem. It does this by allowing the following forms of bridging:
+
+
+* Publishing of incoming data from OEI onto the Azure IoT Edge Runtime bus
+* Storage of incoming images from the OEI video analytics pipeline into a local instance of the Azure Blob Storage service
+* Translation of configuration for OEI from the Azure IoT Hub digital twin for the bridge into ETCD via the OEI Configuration Manager APIs
+
+This code base is structured as an Azure IoT Edge Runtime module. It includes the following:
+
+
+* Deployment templates for deploying the OEI video analytics pipeline with the bridge on top of the Azure IoT Edge Runtime
+* The Azure Bridge module
+* A simple subscriber on top of the Azure IoT Edge Runtime for showcasing the end-to-end transmission of data
+* Various utilities and helper scripts for deploying and developing on the Azure Bridge
+
+The following sections will cover the configuration/usage of the Azure Bridge, the deployment of OEI on the Azure IoT Edge Runtime, as well as the usage of the tools and scripts included in this code base for development.
+
+.. note::  The following sections assume an understanding of the configuration
+   for OEI. It is recommended that you read the main README and User Guide for
+   OEI prior to using this service.
+

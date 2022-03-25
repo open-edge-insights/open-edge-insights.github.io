@@ -1,0 +1,10 @@
+
+Web Deployment Tool front end
+-----------------------------
+
+The Web Deployment Tool provides a graphical user interface to configure and deploy single and multiple video streams. The following sections provide details for the prerequisites and configuration for the Web GUI Deployment tool front end.
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+   To learn more about the back end of the Web Deployment Tool, refer to the `ReadMe <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-deployment-tool-backend/-/blob/master/README.md>`_.
+   The current version of the Web Deployment Tool doesn't fully support running back end and front end containers on different machines.
+

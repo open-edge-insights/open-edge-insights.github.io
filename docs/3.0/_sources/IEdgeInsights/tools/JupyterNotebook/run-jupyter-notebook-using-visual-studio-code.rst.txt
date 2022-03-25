@@ -1,0 +1,58 @@
+
+Run Jupyter Notebook using Visual Studio Code
+---------------------------------------------
+
+Perform the following steps to use Visual Studio Code (VS Code) to develop a UDF:
+
+
+#. 
+   In the terminal, run the following command:
+
+   .. code-block:: sh
+
+           python3 builder.py -f usecases/video-streaming.yml
+
+#. 
+   Refer the `IEdgeInsights/README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ to provision, build and run the tool along with the OEI recipe or stack.
+
+#. 
+   To see the logs, run the following command:
+
+   .. code-block:: sh
+
+           docker logs -f ia_jupyter_notebook
+
+#. 
+   In the consolidated ``build/docker-compose.yml`` file, for the ``ia_jupyter_notebook`` service, change ``read_only: true`` to ``read_only: false``.
+
+#. Run the ``docker-compose up -d ia_jupyter_notebook`` command.
+#. In VS Code, install the ``Remote - Containers`` extension.
+#. Using the shortcut key combination ``(Ctrl+Shift+P)`` access the Command Palette.
+#. In the Command Palette, run the ``Remote-Containers: Attach to Running Container`` command.
+#. Select the ``ia_jupyter_notebook`` container.
+#. In the ``ia_jupyter_notebook`` container, install the ``Python`` and ``Jupyter`` extensions.
+#. 
+   In the Command Palette, run the ``Jupyter: Specify Jupyter server for connections`` command.
+
+   ..
+
+      **Note:**
+      If the ``Jupyter: Specify Jupyter server for connections`` command is not available, then run the ``Jupyter: Specify local or remote Jupyter server for connections`` command.
+
+
+#. 
+   Choose ``Existing: Specify the URI of an existing server`` when prompted to select how to connect to Jupyter Notebook.
+
+#. Enter the server's URI (hostname) with the authentication token (included with a ?token= URL parameter), when prompted to enter the URI of a Jupyter server. Refer to the sample URL mentioned in the previous procedure.
+#. Open the ``/home/eiiuser`` folder to update the respective udf_template and the main notebooks and re-run.
+#. To create a Jupyter notebook, run the ``Jupyter: Create New Jupyter Notebook`` command in the Command Palette.
+#. To save the UDF, go to **More Actions (...)**\ , and then, select **Export**.
+#. When prompted **Export As**\ , select **Python Script**.
+#. From the **File** menu, click **Save As**.
+#. Select **Show Local**.
+#. Enter the name and save the file.
+
+.. note:: 
+
+   You cannot upload files to the workspace in VS Code due to the limitation with the Jupyter Notebook plugin. To use this functionality, access the Jupyter notebook through a web browser.
+

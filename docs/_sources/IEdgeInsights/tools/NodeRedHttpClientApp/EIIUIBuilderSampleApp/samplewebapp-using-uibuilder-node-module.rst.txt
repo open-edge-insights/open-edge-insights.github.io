@@ -1,0 +1,8 @@
+
+SampleWebAPP using UIBuilder Node Module
+========================================
+
+SampleWebApp is a build based on the UIBuilder Node-RED community module which fetches the data from OEI RestDataExport and display as a web application.
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+

@@ -1,0 +1,81 @@
+
+Steps to build and run visualizer
+---------------------------------
+
+Please go through the below sections to have visualizer service built and launch it:
+
+
+* `../README.md#generate-deployment-and-configuration-files <https://github.com/open-edge-insights/eii-core/blob/master/README.md#generate-deployment-and-configuration-files>`_
+* `../README.md#provision <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_
+* `../README.md#build-and-run-eii-videotimeseries-use-cases <https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases>`_
+
+For more details, refer `EII core README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_
+
+----
+
+.. note:: \ :
+
+
+   #. The admin has to make sure all the necessary config is set in etcd before starting the visualizer.
+   #. The user has to make sure the path provided in docker-compose volumes of visualizer correlates to the one in etcd before running visualizer if he wishes to save images.
+   #. Run this command in terminal if you run into tkinter couldn't connect to display exception
+
+
+.. code-block:: sh
+
+      $ xhost +
+
+..
+
+   #. If the Visualizer UI doesn’t show up and if you notice couldn't connect to display ":0" error
+      in ``docker logs -f ia_visualizer``\ , please check the value for ``DISPLAY`` env variable on the host
+      machine by running cmd: ``env | grep DISPLAY``\ , please set this as the value for the ``DISPLAY``
+      nv variable in the ia_visualizer service of `docker-compose.yml <https://github.com/open-edge-insights/video-native-visualizer/blob/master/docker-compose.yml>`_ or in the
+      consolidated `../build/docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/docker-compose.yml>`_ file and re-run
+      ``docker-compose up ia_visualizer -d``
+
+
+.. code-block::
+
+   Example:
+   ```sh
+   $ env | grep DISPLAY
+   DISPLAY:=1
+   ```
+   Set ":=1" as `DISPLAY` env value in ia_visualizer service
+
+----
+
+
+* 
+  If one needs to remove the classified images on a periodic basis:
+
+
+  #. 
+     Have this command running in a separate terminal as a cleanup task to remove images older than 60 mins in IMAGE_DIR. Replace <path-to-IMAGE_DIR> with IMAGE_DIR path given while running visualizer. The -mmin option can be changed accordingly by the user.
+
+     .. code-block:: sh
+
+        $ while true; do find <path-to-IMAGE_DIR> -mmin +60 -type f -name "*.png" -exec rm -f {} \;;  done
+
+* 
+  If user needs to remove the bounding box:
+
+
+  #. 
+     Set the value of draw_results in config.json as false for both Visualiser and WebVisualiser.
+
+     .. code-block::
+
+        draw_results: "false"
+
+* 
+  If user needs to save images of visualizer:
+
+
+  #. 
+     Set the value of save_image in config.json as true
+
+     .. code-block::
+
+        "save_image": "true"

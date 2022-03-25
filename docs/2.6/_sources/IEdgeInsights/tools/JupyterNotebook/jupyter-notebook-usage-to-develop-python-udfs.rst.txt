@@ -1,0 +1,10 @@
+
+Jupyter Notebook usage to develop python UDFs
+=============================================
+
+UDF development in python can be done using the web based IDE of Jupyter Notebook.
+Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and narrative text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, data visualization, machine learning, and much more.
+
+This tool acts as an interface between user and Jupyter Notebook service allowing the user to interact with Jupyter Notebook to write, edit, experiment and create python UDFs.
+
+It works along with the `jupyter_connector <https://github.com/open-edge-insights/video-common/tree/master/udfs/python/jupyter_connector.py>`_ UDF for enabling the IDE for udf development.

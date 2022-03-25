@@ -1,0 +1,37 @@
+
+Task 1: Get EII codebase from GitHub
+------------------------------------
+
+To get the EII codebase complete the following steps:
+
+
+#. 
+   Run the following commands to install the repo tool.
+
+   .. code-block:: sh
+
+       curl https://storage.googleapis.com/git-repo-downloads/repo > repo
+       sudo mv repo /bin/repo
+       sudo chmod a+x /bin/repo
+
+#. 
+   Run the following command to create a working directory
+
+   .. code-block:: sh
+
+       mkdir -p <work-dir>
+
+#. 
+   Run the following commands to initialize the working directory using the repo tool.
+
+   .. code-block:: sh
+
+       cd <work-dir>
+       repo init -u "https://github.com/open-edge-insights/eii-manifests.git"
+
+#. 
+   Run the following command to pull all the projects mentioned in the manifest xml file with the default or specific revision mentioned for each project.
+
+   .. code-block:: sh
+
+       repo sync

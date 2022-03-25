@@ -1,0 +1,11 @@
+
+Building the image
+------------------
+
+
+* 
+  To build the base image, run the following command
+     ``docker-compose -f  docker-compose-build.yml  build``
+
+* 
+  You can download the pre-built container image for Edge Video Analytics Microservice from `Docker Hub <https://hub.docker.com/r/intel/edge_video_analytics_microservice>`_

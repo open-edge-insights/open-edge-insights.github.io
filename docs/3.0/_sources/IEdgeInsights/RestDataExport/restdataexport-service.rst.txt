@@ -1,0 +1,11 @@
+
+RestDataExport service
+----------------------
+
+RestDataExport (RDE) service is a data service that serves GET and POST APIs. By default, the RDE service subscribes to a topic from the Message Bus and serves as GET API Server to respond to any GET requests for required metadata and frames. By enabling the POST API, the RDE service can publish the subscribed metadata to an external HTTP server.
+
+..
+
+   **Important:**
+   RestDataExport service can subscribe classified results from the VideoAnalytics(video) or the InfluxDBConnector(time-series) use cases. In the Subscribers configuration of the `config.json <https://github.com/open-edge-insights/eii-rest-data-export/blob/master/config.json>`_ file, specify the required service to subscribe from.
+

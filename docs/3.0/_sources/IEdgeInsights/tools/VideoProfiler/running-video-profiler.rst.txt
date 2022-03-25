@@ -1,0 +1,92 @@
+
+Running Video Profiler
+----------------------
+
+
+#. 
+   Set environment variables accordingly in `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/config.json>`_.
+
+#. 
+   Set the required output stream/streams and appropriate stream config in `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/config.json>`_ file.
+
+#. 
+   If VideoProfiler is subscribing to multiple streams, ensure the **AppName** of VideoProfiler is added in the Clients list of all the publishers.
+
+#. 
+   If using Video Profiler in IPC mode, make sure to set required permissions to socket file created in SOCKET_DIR in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_.
+
+   .. code-block:: sh
+
+           sudo chmod -R 777 /opt/intel/eii/sockets
+
+    **Note:**
+
+
+   * 
+     This step is required everytime publisher is restarted in IPC mode.
+
+     Caution: This step will make the streams insecure. Please do not do it on a production machine.
+
+   * 
+     Refer the below VideoProfiler interface example to subscribe to PyMultiClassificationIngestion CutomUDF results in fps mode.
+
+     .. code-block:: javascript
+
+          "/VideoProfiler/interfaces": {
+              "Subscribers": [
+                  {
+                      "EndPoint": "/EII/sockets",
+                      "Name": "default",
+                      "PublisherAppName": "PyMultiClassificationIngestion",
+                      "Topics": [
+                          "py_multi_calssification_results_stream"
+                      ],
+                      "Type": "zmq_ipc"
+                  }
+              ]
+          },
+
+#. 
+   If running VideoProfiler with helm usecase or trying to subscribe to any external publishers outside the eii network, please ensure the correct IP of publisher has been provided in the interfaces section in `config <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/config.json>`_ and correct ETCD host & port are set in environment for **ETCD_ENDPOINT** & **ETCD_HOST**.
+
+
+   * For example, for helm use case, since the ETCD_HOST and ETCD_PORT are different, run the commands mentioned below wit the required HOST IP:
+     .. code-block:: sh
+
+          export ETCD_HOST="<HOST IP>"
+          export ETCD_ENDPOINT="<HOST IP>:32379"
+
+#. 
+   Refer `provision/README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ to provision, build and run the tool along with the EII video-streaming recipe/stack.
+
+#. 
+   Run the following command to see the logs:
+
+   .. code-block:: sh
+
+           docker logs -f ia_video_profiler
+
+#. 
+   The runtime stats of Video Profiler if enabled with export_to_csv switch can be found at `video_profiler_runtime_stats <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/video_profiler_runtime_stats.csv>`_
+
+   ..
+
+      **Note:**
+
+
+      * ``poll_interval`` option in the VideoIngestion `config <https://github.com/open-edge-insights/video-ingestion/blob/master/config.json>`_ sets the delay(in seconds)
+         to be induced after every consecutive frame is read by the opencv ingestor.
+         Not setting it will ingest frames without any delay.
+      * ``videorate`` element in the VideoIngestion `config <https://github.com/open-edge-insights/video-ingestion/blob/master/config.json>`_ can be used to modify the
+         ingestion rate for gstreamer ingestor.
+         More info available at `README <https://github.com/open-edge-insights/video-ingestion/blob/master/README.md>`_.
+      * ``ZMQ_RECV_HWM`` option shall set the high water mark for inbound messages on the subscriber socket.
+         The high water is a hard limit on the maximum number of outstanding messages ZeroMQ shall queue in memory for
+         any single peer that the specified socket is communicating with.
+         If this limit has been reached, the socket shall enter an exeptional state and drop incoming messages.
+      * In case of running Video Profiler for GVA use case we do not display the stats of the algo running with GVA since no
+         UDFs are used.
+      * The rate at which the UDFs process the frames can be measured using the FPS UDF and ingestion rate can be monitored accordingly.
+         In case multiple UDFs are used, the FPS UDF is required to be added as the last UDF.
+      * In case running this tool with VI & VA in two different nodes, same time needs to be set in both the nodes.
+

@@ -1,0 +1,15 @@
+
+String Entries
+--------------
+
+String entries specify the model to download from the `Open Model
+Zoo <https://github.com/openvinotoolkit/open_model_zoo>`_. The model and
+model-proc files will be downloaded and stored locally using `default
+values <#default-values>`__.
+
+Example:
+
+.. code-block:: yaml
+
+   - mobilenet-ssd
+   - emotions-recognition-retail-0003
