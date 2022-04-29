@@ -1,6 +1,6 @@
 
-``UDF Configuration``
--------------------------
+UDF Configuration
+-----------------
 
 Below is the JSON schema for UDF json object configuration:
 

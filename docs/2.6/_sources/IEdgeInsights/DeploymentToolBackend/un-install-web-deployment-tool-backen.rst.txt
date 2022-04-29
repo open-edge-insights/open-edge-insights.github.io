@@ -1,0 +1,10 @@
+
+Un-install Web Deployment Tool backend
+--------------------------------------
+
+To completely remove the Web Deployment Tool backend, project files and other files
+created on the host machine by the tool, run the *uninstall.sh* script as below:
+
+.. code-block:: sh
+
+   ./uninstall.sh

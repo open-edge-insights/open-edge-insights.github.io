@@ -1,0 +1,16 @@
+
+Run the containers
+------------------
+
+To pull the prebuilt OEI container images and EVAM from Docker Hub and run the containers in the detached mode, run the following command:
+
+.. code-block:: sh
+
+   # Start the docker containers
+   docker-compose up -d
+
+.. note:: 
+
+   The prebuilt container image for the `Edge Video Analytics Microservice <https://hub.docker.com/r/intel/edge_video_analytics_microservice>`_
+   gets downloaded when you run the ``docker-compose up -d`` command, if the image is not already present on the host system.
+

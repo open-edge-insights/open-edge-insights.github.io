@@ -77,9 +77,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="min-system-requirements.html">Minimum system requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="running.html">Run Open Edge Insights</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="running.html#about-open-edge-insights">About Open Edge Insights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#minimum-system-requirements">Minimum system requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="running.html#task-1-get-oei-codebase-from-github">Task 1: Get OEI codebase from GitHub</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#task-2-install-prerequisites">Task 2: Install prerequisites</a><ul>
@@ -106,6 +105,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#web-deployment-tool">Web Deployment Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#video-pipeline-analytics">Video pipeline analytics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="running.html#enable-camera-based-video-ingestion">Enable camera-based video ingestion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#use-video-accelerators-in-ingestion-and-analytics-containers">Use video accelerators in ingestion and analytics containers</a><ul>
@@ -123,14 +123,16 @@
 <li class="toctree-l3"><a class="reference internal" href="running.html#with-k8s-orchestrator">With k8s orchestrator</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#oei-tools">OEI tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#oei-uninstaller">OEI Uninstaller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#debugging-options">Debugging options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#web-deployment-tool">Web Deployment Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#troubleshooting-guide">Troubleshooting guide</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-3">EII v2.6.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#fixes">Fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#oei-v3-0">OEI v3.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release.html#new-features">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="release.html#dropped-features">Dropped Features</a></li>
@@ -138,7 +140,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-2">EII v2.6.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#fixes">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id1">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-1">EII v2.6.1</a><ul>
@@ -147,15 +149,15 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6">EII v2.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release.html#features">Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id1">Known Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id2">Known Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id2">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id4">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id3">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id5">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -163,7 +165,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id4">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id6">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -337,21 +339,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#oei-udfloader">OEI UDFLoader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#oei-sample-udfs">OEI Sample UDFs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#udf-configuration">UDF Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#udf-writing-guide">UDF Writing Guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#sample-udfs">Sample UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#native-udfs">Native UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#python-udfs">Python UDFs</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#chaining-of-udfs">Chaining of UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#combination-of-udfs-with-ingestors">Combination of UDFs with ingestors</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#native-visualizer-module">Native Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-visualizer">Steps to build and run visualizer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="video.html#using-labels">Using Labels</a></li>
@@ -360,21 +348,30 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#web-visualizer-module">Web Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id32">Using Labels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#id36">Metadata Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id28">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#id32">Metadata Structure</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#imagestore-module">ImageStore Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id37">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id33">Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id39">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id35">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="video.html#working-with-edge-video-analytics-microservice">Working with Edge Video Analytics Microservice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="video.html#edge-video-analytics-microservice">Edge Video Analytics Microservice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#build-the-base-image">Build the base image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#run-the-base-image">Run the base image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#run-evam-in-oei-mode">Run EVAM in OEI mode</a></li>
 </ul>
 </li>
 </ul>
@@ -480,7 +477,24 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#http-get-api-of-rde">HTTP GET API of RDE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#get-the-classifier-results-metadata">Get the classifier results metadata</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="restdata.html#request-to-get-metadata">Request to get metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#get-images-using-the-image-handle">Get images using the image handle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="restdata.html#request-to-get-images">Request to get images</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#prerequisites-for-running-restdataexport-to-post-on-http-servers">Prerequisites for running RestDataExport to POST on HTTP Servers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#launch-restdataexport-service">Launch RestDataExport service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#setting-environment-proxy-settings">Setting environment proxy settings</a></li>
+</ul>
+</li>
 </ul>
 <p><span class="caption-text">Additional Info:</span></p>
 <ul>
@@ -535,6 +549,12 @@
 <li class="toctree-l3"><a class="reference internal" href="tools.html#usage">Usage</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#noderedhttpclientapp">NodeRedHttpClientApp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#setting-up-nodered">Setting Up NodeRed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#getting-oei-udf-classifier-results-data-to-node-red-environment-using-node-red-httpclient">Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#sample-workflow">Sample Workflow</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#software-trigger-utilily-pre-requisites">Software Trigger Utilily pre-requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#configuration-file">Configuration file</a></li>
@@ -543,7 +563,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id44">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id45">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
@@ -605,7 +625,7 @@
   <li>Azure Bridge</li>
 
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/pages/azure.rst" class="fa fa-github"> Edit on GitHub</a>
+            <a href="../_sources/pages/azure.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -1202,15 +1222,15 @@ modules. Or, you can see this configuration being set in the,
 </li>
 <li><p>Follow  <a class="reference external" href="#step-4-deployment">Step 4 - Deployment</a> for deployment. The following is an example of digital twin for the Azure Bridge:</p></li>
 </ul>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;log_level&quot;</span><span class="p">:</span> <span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;topics&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&quot;camera1_stream_results&quot;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&quot;az_output_topic&quot;</span><span class="p">:</span> <span class="s2">&quot;camera1_stream_results&quot;</span>
-        <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&quot;eii_config&quot;</span><span class="p">:</span> <span class="s2">&quot;{\&quot;/AzureBridge/config\&quot;: {}, \&quot;/AzureBridge/interfaces\&quot;: {\&quot;Subscribers\&quot;: [{\&quot;EndPoint\&quot;: \&quot;127.0.0.1:65013\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;PublisherAppName\&quot;: \&quot;VideoAnalytics\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream_results\&quot;], \&quot;Type\&quot;: \&quot;zmq_tcp\&quot;}]}, \&quot;/EtcdUI/config\&quot;: {}, \&quot;/EtcdUI/interfaces\&quot;: {}, \&quot;/GlobalEnv/\&quot;: {\&quot;C_LOG_LEVEL\&quot;: \&quot;DEBUG\&quot;, \&quot;ETCD_KEEPER_PORT\&quot;: \&quot;7070\&quot;, \&quot;GO_LOG_LEVEL\&quot;: \&quot;INFO\&quot;, \&quot;GO_VERBOSE\&quot;: \&quot;0\&quot;, \&quot;PY_LOG_LEVEL\&quot;: \&quot;DEBUG\&quot;}, \&quot;/VideoAnalytics/config\&quot;: {\&quot;encoding\&quot;: {\&quot;level\&quot;: 95, \&quot;type\&quot;: \&quot;jpeg\&quot;}, \&quot;max_jobs\&quot;: 20, \&quot;max_workers\&quot;: 4, \&quot;queue_size\&quot;: 10, \&quot;udfs\&quot;: [{\&quot;device\&quot;: \&quot;CPU\&quot;, \&quot;model_bin\&quot;: \&quot;common/udfs/python/pcb/ref/model_2.bin\&quot;, \&quot;model_xml\&quot;: \&quot;common/udfs/python/pcb/ref/model_2.xml\&quot;, \&quot;name\&quot;: \&quot;pcb.pcb_classifier\&quot;, \&quot;ref_config_roi\&quot;: \&quot;common/udfs/python/pcb/ref/roi_2.json\&quot;, \&quot;ref_img\&quot;: \&quot;common/udfs/python/pcb/ref/ref.png\&quot;, \&quot;type\&quot;: \&quot;python\&quot;}]}, \&quot;/VideoAnalytics/interfaces\&quot;: {\&quot;Publishers\&quot;: [{\&quot;AllowedClients\&quot;: [\&quot;*\&quot;], \&quot;EndPoint\&quot;: \&quot;0.0.0.0:65013\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream_results\&quot;], \&quot;Type\&quot;: \&quot;zmq_tcp\&quot;}], \&quot;Subscribers\&quot;: [{\&quot;EndPoint\&quot;: \&quot;/EII/sockets\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;PublisherAppName\&quot;: \&quot;VideoIngestion\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream\&quot;], \&quot;Type\&quot;: \&quot;zmq_ipc\&quot;, \&quot;zmq_recv_hwm\&quot;: 50}]}, \&quot;/VideoIngestion/config\&quot;: {\&quot;encoding\&quot;: {\&quot;level\&quot;: 95, \&quot;type\&quot;: \&quot;jpeg\&quot;}, \&quot;ingestor\&quot;: {\&quot;loop_video\&quot;: true, \&quot;pipeline\&quot;: \&quot;./test_videos/pcb_d2000.avi\&quot;, \&quot;poll_interval\&quot;: 0.2, \&quot;queue_size\&quot;: 10, \&quot;type\&quot;: \&quot;opencv\&quot;}, \&quot;max_jobs\&quot;: 20, \&quot;max_workers\&quot;: 4, \&quot;sw_trigger\&quot;: {\&quot;init_state\&quot;: \&quot;running\&quot;}, \&quot;udfs\&quot;: [{\&quot;n_left_px\&quot;: 1000, \&quot;n_right_px\&quot;: 1000, \&quot;n_total_px\&quot;: 300000, \&quot;name\&quot;: \&quot;pcb.pcb_filter\&quot;, \&quot;scale_ratio\&quot;: 4, \&quot;training_mode\&quot;: \&quot;false\&quot;, \&quot;type\&quot;: \&quot;python\&quot;}]}, \&quot;/VideoIngestion/interfaces\&quot;: {\&quot;Publishers\&quot;: [{\&quot;AllowedClients\&quot;: [\&quot;VideoAnalytics\&quot;, \&quot;Visualizer\&quot;, \&quot;WebVisualizer\&quot;, \&quot;TLSRemoteAgent\&quot;, \&quot;RestDataExport\&quot;], \&quot;EndPoint\&quot;: \&quot;/EII/sockets\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream\&quot;], \&quot;Type\&quot;: \&quot;zmq_ipc\&quot;}], \&quot;Servers\&quot;: [{\&quot;AllowedClients\&quot;: [\&quot;*\&quot;], \&quot;EndPoint\&quot;: \&quot;127.0.0.1:66013\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;Type\&quot;: \&quot;zmq_tcp\&quot;}]}}&quot;</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;log_level&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DEBUG&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;topics&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;camera1_stream_results&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="nt">&quot;az_output_topic&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;camera1_stream_results&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;eii_config&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{\&quot;/AzureBridge/config\&quot;: {}, \&quot;/AzureBridge/interfaces\&quot;: {\&quot;Subscribers\&quot;: [{\&quot;EndPoint\&quot;: \&quot;127.0.0.1:65013\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;PublisherAppName\&quot;: \&quot;VideoAnalytics\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream_results\&quot;], \&quot;Type\&quot;: \&quot;zmq_tcp\&quot;}]}, \&quot;/EtcdUI/config\&quot;: {}, \&quot;/EtcdUI/interfaces\&quot;: {}, \&quot;/GlobalEnv/\&quot;: {\&quot;C_LOG_LEVEL\&quot;: \&quot;DEBUG\&quot;, \&quot;ETCD_KEEPER_PORT\&quot;: \&quot;7070\&quot;, \&quot;GO_LOG_LEVEL\&quot;: \&quot;INFO\&quot;, \&quot;GO_VERBOSE\&quot;: \&quot;0\&quot;, \&quot;PY_LOG_LEVEL\&quot;: \&quot;DEBUG\&quot;}, \&quot;/VideoAnalytics/config\&quot;: {\&quot;encoding\&quot;: {\&quot;level\&quot;: 95, \&quot;type\&quot;: \&quot;jpeg\&quot;}, \&quot;max_jobs\&quot;: 20, \&quot;max_workers\&quot;: 4, \&quot;queue_size\&quot;: 10, \&quot;udfs\&quot;: [{\&quot;device\&quot;: \&quot;CPU\&quot;, \&quot;model_bin\&quot;: \&quot;common/udfs/python/pcb/ref/model_2.bin\&quot;, \&quot;model_xml\&quot;: \&quot;common/udfs/python/pcb/ref/model_2.xml\&quot;, \&quot;name\&quot;: \&quot;pcb.pcb_classifier\&quot;, \&quot;ref_config_roi\&quot;: \&quot;common/udfs/python/pcb/ref/roi_2.json\&quot;, \&quot;ref_img\&quot;: \&quot;common/udfs/python/pcb/ref/ref.png\&quot;, \&quot;type\&quot;: \&quot;python\&quot;}]}, \&quot;/VideoAnalytics/interfaces\&quot;: {\&quot;Publishers\&quot;: [{\&quot;AllowedClients\&quot;: [\&quot;*\&quot;], \&quot;EndPoint\&quot;: \&quot;0.0.0.0:65013\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream_results\&quot;], \&quot;Type\&quot;: \&quot;zmq_tcp\&quot;}], \&quot;Subscribers\&quot;: [{\&quot;EndPoint\&quot;: \&quot;/EII/sockets\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;PublisherAppName\&quot;: \&quot;VideoIngestion\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream\&quot;], \&quot;Type\&quot;: \&quot;zmq_ipc\&quot;, \&quot;zmq_recv_hwm\&quot;: 50}]}, \&quot;/VideoIngestion/config\&quot;: {\&quot;encoding\&quot;: {\&quot;level\&quot;: 95, \&quot;type\&quot;: \&quot;jpeg\&quot;}, \&quot;ingestor\&quot;: {\&quot;loop_video\&quot;: true, \&quot;pipeline\&quot;: \&quot;./test_videos/pcb_d2000.avi\&quot;, \&quot;poll_interval\&quot;: 0.2, \&quot;queue_size\&quot;: 10, \&quot;type\&quot;: \&quot;opencv\&quot;}, \&quot;max_jobs\&quot;: 20, \&quot;max_workers\&quot;: 4, \&quot;sw_trigger\&quot;: {\&quot;init_state\&quot;: \&quot;running\&quot;}, \&quot;udfs\&quot;: [{\&quot;n_left_px\&quot;: 1000, \&quot;n_right_px\&quot;: 1000, \&quot;n_total_px\&quot;: 300000, \&quot;name\&quot;: \&quot;pcb.pcb_filter\&quot;, \&quot;scale_ratio\&quot;: 4, \&quot;training_mode\&quot;: \&quot;false\&quot;, \&quot;type\&quot;: \&quot;python\&quot;}]}, \&quot;/VideoIngestion/interfaces\&quot;: {\&quot;Publishers\&quot;: [{\&quot;AllowedClients\&quot;: [\&quot;VideoAnalytics\&quot;, \&quot;Visualizer\&quot;, \&quot;WebVisualizer\&quot;, \&quot;TLSRemoteAgent\&quot;, \&quot;RestDataExport\&quot;], \&quot;EndPoint\&quot;: \&quot;/EII/sockets\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;Topics\&quot;: [\&quot;camera1_stream\&quot;], \&quot;Type\&quot;: \&quot;zmq_ipc\&quot;}], \&quot;Servers\&quot;: [{\&quot;AllowedClients\&quot;: [\&quot;*\&quot;], \&quot;EndPoint\&quot;: \&quot;127.0.0.1:66013\&quot;, \&quot;Name\&quot;: \&quot;default\&quot;, \&quot;Type\&quot;: \&quot;zmq_tcp\&quot;}]}}&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <blockquote>
@@ -1413,29 +1433,29 @@ sudo chown <span class="si">${</span><span class="nv">EII_UID</span><span class=
 </div>
 </li>
 <li><p>Next, modify your deployment manifest to alter the bind location which the Azure Blob Storage service uses. To do this, open your <code class="docutils literal notranslate"><span class="pre">*.template.json</span></code> file. Provided you specified the Azure Blob Storage service, you should see something like the following in your deployment manifest template:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="nt">&quot;AzureBlobStorageonIoTEdge&quot;</span><span class="p">:</span> <span class="p">{</span>
-         <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;docker&quot;</span><span class="p">,</span>
-         <span class="nt">&quot;status&quot;</span><span class="p">:</span> <span class="s2">&quot;running&quot;</span><span class="p">,</span>
-         <span class="nt">&quot;restartPolicy&quot;</span><span class="p">:</span> <span class="s2">&quot;always&quot;</span><span class="p">,</span>
-         <span class="nt">&quot;version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-         <span class="nt">&quot;settings&quot;</span><span class="p">:</span> <span class="p">{</span>
-             <span class="nt">&quot;image&quot;</span><span class="p">:</span> <span class="s2">&quot;mcr.microsoft.com/azure-blob-storage&quot;</span><span class="p">,</span>
-             <span class="nt">&quot;createOptions&quot;</span><span class="p">:</span> <span class="p">{</span>
-                 <span class="nt">&quot;User&quot;</span><span class="p">:</span> <span class="s2">&quot;${EII_UID}&quot;</span><span class="p">,</span>
-                 <span class="nt">&quot;Env&quot;</span><span class="p">:</span> <span class="p">[</span>
-                     <span class="s2">&quot;LOCAL_STORAGE_ACCOUNT_NAME=$AZ_BLOB_STORAGE_ACCOUNT_NAME&quot;</span><span class="p">,</span>
-                     <span class="s2">&quot;LOCAL_STORAGE_ACCOUNT_KEY=$AZ_BLOB_STORAGE_ACCOUNT_KEY&quot;</span>
-                 <span class="p">],</span>
-                 <span class="nt">&quot;HostConfig&quot;</span><span class="p">:</span> <span class="p">{</span>
-                     <span class="nt">&quot;Binds&quot;</span><span class="p">:</span> <span class="p">[</span>
-                         <span class="s2">&quot;az-blob-storage-volume:/blobroot&quot;</span>
-                     <span class="p">]</span>
-                 <span class="p">}</span>
-             <span class="p">}</span>
-         <span class="p">}</span>
-     <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="nt">&quot;AzureBlobStorageonIoTEdge&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;docker&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;running&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;restartPolicy&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;always&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;settings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;mcr.microsoft.com/azure-blob-storage&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">             </span><span class="nt">&quot;createOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                 </span><span class="nt">&quot;User&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${EII_UID}&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                 </span><span class="nt">&quot;Env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                     </span><span class="s2">&quot;LOCAL_STORAGE_ACCOUNT_NAME=$AZ_BLOB_STORAGE_ACCOUNT_NAME&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                     </span><span class="s2">&quot;LOCAL_STORAGE_ACCOUNT_KEY=$AZ_BLOB_STORAGE_ACCOUNT_KEY&quot;</span><span class="w"></span>
+<span class="w">                 </span><span class="p">],</span><span class="w"></span>
+<span class="w">                 </span><span class="nt">&quot;HostConfig&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                     </span><span class="nt">&quot;Binds&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                         </span><span class="s2">&quot;az-blob-storage-volume:/blobroot&quot;</span><span class="w"></span>
+<span class="w">                     </span><span class="p">]</span><span class="w"></span>
+<span class="w">                 </span><span class="p">}</span><span class="w"></span>
+<span class="w">             </span><span class="p">}</span><span class="w"></span>
+<span class="w">         </span><span class="p">}</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Change the <code class="docutils literal notranslate"><span class="pre">Binds</span></code> location to the following:</p>

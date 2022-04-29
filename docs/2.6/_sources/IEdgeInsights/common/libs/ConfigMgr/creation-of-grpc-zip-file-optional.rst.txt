@@ -2,14 +2,14 @@
 Creation of grpc .zip file (Optional)
 -------------------------------------
 
-.. note::  This is an optional as we have already created .zip file in the repo.
-   If user wants to create .zip file freshly, then one has to follow this step.
+**Note**\ : This is an optional as we have already created .zip file in the repo.
+If user wants to create .zip file freshly, then one has to follow this step.
 
-
-Navigate to ``[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr/grpc-package`` and run the ``grpc_zip.sh``
+Navigate to ``[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr`` and run the ``grpc_zip.sh``
 
 .. code-block:: sh
 
-   sudo ./grpc_zip.sh
+   $ sudo ./grpc_zip.sh
 
-By executing the above script, grpc zip package will be created in ``[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr/grpc-package``.
+By executing the above script grpc zip package will be created in
+``[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr``.

@@ -1,18 +1,15 @@
 
-########
-Overview
-########
+##############################################
+      Overview
+##############################################
 
 
-By way of analogy, Open Edge Insights (OEI) includes both northbound and southbound data connections. As shown in Figure 1, supervisory applications, such as Manufacturing Execution Systems (MES), or Work In Progress (WIP) management systems, Deep Learning Training Systems, and the cloud (whether on premise or in a data center) make northbound connections to the OEI. Southbound connections from the OEI are typically made to IoT devices, such as a programmable logic controller (PLC), camera, or other sensors and actuators.  
+By way of analogy, Intel’s Industrial EII includes both northbound and southbound data connections. As shown in Figure 1, supervisory applications, such as Manufacturing Execution Systems (MES), or Work In Progress (WIP) management systems, Deep Learning Training Systems, and the cloud (whether on premise or in a data center) make northbound connections to the EII. Southbound connections from the EII are typically made to IoT devices, such as a programmable logic controller (PLC), camera, or other sensors and actuators.  
 
 The typology of the northbound relationship with MES, WIP management systems, or cloud applications is typically a star or hub and spoke shaped, meaning that multiple Edge Insight nodes communicate with one or more of these supervisory systems. 
 
-Incremental learning, for example, takes full advantage of this northbound relationship. In solutions that leverage deep learning, offline learning is necessary to fine-tune, or to continuously improve the algorithm. This can be done by sending the Insight results to an on premise or cloud-based training framework, and periodically retraining the model with the full dataset, and then updating the model on the OEI. Figure 1 provides an example of this sequence.  
+Incremental learning, for example, takes full advantage of this northbound relationship. In solutions that leverage deep learning, offline learning is necessary to fine-tune, or to continuously improve the algorithm. This can be done by sending the Insight results to an on premise or cloud-based training framework, and periodically retraining the model with the full dataset, and then updating the model on the EII. Figure 1 provides an example of this sequence.  
 
-.. note:: 
-      * In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
-      * It is important to use the full dataset, including the original data used during initial training of the model; otherwise, the model may over-fit. For more information on model development best practices, please see https://software.intel.com/en-us/ai/courses/machine-learning 
 
 .. figure:: image/fig1.png
       :scale: 50 %
@@ -21,4 +18,4 @@ Incremental learning, for example, takes full advantage of this northbound relat
       Figure 1. 	Northbound and Southbound Destinations 
 
       
-
+.. note:: It is important to use the full dataset, including the original data used during initial training of the model; otherwise, the model may over-fit. For more information on model development best practices, please see https://software.intel.com/en-us/ai/courses/machine-learning 

@@ -1,5 +1,13 @@
-=======================
+========================
 OpcuaExport Application
-=======================
+========================
 
 .. include:: ../IEdgeInsights/OpcuaExport/opcuaexport.rst
+
+.. include:: ../IEdgeInsights/OpcuaExport/configuration.rst
+
+.. include:: ../IEdgeInsights/OpcuaExport/service-bring-up.rst
+
+.. include:: ../IEdgeInsights/OpcuaExport/known-issues.rst
+
+.. include:: ../IEdgeInsights/OpcuaExport/opcua-client-apps.rst

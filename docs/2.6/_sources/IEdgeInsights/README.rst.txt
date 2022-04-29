@@ -53,7 +53,6 @@
   * `\ **With k8s orchestrator** <#with-k8s-orchestrator>`__
 
 * `EII tools <#eii-tools>`__
-* `ELK usage for centralized logging of EII services logs <#elk-usage-for-centralized-logging-of-eii-services-logs>`__
 * `EII Uninstaller <#eii-uninstaller>`__
 * `Debugging options <#debugging-options>`__
 * `Troubleshooting guide <#troubleshooting-guide>`__

@@ -1,21 +1,454 @@
-#######################
- Run Open Edge Insights 
-#######################
+##############################################
+ Running Intel® Edge Insights for Industrial
+##############################################
 
-.. include:: ../IEdgeInsights/about-open-edge-insights.rst
 .. include:: ../IEdgeInsights/minimum-system-requirements.rst
-.. include:: ../IEdgeInsights/install-open-edge-insights-from-github.rst
-.. include:: ../IEdgeInsights/video-pipeline-analytics.rst
-.. include:: ../IEdgeInsights/time-series-analytics.rst
-.. include:: ../IEdgeInsights/oei-multi-node-cluster-deployment.rst
-.. include:: ../IEdgeInsights/oei-tools.rst
-.. include:: ../IEdgeInsights/oei-uninstaller.rst
-.. include:: ../IEdgeInsights/debugging-options.rst
-.. include:: ../IEdgeInsights/web-deployment-tool.rst
-.. include:: ../IEdgeInsights/troubleshooting-guide.rst
+
+.. note:: If running the EII device behind a HTTP proxy server, you will need to configure the proxy. It is recommended that you consult Docker’s instructions, which can be found at: https://docs.docker.com/network/proxy/.
+
+.. note:: For the user that running behind a corporate proxy, you will need to setup the proxy for the host system in the /etc/environment file before proceeding to the installation step. 
+
+Downloading and Installation from Opensource Github Repository
+==============================================================
+
+All EII repos are accessible in github at `link <https://github.com/open-edge-insights/>`__ as can be seen in the snap below.
+
+.. figure:: image/github_header.png
+      :scale: 100%
+      :align: center 
+
+Please follow the below steps to quickly get the EII codebase. For more information on the various manifest files, please refer: `README <https://github.com/open-edge-insights/eii-manifests/blob/master/README.md>`__
+
+1. Installing repo tool
+
+   .. code:: sh
+
+      curl https://storage.googleapis.com/git-repo-downloads/repo > repo
+      sudo mv repo /bin/repo
+      sudo chmod a+x /bin/repo
+
+2. Pulling in the eii-manifests repo and using a manifest file
+
+   -  Create a working directory
+
+      .. code:: sh
+
+         mkdir -p <work-dir>
+
+   -  Initialize the repository using ``repo`` tool.
+
+      .. code:: sh
+
+         cd <work-dir>
+         repo init -u "https://github.com/open-edge-insights/eii-manifests.git"
+
+3. Pull all the projects mentioned in the manifest xml file with the
+   default/specific revision mentioned for each project
+
+   .. code:: sh
+
+      repo sync
+
+.. include:: ../IEdgeInsights/eii-prerequisites-installation.rst
+
+.. include:: ../IEdgeInsights/generating-consolidated-deployment-and-configuration-files.rst
+
+.. include:: ../IEdgeInsights/generating-consolidated-docker-composeyml-and-eii-configjson-files.rst
+
+.. include:: ../IEdgeInsights/using-builder-script.rst
+
+.. include:: ../IEdgeInsights/provision.rst
+
+.. include:: ../IEdgeInsights/distribution-of-eii-container-images.rst
+
+.. include:: ../IEdgeInsights/list-of-all-eii-services.rst
+
+.. include:: ../IEdgeInsights/common-eii-services.rst
+
+.. include:: ../IEdgeInsights/video-related-services.rst
+
+.. include:: ../IEdgeInsights/timeseries-related-services.rst
+
+Dev mode and Profiling mode
+============================
+
+Dev Mode
+--------
+
+Starting the EII in Dev ModeDev mode eases the development phase for System Integrator (SI). This mode can be enabled by setting the environment variable dev_mode to **true** in the **[WORK_DIR]/IEdgeInsights/build/.env** file. The default value of this variable is **false**. 
+
+Starting the EII in Dev Mode
+----------------------------
+
+All components will communicate over non-encrypted channels in dev mode. 
+
+.. note::
+
+    The user should not use this mode in a production environment because the security features have been disabled in this mode.
 
 
+Profiling Mode
+--------------
+
+Profiling mode is used to gather performance statistics. In this mode, each EII component makes a record of the time needed for processing any single frame. These statistics are gathered in the visualizer where the SI can see the end-to-end processing time for individual frames, as well as the end-to-end average time. To enable profiling mode in EII, set the environment variable **PROFILING** in the **[WORK_DIR]/IEdgeInsights/build/.env** file to **true**. 
+
+For each EII services defined in the **[WORK_DIR]/IEdgeInsights/build/docker-compose.yml** file, there is an ENV to determine whether **PROFILING** should be enabled based on the setting in the **[WORK_DIR]/IEdgeInsights/build/.env** file. Figure 52 provides an example from the Visualizer service.
+
+.. figure:: image/profiling-mode.png
+    :scale: 50 %
+    :align: center
+
+.. include:: ../IEdgeInsights/build-and-run-eii-videotimeseries-use-cases.rst
+
+Users can refer to section **EII pre-requisites** to generate the docker_compose.yml file based on the specific user case. For more detail information and configuration, you can refer to the **[WORK_DIR]/IEdgeInsights/README** file. 
+
+.. include:: ../IEdgeInsights/build-eii-stack.rst
+
+.. include:: ../IEdgeInsights/run-eii-services.rst
+
+.. include:: ../IEdgeInsights/push-required-eii-images-to-docker-registry.rst
 
 
+EII multi node cluster provision and deployment
+===============================================
+
+**Without orchestrator**
+----------------------------
+
+By default EII is provisioned with single node cluster.
+
+* [\ ``Recommended``\ ] Deploy on multiple nodes automatically through ansible playbook.
+
+.. include:: ../IEdgeInsights/build/ansible/ansible-based-eii-prequisites-setup-provisioning-build--deployment.rst
+
+.. include:: ../IEdgeInsights/build/ansible/installing-ansible-on-ubuntu-control-node-.rst
+
+.. include:: ../IEdgeInsights/build/ansible/prerequisite-step-needed-for-all-the-controlworker-nodes.rst
+
+.. include:: ../IEdgeInsights/build/ansible/adding-ssh-authorized-key-from-control-node-to-all-the-nodes.rst
+
+.. include:: ../IEdgeInsights/build/ansible/updating-the-leader--worker-nodes-information-for-using-remote-hosts.rst
+
+.. include:: ../IEdgeInsights/build/ansible/non-orchestrated-multi-node-deployment-without-k8s.rst
+
+.. include:: ../IEdgeInsights/build/ansible/select-eii-services-to-run-on-a-particular-node-in-multinode-deployment.rst
+
+.. include:: ../IEdgeInsights/build/ansible/execute-ansible-playbook-from-eii-workdiriedgeinsightsbuildansible-control-node-to-deploy-eii-services-in-singlemulti-nodes.rst
+
+* In order to deploy EII on multiple nodes using docker registry and provision ETCD, please follow `build/deploy/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/deploy/README.md>`_.
+
+**With k8s orchestrator**
+-----------------------------
+
+One of the below options could be tried out:
+
+* [\ ``Recommended``\ ] For deploying through ansible playbook on multiple nodes automatically, please refer `build/ansible/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/ansible/README.md#deploying-eii-using-helm-in-kubernetes-k8s-environment>`_
+
+* Use helm charts to provision the node and deploy EII services
+
+.. include:: ../IEdgeInsights/build/helm-eii/eii-provision-and-deployment.rst
+
+.. include:: ../IEdgeInsights/build/helm-eii/pre-requisites.rst
+
+.. include:: ../IEdgeInsights/build/helm-eii/update-the-helm-charts-directory.rst
+
+.. include:: ../IEdgeInsights/build/helm-eii/provision-and-deploy-in-the-kubernetes-node.rst
+
+.. include:: ../IEdgeInsights/build/helm-eii/provision-and-deploy-mode-in-times-switching-between-dev-and-prod-mode-or-changing-the-usecase.rst
+
+.. include:: ../IEdgeInsights/build/helm-eii/steps-to-enable-accelarators.rst
+
+.. include:: ../IEdgeInsights/build/helm-eii/steps-for-enabling-gige-camera-with-hel.rst
+
+.. include:: ../IEdgeInsights/build/helm-eii/accessing-web-visualizer-and-etcdui.rst
+
+.. include:: ../IEdgeInsights/eii-uninstaller.rst
+
+Debugging
+=========
+
+Debugging Through the Logs
+--------------------------
+
+For any service run in the EII stack, please use **docker logs -f <service_name>**
+
+working with EII Docker* Containers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+EII sets up the Docker containers using the docker-compose tool. If only minor changes are made in the user-defined functions without adding any new files, user can just restart the specific docker container by running **$ docker restart <Cointainer_ID>** in the build directory without rebuilding the whole EII container.
+
+Other useful commands when using the make tool are:
+
+**docker-compose build** : Will build the images for EII components, however will not start the EII
+
+**docker-compose up --build** : Will build the images for EII components and starts EII
+
+**docker-compose up** :  Will starts EII. 
+
+**docker-compose down** : Will stop the EII.
+
+Compose Files
+~~~~~~~~~~~~~
+
+Docker compose is a tool used to define and run multiple container applications using Docker. It is a wrapper around Docker that is responsible for creating a network and adding the containers to that network. By default, the bridge network is used, unless otherwise specified in the **docker-compose.yml** or **docker-compose.yaml** file.
+
+More details about the **docker-compose** and **docker-compose.yml** files is available at 
+
+`Docker compose <https://docs.docker.com/compose/>`_
+
+`Docker compose CLI <https://docs.docker.com/compose/reference/overview/>`_
+
+`Docker compose file reference <https://docs.docker.com/compose/compose-file/>`_
+
+`Dockerfile reference <https://docs.docker.com/engine/reference/builder/>`_
+
+`Best practices for writing Dockerfiles <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/>`_
+
+`Docker commands <https://docs.docker.com/engine/reference/builder/>`_
 
 
+Useful Docker* Commands
+^^^^^^^^^^^^^^^^^^^^^^^
+
+The following list includes the most used docker-compose commands. These commands should come in handy during development and debugging of the EII stack:
+
+*	**docker-compose build**  Builds all the service containers at the same time. To build a single service container, use **docker-compose build [serv_cont_name]**.
+
+    This command generates several EII images. The docker images | grep ia | sort command can be used to see a list of these images.
+
+.. note::	
+    
+    If any source files are modified, the docker-compose build command must be re-run to see the changes reflected within the container. 
+
+*	**docker-compose down**  Stops and removes the service containers. Also, removes the Docker network.
+*	**docker-compose up d**  Brings up the service containers in detached mode (-d) by picking up the changes made in the docker-compose.yml file. It creates a Docker network and joins these containers to it. 
+
+.. note::
+
+    Use the following command to see the list of running EII containers: docker ps:
+
+*	**docker-compose logs -f**  Blocking process to see the Docker logs of all the containers. To see the logs for a single container, use docker logs f [serv_cont_name].
+*	To run the Docker images separately, use the command: **docker-compose run --no-deps [service_cont_name]**.
+
+    For example: **docker-compose run --name ia_video_ingestion --no-deps ia_video_ingestion** 
+    
+    Will run only the Video Ingestion container (the switch **--no-deps** will not bring up the dependencies configured in the docker-compose file). 
+    
+    If the container is not launching correctly, there could be an issue with the containers entrypoint program which can be overridden by providing the extra switch **--entrypoint /bin/bash** before the service container name in the **docker-compose run** command above. This creates a shell inside the container to run the actual entrypoint program from the container's terminal to determine the root cause of the issue. 
+    
+    If the container is already running, to get a shell inside the container to perform additional operations, use the command: **docker exec [service_cont_name] /bin/bash** or **docker exec -it [cont_name] /bin/bash**
+
+    For example: **docker-exec -it ia_data_analytics /bin/bash**
+
+
+Debugging Video Ingestion Through gst-launch
+--------------------------------------------
+
+GStreamer Valid Plugins / Element
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There is attribute named "pipeline" in the EII ConfigMgr for VideoIngestion. This attribute is used to mention the source of the video frame. For example:
+
+"pipeline": "rtspsrc location=\"rtsp://localhost:8554/\" latency=100 ! **rtph264depay ! h264parse ! mfxdecode ! videoconvert ! appsink**".
+
+The **bold text** in the above example are the GStreamer element/plugins. 
+
+A list of valid GStreamer plugins or elements can be found at 
+
+To know which plugins are installed, use the command **gst-inspect-1.0.** This command will display all installed plugins.
+
+Debugging the Video Ingestion Container 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note::
+    
+    These steps should only be followed if pipeline has been modified by the SI.
+
+If the SI modifies the value of the pipeline attribute (an attribute from the factory.json file) which causes video ingestion to stop working, use the **gst-launch-1.0** command inside the video ingestion container. To get the granular logs from this command line utility, set the environment variable **GST_DEBUG**. The value can range from 1 to 5.
+
+For example, consider a case in which the video_str attribute has been modified. The new value has an invalid GStreamer element or plugin, say: 
+
+    rtspsrc location=\"rtsp://localhost:8554/\" latency=100 ! rtph264depay ! h264parse123 ! avdec_h264 ! videoconvert ! appsink
+
+Consequently, video ingestion starts showing: 
+
+    2019-05-22 01:12:14,387 : ERROR : algos.dpm.ingestion.video : [video.py] :_run : in line : [183] : Failed to retrieve frame from camera cam_serial3
+    
+    2019-05-22 01:12:14,388 : ERROR : algos.dpm.ingestion.video : [video.py] :_run : in line : [183] : Failed to retrieve frame from camera cam_serial1
+    
+In this example, **h264parse123** is not a valid GStreamer plugin or element.
+
+To debug this issue:
+
+#.	Go inside the container using the command: **docker exec -it -u root ia_video_ingestion bash**
+
+#.	Set the GST_DEBUG variable ("export GST_DEBUG=3").
+
+#.	Use the below command and examine the logs.
+
+    gst-launch-1.0 **rtspsrc location=\"rtsp://localhost:8554/\" latency=100 ! rtph264depay ! h264parse123 ! avdec_h264 ! videoconvert ! appsink**
+
+    The **bold text** in the command above is exactly the value of the pipeline attribute. Since, h264parse123 is not a valid GStreamer plugin or element, using the above command will result in a log with the following ERROR messages.
+
+    .. code-block::
+
+        0:00:00.018350108    85       0xe31750 ERROR           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element "h264parse123"
+        0:00:00.018434694    85       0xe31750 ERROR           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no sink [source=@0xe44080]
+        0:00:00.018473162    85       0xe31750 ERROR           GST_PIPELINE grammar.y:716:priv_gst_parse_yyparse: no element "avdec_h264"
+        0:00:00.018497100    85       0xe31750 ERROR           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@(nil)]
+        0:00:00.019408613    85       0xe31750 ERROR           GST_PIPELINE grammar.y:801:priv_gst_parse_yyparse: link has no source [sink=@0xe50f30]
+        WARNING: erroneous pipeline: no element "h264parse123"
+
+    Therefore, using the **gst-launch-1.0 command** line utility has revealed that there is no h264parse123. Now we need to check whether the plugin is valid and whether it has been installed. The **gst-inspect-1.0** command can be used to check whether the plugin has been installed. 
+
+Enablement of X11 Forwarding for EII Visualizer Container
+---------------------------------------------------------
+
+In EII, **ia_visualizer** is a reference application that visualizes the video analytics results. For simplicity, its X11 GUI output is defaulted to display on localhost:0, the console. However, this can cause problems on headless devices or devices where a developer does not have physical/virtual access to the console.
+
+When a user does SSH with X11 forwarding enabled, for example, with the -X option, and the user is using X11 (the DISPLAY environment variable is set), the connection to the X11 display is automatically forwarded to the remote side in such a way that any X11 programs started from the shell (or command) will go through the encrypted channel, and the connection to the real X server will be made from the local machine
+
+*	Create a bash shell script and save it as Visualizer/startup.sh with the following content:
+
+.. code-block::
+
+    #!/bin/bash
+
+    if [ -n ${HOSTXAUTH} ] && [ -f ${HOSTXAUTH} ]
+    then 
+    if [ -n ${XAUTHORITY} ]
+    then
+        [ -f ${XAUTHORITY} ] || touch ${XAUTHORITY}
+        xauth -inf ${HOSTXAUTH} nlist | sed -e 's/^..../ffff/' | xauth -f ${XAUTHORITY} nmerge -
+    fi
+    fi
+
+    python3.6 ./visualize.py
+
+*	Set the execution permission 
+    
+    **$ chmod 744 startup.sh**
+
+*	In Visualizer/Dockerfile add the bold section 
+
+.. code-block::
+
+    # Installing dependencies
+    RUN apt-get install -y python3.6-tk
+
+    RUN apt-get install -y xauth
+
+    COPY requirements.txt .
+    RUN pip3 install -r requirements.txt
+    
+    COPY visualize.py .
+
+    COPY startup.sh .
+
+    #Removing build dependencies
+
+*	At the end of the **Visualizer/Dockerfile**, comment out the line that starts visualize.py and run startup.sh instead
+
+.. code-block::
+
+    #ENTRYPOINT ["python3.6", "visualize.py"]
+    ENTRYPOINT ["bash", "./startup.sh"]
+
+*	Open the **build/docker-compose.yml**, update below parameter under **ia_visualizer** section
+
+.. code-block::
+
+    EII_UID: ${ EII_UID}
+    EII_USER_NAME: ${ EII_USER_NAME}
+    #read_only: true
+    image: ${DOCKER_REGISTRY}ia_visualizer:${ EII_VERSION}
+    
+    volumes:
+    - "${ EII_INSTALL_PATH}/saved_images:${ EII_INSTALL_PATH}/saved_images"     
+    - "vol_eii_socket:${SOCKET_DIR}"
+    #user: ${EII_UID}
+    
+    environment:
+        AppName: "Visualizer"
+        #DISPLAY: ":0"
+        DISPLAY: $DISPLAY
+        HOSTXAUTH: "/tmp/host-xauth"
+        XAUTHORITY: /tmp/.Xauthority
+
+*	In the volumes section add the line in bold below. This mounts the **.Xauthority** file from the host to the running container.
+
+.. code-block::
+
+    volumes:
+    - "${EII_INSTALL_PATH}/saved_images:${EII_INSTALL_PATH}/saved_images"
+    - "/tmp/.X11-unix:/tmp/.X11-unix"
+    - "vol_eii_socket:${SOCKET_DIR}"
+    - "${HOME}/.Xauthority:/tmp/host-xauth:ro"
+
+This concept has been tested and verified in single-node as well as multi-node setups. Note that it takes a live SSH connection and valid X11 authorization cookies on both ends, local and remote, for this to work, this SSH connection must be kept alive during the time you want your Visualizer to run. If the SSH connection can't be established or is torn down in the middle of operation, errors are thrown from the Visualizer container. Below is the example of the EII Visualizer App. 
+
+.. figure:: image/visualizer.png
+    :scale: 50 %
+    :align: center
+
+Debugging options
+-----------------
+
+#. 
+   To check if all the EII images are built successfully, use cmd: ``docker images|grep ia`` and
+   to check if all containers are running, use cmd: ``docker ps`` (\ ``one should see all the dependency containers and EII containers up and running``\ ). If you see issues where the build is failing due to non-reachability to Internet, please ensure you have correctly configured proxy settings and restarted docker service. Even after doing this, if you are running into the same issue, please add below instrcutions to all the dockerfiles in ``build\dockerfiles`` at the top after the LABEL instruction and retry the building EII images:
+
+   .. code-block:: sh
+
+       ENV http_proxy http://proxy.iind.intel.com:911
+       ENV https_proxy http://proxy.iind.intel.com:911
+
+#. 
+   ``docker ps`` should list all the enabled containers which are included in docker-compose.yml
+
+#. 
+   To verify if the default video pipeline with EII is working fine i.e., from video ingestion->video analytics->visualizer, please check the visualizer UI
+
+#. 
+   ``/opt/intel/eii`` root directory gets created - This is the installation path for EII:
+
+
+   * ``data/`` - stores the backup data for persistent imagestore and influxdb
+   * ``sockets/`` - stores the IPC ZMQ socket files
+
+----
+
+**Note**\ :
+
+
+#. 
+   Few useful docker-compose and docker commands:
+
+
+   * ``docker-compose -f docker-compose-build.yml build`` - builds all the service containers. To build a single service container, use ``docker-compose -f docker-compose-build.yml build [serv_cont_name]``
+   * ``docker-compose down`` - stops and removes the service containers
+   * ``docker-compose up -d`` - brings up the service containers by picking the changes done in ``docker-compose.yml``
+   * ``docker ps`` - check running containers
+   * ``docker ps -a`` - check running and stopped containers
+   * ``docker stop $(docker ps -a -q)`` - stops all the containers
+   * ``docker rm $(docker ps -a -q)`` - removes all the containers. Useful when you run into issue of already container is in use.
+   * `docker compose cli <https://docs.docker.com/compose/reference/overview/>`_
+   * `docker compose reference <https://docs.docker.com/compose/compose-file/>`_
+   * `docker cli <https://docs.docker.com/engine/reference/commandline/cli/#configuration-files>`_
+
+#. 
+   If you want to run the docker images separately i.e, one by one, run the command ``docker-compose run --no-deps [service_cont_name]`` Eg: ``docker-compose run --name ia_video_ingestion --no-deps      ia_video_ingestion`` to run VI container and the switch ``--no-deps`` will not bring up it's dependencies mentioned in the docker-compose file. If the container is not launching, there could be
+   some issue with entrypoint program which could be overrided by providing this extra switch ``--entrypoint /bin/bash`` before the service container name in the docker-compose run command above, this would let one inside the container and run the actual entrypoint program from the container's terminal to rootcause the issue. If the container is running and one wants to get inside, use cmd: ``docker-compose exec [service_cont_name] /bin/bash`` or ``docker exec -it [cont_name] /bin/bash``
+
+#. 
+   Best way to check logs of containers is to use command: ``docker logs -f [cont_name]``. If one wants to see all the docker-compose service container logs at once, then just run
+   ``docker-compose logs -f``
+
+Enabling Secure boot
+=====================
+
+The deployment machine with EII is recommended to be enabled with secure boot for full security.
+
+For enabling secure boot with Ubuntu, please refer to : https://wiki.ubuntu.com/UEFI/SecureBoot
+
+.. note:: With the secure boot enabled, the boot image and kernel will be verified and post that the system administrator / root user will be the security gatekeeper. The admin must ensure that the root credentials are not compromised.

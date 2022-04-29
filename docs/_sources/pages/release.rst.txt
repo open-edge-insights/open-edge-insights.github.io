@@ -2,6 +2,20 @@
 Release Notes
 #############
 
+**********
+EII v2.6.3
+**********
+
+EII v2.6.3 is a bugfix release on top of EII v2.6.2 release.
+
+Fixes
+=====
+
+* Fixed build failure and rfc_classifier UDF crash issues for kapacitor service
+* ELK (Elasticsearch, Logstash, and Kibana) integration with EII is discontinued
+* General security fixes has been applied
+* Minor README updates
+
 ********
 OEI v3.0
 ********
@@ -14,6 +28,12 @@ New Features
 * Restructured the OEI provisioning flow - Containerized OEI provisioning step to make the OEI deployment fully containerized
 * NodeRED integration - Exposes the GET interface from the Rest Data Export service to facilitate the NodeRED integration
 * Repackaging the OEI core libs (C/C++, Python, Golang) - Provides an easy integration in the existing container ecosystems like Tibco, Edgex, etc.
+  
+  * Ubuntu python wheel packages are available at below locations:
+    
+    * Message Bus: https://pypi.org/project/eii-messagebus/
+    * Config Manager: https://pypi.org/project/eii-configmanager/
+  * C/C++ libs of Message Bus, Config Manager and Utils are available for Ubuntu and Alpine at https://github.com/open-edge-insights/eii-manifests/releases/tag/v3.0 
 * Enable Image ingestion support in OpenCV ingestor - The Video Ingestion service is enabled to support image ingestion
 * Supporting C++ OEI MessageBus wrapper APIS for easy integration of Realsense like cameras - Added C++ message bus wrappers
 * Jupyter Notebook Visual Studio Code plugin for Python UDFs development - Enhances the developer experience by allowing you to access Jupyter Notebook in VSCode
@@ -45,7 +65,7 @@ EII v2.6.2
 
 EII v2.6.2 is a bugfix release on top of EII v2.6.1 release.
 
-.. note:: We recommend EII users (customers) using `EII ELK feature (https://github.com/open-edge-insights/eii-core/tree/v2.6.1/build/remote_logging#eii-distributed-services-centralized-logging-using-elk)`_ to upgrade to this version.
+.. note:: We recommend EII users (customers) using `EII ELK feature <https://github.com/open-edge-insights/eii-core/tree/v2.6.1/build/remote_logging#eii-distributed-services-centralized-logging-using-elk>`_ to upgrade to this version.
 
 Fixes
 =====
@@ -128,7 +148,7 @@ EII v2.5.3 is a bugfix release on top of EII v2.5.2 release.
 
 .. note:: 
 
-   We recommend EII users (customers) using `EII ELK feature` (https://github.com/open-edge-insights/eii-core/tree/v2.5.2/build/remote_logging#eii-distributed-services-centralized-logging-using-elk) to upgrade to this version.
+   We recommend EII users (customers) using `EII ELK feature <https://github.com/open-edge-insights/eii-core/tree/v2.5.2/build/remote_logging#eii-distributed-services-centralized-logging-using-elk>`_ to upgrade to this version.
 
 Fixes
 =====

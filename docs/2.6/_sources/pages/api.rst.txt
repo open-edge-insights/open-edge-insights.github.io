@@ -11,7 +11,7 @@ C API
 
     <embed>
         <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../api/c/eiimsgbus/pages.html">MsgBus</a></li>
+                <li class="toctree-l1"><a class="reference internal" href="../api/c/eiimsgbus/pages.html">EIIMsgBus</a></li>
                 <li class="toctree-l1"><a class="reference internal" href="../api/c/cfgmgr/pages.html">ConfigMgr</a></li>
         </ul>
     </embed>
@@ -24,7 +24,7 @@ Python API
 
     <embed>
         <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../api/eii_msgbus.html">MsgBus</a></li>
+                <li class="toctree-l1"><a class="reference internal" href="../api/eii_msgbus.html">EIIMsgBus</a></li>
                 <li class="toctree-l1"><a class="reference internal" href="../api/eii_cfgmgr.html">ConfigMgr</a></li>
         </ul>
     </embed>
@@ -37,7 +37,7 @@ GoLang API
 
     <embed>
         <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../api/go/eiimsgbus/index.html">MsgBus</a></li>
+                <li class="toctree-l1"><a class="reference internal" href="../api/go/eiimsgbus/index.html">EIIMsgBus</a></li>
                 <li class="toctree-l1"><a class="reference internal" href="../api/go/cfgmgr/index.html">ConfigMgr</a></li>
         </ul>
     </embed>

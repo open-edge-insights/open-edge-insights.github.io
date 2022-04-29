@@ -1,13 +1,159 @@
 
-#############################
-Working with Time series Data
-#############################
+############################
+Working with Timeseries Data
+############################
 
-.. include:: ../IEdgeInsights/Telegraf/telegraf.rst
+Telegraf
+########
+
+The EII comes with timeseries data ingesting capabilities using **Telegraf**, which runs as a separate container ingesting data into **InfluxDB\***. 
+The configuration of Telegraf is available in **[WORK_DIR]/IEdgeInsights/Telegraf/config/telegraf.conf**. This configuration may need to be modified to select the 
+right input plugin. The example used in the EII v2.x release is a sample temperature sensor application that sends temperature data over MQTT as a Telegraf plugin. 
+The topic name and type of data is configured to work with this specific device. This will need to be updated in the configuration file for a different factory use case.
+
+There is a Telegraf entry timeseries script that contacts the EII ConfigMgr and obtains the credentials for connecting to InfluxDB. The entry point script then starts 
+Telegraf after updating the InfluxDB credentials as environment variables.
+
+.. include:: ../IEdgeInsights/Kapacitor/purpose-of-telegraf.rst
+
+.. include:: ../IEdgeInsights/Telegraf/optional-adding-multiple-telegraf-instances.rst
+
+.. include:: ../IEdgeInsights/Telegraf/enabling-eii-message-bus-input-plugin-in-telegraf.rst
+
+.. include:: ../IEdgeInsights/Telegraf/enabling-eii-message-bus-output-plugin-in-telegraf.rst
+
+.. include:: ../IEdgeInsights/Telegraf/advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin.rst
+
+.. include:: ../IEdgeInsights/Telegraf/advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin.rst
+
+Kapacitor
+#########
+
+Kapacitor* is a data processing engine in the TICK Stack. Users can plug in their own custom logic to process alerts with dynamic thresholds, match metrics for 
+patterns, or identify statistical anomalies. We will use Kapacitor to read data from InfluxDB, generate alerts, and take appropriate action based on the needs. 
+More details and architecture about Kapacitor can be found at `<https://www.influxdata.com/time-series-platform/kapacitor/>`_
+
+The Kapacitor will support UDFs that written in Python3 or Go*. The sample example of Go and Python UDF is available in the 
+**[WORK_DIR]/IEdgeInsights/Kapasitor/UDF directory**. 
+
+.. figure:: image/data-flow-diagram.png
+      :scale: 50 %
+      :align: center
 
 .. include:: ../IEdgeInsights/Kapacitor/point-data-time-series-data-analytics-introduction.rst
 
+.. include:: ../IEdgeInsights/Kapacitor/starting-the-example.rst
+
+.. include:: ../IEdgeInsights/Kapacitor/purpose-of-kapacitor.rst
+
+.. include:: ../IEdgeInsights/Kapacitor/kapacitor-input-and-output-plugins.rst
+
+.. include:: ../IEdgeInsights/Kapacitor/purpose-of-plugins.rst
+
+.. include:: ../IEdgeInsights/Kapacitor/using-input-plugin.rst
+
+.. include:: ../IEdgeInsights/Kapacitor/using-output-plugin.rst
+
+
+User-defined Functions
+----------------------
+
+UDFs can communicate with Kapacitor to process data through TICK scripting. Kapacitor will stream data 
+into it and the UDF can respond with new or modified data. 
+
+In the released version of EII, the UDF does the thresholding of temperature sensor data. The UDF will 
+get timeseries data from InfluxDB and read temperature data. The classifier_results, which has the defect data, is sent as a response timeseries data from the UDF. The TICK script will save this back into InfluxDB. 
+
+
+.. include:: ../IEdgeInsights/Kapacitor/custom-udfs-available-in-the-udfsudfs-directory.rst
+
+.. include:: ../IEdgeInsights/Kapacitor/steps-to-configure-the-udfs-in-kapacitor.rst
+
+Interfaces Exposed for UDFs
+---------------------------
+
+There are six interfaces exposed for UDFs to communicate with Kapacitor:
+
+#.	info():
+#.	init():
+#.	snapshot():
+#.	restore():
+#.	begin_batch():
+#.	point():
+
+For further details of these UDFs, kindly refer to URL: `<https://docs.influxdata.com/kapacitor/v1.5/guides/socket_udf/>`_
+
+.. include:: ../IEdgeInsights/Kapacitor/samples/README.rst
+
+Working with Kapacitor*
+-----------------------
+
+Kapacitor uses a **Domain Specific Language (DSL)** named TICK script to define tasks involving 
+the extraction, transformation and loading of data. One common task is defining alerts. TICK 
+script is coded in **.tick** files to define pipelines for processing data. The TICK script language 
+is designed to chain together the invocation of data processing operations defined in nodes.
+
+In TICK script, the fundamental type is the node. A node has properties and, as mentioned, 
+chaining methods. A new node can be created from a parent or sibling node using a chaining 
+method of that parent or sibling node. For each node type the signature of this method will be 
+the same, regardless of the parent or sibling node type. The chaining method can accept zero or 
+more arguments used to initialize internal properties of the new node instance. Common node types 
+are batch, query, stream, from, eval and alert, though there are dozens of others.
+
+The top-level nodes establish the processing type of the task to be defined, either stream and 
+batch, and are simply declared and take no arguments. Nodes with more complex sets of properties 
+rely on Property methods for their internal configuration.
+
+In TICK, each node type needs data in either batch or stream mode. Some can handle both. Each 
+node type also provides data in batch or stream mode. Some can also provide both. This 
+needs/provides pattern is important to understanding how nodes work together. Taking into 
+consideration the needs/provides pattern, four general node use cases can be defined:
+
+**need a batch and provide a stream** - for example, when computing an average or a minimum or a maximum.
+
+**need a batch and provide a batch** - for example, when identifying outliers in a batch of data.
+
+**need a stream and provide a batch** - for example, when grouping together similar data points.
+
+**need a stream and provide a stream** - for example, when applying a mathematical function like a logarithm to a value in a point
+
+More details and documentation on the TICK Scripting can be found at `<https://docs.influxdata.com/kapacitor/v1.4/tick/introduction/>`_
+
 .. include:: ../IEdgeInsights/Grafana/grafana.rst
 
-.. include:: ../IEdgeInsights/InfluxDBConnector/influxdbconnector-module.rst
+There is a sample application in EIIv2.x used for generating random temperature sensor data. 
+This data is streamed through mqtt to influxDB with the high-level flow below explained in 
+Section 10.3.1.
 
+The high-level flow of the data in the example can be seen as 
+**mqtt-temp-sensor -> Telegraf -> Influx -> Kapacitor -> Influx**.
+
+The classified results can be visualized using Grafana as per the preconfigured example in Figure 8.
+
+.. figure:: image/grafana-web-ui.png
+    :scale: 50 %
+    :align: center
+
+.. include:: ../IEdgeInsights/Grafana/configuration.rst
+
+.. include:: ../IEdgeInsights/Grafana/procedure-to-run-grafana.rst
+
+.. note::
+
+    Using the MQTT default port 1883 may result in the following error:
+    
+    Error starting userland proxy: listen tcp 0.0.0.0:1883: bind: address already in use
+    
+    To check if port 1883 has been occupied, use command:
+    
+    **$  netstat -tulnp | grep 1883**
+    
+    To stop release port 1883, use command:
+    
+    **$  sudo kill `sudo lsof -t -i:1883`**
+
+Access Grafana from the web browser at http://localhost:3000
+
+.. include:: ../IEdgeInsights/Grafana/steps-to-execute-query.rst
+
+.. include:: ../IEdgeInsights/InfluxDBConnector/influxdbconnector.rst

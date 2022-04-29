@@ -22,6 +22,8 @@ Open Edge Insights (OEI) stack has the following set of tools that also run as c
 
 .. include:: ../IEdgeInsights/tools/mqtt/mqtt-publisher.rst
 
+.. include:: ../IEdgeInsights/tools/NodeRedHttpClientApp/noderedhttpclientapp.rst
+
 .. include:: ../IEdgeInsights/tools/SWTriggerUtility/software-trigger-utility-for-videoingestion-module.rst
 
 .. include:: ../IEdgeInsights/tools/TimeSeriesProfiler/oei-timeseriesprofiler.rst

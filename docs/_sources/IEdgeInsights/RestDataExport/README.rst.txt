@@ -34,7 +34,7 @@ RestDataExport (RDE) service is a data service that serves GET and POST APIs. By
 
 
 Configuration
--------------
+^^^^^^^^^^^^^
 
 For more details on the etcd secrets and messagebus endpoint configuration, refer to the following:
 
@@ -43,17 +43,17 @@ For more details on the etcd secrets and messagebus endpoint configuration, refe
 * `MessageBus Configuration <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/README.md#interfaces>`_
 
 HTTP GET API of RDE
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 The HTTP GET API of RDE allows you to get metadata and images. The following sections provide information about how to request metadata and images using the curl commands.
 
 Get the classifier results metadata
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To get the classifier results metadata, refer to the following:
 
 Request to get metadata
-~~~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""""
 
 You can get the metadata for DEV mode and PROD mode.
 
@@ -102,13 +102,13 @@ The output for the previous command is as follows:
    {"channels":3,"defects":[],"encoding_level":95,"encoding_type":"jpeg","frame_number":558,"height":1200,"img_handle":"21af429f85","topic":"camera1_stream_results","width":1920}
 
 Get images using the image handle
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::  For the ``image`` API, the ``imagestore`` module is mandatory. From the ``imagestore``\ , the server fetches the data, and returns it over the REST API. Include the ``imagestore`` module as a part of your use case.
 
 
 Request to get images
-~~~~~~~~~~~~~~~~~~~~~
+"""""""""""""""""""""
 
 ``GET /image``
 
@@ -132,7 +132,7 @@ Refer to the following example to store image to the disk using curl along with 
 
 
 Prerequisites for running RestDataExport to POST on HTTP Servers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::  By default, RDE will serve the metadata as ``GET`` *only* request server. By Enabling this, you can get the metadata using the ``GET`` request. Also, RDE will post the metadata to an HTTP server.
 
@@ -233,7 +233,7 @@ As a prerequisites, complete the following steps:
 
 
 Launch RestDataExport service
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To build and launch the RestDataExport service, refer to the following:
 
@@ -243,7 +243,7 @@ To build and launch the RestDataExport service, refer to the following:
 * `../README.md#build-and-run-eii-videotimeseries-use-cases <https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases>`_
 
 Setting environment proxy settings
-----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To set the environment proxy settings for RDE, refer to the following:
 

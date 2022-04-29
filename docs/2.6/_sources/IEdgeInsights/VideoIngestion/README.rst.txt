@@ -10,6 +10,7 @@
     * `Video Ingestion Contents <#video-ingestion-contents>`__
 
       * `Camera Configuration <#camera-configuration>`__
+      * `Set Securiry Context to Enable Basler/USB Camera device helm environment <#updating-security-context-of-videoingestion-helm-charts-for-enabling-k8s-environment-to-accessdetect-baslerusb-device>`__
       * `GenICam GigE or USB3 Camera <#genicam-gige-or-usb3-camera>`__
       * `RTSP Camera <#rtsp-camera>`__
       * `USB Camera <#usb-camera>`__
@@ -166,7 +167,42 @@ Camera Configuration
 
   ----
 
-  #### GenICam GigE or USB3 Camera
+  #### Updating Security Context of VideoIngestion Helm Charts for enabling K8s environment to access/detect Basler/usb Device
+
+Please follow the steps to update helm charts for enabling K8s environment to access/detect Basler Camera and NCS2 Device
+
+
+* 
+  Open ``EII_HOME_DIR/IEdgeInsights/VideoIngestion/helm/templates/video-ingestion.yaml`` file
+
+* 
+  Update below security context snippet
+
+  .. code-block:: yml
+
+           securityContext:
+             privileged: true
+
+  in the yaml file as:
+
+  .. code-block:: yaml
+
+       ...
+       ...
+       ...
+           imagePullPolicy: {{ $global.Values.imagePullPolicy }}
+           securityContext:
+             privileged: true
+           volumeMounts:
+           - name: dev
+             mountPath: /dev
+       ...
+
+
+  * Re-run ``builder.py`` to apply these changes to your deployment helm charts.
+
+GenICam GigE or USB3 Camera
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   **Refer `GenICam GigE/USB3.0 Camera Support <https://github.com/open-edge-insights/video-ingestion/blob/master/docs/generic_plugin_doc.md>`_ for information/configuration on GenICam GigE/USB3 camera support.**
 

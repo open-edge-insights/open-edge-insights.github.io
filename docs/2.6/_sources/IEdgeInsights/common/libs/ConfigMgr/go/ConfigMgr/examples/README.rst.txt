@@ -18,7 +18,7 @@ Pre-requisites
    Ensure you run builder & provision with Go Sample Apps enabled.
 
 #. 
-   Ensure you comment/uncomment the required lines for DEV_PROD mode accordingly in `go_env.sh <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/go/ConfigMgr/examples/go_env.sh>`_.
+   Ensure you comment/uncomment the required lines for DEV_PROD mode accordingly in `go_env.sh <https://github.com/open-edge-insights/eii-configmgr/blob/master/go/ConfigMgr/examples/go_env.sh>`_.
 
 #. 
    Run this command from the build/examples directory after installing ConfigMgr WITH_EXAMPLES set to ON:

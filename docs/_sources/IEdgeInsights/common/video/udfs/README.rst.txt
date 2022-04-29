@@ -10,18 +10,17 @@ Contents
 
   * `OEI Sample UDFs <#oei-sample-udfs>`__
   * `User Defined Function (UDF) <#user-defined-function-udf>`__
+  * `UDF Configuration <#udf-configuration>`__
+  * `UDF Writing Guide <#udf-writing-guide>`__
+  * `Sample UDFs <#sample-udfs>`__
 
-    * `UDF Configuration <#udf-configuration>`__
-    * `UDF Writing Guide <#udf-writing-guide>`__
-    * `Sample UDFs <#sample-udfs>`__
+    * `Native UDFs <#native-udfs>`__
+    * `Python UDFs <#python-udfs>`__
 
-      * `Native UDFs <#native-udfs>`__
-      * `Python UDFs <#python-udfs>`__
+  * `Construction of Metadata in UDF <#construction-of-metadata-in-udf>`__
+  * `Chaining of UDFs <#chaining-of-udfs>`__
 
-    * `Construction of Metadata in UDF <#construction-of-metadata-in-udf>`__
-    * `Chaining of UDFs <#chaining-of-udfs>`__
-
-      * `Combination of UDFs with ingestors <#combination-of-udfs-with-ingestors>`__
+    * `Combination of UDFs with ingestors <#combination-of-udfs-with-ingestors>`__
 
 OEI Sample UDFs
 ---------------
@@ -51,7 +50,7 @@ The overall block diagram for the library is shown in the following figure.
 In this case, the VideoIngestion component is also able to execute the video data classifier algorithm by including the classifier UDF into the VideoIngestion configuration. By defining the Classifier UDF in the VideoIngestion component, the VideoAnalytics component become optional
 
 UDF Configuration
-^^^^^^^^^^^^^^^^^
+-----------------
 
 Below is the JSON schema for UDF json object configuration:
 
@@ -135,19 +134,19 @@ Example UDF configuration:
    }
 
 UDF Writing Guide
-^^^^^^^^^^^^^^^^^
+-----------------
 
 User can refer to `UDF Writing HOW-TO GUIDE <https://github.com/open-edge-insights/video-common/blob/master/udfs/HOWTO_GUIDE_FOR_WRITING_UDF.md>`_ for an detailed explanation of process to write an custom UDF.
 
 Sample UDFs
-^^^^^^^^^^^
+-----------
 
 .. note::  The UDF config of these go as json objects in the ``udfs`` key in
    the overall UDF configuration object
 
 
 Native UDFs
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 
 * 
@@ -250,7 +249,7 @@ Native UDFs
   ----
 
 Python UDFs
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 .. note::  Additional properties/keys other than ``name`` and ``type`` in the UDF
    config are the parameters of the python UDF constructor
@@ -350,11 +349,9 @@ Python UDFs
 
   Refer `python/pcb/README.md <https://github.com/open-edge-insights/video-common/blob/master/udfs/python/pcb/README.md>`_ for more information.
 
-  ..
-
-     **Note:** The above config works for both "CPU" and "GPU" devices after setting appropriate ``device`` value.
-     Please set the "device" value appropriately based on the device used for inferencing.
-
+  **NOTE:**
+  The above config works for both "CPU" and "GPU" devices after setting appropriate ``device`` value.
+  Please set the "device" value appropriately based on the device used for inferencing.
 
 * 
   **Sample ONNX UDF**
@@ -372,7 +369,7 @@ Python UDFs
 ----
 
 Construction of Metadata in UDF
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------
 
 If OEI Visualizer/WebVisualizer clients are used for visualizing the classified frames, then please follow the metadata guidelines mentioned in **\ ``Metadata Structure``\ ** in `Visualizer <https://github.com/open-edge-insights/video-native-visualizer/blob/master/README.md>`_ / `WebVisualizer <https://github.com/open-edge-insights/video-web-visualizer/blob/master/README.md>`_ README respectively.
 
@@ -381,7 +378,7 @@ must contain only primitive data types.
 Eg: Any data is of type "numpy.float" or "numpy.int" should be type-casted to float and int respectively.
 
 Chaining of UDFs
-^^^^^^^^^^^^^^^^
+----------------
 
 One can chain multiple native/python UDFs in the ``udfs`` key. The way chaining
 works here is the output of the UDF listed first would send the modified frame
@@ -391,7 +388,7 @@ do both the pre-processing and the classification logic without the need of
 VideoAnalytics service.
 
 Combination of UDFs with ingestors
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1

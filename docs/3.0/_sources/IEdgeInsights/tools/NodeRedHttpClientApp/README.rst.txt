@@ -2,13 +2,25 @@
    :format: html
 
 
+Contents
+========
+
+
+* `Contents <#contents>`__
+
+  * `NodeRedHttpClientApp <#noderedhttpclientapp>`__
+
+    * `Setting Up NodeRed <#setting-up-nodered>`__
+    * `Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient <#getting-oei-udf-classifier-results-data-to-node-red-environment-using-node-red-httpclient>`__
+    * `Sample Workflow <#sample-workflow>`__
+
 NodeRedHttpClientApp
-====================
+--------------------
 
 This Node-RED in-built http node based client App acts as client for the OEI RestDataExport and brings the OEI Classifier data to Node-RED ecosystem.
 
 Setting Up NodeRed
-------------------
+^^^^^^^^^^^^^^^^^^
 
   Node-RED provides various options to install and set up Node-RED in your environment. For more information on installation and setup, refer to the `Node-RED documenation <https://nodered.org/docs/getting-started/local>`_.
 
@@ -20,7 +32,7 @@ Setting Up NodeRed
 
 
 Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient
------------------------------------------------------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: \ : RestDataExport should be running already as a prerequisite.\ :raw-html-m2r:`<br>`
    Refer to the RestDataExport `Readme <https://github.com/open-edge-insights/eii-rest-data-export>`_
@@ -31,8 +43,8 @@ Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED H
    Drag the ``http request`` node of Node-RED's default nodes to your existing workflow.
 
 
-   .. image:: ./images/imagehttprequestnode.png
-      :target: ./images/imagehttprequestnode.png
+   .. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imagehttprequestnode.png
+      :target: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imagehttprequestnode.png
       :alt: images/imagehttprequestnode.png
 
 
@@ -83,7 +95,7 @@ Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED H
 
 
 Sample Workflow
----------------
+^^^^^^^^^^^^^^^
 
 The attached workflow document is sample workflow by updating the ``RestDataExport`` IP Address in the ``http request`` module,
 

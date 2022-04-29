@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>eiiconfigmgr - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="./style/style.css">
+
+<link rel="stylesheet" href="./style/jquery.treeview.css">
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id="lowframe" style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a>The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a>Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">▽</span></a>
+
+</div></div>
+
+
+
+<div id="page" class="wide" tabindex="-1" style="outline: 0px;">
+<div class="container">
+
+
+  <h1>
+    Package eiiconfigmgr
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script type="text/javascript">
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "ConfigMgr/eiiconfigmgr"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#GoStrings">func GoStrings(argc C.int, argv **C.char) []string</a></dd>
+			
+				
+				<dd><a href="#Restore">func Restore(ptr unsafe.Pointer) (v interface{})</a></dd>
+			
+				
+				<dd><a href="#Save">func Save(v interface{}) unsafe.Pointer</a></dd>
+			
+				
+				<dd><a href="#Unref">func Unref(ptr unsafe.Pointer)</a></dd>
+			
+			
+				
+				<dd><a href="#ClientCfg">type ClientCfg</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ClientCfg.Destroy">func (clientctx *ClientCfg) Destroy()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ClientCfg.GetEndPoints">func (clientctx *ClientCfg) GetEndPoints() (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ClientCfg.GetInterfaceValue">func (clientctx *ClientCfg) GetInterfaceValue(key string) (*ConfigValue, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ClientCfg.GetMsgbusConfig">func (clientctx *ClientCfg) GetMsgbusConfig() (map[string]interface{}, error)</a></dd>
+				
+			
+				
+				<dd><a href="#ConfigMgr">type ConfigMgr</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigManager">func ConfigManager() (*ConfigMgr, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.Destroy">func (ctx *ConfigMgr) Destroy()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetAppConfig">func (ctx *ConfigMgr) GetAppConfig() (map[string]interface{}, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetAppName">func (ctx *ConfigMgr) GetAppName() (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetClientByIndex">func (ctx *ConfigMgr) GetClientByIndex(index int) (*ClientCfg, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetClientByName">func (ctx *ConfigMgr) GetClientByName(name string) (*ClientCfg, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetNumClients">func (ctx *ConfigMgr) GetNumClients() (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetNumPublishers">func (ctx *ConfigMgr) GetNumPublishers() (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetNumServers">func (ctx *ConfigMgr) GetNumServers() (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetNumSubscribers">func (ctx *ConfigMgr) GetNumSubscribers() (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetPublisherByIndex">func (ctx *ConfigMgr) GetPublisherByIndex(index int) (*PublisherCfg, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetPublisherByName">func (ctx *ConfigMgr) GetPublisherByName(name string) (*PublisherCfg, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetServerByIndex">func (ctx *ConfigMgr) GetServerByIndex(index int) (*ServerCfg, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetServerByName">func (ctx *ConfigMgr) GetServerByName(name string) (*ServerCfg, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetSubscriberByIndex">func (ctx *ConfigMgr) GetSubscriberByIndex(index int) (*SubscriberCfg, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetSubscriberByName">func (ctx *ConfigMgr) GetSubscriberByName(name string) (*SubscriberCfg, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.GetWatchObj">func (configMgr *ConfigMgr) GetWatchObj() (*WatchObj, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigMgr.IsDevMode">func (ctx *ConfigMgr) IsDevMode() (bool, error)</a></dd>
+				
+			
+				
+				<dd><a href="#ConfigValue">type ConfigValue</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigValue.GetArray">func (cfg ConfigValue) GetArray() (array, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigValue.GetBool">func (cfg ConfigValue) GetBool() (boolean, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigValue.GetFloat">func (cfg ConfigValue) GetFloat() (float, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigValue.GetInteger">func (cfg ConfigValue) GetInteger() (integer, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigValue.GetJson">func (cfg ConfigValue) GetJson() (object, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ConfigValue.GetString">func (cfg ConfigValue) GetString() (string, error)</a></dd>
+				
+			
+				
+				<dd><a href="#Expr">type Expr</a></dd>
+				
+				
+			
+				
+				<dd><a href="#PublisherCfg">type PublisherCfg</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PublisherCfg.Destroy">func (pubctx *PublisherCfg) Destroy()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PublisherCfg.GetAllowedClients">func (pubctx *PublisherCfg) GetAllowedClients() ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PublisherCfg.GetEndPoints">func (pubctx *PublisherCfg) GetEndPoints() (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PublisherCfg.GetInterfaceValue">func (pubctx *PublisherCfg) GetInterfaceValue(key string) (*ConfigValue, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PublisherCfg.GetMsgbusConfig">func (pubctx *PublisherCfg) GetMsgbusConfig() (map[string]interface{}, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PublisherCfg.GetTopics">func (pubctx *PublisherCfg) GetTopics() ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#PublisherCfg.SetTopics">func (pubctx *PublisherCfg) SetTopics(topics []string) bool</a></dd>
+				
+			
+				
+				<dd><a href="#ServerCfg">type ServerCfg</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ServerCfg.Destroy">func (serverctx *ServerCfg) Destroy()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ServerCfg.GetAllowedClients">func (serverctx *ServerCfg) GetAllowedClients() ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ServerCfg.GetEndPoints">func (serverctx *ServerCfg) GetEndPoints() (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ServerCfg.GetInterfaceValue">func (serverctx *ServerCfg) GetInterfaceValue(key string) (*ConfigValue, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ServerCfg.GetMsgbusConfig">func (serverctx *ServerCfg) GetMsgbusConfig() (map[string]interface{}, error)</a></dd>
+				
+			
+				
+				<dd><a href="#SubscriberCfg">type SubscriberCfg</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#SubscriberCfg.Destroy">func (subctx *SubscriberCfg) Destroy()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#SubscriberCfg.GetEndPoints">func (subctx *SubscriberCfg) GetEndPoints() (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#SubscriberCfg.GetInterfaceValue">func (subctx *SubscriberCfg) GetInterfaceValue(key string) (*ConfigValue, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#SubscriberCfg.GetMsgbusConfig">func (subctx *SubscriberCfg) GetMsgbusConfig() (map[string]interface{}, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#SubscriberCfg.GetTopics">func (subctx *SubscriberCfg) GetTopics() ([]string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#SubscriberCfg.SetTopics">func (subctx *SubscriberCfg) SetTopics(topics []string) bool</a></dd>
+				
+			
+				
+				<dd><a href="#ValType">type ValType</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#ValType.String">func (valType ValType) String() string</a></dd>
+				
+			
+				
+				<dd><a href="#WatchObj">type WatchObj</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatchObj.Watch">func (watchCtx *WatchObj) Watch(key string, callbackFunc goCallbacktype, user_data interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatchObj.WatchConfig">func (watchCtx *WatchObj) WatchConfig(callbackFunc goCallbacktype, user_data interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatchObj.WatchInterface">func (watchCtx *WatchObj) WatchInterface(callbackFunc goCallbacktype, user_data interface{})</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatchObj.WatchPrefix">func (watchCtx *WatchObj) WatchPrefix(prefix string, callbackFunc goCallbacktype, user_data interface{})</a></dd>
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a>ConfigManager.go</a>
+			
+				<a>Util.go</a>
+			
+				<a>cgo.go</a>
+			
+				<a>client.go</a>
+			
+				<a>publisher.go</a>
+			
+				<a>server.go</a>
+			
+				<a>subscriber.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+			<p>
+			  In the call graph viewer below, each node
+			  is a function belonging to this package
+			  and its children are the functions it
+			  calls—perhaps dynamically.
+			</p>
+			<p>
+			  The root nodes are the entry points of the
+			  package: functions that may be called from
+			  outside the package.
+			  There may be non-exported or anonymous
+			  functions among them if they are called
+			  dynamically from another package.
+			</p>
+			<p>
+			  Click a node to visit that function's source code.
+			  From there you can visit its callers by
+			  clicking its declaring <code>func</code>
+			  token.
+			</p>
+			<p>
+			  Functions may be omitted if they were
+			  determined to be unreachable in the
+			  particular programs or tests that were
+			  analyzed.
+			</p>
+			<!-- Zero means show all package entry points. -->
+			<ul style="margin-left: 0.5in" id="callgraph-0" class="treeview"></ul>
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+		
+		
+			
+			
+			<h2 id="GoStrings">func <a>GoStrings</a>
+				<a class="permalink" href="#GoStrings">¶</a>
+			</h2>
+			<pre>func GoStrings(argc <a>C</a>.<a>int</a>, argv **<a>C</a>.<a>char</a>) []<a>string</a></pre>
+			<p>
+Convert C char** to Go string[]
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Restore">func <a>Restore</a>
+				<a class="permalink" href="#Restore">¶</a>
+			</h2>
+			<pre>func Restore(ptr <a>unsafe</a>.<a>Pointer</a>) (v interface{})</pre>
+			<p>
+Restore to fetch the interface associated with a particular unsafe.Pointer
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Save">func <a>Save</a>
+				<a class="permalink" href="#Save">¶</a>
+			</h2>
+			<pre>func Save(v interface{}) <a>unsafe</a>.<a>Pointer</a></pre>
+			<p>
+Save function to store interface{} for every unsafe.Pointer
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="Unref">func <a>Unref</a>
+				<a class="permalink" href="#Unref">¶</a>
+			</h2>
+			<pre>func Unref(ptr <a>unsafe</a>.<a>Pointer</a>)</pre>
+			<p>
+Unref to free the unsafe.Pointer &amp; the associated interface{}
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="ClientCfg">type <a>ClientCfg</a>
+				<a class="permalink" href="#ClientCfg">¶</a>
+			</h2>
+			<p>
+ClientCfg context
+</p>
+
+			<pre>type ClientCfg struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ClientCfg.Destroy">func (*ClientCfg) <a>Destroy</a>
+					<a class="permalink" href="#ClientCfg.Destroy">¶</a>
+				</h3>
+				<pre>func (clientctx *<a href="#ClientCfg">ClientCfg</a>) Destroy()</pre>
+				<p>
+To delete Client context
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ClientCfg.GetEndPoints">func (*ClientCfg) <a>GetEndPoints</a>
+					<a class="permalink" href="#ClientCfg.GetEndPoints">¶</a>
+				</h3>
+				<pre>func (clientctx *<a href="#ClientCfg">ClientCfg</a>) GetEndPoints() (<a>string</a>, <a>error</a>)</pre>
+				<p>
+GetEndPoints for application to fetch Endpoint associated with message bus config
+</p>
+<p>
+Returns:
+1. string
+</p>
+<pre>Endpoints value in string
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ClientCfg.GetInterfaceValue">func (*ClientCfg) <a>GetInterfaceValue</a>
+					<a class="permalink" href="#ClientCfg.GetInterfaceValue">¶</a>
+				</h3>
+				<pre>func (clientctx *<a href="#ClientCfg">ClientCfg</a>) GetInterfaceValue(key <a>string</a>) (*<a href="#ConfigValue">ConfigValue</a>, <a>error</a>)</pre>
+				<p>
+GetInterfaceValue fetch interface value for application to communicate over EII message bus
+</p>
+<p>
+Parameters:
+1. key: string
+</p>
+<pre>Key on which interface value is extracted
+</pre>
+<p>
+Returns:
+1. Config value : ConfigValue object
+</p>
+<pre>Interface value
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ClientCfg.GetMsgbusConfig">func (*ClientCfg) <a>GetMsgbusConfig</a>
+					<a class="permalink" href="#ClientCfg.GetMsgbusConfig">¶</a>
+				</h3>
+				<pre>func (clientctx *<a href="#ClientCfg">ClientCfg</a>) GetMsgbusConfig() (map[<a>string</a>]interface{}, <a>error</a>)</pre>
+				<p>
+GetMsgbusConfig to fetch client msgbus config for application to communicate over EII message bus
+</p>
+<p>
+Returns:
+1. map[string]interface{}
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ConfigMgr">type <a>ConfigMgr</a>
+				<a class="permalink" href="#ConfigMgr">¶</a>
+			</h2>
+			<p>
+ConfigMgr object
+</p>
+
+			<pre>type ConfigMgr struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="ConfigManager">func <a>ConfigManager</a>
+					<a class="permalink" href="#ConfigManager">¶</a>
+				</h3>
+				<pre>func ConfigManager() (*<a href="#ConfigMgr">ConfigMgr</a>, <a>error</a>)</pre>
+				<p>
+Initialize a new config manager context.
+</p>
+<p>
+Returns:
+1. ConfigMgr : ConfigMgr object
+</p>
+<pre>ConfigManager instance
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+			
+
+			
+				
+				<h3 id="ConfigMgr.Destroy">func (*ConfigMgr) <a>Destroy</a>
+					<a class="permalink" href="#ConfigMgr.Destroy">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) Destroy()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetAppConfig">func (*ConfigMgr) <a>GetAppConfig</a>
+					<a class="permalink" href="#ConfigMgr.GetAppConfig">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetAppConfig() (map[<a>string</a>]interface{}, <a>error</a>)</pre>
+				<p>
+Gets value from respective application's config
+</p>
+<p>
+Returns:
+1. appConfig : map[string]interface{}
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetAppName">func (*ConfigMgr) <a>GetAppName</a>
+					<a class="permalink" href="#ConfigMgr.GetAppName">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetAppName() (<a>string</a>, <a>error</a>)</pre>
+				<p>
+Get Applications name.
+</p>
+<p>
+Returns:
+1. App name : string
+</p>
+<pre>Applications name
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetClientByIndex">func (*ConfigMgr) <a>GetClientByIndex</a>
+					<a class="permalink" href="#ConfigMgr.GetClientByIndex">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetClientByIndex(index <a>int</a>) (*<a href="#ClientCfg">ClientCfg</a>, <a>error</a>)</pre>
+				<p>
+Get the respective client based on the index
+</p>
+<p>
+Returns:
+1. ClientCfg : ClientCfg obj
+</p>
+<pre>ClientCfg instance
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetClientByName">func (*ConfigMgr) <a>GetClientByName</a>
+					<a class="permalink" href="#ConfigMgr.GetClientByName">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetClientByName(name <a>string</a>) (*<a href="#ClientCfg">ClientCfg</a>, <a>error</a>)</pre>
+				<p>
+Get the respective client based on the name
+</p>
+<p>
+Returns:
+1. ClientCfg : ClientCfg obj
+</p>
+<pre>ClientCfg instance
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetNumClients">func (*ConfigMgr) <a>GetNumClients</a>
+					<a class="permalink" href="#ConfigMgr.GetNumClients">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetNumClients() (<a>int</a>, <a>error</a>)</pre>
+				<p>
+Get number of clients in Client array in interface
+</p>
+<p>
+Returns:
+1. num_of_client : int
+</p>
+<pre>Number of client
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetNumPublishers">func (*ConfigMgr) <a>GetNumPublishers</a>
+					<a class="permalink" href="#ConfigMgr.GetNumPublishers">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetNumPublishers() (<a>int</a>, <a>error</a>)</pre>
+				<p>
+Get number of publishers in Publisher array in interface
+</p>
+<p>
+Returns:
+1. num_of_publishers : int
+</p>
+<pre>Number of publishers
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetNumServers">func (*ConfigMgr) <a>GetNumServers</a>
+					<a class="permalink" href="#ConfigMgr.GetNumServers">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetNumServers() (<a>int</a>, <a>error</a>)</pre>
+				<p>
+Get number of servers in Server array in interface
+</p>
+<p>
+Returns:
+1. num_of_servers : int
+</p>
+<pre>Number of servers
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetNumSubscribers">func (*ConfigMgr) <a>GetNumSubscribers</a>
+					<a class="permalink" href="#ConfigMgr.GetNumSubscribers">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetNumSubscribers() (<a>int</a>, <a>error</a>)</pre>
+				<p>
+Get number of subscribers in Subscriber array in interface
+</p>
+<p>
+Returns:
+1. num_of_subscribers : int
+</p>
+<pre>Number of subscribers
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetPublisherByIndex">func (*ConfigMgr) <a>GetPublisherByIndex</a>
+					<a class="permalink" href="#ConfigMgr.GetPublisherByIndex">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetPublisherByIndex(index <a>int</a>) (*<a href="#PublisherCfg">PublisherCfg</a>, <a>error</a>)</pre>
+				<p>
+Get the respective publisher based on the index
+</p>
+<p>
+Returns:
+1. PublisherCfg : PublisherCfg obj
+</p>
+<pre>PublisherCfg instance
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetPublisherByName">func (*ConfigMgr) <a>GetPublisherByName</a>
+					<a class="permalink" href="#ConfigMgr.GetPublisherByName">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetPublisherByName(name <a>string</a>) (*<a href="#PublisherCfg">PublisherCfg</a>, <a>error</a>)</pre>
+				<p>
+Get the respective publisher based on the name
+</p>
+<p>
+Returns:
+1. PublisherCfg : PublisherCfg obj
+</p>
+<pre>PublisherCfg instance
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetServerByIndex">func (*ConfigMgr) <a>GetServerByIndex</a>
+					<a class="permalink" href="#ConfigMgr.GetServerByIndex">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetServerByIndex(index <a>int</a>) (*<a href="#ServerCfg">ServerCfg</a>, <a>error</a>)</pre>
+				<p>
+Get the respective server based on the index
+</p>
+<p>
+Returns:
+1. ServerCfg : ServerCfg obj
+</p>
+<pre>ServerCfg instance
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetServerByName">func (*ConfigMgr) <a>GetServerByName</a>
+					<a class="permalink" href="#ConfigMgr.GetServerByName">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetServerByName(name <a>string</a>) (*<a href="#ServerCfg">ServerCfg</a>, <a>error</a>)</pre>
+				<p>
+Get the respective server based on the name
+</p>
+<p>
+Returns:
+1. ServerCfg : ServerCfg obj
+</p>
+<pre>ServerCfg instance
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetSubscriberByIndex">func (*ConfigMgr) <a>GetSubscriberByIndex</a>
+					<a class="permalink" href="#ConfigMgr.GetSubscriberByIndex">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetSubscriberByIndex(index <a>int</a>) (*<a href="#SubscriberCfg">SubscriberCfg</a>, <a>error</a>)</pre>
+				<p>
+Get the respective subscriber based on the index
+</p>
+<p>
+Returns:
+1. SubscriberCfg : SubscriberCfg obj
+</p>
+<pre>SubscriberCfg instance
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetSubscriberByName">func (*ConfigMgr) <a>GetSubscriberByName</a>
+					<a class="permalink" href="#ConfigMgr.GetSubscriberByName">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) GetSubscriberByName(name <a>string</a>) (*<a href="#SubscriberCfg">SubscriberCfg</a>, <a>error</a>)</pre>
+				<p>
+Get the respective subscriber based on the name
+</p>
+<p>
+Returns:
+1. SubscriberCfg : SubscriberCfg obj
+</p>
+<pre>SubscriberCfg instance
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.GetWatchObj">func (*ConfigMgr) <a>GetWatchObj</a>
+					<a class="permalink" href="#ConfigMgr.GetWatchObj">¶</a>
+				</h3>
+				<pre>func (configMgr *<a href="#ConfigMgr">ConfigMgr</a>) GetWatchObj() (*<a href="#WatchObj">WatchObj</a>, <a>error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="ConfigMgr.IsDevMode">func (*ConfigMgr) <a>IsDevMode</a>
+					<a class="permalink" href="#ConfigMgr.IsDevMode">¶</a>
+				</h3>
+				<pre>func (ctx *<a href="#ConfigMgr">ConfigMgr</a>) IsDevMode() (<a>bool</a>, <a>error</a>)</pre>
+				<p>
+To check if application running in dev_mode or prod_mode
+</p>
+<p>
+Returns:
+1. bool value : bool
+</p>
+<pre>true is dev_mode, false if prod_mode
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ConfigValue">type <a>ConfigValue</a>
+				<a class="permalink" href="#ConfigValue">¶</a>
+			</h2>
+			<p>
+strcut to define config type and values
+</p>
+
+			<pre>type ConfigValue struct {
+<span id="ConfigValue.Type"></span>    Type  <a href="#ValType">ValType</a>
+<span id="ConfigValue.Value"></span>    Value <a href="#Expr">Expr</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ConfigValue.GetArray">func (ConfigValue) <a>GetArray</a>
+					<a class="permalink" href="#ConfigValue.GetArray">¶</a>
+				</h3>
+				<pre>func (cfg <a href="#ConfigValue">ConfigValue</a>) GetArray() (array, <a>error</a>)</pre>
+				<p>
+GetArray gets array value from the value received from GetInterfaceValue
+</p>
+<p>
+Returns:
+1. array value : array
+</p>
+<pre>returns array value
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigValue.GetBool">func (ConfigValue) <a>GetBool</a>
+					<a class="permalink" href="#ConfigValue.GetBool">¶</a>
+				</h3>
+				<pre>func (cfg <a href="#ConfigValue">ConfigValue</a>) GetBool() (boolean, <a>error</a>)</pre>
+				<p>
+GetBool gets boolean value from the value received from GetInterfaceValue
+</p>
+<p>
+Returns:
+1. bool value : bool
+</p>
+<pre>returns bool value
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigValue.GetFloat">func (ConfigValue) <a>GetFloat</a>
+					<a class="permalink" href="#ConfigValue.GetFloat">¶</a>
+				</h3>
+				<pre>func (cfg <a href="#ConfigValue">ConfigValue</a>) GetFloat() (float, <a>error</a>)</pre>
+				<p>
+GetFloat gets float value from the value received from GetInterfaceValue
+</p>
+<p>
+Returns:
+1. float value : float
+</p>
+<pre>returns float value
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigValue.GetInteger">func (ConfigValue) <a>GetInteger</a>
+					<a class="permalink" href="#ConfigValue.GetInteger">¶</a>
+				</h3>
+				<pre>func (cfg <a href="#ConfigValue">ConfigValue</a>) GetInteger() (integer, <a>error</a>)</pre>
+				<p>
+GetInteger gets integer value from the value received from GetInterfaceValue
+</p>
+<p>
+Returns:
+1. integer value : integer
+</p>
+<pre>returns integer value
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigValue.GetJson">func (ConfigValue) <a>GetJson</a>
+					<a class="permalink" href="#ConfigValue.GetJson">¶</a>
+				</h3>
+				<pre>func (cfg <a href="#ConfigValue">ConfigValue</a>) GetJson() (object, <a>error</a>)</pre>
+				<p>
+GetJson gets json value from the value received from GetInterfaceValue
+</p>
+<p>
+Returns:
+1. json value : object
+</p>
+<pre>returns json value
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ConfigValue.GetString">func (ConfigValue) <a>GetString</a>
+					<a class="permalink" href="#ConfigValue.GetString">¶</a>
+				</h3>
+				<pre>func (cfg <a href="#ConfigValue">ConfigValue</a>) GetString() (<a>string</a>, <a>error</a>)</pre>
+				<p>
+GetString gets string value from the value received from GetInterfaceValue
+</p>
+<p>
+Returns:
+1. string value : string
+</p>
+<pre>returns string value
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="Expr">type <a>Expr</a>
+				<a class="permalink" href="#Expr">¶</a>
+			</h2>
+			
+			<pre>type Expr interface {
+    IsExpr()
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="PublisherCfg">type <a>PublisherCfg</a>
+				<a class="permalink" href="#PublisherCfg">¶</a>
+			</h2>
+			<p>
+PublisherCfg context
+</p>
+
+			<pre>type PublisherCfg struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="PublisherCfg.Destroy">func (*PublisherCfg) <a>Destroy</a>
+					<a class="permalink" href="#PublisherCfg.Destroy">¶</a>
+				</h3>
+				<pre>func (pubctx *<a href="#PublisherCfg">PublisherCfg</a>) Destroy()</pre>
+				<p>
+To delete Publisher context
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="PublisherCfg.GetAllowedClients">func (*PublisherCfg) <a>GetAllowedClients</a>
+					<a class="permalink" href="#PublisherCfg.GetAllowedClients">¶</a>
+				</h3>
+				<pre>func (pubctx *<a href="#PublisherCfg">PublisherCfg</a>) GetAllowedClients() ([]<a>string</a>, <a>error</a>)</pre>
+				<p>
+GetAllowedClients gets the names of the clients allowed to get publishers data
+</p>
+<p>
+Returns:
+1. allowed_clients : string array
+</p>
+<pre>array of allowed clients
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="PublisherCfg.GetEndPoints">func (*PublisherCfg) <a>GetEndPoints</a>
+					<a class="permalink" href="#PublisherCfg.GetEndPoints">¶</a>
+				</h3>
+				<pre>func (pubctx *<a href="#PublisherCfg">PublisherCfg</a>) GetEndPoints() (<a>string</a>, <a>error</a>)</pre>
+				<p>
+GetEndPoints for application to fetch Endpoint associated with message bus config
+</p>
+<p>
+Returns:
+1. string
+</p>
+<pre>Endpoints value in string
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="PublisherCfg.GetInterfaceValue">func (*PublisherCfg) <a>GetInterfaceValue</a>
+					<a class="permalink" href="#PublisherCfg.GetInterfaceValue">¶</a>
+				</h3>
+				<pre>func (pubctx *<a href="#PublisherCfg">PublisherCfg</a>) GetInterfaceValue(key <a>string</a>) (*<a href="#ConfigValue">ConfigValue</a>, <a>error</a>)</pre>
+				<p>
+GetInterfaceValue fetch interface value for application to communicate over EII message bus
+</p>
+<p>
+Parameters:
+1. key: string
+</p>
+<pre>Key on which interface value is extracted
+</pre>
+<p>
+Returns:
+1. Config value : ConfigValue object
+</p>
+<pre>Interface value
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="PublisherCfg.GetMsgbusConfig">func (*PublisherCfg) <a>GetMsgbusConfig</a>
+					<a class="permalink" href="#PublisherCfg.GetMsgbusConfig">¶</a>
+				</h3>
+				<pre>func (pubctx *<a href="#PublisherCfg">PublisherCfg</a>) GetMsgbusConfig() (map[<a>string</a>]interface{}, <a>error</a>)</pre>
+				<p>
+GetMsgbusConfig to fetch client msgbus config for application to communicate over EII message bus
+</p>
+<p>
+Returns:
+1. map[string]interface{}
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="PublisherCfg.GetTopics">func (*PublisherCfg) <a>GetTopics</a>
+					<a class="permalink" href="#PublisherCfg.GetTopics">¶</a>
+				</h3>
+				<pre>func (pubctx *<a href="#PublisherCfg">PublisherCfg</a>) GetTopics() ([]<a>string</a>, <a>error</a>)</pre>
+				<p>
+GetTopics gets topics from publisher interface config on which data will be published
+</p>
+<p>
+Returns:
+1. topics : string array
+</p>
+<pre>array of topics
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="PublisherCfg.SetTopics">func (*PublisherCfg) <a>SetTopics</a>
+					<a class="permalink" href="#PublisherCfg.SetTopics">¶</a>
+				</h3>
+				<pre>func (pubctx *<a href="#PublisherCfg">PublisherCfg</a>) SetTopics(topics []<a>string</a>) <a>bool</a></pre>
+				<p>
+SetTopics sets new topic for publisher in publishers interface config
+Parameters:
+1. topics : string array
+</p>
+<pre>array of topics that needs to be set
+</pre>
+<p>
+Returns:
+1. bool value : bool
+</p>
+<pre>true if success, false on failure
+</pre>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ServerCfg">type <a>ServerCfg</a>
+				<a class="permalink" href="#ServerCfg">¶</a>
+			</h2>
+			<p>
+ServerCfg context
+</p>
+
+			<pre>type ServerCfg struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ServerCfg.Destroy">func (*ServerCfg) <a>Destroy</a>
+					<a class="permalink" href="#ServerCfg.Destroy">¶</a>
+				</h3>
+				<pre>func (serverctx *<a href="#ServerCfg">ServerCfg</a>) Destroy()</pre>
+				<p>
+To delete server context
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="ServerCfg.GetAllowedClients">func (*ServerCfg) <a>GetAllowedClients</a>
+					<a class="permalink" href="#ServerCfg.GetAllowedClients">¶</a>
+				</h3>
+				<pre>func (serverctx *<a href="#ServerCfg">ServerCfg</a>) GetAllowedClients() ([]<a>string</a>, <a>error</a>)</pre>
+				<p>
+GetAllowedClients gets the names of the clients allowed to connect to server
+</p>
+<p>
+Returns:
+1. allowed_clients : string array
+</p>
+<pre>array of allowed clients
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ServerCfg.GetEndPoints">func (*ServerCfg) <a>GetEndPoints</a>
+					<a class="permalink" href="#ServerCfg.GetEndPoints">¶</a>
+				</h3>
+				<pre>func (serverctx *<a href="#ServerCfg">ServerCfg</a>) GetEndPoints() (<a>string</a>, <a>error</a>)</pre>
+				<p>
+GetEndPoints for application to fetch Endpoint associated with message bus config
+</p>
+<p>
+Returns:
+1. string
+</p>
+<pre>Endpoints value in string
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ServerCfg.GetInterfaceValue">func (*ServerCfg) <a>GetInterfaceValue</a>
+					<a class="permalink" href="#ServerCfg.GetInterfaceValue">¶</a>
+				</h3>
+				<pre>func (serverctx *<a href="#ServerCfg">ServerCfg</a>) GetInterfaceValue(key <a>string</a>) (*<a href="#ConfigValue">ConfigValue</a>, <a>error</a>)</pre>
+				<p>
+GetInterfaceValue fetch interface value for application to communicate over EII message bus
+</p>
+<p>
+Parameters:
+1. key: string
+</p>
+<pre>Key on which interface value is extracted
+</pre>
+<p>
+Returns:
+1. Config value : ConfigValue object
+</p>
+<pre>Interface value
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="ServerCfg.GetMsgbusConfig">func (*ServerCfg) <a>GetMsgbusConfig</a>
+					<a class="permalink" href="#ServerCfg.GetMsgbusConfig">¶</a>
+				</h3>
+				<pre>func (serverctx *<a href="#ServerCfg">ServerCfg</a>) GetMsgbusConfig() (map[<a>string</a>]interface{}, <a>error</a>)</pre>
+				<p>
+GetMsgbusConfig to fetch client msgbus config for application to communicate over EII message bus
+</p>
+<p>
+Returns:
+1. map[string]interface{}
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="SubscriberCfg">type <a>SubscriberCfg</a>
+				<a class="permalink" href="#SubscriberCfg">¶</a>
+			</h2>
+			<p>
+SubscriberCfg context
+</p>
+
+			<pre>type SubscriberCfg struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="SubscriberCfg.Destroy">func (*SubscriberCfg) <a>Destroy</a>
+					<a class="permalink" href="#SubscriberCfg.Destroy">¶</a>
+				</h3>
+				<pre>func (subctx *<a href="#SubscriberCfg">SubscriberCfg</a>) Destroy()</pre>
+				<p>
+To delete Subscriber context
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="SubscriberCfg.GetEndPoints">func (*SubscriberCfg) <a>GetEndPoints</a>
+					<a class="permalink" href="#SubscriberCfg.GetEndPoints">¶</a>
+				</h3>
+				<pre>func (subctx *<a href="#SubscriberCfg">SubscriberCfg</a>) GetEndPoints() (<a>string</a>, <a>error</a>)</pre>
+				<p>
+GetEndPoints for application to fetch Endpoint associated with message bus config
+</p>
+<p>
+Returns:
+1. string
+</p>
+<pre>Endpoints value in string
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="SubscriberCfg.GetInterfaceValue">func (*SubscriberCfg) <a>GetInterfaceValue</a>
+					<a class="permalink" href="#SubscriberCfg.GetInterfaceValue">¶</a>
+				</h3>
+				<pre>func (subctx *<a href="#SubscriberCfg">SubscriberCfg</a>) GetInterfaceValue(key <a>string</a>) (*<a href="#ConfigValue">ConfigValue</a>, <a>error</a>)</pre>
+				<p>
+GetInterfaceValue fetch interface value for application to communicate over EII message bus
+</p>
+<p>
+Parameters:
+1. key: string
+</p>
+<pre>Key on which interface value is extracted
+</pre>
+<p>
+Returns:
+1. Config value : ConfigValue object
+</p>
+<pre>Interface value
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="SubscriberCfg.GetMsgbusConfig">func (*SubscriberCfg) <a>GetMsgbusConfig</a>
+					<a class="permalink" href="#SubscriberCfg.GetMsgbusConfig">¶</a>
+				</h3>
+				<pre>func (subctx *<a href="#SubscriberCfg">SubscriberCfg</a>) GetMsgbusConfig() (map[<a>string</a>]interface{}, <a>error</a>)</pre>
+				<p>
+GetMsgbusConfig to fetch client msgbus config for application to communicate over EII message bus
+</p>
+<p>
+Returns:
+1. map[string]interface{}
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="SubscriberCfg.GetTopics">func (*SubscriberCfg) <a>GetTopics</a>
+					<a class="permalink" href="#SubscriberCfg.GetTopics">¶</a>
+				</h3>
+				<pre>func (subctx *<a href="#SubscriberCfg">SubscriberCfg</a>) GetTopics() ([]<a>string</a>, <a>error</a>)</pre>
+				<p>
+GetTopics gets topics from subscriber interface config on which subscriber receives data
+Returns:
+1. topics : string array
+</p>
+<pre>array of topics
+</pre>
+<p>
+2. error
+</p>
+<pre>Error on failure,  nil on success
+</pre>
+
+				
+				
+				
+			
+				
+				<h3 id="SubscriberCfg.SetTopics">func (*SubscriberCfg) <a>SetTopics</a>
+					<a class="permalink" href="#SubscriberCfg.SetTopics">¶</a>
+				</h3>
+				<pre>func (subctx *<a href="#SubscriberCfg">SubscriberCfg</a>) SetTopics(topics []<a>string</a>) <a>bool</a></pre>
+				<p>
+SetTopics sets new topic for subscriber in subscribers interface config
+Parameters:
+1. topics : string array
+</p>
+<pre>array of topics that needs to be set
+</pre>
+<p>
+Returns:
+1. bool value : bool
+</p>
+<pre>true if success, false on failure
+</pre>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ValType">type <a>ValType</a>
+				<a class="permalink" href="#ValType">¶</a>
+			</h2>
+			
+			<pre>type ValType <a>int</a></pre>
+
+			
+				
+				<pre>const (
+    <span id="String">String</span> <a href="#ValType">ValType</a> = <a>iota</a>
+    <span id="Int">Int</span>
+    <span id="Array">Array</span>
+    <span id="Json">Json</span>
+    <span id="Boolean">Boolean</span>
+    <span id="Float32">Float32</span>
+)</pre>
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="ValType.String">func (ValType) <a>String</a>
+					<a class="permalink" href="#ValType.String">¶</a>
+				</h3>
+				<pre>func (valType <a href="#ValType">ValType</a>) String() <a>string</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="WatchObj">type <a>WatchObj</a>
+				<a class="permalink" href="#WatchObj">¶</a>
+			</h2>
+			<p>
+WatchObj context
+</p>
+
+			<pre>type WatchObj struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="WatchObj.Watch">func (*WatchObj) <a>Watch</a>
+					<a class="permalink" href="#WatchObj.Watch">¶</a>
+				</h3>
+				<pre>func (watchCtx *<a href="#WatchObj">WatchObj</a>) Watch(key <a>string</a>, callbackFunc goCallbacktype, user_data interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WatchObj.WatchConfig">func (*WatchObj) <a>WatchConfig</a>
+					<a class="permalink" href="#WatchObj.WatchConfig">¶</a>
+				</h3>
+				<pre>func (watchCtx *<a href="#WatchObj">WatchObj</a>) WatchConfig(callbackFunc goCallbacktype, user_data interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WatchObj.WatchInterface">func (*WatchObj) <a>WatchInterface</a>
+					<a class="permalink" href="#WatchObj.WatchInterface">¶</a>
+				</h3>
+				<pre>func (watchCtx *<a href="#WatchObj">WatchObj</a>) WatchInterface(callbackFunc goCallbacktype, user_data interface{})</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WatchObj.WatchPrefix">func (*WatchObj) <a>WatchPrefix</a>
+					<a class="permalink" href="#WatchObj.WatchPrefix">¶</a>
+				</h3>
+				<pre>func (watchCtx *<a href="#WatchObj">WatchObj</a>) WatchPrefix(prefix <a>string</a>, callbackFunc goCallbacktype, user_data interface{})</pre>
+				
+				
+				
+				
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.10.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a>BSD license</a>.<br>
+<a>Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+<!-- TODO(adonovan): load these from <head> using "defer" attribute? -->
+<script type="text/javascript" src="./style/jquery.js.download"></script>
+<script type="text/javascript" src="./style/jquery.treeview.js.download"></script>
+<script type="text/javascript" src="./style/jquery.treeview.edit.js.download"></script>
+
+
+<script>var goVersion = "go1.10";</script>
+<script type="text/javascript" src="./style/godocs.js.download"></script>
+
+
+
+
+</body></html>

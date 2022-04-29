@@ -4,7 +4,6 @@ Working with Video Data
 
 .. include:: ../IEdgeInsights/VideoIngestion/videoingestion-module.rst
 
-
 .. include:: ../IEdgeInsights/VideoAnalytics/videoanalytics-module.rst
 
 .. include:: ../IEdgeInsights/using-video-accelerators-in-ingestionanalytics-containers.rst
@@ -12,6 +11,7 @@ Working with Video Data
 .. include:: ../IEdgeInsights/common/video/UDFLoader/oei-udfloader.rst
 
 .. include:: ../IEdgeInsights/common/video/udfs/oei-sample-udfs.rst
+
 .. include:: ../IEdgeInsights/common/video/udfs/user-defined-function-udf.rst
 
 .. include:: ../IEdgeInsights/Visualizer/native-visualizer-module.rst
@@ -20,8 +20,12 @@ Working with Video Data
 
 .. include:: ../IEdgeInsights/ImageStore/imagestore-module.rst
 
-
 .. include:: ../IEdgeInsights/InfluxDBConnector/influxdbconnector-module.rst
 
+==============================================
+Working with Edge Video Analytics Microservice
+==============================================
+
+.. include:: ../IEdgeInsights/EdgeVideoAnalyticsMicroservice/edge-video-analytics-microservice.rst
 .. 
     Include only Heading level 1 and heading level 2. Level 3 is automatically added.

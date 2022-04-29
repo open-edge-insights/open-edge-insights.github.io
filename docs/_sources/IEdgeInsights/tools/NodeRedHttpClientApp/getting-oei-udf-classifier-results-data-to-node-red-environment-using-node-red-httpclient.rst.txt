@@ -14,8 +14,8 @@ Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED H
    Drag the ``http request`` node of Node-RED's default nodes to your existing workflow.
 
 
-   .. image:: ./images/imagehttprequestnode.png
-      :target: ./images/imagehttprequestnode.png
+   .. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imagehttprequestnode.png
+      :target: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imagehttprequestnode.png
       :alt: images/imagehttprequestnode.png
 
 

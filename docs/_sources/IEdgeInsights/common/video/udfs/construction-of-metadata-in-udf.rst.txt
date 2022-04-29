@@ -1,8 +1,8 @@
 
-``Construction of Metadata in UDF``
----------------------------------------
+Construction of Metadata in UDF
+-------------------------------
 
-If EII Visualizer/WebVisualizer clients are used for visualizing the classified frames, then please follow the metadata guidelines mentioned in **\ ``Metadata Structure``\ ** in `Visualizer <https://github.com/open-edge-insights/video-native-visualizer/blob/master/README.md>`_ / `WebVisualizer <https://github.com/open-edge-insights/video-web-visualizer/blob/master/README.md>`_ README respectively.
+If OEI Visualizer/WebVisualizer clients are used for visualizing the classified frames, then please follow the metadata guidelines mentioned in **\ ``Metadata Structure``\ ** in `Visualizer <https://github.com/open-edge-insights/video-native-visualizer/blob/master/README.md>`_ / `WebVisualizer <https://github.com/open-edge-insights/video-web-visualizer/blob/master/README.md>`_ README respectively.
 
 **Note**\ : User has to make sure that the data with in meta data should be of type list, tuple, dict or primitive data types (int, float, string or bool). Also, data with in list, tuple, dict
 must contain only primitive data types.

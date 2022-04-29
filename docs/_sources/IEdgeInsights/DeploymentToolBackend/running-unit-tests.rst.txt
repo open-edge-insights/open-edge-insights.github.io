@@ -1,0 +1,63 @@
+
+Running unit tests
+------------------
+
+Unit tests are available under [WORK_DIR]/IEdgeInsights/DeploymentToolBackend/tests directory.
+These can be executed using PyTest. 
+To start with, user needs to install PyTest utility, if not already done.
+
+Run the below command to install PyTest:
+
+.. code-block:: sh
+
+   $ pip3 install --user pytest
+
+User also need to configure tests/config.ini with various values needed for the test.
+
+For example:
+
+.. code-block:: sh
+
+   [backend]
+   # IP address of the machine where backend is running
+   ip = 127.0.0.1
+
+   # Port at which backend is running. Please refer to the corresponding
+   # docker-compose.yml to get the port value. Default value is 5100
+   port = 5100
+
+   # Backend login credentials.
+   # Please refer to the correspnding creds.json to know the credentails.
+   username = admin
+   password = admin@123
+
+   [deploy_target]
+   # IP address of the machine where the remote deployment will be made.
+   ip = 10.10.1.1
+
+   # Credentails for the remote machine
+   username = testuser
+   password = testpassword
+
+   # Directory path in the remote machine, where the deployment files will be copied.
+   dir = /home/testuser/deploy
+
+   # Docker image names of the services that will be copied to the remote machine.
+   # At least one image name need to be specified
+   images = ["openedgeinsights/ia_configmgr_agent:3.0"]
+
+To run the unit tests, execute the following commands:
+
+.. code-block:: sh
+
+   $ cd [WORK_DIR]/IEdgeInsights/DeploymentToolBackend/tests
+   # pytest -v .
+
+You may also run the tests individually. For e.g:
+
+.. code-block:: sh
+
+   $ pytest -v test_basic.py
+   # pytest -v test_build_deploy.py
+
+More info on PyTest is available at `https://docs.pytest.org/en/6.2.x/contents.html <https://docs.pytest.org/en/6.2.x/contents.html>`_

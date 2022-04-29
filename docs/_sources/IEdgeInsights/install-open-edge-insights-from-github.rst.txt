@@ -493,6 +493,7 @@ The list of pre-built container images that are accessible at https://hub.docker
   * openedgeinsights/ia_influxdbconnector
   * openedgeinsights/ia_rest_export
   * openedgeinsights/ia_opcua_export
+  * openedgeinsights/ia_zmq_broker
 
 * **Video pipeline images**
 

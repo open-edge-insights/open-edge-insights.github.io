@@ -2,42 +2,19 @@
 Release Notes
 #############
 
-********
-OEI v3.0
-********
-Open Edge Insights (OEI) v3.0 is a major release from the previous release of v2.6.x. In this open-source release, the following features have been added and dropped. In addition to that, many small fixes and general improvements are also included this release.
+**********
+EII v2.6.3
+**********
 
-New Features
-============
+EII v2.6.3 is a bugfix release on top of EII v2.6.2 release.
 
-* Web Deployment Tool - A GUI-based tool to facilitate the OEI configuration and deployment for single and multiple video streams
-* Restructured the OEI provisioning flow - Containerized OEI provisioning step to make the OEI deployment fully containerized
-* NodeRED integration - Exposes the GET interface from the Rest Data Export service to facilitate the NodeRED integration
-* Repackaging the OEI core libs (C/C++, Python, Golang) - Provides an easy integration in the existing container ecosystems like Tibco, Edgex, etc.
-* Enable Image ingestion support in OpenCV ingestor - The Video Ingestion service is enabled to support image ingestion
-* Supporting C++ OEI MessageBus wrapper APIS for easy integration of Realsense like cameras - Added C++ message bus wrappers
-* Jupyter Notebook Visual Studio Code plugin for Python UDFs development - Enhances the developer experience by allowing you to access Jupyter Notebook in VSCode
-* Web Visualizer improvements - Optimized the network bandwidth consumption with multiple streams visualization
-* OneAPI based UDF using the DPCPP compiler - Enabled blur UDF to demonstrate oneAPI based UDF integration
-* Support edit options for the multi-instance video pipeline configs - Allows you to have backup of the multi-instance deployment configs
-* Supporting Video Analytics Serving based OEI service - Uses the common Edge Video Analytics Microservice (EVAM) to run in the OEI context
-* ML optimizations for the Time-series pipeline - Optimization by using the Scikit-learn-intelex instead of the daal4py package
-* Rebranding of Edge Insights for Industrial (EII) as Open Edge Insights (OEI)
+Fixes
+=====
 
-Dropped Features
-================
-
-The following features have been dropped in OEI v3.0 release:
-
-* docker-compose support to do multi-node deployment (Helm charts way of multi-node deployment on k8s cluster to be continued)
-* ELK (Elasticsearch, Logstash, and Kibana) integration with OEI is discontinued
-
-Known Issues
-============
-
-* Grafana video use case helm chart is not supported.
-* EVAM helm chart is not supported.
-* Python Samples for Alpine is not supported.
+* Fixed build failure and rfc_classifier UDF crash issues for kapacitor service
+* ELK (Elasticsearch, Logstash, and Kibana) integration with EII is discontinued
+* General security fixes has been applied
+* Minor README updates
 
 **********
 EII v2.6.2
@@ -45,7 +22,9 @@ EII v2.6.2
 
 EII v2.6.2 is a bugfix release on top of EII v2.6.1 release.
 
-.. note:: We recommend EII users (customers) using `EII ELK feature (https://github.com/open-edge-insights/eii-core/tree/v2.6.1/build/remote_logging#eii-distributed-services-centralized-logging-using-elk)`_ to upgrade to this version.
+.. note:: 
+
+   We recommend EII users (customers) using `EII ELK feature <https://github.com/open-edge-insights/eii-core/tree/v2.6.1/build/remote_logging#eii-distributed-services-centralized-logging-using-elk>`_ to upgrade to this version.
 
 Fixes
 =====
@@ -54,6 +33,7 @@ Fixes
   to use the recommended ones as per https://www.elastic.co/blog/new-elasticsearch-and-logstash-releases-upgrade-apache-log4j2 
   where log4j package has been updated to latest version
 * Minor README updates
+
 
 **********
 EII v2.6.1
@@ -117,8 +97,8 @@ Features
 Known Issues
 ============
 
-* Encoding cannot be enabled with native PCL udf
-* NativePCLIngestion CustomUDF throws warnings while processing rs2 depth frames
+#. Encoding cannot be enabled with native PCL udf	
+#. NativePCLIngestion CustomUDF throws warnings while processing rs2 depth frames
 
 **********
 EII v2.5.3
@@ -128,7 +108,7 @@ EII v2.5.3 is a bugfix release on top of EII v2.5.2 release.
 
 .. note:: 
 
-   We recommend EII users (customers) using `EII ELK feature` (https://github.com/open-edge-insights/eii-core/tree/v2.5.2/build/remote_logging#eii-distributed-services-centralized-logging-using-elk) to upgrade to this version.
+   We recommend EII users (customers) using `EII ELK feature <https://github.com/open-edge-insights/eii-core/tree/v2.5.2/build/remote_logging#eii-distributed-services-centralized-logging-using-elk>`_ to upgrade to this version.
 
 Fixes
 =====

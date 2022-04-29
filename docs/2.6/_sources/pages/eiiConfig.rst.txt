@@ -1,57 +1,83 @@
 
-****************************
-OEI Configuration Management
-****************************
+=============================
+EII Configuration Management
+=============================
 
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/configmgr.rst
+etcd
+=====
 
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/configmgr-installation.rst
+EII uses etcd (https://etcd.io/) for configuration management. etcd acts as a distributed key-value store for distributed systems. EII applications will contact etcd on startup and read their configurations as set by the user using the provisioning step/etcd UI. Because etcd is distributed, applications can receive their configuration on any node in the etcd cluster, regardless of where they might be deployed. 
 
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/using-system-grpc.rst
+.. include:: ../IEdgeInsights/common/libs/ConfigMgr/configmgr-.rst
 
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/compilation.rst
+.. include:: ../IEdgeInsights/EtcdUI/etcd-ui-service.rst
 
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/generating-documentation.rst
+.. figure:: image/fig_6_3_2.png
+        :scale: 80%
+        :align: center 
 
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/packaging.rst
+Select **etcdkeeper** directory
 
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/install-configmgr-with-python-bindings-go-bindings-examples-test-suits-and-debug-build.rst
+Tool to Generate Configuration Management UI Service
+====================================================
+
+By default, after the user provision EII on the edge devices, the configMgr UI service will follow the default configuration on the **eii_config.json**. Below is the example on changing configuration on ConfigMgr UI and how to save the data back to json format. 
+
+#. Browse the ConfigMgr UI Service as mention at EII Configuration Management Web UI Service Section.
+
+    .. figure:: image/fig_6_4.png
+        :scale: 100%
+        :align: center 
+
+#. Perform the changes, below example of changing the filter parameter to using **dummy** filter instead of using the default filter.  
+
+#. For capturing the data back from ETCD Cluster to Json file, run below command
+    
+    $  cd [WORK_DIR]/IEdgeInsights/build/provision/
+    
+    $  ./etcd_capture.sh
+
+#.	
+  Below is the example of  **[WORK_DIR]/IEdgeInsights/build/provision**  before running the script.                                                                                                
+
+    .. figure:: image/fig_6_4_1.png
+      :scale: 100%
+      :align: center
+
+#.	
+  Below is the example of **[WORK_DIR]/IEdgeInsights/build/provision** after running the script, additional one file of etcd_capture_data.json
+    
+    .. figure:: image/fig_6_4_2.png
+      :scale: 100%
+      :align: center 
+
+#. 
+  Below is the comparison between the original eii_config.json and the updated etcd_capture_data.json file.
+
+    .. figure:: image/fig_6_4_3.png
+        :scale: 100%
+        :align: center
+
+.. include:: ../IEdgeInsights/adding-new-eii-service-so-it-gets-picked-up-by-builder.rst
+
+.. include:: ../IEdgeInsights/common/libs/ConfigMgr/configmgr-.rst
+
+.. include:: ../IEdgeInsights/common/libs/ConfigMgr/installation.rst
+
+.. include:: ../IEdgeInsights/common/libs/ConfigMgr/install-configmgr-with-python-bindings-go-bindings-examples-test-suits-and-debug-buil.rst
 
 .. include:: ../IEdgeInsights/common/libs/ConfigMgr/interfaces.rst
-
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/publisher-interface.rst
-
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/subscriber-interface.rst
-
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/server-interface.rst
-
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/client-interface.rst
 
 .. include:: ../IEdgeInsights/common/libs/ConfigMgr/overriding-of-type-and-endpoint.rst
 
 .. include:: ../IEdgeInsights/common/libs/ConfigMgr/broker-usecase.rst
 
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/zmq_tcp-protocol-usecase.rst
+.. include:: ../IEdgeInsights/common/libs/ConfigMgr/zmq-tcp-protocol-usecase.rst
 
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/zmq_ipc-protocol-usecase.rst
+.. include:: ../IEdgeInsights/common/libs/ConfigMgr/zmq-ipc-protocol-usecase.rst
 
 .. include:: ../IEdgeInsights/common/libs/ConfigMgr/running-examples.rst
 
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/cpp-examples.rst
-
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/python-examples.rst
-
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/go-examples.rst
-
 .. include:: ../IEdgeInsights/common/libs/ConfigMgr/running-unit-tests.rst
-
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/creation-of-grpc-zip-file-optional.rst
-
-.. include:: ../IEdgeInsights/common/libs/ConfigMgr/generation-of-python-whl-file-optional.rst 
-
-EtcdUI
-######
-
-.. include:: ../IEdgeInsights/EtcdUI/README.rst
 
 .. include:: ./api_config.rst

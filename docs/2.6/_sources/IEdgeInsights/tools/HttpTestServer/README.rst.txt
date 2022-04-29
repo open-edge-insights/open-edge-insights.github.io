@@ -1,6 +1,6 @@
 
-``HttpTestServer``
-======================
+HttpTestServer
+==============
 
 HttpTestServer runs a simple HTTP Test server with security being optional.
 

@@ -1,2 +1,132 @@
 
-.. include:: ../IEdgeInsights/RestDataExport/restdataexport-service.rst
+.. include:: ../IEdgeInsights/RestDataExport/restdataexport.rst
+
+
+The following figure illustrates the block diagram for the component.
+
+.. figure:: image/restexport_block.png
+    :scale: 50 %
+    :align: center
+
+
+RestExport POST Request Pipeline
+--------------------------------
+
+.. figure:: image/post-request.png
+    :scale: 50 %
+    :align: center
+
+
+RestExport Get Request Pipeline
+-------------------------------
+
+.. figure:: image/get-request.png
+    :scale: 50 %
+    :align: center
+
+
+RestExport APIs
+---------------
+
+The RestExport API source code is found in **[WORK_DIR]/rest_export/RestExport.go**. It is responsible for reading the RestExport configuration and managing the lifecycle of the RestExport pipeline.
+
+.. figure:: image/restexport-config.png
+    :scale: 50 %
+    :align: center
+
+
+RestExport POST Request API
+---------------------------
+
+Sample POST request API:
+
+**POST /metadata**
+
+Example request
+
+.. code-block::
+
+    POST /metadata HTTP/1.1
+    Host: localhost:8082
+    Accept: application/json
+
+Example response:
+
+.. code-block::
+
+    HTTP/1.1 200 OK
+    Vary: Accept
+    Content-Type: application/json
+
+    [{
+        "channel":3,
+        "topic":"camera1_stream_results",
+        "encoding_level":100,
+        "defects": "[]",
+        "encoding_type":"jpg",
+        "height":1200,
+        "width":1920,
+        "img_handle": "b7aa16b8",
+        "user_data":1
+    }]
+
+**Request Headers**
+
+Accept - application/json, plaintext
+
+Authorization - TLS based authentication
+
+**Response Headers**
+
+Content-Type - application/json, plaintext
+
+**Status Codes**
+
+200 OK - no error
+
+RestExport GET Request API
+--------------------------
+
+Sample GET request API:
+
+**GET /image**
+
+Example request:
+
+.. code-block::
+
+    GET /image HTTP/1.1
+    Host: localhost:8084
+    Accept: plaintext
+
+Example response:
+
+.. code-block::
+
+    HTTP/1.1 200 OK
+    Vary: Accept
+    Content-Type: plaintext
+
+    [
+    "01a3b9e4"
+    ]
+
+**Request Headers**
+
+Accept - plaintext
+
+Authorization - TLS based authentication
+
+**Response Headers**
+
+Content-Type - plaintext
+
+**Status Codes**
+
+200 OK - no error
+
+.. include:: ../IEdgeInsights/RestDataExport/configuration.rst
+
+.. include:: ../IEdgeInsights/RestDataExport/service-bring-up.rst
+
+.. include:: ../IEdgeInsights/RestDataExport/faqs.rst

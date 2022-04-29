@@ -1,41 +1,23 @@
-###########
-Message Bus
-###########
+##############################################
+ EII Message Bus
+##############################################
 
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/message-bus.rst
+.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/eii-message-bus.rst
+
 .. include:: ../IEdgeInsights/common/libs/EIIMessageBus/dependency-installation.rst
+
 .. include:: ../IEdgeInsights/common/libs/EIIMessageBus/compilation.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/generating-documentation.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/potential-compilation-issues.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/packaging.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/a-note-on-alpine-apk-packaging.rst
+
 .. include:: ../IEdgeInsights/common/libs/EIIMessageBus/installation.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/install-python-binding.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/install-golang-binding.rst
+
 .. include:: ../IEdgeInsights/common/libs/EIIMessageBus/running-unit-tests.rst
+
 .. include:: ../IEdgeInsights/common/libs/EIIMessageBus/configuration.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/zeromq-ipc-configuration.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/zeromq-tcp-configuration.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/publishers.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/subscribers.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/services.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/requesters.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/using-zap-authentication.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/additional-zeromq-configuration-properties.rst
+
 .. include:: ../IEdgeInsights/common/libs/EIIMessageBus/example-usage.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/c-examples.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/publisher-many-example.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/python-examples.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/go-examples.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/running-go-examples-without-installing.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/brokered-publishsubscribe.rst
+
 .. include:: ../IEdgeInsights/common/libs/EIIMessageBus/security.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/using-only-curvezmq-encryption.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/publishsubscribe.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/requestresponse.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/using-zap-authentication-1.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/disabling-security.rst
+
 .. include:: ../IEdgeInsights/common/libs/EIIMessageBus/known-issues.rst
-.. include:: ../IEdgeInsights/common/libs/EIIMessageBus/generation-of-python-whl-file-optional.rst    
 
 .. include:: ./api_msgbus.rst

@@ -1,5 +1,5 @@
 API Documentation
------------------
+=================
 
 * `C API  <../api/c/eiimsgbus/pages.html>`_
 

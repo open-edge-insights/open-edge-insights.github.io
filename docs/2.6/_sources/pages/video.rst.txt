@@ -1,27 +1,76 @@
-=======================
+========================
 Working with Video Data
-=======================
+========================
 
 .. include:: ../IEdgeInsights/VideoIngestion/videoingestion-module.rst
 
+.. include:: ../IEdgeInsights/VideoIngestion/configuration.rst
 
 .. include:: ../IEdgeInsights/VideoAnalytics/videoanalytics-module.rst
 
+.. include:: ../IEdgeInsights/VideoAnalytics/configuration.rst
+
 .. include:: ../IEdgeInsights/using-video-accelerators-in-ingestionanalytics-containers.rst
 
-.. include:: ../IEdgeInsights/common/video/UDFLoader/oei-udfloader.rst
+User Defined Function (UDF)
+============================
 
-.. include:: ../IEdgeInsights/common/video/udfs/oei-sample-udfs.rst
-.. include:: ../IEdgeInsights/common/video/udfs/user-defined-function-udf.rst
+An UDF is a chunk of user code that acts as a filter, preprocessor, or classifier for a given data input coming from the EII. The User Defined Function (UDF) Loader Library provides a common API for loading C++ and Python UDFs.
+
+The library itself is written in C++ and provides an abstraction layer for loading and calling UDFs. Additionally, the library defines a common interface inheritable by all UDFs (whether written in C++ or Python).
+
+The overall block diagram for the library is shown in the following figure.
+
+.. figure:: image/fig_9_4.png
+    :scale: 100%
+    :align: center
+
+    User-Defined Function Loader Library Block Design
+
+In this case, the VideoIngestion component is also able to execute the video data classifier algorithm by including the classifier UDF into the VideoIngestion configuration. By defining the Classifier UDF in the VideoIngestion component, the VideoAnalytics component become optional
+
+.. include:: ../IEdgeInsights/common/video/UDFLoader/eii-udfloader.rst
+
+.. include:: ../IEdgeInsights/common/video/UDFLoader/dependency-installation.rst
+
+.. include:: ../IEdgeInsights/common/video/UDFLoader/compilation.rst
+
+.. include:: ../IEdgeInsights/common/video/UDFLoader/installation.rst
+
+.. include:: ../IEdgeInsights/common/video/UDFLoader/running-unit-tests.rst
+
+.. include:: ../IEdgeInsights/common/video/udfs/introduction.rst
+
+.. include:: ../IEdgeInsights/common/video/udfs/udf-configuration.rst
+
+.. include:: ../IEdgeInsights/common/video/udfs/udf-writing-guide.rst
+
+.. include:: ../IEdgeInsights/common/video/udfs/sample-udfs.rst
+
+.. include:: ../IEdgeInsights/common/video/udfs/construction-of-metadata-in-udf.rst
+
+.. include:: ../IEdgeInsights/common/video/udfs/chaining-of-udfs.rst
+
+.. include:: ../IEdgeInsights/custom-udfs.rst
 
 .. include:: ../IEdgeInsights/Visualizer/native-visualizer-module.rst
 
+.. include:: ../IEdgeInsights/Visualizer/steps-to-build-and-run-visualizer.rst
+
+.. include:: ../IEdgeInsights/Visualizer/using-labels.rst
+
+.. include:: ../IEdgeInsights/Visualizer/metadata-structure.rst
+
 .. include:: ../IEdgeInsights/WebVisualizer/web-visualizer-module.rst
+
+.. include:: ../IEdgeInsights/WebVisualizer/steps-to-build-and-run-web-visualizer.rst
+
+.. include:: ../IEdgeInsights/WebVisualizer/using-labels.rst
 
 .. include:: ../IEdgeInsights/ImageStore/imagestore-module.rst
 
+.. include:: ../IEdgeInsights/ImageStore/configuration.rst
 
 .. include:: ../IEdgeInsights/InfluxDBConnector/influxdbconnector-module.rst
 
-.. 
-    Include only Heading level 1 and heading level 2. Level 3 is automatically added.
+.. include:: ../IEdgeInsights/InfluxDBConnector/configuration.rst

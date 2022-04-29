@@ -77,9 +77,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="min-system-requirements.html">Minimum system requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="running.html">Run Open Edge Insights</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="running.html#about-open-edge-insights">About Open Edge Insights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#minimum-system-requirements">Minimum system requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="running.html#task-1-get-oei-codebase-from-github">Task 1: Get OEI codebase from GitHub</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#task-2-install-prerequisites">Task 2: Install prerequisites</a><ul>
@@ -106,6 +105,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#web-deployment-tool">Web Deployment Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#video-pipeline-analytics">Video pipeline analytics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="running.html#enable-camera-based-video-ingestion">Enable camera-based video ingestion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#use-video-accelerators-in-ingestion-and-analytics-containers">Use video accelerators in ingestion and analytics containers</a><ul>
@@ -123,14 +123,16 @@
 <li class="toctree-l3"><a class="reference internal" href="running.html#with-k8s-orchestrator">With k8s orchestrator</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#oei-tools">OEI tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#oei-uninstaller">OEI Uninstaller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#debugging-options">Debugging options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#web-deployment-tool">Web Deployment Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#troubleshooting-guide">Troubleshooting guide</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#eii-v2-6-3">EII v2.6.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fixes">Fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#oei-v3-0">OEI v3.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#new-features">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#dropped-features">Dropped Features</a></li>
@@ -138,7 +140,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#eii-v2-6-2">EII v2.6.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#fixes">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#eii-v2-6-1">EII v2.6.1</a><ul>
@@ -147,15 +149,15 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#eii-v2-6">EII v2.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Known Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Known Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -163,7 +165,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id4">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -337,21 +339,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#oei-udfloader">OEI UDFLoader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#oei-sample-udfs">OEI Sample UDFs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#udf-configuration">UDF Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#udf-writing-guide">UDF Writing Guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#sample-udfs">Sample UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#native-udfs">Native UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#python-udfs">Python UDFs</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#chaining-of-udfs">Chaining of UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#combination-of-udfs-with-ingestors">Combination of UDFs with ingestors</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#native-visualizer-module">Native Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-visualizer">Steps to build and run visualizer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="video.html#using-labels">Using Labels</a></li>
@@ -360,21 +348,30 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#web-visualizer-module">Web Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id32">Using Labels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#id36">Metadata Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id28">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#id32">Metadata Structure</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#imagestore-module">ImageStore Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id37">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id33">Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id39">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id35">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="video.html#working-with-edge-video-analytics-microservice">Working with Edge Video Analytics Microservice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="video.html#edge-video-analytics-microservice">Edge Video Analytics Microservice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#build-the-base-image">Build the base image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#run-the-base-image">Run the base image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#run-evam-in-oei-mode">Run EVAM in OEI mode</a></li>
 </ul>
 </li>
 </ul>
@@ -480,7 +477,24 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#http-get-api-of-rde">HTTP GET API of RDE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#get-the-classifier-results-metadata">Get the classifier results metadata</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="restdata.html#request-to-get-metadata">Request to get metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#get-images-using-the-image-handle">Get images using the image handle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="restdata.html#request-to-get-images">Request to get images</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#prerequisites-for-running-restdataexport-to-post-on-http-servers">Prerequisites for running RestDataExport to POST on HTTP Servers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#launch-restdataexport-service">Launch RestDataExport service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#setting-environment-proxy-settings">Setting environment proxy settings</a></li>
+</ul>
+</li>
 </ul>
 <p><span class="caption-text">Additional Info:</span></p>
 <ul>
@@ -535,6 +549,12 @@
 <li class="toctree-l3"><a class="reference internal" href="tools.html#usage">Usage</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#noderedhttpclientapp">NodeRedHttpClientApp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#setting-up-nodered">Setting Up NodeRed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#getting-oei-udf-classifier-results-data-to-node-red-environment-using-node-red-httpclient">Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#sample-workflow">Sample Workflow</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#software-trigger-utilily-pre-requisites">Software Trigger Utilily pre-requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#configuration-file">Configuration file</a></li>
@@ -543,7 +563,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id44">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id45">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
@@ -605,7 +625,7 @@
   <li>Release Notes</li>
 
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/pages/release.rst" class="fa fa-github"> Edit on GitHub</a>
+            <a href="../_sources/pages/release.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -615,6 +635,19 @@
              
   <section id="release-notes">
 <h1>Release Notes<a class="headerlink" href="#release-notes" title="Permalink to this headline">¶</a></h1>
+<section id="eii-v2-6-3">
+<h2>EII v2.6.3<a class="headerlink" href="#eii-v2-6-3" title="Permalink to this headline">¶</a></h2>
+<p>EII v2.6.3 is a bugfix release on top of EII v2.6.2 release.</p>
+<section id="fixes">
+<h3>Fixes<a class="headerlink" href="#fixes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Fixed build failure and rfc_classifier UDF crash issues for kapacitor service</p></li>
+<li><p>ELK (Elasticsearch, Logstash, and Kibana) integration with EII is discontinued</p></li>
+<li><p>General security fixes has been applied</p></li>
+<li><p>Minor README updates</p></li>
+</ul>
+</section>
+</section>
 <section id="oei-v3-0">
 <h2>OEI v3.0<a class="headerlink" href="#oei-v3-0" title="Permalink to this headline">¶</a></h2>
 <p>Open Edge Insights (OEI) v3.0 is a major release from the previous release of v2.6.x. In this open-source release, the following features have been added and dropped. In addition to that, many small fixes and general improvements are also included this release.</p>
@@ -624,7 +657,17 @@
 <li><p>Web Deployment Tool - A GUI-based tool to facilitate the OEI configuration and deployment for single and multiple video streams</p></li>
 <li><p>Restructured the OEI provisioning flow - Containerized OEI provisioning step to make the OEI deployment fully containerized</p></li>
 <li><p>NodeRED integration - Exposes the GET interface from the Rest Data Export service to facilitate the NodeRED integration</p></li>
-<li><p>Repackaging the OEI core libs (C/C++, Python, Golang) - Provides an easy integration in the existing container ecosystems like Tibco, Edgex, etc.</p></li>
+<li><p>Repackaging the OEI core libs (C/C++, Python, Golang) - Provides an easy integration in the existing container ecosystems like Tibco, Edgex, etc.</p>
+<ul>
+<li><p>Ubuntu python wheel packages are available at below locations:</p>
+<ul>
+<li><p>Message Bus: <a class="reference external" href="https://pypi.org/project/eii-messagebus/">https://pypi.org/project/eii-messagebus/</a></p></li>
+<li><p>Config Manager: <a class="reference external" href="https://pypi.org/project/eii-configmanager/">https://pypi.org/project/eii-configmanager/</a></p></li>
+</ul>
+</li>
+<li><p>C/C++ libs of Message Bus, Config Manager and Utils are available for Ubuntu and Alpine at <a class="reference external" href="https://github.com/open-edge-insights/eii-manifests/releases/tag/v3.0">https://github.com/open-edge-insights/eii-manifests/releases/tag/v3.0</a></p></li>
+</ul>
+</li>
 <li><p>Enable Image ingestion support in OpenCV ingestor - The Video Ingestion service is enabled to support image ingestion</p></li>
 <li><p>Supporting C++ OEI MessageBus wrapper APIS for easy integration of Realsense like cameras - Added C++ message bus wrappers</p></li>
 <li><p>Jupyter Notebook Visual Studio Code plugin for Python UDFs development - Enhances the developer experience by allowing you to access Jupyter Notebook in VSCode</p></li>
@@ -658,10 +701,10 @@
 <p>EII v2.6.2 is a bugfix release on top of EII v2.6.1 release.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We recommend EII users (customers) using <a href="#id5"><span class="problematic" id="id6">`EII ELK feature (https://github.com/open-edge-insights/eii-core/tree/v2.6.1/build/remote_logging#eii-distributed-services-centralized-logging-using-elk)`_</span></a> to upgrade to this version.</p>
+<p>We recommend EII users (customers) using <a class="reference external" href="https://github.com/open-edge-insights/eii-core/tree/v2.6.1/build/remote_logging#eii-distributed-services-centralized-logging-using-elk">EII ELK feature</a> to upgrade to this version.</p>
 </div>
-<section id="fixes">
-<h3>Fixes<a class="headerlink" href="#fixes" title="Permalink to this headline">¶</a></h3>
+<section id="id1">
+<h3>Fixes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>[SECURITY] Updated the docker image version of ELK (Elasticsearch, Logstash and Kibana) stack
 to use the recommended ones as per <a class="reference external" href="https://www.elastic.co/blog/new-elasticsearch-and-logstash-releases-upgrade-apache-log4j2">https://www.elastic.co/blog/new-elasticsearch-and-logstash-releases-upgrade-apache-log4j2</a>
@@ -740,8 +783,8 @@ OpenVINO data runtime image 2021.4.1)</p></li>
 </li>
 </ul>
 </section>
-<section id="id1">
-<h3>Known Issues<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<section id="id2">
+<h3>Known Issues<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Encoding cannot be enabled with native PCL udf</p></li>
 <li><p>NativePCLIngestion CustomUDF throws warnings while processing rs2 depth frames</p></li>
@@ -753,10 +796,10 @@ OpenVINO data runtime image 2021.4.1)</p></li>
 <p>EII v2.5.3 is a bugfix release on top of EII v2.5.2 release.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>We recommend EII users (customers) using <cite>EII ELK feature</cite> (<a class="reference external" href="https://github.com/open-edge-insights/eii-core/tree/v2.5.2/build/remote_logging#eii-distributed-services-centralized-logging-using-elk">https://github.com/open-edge-insights/eii-core/tree/v2.5.2/build/remote_logging#eii-distributed-services-centralized-logging-using-elk</a>) to upgrade to this version.</p>
+<p>We recommend EII users (customers) using <a class="reference external" href="https://github.com/open-edge-insights/eii-core/tree/v2.5.2/build/remote_logging#eii-distributed-services-centralized-logging-using-elk">EII ELK feature</a> to upgrade to this version.</p>
 </div>
-<section id="id2">
-<h3>Fixes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<section id="id4">
+<h3>Fixes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>[SECURITY] Updated the docker image version of ELK (Elasticsearch, Logstash and Kibana) stack
 to use the recommended ones as per <a class="reference external" href="https://www.elastic.co/blog/new-elasticsearch-and-logstash-releases-upgrade-apache-log4j2">https://www.elastic.co/blog/new-elasticsearch-and-logstash-releases-upgrade-apache-log4j2</a>
@@ -768,8 +811,8 @@ where log4j package has been updated to latest version</p></li>
 <section id="eii-v2-5-2">
 <h2>EII v2.5.2<a class="headerlink" href="#eii-v2-5-2" title="Permalink to this headline">¶</a></h2>
 <p>EII v2.5.2 is a bugfix release on top of EII v2.5.1 release</p>
-<section id="id3">
-<h3>Bug fixes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<section id="id5">
+<h3>Bug fixes<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Fixed ZMQ ZAP issue</p></li>
 <li><p>Fixed “REQUEST_BUSY” issues seen with OpenVINO python and C++ inference
@@ -793,8 +836,8 @@ OpenVINO data runtime image 2021.4.1)</p></li>
 </section>
 <section id="eii-v2-5">
 <h2>EII v2.5<a class="headerlink" href="#eii-v2-5" title="Permalink to this headline">¶</a></h2>
-<section id="id4">
-<h3>Features<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<section id="id6">
+<h3>Features<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>Added eis-messagebus-go repo for EII-EdgeX integration</p></li>
 <li><p>Added pre-requisite installer script (to install docker-ce, docker-compose etc.,) and EII uninstaller script</p></li>

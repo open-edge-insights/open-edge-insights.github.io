@@ -602,6 +602,7 @@ The list of pre-built container images that are accessible at https://hub.docker
   * openedgeinsights/ia_influxdbconnector
   * openedgeinsights/ia_rest_export
   * openedgeinsights/ia_opcua_export
+  * openedgeinsights/ia_zmq_broker
 
 * **Video pipeline images**
 
@@ -1153,11 +1154,23 @@ The following table displays useful docker-compose and docker commands:
 Web Deployment Tool
 -------------------
 
-You can use the Web Deployment Tool's GUI to provision video use cases. To learn about launching and using the Web Deployment Tool, refer to the following:
+Web Deployment Tool is a GUI Tool to facilitate OEI configuration and deployment for single and multiple video streams. 
+
+Web Deployment Tool as of now 
 
 
-* `Web Deployment Tool back end ReadMe <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-deployment-tool-backend/-/blob/master/README.md>`_
-* `Web Deployment Tool front end ReadMe <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-deployment-tool-frontend/-/blob/master/README.md>`_
+* Offers GUI interface to try out EII stack for video use case
+* Supports multi-instance feature of VI/VA services​
+* Supports an easy way to try/modify existing UDFs or add in new UDFs​
+* Supports preview to visualize the analysed frames​
+* Deployment of the tested configuration on other remote nodes
+  ​
+
+To learn more about launching and using the Web Deployment Tool, refer to the following:
+
+
+* `Web Deployment Tool backend <https://github.com/open-edge-insights/eii-deployment-tool-backend/blob/master/README.md>`_
+* `Web Deployment Tool frontend <https://github.com/open-edge-insights/eii-deployment-tool-frontend/blob/master/README.md>`_
 
 Troubleshooting guide
 ---------------------

@@ -1,56 +1,81 @@
 
-Edge Video Analytics Microservice for EII
-=========================================
+Contents
+========
 
-The Edge Video Analytics Microservice combines the video ingestion and analytics
-capabilities provided by EII visual ingestion and analytics modules.
-This directory provides the Intel® Deep Learning Streamer(Intel® DL Streamer) pipelines
+
+* `Contents <#contents>`__
+
+  * `Edge Video Analytics Microservice for OEI <#edge-video-analytics-microservice-for-oei>`__
+  * `Prerequisites <#prerequisites>`__
+  * `Run the containers <#run-the-containers>`__
+  * `Configuration <#configuration>`__
+
+    * `Config section <#config-section>`__
+    * `Interfaces section <#interfaces-section>`__
+
+Edge Video Analytics Microservice for OEI
+-----------------------------------------
+
+The Edge Video Analytics Microservice (EVAM) combines video ingestion and analytics
+capabilities provided by Open Edge Insights (OEI) visual ingestion and analytics modules.
+This directory provides the Intel® Deep Learning Streamer (Intel® DL Streamer) pipelines
 to perform object detection on an input URI source and send the ingested frames and
-inference results using the EII MsgBus Publisher. It also provides a Docker compose
-and config file to use Edge Video Analytics Microservice with Edge Insights for Industrial
-software stack.
+inference results using the MsgBus Publisher. It also provides a Docker compose
+and config file to use EVAM with the Open Edge Insights software stack.
 
-Pre-requisites
---------------
+.. note::  In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.
 
-Fetch the EII source code by following the steps mentioned below:
 
-.. code-block:: sh
+Prerequisites
+-------------
 
-   repo init -u "https://github.com/open-edge-insights/eii-manifests.git"
+As a prerequisite for EVAM, complete the following steps:
 
-   repo sync
 
-For more details, refer `here <https://github.com/open-edge-insights/eii-manifests>`_.
+#. 
+   Run the following commands to get the OEI source code:
 
-Complete the pre-requisite of provisioning the EII stack by referring to
-`README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ 
+   .. code-block:: sh
 
-Since the model files are large in size, they are not part of the repo.
-Download the required model files to be used for the pipeline mentioned in `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_
-by following the first four steps mentioned in `README <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/README.md#running-the-image>`_.
+       repo init -u "https://github.com/open-edge-insights/eii-manifests.git"
+       repo sync
 
-Run the following commands to set the environment, build ia_configmgr_agent container
-and copy models to the required directory:
+   ..
 
-.. code-block:: sh
+      **Note:** For more details, refer `here <https://github.com/open-edge-insights/eii-manifests>`_.
 
-   cd [WORK_DIR]/IEdgeInsights/build
 
-   # Execute the builder.py script
-   python3 builder.py -f usecases/evas.yml
+#. 
+   Complete the prerequisite for provisioning the OEI stack by referring to the
+   `README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_.
 
-   # Create some necessary items for the service
-   sudo mkdir -p /opt/intel/eii/models/
+#. Download the required model files to be used for the pipeline mentioned in the `README <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/README.md#running-the-image>`_ file by completing step 2 to step 4 as mentioned in the `README <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/README.md#running-the-image>`_.
+   ..
 
-   # Copy the downloaded model files to /opt/intel/eii
-   sudo cp -r models /opt/intel/eii/
+      **Note:** The model files are large and hence they are not part of the repo.
 
-Running
--------
 
-Run the following command to pull the prebuilt EII container images and Edge Video Analytics Microservice
-from Docker Hub and run the containers in the detached mode:
+#. 
+   Run the following commands to set the environment, build the ``ia_configmgr_agent`` container
+   and copy models to the required directory:
+
+   .. code-block:: sh
+
+      cd [WORK_DIR]/IEdgeInsights/build
+
+      # Execute the builder.py script
+      python3 builder.py -f usecases/evas.yml
+
+      # Create some necessary items for the service
+      sudo mkdir -p /opt/intel/eii/models/
+
+      # Copy the downloaded model files to /opt/intel/eii
+      sudo cp -r [downloaded_model_directory]/models /opt/intel/eii/
+
+Run the containers
+------------------
+
+To pull the prebuilt OEI container images and EVAM from Docker Hub and run the containers in the detached mode, run the following command:
 
 .. code-block:: sh
 
@@ -59,24 +84,22 @@ from Docker Hub and run the containers in the detached mode:
 
 .. note:: 
 
-   The pre-built container image for Edge Video Analytics Microservice (https://hub.docker.com/r/intel/edge_video_analytics_microservice)
-   gets downloaded when one runs the docker-compose up -d if the image is not already present on the host system.
+   The prebuilt container image for the `Edge Video Analytics Microservice <https://hub.docker.com/r/intel/edge_video_analytics_microservice>`_
+   gets downloaded when you run the ``docker-compose up -d`` command, if the image is not already present on the host system.
 
 
 Configuration
 -------------
 
-Please see the `edge-video-analytics-microservice/eii/config.json <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file for the configuration of the
-Edge Video Analytics Microservice. The default configuration will start the
-object_detection demo for EII.
+See the `edge-video-analytics-microservice/eii/config.json <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file for the configuration of EVAM. The default configuration will start the
+object_detection demo for OEI.
 
-The config file is divided in two sections listed below:
+The config file is divided into two sections as follows:
 
-Config
-^^^^^^
+Config section
+^^^^^^^^^^^^^^
 
-The table below describes each of the attributes currently
-supported in config section.
+The following table describes the attributes that are supported in the ``config`` section.
 
 .. list-table::
    :header-rows: 1
@@ -84,59 +107,52 @@ supported in config section.
    * - Parameter
      - Description
    * - ``cert_type``
-     - Type of EII certs to be created, must be ``"zmq"`` or ``"pem"``.
+     - Type of OEI certs to be created. This should be ``"zmq"`` or ``"pem"``.
    * - ``source``
-     - Source of the frames, must be ``"gstreamer"`` or ``"msgbus"``.
+     - Source of the frames. This should be ``"gstreamer"`` or ``"msgbus"``.
    * - ``source_parameters``
      - The parameters for the source element. The provided object is the typical parameters.
    * - ``pipeline``
-     - The name of the DL Streamer pipeline to use (should correspond to a directory in the pipelines directory).
+     - The name of the DL Streamer pipeline to use. This should correspond to a directory in the pipelines directory).
    * - ``pipeline_version``
      - The version of the pipeline to use. This typically is a subdirectory of a pipeline in the pipelines directory.
    * - ``publish_frame``
-     - Boolean flag for whether to publish the meta-data and the analyzed frame, or just the meta-data.
+     - The Boolean flag for whether to publish the metadata and the analyzed frame, or just the metadata.
    * - ``model_parameters``
-     - Provides the parameters for the model used for inference.
+     - This provides the parameters for the model used for inference.
 
 
-Interfaces
-^^^^^^^^^^
+Interfaces section
+^^^^^^^^^^^^^^^^^^
 
-In EII mode, the microservice only supports launching a single pipeline and publishing on a
-single topic currently. This means, in the configuration file ("config.json"),
-the single JSON object in the ``Publisher`` list is where the configuration
-resides for the published data. See the `EII documentation <https://github.com/open-edge-insights/eii-core/blob/master/README.md#adding-new-eii-service-so-it-gets-picked-up-by-builder>`_ for more details on
-the structure of this.
+In the OEI mode, currently EVAM only supports launching a single pipeline and publishing on a single topic. This implies that in the configuration file ("config.json"),
+the single JSON object in the ``Publisher`` list is where the configuration resides for the published data. For more details on the structure, refer to the `OEI documentation <https://github.com/open-edge-insights/eii-core/blob/master/README.md#add-oei-services>`_.
 
-The Edge Video Analytics Microservice also supports subscribing and publishing messages/frames
-using the EII_Message_Bus.
-The endpoint details for the EII service you need to subscribe from is to be
-provided in the **Subscribers** section in `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ and the endpoints
-where you need to publish to are to be provided in **Publishers** section in
-`config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_.
+EVAM also supports subscribing and publishing messages or frames using the Message Bus. The endpoint details for the OEI service you need to subscribe from are to be
+provided in the **Subscribers** section in the `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file and the endpoints where you need to publish to are to be provided in **Publishers** section in
+the `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file.
 
-For enabling injection of frames into the GStreamer pipeline obtained from
-EIIMessageBus, please ensure the following changes are made:
+To enable injection of frames into the GStreamer pipeline obtained from Message Bus, ensure to make the following changes:
 
 
 * 
-  The source parameter in `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ is set to msgbus
+  The source parameter in the `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file is set to msgbus
 
   .. code-block:: javascript
 
-       "config": {
-           "source": "msgbus"
-       }
+        "config": {
+            "source": "msgbus"
+        }
 
 * 
   The template of respective pipeline is set to appsrc as source instead of uridecodebin
 
-.. code-block:: javascript
+  .. code-block:: javascript
 
-       {
-           "type": "GStreamer",
-           "template": ["appsrc name=source",
-                        " ! rawvideoparse",
-                        " ! appsink name=destination"
-                       ]
-       }
+         {
+             "type": "GStreamer",
+             "template": ["appsrc name=source",
+                          " ! rawvideoparse",
+                          " ! appsink name=destination"
+                         ]
+         }

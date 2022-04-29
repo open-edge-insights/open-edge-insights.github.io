@@ -1,6 +1,6 @@
 
 Configuration of the tool.
-==========================
+--------------------------
 
 Let us look at the sample configuration
 

@@ -98,7 +98,7 @@ After you sign in to the WDT, complete the following steps to configure and depl
    ..
 
       **Note:** The progress bar indicates the progress of the build.
-      Currently there's no option to stop or cancel a build. If the build fails, click **Start** to retry the build. You can check the build failure reason by checking the build logs.
+      In case you need to cancel the build, click on the **Cancel** button next to the progress bar. If the build fails, click **Start** to retry the build. You can check the build failure reason by checking the build logs.
       To view the build logs, click  **View Logs**. User can select the 'Enable Auto Refresh' option to refresh the logs. The logs are refreshed every 5 seconds. 
 
 
@@ -130,7 +130,7 @@ After you sign in to the WDT, complete the following steps to configure and depl
 #. In the **Remote Machine Detail** section, enter the details of the remote machine and then, click **Deploy**.
    ..
 
-      **Note:** After the deployment is triggered or done, you cannot go back to the **Test** screen or the **Configure** screen. You can either click **Sign out** to sign out or click **Cancel** to go to the *Project selection* screen.
+      **Note:** After the deployment is triggered or done, you cannot go back to the **Test** screen or the **Configure** screen. In case you need to cancel the deployment, click on the **Cancel** button next to the progress indicator. You can also click **Sign out** to sign out or click **Cancel** button in the bottom pane, to go to the *Project selection* screen.
 
 
 #. On the **Deployment Successful** dialog, click **Close**.

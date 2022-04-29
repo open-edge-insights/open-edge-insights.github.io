@@ -2,8 +2,8 @@
    :format: html
 
 
-``Chaining of UDFs``
-------------------------
+Chaining of UDFs
+----------------
 
 One can chain multiple native/python UDFs in the ``udfs`` key. The way chaining
 works here is the output of the UDF listed first would send the modified frame
@@ -12,8 +12,8 @@ and metadata to the subsequent UDF and so on. One such classic example is having
 do both the pre-processing and the classification logic without the need of
 VideoAnalytics service.
 
-``Combination of UDFs with ingestors``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Combination of UDFs with ingestors
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. list-table::
    :header-rows: 1
@@ -29,7 +29,7 @@ VideoAnalytics service.
      - :raw-html-m2r:`<br>`\ Any post-processing UDFs can be used as all\ :raw-html-m2r:`<br>`\ the pre-processing and classification is :raw-html-m2r:`<br>`\ happening in the gstreamer pipeline itself
 
 
-.. note:: \ :
+.. note:: 
    Dummy UDF can also be used for above use cases for testing chaining UDFs
    feature but as such there is no value add as it's a do-nothing UDF.
    In DEV Mode python udfs changes can be tested by restarting containers, no need to rebuild.

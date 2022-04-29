@@ -5,6 +5,7 @@
 * `VideoAnalytics Module <#videoanalytics-module>`__
 
   * `Configuration <#configuration>`__
+  * `Set Securiry Context to Enable Accelerators in helm environment <#updating-security-context-of-videoanalytics-helm-charts-for-enabling-accelerators-in-k8s-environment>`__
 
 VideoAnalytics Module
 =====================
@@ -69,3 +70,38 @@ If ``AppName`` is ``VideoAnalytics``\ , then the app's config would be fetched f
 
 One can use `JSON validator tool <https://www.jsonschemavalidator.net/>`_ for
 validating the app configuration against the above schema.
+
+Updating Security Context Of VideoAnalytics Helm Charts for enabling Accelerators in k8s environment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Please follow the steps to update helm charts for enabling Accelerators in K8s environment
+
+
+* 
+  Open ``EII_HOME_DIR/IEdgeInsights/VideoAnalytics/helm/templates/video-analytics.yaml`` file
+
+* 
+  Update below security context snippet
+
+  .. code-block:: yml
+
+           securityContext:
+             privileged: true
+
+  in the yml file as:
+
+  .. code-block:: yaml
+
+       ...
+       ...
+       ...
+           imagePullPolicy: {{ $global.Values.imagePullPolicy }}
+           securityContext:
+             privileged: true
+           volumeMounts:
+           - name: dev
+             mountPath: /dev
+       ...
+
+
+  * Re-run ``builder.py`` to apply these changes to your deployment helm charts.

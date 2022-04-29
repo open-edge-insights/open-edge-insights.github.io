@@ -1,6 +1,6 @@
 
 To run the tool in zmq_ipc mode
--------------------------------
+===============================
 
 User needs to modify interface section of **\ `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/DiscoverHistory/config.json>`_\ ** as following
 
@@ -13,24 +13,24 @@ User needs to modify interface section of **\ `config.json <https://github.com/o
 
 ----
 
-**NOTE:**
+**NOTE**\ :
 If you want good and bad frames then the query must contain the following parameters:
 
 .. code-block::
 
-    *img_handle
-    *defects
-    *encoding_level
-    *encoding_type
-    *height
-    *width
-    *channel
+   *img_handle
+   *defects
+   *encoding_level
+   *encoding_type
+   *height
+   *width
+   *channel
 
-       Example:
-        "select img_handle, defects, encoding_level, encoding_type,  height, width, channel from camera1_stream_results order by desc limit 10"
+   Example:
+    "select img_handle, defects, encoding_level, encoding_type,  height, width, channel from camera1_stream_results order by desc limit 10"
 
-        or
+    or
 
-        "select * from camera1_stream_results order by desc limit 10"
+    "select * from camera1_stream_results order by desc limit 10"
 
 ----

@@ -1,12 +1,12 @@
-==================
-Open Edge Insights
-==================
+====================================
+Intel® Edge Insights for Industrial
+====================================
 
-Source code for Open Edge Insights is maintained in the `Open Edge Insights GitHub Organization <https://github.com/open-edge-insights>`_.
+Source code for Intel Edge Insights for Industrial is maintained in the `Open Edge Insights GitHub organization <https://github.com/open-edge-insights>`_.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Introduction:
+   :caption: INTRODUCTION:
 
    pages/introduction
    pages/overview
@@ -16,26 +16,26 @@ Source code for Open Edge Insights is maintained in the `Open Edge Insights GitH
 
 .. toctree::
    :maxdepth: 2
-   :caption: Core Libraries:
+   :caption: CORE LIBRARIES:
 
    pages/msgbus
    pages/eiiConfig
    
 .. toctree::
    :maxdepth: 2
-   :caption: Video Analytics Pipeline:
+   :caption: VIDEO ANALYTICS PIPELINE:
 
    pages/video
 
 .. toctree::
    :maxdepth: 2
-   :caption: Time-Series Analytics Pipeline:
+   :caption: TIME-SERIES ANALYTICS PIPELINE:
 
    pages/timeseries
 
 .. toctree::
    :maxdepth: 2
-   :caption: Export Services:
+   :caption: EXPORT SERVICES:
 
    pages/azure
    pages/opcua
@@ -43,7 +43,7 @@ Source code for Open Edge Insights is maintained in the `Open Edge Insights GitH
 
 .. toctree::
    :maxdepth: 2
-   :caption: Additional Info:
+   :caption: ADDITIONAL INFO:
 
    pages/tools
    pages/sample

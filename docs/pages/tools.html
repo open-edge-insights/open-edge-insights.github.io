@@ -77,9 +77,8 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="min-system-requirements.html">Minimum system requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="running.html">Run Open Edge Insights</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="running.html#about-open-edge-insights">About Open Edge Insights</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#minimum-system-requirements">Minimum system requirements</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="running.html#task-1-get-oei-codebase-from-github">Task 1: Get OEI codebase from GitHub</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#task-2-install-prerequisites">Task 2: Install prerequisites</a><ul>
@@ -106,6 +105,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#web-deployment-tool">Web Deployment Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#video-pipeline-analytics">Video pipeline analytics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="running.html#enable-camera-based-video-ingestion">Enable camera-based video ingestion</a></li>
 <li class="toctree-l3"><a class="reference internal" href="running.html#use-video-accelerators-in-ingestion-and-analytics-containers">Use video accelerators in ingestion and analytics containers</a><ul>
@@ -123,14 +123,16 @@
 <li class="toctree-l3"><a class="reference internal" href="running.html#with-k8s-orchestrator">With k8s orchestrator</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#oei-tools">OEI tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#oei-uninstaller">OEI Uninstaller</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#debugging-options">Debugging options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#web-deployment-tool">Web Deployment Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#troubleshooting-guide">Troubleshooting guide</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-3">EII v2.6.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="release.html#fixes">Fixes</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#oei-v3-0">OEI v3.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release.html#new-features">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="release.html#dropped-features">Dropped Features</a></li>
@@ -138,7 +140,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-2">EII v2.6.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#fixes">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id1">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6-1">EII v2.6.1</a><ul>
@@ -147,15 +149,15 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-6">EII v2.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release.html#features">Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id1">Known Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id2">Known Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id2">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id4">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id3">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id5">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -163,7 +165,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id4">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id6">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -337,21 +339,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#oei-udfloader">OEI UDFLoader</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#oei-sample-udfs">OEI Sample UDFs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#udf-configuration">UDF Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#udf-writing-guide">UDF Writing Guide</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#sample-udfs">Sample UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#native-udfs">Native UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="video.html#python-udfs">Python UDFs</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#chaining-of-udfs">Chaining of UDFs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#combination-of-udfs-with-ingestors">Combination of UDFs with ingestors</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="video.html#user-defined-function-udf">User Defined Function (UDF)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#native-visualizer-module">Native Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-visualizer">Steps to build and run visualizer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="video.html#using-labels">Using Labels</a></li>
@@ -360,21 +348,30 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#web-visualizer-module">Web Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="video.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id32">Using Labels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="video.html#id36">Metadata Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id28">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="video.html#id32">Metadata Structure</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#imagestore-module">ImageStore Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id37">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id33">Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="video.html#id39">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#id35">Configuration</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="video.html#working-with-edge-video-analytics-microservice">Working with Edge Video Analytics Microservice</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="video.html#edge-video-analytics-microservice">Edge Video Analytics Microservice</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="video.html#build-the-base-image">Build the base image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#run-the-base-image">Run the base image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="video.html#run-evam-in-oei-mode">Run EVAM in OEI mode</a></li>
 </ul>
 </li>
 </ul>
@@ -480,7 +477,24 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport service</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#http-get-api-of-rde">HTTP GET API of RDE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#get-the-classifier-results-metadata">Get the classifier results metadata</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="restdata.html#request-to-get-metadata">Request to get metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#get-images-using-the-image-handle">Get images using the image handle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="restdata.html#request-to-get-images">Request to get images</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#prerequisites-for-running-restdataexport-to-post-on-http-servers">Prerequisites for running RestDataExport to POST on HTTP Servers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#launch-restdataexport-service">Launch RestDataExport service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#setting-environment-proxy-settings">Setting environment proxy settings</a></li>
+</ul>
+</li>
 </ul>
 <p><span class="caption-text">Additional Info:</span></p>
 <ul class="current">
@@ -535,6 +549,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#noderedhttpclientapp">NodeRedHttpClientApp</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-up-nodered">Setting Up NodeRed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-oei-udf-classifier-results-data-to-node-red-environment-using-node-red-httpclient">Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-workflow">Sample Workflow</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#software-trigger-utilily-pre-requisites">Software Trigger Utilily pre-requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration-file">Configuration file</a></li>
@@ -543,7 +563,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id44">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id45">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
@@ -605,7 +625,7 @@
   <li>OEI Tools</li>
 
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/pages/tools.rst" class="fa fa-github"> Edit on GitHub</a>
+            <a href="../_sources/pages/tools.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -784,10 +804,10 @@ WHERE:
 <section id="run-the-discoverhistory-tool-in-the-zmq-ipc-mode">
 <h4>Run the DiscoverHistory tool in the zmq_ipc mode<a class="headerlink" href="#run-the-discoverhistory-tool-in-the-zmq-ipc-mode" title="Permalink to this headline">¶</a></h4>
 <p>After completing the prerequisites, to run the DiscoverHistory tool in the zmq_ipc mode, modify the interface section of the <code class="docutils literal notranslate"><span class="pre">config.json</span></code> file as follows:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
-    <span class="nt">&quot;EndPoint&quot;</span><span class="p">:</span> <span class="s2">&quot;/EII/sockets&quot;</span>
-<span class="p">}</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;EndPoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/EII/sockets&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -1433,6 +1453,80 @@ If Broker runs at port <span class="m">1883</span>, to run subscriber use follow
 </ol>
 </section>
 </section>
+<section id="noderedhttpclientapp">
+<h2>NodeRedHttpClientApp<a class="headerlink" href="#noderedhttpclientapp" title="Permalink to this headline">¶</a></h2>
+<p>This Node-RED in-built http node based client App acts as client for the OEI RestDataExport and brings the OEI Classifier data to Node-RED ecosystem.</p>
+<section id="setting-up-nodered">
+<h3>Setting Up NodeRed<a class="headerlink" href="#setting-up-nodered" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Node-RED provides various options to install and set up Node-RED in your environment. For more information on installation and setup, refer to the <a class="reference external" href="https://nodered.org/docs/getting-started/local">Node-RED documenation</a>.</p>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For quick setup, install using <code class="docutils literal notranslate"><span class="pre">docker</span></code></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>docker run -it -p <span class="m">1880</span>:1880 --name myNodeRed nodered/node-red
+</pre></div>
+</div>
+</div>
+</section>
+<section id="getting-oei-udf-classifier-results-data-to-node-red-environment-using-node-red-httpclient">
+<h3>Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient<a class="headerlink" href="#getting-oei-udf-classifier-results-data-to-node-red-environment-using-node-red-httpclient" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>: RestDataExport should be running already as a prerequisite.<span class="raw-html-m2r"><br></span>
+Refer to the RestDataExport <a class="reference external" href="https://github.com/open-edge-insights/eii-rest-data-export">Readme</a></p>
+</div>
+<ol class="arabic">
+<li><p>Drag the <code class="docutils literal notranslate"><span class="pre">http</span> <span class="pre">request</span></code> node of Node-RED’s default nodes to your existing workflow.</p>
+<a class="reference external image-reference" href="https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imagehttprequestnode.png"><img alt="images/imagehttprequestnode.png" src="https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imagehttprequestnode.png" /></a>
+</li>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">properties</span></code> of node as follows:</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">DEV</span> <span class="pre">mode</span></code>:</p>
+<ul>
+<li><p>Refer to the dialog properties for setting up the <code class="docutils literal notranslate"><span class="pre">DEV</span></code> mode in the Node-Red dashboard</p>
+<a class="reference external image-reference" href="https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imagedevmode.png"><img alt="images/imagedevmode.png" src="https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imagedevmode.png" /></a>
+</li>
+</ul>
+<p>For <code class="docutils literal notranslate"><span class="pre">PROD</span> <span class="pre">Mode</span></code>:</p>
+<ul>
+<li><p>Refer to the dialog properties for setting up the <code class="docutils literal notranslate"><span class="pre">PROD</span></code> mode in the Node-RED dashboard</p>
+<a class="reference external image-reference" href="https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageprodmode.png"><img alt="imageprodmode.png" src="https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageprodmode.png" /></a>
+</li>
+</ul>
+<p>For Prod Mode TLS <code class="docutils literal notranslate"><span class="pre">ca_cert.pem</span></code> import.
+<strong>Note:</strong> This <code class="docutils literal notranslate"><span class="pre">ca_cert.pem</span></code> will be part of the OEI certificate bundle. Refer the <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/build/Certificates/</span></code> directory.</p>
+<a class="reference external image-reference" href="https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageprodmodetlscert.png"><img alt="imageprodmodetlscert.png" src="https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageprodmodetlscert.png" /></a>
+<blockquote>
+<div><p><strong>Note:</strong></p>
+<ol class="arabic simple">
+<li><p>For the <code class="docutils literal notranslate"><span class="pre">DEV</span></code> mode, do not enable or attach the certificates.</p></li>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">IP</span></code> address as per the <code class="docutils literal notranslate"><span class="pre">RestDataExport</span></code> module running machine IP.</p></li>
+<li><p>For more details on Node-RED’s <code class="docutils literal notranslate"><span class="pre">http</span> <span class="pre">request</span></code> module, refer to <a class="reference external" href="https://stevesnoderedguide.com/node-red-http-request-node-beginners">Http requset</a>.</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</section>
+<section id="sample-workflow">
+<h3>Sample Workflow<a class="headerlink" href="#sample-workflow" title="Permalink to this headline">¶</a></h3>
+<p>The attached workflow document is sample workflow by updating the <code class="docutils literal notranslate"><span class="pre">RestDataExport</span></code> IP Address in the <code class="docutils literal notranslate"><span class="pre">http</span> <span class="pre">request</span></code> module,</p>
+<ol class="arabic">
+<li><p>Import the Sample Workflow <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/NodeRedHttpClientApp/flows.json">flows.json</a> file to NodeRed dashboard using <code class="docutils literal notranslate"><span class="pre">menu</span></code> icon in top right corner as follows</p>
+<a class="reference external image-reference" href="https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageimportnodes.png"><img alt="images/imageimportnodes.png" src="https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageimportnodes.png" /></a>
+</li>
+<li><p>Click <code class="docutils literal notranslate"><span class="pre">Import</span></code></p></li>
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">URL</span></code> of <code class="docutils literal notranslate"><span class="pre">http</span> <span class="pre">request</span></code> node with <code class="docutils literal notranslate"><span class="pre">RestDataExport</span></code> module running the machine IP Address</p>
+<blockquote>
+<div><p><strong>Note:</strong></p>
+<ul class="simple">
+<li><p>For detail, refer to [import export] (<a class="reference external" href="https://nodered.org/docs/user-guide/editor/workspace/import-export">https://nodered.org/docs/user-guide/editor/workspace/import-export</a>)</p></li>
+<li><p>The classifier results will be logged in the debug window.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
 <section id="software-trigger-utility-for-videoingestion-module">
 <h2>Software Trigger Utility for VideoIngestion Module<a class="headerlink" href="#software-trigger-utility-for-videoingestion-module" title="Permalink to this headline">¶</a></h2>
 <p>This utility is used for invoking various software trigger features of VideoIngestion. The currently supported triggers to VideoIngestion module are:</p>
@@ -1590,8 +1684,8 @@ TimeSeriesProfiler)</p>
 <div><p><strong>Note:</strong> In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.</p>
 </div></blockquote>
 </div></blockquote>
-<section id="id44">
-<h3>Prerequisites<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h3>
+<section id="id45">
+<h3>Prerequisites<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic">
 <li><p>TimeSeriesProfiler expects a set of config, interfaces &amp; public private keys to be present in ETCD as a prerequisite.
 To achieve this, please ensure an entry for TimeSeriesProfiler with its relative path from <a class="reference external" href="https://github.com/open-edge-insights/">IEdgeInsights</a> directory is set in the time-series.yml file present in <a class="reference external" href="https://github.com/open-edge-insights/">IEdgeInsights</a> directory. An example has been provided below:</p>
@@ -1698,7 +1792,7 @@ The TS Profiler needs three timestamps.</p>
 <ul class="simple">
 <li><p>configuration required to run profiling_udf.go as profiling udf</p></li>
 </ul>
-<p>In <a href="#id52"><span class="problematic" id="id53">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json">Kapacitor config.json</a>** , update “task” key as below:</p>
+<p>In <a href="#id53"><span class="problematic" id="id54">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json">Kapacitor config.json</a>** , update “task” key as below:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;task&quot;</span>: <span class="o">[{</span>
     <span class="s2">&quot;tick_script&quot;</span>: <span class="s2">&quot;profiling_udf.tick&quot;</span>,
     <span class="s2">&quot;task_name&quot;</span>: <span class="s2">&quot;profiling_udf&quot;</span>,
@@ -1709,7 +1803,7 @@ The TS Profiler needs three timestamps.</p>
 <span class="o">}]</span>
 </pre></div>
 </div>
-<p>In <a href="#id54"><span class="problematic" id="id55">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor.conf">kapacitor.conf</a>** under udf section:</p>
+<p>In <a href="#id55"><span class="problematic" id="id56">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor.conf">kapacitor.conf</a>** under udf section:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>udf.functions<span class="o">]</span>
    <span class="o">[</span>udf.functions.profiling_udf<span class="o">]</span>
      <span class="nv">socket</span> <span class="o">=</span> <span class="s2">&quot;/tmp/profiling_udf&quot;</span>
@@ -1718,7 +1812,7 @@ The TS Profiler needs three timestamps.</p>
 </div>
 <ul>
 <li><p>configuration required to run rfc_classifier.py as profiler udf
-In <a href="#id56"><span class="problematic" id="id57">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json">Kapacitor config.json</a>** , update “task” key as below:</p>
+In <a href="#id57"><span class="problematic" id="id58">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config.json">Kapacitor config.json</a>** , update “task” key as below:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;task&quot;</span>: <span class="o">[{</span>
    <span class="o">{</span>
     <span class="s2">&quot;tick_script&quot;</span>: <span class="s2">&quot;rfc_task.tick&quot;</span>,
@@ -1729,7 +1823,7 @@ In <a href="#id56"><span class="problematic" id="id57">**</span></a><a class="re
 </div>
 </li>
 </ul>
-<p>In <a href="#id59"><span class="problematic" id="id60">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor.conf">kapacitor.conf</a>** under udf section:</p>
+<p>In <a href="#id60"><span class="problematic" id="id61">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor.conf">kapacitor.conf</a>** under udf section:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>udf.functions.rfc<span class="o">]</span>
    <span class="nv">prog</span> <span class="o">=</span> <span class="s2">&quot;python3.7&quot;</span>
    <span class="nv">args</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&quot;-u&quot;</span>, <span class="s2">&quot;/EII/udfs/rfc_classifier.py&quot;</span><span class="o">]</span>
@@ -1738,7 +1832,7 @@ In <a href="#id56"><span class="problematic" id="id57">**</span></a><a class="re
       <span class="nv">PYTHONPATH</span> <span class="o">=</span> <span class="s2">&quot;/EII/go/src/github.com/influxdata/kapacitor/udf/agent/py/&quot;</span>
 </pre></div>
 </div>
-<p>keep <a href="#id62"><span class="problematic" id="id63">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config.json</a>** file as following:</p>
+<p>keep <a href="#id63"><span class="problematic" id="id64">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config.json</a>** file as following:</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
   <span class="s2">&quot;config&quot;</span>: <span class="o">{</span>
       <span class="s2">&quot;total_number_of_samples&quot;</span>: <span class="m">10</span>,
@@ -1770,7 +1864,7 @@ Set the profiling mode as true.</p>
 <p>#. Set the required output stream/streams and appropriate stream config in <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config.json</a> file.
 #.</p>
 <blockquote>
-<div><p>To run this tool in IPC mode, User needs to modify subscribers interface section of <a href="#id68"><span class="problematic" id="id69">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config.json</a>** as following</p>
+<div><p>To run this tool in IPC mode, User needs to modify subscribers interface section of <a href="#id69"><span class="problematic" id="id70">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config.json</a>** as following</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="o">{</span>
   <span class="s2">&quot;type&quot;</span>: <span class="s2">&quot;zmq_ipc&quot;</span>,
   <span class="s2">&quot;EndPoint&quot;</span>: <span class="s2">&quot;/EII/sockets&quot;</span>
@@ -1980,26 +2074,26 @@ If this limit has been reached, the socket shall enter an exeptional state and d
 <h3>Running VideoProfiler in helm usecase<a class="headerlink" href="#running-videoprofiler-in-helm-usecase" title="Permalink to this headline">¶</a></h3>
 <p>For running VideoProfiler in helm usecase to subscribe to either VideoIngestion/VideoAnalytics or any other OEI service, the etcd endpoint, volume mount for helm certs and service endpoints are to be updated.</p>
 <p>For connecting to the etcd server running in helm environment, the endpoint and required volume mounts should be modified in the following manner in environment &amp; volumes section of <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/docker-compose.yml">docker-compose.yml</a>:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ia_video_profiler</span><span class="p">:</span>
-  <span class="nt">depends_on</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ia_common</span>
-  <span class="l l-Scalar l-Scalar-Plain">...</span>
-  <span class="nt">environment</span><span class="p">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">...</span>
-    <span class="l l-Scalar l-Scalar-Plain">ETCD_HOST</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">${ETCD_HOST}</span>
-    <span class="l l-Scalar l-Scalar-Plain">ETCD_CLIENT_PORT</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">${ETCD_CLIENT_PORT}</span>
-    <span class="l l-Scalar l-Scalar-Plain"># Update this variable referring</span>
-    <span class="l l-Scalar l-Scalar-Plain"># for helm use case</span>
-    <span class="l l-Scalar l-Scalar-Plain">ETCD_ENDPOINT</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">&lt;HOST_IP&gt;:32379</span>
-    <span class="l l-Scalar l-Scalar-Plain">CONFIGMGR_CERT</span><span class="p p-Indicator">:</span> <span class="s">&quot;/run/secrets/VideoProfiler/VideoProfiler_client_certificate.pem&quot;</span>
-    <span class="nt">CONFIGMGR_KEY</span><span class="p">:</span> <span class="s">&quot;/run/secrets/VideoProfiler/VideoProfiler_client_key.pem&quot;</span>
-    <span class="nt">CONFIGMGR_CACERT</span><span class="p">:</span> <span class="s">&quot;/run/secrets/rootca/cacert.pem&quot;</span>
-  <span class="l l-Scalar l-Scalar-Plain">...</span>
-  <span class="nt">volumes</span><span class="p">:</span>
-    <span class="p p-Indicator">-</span> <span class="s">&quot;${EII_INSTALL_PATH}/tools_output:/app/out&quot;</span>
-    <span class="p p-Indicator">-</span> <span class="s">&quot;${EII_INSTALL_PATH}/sockets:${SOCKET_DIR}&quot;</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./helm-eii/eii-deploy/Certificates/rootca:/run/secrets/rootca</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">./helm-eii/eii-deploy/Certificates/VideoProfiler:/run/secrets/VideoProfiler</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ia_video_profiler</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ia_common</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
+<span class="w">  </span><span class="nt">environment</span><span class="p">:</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">ETCD_HOST</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${ETCD_HOST}</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">ETCD_CLIENT_PORT</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${ETCD_CLIENT_PORT}</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain"># Update this variable referring</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain"># for helm use case</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">ETCD_ENDPOINT</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;HOST_IP&gt;:32379</span><span class="w"></span>
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">CONFIGMGR_CERT</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;/run/secrets/VideoProfiler/VideoProfiler_client_certificate.pem&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">CONFIGMGR_KEY</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/run/secrets/VideoProfiler/VideoProfiler_client_key.pem&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="nt">CONFIGMGR_CACERT</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;/run/secrets/rootca/cacert.pem&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
+<span class="w">  </span><span class="nt">volumes</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;${EII_INSTALL_PATH}/tools_output:/app/out&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;${EII_INSTALL_PATH}/sockets:${SOCKET_DIR}&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./helm-eii/eii-deploy/Certificates/rootca:/run/secrets/rootca</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./helm-eii/eii-deploy/Certificates/VideoProfiler:/run/secrets/VideoProfiler</span><span class="w"></span>
 </pre></div>
 </div>
 <p>For connecting to any service running in helm usecase, the container IP associated with the specific service should be updated in the Endpoint section in VideoProfiler <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/config.json">config</a>:</p>

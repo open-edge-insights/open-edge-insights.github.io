@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Installing Ansible on Ubuntu {Control node} &mdash; OEI Documentation v1.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <title>Installing Ansible on Ubuntu {Control node} &mdash; EII Documentation v1.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
@@ -31,10 +31,10 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> OEI Documentation
+            <a href="../../../index.html" class="icon icon-home"> EII Documentation
           </a>
               <div class="version">
-                3.0
+                2.6
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -48,7 +48,7 @@
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> OEI</span>
-      v: 3.0
+      v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
@@ -63,9 +63,9 @@
     </div>
   </div>
   
-              <p><span class="caption-text">Introduction:</span></p>
+              <p><span class="caption-text">INTRODUCTION:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../pages/introduction.html">Introduction to OEI</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/introduction.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/introduction.html#terminology">Terminology</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/introduction.html#general-terminology">General Terminology</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/introduction.html#security-related-terminology">Security-Related Terminology</a></li>
@@ -75,37 +75,102 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../pages/running.html">Run Open Edge Insights</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#about-open-edge-insights">About Open Edge Insights</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/running.html">Running Intel® Edge Insights for Industrial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#minimum-system-requirements">Minimum System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#downloading-and-installation-from-opensource-github-repository">Downloading and Installation from Opensource Github Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#eii-prerequisites-installation">EII Prerequisites installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#generating-consolidated-deployment-and-configuration-files">Generating consolidated deployment and configuration files:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#generating-consolidated-docker-compose-yml-and-eii-config-json-files">Generating consolidated docker-compose.yml and eii_config.json files:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#using-builder-script">Using builder script</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#running-builder-to-generate-the-above-listed-consolidated-files-for-all-applicable-eii-services">Running builder to generate the above listed consolidated files for all applicable EII services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#running-builder-to-generate-the-above-listed-consolidated-files-for-a-subset-of-eii-services">Running builder to generate the above listed consolidated files for a subset of EII services:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#running-builder-to-generate-multi-instance-configs">Running builder to generate multi instance configs:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#running-builder-to-generate-benchmarking-configs">Running builder to generate benchmarking configs:</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#video-pipeline-analytics">Video pipeline Analytics</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#time-series-analytics">Time-series Analytics</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#oei-multi-node-cluster-deployment">OEI multi-node cluster deployment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#oei-tools">OEI tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#oei-uninstaller">OEI Uninstaller</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#provision">Provision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#distribution-of-eii-container-images">Distribution of EII container images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#list-of-all-eii-services">List of All EII Services</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#common-eii-services">Common EII services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#video-related-services">Video related services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#timeseries-related-services">Timeseries related services</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#dev-mode-and-profiling-mode">Dev mode and Profiling mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#dev-mode">Dev Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#starting-the-eii-in-dev-mode">Starting the EII in Dev Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#profiling-mode">Profiling Mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#build-and-run-eii-video-timeseries-use-cases">Build and Run EII video/timeseries use cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#build-eii-stack">Build EII stack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#run-eii-services">Run EII services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#push-required-eii-images-to-docker-registry">Push required EII images to docker registry</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#eii-multi-node-cluster-provision-and-deployment">EII multi node cluster provision and deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#without-orchestrator"><strong>Without orchestrator</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#ansible-based-eii-prequisites-setup-provisioning-build-deployment">Ansible based EII Prequisites setup, provisioning, build &amp; deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#installing-ansible-on-ubuntu-control-node">Installing Ansible on Ubuntu {Control node}</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#prerequisite-step-needed-for-all-the-control-worker-nodes">Prerequisite step needed for all the control/worker nodes.</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#generate-ssh-key-for-all-nodes">Generate SSH KEY for all nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#adding-ssh-authorized-key-from-control-node-to-all-the-nodes">Adding SSH Authorized Key from control node to all the nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#configure-sudoers-file-to-accept-no-password-for-sudo-operation">Configure Sudoers file to accept NO PASSWORD for sudo operation.</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#updating-the-leader-worker-node-s-information-for-using-remote-hosts">Updating the leader &amp; worker node’s information for using remote hosts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#non-orchestrated-multi-node-deployment-without-k8s">Non-orchestrated multi node deployment (without k8s)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#select-eii-services-to-run-on-a-particular-node-in-multinode-deployment">Select EII services to run on a particular node in multinode deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#execute-ansible-playbook-from-eii-workdir-iedgeinsights-build-ansible-control-node-to-deploy-eii-services-in-single-multi-nodes">Execute ansible Playbook from [EII_WORKDIR]/IEdgeInsights/build/ansible {Control node} to deploy EII services in single/multi nodes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#deploying-eii-using-helm-in-kubernetes-k8s-environment">Deploying EII Using Helm in Kubernetes (k8s) environment</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#with-k8s-orchestrator"><strong>With k8s orchestrator</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#eii-provision-and-deployment">EII provision and deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#pre-requisites">Pre requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#update-the-helm-charts-directory">Update the helm charts directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#provision-and-deploy-in-the-kubernetes-node">Provision and deploy in the kubernetes node.</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#for-running-helm-charts-and-deploying-kube-pods-with-specific-namespace">For running helm charts and deploying kube pods with specific namespace</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#provision-and-deploy-mode-in-times-switching-between-dev-and-prod-mode-or-changing-the-usecase">Provision and deploy mode in times switching between dev and prod mode OR changing the usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#steps-to-enable-accelarators">Steps to enable Accelarators</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#steps-for-enabling-gige-camera-with-helm">Steps for Enabling GiGE Camera with helm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#accessing-web-visualizer-and-etcdui">Accessing Web Visualizer and EtcdUI</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#eii-uninstaller">EII Uninstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#debugging">Debugging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#debugging-through-the-logs">Debugging Through the Logs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#working-with-eii-docker-containers">working with EII Docker* Containers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#useful-docker-commands">Useful Docker* Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#debugging-video-ingestion-through-gst-launch">Debugging Video Ingestion Through gst-launch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#gstreamer-valid-plugins-element">GStreamer Valid Plugins / Element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/running.html#debugging-the-video-ingestion-container">Debugging the Video Ingestion Container</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#enablement-of-x11-forwarding-for-eii-visualizer-container">Enablement of X11 Forwarding for EII Visualizer Container</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#debugging-options">Debugging options</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#web-deployment-tool">Web Deployment Tool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/running.html#troubleshooting-guide">Troubleshooting guide</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/running.html#enabling-secure-boot">Enabling Secure boot</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/release.html">Release Notes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#oei-v3-0">OEI v3.0</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#new-features">New Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#dropped-features">Dropped Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#known-issues">Known Issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-6-3">EII v2.6.3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#fixes">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-6-2">EII v2.6.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#fixes">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id1">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-6-1">EII v2.6.1</a><ul>
@@ -114,15 +179,15 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-6">EII v2.6</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#features">Features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id1">Known Issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#known-issues">Known Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id2">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id3">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id3">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id4">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -130,22 +195,20 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id4">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id5">Features</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-<p><span class="caption-text">Core Libraries:</span></p>
+<p><span class="caption-text">CORE LIBRARIES:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../pages/msgbus.html">Message Bus</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id1">Message Bus</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/msgbus.html">EII Message Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id1">EII Message Bus</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#dependency-installation">Dependency Installation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#compilation">Compilation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#generating-documentation">Generating Documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#packaging">Packaging</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#compilation">Compilation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#generating-documentation">Generating Documentation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#potential-compilation-issues">Potential Compilation Issues</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#installation">Installation</a><ul>
@@ -175,89 +238,40 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#known-issues">Known issues</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id3">Dependency Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id4">Compilation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id5">Generating Documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id6">Potential Compilation Issues</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id7">Packaging</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id9">A Note on Alpine APK Packaging</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id10">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id11">Install Python Binding</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id12">Install Golang Binding</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id13">Running Unit Tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id14">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id15">ZeroMQ IPC Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id16">ZeroMQ TCP Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id17">Publishers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id18">Subscribers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id19">Services</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id20">Requesters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id21">Using ZAP Authentication</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id22">Additional ZeroMQ Configuration Properties</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id23">Example Usage</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id24">C Examples</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id25">Publisher Many Example</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id26">Python Examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id27">Go Examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id28">Running Go Examples without Installing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id29">Brokered Publish/Subscribe</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id30">Security</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id33">Using Only CurveZMQ Encryption</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id34">Publish/Subscribe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/msgbus.html#id35">Request/Response</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id36">Using ZAP Authentication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/msgbus.html#id37">Disabling Security</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id38">Known issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#id39">Generation of python .whl file (Optional)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/msgbus.html#api-documentation">API Documentation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../pages/eiiConfig.html">OEI Configuration Management</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#configmgr">ConfigMgr</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#configmgr-installation">ConfigMgr Installation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#using-system-grpc">Using System gRPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/eiiConfig.html">EII Configuration Management</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#etcd">etcd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#configmgr">ConfigMgr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#tool-to-generate-configuration-management-ui-service">Tool to Generate Configuration Management UI Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#adding-new-eii-service-so-it-gets-picked-up-by-builder">Adding new EII service so it gets picked up by Builder</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#compilation">Compilation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#generating-documentation">Generating Documentation</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#packaging">Packaging</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#a-note-on-alpine-apk-packaging">A Note on Alpine APK Packaging</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#id5">ConfigMgr</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#install-configmgr-with-python-bindings-go-bindings-examples-test-suits-and-debug-build">Install ConfigMgr with Python bindings, Go bindings, Examples, Test suits and Debug Build.</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#interfaces">Interfaces</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#publisher-interface">Publisher Interface</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#subscriber-interface">Subscriber Interface</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#server-interface"><strong>Server Interface</strong></a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#client-interface"><strong>Client Interface</strong></a></li>
-</ul>
-</li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#overriding-of-type-and-endpoint">Overriding of Type and EndPoint:</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#broker-usecase">Broker Usecase</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#zmq-tcp-protocol-usecase">zmq_tcp Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#zmqbroker">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#subscriber">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#publisher">Publisher</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#zmq-ipc-protocol-usecase">zmq_ipc Protocol usecase</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#id6">ZmqBroker:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#id7">Subscriber</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#id8">Publisher</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#note-endpoint-can-be-given-in-different-ways"><strong>Note</strong> “Endpoint” can be given in different ways:</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#running-examples">Running Examples</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#cpp-examples">CPP Examples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pages/eiiConfig.html#python-examples">Python Examples</a></li>
@@ -265,20 +279,28 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#running-unit-tests">Running Unit Tests</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#creation-of-grpc-zip-file-optional">Creation of grpc .zip file (Optional)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/eiiConfig.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#etcd-ui-service">ETCD UI Service</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/eiiConfig.html#api-documentation">API Documentation</a></li>
 </ul>
 </li>
 </ul>
-<p><span class="caption-text">Video Analytics Pipeline:</span></p>
+<p><span class="caption-text">VIDEO ANALYTICS PIPELINE:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/video.html">Working with Video Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#videoingestion-module">VideoIngestion Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#videoingestion-module">VideoIngestion Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#ingestor-config">Ingestor config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#video-ingestion-contents">Video Ingestion Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#videoanalytics-module">VideoAnalytics Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#id4">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#updating-security-context-of-videoanalytics-helm-charts-for-enabling-accelerators-in-k8s-environment">Updating Security Context Of VideoAnalytics Helm Charts for enabling Accelerators in k8s environment</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
@@ -286,59 +308,106 @@
 <li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#oei-udfloader">OEI UDFLoader</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#oei-sample-udfs">OEI Sample UDFs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#udf-configuration">UDF Configuration</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#udf-writing-guide">UDF Writing Guide</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#sample-udfs">Sample UDFs</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#construction-of-metadata-in-udf">Construction of Metadata in UDF</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#chaining-of-udfs">Chaining of UDFs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#user-defined-function-udf">User Defined Function (UDF)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#eii-udfloader">EII UDFLoader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#dependency-installation">Dependency Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#compilation">Compilation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#installation">Installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#introduction"><strong>Introduction</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#udf-configuration"><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">Configuration</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#udf-writing-guide"><code class="docutils literal notranslate"><span class="pre">UDF</span> <span class="pre">Writing</span> <span class="pre">Guide</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#sample-udfs"><code class="docutils literal notranslate"><span class="pre">Sample</span> <span class="pre">UDFs</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#native-udfs"><code class="docutils literal notranslate"><span class="pre">Native</span> <span class="pre">UDFs</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#construction-of-metadata-in-udf"><code class="docutils literal notranslate"><span class="pre">Construction</span> <span class="pre">of</span> <span class="pre">Metadata</span> <span class="pre">in</span> <span class="pre">UDF</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#chaining-of-udfs"><code class="docutils literal notranslate"><span class="pre">Chaining</span> <span class="pre">of</span> <span class="pre">UDFs</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#combination-of-udfs-with-ingestors"><code class="docutils literal notranslate"><span class="pre">Combination</span> <span class="pre">of</span> <span class="pre">UDFs</span> <span class="pre">with</span> <span class="pre">ingestors</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#custom-udfs">Custom Udfs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#native-visualizer-module">Native Visualizer Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#steps-to-build-and-run-visualizer">Steps to build and run visualizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#using-labels">Using Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#metadata-structure">Metadata Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#web-visualizer-module">Web Visualizer Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#id28">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#id32">Metadata Structure</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#native-visualizer-module">Native Visualizer Module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#web-visualizer-module">Web Visualizer Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#imagestore-module">ImageStore Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#id33">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/video.html#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/video.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/video.html#id35">Configuration</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<p><span class="caption-text">Time-Series Analytics Pipeline:</span></p>
+<p><span class="caption-text">TIME-SERIES ANALYTICS PIPELINE:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../pages/timeseries.html">Working with Time series Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/timeseries.html#telegraf">Telegraf</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/timeseries.html#point-data-time-series-data-analytics-introduction">Point-data (Time-series data) analytics introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/timeseries.html#grafana">Grafana</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#influxdbconnector-module">InfluxDBConnector Module</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/timeseries.html#configuration">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/timeseries.html">Working with Timeseries Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/timeseries.html#telegraf">Telegraf</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#purpose-of-telegraf">Purpose of Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#optional-adding-multiple-telegraf-instances">Optional: Adding multiple telegraf instances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#enabling-eii-message-bus-input-plugin-in-telegraf">Enabling EII message bus input plugin in Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#enabling-eii-message-bus-output-plugin-in-telegraf">Enabling EII message bus Output plugin in Telegraf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-input-plugin">Advanced: Multiple plugin sections of EII message bus input plugin</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/timeseries.html#using-input-plugin">Using input plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#advanced-multiple-plugin-sections-of-eii-message-bus-output-plugin">Advanced: Multiple plugin sections of EII message bus output plugin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/timeseries.html#kapacitor">Kapacitor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#starting-the-example">Starting the example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#purpose-of-kapacitor">Purpose of Kapacitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#purpose-of-plugins">Purpose of plugins</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#id38">Using input plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#using-output-plugin">Using output plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#user-defined-functions">User-defined Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#custom-udfs-available-in-the-udfs-directory">Custom UDFs available in the udfs directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#steps-to-configure-the-udfs-in-kapacitor">Steps to configure the UDFs in kapacitor.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#interfaces-exposed-for-udfs">Interfaces Exposed for UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#steps-to-run-the-samples">Steps to run the samples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#steps-to-verify-the-results-in-single-task-with-multiple-udfs">Steps to verify the results in single task with multiple UDFs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#steps-to-verify-the-results-in-multiple-tasks-with-single-udf">Steps to verify the results in multiple tasks with single UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#working-with-kapacitor">Working with Kapacitor*</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#procedure-to-run-grafana">Procedure to run Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/timeseries.html#steps-to-execute-query">Steps to execute query</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<p><span class="caption-text">Export Services:</span></p>
+<p><span class="caption-text">EXPORT SERVICES:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/azure.html">Azure Bridge</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#prerequisites-and-setup">Prerequisites and Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#pre-requisites-setup">Pre-Requisites / Setup</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#azure-cloud-setup">Azure Cloud Setup</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../pages/azure.html#setting-up-azureml">Setting up AzureML</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/azure.html#important">Important</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#development-system-setup">Development System Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#build-and-push-oei-containers">Build and Push OEI Containers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#build-and-push-eii-containers">Build and Push EII Containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/azure.html#step-1-provisioning">Step 1 - Provisioning</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../../pages/azure.html#expected-result">Expected Result</a></li>
@@ -370,73 +439,129 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#supported-oei-services">Supported OEI Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#supported-eii-services">Supported EII Services</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/azure.html#additional-resources">Additional Resources</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pages/opcua.html">OpcuaExport Application</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/opcua.html#opcuaexport">OpcuaExport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/opcua.html#opcuaexport">OpcuaExport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/opcua.html#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/opcua.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/opcua.html#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/opcua.html#opcua-client-apps">OPCUA client apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/opcua.html#note">Note:</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../../pages/restdata.html">RestDataExport service</a></li>
 </ul>
-<p><span class="caption-text">Additional Info:</span></p>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/restdata.html">RestDataExport</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/restdata.html#restexport-post-request-pipeline">RestExport POST Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/restdata.html#restexport-get-request-pipeline">RestExport Get Request Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/restdata.html#restexport-apis">RestExport APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/restdata.html#restexport-post-request-api">RestExport POST Request API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/restdata.html#restexport-get-request-api">RestExport GET Request API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/restdata.html#configuration">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/restdata.html#pre-requisites">Pre-requisites</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/restdata.html#service-bring-up">Service bring up</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/restdata.html#faqs">FAQs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/restdata.html#for-setting-environment-proxy-settings">For setting environment proxy settings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><span class="caption-text">ADDITIONAL INFO:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../pages/tools.html">OEI Tools</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/tools.html">EII Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#discoverhistory-tool">DiscoverHistory tool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#build-and-run-the-discoverhistory-tool">Build and run the DiscoverHistory tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#run-the-discoverhistory-tool-in-the-prod-mode">Run the DiscoverHistory tool in the PROD mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#run-the-discoverhistory-tool-in-the-dev-mode">Run the DiscoverHistory tool in the DEV mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#run-the-discoverhistory-tool-in-the-zmq-ipc-mode">Run the DiscoverHistory tool in the zmq_ipc mode</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#sample-select-queries">Sample select queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the Builder script with the DiscoverHistory tool</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#gigeconfig-tool">GigEConfig tool</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#generating-pfs-pylon-feature-stream-file">Generating PFS (Pylon Feature Stream) File</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#running-gigeconfig-tool">Running GigEConfig Tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#eii-pre-requisites">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-embsubscriber">Running EmbSubscriber</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-embsubscriber-in-ipc-mode">Running EmbSubscriber in IPC mode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#eii-gigeconfig-tool">EII GigEConfig tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#generating-pfs-pylon-feature-stream-file">Generating PFS(Pylon Feature Stream) File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-gigeconfig-tool">Running GigEConfig Tool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#usage-of-gigeconfig-tool">Usage of GigEConfig tool:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#execution-of-gigeconfig">Execution of GigEConfig</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#develop-python-user-defined-functions-using-jupyter-notebook">Develop Python User Defined Functions using Jupyter Notebook</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#prerequisites-for-using-jupyter-notebooks">Prerequisites for using Jupyter Notebooks</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#run-jupyter-notebook-from-web-browsers">Run Jupyter Notebook from web browsers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#run-jupyter-notebook-using-visual-studio-code">Run Jupyter Notebook using Visual Studio Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#httptestserver">HttpTestServer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#pre-requisites-for-running-the-httptestserver">Pre-requisites for running the HttpTestServer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#starting-httptestserver">Starting HttpTestServer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#jupyter-notebook-usage-to-develop-python-udfs">Jupyter Notebook usage to develop python UDFs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#jupyter-notebook-pre-requisites">Jupyter Notebook pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-jupyter-notebook">Running Jupyter Notebook</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#creating-udf-in-jupyter-notebook">Creating UDF in Jupyter Notebook</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#mqtt-publisher">MQTT publisher</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#mqtt-publisher">MQTT publisher</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#usage">Usage</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#software-trigger-utilily-pre-requisites">Software Trigger Utilily pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#configuration-file">Configuration file:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-software-trigger-utility">Running Software Trigger Utility</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#oei-video-profiler">OEI Video Profiler</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#oei-video-profiler-prerequisites">OEI Video Profiler prerequisites</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#oei-video-profiler-modes">OEI Video Profiler modes</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#oei-video-profiler-configurations">OEI Video Profiler configurations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#run-video-profiler">Run Video Profiler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#running-videoprofiler-in-helm-usecase">Running VideoProfiler in helm usecase</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#optimizing-oei-video-pipeline-by-analysing-video-profiler-results">Optimizing OEI Video pipeline by analysing Video Profiler results</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi-instance config</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#eii-timeseriesprofiler">EII TimeSeriesProfiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#id49">EII pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#eii-timeseriesprofiler-modes">EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#eii-timeseriesprofiler-configurations">EII TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#eii-video-profiler">EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#eii-video-profiler-pre-requisites">EII Video Profiler pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#eii-video-profiler-modes">EII Video Profiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#eii-video-profiler-configurations">EII Video Profiler configurations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-video-profiler">Running Video Profiler</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
 </ul>
 </li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../../../pages/sample.html">OEI Samples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/sample.html#eii-sample-apps">EII Sample Apps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pages/sample.html">EII Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/sample.html#steps-to-run-eii-samples-apps">Steps to run EII samples apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/sample.html#sample-cpp-app-for-eii-platform">Sample CPP APP for EII platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/sample.html#short-description-of-app-containers">‘Short Description of App containers’</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/sample.html#the-sample-golang-application-demonstrates-the-usage-of-eii-core-libraries-like-eiimessagebus-and-configmanager">The sample Golang application demonstrates the usage of EII core libraries like EIIMessageBus and ConfigManager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/sample.html#id3">Short Description of App containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/sample.html#the-high-level-logical-flow-of-sample-app-is-as-below">The high level logical flow of Sample App is as below:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/sample.html#sample-python-app-for-eii-platform">Sample Python APP for EII platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/sample.html#id4">Short Description of App containers</a></li>
 </ul>
 </li>
 </ul>
@@ -462,23 +587,23 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">OEI Documentation</a>
+          <a href="../../../index.html">EII Documentation</a>
       </nav>
 
       <div class="wy-nav-content">
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-  <!-- 3.0 -->
+  <!-- 2.6 -->
   
   
 
-  <li><a href="../../../index.html">3.0</a> &raquo;</li>
+  <li><a href="../../../index.html">2.6</a> &raquo;</li>
   
   <li>Installing Ansible on Ubuntu {Control node}</li>
 
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com//intel-innersource/applications.industrial.edge-insights.open-edge-insights-github-io/blob/master/source/IEdgeInsights/build/ansible/installing-ansible-on-ubuntu-control-node-.rst" class="fa fa-github"> Edit on GitHub</a>
+            <a href="../../../_sources/IEdgeInsights/build/ansible/installing-ansible-on-ubuntu-control-node-.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -526,7 +651,7 @@ $ sudo apt install ansible</p>
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       <span class="fa fa-book"> OEI</span>
-      v: 3.0
+      v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">

@@ -1,6 +1,6 @@
 
 Running EmbPublisher in IPC mode
-================================
+--------------------------------
 
 User needs to modify interface section of **\ `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/EmbPublisher/config.json>`_\ ** to run in IPC mode as following
 

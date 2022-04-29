@@ -8,7 +8,7 @@ Web Deployment Tool front end
 The Web Deployment Tool provides a graphical user interface to configure and deploy single and multiple video streams. The following sections provide details for the prerequisites and configuration for the Web GUI Deployment tool front end.
 
 .. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
-   To learn more about the back end of the Web Deployment Tool, refer to the `ReadMe <https://gitlab.devtools.intel.com/Indu/edge-insights-industrial/eii-deployment-tool-backend/-/blob/master/README.md>`_.
+   To learn more about the back end of the Web Deployment Tool, refer to the `ReadMe <https://github.com/open-edge-insights/eii-deployment-tool-backend/blob/master/README.md>`_.
    The current version of the Web Deployment Tool doesn't fully support running back end and front end containers on different machines.
 
 
@@ -96,6 +96,15 @@ or
 .. code-block:: shell
 
    ./run.sh -d
+
+Un-install Web Deployment Tool frontend
+---------------------------------------
+
+To completely remove the Web Deployment Tool Frontend and other files created on the host machine by the tool, run the *uninstall.sh* script as below:
+
+.. code-block:: sh
+
+   ./uninstall.sh
 
 Web Deployment Tool workflow
 ----------------------------
@@ -196,7 +205,7 @@ After you sign in to the WDT, complete the following steps to configure and depl
    ..
 
       **Note:** The progress bar indicates the progress of the build.
-      Currently there's no option to stop or cancel a build. If the build fails, click **Start** to retry the build. You can check the build failure reason by checking the build logs.
+      In case you need to cancel the build, click on the **Cancel** button next to the progress bar. If the build fails, click **Start** to retry the build. You can check the build failure reason by checking the build logs.
       To view the build logs, click  **View Logs**. User can select the 'Enable Auto Refresh' option to refresh the logs. The logs are refreshed every 5 seconds. 
 
 
@@ -228,7 +237,7 @@ After you sign in to the WDT, complete the following steps to configure and depl
 #. In the **Remote Machine Detail** section, enter the details of the remote machine and then, click **Deploy**.
    ..
 
-      **Note:** After the deployment is triggered or done, you cannot go back to the **Test** screen or the **Configure** screen. You can either click **Sign out** to sign out or click **Cancel** to go to the *Project selection* screen.
+      **Note:** After the deployment is triggered or done, you cannot go back to the **Test** screen or the **Configure** screen. In case you need to cancel the deployment, click on the **Cancel** button next to the progress indicator. You can also click **Sign out** to sign out or click **Cancel** button in the bottom pane, to go to the *Project selection* screen.
 
 
 #. On the **Deployment Successful** dialog, click **Close**.

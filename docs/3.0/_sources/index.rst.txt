@@ -11,6 +11,7 @@ Source code for Open Edge Insights is maintained in the `Open Edge Insights GitH
    pages/introduction
    pages/overview
    pages/architecture
+   pages/min-system-requirements.rst
    pages/running
    pages/release
 

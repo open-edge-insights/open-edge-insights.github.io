@@ -24,7 +24,11 @@ Dependencies
 
   .. code-block:: sh
 
-     sudo apt-get install -y libmbedtls-dev python3-dev
+     sudo apt-get install -y python3-dev
+     wget -q --show-progress https://tls.mbed.org/code/releases/mbedtls-2.16.6-gpl.tgz && \
+     tar xf mbedtls-2.16.6-gpl.tgz && \
+     cd mbedtls-2.16.6 && \
+     make install
 
   ..
 
@@ -71,7 +75,10 @@ How to Test from present working directory
 
 .. code-block:: sh
 
-     sudo apt-get install libmbedtls-dev
+     wget -q --show-progress https://tls.mbed.org/code/releases/mbedtls-2.16.6-gpl.tgz && \
+     tar xf mbedtls-2.16.6-gpl.tgz && \
+     cd mbedtls-2.16.6 && \
+     make install
      make clean
      make build_safestring_lib
      make build

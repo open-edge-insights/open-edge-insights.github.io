@@ -644,7 +644,7 @@ The ConfigMgr library also supports Cpp APIs and Python & Go bindings. These API
 Examples will only be compiled if the ``WITH_EXAMPLES=ON`` option is specified while running CMake.
 Please refer `Examples installation <#-install-configmgr-with-examples,-test-suits-and-debug-build-enabled.>`__ 
 
-Refer the interfaces of publisher and server in `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/examples/configs/VideoAnalytics_interfaces.json>`_ and for subscriber and client, refer `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/examples/configs/VideoAnalytics_interfaces.json>`_
+Refer the interfaces of publisher and server in `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-configmgr/blob/master/examples/configs/VideoAnalytics_interfaces.json>`_ and for subscriber and client, refer `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-configmgr/blob/master/examples/configs/VideoAnalytics_interfaces.json>`_
 
 Examples on demonstrating the usage of these APIs in the bindings have been given in respective sections below.
 
@@ -865,16 +865,16 @@ Before executing any of the test files, please run below command from ``build/te
 
      $ ./config_manager_unit_tests
      $ ./kvstore_client-tests
-  ## Creation of grpc .deb file (Optional)
+  ## Creation of grpc .zip file (Optional)
 
-**Note**\ : This is an optional as we have already created .deb file in the repo.
-If user wants to create .deb file freshly, then one has to follow this step.
+**Note**\ : This is an optional as we have already created .zip file in the repo.
+If user wants to create .zip file freshly, then one has to follow this step.
 
-Navigate to ``[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr`` and run the ``grpc_deb.sh``
+Navigate to ``[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr`` and run the ``grpc_zip.sh``
 
 .. code-block:: sh
 
-   $ sudo ./grpc_deb.sh
+   $ sudo ./grpc_zip.sh
 
-By executing the above script, ``grpc-1.29.0-Linux.deb`` will be created in
+By executing the above script grpc zip package will be created in
 ``[WORKDIR]/IEdgeInsights/common/libs/ConfigMgr``.

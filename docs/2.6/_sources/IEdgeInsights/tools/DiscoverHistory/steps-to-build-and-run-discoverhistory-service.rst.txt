@@ -1,6 +1,6 @@
 
 Steps to build and run DiscoverHistory service
-----------------------------------------------
+==============================================
 
 
 * 
@@ -22,7 +22,9 @@ Steps to build and run DiscoverHistory service
            - ImageStore
            - InfluxDBConnector
 
-  #. Open "config.json"
+  #. 
+     Open "config.json"
+
   #. Provide the required query to be passed on to InfluxDB.
   #. With the above pre-requisite done, please run the below to command:
      .. code-block:: sh
@@ -34,9 +36,7 @@ Steps to build and run DiscoverHistory service
   #. You will find data & frames directories at "/opt/intel/eii/tools_output".
      (Note: if img_handle is part of select statement , then only frames
      directory will be created)
-  #. 
-     Use ETCDUI to change the query in configuration. Please run below command to start container with new configuration:
-
+  #. Use ETCDUI to change the query in configuration. Please run below command to start container with new configuration:
      .. code-block:: sh
 
            docker restart ia_discover_history
@@ -47,18 +47,15 @@ Steps to build and run DiscoverHistory service
 
   #. Open `.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_
   #. Set the DEV_MODE variable as "true".
+     .. code-block::
 
-  .. code-block::
+        DEV_MODE=false
+     to
+     .. code-block::
 
-     DEV_MODE=false
+        DEV_MODE=true
 
-  to
-
-  .. code-block::
-
-     DEV_MODE=true
-
-.. note:: 
+.. note:: \ :
 
 
    * Building the base images like ia_common, ia_eiibase are must in cases if this tool isn't run on the same node

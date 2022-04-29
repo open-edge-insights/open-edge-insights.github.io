@@ -7,7 +7,7 @@ The ConfigMgr library also supports Cpp APIs and Python & Go bindings. These API
 Examples will only be compiled if the ``WITH_EXAMPLES=ON`` option is specified while running CMake.
 Please refer `Examples installation <#-install-configmgr-with-examples,-test-suits-and-debug-build-enabled.>`__ 
 
-Refer the interfaces of publisher and server in `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/examples/configs/VideoAnalytics_interfaces.json>`_ and for subscriber and client, refer `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/examples/configs/VideoAnalytics_interfaces.json>`_
+Refer the interfaces of publisher and server in `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-configmgr/blob/master/examples/configs/VideoAnalytics_interfaces.json>`_ and for subscriber and client, refer `./examples/configs/VideoAnalytics_interfaces.json <https://github.com/open-edge-insights/eii-configmgr/blob/master/examples/configs/VideoAnalytics_interfaces.json>`_
 
 Examples on demonstrating the usage of these APIs in the bindings have been given in respective sections below.
 

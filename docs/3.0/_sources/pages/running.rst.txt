@@ -2,20 +2,11 @@
  Run Open Edge Insights 
 #######################
 
-.. include:: ../IEdgeInsights/about-open-edge-insights.rst
-.. include:: ../IEdgeInsights/minimum-system-requirements.rst
 .. include:: ../IEdgeInsights/install-open-edge-insights-from-github.rst
+.. include:: ../IEdgeInsights/web-deployment-tool.rst
 .. include:: ../IEdgeInsights/video-pipeline-analytics.rst
 .. include:: ../IEdgeInsights/time-series-analytics.rst
 .. include:: ../IEdgeInsights/oei-multi-node-cluster-deployment.rst
-.. include:: ../IEdgeInsights/oei-tools.rst
 .. include:: ../IEdgeInsights/oei-uninstaller.rst
 .. include:: ../IEdgeInsights/debugging-options.rst
-.. include:: ../IEdgeInsights/web-deployment-tool.rst
 .. include:: ../IEdgeInsights/troubleshooting-guide.rst
-
-
-
-
-
-

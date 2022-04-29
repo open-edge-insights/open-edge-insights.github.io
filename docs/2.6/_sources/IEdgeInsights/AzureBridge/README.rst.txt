@@ -283,6 +283,18 @@ Next, execute the following commands:
    $ docker-compose -f docker-compose-build.yml build
    $ docker-compose -f docker-compose-push.yml push
 
+Execute the following commands to push **ia_etcd** and **ia_etcd_provision** images:
+
+.. code-block:: sh
+
+   $ docker tag openedgeinsights/ia_etcd:<EII_VERSION> <registry_url>/openedgeinsights/ia_etcd:<EII_VERSION>
+
+   $ docker push <registry_url>/openedgeinsights/ia_etcd:<EII_VERSION>
+
+   $ docker tag openedgeinsights/ia_etcd_provision:<EII_VERSION> <registry_url>/openedgeinsights/ia_etcd_provision:<EII_VERSION>
+
+   $ docker push <registry_url>/openedgeinsights/ia_etcd_provision:<EII_VERSION>
+
 For more detailed instructions on this process, see the EII README and User Guide.
 
 Single-Node Azure IoT Edge Deployment

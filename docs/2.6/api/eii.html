@@ -1,0 +1,754 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>eii package &mdash; EII Documentation v1.0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/contentui.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/clipboard.min.js"></script>
+        <script src="../_static/copybutton.js"></script>
+        <script src="../_static/contentui.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="EIIMessageBus" href="eii_msgbus.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> EII Documentation
+            </a>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">EII Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../pages/api.html">Python API</a> &raquo;</li>
+        
+          <li><a href="eii_msgbus.html">EIIMessageBus</a> &raquo;</li>
+        
+      <li>eii package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/api/eii.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="eii-package">
+<h1>eii package<a class="headerlink" href="#eii-package" title="Permalink to this headline">¶</a></h1>
+<section id="module-eii.exc">
+<span id="submodules"></span><h2>Submodules<a class="headerlink" href="#module-eii.exc" title="Permalink to this headline">¶</a></h2>
+<p>Custom exceptions used in the Python module</p>
+<dl class="py exception">
+<dt id="eii.exc.Disconnected">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">eii.exc.</span></code><code class="sig-name descname"><span class="pre">Disconnected</span></code><a class="headerlink" href="#eii.exc.Disconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Error raised when a receive context has been disconnected.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="eii.exc.MessageBusAuthenticationFailed">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">eii.exc.</span></code><code class="sig-name descname"><span class="pre">MessageBusAuthenticationFailed</span></code><a class="headerlink" href="#eii.exc.MessageBusAuthenticationFailed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Error raised when the message bus authentication for a receive context
+fails.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="eii.exc.MessageBusError">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">eii.exc.</span></code><code class="sig-name descname"><span class="pre">MessageBusError</span></code><a class="headerlink" href="#eii.exc.MessageBusError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Generic exception used when an issue occurs in a message bus method</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt id="eii.exc.ReceiveTimeout">
+<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">eii.exc.</span></code><code class="sig-name descname"><span class="pre">ReceiveTimeout</span></code><a class="headerlink" href="#eii.exc.ReceiveTimeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exception raised when a timeout has occurred while attempting to
+receive a message.</p>
+</dd></dl>
+
+<span class="target" id="module-eii.msg_envelope"></span><p>EII Message Envelope utility functions</p>
+<dl class="py class">
+<dt id="eii.msg_envelope.MsgEnvelope">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.msg_envelope.</span></code><code class="sig-name descname"><span class="pre">MsgEnvelope</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#eii.msg_envelope.MsgEnvelope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Envelope</p>
+<dl class="py method">
+<dt id="eii.msg_envelope.MsgEnvelope.get_blob">
+<code class="sig-name descname"><span class="pre">get_blob</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.msg_envelope.MsgEnvelope.get_blob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the blob data in the message envelope.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Blob data in the message if any exists</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Union[None, bytes]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="eii.msg_envelope.MsgEnvelope.get_meta_data">
+<code class="sig-name descname"><span class="pre">get_meta_data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.msg_envelope.MsgEnvelope.get_meta_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the meta-data in the message envelope if any exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Meta-data in the message envelope</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Union[None, dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="eii.msg_envelope.MsgEnvelope.get_name">
+<code class="sig-name descname"><span class="pre">get_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.msg_envelope.MsgEnvelope.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the topic string or service name in the message envelope.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will only be assigned if the MsgEnvelope was received
+over the message bus.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Topic string or service name, will be None if not set</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Union[None, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-0"></span><p>EII Message Envelope utility functions</p>
+<dl class="py class">
+<dt id="id0">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.msg_envelope.</span></code><code class="sig-name descname"><span class="pre">MsgEnvelope</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">meta_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">blob</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Envelope</p>
+<dl class="py method">
+<dt id="id1">
+<code class="sig-name descname"><span class="pre">get_blob</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the blob data in the message envelope.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Blob data in the message if any exists</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Union[None, bytes]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id2">
+<code class="sig-name descname"><span class="pre">get_meta_data</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the meta-data in the message envelope if any exists.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Meta-data in the message envelope</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Union[None, dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id3">
+<code class="sig-name descname"><span class="pre">get_name</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id3" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the topic string or service name in the message envelope.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This will only be assigned if the MsgEnvelope was received
+over the message bus.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Topic string or service name, will be None if not set</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Union[None, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-eii.msgbus"></span><p>EII Message Bus Python mapping</p>
+<dl class="py class">
+<dt id="eii.msgbus.MsgbusContext">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.msgbus.</span></code><code class="sig-name descname"><span class="pre">MsgbusContext</span></code><a class="headerlink" href="#eii.msgbus.MsgbusContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus context object</p>
+<dl class="py method">
+<dt id="eii.msgbus.MsgbusContext.get_service">
+<code class="sig-name descname"><span class="pre">get_service</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.msgbus.MsgbusContext.get_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new service context for issuing requests to a service.</p>
+<p>Note that this method will expect to find the configuration attributes
+needed to communicate with the specified service in the configuration
+given to the constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>service_name</strong> – Name of the service</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Service object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#id15" title="eii.service.Service">Service</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="eii.msgbus.MsgbusContext.new_publisher">
+<code class="sig-name descname"><span class="pre">new_publisher</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.msgbus.MsgbusContext.new_publisher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new publisher object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>topic</strong> – Publisher’s topic</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Publisher object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="cfgmgr.html#id30" title="cfgmgr.publisher.Publisher">Publisher</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="eii.msgbus.MsgbusContext.new_service">
+<code class="sig-name descname"><span class="pre">new_service</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.msgbus.MsgbusContext.new_service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new service context for receiving requests.</p>
+<p>Note that this method will expect to find the configuration attributes
+needed to communicate with the specified service in the configuration
+given to the constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>service_name</strong> – Name of the service</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Service object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#id15" title="eii.service.Service">Service</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="eii.msgbus.MsgbusContext.new_subscriber">
+<code class="sig-name descname"><span class="pre">new_subscriber</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.msgbus.MsgbusContext.new_subscriber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new subscriber object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>topic</strong> – Topic to subscribe to</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Subscriber object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="cfgmgr.html#id44" title="cfgmgr.subscriber.Subscriber">Subscriber</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-1"></span><p>EII Message Bus Python mapping</p>
+<dl class="py class">
+<dt id="id4">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.msgbus.</span></code><code class="sig-name descname"><span class="pre">MsgbusContext</span></code><a class="headerlink" href="#id4" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus context object</p>
+<dl class="py method">
+<dt id="id5">
+<code class="sig-name descname"><span class="pre">get_service</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new service context for issuing requests to a service.</p>
+<p>Note that this method will expect to find the configuration attributes
+needed to communicate with the specified service in the configuration
+given to the constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>service_name</strong> – Name of the service</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Service object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#id15" title="eii.service.Service">Service</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id6">
+<code class="sig-name descname"><span class="pre">new_publisher</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new publisher object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>topic</strong> – Publisher’s topic</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Publisher object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="cfgmgr.html#id30" title="cfgmgr.publisher.Publisher">Publisher</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id7">
+<code class="sig-name descname"><span class="pre">new_service</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id7" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new service context for receiving requests.</p>
+<p>Note that this method will expect to find the configuration attributes
+needed to communicate with the specified service in the configuration
+given to the constructor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>service_name</strong> – Name of the service</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Service object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#id15" title="eii.service.Service">Service</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id8">
+<code class="sig-name descname"><span class="pre">new_subscriber</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new subscriber object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>topic</strong> – Topic to subscribe to</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Subscriber object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="cfgmgr.html#id44" title="cfgmgr.subscriber.Subscriber">Subscriber</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-eii.publisher"></span><p>EII Message Bus Publisher wrapper object</p>
+<dl class="py class">
+<dt id="eii.publisher.Publisher">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.publisher.</span></code><code class="sig-name descname"><span class="pre">Publisher</span></code><a class="headerlink" href="#eii.publisher.Publisher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Publisher object</p>
+<dl class="py method">
+<dt id="eii.publisher.Publisher.close">
+<code class="sig-name descname"><span class="pre">close</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.publisher.Publisher.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the publisher.</p>
+<p>This MUST be called before the program exists. If it is not your
+program may hang.</p>
+<p>Note that this method is not thread-safe.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="eii.publisher.Publisher.publish">
+<code class="sig-name descname"><span class="pre">publish</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.publisher.Publisher.publish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Publish message on the publisher object.</p>
+<p>The message object passed to this method can be either a Python bytes
+object or a Python dictionary. When a bytes object is given to be
+published, then this method will construct a message envelope for a
+blob. If a dictionary is given, then a JSON message envelope will be
+constructed and published.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> – Message to publish</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>bytes or dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-2"></span><p>EII Message Bus Publisher wrapper object</p>
+<dl class="py class">
+<dt id="id9">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.publisher.</span></code><code class="sig-name descname"><span class="pre">Publisher</span></code><a class="headerlink" href="#id9" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus Publisher object</p>
+<dl class="py method">
+<dt id="id10">
+<code class="sig-name descname"><span class="pre">close</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id10" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the publisher.</p>
+<p>This MUST be called before the program exists. If it is not your
+program may hang.</p>
+<p>Note that this method is not thread-safe.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id11">
+<code class="sig-name descname"><span class="pre">publish</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id11" title="Permalink to this definition">¶</a></dt>
+<dd><p>Publish message on the publisher object.</p>
+<p>The message object passed to this method can be either a Python bytes
+object or a Python dictionary. When a bytes object is given to be
+published, then this method will construct a message envelope for a
+blob. If a dictionary is given, then a JSON message envelope will be
+constructed and published.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> – Message to publish</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>bytes or dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-eii.receive_context"></span><p>EII Message Bus Python receive context wrapper</p>
+<dl class="py class">
+<dt id="eii.receive_context.ReceiveContext">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.receive_context.</span></code><code class="sig-name descname"><span class="pre">ReceiveContext</span></code><a class="headerlink" href="#eii.receive_context.ReceiveContext" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus receive context wrapper object</p>
+<dl class="py method">
+<dt id="eii.receive_context.ReceiveContext.close">
+<code class="sig-name descname"><span class="pre">close</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.receive_context.ReceiveContext.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the receive context.</p>
+<p>This MUST be called before the program exists. If it is not your
+program may hang.</p>
+<p>Note that this method is not thread-safe.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="eii.receive_context.ReceiveContext.recv">
+<code class="sig-name descname"><span class="pre">recv</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.receive_context.ReceiveContext.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive a message on the message bus for the given receive context.
+Note that the receive context can be a Subscriber or a Service object.</p>
+<p>Additionally, if the timeout is set to -1, then this method will
+operate based on whether blocking is set to True or False (i.e. block
+or do not block). However, it the timeout is set to anything &gt; -1,
+then this method will ignore whether blocking is set and use operate
+on a timeout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blocking</strong> – (Optional) Block until message received, or return
+immediately.</p></li>
+<li><p><strong>timeout</strong> – (Optional) Timeout in milliseconds to receive a message</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Received message</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict or bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-3"></span><p>EII Message Bus Python receive context wrapper</p>
+<dl class="py class">
+<dt id="id12">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.receive_context.</span></code><code class="sig-name descname"><span class="pre">ReceiveContext</span></code><a class="headerlink" href="#id12" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>EII Message Bus receive context wrapper object</p>
+<dl class="py method">
+<dt id="id13">
+<code class="sig-name descname"><span class="pre">close</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id13" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the receive context.</p>
+<p>This MUST be called before the program exists. If it is not your
+program may hang.</p>
+<p>Note that this method is not thread-safe.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="id14">
+<code class="sig-name descname"><span class="pre">recv</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id14" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive a message on the message bus for the given receive context.
+Note that the receive context can be a Subscriber or a Service object.</p>
+<p>Additionally, if the timeout is set to -1, then this method will
+operate based on whether blocking is set to True or False (i.e. block
+or do not block). However, it the timeout is set to anything &gt; -1,
+then this method will ignore whether blocking is set and use operate
+on a timeout.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>blocking</strong> – (Optional) Block until message received, or return
+immediately.</p></li>
+<li><p><strong>timeout</strong> – (Optional) Timeout in milliseconds to receive a message</p></li>
+</ul>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Received message</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict or bytes</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-eii.service"></span><p>EII Message Bus service wrapper object for receiving requests</p>
+<dl class="py class">
+<dt id="eii.service.Service">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.service.</span></code><code class="sig-name descname"><span class="pre">Service</span></code><a class="headerlink" href="#eii.service.Service" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id12" title="eii.receive_context.ReceiveContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">eii.receive_context.ReceiveContext</span></code></a></p>
+<p>EII Message Bus service wrapper object for receiving requests</p>
+<dl class="py method">
+<dt id="eii.service.Service.response">
+<code class="sig-name descname"><span class="pre">response</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.service.Service.response" title="Permalink to this definition">¶</a></dt>
+<dd><p>Issue a response over the message bus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>resp</strong> – Response data</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>bytes or dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-4"></span><p>EII Message Bus service wrapper object for receiving requests</p>
+<dl class="py class">
+<dt id="id15">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.service.</span></code><code class="sig-name descname"><span class="pre">Service</span></code><a class="headerlink" href="#id15" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id12" title="eii.receive_context.ReceiveContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">eii.receive_context.ReceiveContext</span></code></a></p>
+<p>EII Message Bus service wrapper object for receiving requests</p>
+<dl class="py method">
+<dt id="id16">
+<code class="sig-name descname"><span class="pre">response</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id16" title="Permalink to this definition">¶</a></dt>
+<dd><p>Issue a response over the message bus.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>resp</strong> – Response data</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>bytes or dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-eii.service_requester"></span><p>EII Message Bus service wrapper object to issue requests</p>
+<dl class="py class">
+<dt id="eii.service_requester.ServiceRequester">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.service_requester.</span></code><code class="sig-name descname"><span class="pre">ServiceRequester</span></code><a class="headerlink" href="#eii.service_requester.ServiceRequester" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id12" title="eii.receive_context.ReceiveContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">eii.receive_context.ReceiveContext</span></code></a></p>
+<p>EII Message Bus service wrapper object to issue requests</p>
+<dl class="py method">
+<dt id="eii.service_requester.ServiceRequester.request">
+<code class="sig-name descname"><span class="pre">request</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#eii.service_requester.ServiceRequester.request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Issue a request to the service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – Request to issue to the service</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>bytes or dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-5"></span><p>EII Message Bus service wrapper object to issue requests</p>
+<dl class="py class">
+<dt id="id17">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">eii.service_requester.</span></code><code class="sig-name descname"><span class="pre">ServiceRequester</span></code><a class="headerlink" href="#id17" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#id12" title="eii.receive_context.ReceiveContext"><code class="xref py py-class docutils literal notranslate"><span class="pre">eii.receive_context.ReceiveContext</span></code></a></p>
+<p>EII Message Bus service wrapper object to issue requests</p>
+<dl class="py method">
+<dt id="id18">
+<code class="sig-name descname"><span class="pre">request</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#id18" title="Permalink to this definition">¶</a></dt>
+<dd><p>Issue a request to the service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – Request to issue to the service</p>
+</dd>
+<dt class="field-even">Type</dt>
+<dd class="field-even"><p>bytes or dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-eii">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-eii" title="Permalink to this headline">¶</a></h2>
+<p>EII Message Bus</p>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright (c) 2021 Intel Corporation.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

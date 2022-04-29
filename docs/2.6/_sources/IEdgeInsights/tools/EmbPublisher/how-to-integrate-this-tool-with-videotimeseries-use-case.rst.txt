@@ -1,6 +1,6 @@
 
 How to integrate this tool with video/timeseries use case.
-==========================================================
+----------------------------------------------------------
 
 
 * In 'time-series.yml'/'video-streaming.yml' file, please add 'ZmqBroker' and 'tools/EmbPublisher' components.

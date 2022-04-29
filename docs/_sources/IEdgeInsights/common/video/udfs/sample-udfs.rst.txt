@@ -1,13 +1,13 @@
 
-``Sample UDFs``
--------------------
+Sample UDFs
+-----------
 
-.. note:: \ : The UDF config of these go as json objects in the ``udfs`` key in
+.. note::  The UDF config of these go as json objects in the ``udfs`` key in
    the overall UDF configuration object
 
 
-``Native UDFs``
-^^^^^^^^^^^^^^^^^^^
+Native UDFs
+^^^^^^^^^^^
 
 
 * 
@@ -25,7 +25,6 @@
          "type": "native"
      }
 
-
 * 
   **Raw Dummy UDF**
 
@@ -41,7 +40,7 @@
          "type": "raw_native"
      }
 
-**Note**\ : ``raw_native`` udf type has been added to support multi-frame ingestion support.RealSense usecase requires multi-frame ingestion for color and depth frames.
+**Note:** ``raw_native`` udf type has been added to support multi-frame ingestion support.RealSense usecase requires multi-frame ingestion for color and depth frames.
 
 
 * 
@@ -80,13 +79,13 @@
   .. code-block:: javascript
 
      "udfs": [{
-             "name": "dummy",
-             "type": "native"
-         },
-         {
-             "name": "fps",
-             "type": "native"
-         }]
+          "name": "dummy",
+          "type": "native"
+      },
+      {
+          "name": "fps",
+          "type": "native"
+      }]
 
   ..
 
@@ -110,9 +109,10 @@
 
   ----
 
-  ### ``Python UDFs``
+Python UDFs
+^^^^^^^^^^^
 
-.. note:: \ : Additional properties/keys other than ``name`` and ``type`` in the UDF
+.. note::  Additional properties/keys other than ``name`` and ``type`` in the UDF
    config are the parameters of the python UDF constructor
 
 
@@ -147,13 +147,13 @@
          "type": "python"
      }
 
-**Note**\ : When multi frame ingestion is used then the Frame object is a list of numpy frames else it is a single numpy frame. The udf type remains ``python`` for multi frame ingestion and single frame ingestion.
+**Note:** When multi frame ingestion is used then the Frame object is a list of numpy frames else it is a single numpy frame. The udf type remains ``python`` for multi frame ingestion and single frame ingestion.
 
 
 * 
   **Jupyter Connector UDF**
 
-  Accepts the frame and publishes it to the EII JupyterNotebook service which processes the frame and publishes it back to the jupyter_connector UDF.
+  Accepts the frame and publishes it to the OEI JupyterNotebook service which processes the frame and publishes it back to the jupyter_connector UDF.
 
   ``UDF config``\ :
 
@@ -173,7 +173,7 @@
 
   ``UDF config``\ :
 
-.. code-block:: javascript
+  .. code-block:: javascript
 
      {
          "name": "pcb.pcb_filter",
@@ -186,7 +186,6 @@
      }
 
   Refer `python/pcb/README.md <https://github.com/open-edge-insights/video-common/blob/master/udfs/python/pcb/README.md>`_ for more information.
-
 
 * 
   **PCB Classifier UDF**
@@ -211,7 +210,7 @@
 
   Refer `python/pcb/README.md <https://github.com/open-edge-insights/video-common/blob/master/udfs/python/pcb/README.md>`_ for more information.
 
-  **NOTE**\ :
+  **NOTE:**
   The above config works for both "CPU" and "GPU" devices after setting appropriate ``device`` value.
   Please set the "device" value appropriately based on the device used for inferencing.
 
