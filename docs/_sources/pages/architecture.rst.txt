@@ -2,20 +2,19 @@
 Architecture
 ############
 
-It is best to think about Open Edge Insights (OEI) as a set of containers. Figure 2 depicts these containers as dashed lines around the components held by each container. The high-level functions of OEI are data ingestion (video and time series), data storage, data analytics, as well as data and device management.
+It is best to think about Open Edge Insights for Industrial (Open EII) as a set of containers. Figure 2 depicts these containers as dashed lines around the components held by each container. The high-level functions of Open EII are data ingestion (video and time series), data storage, data analytics, as well as data and device management.
 
 
 .. figure:: image/eii-30-architecture.png
       :scale: 100 %
       :align: center
 
-      Figure 2.   OEI Ingredients
+      Figure 2.   Open EII Ingredients
 
-This OEI configuration is designed for deployment near to the site of data generation (for example, a PLC, robotic arm, tool, video camera, sensor, and so on.). The OEI Docker* containers perform video and time-series data ingestion, real-time\ :sub:`1` analytics, and allow closed-loop control\ :sub:`2`. 
-The following sections describe how to add new ingestion streams or algorithms within the OEI Docker* containers, as well as how the external applications such as a Human Machine Interface (HMI) or a Manufacturing Execution System (MES) connects to OEI.
+This Open EII configuration is designed for deployment near to the site of data generation (for example, a PLC, robotic arm, tool, video camera, sensor, and so on.). The Open EII Docker* containers perform video and time-series data ingestion, real-time\ :sub:`1` analytics, and allow closed-loop control\ :sub:`2`. 
+The following sections describe how to add new ingestion streams or algorithms within the Open EII Docker* containers, as well as how the external applications such as a Human Machine Interface (HMI) or a Manufacturing Execution System (MES) connects to Open EII.
 
 .. note::  1. Real-time measurements, as tested by Intel, are as low as 50 milliseconds. 
 
-.. note::  2. OEI closed-loop control functions do not provide deterministic control.
+.. note::  2. Open EII closed-loop control functions do not provide deterministic control.
 
-.. note::  3. In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.     

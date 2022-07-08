@@ -3,7 +3,7 @@ Configuration
 -------------
 
 The configuration of the Azure Bridge is a mix of the configuration for the
-OEI services, the Azure Bridge module, and configuration for the other
+Open EII services, the Azure Bridge module, and configuration for the other
 Azure IoT Edge Modules (i.e. the Simple Subscriber, and the Azure Blob Storage
 modules). All of this configuration is wrapped up into your deployment manifest
 for Azure IoT Hub.
@@ -14,16 +14,16 @@ and then the generation of your Azure Deployment manifest.
 Azure Bridge
 ^^^^^^^^^^^^
 
-The Azure Bridge spans OEI and Azure IoT Edge Runtime environments, as such
-its configuration is a mix of OEI configuration and Azure IoT Edge module configuration
+The Azure Bridge spans Open EII and Azure IoT Edge Runtime environments, as such
+its configuration is a mix of Open EII configuration and Azure IoT Edge module configuration
 properties. The configuration of the bridge is split between environmental
 variables specified in your Azure IoT Hub deployment manifest and the module's
 digital twin. Additionally, the digital twin for the Azure Bridge module
-contains the entire configuration for the OEI services running in your edge
+contains the entire configuration for the Open EII services running in your edge
 environment.
 
-The configuration of the OEI Message Bus is done in a method similar to that of
-the other OEI services, such as the Video Analytics service. To provided the
+The configuration of the Open EII Message Bus is done in a method similar to that of
+the other Open EII services, such as the Video Analytics service. To provided the
 configuration for the topics which the bridge should subscribe to,
 you must set the ``Subscribers`` list in the `modules/AzureBridge/config.json <https://github.com/open-edge-insights/eii-azure-bridge/blob/master/modules/AzureBridge/config.json>`_
 file. The list is comprised of JSON objects for every subscription you wish the
@@ -62,7 +62,7 @@ subscribing to the the publications coming from the Video Analytics container.
    }
 
 There are a few important implications to be aware of for both ZeroMQ TCP and IPC
-subscribers over the OEI Message Bus. These implications are specified below.
+subscribers over the Open EII Message Bus. These implications are specified below.
 
 ZeroMQ TCP Subscription Implications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -71,7 +71,7 @@ For ZeroMQ TCP subscribers, like the example shown above, the ``EndPoint`` in
 the subscriber's configuration object has to be overridden through an
 environmental variable. The reason for this, is that the Azure Bridge
 service runs attached to a bridged Docker network created by the Azure IoT
-Edge Runtime, whereas the other OEI services run on the different bridged network.
+Edge Runtime, whereas the other Open EII services run on the different bridged network.
 In order to subscribe, the Azure Bridge must use the host's IP address to
 connect.
 
@@ -91,7 +91,7 @@ IP address is the variable ``$HOST_IP``. This will be pulled from the ``.env`` f
 when generating your deployment manifest.
 
 The final implication is on the configuration of the services which the
-Azure Bridge is subscribing to. Most OEI services publishing over TCP set
+Azure Bridge is subscribing to. Most Open EII services publishing over TCP set
 their host to ``127.0.0.1``. This keeps the communication only available to
 subscribers which are on the local host network on the system. In order for
 the Azure Bridge to subscribe to these publications this must be changed
@@ -191,21 +191,21 @@ Each key in the configuration above is described in the table below.
    * - ``log_level``
      - This is the logging level for the Azure Bridge module, must be INFO, DEBUG, WARN, or ERROR
    * - ``topics``
-     - Configuration for the topics to map from the OEI Message Bus into the Azure IoT Edge Runtime
+     - Configuration for the topics to map from the Open EII Message Bus into the Azure IoT Edge Runtime
    * - ``eii_config``
-     - Entire serialized configuration for OEI; this configuration will be placed in ETCD
+     - Entire serialized configuration for Open EII; this configuration will be placed in ETCD
 
 
-You will notice that the ``eii_config`` is a serialized JSON string. This is due to a limitation with the Azure IoT Edge Runtime. Currently, module digital twins do not support arrays; however, the OEI configuration requires array support. To workaround this limitation, the OEI configuration must be a serialized JSON string in the digital twin for the Azure Bridge module.
+You will notice that the ``eii_config`` is a serialized JSON string. This is due to a limitation with the Azure IoT Edge Runtime. Currently, module digital twins do not support arrays; however, the Open EII configuration requires array support. To workaround this limitation, the Open EII configuration must be a serialized JSON string in the digital twin for the Azure Bridge module.
 
-The ``topics`` value is a JSON object, where each key is a topic from the OEI Message Bus which will be re-published onto the Azure IoT Edge Runtime. The value for the topic key will be an additional JSON object, where there is one required key, ``az_output_topic``\ , which is the topic on Azure IoT Edge Runtime to use and then an optional key, ``az_blob_container_name``.
+The ``topics`` value is a JSON object, where each key is a topic from the Open EII Message Bus which will be re-published onto the Azure IoT Edge Runtime. The value for the topic key will be an additional JSON object, where there is one required key, ``az_output_topic``\ , which is the topic on Azure IoT Edge Runtime to use and then an optional key, ``az_blob_container_name``.
 
-Sample OEI ONNX UDF
-^^^^^^^^^^^^^^^^^^^
+Sample Open Edge Insights for Industrial ONNX UDF
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-OEI provides a sample UDF which utilizes the ONNX RT to execute your machine learning or deep learning model. It also supports connecting to an AzureML Workspace to download the model and then run it. The source code for this UDF is in ``[WORKDIR]/IEdgeInsights/common/video/udfs/python/sample_onnx/``\ , also refer ``Sample ONNX UDF`` section in ``[WORKDIR]/IEdgeInsights/common/video/udfs/README.md`` for doing the required configuration for running this UDF.
+Open EII provides a sample UDF which utilizes the ONNX RT to execute your machine learning or deep learning model. It also supports connecting to an AzureML Workspace to download the model and then run it. The source code for this UDF is in ``[WORKDIR]/IEdgeInsights/common/video/udfs/python/sample_onnx/``\ , also refer ``Sample ONNX UDF`` section in ``[WORKDIR]/IEdgeInsights/common/video/udfs/README.md`` for doing the required configuration for running this UDF.
 
-To use this UDF with OEI, you need to modify your ``build/eii_config.json``\ configuration file to run the UDF in either your Video Ingesiton or Video Analytics instance. Ensure to remove the existing PCB filter or classifier UDFs or any other UDFs in Video Ingestion and Video Analytics config keys in ``build/eii_config.json`` aswe are doing some basic pre-processing, inferencing and post-processing in the ONNX UDF itself. Then, you need to modify the environmental variables in the ``AzureBridge/.env`` file to provide the connection
+To use this UDF with Open EII, you need to modify your ``build/eii_config.json``\ configuration file to run the UDF in either your Video Ingesiton or Video Analytics instance. Ensure to remove the existing PCB filter or classifier UDFs or any other UDFs in Video Ingestion and Video Analytics config keys in ``build/eii_config.json`` aswe are doing some basic pre-processing, inferencing and post-processing in the ONNX UDF itself. Then, you need to modify the environmental variables in the ``AzureBridge/.env`` file to provide the connection
 information to enable the UDF to download your model from AzureML. Make sure to follow the instructions provided in the `Setting up AzureML <#setting-up-azureml>`__ section above to configure your workspace correctly so that the UDF can download your model.
 
 The sample ONNX UDF requires that the following configuration values be set for the UDF in your ``eii_config.json`` file:
@@ -233,7 +233,7 @@ This should be added into the ``udfs`` list for your Video Ingestion or Video An
 .. code-block:: javascript
 
    {
-       // ... omited rest of OEI configuration ...
+       // ... omited rest of Open EII configuration ...
 
        "udfs": [
            {
@@ -246,7 +246,7 @@ This should be added into the ``udfs`` list for your Video Ingestion or Video An
            }
        ]
 
-       // ... omited rest of OEI configuration ...
+       // ... omited rest of Open EII configuration ...
    }
 
 The following environmental variables must be set in the ``AzureBridge/.env`` file in order to have the sample ONNX UDF download your model from an AzureML Workspace:
@@ -341,22 +341,17 @@ The Simple Subscriber module provided with the Azure Bridge is a very simple ser
 
 For more information on establishing routes in the Azure IoT Edge Runtime, see `this documentation <https://docs.microsoft.com/en-us/azure/iot-edge/module-composition#declare-routes>`_.
 
-OEI ETCD Pre-Load
-^^^^^^^^^^^^^^^^^
+Open Edge Insights for Industrial ETCD Pre-Load
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The configuration for OEI is given to the Azure Bridge via the ``eii_config`` key in the module's digital twin. As specified in the Azure Bridge configuration
-section, this must be a serialized string. For the scripts included with the
-Azure Bridge for generating your deployment manifest the ETCD pre-load
-configuration is stored at ``config/eii_config.json``. See the OEI documentation
-for more information on populating this file with your desired OEI configuration.
-The helper scripts will automatically serialize this JSON file and add it to your
+The configuration for Open EII is given to the Azure Bridge via the ``eii_config`` key in the module's digital twin. As specified in the Azure Bridge configuration section, this must be a serialized string. For the scripts included with the Azure Bridge for generating your deployment manifest the ETCD pre-load configuration is stored at ``config/eii_config.json``. See the Open EII documentation for more information on populating this file with your desired Open EII configuration. The helper scripts will automatically serialize this JSON file and add it to your
 deployment manifest.
 
 Azure Blob Storage
 ^^^^^^^^^^^^^^^^^^
 
 The Azure Bridge enables to use of the Azure Blob Storage edge IoT service
-from Microsoft. This service can be used to save images from OEI into the blob
+from Microsoft. This service can be used to save images from Open EII into the blob
 storage.
 
 If you wish to have the Azure Blob Storage service save the images to your
@@ -422,7 +417,7 @@ host filesystem, then you must do the following:
       }
 
 #. 
-   Add the ``az_blob_container_name`` key as below in ``example.template.json`` file, this specifies the Azure Blob Storage container to store the images from the OEI video analytics pipeline in. If the ``az_blob_container_name`` key is not specified, then the images will not be saved.
+   Add the ``az_blob_container_name`` key as below in ``example.template.json`` file, this specifies the Azure Blob Storage container to store the images from the Open EII video analytics pipeline in. If the ``az_blob_container_name`` key is not specified, then the images will not be saved.
 
    .. code-block:: javascript
 

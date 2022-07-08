@@ -5,16 +5,16 @@ Contents
 
 * `Contents <#contents>`__
 
-  * `OEI Sample UDFs <#oei-sample-udfs>`__
-  * `User Defined Function (UDF) <#user-defined-function-udf>`__
-  * `UDF Configuration <#udf-configuration>`__
-  * `UDF Writing Guide <#udf-writing-guide>`__
-  * `Sample UDFs <#sample-udfs>`__
+  * `How-To Guide for Writing UDF <#how-to-guide-for-writing-udf>`__
+  * `Introduction <#introduction>`__
+  * `Steps for Writing Native (C++) UDFs <#steps-for-writing-native-c-udfs>`__
 
-    * `Native UDFs <#native-udfs>`__
-    * `Python UDFs <#python-udfs>`__
+    * `Open EII APIs for Writing Native UDFs (C++) <#open-eii-apis-for-writing-native-udfs-c>`__
+    * `Open EII APIs for Writing Raw Native UDFs(c++) for Multi Frame Support <#open-eii-apis-for-writing-raw-native-udfsc-for-multi-frame-support>`__
+    * `Open EII Infrastructure Related Changes <#open-eii-infrastructure-related-changes>`__
 
-  * `Construction of Metadata in UDF <#construction-of-metadata-in-udf>`__
-  * `Chaining of UDFs <#chaining-of-udfs>`__
+  * `Steps for Writing Python UDFs <#steps-for-writing-python-udfs>`__
 
-    * `Combination of UDFs with ingestors <#combination-of-udfs-with-ingestors>`__
+    * `Python APIs for writing UDF for Open EII <#python-apis-for-writing-udf-for-open-eii>`__
+    * `Open EII Infrastructure Changes <#open-eii-infrastructure-changes>`__
+    * `Conclusion <#conclusion>`__

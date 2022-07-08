@@ -218,10 +218,9 @@ an incoming publication on the subscriber's topic. The ``recv()`` method has
 three ways of being called.
 
 
-#. ``recv()``\ /\ ``recv(-1)`` - Blocks indefinitley until a new message is received.
-#. ``recv(0)`` - Returns immediates if not message has been received.
-#. ``recv(timeout)`` - Waits for the specified timeout to receive a message. ``timeout``
-    is assumed to be an integer that represents the time to wait in milliseconds.
+#. ``recv(timeout=-1)`` - Blocks indefinitley until a new message is received. If the timeout is set to -1, then this method will operate based on whether blocking is set to True or False (i.e. block or do not block)
+#. ``recv(timeout=0)`` - Returns immediates, if no message has been received.
+#. ``recv(timeout=[timeout in ms])`` - Waits for the specified timeout to receive a message. ``timeout`` is assumed to be an integer that represents the time to wait in milliseconds.
 
 To put this all together we need to first define the configuration we are going
 to load for the publisher and subscriber. We will use the configuration below
@@ -243,14 +242,14 @@ publisher in one Terminal window with the following command:
 
 .. code-block:: sh
 
-   $ python3 publisher.py ipc_config.json
+    python3 publisher.py ipc_config.json
 
 Next, start the subscriber in a different Terminal window with the command
 shown below.
 
 .. code-block:: sh
 
-   $ python3 subscriber.py ipc_config.json
+    python3 subscriber.py ipc_config.json
 
 At this point you should see the messages being published by the publisher
 being printed to the console by the subscriber.

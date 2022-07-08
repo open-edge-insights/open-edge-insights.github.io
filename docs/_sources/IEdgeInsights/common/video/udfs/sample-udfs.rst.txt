@@ -153,7 +153,7 @@ Python UDFs
 * 
   **Jupyter Connector UDF**
 
-  Accepts the frame and publishes it to the OEI JupyterNotebook service which processes the frame and publishes it back to the jupyter_connector UDF.
+  Accepts the frame and publishes it to the Open EII JupyterNotebook service which processes the frame and publishes it back to the jupyter_connector UDF.
 
   ``UDF config``\ :
 

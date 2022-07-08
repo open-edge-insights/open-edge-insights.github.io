@@ -13,9 +13,9 @@ Contents
 HttpTestServer
 --------------
 
-HttpTestServer runs a simple HTTP Test server with security being optional.
+HttpTestServer runs a simple HTTP test server with security being optional.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 Prerequisites for running the HttpTestServer
@@ -23,7 +23,7 @@ Prerequisites for running the HttpTestServer
 
 
 * 
-  To install OEI libs on bare-metal, follow the `README <https://github.com/open-edge-insights/eii-core/blob/master/common/README.md>`_ of eii_libs_installer.
+  To install Open EII libs on bare-metal, follow the `README <https://github.com/open-edge-insights/eii-core/blob/master/common/README.md>`_ of eii_libs_installer.
 
 * 
   Generate the certificates required to run the Http Test Server using the following command:

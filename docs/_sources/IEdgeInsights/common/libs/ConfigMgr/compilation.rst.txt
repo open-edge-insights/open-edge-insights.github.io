@@ -18,7 +18,7 @@ executing the ``cmake`` command. Refer to the following:
 
    cmake -DWITH_PYTHON=ON ..
 
-If you wish to include installation of the Go binding with the installation of the OEI library, then specify the ``WITH_GO`` flag when executing the ``cmake``
+If you wish to include installation of the Go binding with the installation of the Open EII library, then specify the ``WITH_GO`` flag when executing the ``cmake``
 command.
 
 .. code-block:: sh

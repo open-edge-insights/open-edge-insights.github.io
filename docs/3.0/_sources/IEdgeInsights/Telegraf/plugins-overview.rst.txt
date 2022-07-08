@@ -1,0 +1,21 @@
+
+Plugins Overview
+----------------
+
+The plugin subscribes to configured topic or topic prefixes. Plugin has component
+called subscriber which receives the data from eii message bus.
+After receiving the data, depending on configuration, the plugin process
+the data, either synchronously or asynchronously.
+
+
+* In **synchronous** processing**, the receiver thread (thread which receives the data from message bus) is also resposible for the processing of the data (json parsing). After processing the previous data only, the receiver thread process next data available on the message bus.
+* In **asynchronous** processing the  receiver thread  receives the data and put it into the queue. There will be pool of threads which will be dequeing the data from the queue and processing it.
+
+Guidelines for choosing the data processing options are as follows:
+
+
+* Synchronous option: When the ingestion rate is consistent
+* Asynchronous options: There are two options
+
+  * Topic specific queue+threadpool : Frequent spike in ingestion rate for a specific topic
+  * Global queue+threadpool : Sometimes spike in ingestion rate for a specific topic

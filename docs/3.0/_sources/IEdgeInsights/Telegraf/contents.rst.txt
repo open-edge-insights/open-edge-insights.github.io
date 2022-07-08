@@ -5,17 +5,25 @@ Contents
 
 * `Contents <#contents>`__
 
-  * `Telegraf <#telegraf>`__
+  * `Plugins Overview <#plugins-overview>`__
+  * `Telegraf's Default Configuration <#telegrafs-default-configuration>`__
+  * `MQTT Sample Configuration and Testing Tool <#mqtt-sample-configuration-and-testing-tool>`__
+  * `Enabling Message Bus Input Plugin in Telegraf <#enabling-message-bus-input-plugin-in-telegraf>`__
 
-    * `Telegraf's default configuration <#telegrafs-default-configuration>`__
-    * `MQTT sample configuration and tool to test it <#mqtt-sample-configuration-and-tool-to-test-it>`__
-    * `Enabling message bus input plugin in Telegraf <#enabling-message-bus-input-plugin-in-telegraf>`__
-    * `Overview <#overview>`__
-    * `Advanced: Multiple plugin sections of OEI message bus input plugin <#advanced-multiple-plugin-sections-of-oei-message-bus-input-plugin>`__
+    * `Plugin Configuration <#plugin-configuration>`__
 
-      * `Using input plugin <#using-input-plugin>`__
+      * `ETCD Configuration <#etcd-configuration>`__
+      * `Configuration at Telegraf.conf File <#configuration-at-telegrafconf-file>`__
 
-    * `Enabling message bus Output plugin in Telegraf <#enabling-message-bus-output-plugin-in-telegraf>`__
-    * `Advanced: Multiple plugin sections of message bus output plugin <#advanced-multiple-plugin-sections-of-message-bus-output-plugin>`__
-    * `Run Telegraf Input output plugin in IPC mode <#run-telegraf-input-output-plugin-in-ipc-mode>`__
-    * `Optional: Adding multiple telegraf instances <#optional-adding-multiple-telegraf-instances>`__
+    * `Advanced: Multiple Plugin Sections of Open EII Message Bus Input Plugin <#advanced-multiple-plugin-sections-of-open-eii-message-bus-input-plugin>`__
+
+  * `Using Input Plugin <#using-input-plugin>`__
+  * `Enable Message Bus Output Plugin in Telegraf <#enable-message-bus-output-plugin-in-telegraf>`__
+  * `Advanced: Multiple plugin sections of message bus output plugin <#advanced-multiple-plugin-sections-of-message-bus-output-plugin>`__
+  * `Run Telegraf Input Output Plugin in IPC Mode <#run-telegraf-input-output-plugin-in-ipc-mode>`__
+  * `Optional: Adding Multiple Telegraf Instances <#optional-adding-multiple-telegraf-instances>`__
+
+Telegraf is a part of the `TICK stack <https://www.influxdata.com/time-series-platform>`_. This is a plugin-based agent. Telegraf has many input and output plugins. In Open EII's basic configuration, it's being used for data ingestion. However, Open EII framework does not restrict Telegraf's any of the features. In Open EII, basic configuration uses Telegraf for data ingestion and sending it to InfluxDB.
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
+

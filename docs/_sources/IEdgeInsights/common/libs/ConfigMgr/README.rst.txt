@@ -12,15 +12,15 @@ ConfigMgr or Config manager provides CPP, Python, and Golang APIs to:
 * read and set the ``/GlobalEnv`` variables.
 * fetch the env variables: appname, dev_mode
 
-All the ConfigMgr operations related data is stored in the KV store of OEI during the provisioning phase. An admin can dynamically change these data.
+All the ConfigMgr operations related data is stored in the KV store of Open Edge Insights for Industrial during the provisioning phase. An admin can dynamically change these data.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 ConfigMgr Installation
 ----------------------
 
-You can install the OEI Config Manager library in any of the following ways:
+You can install the Open EII Config Manager library in any of the following ways:
 
 
 * Through published Debian, Fedora, or Alpine APK packages
@@ -69,7 +69,7 @@ ConfigMgr installs to ``/opt/intel/eii/lib/``. On some platforms, this is not in
 .. note::  You can also specify a different library prefix to CMake through the ``CMAKE_INSTALL_PREFIX`` flag. If different installation path is given via ``CMAKE_INSTALL_PREFIX``\ , then ``$LD_LIBRARY_PATH`` should be appended by $CMAKE_INSTALL_PREFIX/lib.
 
 
-To install the remaining dependencies for the message bus execute the following command:
+To install the remaining dependencies for the Message bus, run the following command:
 
 .. note:: \ : It is highly recommended that you use a python virtual environment to install the python packages, so that the system python installation doesn't get altered. For details on setting up and using Python virtual environment, refer to `Python virtual environment <https://www.geeksforgeeks.org/python-virtual-environment/>>`_.
 
@@ -81,7 +81,7 @@ To install the remaining dependencies for the message bus execute the following 
 .. note::  For Fedora, the packages is ``cjson-devel zeromq-devel zlib-devel``. For Alpine, the package is ``cjson-dev zeromq-dev zlib-dev``.
 
 
-If you wish to compile the Python binding as well, then you must also install the Python requirements. To do this, execute the following ``pip`` command:
+If you wish to compile the Python binding as well, then you must also install the Python requirements. To do this, run the following ``pip`` command:
 
 .. code-block:: sh
 
@@ -125,7 +125,7 @@ executing the ``cmake`` command. Refer to the following:
 
    cmake -DWITH_PYTHON=ON ..
 
-If you wish to include installation of the Go binding with the installation of the OEI library, then specify the ``WITH_GO`` flag when executing the ``cmake``
+If you wish to include installation of the Go binding with the installation of the Open EII library, then specify the ``WITH_GO`` flag when executing the ``cmake``
 command.
 
 .. code-block:: sh
@@ -260,7 +260,7 @@ following commands:
 The command above will build the Debian and RPM packages (depending on the
 specified CMake flags).
 
-To build the Alpine APK package, execute the following command:
+To build the Alpine APK package, run the following command:
 
 .. code-block:: sh
 
@@ -268,36 +268,29 @@ To build the Alpine APK package, execute the following command:
 
 **IMPORTANT:**
 
-The Config Manager depends on the OEI Utils and Message Bus libraries.
-In order to compile the Alpine APK package for the Config Manager it must
-have the APK packages for the OEI Utils and Message Bus modules.
+The Config Manager depends on the Open EII Utils and Message bus libraries.
+To compile the Alpine APK package for the Config Manager it must have the APK packages for the Open EII Utils and Message bus modules.
 
-To provide this, you must first build or download the Alpine APK package for the
-OEI Utils library (see it's repo `here <https://github.com/open-edge-insights/eii-c-utils>`_
-to obtain the library) and also for the Message Bus (see it's repo
-`here <https://github.com/open-edge-insights/eii-messagebus>`_ to obtain the library).
+To provide this, you must first build or download the Alpine APK package for the Open EII Utils library (see its repo `here <https://github.com/open-edge-insights/eii-c-utils>`_
+to obtain the library) and also for the Message bus (see it's repo `here <https://github.com/open-edge-insights/eii-messagebus>`_ to obtain the library).
 
-Once you have the APKs, create an, "apks" directory at the top level of this
-repository.
+After you have the APKs, create an ``apks`` directory at the top level of this repository.
 
 .. code-block:: sh
 
    mkdir apks/
 
-Next, place the OEI Utils and Message Bus APK packages into the, "apks",
-directory. Then execute the ``make package-apk`` command. If this is not done,
+Next, place the Open EII Utils and Message bus APK packages into the, ``apks``\ ,
+directory. Then run the ``make package-apk`` command. If this is not done,
 then the build will fail.
 
 A Note on Alpine APK Packaging
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to package the library as an Alpine APK package, the packaging utility
-must use a Docker container to have access to the proper Alpine APK toolchains.
-This container will automatically be built when the CMake command is ran to
-configure your build environment.
+To package the library as an Alpine APK package, the packaging utility must use a Docker container to have access to the proper Alpine APK toolchains.
+This container will automatically be built when the CMake command is ran to configure your build environment.
 
-By default, Alpine 3.14 is used to build the package. However, this version
-can be changed by setting the ``APKBUILD_ALPINE_VERSION`` CMake flag to the
+By default, Alpine 3.14 is used to build the package. However, this version can be changed by setting the ``APKBUILD_ALPINE_VERSION`` CMake flag to the
 version of Alpine you wish to use (ex. ``-DAPKBUILD_ALPINE_VERSION=3.12``\ ).
 
 Install ConfigMgr with Python bindings, Go bindings, Examples, Test suits, and Debug Build
@@ -900,7 +893,7 @@ Publisher Details
 Running Examples
 ----------------
 
-The ConfigMgr library also supports Cpp APIs and Python & Go bindings. These APIs/bindings can be used in Cpp and Python/Go services in the OEI stack to fetch required config/interfaces/msgbus config.
+The ConfigMgr library also supports Cpp APIs and Python & Go bindings. These APIs/bindings can be used in Cpp and Python/Go services in the Open EII stack to fetch required config/interfaces/msgbus config.
 
 Examples will only be compiled if the ``WITH_EXAMPLES=ON`` option is specified while running CMake.
 Please refer `Examples installation <#-install-configmgr-with-examples,-test-suits-and-debug-build-enabled.>`__
@@ -942,8 +935,8 @@ There are currently 5 CPP examples:
 #. ``examples/sample_client.cpp``
 #. ``examples/sample_getvalue.cpp``
 
-All of the Cpp example executables are in the ``build/examples/`` directory. To run
-them, execute the following command:
+All of the CPP example executables are in the ``build/examples/`` directory. To run
+them, run the following command:
 
 Before executing any of the examples, please run below command from ``build/examples/``
 

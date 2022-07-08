@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Working with Video Data &mdash; OEI Documentation v1.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <title>Working with Video Data &mdash; Open EII Documentation v1.0 documentation</title><link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
       <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
@@ -25,7 +25,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Working with Time series Data" href="timeseries.html" />
-    <link rel="prev" title="OEI Configuration Management" href="eiiConfig.html" /> 
+    <link rel="prev" title="Open Edge Insights for Industrial Configuration Management" href="eiiConfig.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -33,7 +33,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> OEI Documentation
+            <a href="../index.html" class="icon icon-home"> Open EII Documentation
           </a>
               <div class="version">
                 3.0
@@ -49,7 +49,7 @@
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book"> Open EII</span>
       v: 3.0
       <span class="fa fa-caret-down"></span>
     </span>
@@ -67,7 +67,7 @@
   
               <p><span class="caption-text">Introduction:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to OEI</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to Open Edge Insights for Industrial</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#terminology">Terminology</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="introduction.html#general-terminology">General Terminology</a></li>
 <li class="toctree-l3"><a class="reference internal" href="introduction.html#security-related-terminology">Security-Related Terminology</a></li>
@@ -77,55 +77,54 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
-<li class="toctree-l1"><a class="reference internal" href="min-system-requirements.html">Minimum system requirements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="running.html">Run Open Edge Insights</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="running.html#install-open-edge-insights-from-github">Install Open Edge Insights from GitHub</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="running.html#task-1-get-oei-codebase-from-github">Task 1: Get OEI codebase from GitHub</a></li>
-<li class="toctree-l3"><a class="reference internal" href="running.html#task-2-install-prerequisites">Task 2: Install prerequisites</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="running.html#run-the-pre-requisite-script">Run the pre-requisite script</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#optional-steps">Optional steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="min-system-requirements.html">Minimum System Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="running.html">Run Open Edge Insights for Industrial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="running.html#install-open-edge-insights-for-industrial-from-github">Install Open Edge Insights for Industrial from GitHub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#task-1-get-open-edge-insights-for-industrial-codebase-from-github">Task 1: Get Open Edge Insights for Industrial Codebase from GitHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#task-2-install-prerequisites">Task 2: Install Prerequisites</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#run-the-prerequisites-script">Run the Prerequisites Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#optional-steps">Optional Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="running.html#task-3-generate-deployment-and-configuration-files">Task 3: Generate deployment and configuration files</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="running.html#use-the-builder-script">Use the Builder script</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#generate-consolidated-files-for-all-applicable-oei-services">Generate consolidated files for all applicable OEI services</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#generate-consolidated-files-for-a-subset-of-oei-services">Generate consolidated files for a subset of OEI services</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#generate-multi-instance-configs-using-the-builder">Generate multi-instance configs using the Builder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#generate-benchmarking-configs-using-builder">Generate benchmarking configs using Builder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#add-oei-services">Add OEI services</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#distribute-the-oei-container-images">Distribute the OEI container images</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#list-of-oei-services">List of OEI services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#task-3-generate-deployment-and-configuration-files">Task 3: Generate Deployment and Configuration Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#use-the-builder-script">Use the Builder Script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#generate-consolidated-files-for-all-applicable-services-of-open-edge-insights-for-industrial">Generate Consolidated Files for All Applicable Services of Open Edge Insights for Industrial</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#generate-consolidated-files-for-a-subset-of-open-edge-insights-for-industrial-services">Generate Consolidated Files for a Subset of Open Edge Insights for Industrial Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#generate-multi-instance-config-using-the-builder">Generate Multi-instance Config Using the Builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#generate-benchmarking-config-using-builder">Generate Benchmarking Config Using Builder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#add-the-open-edge-insights-for-industrial-services">Add the Open Edge Insights for Industrial Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#distribute-the-open-edge-insights-for-industrial-container-images">Distribute the Open Edge Insights for Industrial Container Images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#list-of-open-edge-insights-for-industrial-services">List of Open Edge Insights for Industrial Services</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="running.html#task-4-build-and-run-the-oei-video-and-time-series-use-cases">Task 4: Build and run the OEI video and time series use cases</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="running.html#build-the-oei-stack">Build the OEI stack</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#run-oei-services">Run OEI services</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#push-the-required-oei-images-to-docker-registry">Push the required OEI images to docker registry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#task-4-build-and-run-the-open-edge-insights-for-industrial-video-and-time-series-use-cases">Task 4: Build and Run the Open Edge Insights for Industrial Video and Time Series Use Cases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#build-the-open-edge-insights-for-industrial-stack">Build the Open Edge Insights for Industrial Stack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#run-open-edge-insights-for-industrial-services">Run Open Edge Insights for Industrial Services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#push-the-required-open-edge-insights-for-industrial-images-to-docker-registry">Push the Required Open Edge Insights for Industrial Images to Docker Registry</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="running.html#web-deployment-tool">Web Deployment Tool</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#video-pipeline-analytics">Video pipeline analytics</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="running.html#enable-camera-based-video-ingestion">Enable camera-based video ingestion</a></li>
-<li class="toctree-l3"><a class="reference internal" href="running.html#use-video-accelerators-in-ingestion-and-analytics-containers">Use video accelerators in ingestion and analytics containers</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="running.html#to-run-on-usb-devices">To run on USB devices</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#to-run-on-myriad-devices">To run on MYRIAD devices</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#to-run-on-hddl-devices">To run on HDDL devices</a></li>
-<li class="toctree-l4"><a class="reference internal" href="running.html#to-run-on-intel-r-processor-graphics-gpu-igpu">To run on Intel(R) Processor Graphics (GPU/iGPU)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#video-pipeline-analytics">Video Pipeline Analytics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#enable-camera-based-video-ingestion">Enable Camera-based Video Ingestion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="running.html#use-video-accelerators-in-ingestion-and-analytics-containers">Use Video Accelerators in Ingestion and Analytics Containers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="running.html#to-run-on-the-usb-devices">To Run on the USB Devices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#to-run-on-the-myriad-devices">To Run on the MYRIAD Devices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#to-run-on-the-hddl-devices">To run on the HDDL Devices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="running.html#to-run-on-intel-r-processor-graphics-gpu-igpu">To Run on Intel(R) Processor Graphics (GPU/iGPU)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="running.html#custom-user-defined-functions">Custom User Defined Functions</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#time-series-analytics">Time series analytics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#oei-multi-node-cluster-deployment">OEI multi-node cluster deployment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="running.html#with-k8s-orchestrator">With k8s orchestrator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#time-series-analytics">Time Series Analytics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#open-edge-insights-for-industrial-multi-node-cluster-deployment">Open Edge Insights for Industrial Multi-node Cluster Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="running.html#with-k8s-orchestrator">With K8s Orchestrator</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#oei-uninstaller">OEI Uninstaller</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#debugging-options">Debugging options</a></li>
-<li class="toctree-l2"><a class="reference internal" href="running.html#troubleshooting-guide">Troubleshooting guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#open-edge-insights-for-industrial-uninstaller">Open Edge Insights for Industrial Uninstaller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#debugging-options">Debugging Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="running.html#troubleshooting-guide">Troubleshooting Guide</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="release.html">Release Notes</a><ul>
@@ -133,7 +132,7 @@
 <li class="toctree-l3"><a class="reference internal" href="release.html#fixes">Fixes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="release.html#oei-v3-0">OEI v3.0</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="release.html#open-eii-v3-0">Open EII v3.0</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release.html#new-features">New Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="release.html#dropped-features">Dropped Features</a></li>
 <li class="toctree-l3"><a class="reference internal" href="release.html#known-issues">Known Issues</a></li>
@@ -166,6 +165,28 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5">EII v2.5</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="release.html#id6">Features</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html">Open EII 2.6 to 3.0 version migration guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html#open-eii-v3-0-release-notes">Open EII v3.0 Release Notes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html#new-features">New Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html#dropped-features">Dropped Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html#known-issues">Known Issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html#changes-from-2-6-to-3-0">Changes from 2.6 to 3.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html#build-changes">Build Changes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html#provisioning-flow-changes">Provisioning flow changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html#building-use-cases">Building use cases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html#deployment-changes">Deployment Changes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html#deployment-using-docker-compose-yml-on-single-node">Deployment using docker-compose.yml on single node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="migration_to_3.0_from_2.6_EII_version.html#deployment-on-k8s-cluster-using-helm">Deployment on k8s cluster using helm</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -213,62 +234,10 @@
 <li class="toctree-l3"><a class="reference internal" href="msgbus.html#generation-of-python-whl-file-optional">Generation of python .whl file (Optional)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id3">Dependency Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id4">Compilation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id5">Generating Documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id6">Potential Compilation Issues</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id7">Packaging</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id9">A Note on Alpine APK Packaging</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id10">Installation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id11">Install Python Binding</a></li>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id12">Install Golang Binding</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id13">Running Unit Tests</a></li>
-<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id14">Configuration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id15">ZeroMQ IPC Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id16">ZeroMQ TCP Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id17">Publishers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id18">Subscribers</a></li>
-<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id19">Services</a></li>
-<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id20">Requesters</a></li>
-<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id21">Using ZAP Authentication</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id22">Additional ZeroMQ Configuration Properties</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id23">Example Usage</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id24">C Examples</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id25">Publisher Many Example</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id26">Python Examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id27">Go Examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id28">Running Go Examples without Installing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id29">Brokered Publish/Subscribe</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id30">Security</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id33">Using Only CurveZMQ Encryption</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id34">Publish/Subscribe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="msgbus.html#id35">Request/Response</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id36">Using ZAP Authentication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="msgbus.html#id37">Disabling Security</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id38">Known issues</a></li>
-<li class="toctree-l2"><a class="reference internal" href="msgbus.html#id39">Generation of python .whl file (Optional)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="msgbus.html#api-documentation">API Documentation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="eiiConfig.html">OEI Configuration Management</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="eiiConfig.html">Open Edge Insights for Industrial Configuration Management</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="eiiConfig.html#configmgr">ConfigMgr</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="eiiConfig.html#configmgr-installation">ConfigMgr Installation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="eiiConfig.html#using-system-grpc">Using System gRPC</a></li>
@@ -310,35 +279,30 @@
 <p><span class="caption-text">Video Analytics Pipeline:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Working with Video Data</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#videoingestion-module">VideoIngestion module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#videoingestion-module">VideoIngestion Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#ingestor-config">Ingestor config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ingestor-config">Ingestor Config</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#videoingestion-features">VideoIngestion features</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#image-ingestion">Image ingestion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#udf-configurations">UDF configurations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#updating-security-context-of-videoingestion-helm-charts-for-enabling-k8s-environment-to-access-detect-basler-usb-device">Updating Security Context of VideoIngestion Helm Charts for enabling K8s environment to access/detect Basler/usb Device</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#camera-configurations">Camera configurations</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#rtsp-cameras">RTSP cameras</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#videoingestion-features">VideoIngestion Features</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#image-ingestion">Image Ingestion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#udf-configurations">UDF Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#updating-security-context-of-videoingestion-helm-charts">Updating Security Context of VideoIngestion Helm Charts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#camera-configurations">Camera Configurations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rtsp-cameras">RTSP Cameras</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usb-v4l2-cameras">USB v4l2 Cameras</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#realsense-depth-cameras">RealSense Depth Cameras</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#videoanalytics-module">VideoAnalytics Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id5">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id14">Updating Security Context of VideoIngestion Helm Charts for enabling K8s environment to access/detect Basler/usb Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-security-context-of-videoingestion-helm-charts">Update Security Context of VideoIngestion Helm Charts</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#using-video-accelerators-in-ingestion-analytics-containers">Using video accelerators in ingestion/analytics containers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#to-run-on-usb-devices"><strong>To run on USB devices</strong></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#to-run-on-myriad-devices"><strong>To run on MYRIAD devices</strong></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#to-run-on-hddl-devices"><strong>To run on HDDL devices</strong></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#to-run-on-intel-r-processor-graphics-gpu-igpu"><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong></a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#oei-udfloader">OEI UDFLoader</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#oei-sample-udfs">OEI Sample UDFs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#open-eii-udfloader">Open EII UDFLoader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#open-eii-sample-udfs">Open EII Sample UDFs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#user-defined-function-udf">User Defined Function (UDF)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#native-visualizer-module">Native Visualizer Module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#steps-to-build-and-run-visualizer">Steps to build and run visualizer</a></li>
@@ -347,31 +311,31 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#web-visualizer-module">Web Visualizer Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#steps-to-build-and-run-web-visualizer">Steps to build and run web visualizer</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id28">Using Labels</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id32">Metadata Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#steps-to-build-and-run-web-visualizer">Steps to Build and Run Web Visualizer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Using Labels</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id26">Metadata Structure</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#imagestore-module">ImageStore Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id33">Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id27">Configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#detailed-description-on-each-of-the-keys-used">Detailed description on each of the keys used</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#influxdbconnector-module">InfluxDBConnector Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id35">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">Configuration</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="#working-with-edge-video-analytics-microservice">Working with Edge Video Analytics Microservice</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#edge-video-analytics-microservice">Edge Video Analytics Microservice</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#build-the-base-image">Build the base image</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#run-the-base-image">Run the base image</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#run-evam-in-oei-mode">Run EVAM in OEI mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#build-the-base-image">Build the Base Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-base-image">Run the Base Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-evam-in-open-eii-mode">Run EVAM in Open EII Mode</a></li>
 </ul>
 </li>
 </ul>
@@ -442,10 +406,9 @@
 <li class="toctree-l3"><a class="reference internal" href="azure.html#development-system-setup">Development System Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="azure.html#build-and-push-oei-containers">Build and Push OEI Containers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="azure.html#single-node-azure-iot-edge-deployment">Single-Node Azure IoT Edge Deployment</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="azure.html#step-1-provisioning">Step 1 - Provisioning</a></li>
-<li class="toctree-l3"><a class="reference internal" href="azure.html#step-2-configuring-oei">Step 2 - Configuring OEI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#step-2-configuring-open-edge-insights-for-industrial">Step 2 - Configuring Open Edge Insights for Industrial</a></li>
 <li class="toctree-l3"><a class="reference internal" href="azure.html#step-3-configuring-azure-iot-deployment-manifest">Step 3 - Configuring Azure IoT Deployment Manifest</a></li>
 <li class="toctree-l3"><a class="reference internal" href="azure.html#step-4-deployment">Step 4 - Deployment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="azure.html#helpful-debugging-commands">Helpful Debugging Commands</a></li>
@@ -456,76 +419,76 @@
 <li class="toctree-l3"><a class="reference internal" href="azure.html#id3">Azure Bridge</a></li>
 <li class="toctree-l3"><a class="reference internal" href="azure.html#zeromq-tcp-subscription-implications">ZeroMQ TCP Subscription Implications</a></li>
 <li class="toctree-l3"><a class="reference internal" href="azure.html#zeromq-ipc-subscription-implications">ZeroMQ IPC Subscription Implications</a></li>
-<li class="toctree-l3"><a class="reference internal" href="azure.html#sample-oei-onnx-udf">Sample OEI ONNX UDF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#sample-open-edge-insights-for-industrial-onnx-udf">Sample Open Edge Insights for Industrial ONNX UDF</a></li>
 <li class="toctree-l3"><a class="reference internal" href="azure.html#simple-subscriber">Simple Subscriber</a></li>
-<li class="toctree-l3"><a class="reference internal" href="azure.html#oei-etcd-pre-load">OEI ETCD Pre-Load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="azure.html#open-edge-insights-for-industrial-etcd-pre-load">Open Edge Insights for Industrial ETCD Pre-Load</a></li>
 <li class="toctree-l3"><a class="reference internal" href="azure.html#azure-blob-storage">Azure Blob Storage</a></li>
 <li class="toctree-l3"><a class="reference internal" href="azure.html#azure-deployment-manifest">Azure Deployment Manifest</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="azure.html#azure-iot-edge-simulator">Azure IoT Edge Simulator</a></li>
-<li class="toctree-l2"><a class="reference internal" href="azure.html#supported-oei-services">Supported OEI Services</a></li>
+<li class="toctree-l2"><a class="reference internal" href="azure.html#supported-open-edge-insights-for-industrial-services">Supported Open Edge Insights for Industrial Services</a></li>
 <li class="toctree-l2"><a class="reference internal" href="azure.html#additional-resources">Additional Resources</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="opcua.html">OpcuaExport Application</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="opcua.html#opcuaexport">OpcuaExport</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="opcua.html#configuration">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="opcua.html#service-bring-up">Service bring up</a></li>
-<li class="toctree-l3"><a class="reference internal" href="opcua.html#opcua-client-apps">OPCUA client apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#service-bring-up">Service Bring Up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opcua.html#opcua-client-apps">OPCUA Client Apps</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport service</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="restdata.html">RestDataExport Service</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="restdata.html#configuration">Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="restdata.html#http-get-api-of-rde">HTTP GET API of RDE</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="restdata.html#get-the-classifier-results-metadata">Get the classifier results metadata</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="restdata.html#request-to-get-metadata">Request to get metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#get-the-classifier-results-metadata">Get the Classifier Results Metadata</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="restdata.html#request-to-get-metadata">Request to GET Metadata</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="restdata.html#get-images-using-the-image-handle">Get images using the image handle</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="restdata.html#request-to-get-images">Request to get images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#get-images-using-the-image-handle">Get Images Using the Image Handle</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="restdata.html#request-to-get-images">Request to GET Images</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="restdata.html#prerequisites-for-running-restdataexport-to-post-on-http-servers">Prerequisites for running RestDataExport to POST on HTTP Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="restdata.html#prerequisites-to-run-restdataexport-to-post-on-http-servers">Prerequisites to Run RestDataExport to POST on HTTP Servers</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="restdata.html#launch-restdataexport-service">Launch RestDataExport service</a></li>
-<li class="toctree-l2"><a class="reference internal" href="restdata.html#setting-environment-proxy-settings">Setting environment proxy settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#launch-restdataexport-service">Launch RestDataExport Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restdata.html#configure-environment-proxy-settings">Configure Environment Proxy Settings</a></li>
 </ul>
 </li>
 </ul>
 <p><span class="caption-text">Additional Info:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="tools.html">OEI Tools</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="tools.html">Open EII Tools</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#time-series-benchmarking-tool">Time Series Benchmarking Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#video-benchmarking-tool">Video Benchmarking Tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#discoverhistory-tool">DiscoverHistory Tool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#build-and-run-the-discoverhistory-tool">Build and run the DiscoverHistory tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#build-and-run-the-discoverhistory-tool">Build and Run the DiscoverHistory Tool</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="tools.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l4"><a class="reference internal" href="tools.html#run-the-discoverhistory-tool-in-the-prod-mode">Run the DiscoverHistory tool in the PROD mode</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tools.html#run-the-discoverhistory-tool-in-the-dev-mode">Run the DiscoverHistory tool in the DEV mode</a></li>
-<li class="toctree-l4"><a class="reference internal" href="tools.html#run-the-discoverhistory-tool-in-the-zmq-ipc-mode">Run the DiscoverHistory tool in the zmq_ipc mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#run-the-discoverhistory-tool-in-the-dev-mode">Run the DiscoverHistory tool in the DEV Mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tools.html#run-the-discoverhistory-tool-in-the-zmq-ipc-mode">Run the DiscoverHistory tool in the zmq_ipc Mode</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#sample-select-queries">Sample select queries</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the Builder script with the DiscoverHistory tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#sample-select-queries">Sample Select Queries</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance Feature Support for the Builder Script with the DiscoverHistory Tool</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#embpublisher">EmbPublisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#configuration-of-the-tool">Configuration of the tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#how-to-integrate-this-tool-with-video-time-series-use-case">How to Integrate this Tool with Video/Time Series Use Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#configuration-of-the-tool">Configuration of the Tool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#embsubscriber">EmbSubscriber</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#id25">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#running-embsubscriber">Running EmbSubscriber</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#running-embsubscriber-in-ipc-mode">Running EmbSubscriber in IPC mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#run-embsubscriber-in-ipc-mode">Run EmbSubscriber in IPC mode</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#gigeconfig-tool">GigEConfig tool</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#gigeconfig-tool">GigEConfig Tool</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#generating-pfs-pylon-feature-stream-file">Generating PFS (Pylon Feature Stream) File</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#running-gigeconfig-tool">Running GigEConfig Tool</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="tools.html#usage-of-gigeconfig-tool">Usage of GigEConfig tool</a></li>
@@ -550,40 +513,40 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#noderedhttpclientapp">NodeRedHttpClientApp</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#setting-up-nodered">Setting Up NodeRed</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#getting-oei-udf-classifier-results-data-to-node-red-environment-using-node-red-httpclient">Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#configure-nodered">Configure NodeRed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#getting-open-eii-udf-classifier-results-data-to-node-red-environment-using-node-red-httpclient">Getting Open EII UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#sample-workflow">Sample Workflow</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#software-trigger-utility-for-videoingestion-module">Software Trigger Utility for VideoIngestion Module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#software-trigger-utilily-pre-requisites">Software Trigger Utilily pre-requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#software-trigger-utilily-prerequisites">Software Trigger Utilily Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#configuration-file">Configuration file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#running-software-trigger-utility">Running Software Trigger Utility</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#usage-of-software-trigger-utility">Usage of Software Trigger Utility</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#oei-timeseriesprofiler">OEI TimeSeriesProfiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#id45">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#oei-timeseriesprofiler-modes">OEI TimeSeriesProfiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#oei-timeseriesprofiler-configurations">OEI TimeSeriesProfiler configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#open-eii-timeseriesprofiler">Open EII TimeSeriesProfiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#id43">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#open-eii-timeseriesprofiler-modes">Open EII TimeSeriesProfiler modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#open-eii-timeseriesprofiler-configurations">Open EII TimeSeriesProfiler configurations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#running-timeseriesprofiler">Running TimeSeriesProfiler</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#oei-video-profiler">OEI Video Profiler</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#oei-video-profiler-prerequisites">OEI Video Profiler prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#oei-video-profiler-modes">OEI Video Profiler modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#oei-video-profiler-configurations">OEI Video Profiler configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#open-eii-video-profiler">Open EII Video Profiler</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#open-eii-video-profiler-prerequisites">Open EII Video Profiler Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#open-eii-video-profiler-modes">Open EII Video Profiler Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#open-eii-video-profiler-configurations">Open EII Video Profiler Configurations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#run-video-profiler">Run Video Profiler</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#running-videoprofiler-in-helm-usecase">Running VideoProfiler in helm usecase</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#optimizing-oei-video-pipeline-by-analysing-video-profiler-results">Optimizing OEI Video pipeline by analysing Video Profiler results</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi-instance config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#run-videoprofiler-in-helm-use-case">Run VideoProfiler in Helm Use Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#optimize-open-eii-video-pipeline-by-analysing-video-profiler-results">Optimize Open EII Video Pipeline by Analysing Video Profiler Results</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#benchmarking-with-multi-instance-config">Benchmarking with Multi-instance Config</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="sample.html">OEI Samples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sample.html#sample-apps">Sample apps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="sample.html#run-the-samples-apps">Run the samples apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sample.html">Open EII Samples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="sample.html#sample-apps">Sample Apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="sample.html#run-the-samples-apps">Run the Samples Apps</a></li>
 </ul>
 </li>
 </ul>
@@ -609,7 +572,7 @@
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">OEI Documentation</a>
+          <a href="../index.html">Open EII Documentation</a>
       </nav>
 
       <div class="wy-nav-content">
@@ -636,8 +599,8 @@
   <section id="working-with-video-data">
 <h1>Working with Video Data<a class="headerlink" href="#working-with-video-data" title="Permalink to this headline">¶</a></h1>
 <section id="videoingestion-module">
-<h2>VideoIngestion module<a class="headerlink" href="#videoingestion-module" title="Permalink to this headline">¶</a></h2>
-<p>The VideoIngestion (VI) module ingests the video frames from video sources in the OEI stack for processing. The example of video sources include video files or cameras such as Basler, RTSP, or USB cameras. The VI module can also perform video analytics, when it runs with the classifier and post-processing user defined functions (UDFs).</p>
+<h2>VideoIngestion Module<a class="headerlink" href="#videoingestion-module" title="Permalink to this headline">¶</a></h2>
+<p>The VideoIngestion (VI) module ingests the video frames from video sources in the Open Edge Insights for Industrial (Open EII) stack for processing. The example of video sources include video files or cameras such as Basler, RTSP, or USB cameras. The VI module can also perform video analytics, when it runs with the classifier and post-processing user defined functions (UDFs).</p>
 <a class="reference external image-reference" href="https://raw.githubusercontent.com/open-edge-insights/video-ingestion/master/img/fig_9_1.png"><img alt="Video ingestion diagram" src="https://raw.githubusercontent.com/open-edge-insights/video-ingestion/master/img/fig_9_1.png" /></a>
 <p>The high-level logical flow of the VideoIngestion pipeline is as follows:</p>
 <ol class="arabic simple">
@@ -663,7 +626,7 @@
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/README.md#interfaces">MessageBus configuration</a> respectively.</p></li>
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/schema.json">JSON schema</a></p></li>
 </ul>
-<p>All the app module configurations are added to the distributed key-value store under the <code class="docutils literal notranslate"><span class="pre">AppName</span></code> env, as mentioned in the environment section of the app’s service definition in the <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code>. If the <code class="docutils literal notranslate"><span class="pre">AppName</span></code> is <code class="docutils literal notranslate"><span class="pre">VideoIngestion</span></code>, then the app’s config is taken from the <code class="docutils literal notranslate"><span class="pre">/VideoIngestion/config</span></code> key via the OEI Configuration Manager.</p>
+<p>All the app module configurations are added to the distributed key-value store under the <code class="docutils literal notranslate"><span class="pre">AppName</span></code> env, as mentioned in the environment section of the app’s service definition in the <code class="docutils literal notranslate"><span class="pre">docker-compose</span></code>. If the <code class="docutils literal notranslate"><span class="pre">AppName</span></code> is <code class="docutils literal notranslate"><span class="pre">VideoIngestion</span></code>, then the app’s config is taken from the <code class="docutils literal notranslate"><span class="pre">/VideoIngestion/config</span></code> key via the Open EII Configuration Manager.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -674,8 +637,8 @@
 </ul>
 </div>
 <section id="ingestor-config">
-<h4>Ingestor config<a class="headerlink" href="#ingestor-config" title="Permalink to this headline">¶</a></h4>
-<p>OEI supports the following type of ingestors:</p>
+<h4>Ingestor Config<a class="headerlink" href="#ingestor-config" title="Permalink to this headline">¶</a></h4>
+<p>Open EII supports the following type of ingestors:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://opencv.org/">OpenCV</a></p></li>
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/docs/gstreamer_ingestor_doc.md">GStreamer</a></p></li>
@@ -685,7 +648,7 @@
 </section>
 </section>
 <section id="videoingestion-features">
-<h3>VideoIngestion features<a class="headerlink" href="#videoingestion-features" title="Permalink to this headline">¶</a></h3>
+<h3>VideoIngestion Features<a class="headerlink" href="#videoingestion-features" title="Permalink to this headline">¶</a></h3>
 <p>Refer the following to learn more about the VideoIngestion features and supported camera:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/docs/generic_server_doc.md">Generic server</a></p></li>
@@ -696,8 +659,8 @@
 <li><p><a class="reference external" href="#usb-v4l2-cameras">USB v4l2 compatible camera support</a></p></li>
 </ul>
 <section id="image-ingestion">
-<h4>Image ingestion<a class="headerlink" href="#image-ingestion" title="Permalink to this headline">¶</a></h4>
-<p>The Image ingestion feature is responsible for ingesting the images coming from a directory into the OEI stack for further processing. The <code class="docutils literal notranslate"><span class="pre">OpenCV</span> <span class="pre">Ingestor</span></code> supports image ingestion.
+<h4>Image Ingestion<a class="headerlink" href="#image-ingestion" title="Permalink to this headline">¶</a></h4>
+<p>The Image ingestion feature is responsible for ingesting the images coming from a directory into the Open EII stack for further processing. The <code class="docutils literal notranslate"><span class="pre">OpenCV</span> <span class="pre">Ingestor</span></code> supports image ingestion.
 Image ingestion supports the following image formats:</p>
 <ul class="simple">
 <li><p>Jpg</p></li>
@@ -709,21 +672,21 @@ Image ingestion supports the following image formats:</p>
 <p>Refer the following snippet for configuring the <a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/config.json">config.json</a> file for enabling the image ingestion feature.</p>
 <ul>
 <li><p>OpenCV Ingestor</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
- <span class="c1">//</span>
-  <span class="s2">&quot;ingestor&quot;</span><span class="o">:</span> <span class="p">{</span>
-  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;opencv&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;/app/img_dir/&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;poll_interval&quot;</span><span class="o">:</span> <span class="mf">2</span><span class="p">,</span>
-  <span class="s2">&quot;loop_video&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="s2">&quot;image_ingestion&quot;</span><span class="o">:</span> <span class="kc">true</span>
-<span class="p">},</span>
-  <span class="s2">&quot;sw_trigger&quot;</span><span class="o">:</span> <span class="p">{</span>
-      <span class="s2">&quot;init_state&quot;</span><span class="o">:</span> <span class="s2">&quot;running&quot;</span>
-  <span class="p">},</span>
-  <span class="s2">&quot;max_workers&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span>
-    <span class="c1">//</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w"> </span><span class="c1">//</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;ingestor&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;opencv&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/app/img_dir/&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;poll_interval&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;loop_video&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;image_ingestion&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;sw_trigger&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;init_state&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;running&quot;</span><span class="w"></span>
+<span class="w">  </span><span class="p">},</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;max_workers&quot;</span><span class="o">:</span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="c1">//</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
@@ -759,15 +722,15 @@ Refer the following snippet of the <code class="docutils literal notranslate"><s
 </div>
 </section>
 <section id="udf-configurations">
-<h4>UDF configurations<a class="headerlink" href="#udf-configurations" title="Permalink to this headline">¶</a></h4>
+<h4>UDF Configurations<a class="headerlink" href="#udf-configurations" title="Permalink to this headline">¶</a></h4>
 <p>Ensure that you are using the appropriate UDF configuration for all the video and camera streams. If the UDF is not compatible with the video source, then you may not get the expected output in the Visualizer or the Web Visualizer screen. Use the <code class="docutils literal notranslate"><span class="pre">dummy</span></code> UDF, if you are not sure about the compatibility of the UDF and a video source. The dummy UDF will not do any analytics on the video, and it will not filter any of the video frames. You will see the video streamed by the camera, as it is displayed on the video output screen in the Visualizer or Web Visualizer.</p>
 <blockquote>
 <div><p>Refer the following configuration for the <code class="docutils literal notranslate"><span class="pre">dummy</span></code> UDF:</p>
 </div></blockquote>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;udfs&quot;</span><span class="o">:</span> <span class="p">[{</span>
-    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;dummy&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;python&quot;</span>
-<span class="p">}]</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;udfs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;dummy&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="w"></span>
+<span class="p">}]</span><span class="w"></span>
 </pre></div>
 </div>
 <p>&gt;</p>
@@ -775,12 +738,13 @@ Refer the following snippet of the <code class="docutils literal notranslate"><s
 <div><p>Apply the same changes in the VideoAnalytics configuration if it is subscribing to VideoIngestion.</p>
 </div></blockquote>
 </section>
-<section id="updating-security-context-of-videoingestion-helm-charts-for-enabling-k8s-environment-to-access-detect-basler-usb-device">
-<h4>Updating Security Context of VideoIngestion Helm Charts for enabling K8s environment to access/detect Basler/usb Device<a class="headerlink" href="#updating-security-context-of-videoingestion-helm-charts-for-enabling-k8s-environment-to-access-detect-basler-usb-device" title="Permalink to this headline">¶</a></h4>
-<p>Please follow the steps to update helm charts for enabling K8s environment to access/detect Basler Camera and NCS2 Device</p>
-<ul>
-<li><p>Open <code class="docutils literal notranslate"><span class="pre">EII_HOME_DIR/IEdgeInsights/VideoIngestion/helm/templates/video-ingestion.yaml</span></code> file</p></li>
-<li><p>Update below security context snippet</p>
+<section id="updating-security-context-of-videoingestion-helm-charts">
+<h4>Updating Security Context of VideoIngestion Helm Charts<a class="headerlink" href="#updating-security-context-of-videoingestion-helm-charts" title="Permalink to this headline">¶</a></h4>
+<p>Complete the following steps to update Helm charts to enable K8s environment to access or detect Basler Camera, USB devices, and NCS2 Devices:</p>
+<p>#. Open the <code class="docutils literal notranslate"><span class="pre">EII_HOME_DIR/IEdgeInsights/VideoIngestion/helm/templates/video-ingestion.yaml</span></code> file
+#.</p>
+<blockquote>
+<div><p>Update the following security context snippet</p>
 <div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>securityContext:
   privileged: true
 </pre></div>
@@ -798,50 +762,49 @@ Refer the following snippet of the <code class="docutils literal notranslate"><s
 <span class="nn">...</span><span class="w"></span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Re-run <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> to apply these changes to your deployment helm charts.</p></li>
-</ul>
-</li>
-</ul>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Rerun the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> to apply these changes to your deployment Helm charts.</p></li>
+</ol>
 </section>
 <section id="camera-configurations">
-<h4>Camera configurations<a class="headerlink" href="#camera-configurations" title="Permalink to this headline">¶</a></h4>
+<h4>Camera Configurations<a class="headerlink" href="#camera-configurations" title="Permalink to this headline">¶</a></h4>
 <p>The camera configurations for the VI module are as follows:</p>
 <ul>
-<li><p>For a video file</p>
+<li><p>For a video file:</p>
 <ul class="simple">
 <li><p>OpenCV Ingestor</p></li>
 </ul>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;opencv&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;./test_videos/pcb_d2000.avi&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;poll_interval&quot;</span><span class="o">:</span> <span class="mf">0.2</span>
-  <span class="s2">&quot;loop_video&quot;</span><span class="o">:</span> <span class="kc">true</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;opencv&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;./test_videos/pcb_d2000.avi&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;poll_interval&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;loop_video&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Gstreamer Ingestor</p></li>
 </ul>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;multifilesrc loop=TRUE stop-index=0 location=./test_videos/pcb_d2000.avi ! h264parse ! decodebin ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;multifilesrc loop=TRUE stop-index=0 location=./test_videos/pcb_d2000.avi ! h264parse ! decodebin ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 </ul>
 <p>For more information or configuration details for the <code class="docutils literal notranslate"><span class="pre">multifilesrc</span></code> element, refer to the <a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/docs/multifilesrc_doc.md">docs/multifilesrc_doc.md</a>.</p>
 <section id="genicam-gige-or-usb3-cameras">
-<h5>GenICam GigE or USB3 cameras<a class="headerlink" href="#genicam-gige-or-usb3-cameras" title="Permalink to this headline">¶</a></h5>
+<h5>GenICam GigE or USB3 Cameras<a class="headerlink" href="#genicam-gige-or-usb3-cameras" title="Permalink to this headline">¶</a></h5>
 <p>For more information or configuration details for the GenICam GigE or the USB3 camera support, refer to the <a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/docs/generic_plugin_doc.md">GenICam GigE/USB3.0 Camera Support</a>.</p>
 <section id="prerequisites-for-working-with-the-genicam-compliant-cameras">
-<h6>Prerequisites for working with the GenICam compliant cameras<a class="headerlink" href="#prerequisites-for-working-with-the-genicam-compliant-cameras" title="Permalink to this headline">¶</a></h6>
+<h6>Prerequisites for Working with the GenICam Compliant Cameras<a class="headerlink" href="#prerequisites-for-working-with-the-genicam-compliant-cameras" title="Permalink to this headline">¶</a></h6>
 <p>The following are the prerequisites for working with the GeniCam compliant cameras.</p>
-<blockquote>
-<div><p>Note</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>For other cameras such as RealSense, RSTP, and USB (v4l2 driver compliant) revert the changes that are mentioned in this section. Refer to the following snip of the <code class="docutils literal notranslate"><span class="pre">ia_video_ingestion</span></code> service, to add the required changes in the <a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/docker-compose.yml">docker-compose.yml</a> file of the respective ingestion service (including custom UDF services). After making the changes, before you build and run the services, ensure to run the <a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/docker-compose.yml">docker-compose.yml</a>.</p>
-</div></blockquote>
+</div>
 <ul class="simple">
 <li><p>For GenICam GigE cameras:</p></li>
 </ul>
@@ -892,10 +855,10 @@ Refer the following snippet of the <code class="docutils literal notranslate"><s
 <li><p>Gstreamer Ingestor</p>
 <ul>
 <li><p>GenICam GigE/USB3.0 cameras</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;gencamsrc serial=&lt;DEVICE_SERIAL_NUMBER&gt; pixel-format=&lt;PIXEL_FORMAT&gt; exposure-time=5000 exposure-mode=timed exposure-auto=off throughput-limit=300000000 ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gencamsrc serial=&lt;DEVICE_SERIAL_NUMBER&gt; pixel-format=&lt;PIXEL_FORMAT&gt; exposure-time=5000 exposure-mode=timed exposure-auto=off throughput-limit=300000000 ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <blockquote>
@@ -910,30 +873,28 @@ Refer the following snippet of the <code class="docutils literal notranslate"><s
 <li><p><code class="docutils literal notranslate"><span class="pre">throughput-limit</span></code> is the bandwidth limit for streaming out data from the camera(in bytes per second).</p></li>
 </ul>
 </div></blockquote>
-<ul>
-<li><p>Hardware trigger based ingestion with gstreamer ingestor</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
-<span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;gencamsrc serial=&lt;DEVICE_SERIAL_NUMBER&gt; pixel-format=&lt;PIXEL_FORMAT&gt; trigger-selector=FrameStart trigger-source=Line1 trigger-activation=RisingEdge hw-trigger-timeout=100 acquisition-mode=singleframe exposure-time=5000 exposure-mode=timed exposure-auto=off throughput-limit=300000000 ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span>
-<span class="p">}</span>
+</li>
+<li><p>Hardware trigger based ingestion with Gstreamer ingestor</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gencamsrc serial=&lt;DEVICE_SERIAL_NUMBER&gt; pixel-format=&lt;PIXEL_FORMAT&gt; trigger-selector=FrameStart trigger-source=Line1 trigger-activation=RisingEdge hw-trigger-timeout=100 acquisition-mode=singleframe exposure-time=5000 exposure-mode=timed exposure-auto=off throughput-limit=300000000 ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-</li>
-</ul>
 <blockquote>
 <div><p><strong>Note:</strong></p>
 <ul class="simple">
-<li><p>For PCB usecase use the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> properties of gencamsrc to set the resolution to <code class="docutils literal notranslate"><span class="pre">1920x1200</span></code> and make sure it is pointing to the rotating pcb boards as seen in <code class="docutils literal notranslate"><span class="pre">pcb_d2000.avi</span></code> video file for pcb filter to work.</p></li>
+<li><p>For PCB use case, use the <code class="docutils literal notranslate"><span class="pre">width</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> properties of gencamsrc to set the resolution to <code class="docutils literal notranslate"><span class="pre">1920x1200</span></code> and make sure it is pointing to the rotating PCB boards, as seen in the <code class="docutils literal notranslate"><span class="pre">pcb_d2000.avi</span></code> video file for the PCB filter to work.</p></li>
 </ul>
 </div></blockquote>
-<p>One can refer the below example pipeline:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;gencamsrc serial=&lt;DEVICE_SERIAL_NUMBER&gt; pixel-format=ycbcr422_8 width=1920 height=1200 exposure-time=5000 exposure-mode=timed exposure-auto=off throughput-limit=300000000 ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span>
-<span class="p">}</span>
+<p>Refer the following example pipeline:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gencamsrc serial=&lt;DEVICE_SERIAL_NUMBER&gt; pixel-format=ycbcr422_8 width=1920 height=1200 exposure-time=5000 exposure-mode=timed exposure-auto=off throughput-limit=300000000 ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p><strong>Refer `docs/basler_doc.md &lt;https://github.com/open-edge-insights/video-ingestion/blob/master/docs/basler_doc.md&gt;`_ for more information/configuration on basler camera.</strong></p>
+<p>Refer to the <a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/docs/basler_doc.md">docs/basler_doc.md</a> for more information/configuration on Basler camera.</p>
 </li>
 </ul>
 </li>
@@ -942,100 +903,92 @@ Refer the following snippet of the <code class="docutils literal notranslate"><s
 </section>
 </section>
 <section id="rtsp-cameras">
-<h4>RTSP cameras<a class="headerlink" href="#rtsp-cameras" title="Permalink to this headline">¶</a></h4>
+<h4>RTSP Cameras<a class="headerlink" href="#rtsp-cameras" title="Permalink to this headline">¶</a></h4>
 <blockquote>
-<div><p><strong>Refer `docs/rtsp_doc.md &lt;https://github.com/open-edge-insights/video-ingestion/blob/master/docs/rtsp_doc.md&gt;`_ for information/configuration on rtsp camera.</strong></p>
+<div><p>Refer to the <a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/docs/rtsp_doc.md">docs/rtsp_doc.md</a> for information/configuration on RTSP camera.**</p>
 </div></blockquote>
 <ul>
 <li><p>OpenCV Ingestor</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```javascript
-{
-  &quot;type&quot;: &quot;opencv&quot;,
-  &quot;pipeline&quot;: &quot;rtsp://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;RTSP_CAMERA_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;&quot;
-}
-```
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;opencv&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;rtsp://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;RTSP_CAMERA_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <blockquote>
-<div><p><strong>NOTE</strong>: Opencv for rtsp will use software decoders</p>
+<div><p><strong>Note</strong>: OpenCV for RTSP will use software decoders.</p>
 </div></blockquote>
 </li>
 <li><p>Gstreamer Ingestor</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```javascript
-{
-  &quot;type&quot;: &quot;gstreamer&quot;,
-  &quot;pipeline&quot;: &quot;rtspsrc location=\&quot;rtsp://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;RTSP_CAMERA_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;
-}
-```
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;rtspsrc location=\&quot;rtsp://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;RTSP_CAMERA_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <blockquote>
-<div><p><strong>Note:</strong> The RTSP URI of the physical camera depends on how it is configured using the camera software. One can use VLC Network Stream to verify the RTSP URI to confirm the RTSP source.</p>
+<div><p><strong>Note:</strong> The RTSP URI of the physical camera depends on how it is configured using the camera software. You can use VLC Network Stream to verify the RTSP URI to confirm the RTSP source.</p>
 </div></blockquote>
 </li>
 <li><p>For RTSP simulated camera using cvlc</p></li>
 <li><p>OpenCV Ingestor</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>```javascript
-{
-  &quot;type&quot;: &quot;opencv&quot;,
-  &quot;pipeline&quot;: &quot;rtsp://&lt;SOURCE_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;&quot;
-}
-```
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;opencv&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;rtsp://&lt;SOURCE_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 <li><p>Gstreamer Ingestor</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> ```javascript
- {
-   &quot;type&quot;: &quot;gstreamer&quot;,
-   &quot;pipeline&quot;: &quot;rtspsrc location=\&quot;rtsp://&lt;SOURCE_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;
- }
- ```
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;rtspsrc location=\&quot;rtsp://&lt;SOURCE_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span><span class="w"></span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
 
-
-**Refer `docs/rtsp_doc.md &lt;https://github.com/open-edge-insights/video-ingestion/blob/master/docs/rtsp_doc.md&gt;`_ for more information/configuration on rtsp simulated camera.**
+<span class="o">**</span><span class="nx">Refer</span><span class="w"> </span><span class="sb">`docs/rtsp_doc.md &lt;https://github.com/open-edge-insights/video-ingestion/blob/master/docs/rtsp_doc.md&gt;`</span><span class="nx">_</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nx">more</span><span class="w"> </span><span class="nx">information</span><span class="o">/</span><span class="nx">configuration</span><span class="w"> </span><span class="nx">on</span><span class="w"> </span><span class="nx">rtsp</span><span class="w"> </span><span class="nx">simulated</span><span class="w"> </span><span class="nx">camera</span><span class="p">.</span><span class="o">**</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 </ul>
+</section>
 <section id="usb-v4l2-cameras">
-<h5>USB v4l2 cameras<a class="headerlink" href="#usb-v4l2-cameras" title="Permalink to this headline">¶</a></h5>
+<h4>USB v4l2 Cameras<a class="headerlink" href="#usb-v4l2-cameras" title="Permalink to this headline">¶</a></h4>
 <p>For information or configurations details on the USB cameras, refer to <a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/docs/usb_doc.md">docs/usb_doc.md</a>.</p>
 <ul>
 <li><p>OpenCV Ingestor</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;opencv&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;/dev/&lt;DEVICE_VIDEO_NODE&gt;&quot;</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;opencv&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/dev/&lt;DEVICE_VIDEO_NODE&gt;&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 <li><p>Gstreamer Ingestor</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;v4l2src device=/dev/&lt;DEVICE_VIDEO_NODE&gt; ! video/x-raw,format=YUY2 ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;v4l2src device=/dev/&lt;DEVICE_VIDEO_NODE&gt; ! video/x-raw,format=YUY2 ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
 </ul>
 </section>
 <section id="realsense-depth-cameras">
-<h5>RealSense Depth cameras<a class="headerlink" href="#realsense-depth-cameras" title="Permalink to this headline">¶</a></h5>
+<h4>RealSense Depth Cameras<a class="headerlink" href="#realsense-depth-cameras" title="Permalink to this headline">¶</a></h4>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">RealSense</span> <span class="pre">Ingestor</span></code></p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;ingestor&quot;</span><span class="o">:</span> <span class="p">{</span>
-     <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;realsense&quot;</span><span class="p">,</span>
-     <span class="s2">&quot;serial&quot;</span><span class="o">:</span> <span class="s2">&quot;&lt;DEVICE_SERIAL_NUMBER&gt;&quot;</span><span class="p">,</span>
-     <span class="s2">&quot;framerate&quot;</span><span class="o">:</span> <span class="o">&lt;</span><span class="nx">FRAMERATE</span><span class="o">&gt;</span><span class="p">,</span>
-     <span class="s2">&quot;imu_on&quot;</span><span class="o">:</span> <span class="kc">true</span>
- <span class="p">},</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;ingestor&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">     </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;realsense&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="s2">&quot;serial&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;&lt;DEVICE_SERIAL_NUMBER&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="s2">&quot;framerate&quot;</span><span class="o">:</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">FRAMERATE</span><span class="o">&gt;</span><span class="p">,</span><span class="w"></span>
+<span class="w">     </span><span class="s2">&quot;imu_on&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w"> </span><span class="p">},</span><span class="w"></span>
 </pre></div>
 </div>
 <blockquote>
 <div><p><strong>Note</strong></p>
 <ul class="simple">
-<li><p>RealSense Ingestor was tested with the Intel RealSense Depth Camera D435i</p></li>
+<li><p>RealSense Ingestor was tested with the Intel RealSense Depth Camera D435i.</p></li>
 <li><p>RealSense Ingestor does not support poll_interval. If required, use framerate to reduce the ingestion frames per second (FPS).</p></li>
 <li><p>If the <code class="docutils literal notranslate"><span class="pre">serial</span></code> config is not provided then the first RealSense camera in the device list will be connected.</p></li>
 <li><p>If the <code class="docutils literal notranslate"><span class="pre">framerate</span></code> config is not provided then the default framerate of <code class="docutils literal notranslate"><span class="pre">30</span></code> will be applied. Ensure that the framerate provided is compatible with both the color and depth sensor of the RealSense camera. With the D435i camera only framerate 6,15,30, and 60 is supported and tested.</p></li>
@@ -1047,68 +1000,55 @@ Refer the following snippet of the <code class="docutils literal notranslate"><s
 </section>
 </section>
 </section>
-</section>
 <section id="videoanalytics-module">
 <h2>VideoAnalytics Module<a class="headerlink" href="#videoanalytics-module" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.</p>
+<p>In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.</p>
 </div>
-<p>The VideoAnalytics module is mainly responsibly for running the classifier UDFs
-and doing the required inferencing on the chosen Intel(R) Hardware
-(CPU, GPU, VPU, HDDL) using openVINO.</p>
+<p>The VideoAnalytics module is mainly responsibly for running the classifier UDFs and doing the required inferencing on the chosen Intel(R) Hardware (CPU, GPU, VPU, HDDL) using openVINO.</p>
 <p>The high-level logical flow of VideoAnalytics pipeline is as follows:</p>
 <ol class="arabic simple">
-<li><p>App reads the application configuration via OEI Configuration Manager which
-has details of <code class="docutils literal notranslate"><span class="pre">encoding</span></code> and <code class="docutils literal notranslate"><span class="pre">udfs</span></code>.</p></li>
+<li><p>App reads the application configuration via Open EII Configuration Manager which has details of <code class="docutils literal notranslate"><span class="pre">encoding</span></code> and <code class="docutils literal notranslate"><span class="pre">udfs</span></code>.</p></li>
 <li><p>App gets the msgbus endpoint configuration from system environment.</p></li>
-<li><p>Based on above two configurations, app subscribes to the published topic/stream
-coming from VideoIngestion module.</p></li>
-<li><p>The frames received in the subscriber are passed onto one or more chained
-native/python UDFs for running inferencing and doing any post-processing as
-required. One can refer <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md">UDFs README</a> for more details</p></li>
-<li><p>The frames coming out of chained udfs are published on the different topic/stream
-on Message Bus.</p></li>
+<li><p>Based on above two configurations, app subscribes to the published topic/stream coming from VideoIngestion module.</p></li>
+<li><p>The frames received in the subscriber are passed onto one or more chained native/python UDFs for running inferencing and doing any post-processing as required. For more information, refer to <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md">UDFs Readme</a>.</p></li>
+<li><p>The frames coming out of chained UDFs are published on the different topic/stream on Message Bus.</p></li>
 </ol>
 <section id="id5">
 <h3>Configuration<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ol class="arabic simple">
-<li><p><a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md">Udfs Configuration</a></p></li>
+<li><p><a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md">UDFs Configuration</a></p></li>
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/Etcd_Secrets_Configuration.md">Etcd Secrets Configuration</a> and</p></li>
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/README.md#interfaces">MessageBus Configuration</a> respectively.</p></li>
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/video-analytics/blob/master/schema.json">JSON schema</a></p></li>
 </ol>
 <ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">max_workers</span></code> and <code class="docutils literal notranslate"><span class="pre">udfs</span></code> are configuration keys related to udfs.
-For more details on udf configuration, please visit
-<a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md">../common/video/udfs/README.md</a></p></li>
-<li><p>For details on Etcd and MessageBus endpoint configuration, visit  <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/Etcd_Secrets_Configuration.md">Etcd_Secrets_Configuration</a>.</p></li>
-<li><p>In case the VideoAnalytics container found to be consuming a lot of memory, then one of the suspects could be that Algo processing is slower than the frame ingestion rate. Hence a lot of frames are occupying RAM waiting to be processed. In that case user can reduce the high watermark value to acceptable lower number so that RAM consumption will be under control and stay stabilzed. The exact config parameter is called <strong>ZMQ_RECV_HWM</strong> present in <a class="reference external" href="https://github.com/open-edge-insights/video-analytics/blob/master/docker-compose.yml">docker-compose.yml</a>. This config is also present in other types of container, hence user can tune them to control the memory bloat if applicable. The config snippet is pasted below:</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">max_workers</span></code> and <code class="docutils literal notranslate"><span class="pre">udfs</span></code> are configuration keys related to UDFs.
+For more details on UDF configuration, visit <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md">../common/video/udfs/README.md</a></p></li>
+<li><p>For details on Etcd and MessageBus endpoint configuration, visit <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/Etcd_Secrets_Configuration.md">Etcd_Secrets_Configuration</a>.</p></li>
+<li><p>If the VideoAnalytics container consumes a lot of memory, then one of the suspects could be that Algo processing is slower than the frame ingestion rate. Hence a lot of frames are occupying RAM waiting to be processed. In that case user can reduce the high watermark value to acceptable lower number so that RAM consumption will be under control and stay stabilzed. The exact config parameter is called <strong>ZMQ_RECV_HWM</strong> present in <a class="reference external" href="https://github.com/open-edge-insights/video-analytics/blob/master/docker-compose.yml">docker-compose.yml</a>. This config is also present in other types of container, hence user can tune them to control the memory bloat if applicable. The config snippet is pasted below:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ZMQ_RECV_HWM: <span class="s2">&quot;1000&quot;</span>
 </pre></div>
 </div>
-<hr class="docutils" />
-<p>All the app module configuration are added into distributed
-key-value data store under <code class="docutils literal notranslate"><span class="pre">AppName</span></code> env as mentioned in the
-environment section of this app’s service definition in docker-compose.</p>
-<p>Developer mode related overrides go into <a class="reference external" href="https://github.com/open-edge-insights/video-analytics/blob/master/docker-compose-dev.override.yml">docker-compose-dev.override.yml</a></p>
-<p>If <code class="docutils literal notranslate"><span class="pre">AppName</span></code> is <code class="docutils literal notranslate"><span class="pre">VideoAnalytics</span></code>, then the app’s config would be fetched from
-<code class="docutils literal notranslate"><span class="pre">/VideoAnalytics/config</span></code> key via OEI Configuration Manager.</p>
+<p>All the app module configuration are added into distributed key-value data store under <code class="docutils literal notranslate"><span class="pre">AppName</span></code> env as mentioned in the environment section of this app’s service definition in docker-compose.</p>
+<p>Developer mode related overrides go to <a class="reference external" href="https://github.com/open-edge-insights/video-analytics/blob/master/docker-compose-dev.override.yml">docker-compose-dev.override.yml</a>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">AppName</span></code> is <code class="docutils literal notranslate"><span class="pre">VideoAnalytics</span></code>, then the app’s config would be fetched from <code class="docutils literal notranslate"><span class="pre">/VideoAnalytics/config</span></code> key via Open EII Configuration Manager.</p>
 <p><strong>Note:</strong></p>
 <ul class="simple">
-<li><p>For <code class="docutils literal notranslate"><span class="pre">jpeg</span></code> encoding type, <code class="docutils literal notranslate"><span class="pre">level</span></code> is the quality from <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">to</span> <span class="pre">100</span></code> (the higher is the better)</p></li>
+<li><p>For <code class="docutils literal notranslate"><span class="pre">jpeg</span></code> encoding type, <code class="docutils literal notranslate"><span class="pre">level</span></code> is the quality from <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">to</span> <span class="pre">100</span></code> (the higher is the better).</p></li>
 <li><p>For <code class="docutils literal notranslate"><span class="pre">png</span></code> encoding type, <code class="docutils literal notranslate"><span class="pre">level</span></code> is the compression level from <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">to</span> <span class="pre">9</span></code>. A higher value means a smaller size and longer compression time.</p></li>
 </ul>
-<p>One can use <a class="reference external" href="https://www.jsonschemavalidator.net/">JSON validator tool</a> for
-validating the app configuration against the above schema.</p>
+<p>Use the <a class="reference external" href="https://www.jsonschemavalidator.net/">JSON validator tool</a> for validating the app configuration against the above schema.</p>
 </section>
-<section id="id14">
-<h3>Updating Security Context of VideoIngestion Helm Charts for enabling K8s environment to access/detect Basler/usb Device<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<p>Please follow the steps to update helm charts for enabling K8s environment to access/detect Basler Camera and NCS2 Device</p>
-<ul>
-<li><p>Open <code class="docutils literal notranslate"><span class="pre">EII_HOME_DIR/IEdgeInsights/VideoAnalytics/helm/templates/video-analytics.yaml</span></code> file</p></li>
-<li><p>Update below security context snippet</p>
+<section id="update-security-context-of-videoingestion-helm-charts">
+<h3>Update Security Context of VideoIngestion Helm Charts<a class="headerlink" href="#update-security-context-of-videoingestion-helm-charts" title="Permalink to this headline">¶</a></h3>
+<p>Complete the following steps to update Helm charts to enable K8s environment to access or detect Basler cameras and NCS2 devices</p>
+<p>#. Open the <code class="docutils literal notranslate"><span class="pre">EII_HOME_DIR/IEdgeInsights/VideoAnalytics/helm/templates/video-analytics.yaml</span></code> file.
+#.</p>
+<blockquote>
+<div><p>Update the following security context snippet</p>
 <div class="highlight-yml notranslate"><div class="highlight"><pre><span></span>securityContext:
   privileged: true
 </pre></div>
@@ -1126,181 +1066,29 @@ validating the app configuration against the above schema.</p>
 <span class="nn">...</span><span class="w"></span>
 </pre></div>
 </div>
-<ul class="simple">
-<li><p>Re-run <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> to apply these changes to your deployment helm charts.</p></li>
-</ul>
-</li>
-</ul>
-</section>
-</section>
-<section id="using-video-accelerators-in-ingestion-analytics-containers">
-<h2>Using video accelerators in ingestion/analytics containers<a class="headerlink" href="#using-video-accelerators-in-ingestion-analytics-containers" title="Permalink to this headline">¶</a></h2>
-<p>EII supports running inference on <code class="docutils literal notranslate"><span class="pre">CPU</span></code>, <code class="docutils literal notranslate"><span class="pre">GPU</span></code>, <code class="docutils literal notranslate"><span class="pre">MYRIAD</span></code>(NCS2), and <code class="docutils literal notranslate"><span class="pre">HDDL</span></code> devices by accepting <code class="docutils literal notranslate"><span class="pre">device</span></code> value (“CPU”|”GPU”|”MYRIAD”|”HDDL”), part of the <code class="docutils literal notranslate"><span class="pre">udf</span></code> object configuration in <code class="docutils literal notranslate"><span class="pre">udfs</span></code>
-key. The <code class="docutils literal notranslate"><span class="pre">device</span></code> field in UDF config of <code class="docutils literal notranslate"><span class="pre">udfs</span></code> key in <code class="docutils literal notranslate"><span class="pre">VideoIngestion</span></code> and <code class="docutils literal notranslate"><span class="pre">VideoAnalytics</span></code> configs can either be changed in the <code class="docutils literal notranslate"><span class="pre">build/provision/config/eii_config.json</span></code>
-before provisioning (or re-provision it again after the change to the apps config.json, re-running <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script and then re-running the provisioning script) or at run-time via EtcdUI. For more details on the udfs config,
-check <a class="reference external" href="https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md">common/udfs/README.md</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>There is an initial delay of upto ~30s while running inference on <code class="docutils literal notranslate"><span class="pre">GPU</span></code> (only for the first frame) as dynamically certain packages get created during runtime.</p>
-</div>
-<section id="to-run-on-usb-devices">
-<h3><strong>To run on USB devices</strong><a class="headerlink" href="#to-run-on-usb-devices" title="Permalink to this headline">¶</a></h3>
-<p>For actual deployment in case USB camera is required then mount the device node of the USB camera for <code class="docutils literal notranslate"><span class="pre">ia_video_ingestion</span></code> service. When multiple USB cameras are connected to host m/c the required camera should be identified with the device node and mounted.</p>
-<p>Eg: Mount the two USB cameras connected to the host m/c with device node as <code class="docutils literal notranslate"><span class="pre">video0</span></code> and <code class="docutils literal notranslate"><span class="pre">video1</span></code></p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ia_video_ingestion</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">devices</span><span class="p p-Indicator">:</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/dev/dri&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/dev/video0:/dev/video0&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;/dev/video1:/dev/video1&quot;</span><span class="w"></span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>/dev/dri is needed for Graphic drivers</p>
-</div>
-</section>
-<section id="to-run-on-myriad-devices">
-<h3><strong>To run on MYRIAD devices</strong><a class="headerlink" href="#to-run-on-myriad-devices" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p>To run inference on <code class="docutils literal notranslate"><span class="pre">MYRIAD</span></code> device <code class="docutils literal notranslate"><span class="pre">root</span></code> user permissions needs to be used at runtime. To enable root user at runtime in either <code class="docutils literal notranslate"><span class="pre">ia_video_ingestion</span></code>, <code class="docutils literal notranslate"><span class="pre">ia_video_analytics</span></code> or any of the custom udf services add <code class="docutils literal notranslate"><span class="pre">user:</span> <span class="pre">root</span></code> command in the respective docker-compose.yml file.</p>
-<p>Eg: To use <code class="docutils literal notranslate"><span class="pre">MYRAID</span></code> device in <code class="docutils literal notranslate"><span class="pre">ia_video_analytics</span></code> service refer the below example</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">ia_video_analytics</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span><span class="w"></span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">root</span><span class="w"></span>
-</pre></div>
-</div>
-</li>
-<li><p><strong>Troubleshooting issues for MYRIAD(NCS2) devices</strong></p>
-<ul>
-<li><p>Following is an workaround can be excercised if in case user observes <code class="docutils literal notranslate"><span class="pre">NC_ERROR</span></code> during device initialization of NCS2 stick.
-While running EII if NCS2 devices failed to initialize properly then user can re-plug the device for the init to happen freshly.
-User can verify the successfull initialization by executing <strong>*dmesg**</strong> &amp; <a href="#id15"><span class="problematic" id="id16">**</span></a><em>lsusb</em>**  as below:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>lsusb <span class="p">|</span> grep <span class="s2">&quot;03e7&quot;</span> <span class="o">(</span>03e7 is the VendorID and <span class="m">2485</span> is one of the  productID <span class="k">for</span> MyriadX<span class="o">)</span>
-</pre></div>
-</div>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>dmesg &gt; dmesg.txt
-<span class="o">[</span> <span class="m">3818</span>.214919<span class="o">]</span> usb <span class="m">3</span>-4: new high-speed USB device number <span class="m">10</span> using xhci_hcd
-<span class="o">[</span> <span class="m">3818</span>.363542<span class="o">]</span> usb <span class="m">3</span>-4: New USB device found, <span class="nv">idVendor</span><span class="o">=</span>03e7, <span class="nv">idProduct</span><span class="o">=</span><span class="m">2485</span>
-<span class="o">[</span> <span class="m">3818</span>.363546<span class="o">]</span> usb <span class="m">3</span>-4: New USB device strings: <span class="nv">Mfr</span><span class="o">=</span><span class="m">1</span>, <span class="nv">Product</span><span class="o">=</span><span class="m">2</span>, <span class="nv">SerialNumber</span><span class="o">=</span><span class="m">3</span>
-<span class="o">[</span> <span class="m">3818</span>.363548<span class="o">]</span> usb <span class="m">3</span>-4: Product: Movidius MyriadX
-<span class="o">[</span> <span class="m">3818</span>.363550<span class="o">]</span> usb <span class="m">3</span>-4: Manufacturer: Movidius Ltd.
-<span class="o">[</span> <span class="m">3818</span>.363552<span class="o">]</span> usb <span class="m">3</span>-4: SerialNumber: 03e72485
-<span class="o">[</span> <span class="m">3829</span>.153556<span class="o">]</span> usb <span class="m">3</span>-4: USB disconnect, device number <span class="m">10</span>
-<span class="o">[</span> <span class="m">3831</span>.134804<span class="o">]</span> usb <span class="m">3</span>-4: new high-speed USB device number <span class="m">11</span> using xhci_hcd
-<span class="o">[</span> <span class="m">3831</span>.283430<span class="o">]</span> usb <span class="m">3</span>-4: New USB device found, <span class="nv">idVendor</span><span class="o">=</span>03e7, <span class="nv">idProduct</span><span class="o">=</span><span class="m">2485</span>
-<span class="o">[</span> <span class="m">3831</span>.283433<span class="o">]</span> usb <span class="m">3</span>-4: New USB device strings: <span class="nv">Mfr</span><span class="o">=</span><span class="m">1</span>, <span class="nv">Product</span><span class="o">=</span><span class="m">2</span>, <span class="nv">SerialNumber</span><span class="o">=</span><span class="m">3</span>
-<span class="o">[</span> <span class="m">3831</span>.283436<span class="o">]</span> usb <span class="m">3</span>-4: Product: Movidius MyriadX
-<span class="o">[</span> <span class="m">3831</span>.283438<span class="o">]</span> usb <span class="m">3</span>-4: Manufacturer: Movidius Ltd.
-<span class="o">[</span> <span class="m">3831</span>.283439<span class="o">]</span> usb <span class="m">3</span>-4: SerialNumber: 03e72485
-<span class="o">[</span> <span class="m">3906</span>.460590<span class="o">]</span> usb <span class="m">3</span>-4: USB disconnect, device number <span class="m">11</span>
-</pre></div>
-</div>
-</li>
-<li><p>The below link can be referred in case user observes <code class="docutils literal notranslate"><span class="pre">global</span> <span class="pre">mutex</span> <span class="pre">initialization</span> <span class="pre">failed</span></code> during device initialization of NCS2 stick
-<a class="reference external" href="https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html">https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html</a></p></li>
-<li><p>For VPU troubleshooting refer the below link:
-<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting">https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting</a></p></li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="to-run-on-hddl-devices">
-<h3><strong>To run on HDDL devices</strong><a class="headerlink" href="#to-run-on-hddl-devices" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p>Download the full package for OpenVINO toolkit for Linux version “2021.4”
-(<code class="docutils literal notranslate"><span class="pre">OPENVINO_IMAGE_VERSION</span></code> used in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a>) from the official website
-(<a class="reference external" href="https://software.intel.com/en-us/openvino-toolkit/choose-download/free-download-linux">https://software.intel.com/en-us/openvino-toolkit/choose-download/free-download-linux</a>).
-Please refer to the OpenVINO links below for to install and running the HDDL daemon on host.</p>
-<ol class="arabic">
-<li><p>OpenVINO install:
-<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux.html#install-openvino">https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux.html#install-openvino</a></p></li>
-<li><p>HDDL daemon setup:
-<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux_ivad_vpu.html">https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux_ivad_vpu.html</a></p>
-<ul>
-<li><p>OpenVINO 2021.4 installation creates a symbolic link to latest installation with
-filename as <code class="docutils literal notranslate"><span class="pre">openvino_2021</span></code> instead of <code class="docutils literal notranslate"><span class="pre">openvino</span></code>. Hence one can create a symbolic link with filename as <code class="docutils literal notranslate"><span class="pre">openvino</span></code> to the latest installation using the below steps.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /opt/intel
-$ sudo ln -s &lt;OpenVINO latest installation&gt; openvino
-</pre></div>
-</div>
-<p>Eg: sudo ln -s openvino_2021.4.582 openvino</p>
-<p>In case there are older versions of OpenVINO installed on the host system please un-install them.</p>
-</li>
-</ul>
-</li>
-<li><p>Running hddldaemon:
-Refer the below command to run the hddldaemon once the setup is done(it should run in a different terminal or in the background on the host system where inference would be done)</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> /opt/intel/openvino/bin/setupvars.sh
-$ <span class="nv">$HDDL_INSTALL_DIR</span>/bin/hddldaemon
-</pre></div>
-</div>
-</li>
-<li><p>Changing ownership of hddl files on host system.
-Before running inference with EII, ownership of hddl files should be changed to the value of <code class="docutils literal notranslate"><span class="pre">EII_USER_NAME</span></code> key set in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a>.
-Refer the below command to set the ownership of hddl files on the host system.<code class="docutils literal notranslate"><span class="pre">EII_USER_NAME=eiiuser</span></code> in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a>.
-.. code-block:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo chown -R eiiuser /var/tmp/hddl_*
-</pre></div>
-</div>
-</li>
-</ol>
-<ul>
-<li><p>For actual deployment one could choose to mount only the required devices for
-services using OpenVINO with HDDL (<code class="docutils literal notranslate"><span class="pre">ia_video_analytics</span></code> or <code class="docutils literal notranslate"><span class="pre">ia_video_ingestion</span></code>) in <code class="docutils literal notranslate"><span class="pre">build/docker-compose.yml</span></code>.</p>
-<p>Eg: Mount only the Graphics and HDDL ion device for <code class="docutils literal notranslate"><span class="pre">ia_video_anaytics</span></code> service</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ia_video_analytics</span><span class="p">:</span>
-  <span class="o">...</span>
-  <span class="n">devices</span><span class="p">:</span>
-          <span class="o">-</span> <span class="s2">&quot;/dev/dri&quot;</span>
-          <span class="o">-</span> <span class="s2">&quot;/dev/ion:/dev/ion&quot;</span>
-</pre></div>
-</div>
-</li>
-<li><p><strong>Troubleshooting issues for HDDL devices</strong></p>
-<ul class="simple">
-<li><p>Please verify the hddldaemon started on host m/c to verify if it is using the libraries of the correct OpenVINO version used in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">build/.env</a>. One could enable the <code class="docutils literal notranslate"><span class="pre">device_snapshot_mode</span></code> to <code class="docutils literal notranslate"><span class="pre">full</span></code> in $HDDL_INSTALL_DIR/config/hddl_service.config on host m/c to get the complete snapshot of the hddl device.</p></li>
-<li><p>For VPU troubleshooting refer the below link:
-<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting">https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting</a></p></li>
-<li><p>Please refer OpenVINO 2021.4 release notes in the below link for new features and changes from the previous versions.
-<a class="reference external" href="https://software.intel.com/content/www/us/en/develop/articles/openvino-relnotes.html">https://software.intel.com/content/www/us/en/develop/articles/openvino-relnotes.html</a></p></li>
-<li><p>Refer OpenVINO website in the below link to skim through known issues, limitations and troubleshooting
-<a class="reference external" href="https://docs.openvinotoolkit.org/2021.4/index.html">https://docs.openvinotoolkit.org/2021.4/index.html</a></p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="to-run-on-intel-r-processor-graphics-gpu-igpu">
-<h3><strong>To run on Intel(R) Processor Graphics (GPU/iGPU)</strong><a class="headerlink" href="#to-run-on-intel-r-processor-graphics-gpu-igpu" title="Permalink to this headline">¶</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<blockquote>
-<div><p>The below step is required only for 11th gen Intel Processors</p>
 </div></blockquote>
-<p>Upgrade the kernel version to 5.8 and install the required drivers from the below OpenVINO link:
-<a class="reference external" href="https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps">https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps</a></p>
-</div>
+<ol class="arabic simple">
+<li><p>Rerun <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> to apply these changes to your deployment helm charts.</p></li>
+</ol>
 </section>
 </section>
-<section id="oei-udfloader">
-<h2>OEI UDFLoader<a class="headerlink" href="#oei-udfloader" title="Permalink to this headline">¶</a></h2>
+<section id="open-eii-udfloader">
+<h2>Open EII UDFLoader<a class="headerlink" href="#open-eii-udfloader" title="Permalink to this headline">¶</a></h2>
 <p>UDFLoader is a library providing APIs for loading and executing native and python UDFs.</p>
 </section>
-<section id="oei-sample-udfs">
-<h2>OEI Sample UDFs<a class="headerlink" href="#oei-sample-udfs" title="Permalink to this headline">¶</a></h2>
-<p>Open Edge Insights (OEI) supports loading and executing of native(c++) and python UDFs. In here,
-one can find the sample native and python UDFs(User Defined Functions) to be used with OEI components
+<section id="open-eii-sample-udfs">
+<h2>Open EII Sample UDFs<a class="headerlink" href="#open-eii-sample-udfs" title="Permalink to this headline">¶</a></h2>
+<p>Open Edge Insights for Industrial (Open EII) supports loading and executing of native (C++) and python UDFs. In here,
+you can find the sample native and python UDFs (User Defined Functions) to be used with Open EII components
 like VideoIngestion and VideoAnalytics. The UDFs can modify the frame, drop the frame and generate meta-data from the frame.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.</p>
+<p>In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for filenames, paths, code snippets, and so on. Consider the references of EII as Open EII. This is due to the product name change of EII as Open EII.</p>
 </div>
 </section>
 <section id="user-defined-function-udf">
 <h2>User Defined Function (UDF)<a class="headerlink" href="#user-defined-function-udf" title="Permalink to this headline">¶</a></h2>
-<p>An UDF is a chunk of user code that acts as a filter, preprocessor, or classifier for a given data input coming from the OEI. The User Defined Function (UDF) Loader Library provides a common API for loading C++ and Python UDFs.</p>
+<p>An UDF is a chunk of user code that acts as a filter, preprocessor, or classifier for a given data input coming from the Open EII. The User Defined Function (UDF) Loader Library provides a common API for loading C++ and Python UDFs.</p>
 <p>The library itself is written in C++ and provides an abstraction layer for loading and calling UDFs. Additionally, the library defines a common interface inheritable by all UDFs (whether written in C++ or Python).</p>
 <p>The overall block diagram for the library is shown in the following figure.</p>
 <a class="reference external image-reference" href="https://raw.githubusercontent.com/open-edge-insights/open-edge-insights.github.io/main/docs/_images/fig_9_4.png"><img alt="User-Defined Function Loader Library Block Design" src="https://raw.githubusercontent.com/open-edge-insights/open-edge-insights.github.io/main/docs/_images/fig_9_4.png" /></a>
@@ -1308,10 +1096,10 @@ like VideoIngestion and VideoAnalytics. The UDFs can modify the frame, drop the 
 </section>
 <section id="native-visualizer-module">
 <h2>Native Visualizer Module<a class="headerlink" href="#native-visualizer-module" title="Permalink to this headline">¶</a></h2>
-<p>Native Visualizer ia a native app to view the classified images/metadata coming out of OEI.</p>
+<p>Native Visualizer ia a native app to view the classified images or metadata coming out of Open Edge Insights for Industrial (Open EII).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.</p>
+<p>In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for file names, paths, code snippets, and so on. Consider the references of EII as Open EII. This is due to the product name change of EII as Open EII.</p>
 </div>
 <section id="steps-to-build-and-run-visualizer">
 <h3>Steps to build and run visualizer<a class="headerlink" href="#steps-to-build-and-run-visualizer" title="Permalink to this headline">¶</a></h3>
@@ -1321,7 +1109,7 @@ like VideoIngestion and VideoAnalytics. The UDFs can modify the frame, drop the 
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision">../README.md#provision</a></p></li>
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases">../README.md#build-and-run-eii-videotimeseries-use-cases</a></p></li>
 </ul>
-<p>For more details, refer <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md">OEI core README</a></p>
+<p>For more details, refer <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md">Open EII core README</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol class="arabic simple">
@@ -1403,7 +1191,7 @@ to be displayed are <span class="sb">``</span>MISSING<span class="sb">``</span> 
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>These labels are the mapping for the PCB demo provided in OEI’s visualizer directory. Currently camera1_stream_results consists of pcb demo labeling and camera2_stream_results consists of safety demo labeling.
+<p>These labels are the mapping for the PCB demo provided in Open EII’s visualizer directory. Currently camera1_stream_results consists of pcb demo labeling and camera2_stream_results consists of safety demo labeling.
 Hence, in <a class="reference external" href="https://github.com/open-edge-insights/video-native-visualizer/blob/master/config.json">config.json</a> proper mapping of all the subscribed topics should be done with pcb demo labeling and safety demo labeling respectively.</p>
 </div>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;/Visualizer/config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -1440,8 +1228,8 @@ Hence, in <a class="reference external" href="https://github.com/open-edge-insig
 </section>
 <section id="metadata-structure">
 <h3>Metadata Structure<a class="headerlink" href="#metadata-structure" title="Permalink to this headline">¶</a></h3>
-<p>OEI Visualizer app can decode certain types of mete-data formats for drawing the defects on the image.
-Any application wanting to use OEI visualizer need to comply with the meta-data format as described below:</p>
+<p>Open EII Visualizer app can decode certain types of mete-data formats for drawing the defects on the image.
+Any application wanting to use Open EII visualizer need to comply with the meta-data format as described below:</p>
 <ol class="upperalpha simple">
 <li><p>For Ingestor’s <strong>Non-GVA</strong> type, metadata structure sample is :</p></li>
 </ol>
@@ -1511,30 +1299,29 @@ Any application wanting to use OEI visualizer need to comply with the meta-data 
 </section>
 <section id="web-visualizer-module">
 <h2>Web Visualizer Module<a class="headerlink" href="#web-visualizer-module" title="Permalink to this headline">¶</a></h2>
-<p>Web Visualizer ia a web based app to view the classified images/metadata coming out of OEI.</p>
+<p>Web Visualizer ia a web based app to view the classified images/metadata coming out of Open Edge Insights for Industrial (Open EII).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.</p>
+<p>In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for file names, paths, code snippets, and so on. Consider the references of EII as Open EII. This is due to the product name change of EII as Open EII.</p>
 </div>
 <section id="steps-to-build-and-run-web-visualizer">
-<h3>Steps to build and run web visualizer<a class="headerlink" href="#steps-to-build-and-run-web-visualizer" title="Permalink to this headline">¶</a></h3>
-<p>Please go through the below sections to have web visualizer service built and launch it:</p>
+<h3>Steps to Build and Run Web Visualizer<a class="headerlink" href="#steps-to-build-and-run-web-visualizer" title="Permalink to this headline">¶</a></h3>
+<p>Refer to the following sections to build and launch Web Visualizer service:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md#generate-deployment-and-configuration-files">../README.md#generate-deployment-and-configuration-files</a></p></li>
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision">../README.md#provision</a></p></li>
 <li><p><a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases">../README.md#build-and-run-eii-videotimeseries-use-cases</a></p></li>
 </ul>
-<p>For more details, refer <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md">OEI core README</a></p>
+<p>For more details, refer to the <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md">Open EII core README</a></p>
 <ul>
-<li><p>Running WebVisualizer in Browser</p>
+<li><p>Running WebVisualizer in a browser</p>
 <ul>
-<li><p>WebVisualizer is tested on chrome browser, so its better to use chrome browser.</p></li>
-<li><p>WebVisualizer currently supports only <strong>6</strong> parallel streams in the chrome
-browser per instance.</p></li>
+<li><p>WebVisualizer is tested on chrome browser, so it’s recommended to use the Chrome browser.</p></li>
+<li><p>WebVisualizer currently supports only <strong>6</strong> parallel streams in the Chrome browser per instance.</p></li>
 <li><p>Running in DEV mode:</p>
 <ul class="simple">
 <li><dl class="simple">
-<dt>Goto Browser</dt><dd><p><a class="reference external" href="http:/">http:/</a>/&lt; host ip &gt;:5001</p>
+<dt>Go to browser</dt><dd><p><a class="reference external" href="http:/">http:/</a>/&lt; host ip &gt;:5001</p>
 </dd>
 </dl>
 </li>
@@ -1563,7 +1350,7 @@ Certificates.</p>
 </ul>
 </li>
 <li><dl class="simple">
-<dt>Now In Browser</dt><dd><p><a class="reference external" href="https:/">https:/</a>/&lt; host ip &gt;:5000</p>
+<dt>Now in Browser</dt><dd><p><a class="reference external" href="https:/">https:/</a>/&lt; host ip &gt;:5000</p>
 </dd>
 </dl>
 </li>
@@ -1577,18 +1364,17 @@ Certificates.</p>
 </ul>
 </li>
 </ul>
-<hr class="docutils" />
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol class="arabic simple">
 <li><p>The admin has to make sure all the necessary config is set in etcd before starting the web visualizer.</p></li>
-<li><p>Please clear your <code class="docutils literal notranslate"><span class="pre">browsers</span> <span class="pre">cache</span></code> while switching from <code class="docutils literal notranslate"><span class="pre">prod</span></code> mode to <code class="docutils literal notranslate"><span class="pre">dev</span></code> mode on running
+<li><p>Clear the <code class="docutils literal notranslate"><span class="pre">browsers</span> <span class="pre">cache</span></code> while switching from <code class="docutils literal notranslate"><span class="pre">prod</span></code> mode to <code class="docutils literal notranslate"><span class="pre">dev</span></code> mode on running
 <code class="docutils literal notranslate"><span class="pre">WebVisualizer</span></code> in browser.</p></li>
 </ol>
 </div>
 </section>
-<section id="id28">
-<h3>Using Labels<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<section id="id22">
+<h3>Using Labels<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <blockquote>
 <div><p>In order to have the web visualizer label each of the defects on the image, labels in JSON format(with mapping between topic subscribed text to be displayed) has to be provided in <a class="reference external" href="https://github.com/open-edge-insights/video-web-visualizer/blob/master/config.json">config.json</a> file and run the <a class="reference external" href="https://github.com/open-edge-insights/video-web-visualizer/blob/master/config.json">config.json</a> script using the below command.</p>
 </div></blockquote>
@@ -1642,10 +1428,10 @@ Hence, in <a class="reference external" href="https://github.com/open-edge-insig
 <span class="w">    </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<section id="id32">
-<h4>Metadata Structure<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
-<p>OEI WebVisualizer app can decode certain types of mete-data formats for drawing the defects on the image.
-Any application wanting to use OEI WebVisualizer need to comply with the meta-data format as described below:</p>
+<section id="id26">
+<h4>Metadata Structure<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<p>Open EII WebVisualizer app can decode certain types of mete-data formats for drawing the defects on the image.
+Any application wanting to use Open EII WebVisualizer need to comply with the meta-data format as described below:</p>
 <ol class="upperalpha simple">
 <li><p>For Ingestor’s <strong>Non-GVA</strong> type, metadata structure sample is :</p></li>
 </ol>
@@ -1728,12 +1514,12 @@ draw_results: &quot;false&quot;
 </section>
 <section id="imagestore-module">
 <h2>ImageStore Module<a class="headerlink" href="#imagestore-module" title="Permalink to this headline">¶</a></h2>
-<p>The Image Store component of Open Edge Insights (OEI) comes as a separate container which primarily subscribes to the stream that comes out of the VideoAnalytics app via MessageBus and stores the frame into minio for historical analysis.</p>
+<p>The Image Store component of Open Edge Insights for Industrial (Open EII) comes as a separate container which primarily subscribes to the stream that comes out of the VideoAnalytics app via MessageBus and stores the frame into minio for historical analysis.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.</p>
+<p>In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.</p>
 </div>
-<p>The high level logical flow of ImageStore is as follows:</p>
+<p>The high-level logical flow of ImageStore is as follows:</p>
 <ol class="arabic">
 <li><p>The messagebus subscriber in ImageStore will subscribe to the VideoAnalytics
 published classified result (metadata, frame) on the messagebus.
@@ -1758,8 +1544,8 @@ Response : map <span class="o">(</span><span class="s2">&quot;img_handle&quot;</
 </ul>
 </li>
 </ol>
-<section id="id33">
-<h3>Configuration<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h3>
+<section id="id27">
+<h3>Configuration<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
 <p>All the ImageStore module configuration are added into etcd (distributed key-value data store) under <code class="docutils literal notranslate"><span class="pre">AppName</span></code> as mentioned in the environment section of this app’s service definition in docker-compose.</p>
 <dl class="simple">
 <dt>If <code class="docutils literal notranslate"><span class="pre">AppName</span></code> is <code class="docutils literal notranslate"><span class="pre">ImageStore</span></code>, then the app’s config would look like as below</dt><dd><p>for <code class="docutils literal notranslate"><span class="pre">/ImageStore/config</span></code> key in Etcd:</p>
@@ -1830,47 +1616,37 @@ Response : map <span class="o">(</span><span class="s2">&quot;img_handle&quot;</
 publisher, zmq subscriber threads, and zmq request reply thread
 based on PubTopics, SubTopics and QueryTopics configuration.</p></li>
 <li><p>zmq subscriber thread connects to the PUB socket of zmq bus on which
-the data is published by VideoAnalytics and push it to the InfluxDB</p></li>
+the data is published by VideoAnalytics and push it to the InfluxDB.</p></li>
 <li><p>zmq publisher thread will publish the point data ingested by the telegraf
 and the classifier result coming out of the point data analytics.</p></li>
 <li><p>zmq reply request service will receive the InfluxDB select query and
 response with the historical data.</p></li>
 </ol>
-<section id="id35">
-<h3>Configuration<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
-<p>All the InfluxDBConnector module configuration are added into etcd (distributed
-key-value data store) under <code class="docutils literal notranslate"><span class="pre">AppName</span></code> as mentioned in the
-environment section of this app’s service definition in docker-compose.</p>
-<dl class="simple">
-<dt>If <code class="docutils literal notranslate"><span class="pre">AppName</span></code> is <code class="docutils literal notranslate"><span class="pre">InfluxDBConnector</span></code>, then the app’s config would look like as below</dt><dd><p>for <code class="docutils literal notranslate"><span class="pre">/InfluxDBConnector/config</span></code> key in Etcd:</p>
-</dd>
-</dl>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;influxdb&quot;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">&quot;retention&quot;</span><span class="p">:</span> <span class="s2">&quot;1h30m5s&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;dbname&quot;</span><span class="p">:</span> <span class="s2">&quot;datain&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;ssl&quot;</span><span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;verifySsl&quot;</span><span class="p">:</span> <span class="s2">&quot;False&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="s2">&quot;8086&quot;</span>
-    <span class="p">}</span>
+<section id="id29">
+<h3>Configuration<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h3>
+<p>All the InfluxDBConnector module configuration are added into etcd (distributed key-value data store) under <code class="docutils literal notranslate"><span class="pre">AppName</span></code> as mentioned in the environment section of this app’s service definition in docker-compose.
+If <code class="docutils literal notranslate"><span class="pre">AppName</span></code> is <code class="docutils literal notranslate"><span class="pre">InfluxDBConnector</span></code>, then the app’s config would look like as below for <code class="docutils literal notranslate"><span class="pre">/InfluxDBConnector/config</span></code> key in Etcd:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;influxdb&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;retention&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1h30m5s&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;dbname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datain&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;ssl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;True&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;verifySsl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;False&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">&quot;port&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8086&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>In case of nested json data, by default InfluxDBConnector will flatten the nested json and push
-the flat data to InfluxDB, In order to avoid the flattening of any particular nested key please mention the
-tag key in the <a href="#id36"><span class="problematic" id="id37">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/config.json">config.json</a>** file. Currently “defects” key is ignored from flattening. Every key to be ignored has to be in newline.</p>
-<blockquote>
-<div><p>for example,</p>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ignore_keys</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Key1&quot;</span><span class="p">,</span> <span class="s2">&quot;Key2&quot;</span><span class="p">,</span> <span class="s2">&quot;Key3&quot;</span> <span class="p">]</span>
+<p>For nested json data, by default InfluxDBConnector will flatten the nested json and push the flat data to InfluxDB to avoid the flattening of any particular nested key mention the tag key in the <a href="#id30"><span class="problematic" id="id31">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/config.json">config.json</a>** file. Currently the <code class="docutils literal notranslate"><span class="pre">defects</span></code> key is ignored from flattening. Every key to be ignored has to be in a new line.</p>
+<p>For example,</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>ignore_keys = [ &quot;Key1&quot;, &quot;Key2&quot;, &quot;Key3&quot; ]
 </pre></div>
 </div>
-<p>By default, all the keys in the data schema will be pushed to InfluxDB as fields. In case if tags are present in data schema,
-it can be mentioned in the <a href="#id39"><span class="problematic" id="id40">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/config.json">config.json</a>** file then the data pushed to InfluxDB, will have fields and tags both.
+<p>By default, all the keys in the data schema will be pushed to InfluxDB as fields. If tags are present in data schema, it can be mentioned in the <a href="#id33"><span class="problematic" id="id34">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/config.json">config.json</a>** file then the data pushed to InfluxDB, will have fields and tags both.
 Currently, no tags are present in the data scheme and tag_keys is kept blank in the config file.</p>
-<p>for example,</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tag_keys</span> <span class="o">=</span> <span class="p">[</span> <span class="s2">&quot;Tag1&quot;</span><span class="p">,</span> <span class="s2">&quot;Tag2&quot;</span> <span class="p">]</span>
+<p>For example,</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>tag_keys = [ &quot;Tag1&quot;, &quot;Tag2&quot; ]
 </pre></div>
 </div>
-<p>For more details on Etcd secrets and messagebus endpoint configuration, visit <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/Etcd_Secrets_Configuration.md">Etcd_Secrets_Configuration.md</a> and
+<p>For more details on Etcd secrets and messagebus endpoint configuration, refer to <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/Etcd_Secrets_Configuration.md">Etcd_Secrets_Configuration.md</a> and
 <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/README.md#interfaces">MessageBus Configuration</a> respectively.</p>
 </section>
 </section>
@@ -1881,7 +1657,7 @@ Currently, no tags are present in the data scheme and tag_keys is kept blank in 
 <h2>Edge Video Analytics Microservice<a class="headerlink" href="#edge-video-analytics-microservice" title="Permalink to this headline">¶</a></h2>
 <p>This repository contains the source code for Edge Video Analytics Microservice (EVAM) used for the <a class="reference external" href="https://www.intel.com/content/www/us/en/developer/articles/technical/video-analytics-service.html">Video Analytics Use Case</a>. For information on how to build the use case, refer to the <a class="reference external" href="https://www.intel.com/content/www/us/en/developer/articles/technical/video-analytics-service.html#inpage-nav-3">Get Started</a> guide.</p>
 <section id="build-the-base-image">
-<h3>Build the base image<a class="headerlink" href="#build-the-base-image" title="Permalink to this headline">¶</a></h3>
+<h3>Build the Base Image<a class="headerlink" href="#build-the-base-image" title="Permalink to this headline">¶</a></h3>
 <p>Complete the following steps to build the base image:</p>
 <ol class="arabic">
 <li><p>Run the following command:</p>
@@ -1893,7 +1669,7 @@ Currently, no tags are present in the data scheme and tag_keys is kept blank in 
 </ol>
 </section>
 <section id="run-the-base-image">
-<h3>Run the base image<a class="headerlink" href="#run-the-base-image" title="Permalink to this headline">¶</a></h3>
+<h3>Run the Base Image<a class="headerlink" href="#run-the-base-image" title="Permalink to this headline">¶</a></h3>
 <p>Complete the following steps to run the base image:</p>
 <p>#. Clone this <a class="reference external" href="https://github.com/intel/edge-video-analytics-microservice">repo</a>.
 #.</p>
@@ -1934,9 +1710,9 @@ Currently, no tags are present in the data scheme and tag_keys is kept blank in 
 <p>For more details, refer to <a class="reference external" href="https://www.intel.com/content/www/us/en/developer/articles/technical/video-analytics-service.html#inpage-nav-3-1">Run the Edge Video Analytics Microservice</a>.</p>
 </div>
 </section>
-<section id="run-evam-in-oei-mode">
-<h3>Run EVAM in OEI mode<a class="headerlink" href="#run-evam-in-oei-mode" title="Permalink to this headline">¶</a></h3>
-<p>To run EVAM in the OEI mode, refer to the <a class="reference external" href="https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/README.md">README</a>.</p>
+<section id="run-evam-in-open-eii-mode">
+<h3>Run EVAM in Open EII Mode<a class="headerlink" href="#run-evam-in-open-eii-mode" title="Permalink to this headline">¶</a></h3>
+<p>To run EVAM in the Open EII mode, refer to the <a class="reference external" href="https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/README.md">README</a>.</p>
 </section>
 </section>
 </section>
@@ -1949,7 +1725,7 @@ Currently, no tags are present in the data scheme and tag_keys is kept blank in 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+    <p>&#169; Copyright (c) 2022 Intel Corporation.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
@@ -1965,7 +1741,7 @@ Currently, no tags are present in the data scheme and tag_keys is kept blank in 
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book"> Open EII</span>
       v: 3.0
       <span class="fa fa-caret-down"></span>
     </span>

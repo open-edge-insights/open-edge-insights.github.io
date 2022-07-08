@@ -1,18 +1,18 @@
 
-Steps for writing Python UDFs
+Steps for Writing Python UDFs
 -----------------------------
 
 This section describes the process of writing a Python UDF. As discussed in the aforementioned scenario, it also has two aspects to it.
 
 
 * 
-  Writing the actual UDF. It needs knowledge OEI exposed python APIs
+  Writing the actual UDF. It needs knowledge Open EII exposed python APIs
 
 * 
-  Adding the UDF to OEI framework by altering different configs.
+  Adding the UDF to Open EII framework by altering different configs.
 
-Python APIs for writing UDF for OEI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Python APIs for writing UDF for Open EII
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 * 
@@ -69,10 +69,10 @@ For reference user can find example UDFs code in below mentioned links
 * 
   `Dummy UDF <https://github.com/open-edge-insights/video-common/blob/master/udfs/python/dummy.py>`_
 
-OEI Infrastructure changes
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open EII Infrastructure Changes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For any UDF to be utilized by the OEI infrastructure, user must follow the below steps.
+For any UDF to be utilized by the Open EII infrastructure, user must follow the below steps.
 
 
 * 

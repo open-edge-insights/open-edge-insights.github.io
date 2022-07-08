@@ -24,7 +24,7 @@ EII v2.6.2 is a bugfix release on top of EII v2.6.1 release.
 
 .. note:: 
 
-   We recommend EII users (customers) using `EII ELK feature <https://github.com/open-edge-insights/eii-core/tree/v2.6.1/build/remote_logging#eii-distributed-services-centralized-logging-using-elk>`_ to upgrade to this version.
+   We recommend EII users (customers) using `EII ELK feature` (https://github.com/open-edge-insights/eii-core/tree/v2.6.1/build/remote_logging#eii-distributed-services-centralized-logging-using-elk) to upgrade to this version.
 
 Fixes
 =====
@@ -108,7 +108,7 @@ EII v2.5.3 is a bugfix release on top of EII v2.5.2 release.
 
 .. note:: 
 
-   We recommend EII users (customers) using `EII ELK feature <https://github.com/open-edge-insights/eii-core/tree/v2.5.2/build/remote_logging#eii-distributed-services-centralized-logging-using-elk>`_ to upgrade to this version.
+   We recommend EII users (customers) using `EII ELK feature` (https://github.com/open-edge-insights/eii-core/tree/v2.5.2/build/remote_logging#eii-distributed-services-centralized-logging-using-elk) to upgrade to this version.
 
 Fixes
 =====

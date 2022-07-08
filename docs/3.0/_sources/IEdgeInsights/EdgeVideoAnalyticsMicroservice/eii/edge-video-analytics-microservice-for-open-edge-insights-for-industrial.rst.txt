@@ -1,0 +1,13 @@
+
+Edge Video Analytics Microservice for Open Edge Insights for Industrial
+-----------------------------------------------------------------------
+
+The Edge Video Analytics Microservice (EVAM) combines video ingestion and analytics
+capabilities provided by Open Edge Insights for Industrial (Open EII) visual ingestion and analytics modules.
+This directory provides the Intel® Deep Learning Streamer (Intel® DL Streamer) pipelines
+to perform object detection on an input URI source and send the ingested frames and
+inference results using the MsgBus Publisher. It also provides a Docker compose
+and config file to use EVAM with the Open Edge Insights software stack.
+
+.. note::  In this document, you will find labels of ‘Edge Insights for Industrial (EII)’ for file names, paths, code snippets, and so on. Consider the references of EII as Open EII. This is due to the product name change of EII as Open EII.
+

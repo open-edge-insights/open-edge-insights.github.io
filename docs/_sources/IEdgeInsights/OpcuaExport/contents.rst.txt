@@ -8,5 +8,5 @@ Contents
   * `OpcuaExport <#opcuaexport>`__
 
     * `Configuration <#configuration>`__
-    * `Service bring up <#service-bring-up>`__
-    * `OPCUA client apps <#opcua-client-apps>`__
+    * `Service Bring Up <#service-bring-up>`__
+    * `OPCUA Client Apps <#opcua-client-apps>`__

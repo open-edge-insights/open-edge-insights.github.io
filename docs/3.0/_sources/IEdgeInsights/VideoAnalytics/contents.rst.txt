@@ -8,4 +8,4 @@ Contents
   * `VideoAnalytics Module <#videoanalytics-module>`__
 
     * `Configuration <#configuration>`__
-    * `Set Securiry Context to Enable Basler/USB Camera or NCS2 devicen helm environment <#updating-security-context-of-videoingestion-helm-charts-for-enabling-k8s-environment-to-accessdetect-baslerusb-device>`__
+    * `Update Security Context of VideoIngestion Helm Charts <#update-security-context-of-videoingestion-helm-charts>`__

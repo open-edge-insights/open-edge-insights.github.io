@@ -9,19 +9,18 @@ Contents
   * `Prerequisites and Setup <#prerequisites-and-setup>`__
 
     * `Azure Cloud Setup <#azure-cloud-setup>`__
+    * `Setting up AzureML <#setting-up-azureml>`__
+    * `Important <#important>`__
 
-      * `Setting up AzureML <#setting-up-azureml>`__
-      * `Important <#important>`__
-
-        * `Pushing a Model to AzureML <#pushing-a-model-to-azureml>`__
+      * `Pushing a Model to AzureML <#pushing-a-model-to-azureml>`__
 
     * `Development System Setup <#development-system-setup>`__
 
-  * `Build and Push OEI Containers <#build-and-push-oei-containers>`__
+  * `Build and Push Open Edge Insights for Industrial Containers <#build-and-push-open-edge-insights-for-industrial-containers>`__
   * `Single-Node Azure IoT Edge Deployment <#single-node-azure-iot-edge-deployment>`__
 
     * `Step 1 - Provisioning <#step-1-provisioning>`__
-    * `Step 2 - Configuring OEI <#step-2-configuring-oei>`__
+    * `Step 2 - Configuring Open Edge Insights for Industrial <#step-2-configuring-open-edge-insights-for-industrial>`__
     * `Step 3 - Configuring Azure IoT Deployment Manifest <#step-3-configuring-azure-iot-deployment-manifest>`__
     * `Step 4 - Deployment <#step-4-deployment>`__
     * `Helpful Debugging Commands <#helpful-debugging-commands>`__
@@ -32,12 +31,12 @@ Contents
     * `Azure Bridge <#azure-bridge>`__
     * `ZeroMQ TCP Subscription Implications <#zeromq-tcp-subscription-implications>`__
     * `ZeroMQ IPC Subscription Implications <#zeromq-ipc-subscription-implications>`__
-    * `Sample OEI ONNX UDF <#sample-oei-onnx-udf>`__
+    * `Sample Open Edge Insights for Industrial ONNX UDF <#sample-open-edge-insights-for-industrial-onnx-udf>`__
     * `Simple Subscriber <#simple-subscriber>`__
-    * `OEI ETCD Pre-Load <#oei-etcd-pre-load>`__
+    * `Open Edge Insights for Industrial ETCD Pre-Load <#open-edge-insights-for-industrial-etcd-pre-load>`__
     * `Azure Blob Storage <#azure-blob-storage>`__
     * `Azure Deployment Manifest <#azure-deployment-manifest>`__
 
   * `Azure IoT Edge Simulator <#azure-iot-edge-simulator>`__
-  * `Supported OEI Services <#supported-oei-services>`__
+  * `Supported Open Edge Insights for Industrial Services <#supported-open-edge-insights-for-industrial-services>`__
   * `Additional Resources <#additional-resources>`__

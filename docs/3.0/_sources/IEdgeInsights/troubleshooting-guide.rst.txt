@@ -1,16 +1,16 @@
 
-Troubleshooting guide
+Troubleshooting Guide
 ---------------------
 
 
-* For any troubleshooting tips related to the OEI configuration and installation, refer to the `TROUBLESHOOT.md <https://github.com/open-edge-insights/eii-core/blob/master/TROUBLESHOOT.md>`_ guide.
+* For any troubleshooting tips related to the Open EII configuration and installation, refer to the `TROUBLESHOOT.md <https://github.com/open-edge-insights/eii-core/blob/master/TROUBLESHOOT.md>`_ guide.
 * 
-  If you observe any issues with the Python package installation then manually install the Python packages as follows:
+  If you observe any issues with the Python package installation, then manually install the Python packages as follows:
 
   ..
 
      **Note:**
-     To avoid any changes to the Python installation on the system, it is recommended that you use a Python virtual environment to install the Python packages. Th details for setting up and using the Python virtual environment is available here: https://www.geeksforgeeks.org/python-virtual-environment/.
+     To avoid any changes to the Python installation on the system, it is recommended that you use a Python virtual environment to install the Python packages. The details for setting up and using the Python virtual environment is available here: https://www.geeksforgeeks.org/python-virtual-environment/.
 
 
   .. code-block:: sh

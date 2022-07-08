@@ -5,31 +5,31 @@ Contents
 
 * `Contents <#contents>`__
 
-  * `OEI Video Profiler <#oei-video-profiler>`__
+  * `Open EII Video Profiler <#open-eii-video-profiler>`__
 
-    * `OEI Video Profiler prerequisites <#oei-video-profiler-prerequisites>`__
-    * `OEI Video Profiler modes <#oei-video-profiler-modes>`__
-    * `OEI Video Profiler configurations <#oei-video-profiler-configurations>`__
+    * `Open EII Video Profiler Prerequisites <#open-eii-video-profiler-prerequisites>`__
+    * `Open EII Video Profiler Modes <#open-eii-video-profiler-modes>`__
+    * `Open EII Video Profiler Configurations <#open-eii-video-profiler-configurations>`__
     * `Run Video Profiler <#run-video-profiler>`__
-    * `Running VideoProfiler in helm usecase <#running-videoprofiler-in-helm-usecase>`__
-    * `Optimizing OEI Video pipeline by analysing Video Profiler results <#optimizing-oei-video-pipeline-by-analysing-video-profiler-results>`__
-    * `Benchmarking with multi-instance config <#benchmarking-with-multi-instance-config>`__
+    * `Run VideoProfiler in Helm Use Case <#run-videoprofiler-in-helm-use-case>`__
+    * `Optimize Open EII Video Pipeline by Analysing Video Profiler Results <#optimize-open-eii-video-pipeline-by-analysing-video-profiler-results>`__
+    * `Benchmarking with Multi-instance Config <#benchmarking-with-multi-instance-config>`__
 
-OEI Video Profiler
-------------------
+Open EII Video Profiler
+-----------------------
 
-This tool can be used to determine the complete metrics involved in the entire Video pipeline by measuring the time difference between every component of the pipeline and checking for Queue blockages at every component thereby determining the fast or slow components of the whole pipeline. It can also be used to calculate the FPS of any OEI modules based on the stream published by that respective module.
+This tool can be used to determine the complete metrics involved in the entire Video pipeline by measuring the time difference between every component of the pipeline and checking for Queue blockages at every component thereby determining the fast or slow components of the whole pipeline. It can also be used to calculate the FPS of any Open EII modules based on the stream published by that respective module.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
-OEI Video Profiler prerequisites
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open EII Video Profiler Prerequisites
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 #. 
-   VideoProfiler expects a set of config, interfaces & public private keys to be present in ETCD as a prerequisite.
-    To achieve this, please ensure an entry for VideoProfiler with its relative path from `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory is set in any of the .yml files present in `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory. An example has been provided below:
+   VideoProfiler expects a set of config, interfaces and public private keys to be present in ETCD as a prerequisite.
+    To achieve this, ensure an entry for VideoProfiler with its relative path from `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory is set in any of the .yml files present in `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory. An example has been provided below:
 
    .. code-block:: sh
 
@@ -39,21 +39,21 @@ OEI Video Profiler prerequisites
            - tools/VideoProfiler
 
 #. 
-   With the above prerequisite done, please run the below to command:
+   With the above prerequisite done, run the below to command:
 
    .. code-block:: sh
 
            python3 builder.py -f usecases/video-streaming.yml
 
-OEI Video Profiler modes
-^^^^^^^^^^^^^^^^^^^^^^^^
+Open EII Video Profiler Modes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   By default, the OEI Video Profiler supports the ``FPS`` and the ``Monitor`` mode. The following are details for these modes:
+By default, the Open EII Video Profiler supports the ``FPS`` and the ``Monitor`` mode. The following are details for these modes:
 
 
 * 
   FPS mode
-  Enabled by setting the 'mode' key in `config <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/config.json>`_ to 'fps', this mode calculates the frames per second of any OEI module by subscribing to that module's respective stream.
+  Enabled by setting the 'mode' key in `config <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/config.json>`_ to 'fps', this mode calculates the frames per second of any Open EII module by subscribing to that module's respective stream.
 
   .. code-block:: sh
 
@@ -91,12 +91,12 @@ OEI Video Profiler modes
 
            "mode": "monitor"
 
-  The stats to be displayed by the tool in ``monitor_mode`` can be set in the ``monitor_mode_settings`` key of `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/config.json>`_.
+The stats to be displayed by the tool in ``monitor_mode`` can be set in the ``monitor_mode_settings`` key of `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/config.json>`_.
 
 
-  * 'display_metadata': Displays the raw meta-data with timestamps associated with every frame.
-  * 'per_frame_stats': Continously displays the per frame metrics of every frame.
-  * 'avg_stats': Continously displays the average metrics of every frame.
+* 'display_metadata': Displays the raw meta-data with timestamps associated with every frame.
+* 'per_frame_stats': Continously displays the per frame metrics of every frame.
+* 'avg_stats': Continously displays the average metrics of every frame.
 
 .. note:: 
 
@@ -105,14 +105,14 @@ OEI Video Profiler modes
    * It is mandatory to have a UDF for running in monitor mode. For instance `GVASafetyGearIngestion <https://github.com/open-edge-insights/video-custom-udfs/blob/master/GVASafetyGearIngestion/README.md>`_ does not have any udf(since it uses GVA elements) so it will not be supported in monitor mode. The workaround to use GVASafetyGearIngestion in monitor mode is to add `dummy-udf <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_ in `GVASafetyGearIngestion-config <https://github.com/open-edge-insights/video-custom-udfs/blob/master/GVASafetyGearIngestion/config.json>`_.
 
 
-OEI Video Profiler configurations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open EII Video Profiler Configurations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 #. 
    dev_mode
 
-   Setting this to false enables secure communication with the OEI stack. User must ensure this switch is in sync with DEV_MODE in `.env <https://github.com/open-edge-insights/eii-core/tree/master/build/.env>`_
+   Setting this to false enables secure communication with the Open EII stack. User must ensure this switch is in sync with DEV_MODE in `.env <https://github.com/open-edge-insights/eii-core/tree/master/build/.env>`_
    With PROD mode enabled, the path for the certs mentioned in `config <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/config.json>`_ can be changed by the user to point to the required certs.
 
 #. 
@@ -154,9 +154,9 @@ Run Video Profiler
       **Note:**
 
 
-      * This step is required everytime publisher is restarted in IPC mode.
-      * **Caution:** This step will make the streams insecure. Please do not do it on a production machine.
-      * Refer the below VideoProfiler interface example to subscribe to PyMultiClassificationIngestion CutomUDF results in the FPS mode.
+      * This step is required everytime publisher is restarted in the IPC mode.
+      * **Caution:** This step will make the streams insecure. Do not do it on a production machine.
+      * Refer the below VideoProfiler interface example to subscribe to PyMultiClassificationIngestion CustomUDF results in the FPS mode.
 
 
    .. code-block:: javascript
@@ -176,7 +176,7 @@ Run Video Profiler
            },
 
 #. 
-   If running VideoProfiler with helm usecase or trying to subscribe to any external publishers outside the OEI network, ensure the correct IP of publisher has been provided in the interfaces section in `config <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/config.json>`_ and correct ETCD host & port are set in environment for **ETCD_ENDPOINT** & **ETCD_HOST**.
+   If running VideoProfiler with helm usecase or trying to subscribe to any external publishers outside the Open EII network, ensure the correct IP of publisher has been provided in the interfaces section in `config <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/config.json>`_ and correct ETCD host & port are set in environment for **ETCD_ENDPOINT** & **ETCD_HOST**.
 
 
    * 
@@ -188,7 +188,7 @@ Run Video Profiler
           export ETCD_ENDPOINT="<HOST IP>:32379"
 
 #. 
-   Refer `provision/README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ to provision, build and run the tool along with the OEI video-streaming recipe/stack.
+   Refer `provision/README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ to provision, build and run the tool along with the Open EII video-streaming recipe/stack.
 
 #. 
    Run the following command to see the logs:
@@ -219,15 +219,15 @@ Run Video Profiler
          UDFs are used.
       * The rate at which the UDFs process the frames can be measured using the FPS UDF and ingestion rate can be monitored accordingly.
          In case multiple UDFs are used, the FPS UDF is required to be added as the last UDF.
-      * In case running this tool with VI & VA in two different nodes, same time needs to be set in both the nodes.
+      * In case running this tool with VI and VA in two different nodes, same time needs to be set in both the nodes.
 
 
-Running VideoProfiler in helm usecase
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Run VideoProfiler in Helm Use Case
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For running VideoProfiler in helm usecase to subscribe to either VideoIngestion/VideoAnalytics or any other OEI service, the etcd endpoint, volume mount for helm certs and service endpoints are to be updated.
+For running VideoProfiler in helm use case to subscribe to either VideoIngestion/VideoAnalytics or any other Open EII service, the etcd endpoint, volume mount for helm certs and service endpoints are to be updated.
 
-For connecting to the etcd server running in helm environment, the endpoint and required volume mounts should be modified in the following manner in environment & volumes section of `docker-compose.yml <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/docker-compose.yml>`_\ :
+For connecting to the etcd server running in helm environment, the endpoint and required volume mounts should be modified in the following manner in environment and volumes section of `docker-compose.yml <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/docker-compose.yml>`_\ :
 
 .. code-block:: yaml
 
@@ -286,8 +286,8 @@ The config can be updated with the obtained container IP in the following way:
            }
        }
 
-Optimizing OEI Video pipeline by analysing Video Profiler results
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Optimize Open EII Video Pipeline by Analysing Video Profiler Results
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 #. 
@@ -296,7 +296,7 @@ Optimizing OEI Video pipeline by analysing Video Profiler results
    If this log is displayed by the Video Profiler tool, it indicates that the ingestion rate is too high or the VideoIngestion
    UDFs are slow and causing latency throughout the pipeline.
    As per the log suggests, the user can increase the poll_interval to a optimum value to reduce the blockage of VideoIngestion
-   ingestor queue thereby optimizing the video pipeline in case using the opencv ingestor.    In case Gstreamer ingestor is used, the videorate option can be optimized by following the `README <https://github.com/open-edge-insights/video-ingestion/blob/master/README.md>`_.
+   ingestor queue thereby optimizing the video pipeline in case using the opencv ingestor. if Gstreamer ingestor is used, the videorate option can be optimized by following the `README <https://github.com/open-edge-insights/video-ingestion/blob/master/README.md>`_.
 
 #. 
    VA subs/UDF input queue is blocked, consider reducing ZMQ_RECV_HWM value or reducing ingestion rate.
@@ -326,15 +326,15 @@ Optimizing OEI Video pipeline by analysing Video Profiler results
    #. User can increase ZMQ_RECV_HWM to an optimum value so as to not drop
       the frames when the queue is full or switching to IPC mode of communication.
 
-Benchmarking with multi-instance config
+Benchmarking with Multi-instance Config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 #. 
-   OEI supports multi-instance config generation for benchmarking purposes. This can be acheived by running the `builder.py <https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py>`_ with certain parameters, please refer to the **Multi-instance config generation** section of **OEI Preeequisites** in the `README <https://github.com/open-edge-insights/eii-core/blob/master/README.md#oei-prerequisites-installation>`_ for more details.
+   Open EII supports multi-instance config generation for benchmarking purposes. This can be acheived by running the `builder.py <https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py>`_ with certain parameters, please refer to the **Multi-instance Config Generation** section of **Open EII Preeequisites** in the `README <https://github.com/open-edge-insights/eii-core/blob/master/README.md#oei-prerequisites-installation>`_ for more details.
 
 #. 
-   For running VideoProfiler for multiple streams, run the builder with the **-v** flag provided the pre-requisites mentioned above are done. Given below is an example for generating **6** streams config:
+   For running VideoProfiler for multiple streams, run the builder with the **-v** flag provided the pre-requisites mentioned above are done. The following is an example for generating **6** streams config:
 
    .. code-block:: sh
 
@@ -343,7 +343,7 @@ Benchmarking with multi-instance config
 .. note:: 
 
 
-   * For multi-instance monitor mode usecase, please ensure only **VideoIngestion** & **VideoAnalytics** are used as **AppName** for Publishers.
-   * Running **VideoProfiler** with **CustomUDFs** for monitor mode is supported for single stream only. If required for multiple streams, please ensure **VideoIngestion** & **VideoAnalytics** are used as **AppName**.
-   * In IPC mode, for accelerators: ``MYRIAD``\ , ``GPU`` and USB 3.0 Vision cameras, add ``user: root`` in `VideoProfiler-docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/docker-compose.yml>`_ as the subscriber needs to run as ``root`` if the publisher is running as ``root``.
+   * For multi-instance monitor mode use case, ensure only **VideoIngestion** & **VideoAnalytics** are used as **AppName** for Publishers.
+   * Running **VideoProfiler** with **CustomUDFs** for monitor mode is supported for single stream only. If required for multiple streams, ensure **VideoIngestion** & **VideoAnalytics** are used as **AppName**.
+   * In IPC mode, for accelerators: ``MYRIAD``\ , ``GPU``\ , and USB 3.0 Vision cameras, add ``user: root`` in `VideoProfiler-docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/docker-compose.yml>`_ as the subscriber needs to run as ``root`` if the publisher is running as ``root``.
 

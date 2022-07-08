@@ -54,7 +54,7 @@ following commands:
 The command above will build the Debian and RPM packages (depending on the
 specified CMake flags).
 
-To build the Alpine APK package, execute the following command:
+To build the Alpine APK package, run the following command:
 
 .. code-block:: sh
 
@@ -62,34 +62,27 @@ To build the Alpine APK package, execute the following command:
 
 **IMPORTANT:**
 
-The Config Manager depends on the OEI Utils and Message Bus libraries.
-In order to compile the Alpine APK package for the Config Manager it must
-have the APK packages for the OEI Utils and Message Bus modules.
+The Config Manager depends on the Open EII Utils and Message bus libraries.
+To compile the Alpine APK package for the Config Manager it must have the APK packages for the Open EII Utils and Message bus modules.
 
-To provide this, you must first build or download the Alpine APK package for the
-OEI Utils library (see it's repo `here <https://github.com/open-edge-insights/eii-c-utils>`_
-to obtain the library) and also for the Message Bus (see it's repo
-`here <https://github.com/open-edge-insights/eii-messagebus>`_ to obtain the library).
+To provide this, you must first build or download the Alpine APK package for the Open EII Utils library (see its repo `here <https://github.com/open-edge-insights/eii-c-utils>`_
+to obtain the library) and also for the Message bus (see it's repo `here <https://github.com/open-edge-insights/eii-messagebus>`_ to obtain the library).
 
-Once you have the APKs, create an, "apks" directory at the top level of this
-repository.
+After you have the APKs, create an ``apks`` directory at the top level of this repository.
 
 .. code-block:: sh
 
    mkdir apks/
 
-Next, place the OEI Utils and Message Bus APK packages into the, "apks",
-directory. Then execute the ``make package-apk`` command. If this is not done,
+Next, place the Open EII Utils and Message bus APK packages into the, ``apks``\ ,
+directory. Then run the ``make package-apk`` command. If this is not done,
 then the build will fail.
 
 A Note on Alpine APK Packaging
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to package the library as an Alpine APK package, the packaging utility
-must use a Docker container to have access to the proper Alpine APK toolchains.
-This container will automatically be built when the CMake command is ran to
-configure your build environment.
+To package the library as an Alpine APK package, the packaging utility must use a Docker container to have access to the proper Alpine APK toolchains.
+This container will automatically be built when the CMake command is ran to configure your build environment.
 
-By default, Alpine 3.14 is used to build the package. However, this version
-can be changed by setting the ``APKBUILD_ALPINE_VERSION`` CMake flag to the
+By default, Alpine 3.14 is used to build the package. However, this version can be changed by setting the ``APKBUILD_ALPINE_VERSION`` CMake flag to the
 version of Alpine you wish to use (ex. ``-DAPKBUILD_ALPINE_VERSION=3.12``\ ).

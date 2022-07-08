@@ -1,8 +1,8 @@
 
-Run the containers
+Run the Containers
 ------------------
 
-To pull the prebuilt OEI container images and EVAM from Docker Hub and run the containers in the detached mode, run the following command:
+To pull the prebuilt Open EII container images and EVAM from Docker Hub and run the containers in the detached mode, run the following command:
 
 .. code-block:: sh
 

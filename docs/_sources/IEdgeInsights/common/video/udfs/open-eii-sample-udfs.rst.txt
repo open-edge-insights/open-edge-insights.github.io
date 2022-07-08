@@ -1,0 +1,10 @@
+
+Open EII Sample UDFs
+--------------------
+
+Open Edge Insights for Industrial (Open EII) supports loading and executing of native (C++) and python UDFs. In here,
+you can find the sample native and python UDFs (User Defined Functions) to be used with Open EII components
+like VideoIngestion and VideoAnalytics. The UDFs can modify the frame, drop the frame and generate meta-data from the frame.
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open EII. This is due to the product name change of EII as Open EII.
+

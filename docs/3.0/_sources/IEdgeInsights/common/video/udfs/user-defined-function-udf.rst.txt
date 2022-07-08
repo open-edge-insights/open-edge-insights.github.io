@@ -2,7 +2,7 @@
 User Defined Function (UDF)
 ---------------------------
 
-An UDF is a chunk of user code that acts as a filter, preprocessor, or classifier for a given data input coming from the OEI. The User Defined Function (UDF) Loader Library provides a common API for loading C++ and Python UDFs.
+An UDF is a chunk of user code that acts as a filter, preprocessor, or classifier for a given data input coming from the Open EII. The User Defined Function (UDF) Loader Library provides a common API for loading C++ and Python UDFs.
 
 The library itself is written in C++ and provides an abstraction layer for loading and calling UDFs. Additionally, the library defines a common interface inheritable by all UDFs (whether written in C++ or Python).
 

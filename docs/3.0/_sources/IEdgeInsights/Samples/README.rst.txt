@@ -1,8 +1,8 @@
 
-Sample apps
+Sample Apps
 ===========
 
-This section provides more information about the Open Edge Insights (OEI) sample apps and how to use the core libraries packages like Utils, Message Bus, and ConfigManager in various flavors of Linux such as Ubuntu and Alpine operating systems or docker images for programming languages such as C++, Go, and Python.
+This section provides more information about the Open Edge Insights for Industrial (Open EII) sample apps and how to use the core libraries packages like Utils, Message Bus, and ConfigManager in various flavors of Linux such as Ubuntu and Alpine operating systems or docker images for programming languages such as C++, Go, and Python.
 
 The following table shows the details for the supported flavors of Linux operating systems or docker images and programming languages that support sample apps:
 
@@ -23,7 +23,7 @@ The sample apps are classified as ``publisher`` and ``subscriber`` apps. For mor
 * `Publisher <https://github.com/open-edge-insights/eii-samples/blob/master/publisher/README.md>`_
 * `Subscriber <https://github.com/open-edge-insights/eii-samples/blob/master/subscriber/README.md>`_
 
-Run the samples apps
+Run the Samples Apps
 --------------------
 
 For default scenario, the sample custom UDF containers are not the mandatory containers to run. The ``builder.py`` script runs the ``sample-apps.yml`` from the `build/usecases <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases>`_ directory and adds all the sample apps containers. Refer to the following list to view the details of the sample apps containers:
@@ -57,4 +57,4 @@ For default scenario, the sample custom UDF containers are not the mandatory con
        python3 builder.py -f ./usecases/sample-apps.yml file used>
 
 #. 
-   Refer to the `\ ``Build OEI stack`` <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ and the `\ ``Run OEI service`` <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ sections to build and run the sample apps.
+   Refer to the `\ ``Build Open EII stack`` <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ and the `\ ``Run Open EII service`` <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ sections to build and run the sample apps.

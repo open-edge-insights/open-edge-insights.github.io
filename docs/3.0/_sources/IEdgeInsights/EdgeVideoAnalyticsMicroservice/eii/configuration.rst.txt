@@ -3,7 +3,7 @@ Configuration
 -------------
 
 See the `edge-video-analytics-microservice/eii/config.json <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file for the configuration of EVAM. The default configuration will start the
-object_detection demo for OEI.
+object_detection demo for Open EII.
 
 The config file is divided into two sections as follows:
 
@@ -33,21 +33,18 @@ The following table describes the attributes that are supported in the ``config`
      - This provides the parameters for the model used for inference.
 
 
-Interfaces section
+Interfaces Section
 ^^^^^^^^^^^^^^^^^^
 
-In the OEI mode, currently EVAM only supports launching a single pipeline and publishing on a single topic. This implies that in the configuration file ("config.json"),
-the single JSON object in the ``Publisher`` list is where the configuration resides for the published data. For more details on the structure, refer to the `OEI documentation <https://github.com/open-edge-insights/eii-core/blob/master/README.md#add-oei-services>`_.
+Currently in the Open EII mode, EVAM supports launching a single pipeline and publishing on a single topic. This implies that in the configuration file ("config.json"), the single JSON object in the ``Publisher`` list is where the configuration resides for the published data. For more details on the structure, refer to the `Open EII documentation <https://github.com/open-edge-insights/eii-core/blob/master/README.md#add-oei-services>`_.
 
-EVAM also supports subscribing and publishing messages or frames using the Message Bus. The endpoint details for the OEI service you need to subscribe from are to be
-provided in the **Subscribers** section in the `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file and the endpoints where you need to publish to are to be provided in **Publishers** section in
-the `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file.
+EVAM also supports subscribing and publishing messages or frames using the Message Bus. The endpoint details for the Open EII service you need to subscribe from are to be provided in the **Subscribers** section in the `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file and the endpoints where you need to publish to are to be provided in **Publishers** section in the `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file.
 
 To enable injection of frames into the GStreamer pipeline obtained from Message Bus, ensure to make the following changes:
 
 
 * 
-  The source parameter in the `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file is set to msgbus
+  The source parameter in the `config <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/config.json>`_ file is set to msgbus. Refer to the following code snippet:
 
   .. code-block:: javascript
 
@@ -56,7 +53,7 @@ To enable injection of frames into the GStreamer pipeline obtained from Message 
         }
 
 * 
-  The template of respective pipeline is set to appsrc as source instead of uridecodebin
+  The template of respective pipeline is set to appsrc as source instead of uridecodebin. Refer to the following code snippet:
 
   .. code-block:: javascript
 

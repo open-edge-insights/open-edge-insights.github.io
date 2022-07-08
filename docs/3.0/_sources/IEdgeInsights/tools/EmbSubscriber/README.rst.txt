@@ -9,14 +9,14 @@ Contents
 
     * `Prerequisites <#prerequisites>`__
     * `Running EmbSubscriber <#running-embsubscriber>`__
-    * `Running EmbSubscriber in IPC mode <#running-embsubscriber-in-ipc-mode>`__
+    * `Run EmbSubscriber in IPC mode <#run-embsubscriber-in-ipc-mode>`__
 
 EmbSubscriber
 -------------
 
 EmbSubscriber subscribes message coming from a publisher.It subscribes to messagebus topic to get the data.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 Prerequisites
@@ -48,12 +48,12 @@ Running EmbSubscriber
 ^^^^^^^^^^^^^^^^^^^^^
 
 
-#. Refer `../README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ to provision, build and run the tool along with the OEI time-series recipe/stack.
+#. Refer to the `../README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ to provision, build and run the tool along with the Open EII Time Series recipe or stack.
 
-Running EmbSubscriber in IPC mode
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Run EmbSubscriber in IPC mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-User needs to modify interface section of **\ `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/EmbSubscriber/config.json>`_\ ** to run in IPC mode as following
+To run EmbSubscriber in the IPC mode, modify the interfaces section of the `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/EmbSubscriber/config.json>`_ file as follows:
 
 .. code-block:: sh
 

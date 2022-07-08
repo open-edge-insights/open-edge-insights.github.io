@@ -49,7 +49,7 @@
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>
@@ -185,11 +185,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id3">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id2">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id4">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id3">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -197,7 +197,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id5">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id4">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -493,12 +493,10 @@
 <li class="toctree-l3"><a class="reference internal" href="tools.html#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the Builder script with the DiscoverHistory tool</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#embpublisher">EmbPublisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#about-tool">About tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tools.html#embsubscriber">EmbSubscriber</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#eii-pre-requisites">EII pre-requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#running-embsubscriber">Running EmbSubscriber</a></li>
@@ -514,7 +512,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="tools.html#httptestserver">HttpTestServer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#pre-requisites-for-running-the-httptestserver">Pre-requisites for running the HttpTestServer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#starting-httptestserver">Starting HttpTestServer</a></li>
 </ul>
@@ -551,6 +549,10 @@
 <li class="toctree-l3"><a class="reference internal" href="tools.html#running-video-profiler">Running Video Profiler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tools.html#pre-requisites">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -1040,28 +1042,28 @@ To run inference on MYRIAD device, root user permissions needs to be used at run
 either ia_video_ingestion, ia_video_analytics add <code class="docutils literal notranslate"><span class="pre">&quot;User&quot;:</span> <span class="pre">&quot;root&quot;</span></code> key as below: command in the ia_video_ingestion or
 ia_video_analytics manifest files as required.</p>
 <p>Eg: To use MYRAID device in <code class="docutils literal notranslate"><span class="pre">config/templates/ia_video_analytics.template.json</span></code> manifest file, refer the below example</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="c1">// ... omitted ...</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="c1">// ... omitted ...</span><span class="w"></span>
 
-    <span class="s2">&quot;modules&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;ia_video_analytics&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="c1">// ... omitted ...</span>
+<span class="w">    </span><span class="s2">&quot;modules&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;ia_video_analytics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// ... omitted ...</span><span class="w"></span>
 
-            <span class="s2">&quot;settings&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;createOptions&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="c1">// ... omitted ..</span>
-                    <span class="s2">&quot;User&quot;</span><span class="o">:</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
-                    <span class="s2">&quot;Env&quot;</span><span class="o">:</span> <span class="p">[</span>
-                        <span class="c1">// ... omitted ...</span>
-                    <span class="p">]</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
+<span class="w">            </span><span class="s2">&quot;settings&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;createOptions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="c1">// ... omitted ..</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;User&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;root&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;Env&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                        </span><span class="c1">// ... omitted ...</span><span class="w"></span>
+<span class="w">                    </span><span class="p">]</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
 
-            <span class="c1">// ... omitted ...</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="c1">// ... omitted ...</span>
-<span class="p">}</span>
+<span class="w">            </span><span class="c1">// ... omitted ...</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="c1">// ... omitted ...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <section id="id4">
@@ -1167,34 +1169,34 @@ you must set the <code class="docutils literal notranslate"><span class="pre">Su
 file. The list is comprised of JSON objects for every subscription you wish the
 Azure Bridge to establish. Below is an example of the configuration for
 subscribing to the the publications coming from the Video Analytics container.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="c1">// Specifies that this is the default subscriber</span>
-            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// Specifies that this is the default subscriber</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
 
-            <span class="c1">// Gives the type of connection, i.e. zmq_tcp, this could</span>
-            <span class="c1">// also be zmq_ipc</span>
-            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// Gives the type of connection, i.e. zmq_tcp, this could</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// also be zmq_ipc</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span><span class="w"></span>
 
-            <span class="c1">// The EndPoint specifies the details of the connect, for an</span>
-            <span class="c1">// IPC connection, this would be a JSON object with the</span>
-            <span class="c1">// SocketDir key pointing to the directory of the IPC sockets</span>
-            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;127.0.0.1:65013&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// The EndPoint specifies the details of the connect, for an</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// IPC connection, this would be a JSON object with the</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// SocketDir key pointing to the directory of the IPC sockets</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;127.0.0.1:65013&quot;</span><span class="p">,</span><span class="w"></span>
 
-            <span class="c1">// Specification of the AppName of the service publishing the</span>
-            <span class="c1">// messages. This allows the Azure Bridge to get the needed</span>
-            <span class="c1">// authentication keys to subscribe</span>
-            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;VideoAnalytics&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="c1">// Specification of the AppName of the service publishing the</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// messages. This allows the Azure Bridge to get the needed</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// authentication keys to subscribe</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;VideoAnalytics&quot;</span><span class="p">,</span><span class="w"></span>
 
-            <span class="c1">// Specifies the list of all of the topics which the</span>
-            <span class="c1">// AzureBridge shall subscribe to</span>
-            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;camera1_stream_results&quot;</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<span class="w">            </span><span class="c1">// Specifies the list of all of the topics which the</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// AzureBridge shall subscribe to</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Topics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;camera1_stream_results&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>There are a few important implications to be aware of for both ZeroMQ TCP and IPC
@@ -1248,33 +1250,33 @@ modules. Or, you can see this configuration being set in the,
 publisher app’s publisher interfaces configuration in <code class="docutils literal notranslate"><span class="pre">build/provision/config/eii_config.json</span></code>
 file.  Below is an example of the AzureBridge interface configuration subscribing to the
 publications coming from the VideoIngestion container.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-          <span class="c1">// Specifies that this is the default subscriber</span>
-          <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">          </span><span class="c1">// Specifies that this is the default subscriber</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;Name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
 
-          <span class="c1">// Gives the type of connection, i.e. zmq_tcp/zmq_ipc</span>
-          <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="c1">// Gives the type of connection, i.e. zmq_tcp/zmq_ipc</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span><span class="w"></span>
 
-          <span class="c1">// The EndPoint specifies the details of the connect, for an</span>
-          <span class="c1">// IPC connection, this would be a JSON object with the</span>
-          <span class="c1">// SocketDir key pointing to the directory of the IPC sockets</span>
-          <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="c1">// The EndPoint specifies the details of the connect, for an</span><span class="w"></span>
+<span class="w">          </span><span class="c1">// IPC connection, this would be a JSON object with the</span><span class="w"></span>
+<span class="w">          </span><span class="c1">// SocketDir key pointing to the directory of the IPC sockets</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span><span class="w"></span>
 
-          <span class="c1">// Specification of the AppName of the service publishing the</span>
-          <span class="c1">// messages. This allows the Azure Bridge to get the needed</span>
-          <span class="c1">// authentication keys to subscriber</span>
-          <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;VideoIngestion&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="c1">// Specification of the AppName of the service publishing the</span><span class="w"></span>
+<span class="w">          </span><span class="c1">// messages. This allows the Azure Bridge to get the needed</span><span class="w"></span>
+<span class="w">          </span><span class="c1">// authentication keys to subscriber</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;VideoIngestion&quot;</span><span class="p">,</span><span class="w"></span>
 
-          <span class="c1">// Specifies the list of all of the topics which the</span>
-          <span class="c1">// AzureBridge shall subscribe to</span>
-          <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
-              <span class="s2">&quot;camera1_stream&quot;</span>
-          <span class="p">]</span>
-      <span class="p">}</span>
-   <span class="p">]</span>
-  <span class="p">}</span>
+<span class="w">          </span><span class="c1">// Specifies the list of all of the topics which the</span><span class="w"></span>
+<span class="w">          </span><span class="c1">// AzureBridge shall subscribe to</span><span class="w"></span>
+<span class="w">          </span><span class="s2">&quot;Topics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">              </span><span class="s2">&quot;camera1_stream&quot;</span><span class="w"></span>
+<span class="w">          </span><span class="p">]</span><span class="w"></span>
+<span class="w">      </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">]</span><span class="w"></span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
@@ -1426,22 +1428,22 @@ where the <code class="docutils literal notranslate"><span class="pre">*.onnx</s
 <p>This should be added into the <code class="docutils literal notranslate"><span class="pre">udfs</span></code> list for your Video Ingestion or Video Analytics
 instance you wish to have run the UDF. The configuration should look similar to
 the following:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="c1">// ... omited rest of EII configuration ...</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// ... omited rest of EII configuration ...</span><span class="w"></span>
 
-    <span class="s2">&quot;udfs&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;sample_onnx.onnx_udf&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;aml_ws&quot;</span><span class="o">:</span> <span class="s2">&quot;example-azureml-workspace&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;aml_subscription_id&quot;</span><span class="o">:</span> <span class="s2">&quot;subscription-id&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;model_name&quot;</span><span class="o">:</span> <span class="s2">&quot;example-model-name&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;download_model&quot;</span><span class="o">:</span> <span class="kc">true</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
+<span class="w">    </span><span class="s2">&quot;udfs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;sample_onnx.onnx_udf&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;aml_ws&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;example-azureml-workspace&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;aml_subscription_id&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;subscription-id&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;model_name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;example-model-name&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;download_model&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
 
-    <span class="c1">// ... omited rest of EII configuration ...</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="c1">// ... omited rest of EII configuration ...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The following environmental variables must be set in the <code class="docutils literal notranslate"><span class="pre">AzureBridge/.env</span></code> file
@@ -1491,32 +1493,32 @@ globally for Docker on your system. To fix this, update your deployment manifest
 template so that the Video Ingestion and/or Video Analytics containers have
 the <code class="docutils literal notranslate"><span class="pre">http_proxy</span></code> and <code class="docutils literal notranslate"><span class="pre">https_proxy</span></code> values set. The manifest should look something
 like the following:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="c1">// ... omitted ...</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// ... omitted ...</span><span class="w"></span>
 
-    <span class="s2">&quot;modules&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;ia_video_ingestion&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="c1">// ... omitted ...</span>
+<span class="w">    </span><span class="s2">&quot;modules&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;ia_video_ingestion&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="c1">// ... omitted ...</span><span class="w"></span>
 
-            <span class="s2">&quot;settings&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;createOptions&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;Env&quot;</span><span class="o">:</span> <span class="p">[</span>
-                        <span class="c1">// ... omitted ...</span>
+<span class="w">            </span><span class="s2">&quot;settings&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;createOptions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;Env&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                        </span><span class="c1">// ... omitted ...</span><span class="w"></span>
 
-                        <span class="s2">&quot;http_proxy=&lt;YOUR PROXY&gt;&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;https_proxy=&lt;YOUR PROXY&gt;&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;http_proxy=&lt;YOUR PROXY&gt;&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="s2">&quot;https_proxy=&lt;YOUR PROXY&gt;&quot;</span><span class="p">,</span><span class="w"></span>
 
-                        <span class="c1">// ... omitted ...</span>
-                    <span class="p">]</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
+<span class="w">                        </span><span class="c1">// ... omitted ...</span><span class="w"></span>
+<span class="w">                    </span><span class="p">]</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
 
-            <span class="c1">// ... omitted ...</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<span class="w">            </span><span class="c1">// ... omitted ...</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="c1">// ... omitted ...</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="c1">// ... omitted ...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -1528,26 +1530,26 @@ them to stdout. As such, there is no digital twin required for this module. The
 only configuration required is that a route be established in the Azure IoT Edge
 Runtime from the Azure Bridge module to the Simple Subscriber module. This
 routewill look something like the following in your deployment manifest:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;$schema-template&quot;</span><span class="o">:</span> <span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;modulesContent&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="c1">// ... omitted for brevity ...</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;$schema-template&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2.0.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;modulesContent&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// ... omitted for brevity ...</span><span class="w"></span>
 
-        <span class="s2">&quot;$edgeHub&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;properties.desired&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;schemaVersion&quot;</span><span class="o">:</span> <span class="s2">&quot;1.0&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;routes&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;BridgeToSimpleSubscriber&quot;</span><span class="o">:</span> <span class="s2">&quot;FROM /messages/modules/AzureBridge/outputs/camera1_stream INTO BrokeredEndpoint(\&quot;/modules/SimpleSubscriber/inputs/input1\&quot;)&quot;</span>
-                <span class="p">},</span>
-                <span class="s2">&quot;storeAndForwardConfiguration&quot;</span><span class="o">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;timeToLiveSecs&quot;</span><span class="o">:</span> <span class="mf">7200</span>
-                <span class="p">}</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
+<span class="w">        </span><span class="s2">&quot;$edgeHub&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;properties.desired&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;schemaVersion&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;1.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;routes&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;BridgeToSimpleSubscriber&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;FROM /messages/modules/AzureBridge/outputs/camera1_stream INTO BrokeredEndpoint(\&quot;/modules/SimpleSubscriber/inputs/input1\&quot;)&quot;</span><span class="w"></span>
+<span class="w">                </span><span class="p">},</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;storeAndForwardConfiguration&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                    </span><span class="s2">&quot;timeToLiveSecs&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">7200</span><span class="w"></span>
+<span class="w">                </span><span class="p">}</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
 
-        <span class="c1">// ... omitted for brevity ...</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">        </span><span class="c1">// ... omitted for brevity ...</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>For more information on establishing routes in the Azure IoT Edge Runtime,
@@ -1614,28 +1616,28 @@ like the following in your deployment manifest template:</p>
 Change the ``Binds`` location to the following:
 </pre></div>
 </div>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>   <span class="p">{</span>
-       <span class="s2">&quot;AzureBlobStorageonIoTEdge&quot;</span><span class="o">:</span> <span class="p">{</span>
-           <span class="c1">// ... omitted ...</span>
-           <span class="s2">&quot;settings&quot;</span><span class="o">:</span> <span class="p">{</span>
-               <span class="s2">&quot;createOptions&quot;</span><span class="o">:</span> <span class="p">{</span>
-                   <span class="c1">// ... omitted ...</span>
-                   <span class="s2">&quot;HostConfig&quot;</span><span class="o">:</span> <span class="p">{</span>
-                       <span class="s2">&quot;Binds&quot;</span><span class="o">:</span> <span class="p">[</span>
-                           <span class="s2">&quot;/opt/intel/eii/data/azure-blob-storage/:/blobroot&quot;</span>
-                       <span class="p">]</span>
-                   <span class="p">}</span>
-               <span class="p">}</span>
-           <span class="p">}</span>
-       <span class="p">}</span>
-   <span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="w">   </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;AzureBlobStorageonIoTEdge&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="c1">// ... omitted ...</span><span class="w"></span>
+<span class="w">           </span><span class="s2">&quot;settings&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">               </span><span class="s2">&quot;createOptions&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                   </span><span class="c1">// ... omitted ...</span><span class="w"></span>
+<span class="w">                   </span><span class="s2">&quot;HostConfig&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                       </span><span class="s2">&quot;Binds&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                           </span><span class="s2">&quot;/opt/intel/eii/data/azure-blob-storage/:/blobroot&quot;</span><span class="w"></span>
+<span class="w">                       </span><span class="p">]</span><span class="w"></span>
+<span class="w">                   </span><span class="p">}</span><span class="w"></span>
+<span class="w">               </span><span class="p">}</span><span class="w"></span>
+<span class="w">           </span><span class="p">}</span><span class="w"></span>
+<span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
 
-<span class="nx">Make</span> <span class="nx">sure</span> <span class="nx">to</span> <span class="nx">run</span> <span class="nx">the</span> <span class="sb">``</span><span class="nx">iotedgedev</span> <span class="nx">geoncfig</span> <span class="o">-</span><span class="nx">f</span> <span class="o">&lt;</span><span class="nx">manifest</span><span class="o">-</span><span class="nx">template</span><span class="o">&gt;</span><span class="sb">``</span> <span class="nx">command</span>
-<span class="k">for</span> <span class="nx">the</span> <span class="nx">changes</span> <span class="nx">to</span> <span class="nx">be</span> <span class="nx">applied</span> <span class="nx">to</span> <span class="nx">the</span> <span class="nx">actual</span> <span class="nx">deployment</span> <span class="nx">manifest</span><span class="p">.</span>
+<span class="nx">Make</span><span class="w"> </span><span class="nx">sure</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="sb">``</span><span class="nx">iotedgedev</span><span class="w"> </span><span class="nx">geoncfig</span><span class="w"> </span><span class="o">-</span><span class="nx">f</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">manifest</span><span class="o">-</span><span class="nx">template</span><span class="o">&gt;</span><span class="sb">``</span><span class="w"> </span><span class="nx">command</span><span class="w"></span>
+<span class="k">for</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">changes</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">be</span><span class="w"> </span><span class="nx">applied</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">actual</span><span class="w"> </span><span class="nx">deployment</span><span class="w"> </span><span class="nx">manifest</span><span class="p">.</span><span class="w"></span>
 
-<span class="nx">When</span> <span class="nx">you</span> <span class="nx">run</span> <span class="nx">the</span> <span class="nx">Azure</span> <span class="nx">Bridge</span> <span class="nx">where</span> <span class="nx">it</span> <span class="nx">is</span> <span class="nx">configured</span> <span class="nx">to</span> <span class="nx">save</span> <span class="nx">the</span> <span class="nx">images</span> <span class="nx">into</span>
-<span class="nx">an</span> <span class="nx">Azure</span> <span class="nx">Blob</span> <span class="nx">Storage</span> <span class="nx">instance</span><span class="p">,</span> <span class="nx">you</span> <span class="nx">should</span> <span class="nx">see</span> <span class="nx">the</span> <span class="nx">images</span> <span class="nx">by</span> <span class="nx">running</span> <span class="nx">the</span>
-<span class="nx">following</span> <span class="nx">command</span><span class="o">:</span>
+<span class="nx">When</span><span class="w"> </span><span class="nx">you</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">Azure</span><span class="w"> </span><span class="nx">Bridge</span><span class="w"> </span><span class="nx">where</span><span class="w"> </span><span class="nx">it</span><span class="w"> </span><span class="nx">is</span><span class="w"> </span><span class="nx">configured</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">save</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">images</span><span class="w"> </span><span class="nx">into</span><span class="w"></span>
+<span class="nx">an</span><span class="w"> </span><span class="nx">Azure</span><span class="w"> </span><span class="nx">Blob</span><span class="w"> </span><span class="nx">Storage</span><span class="w"> </span><span class="nx">instance</span><span class="p">,</span><span class="w"> </span><span class="nx">you</span><span class="w"> </span><span class="nx">should</span><span class="w"> </span><span class="nx">see</span><span class="w"> </span><span class="nx">the</span><span class="w"> </span><span class="nx">images</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">running</span><span class="w"> </span><span class="nx">the</span><span class="w"></span>
+<span class="nx">following</span><span class="w"> </span><span class="nx">command</span><span class="o">:</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>   $ sudo ls -l /opt/intel/eii/data/azure-blob-storage/BlockBlob/
@@ -1720,7 +1722,7 @@ references:</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+    <p>&#169; Copyright (c) 2022 Intel Corporation.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
@@ -1736,7 +1738,7 @@ references:</p>
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>

@@ -5,9 +5,9 @@ Contents
 
 * `Contents <#contents>`__
 
-  * `OEI TimeSeriesProfiler <#oei-timeseriesprofiler>`__
+  * `Open EII TimeSeriesProfiler <#open-eii-timeseriesprofiler>`__
 
     * `Prerequisites <#prerequisites>`__
-    * `OEI TimeSeriesProfiler modes <#oei-timeseriesprofiler-modes>`__
-    * `OEI TimeSeriesProfiler configurations <#oei-timeseriesprofiler-configurations>`__
+    * `Open EII TimeSeriesProfiler modes <#open-eii-timeseriesprofiler-modes>`__
+    * `Open EII TimeSeriesProfiler configurations <#open-eii-timeseriesprofiler-configurations>`__
     * `Running TimeSeriesProfiler <#running-timeseriesprofiler>`__

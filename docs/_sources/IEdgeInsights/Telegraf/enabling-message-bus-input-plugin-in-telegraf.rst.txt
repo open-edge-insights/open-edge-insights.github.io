@@ -1,5 +1,182 @@
 
-Enabling message bus input plugin in Telegraf
+Enabling Message Bus Input Plugin in Telegraf
 ---------------------------------------------
 
 The purpose of this enablement is to allow telegraf received data from message bus and storing it into influxdb that able to be scalable.
+
+Plugin Configuration
+^^^^^^^^^^^^^^^^^^^^
+
+Configuration of the plugin is divided as follows:
+
+
+* ETCD configuration
+* Configuration in Telegraf.conf file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_
+
+ETCD Configuration
+~~~~~~~~~~~~~~~~~~
+
+Since this is an Open EII message bus plugin and so it's part of the Open EII framework, message bus configuration and plugin's topic specific configuration is kept into etcd. The following is the sample configuration:
+
+.. code-block:: json
+
+   {
+       "config": {
+           "influxdb": {
+               "username": "admin",
+               "password": "admin123",
+               "dbname": "datain"
+           },
+           "default": {
+               "topics_info": [
+                   "topic-pfx1:temperature:10:2",
+                   "topic-pfx2:pressure::",
+                   "topic-pfx3:humidity"
+               ],
+               "queue_len": 10,
+               "num_worker": 2,
+               "profiling": "false"
+           }
+       },
+       "interfaces": {
+           "Subscribers": [
+               {
+                   "Name": "default",
+                   "Type": "zmq_tcp",
+                   "EndPoint": "ia_zmq_broker:60515",
+                   "Topics": [
+                       "*"
+                   ],
+                   "PublisherAppName": "ZmqBroker"
+               }
+           ]
+       }
+   }
+
+**Brief description of the configuration**.
+
+Similar to other Open EII services, Telegraf has 'config' and 'interfaces' sections. "interfaces" are the eii interface details. Let's have more information of "config" section.
+
+config : Contains the configuration of the influxdb (\ **"influxdb"**\ ) and Open EII messagebus input plugin (\ **"default"**\ ). In the above sample configuration, the **"default"** is an instance name. This instance name is referenced from the Telegraf's configuration file `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_.
+
+
+* 
+  topics_info : This is an array of topic prefix configuration, where user specifies, how the data from topic-prefix should be processed. Below is the way every line in the topic information should be interpreted.
+
+
+  #. "topic-pfx1:temperature:10:2" : Process data from topic prefix 'topic-pfx1' asynchronously using the dedicated queue of length 10 and dedicated thread pool of size 2. And the processed data will be stored at measurement named 'temperature' in influxdb.
+  #. "topic-pfx2:pressure::" : Process data from topic prefix 'topic-pfx2' asynchronously using the global queue and global thread pool. And the processed data will be stored at measurement named 'pressure' in influxdb.
+  #. "topic-pfx3:humidity" : Process data synchronously. And the processed data will be stored at measurement named 'humidity' in influxdb.
+
+  ..
+
+     **Note**\ : If topic specific configuration is not mentioned, then by default, data gets processed synchronously and measurement name would be same as topic name.
+
+
+* 
+  queue_len : Global queue length.
+
+* num_worker : Global thread pool size.
+* 
+  profiling : This is to enable profiling mode of this plugin (value can be either "true" or "false"). In profiling mode every point will get the following information and will be kept into same measurement as that of point.
+
+
+  #. Total time spent in plugin (time in ns)
+  #. Time spent in queue (in case of asynchronous processing only and time in ns)
+  #. Time spend in json processing (time in ns)
+  #. The name of the thread pool and the thread id which processed the point.
+
+.. note:: \ : The name of the global thread pool is "GLOBAL". For a topic specific thread pool, the name is "for-$topic-name".*
+
+
+Configuration at Telegraf.conf File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The plugin instance name is an additional key, kept into plugin configuration section. This key is used to fetch the configuration from ETCD. The following is the minimmum sample configuration with single plugin instance.
+
+.. code-block::
+
+   [[inputs.eii_msgbus]]
+   **instance_name = "default"**
+   data_format = "json"
+   json_strict = true
+
+
+Here, the value ``default`` acts as a key in the file `config.json <https://github.com/open-edge-insights/ts-telegraf/blob/master/config.json>`_. For this key, there is configuration in the ``interfaces`` and ``config`` sections of the file `config.json <https://github.com/open-edge-insights/ts-telegraf/blob/master/config.json>`_. So the value of ``instance_name`` acts as a connect/glue between the Telegraf configuration `config.json <https://github.com/open-edge-insights/ts-telegraf/blob/master/config.json>`_ and the ETCD configuration `config.json <https://github.com/open-edge-insights/ts-telegraf/blob/master/config.json>`_.
+
+.. note:: \ : Since it’s Telegraf input plugin, the Telegraf’s parser configuration has to be in Telegraf.conf file. The more information of the telegraf json parser plugin can be be found at https://github.com/influxdata/telegraf/tree/master/plugins/parsers/json.
+   If there are multiple telegraf instances, then the location of the Telegraf configuration files would be different. For more details, refer to the `Optional: Adding multiple telegraf instance <#optional-adding-multiple-telegraf-instances>`__ section.
+
+
+Advanced: Multiple Plugin Sections of Open EII Message Bus Input Plugin
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Like any other Telegraf plugin, user can keep multiple configuration sections of the message bus input plugin in the **\ `config/Telegraf/Telegraf.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf.conf>`_\ ** file.
+
+Let's have an example for the same. Let's assume there are two Open EII apps, one with the AppName "EII_APP1" and another with the AppName "EII_APP2", which are publishing the data to Open EII message bus.
+*The Telegraf's ETCD configuration for the same is*
+
+.. code-block:: json
+
+   {
+      "config":{
+         "subscriber1":{
+            "topics_info":[
+               "topic-pfx1:temperature:10:2",
+               "topic-pfx2:pressure::",
+               "topic-pfx3:humidity"
+            ],
+            "queue_len":100,
+            "num_worker":5,
+            "profiling":"true"
+         },
+         "subscriber2":{
+            "topics_info":[
+               "topic-pfx21:temperature2:10:2",
+               "topic-pfx22:pressure2::",
+               "topic-pfx23:humidity2"
+            ],
+            "queue_len":100,
+            "num_worker":10,
+            "profiling":"true"
+         }
+      },
+      "interfaces":{
+         "Subscribers":[
+            {
+               "Name":"subscriber1",
+               "EndPoint":"EII_APP1_container_name:5569",
+               "Topics":[
+                  "*"
+               ],
+               "Type":"zmq_tcp",
+               "PublisherAppName": "EII_APP1"
+            },
+            {
+               "Name":"subscriber2",
+               "EndPoint":"EII_APP2_container_name:5570",
+               "Topics":[
+                  "topic-pfx21",
+                  "topic-pfx22",
+                  "topic-pfx23"
+               ],
+               "Type":"zmq_tcp",
+               "PublisherAppName": "EII_APP2"
+            }
+         ]
+      }
+   }
+
+*The Telegraf.conf configuration sections for the same is*
+
+.. code-block::
+
+   [[inputs.eii_msgbus]]
+   instance_name = "subscriber1"
+   data_format = "json"
+   json_strict = true
+
+   [[inputs.eii_msgbus]]
+   instance_name = "subscriber2"
+   data_format = "json"
+   json_strict = true

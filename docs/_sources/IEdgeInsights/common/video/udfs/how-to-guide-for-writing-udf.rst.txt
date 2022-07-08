@@ -1,0 +1,8 @@
+
+How-To Guide for Writing UDF
+----------------------------
+
+This document describes stepwise instruction for writing a User defined Function (UDF) in C++/Python to make it deployable in the Open Edge Insights for Industrial (Open EII) environment. It explains APIs and configurational changes required in order to write an UDF for Open EII.
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open EII. This is due to the product name change of EII as Open EII.
+

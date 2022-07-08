@@ -1,0 +1,12 @@
+
+Open Edge Insights for Industrial Multi-node Cluster Deployment
+---------------------------------------------------------------
+
+With K8s Orchestrator
+^^^^^^^^^^^^^^^^^^^^^
+
+You can use any of the following options to deploy Open EII on a multi-node cluster:
+
+
+* [\ ``Recommended``\ ] For deploying through ansible playbook on multiple nodes automatically, refer `build/ansible/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/ansible/README.md#deploying-eii-using-helm-in-kubernetes-k8s-environment>`_
+* For information about using helm charts to provision the node and deploy the Open EII services, refer `build/helm-eii/README.md <https://github.com/open-edge-insights/eii-core/blob/master/build/helm-eii/README.md>`_

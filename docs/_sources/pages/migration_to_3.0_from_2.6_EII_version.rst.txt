@@ -1,0 +1,99 @@
+###########################################
+Open EII 2.6 to 3.0 version migration guide
+###########################################
+
+***************************
+Open EII v3.0 Release Notes
+***************************
+.. include:: ./release.rst
+    :start-line: 22
+    :end-line: 62
+
+***********************
+Changes from 2.6 to 3.0
+***********************
+
+Build Changes
+=============
+
+Provisioning flow changes
+-------------------------
+
+Restructured the Open EII provisioning flow - Containerized Open EII provisioning step to make the Open EII deployment fully containerized.
+
+1. Provisioning step has been containerized and the 2 services ia_etcd and ia_etcd_provision that were coming up in Open EII 2.6.X has been replaced with just 1 service ia_configmgr_agent 
+2. The sequence diagram for the new provisioning flow can be found at https://github.com/open-edge-insights/eii-configmgr-agent/blob/master/README.md
+3. The secrets that were there in the docker-compose.yml file (Eg: https://github.com/open-edge-insights/video-ingestion/blob/v2.6.3/docker-compose.yml#L94 (line 94 to end)) are no longer needed due to new provisioning flow changes as they are now being volume mounted inside the container.
+4. The ``cert_type`` key is added to the `config.json <https://github.com/open-edge-insights/video-ingestion/blob/master/config.json#L3>`_ files for supporting the new provisioning flow.
+
+Building use cases
+------------------
+
+The steps for provisioning of Open EII are as follows: 
+
+1. Generate deployment and configuration files 
+    To generate the consolidated files, run the builder script from the ``[WORK_DIR]/IEdgeInsights/build`` directory.
+     
+    .. code-block:: sh
+     
+        python3 builder.py
+     
+    .. note::
+    
+        It is required for the user to enter the secret credentials in the ``# Service credentials`` section of the `.env <https://github.com/intel-innersource/applications.industrial.edge-insights.core/blob/main/build/.env>`_ file if you are trying to run that Open EII app/service. 
+        In case the required credentials are not present, the builder.py script would be prompting till all the required credentails are entered. 
+        Please protect this .env file from being read by other users by applying a suitable file access mask.
+    
+    For more details about the usage of builder.py script, refer the `README <https://github.com/intel-innersource/applications.industrial.edge-insights.core#task-3-generate-deployment-and-configuration-files>`_.
+
+2. Build the Open EII video and time series use cases
+    To build the Open EII stack run the following command after generating the consolidated files.
+    It is used to build all Open EII services in the build/docker-compose-build.yml along with the base Open EII services.
+    
+    .. code-block:: sh
+       
+        docker-compose -f docker-compose-build.yml build
+
+    If any of the services fails during the build, then run the following command to build the service again:
+    
+    .. code-block:: sh
+
+        docker-compose -f docker-compose-build.yml build --no-cache <service name>
+
+
+Deployment Changes
+==================
+
+Deployment using docker-compose.yml on single node
+--------------------------------------------------
+
+Run Open EII services:
+    The Open EII provisioning is taken care by the ia_configmgr_agent service which gets lauched as part of the Open EII stack. 
+    For more details on the ConfigMgr Agent component, refer to the `Readme <https://github.com/open-edge-insights/eii-configmgr-agent/blob/master/README.md>`_.
+     
+    .. note:: If the images tagged with the EII_VERSION label, as in the build/.env do not exist locally in the system but are available in the Docker Hub, then the images will be pulled during the docker-compose up command.
+
+    Open EII provisioning and deployment happens in a 2 step process where you need to wait for the initialization of the provisioning container (ia_configmgr_agent) 
+    before bringing up the rest of the stack. Don't use commands like docker-compose restart as it will randomly restart all the services leading to issues. 
+    To restart any service, use command like docker-compose restart [container_name] or docker restart [container_name].
+
+    Use the following commands to run the Open EII services:
+
+    .. code-block:: sh
+
+       # The optional TIMEOUT argument passed below is in seconds and if not provided it will wait
+       # till the "Provisioning is Done" message show up in `ia_configmgr_agent` logs before
+       # bringing up rest of the OEI stack
+       cd [WORK_DIR]/IEdgeInsights/build
+       ./eii_start.sh [TIMEOUT]
+
+Deployment on k8s cluster using helm
+------------------------------------
+
+To run the Open EII services using helm on 2.6.x version, one had to follow the steps given in the `Readme <https://github.com/open-edge-insights/eii-core/tree/release/v2.6/build/helm-eii#pre-requisites>`_ for creating ``eiiuser``, required directories and provisioning steps. 
+For Open EII 3.0 don't run the provision.sh script on the host system. The new containerized provisioning flow handles this and you do not have to create the following:
+
+* ``eiiuser``
+* required directories at ``EII_INSTALL_PATH``
+
+The 2-step helm charts to remains same as that of 2.6.X and one can follow the installation steps for Open EII 3.0 as given in `README <https://github.com/open-edge-insights/eii-core/blob/v3.0/build/helm-eii/README.md>`_.

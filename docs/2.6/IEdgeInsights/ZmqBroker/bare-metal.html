@@ -47,7 +47,7 @@
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>
@@ -183,11 +183,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id3">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id2">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id4">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id3">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -195,7 +195,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id5">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id4">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -491,12 +491,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the Builder script with the DiscoverHistory tool</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#about-tool">About tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#eii-pre-requisites">EII pre-requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-embsubscriber">Running EmbSubscriber</a></li>
@@ -512,7 +510,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#httptestserver">HttpTestServer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#pre-requisites-for-running-the-httptestserver">Pre-requisites for running the HttpTestServer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#starting-httptestserver">Starting HttpTestServer</a></li>
 </ul>
@@ -549,6 +547,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-video-profiler">Running Video Profiler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#pre-requisites">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -705,19 +707,19 @@ the given socket is supposed to use TCP or IPC.</p>
 <p>For <strong>IPC</strong> configurations, the frontend and backend configurations need to look
 respectively as follows:</p>
 <p><strong>Frontend:</strong></p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span>
-    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span><span class="w"></span>
 
-    <span class="c1">// Socket directory to create the socket file in</span>
-    <span class="s2">&quot;socket_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Socket directory to create the socket file in</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;socket_dir&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span><span class="w"></span>
 
-    <span class="c1">// Specifies the IPC endpoint config (i.e. socket directory and file)</span>
-    <span class="s2">&quot;&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="c1">// IPC socket file to bind to for the frontend socket</span>
-        <span class="s2">&quot;socket_file&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend-sock&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="c1">// Specifies the IPC endpoint config (i.e. socket directory and file)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// IPC socket file to bind to for the frontend socket</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;socket_file&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;frontend-sock&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <blockquote>
@@ -757,19 +759,19 @@ for it. Otherwise, it will fail to connect because it will attempt to
 bind/connect to its topic name (see the EII Message Bus’s documentation for
 more details).</p>
 <p><strong>Backend:</strong></p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span>
-    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span><span class="w"></span>
 
-    <span class="c1">// Socket directory to create the socket file in</span>
-    <span class="s2">&quot;socket_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Socket directory to create the socket file in</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;socket_dir&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/tmp&quot;</span><span class="p">,</span><span class="w"></span>
 
-    <span class="c1">// Specifies the IPC endpoint config (i.e. socket directory and file)</span>
-    <span class="s2">&quot;&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="c1">// IPC socket file to bind to for the backend socket</span>
-        <span class="s2">&quot;socket_file&quot;</span><span class="o">:</span> <span class="s2">&quot;backend-sock&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="c1">// Specifies the IPC endpoint config (i.e. socket directory and file)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// IPC socket file to bind to for the backend socket</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;socket_file&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;backend-sock&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <blockquote>
@@ -781,26 +783,26 @@ EII Message Bus configuration file.</p>
 <p>For <strong>TCP</strong> configurations, the frontend anc backend configurations need to look
 respectively as follows:</p>
 <p><strong>Frontend:</strong></p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span>
-    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span><span class="w"></span>
 
-    <span class="c1">// List of curve public keys for publishers allowed to connect to the</span>
-    <span class="c1">// frontend socket</span>
-    <span class="s2">&quot;allowed_clients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;4J4?(I13cwJgqi+T5nxg:Dyr5)l&amp;reK]cxxTfa9V&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="c1">// List of curve public keys for publishers allowed to connect to the</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// frontend socket</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;allowed_clients&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;4J4?(I13cwJgqi+T5nxg:Dyr5)l&amp;reK]cxxTfa9V&quot;</span><span class="p">],</span><span class="w"></span>
 
-    <span class="c1">// Specifies the configuration for the frontend socket</span>
-    <span class="s2">&quot;&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="c1">// TCP host</span>
-        <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Specifies the configuration for the frontend socket</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// TCP host</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"></span>
 
-        <span class="c1">// TCP port</span>
-        <span class="s2">&quot;port&quot;</span><span class="o">:</span> <span class="mf">5568</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// TCP port</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;port&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">5568</span><span class="p">,</span><span class="w"></span>
 
-        <span class="c1">// Server secret key to use for encryption / authentication</span>
-        <span class="s2">&quot;server_secret_key&quot;</span><span class="o">:</span> <span class="s2">&quot;H[J1%f:#?0Y1cpUL&lt;nEkPKm.]:n@JI&gt;j]*!u3N#9&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">        </span><span class="c1">// Server secret key to use for encryption / authentication</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;server_secret_key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;H[J1%f:#?0Y1cpUL&lt;nEkPKm.]:n@JI&gt;j]*!u3N#9&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -849,26 +851,26 @@ from the configuration given via the <code class="docutils literal notranslate">
 for the frontend, and the following backend configuration, represent how the
 configuration manager alters that configuration to be in these forms.</p>
 <p><strong>Backend:</strong></p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span>
-    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Which ZeroMQ protocol to use (TCP vs. IPC)</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span><span class="w"></span>
 
-    <span class="c1">// List of curve public keys for subscribers allowed to connect to the</span>
-    <span class="c1">// backend socket</span>
-    <span class="s2">&quot;allowed_clients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;y-G]27SC}{!mC4(]}=c=KH1M{x)Kd/{i%o]j7YT3&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="c1">// List of curve public keys for subscribers allowed to connect to the</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// backend socket</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;allowed_clients&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;y-G]27SC}{!mC4(]}=c=KH1M{x)Kd/{i%o]j7YT3&quot;</span><span class="p">],</span><span class="w"></span>
 
-    <span class="c1">// Specifies the configuration for the frontend socket</span>
-    <span class="s2">&quot;zmq_tcp_publish&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="c1">// TCP host</span>
-        <span class="s2">&quot;host&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Specifies the configuration for the frontend socket</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;zmq_tcp_publish&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// TCP host</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;host&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span><span class="w"></span>
 
-        <span class="c1">// TCP port (note that this is a different port from the frontend)</span>
-        <span class="s2">&quot;port&quot;</span><span class="o">:</span> <span class="mf">5569</span>
+<span class="w">        </span><span class="c1">// TCP port (note that this is a different port from the frontend)</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;port&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">5569</span><span class="w"></span>
 
-        <span class="c1">// Server secret key to use for encryption / authentication</span>
-        <span class="s2">&quot;server_secret_key&quot;</span><span class="o">:</span> <span class="s2">&quot;qydUsM#PP4r&lt;E*2]&lt;]kbLRwk1IX:H^y{Gk56e:tc&quot;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">        </span><span class="c1">// Server secret key to use for encryption / authentication</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;server_secret_key&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;qydUsM#PP4r&lt;E*2]&lt;]kbLRwk1IX:H^y{Gk56e:tc&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <blockquote>
@@ -935,7 +937,7 @@ level is shown below:</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+    <p>&#169; Copyright (c) 2022 Intel Corporation.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
@@ -951,7 +953,7 @@ level is shown below:</p>
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>

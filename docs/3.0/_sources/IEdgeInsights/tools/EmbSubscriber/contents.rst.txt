@@ -9,4 +9,4 @@ Contents
 
     * `Prerequisites <#prerequisites>`__
     * `Running EmbSubscriber <#running-embsubscriber>`__
-    * `Running EmbSubscriber in IPC mode <#running-embsubscriber-in-ipc-mode>`__
+    * `Run EmbSubscriber in IPC mode <#run-embsubscriber-in-ipc-mode>`__

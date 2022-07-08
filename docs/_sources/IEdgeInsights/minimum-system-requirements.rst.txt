@@ -1,8 +1,8 @@
 
-Minimum system requirements
+Minimum System Requirements
 ---------------------------
 
-The following are the minimum system requirements to run OEI:
+The following are the minimum system requirements to run Open EII:
 
 .. list-table::
    :header-rows: 1
@@ -22,7 +22,7 @@ The following are the minimum system requirements to run OEI:
 .. note:: 
 
 
-   * To use OEI, ensure that you are connected to the internet.
+   * To use Open EII, ensure that you are connected to the internet.
    * The recommended RAM capacity for video analytics pipeline is 16 GB. The recommended RAM for time series analytics pipeline is 4 GB with Intel® Atom processors.
-   * OEI is validated on Ubuntu 18.04 and Ubuntu 20.04 but you can install OEI stack on other Linux distributions with support for docker-ce and docker-compose tools.
+   * Open EII is validated on Ubuntu 18.04 and Ubuntu 20.04. You can install Open EII stack on other Linux distributions with support for docker-ce and docker-compose tools.
 

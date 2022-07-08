@@ -7,12 +7,12 @@ Contents
 
   * `DiscoverHistory Tool <#discoverhistory-tool>`__
 
-    * `Build and run the DiscoverHistory tool <#build-and-run-the-discoverhistory-tool>`__
+    * `Build and Run the DiscoverHistory Tool <#build-and-run-the-discoverhistory-tool>`__
 
       * `Prerequisites <#prerequisites>`__
       * `Run the DiscoverHistory tool in the PROD mode <#run-the-discoverhistory-tool-in-the-prod-mode>`__
-      * `Run the DiscoverHistory tool in the DEV mode <#run-the-discoverhistory-tool-in-the-dev-mode>`__
-      * `Run the DiscoverHistory tool in the zmq_ipc mode <#run-the-discoverhistory-tool-in-the-zmq_ipc-mode>`__
+      * `Run the DiscoverHistory tool in the DEV Mode <#run-the-discoverhistory-tool-in-the-dev-mode>`__
+      * `Run the DiscoverHistory tool in the zmq_ipc Mode <#run-the-discoverhistory-tool-in-the-zmq_ipc-mode>`__
 
-    * `Sample select queries <#sample-select-queries>`__
-    * `Multi-instance feature support for the Builder script with the DiscoverHistory tool <#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool>`__
+  * `Sample Select Queries <#sample-select-queries>`__
+  * `Multi-instance Feature Support for the Builder Script with the DiscoverHistory Tool <#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool>`__

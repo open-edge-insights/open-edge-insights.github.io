@@ -7,15 +7,15 @@
 * `Configuration of the tool. <#configuration-of-the-tool>`__
 * `Running EmbPublisher in IPC mode <#running-embpublisher-in-ipc-mode>`__
 
-EmbPublisher
-============
+About tool
+==========
 
 
 * This tool acts as a brokered publisher of EII messagebus.
 * Telegaf's eii messagebus input plugin acts as a subscriber to the EII broker.
 
 How to integrate this tool with video/timeseries use case.
-----------------------------------------------------------
+==========================================================
 
 
 * In 'time-series.yml'/'video-streaming.yml' file, please add 'ZmqBroker' and 'tools/EmbPublisher' components.
@@ -23,7 +23,7 @@ How to integrate this tool with video/timeseries use case.
 * Follow usual provisioning and starting process.
 
 Configuration of the tool.
---------------------------
+==========================
 
 Let us look at the sample configuration
 
@@ -66,7 +66,7 @@ Let us look at the sample configuration
 * -int_btw_itr: The interval between any two iterations
 
 Running EmbPublisher in IPC mode
---------------------------------
+================================
 
 User needs to modify interface section of **\ `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/EmbPublisher/config.json>`_\ ** to run in IPC mode as following
 

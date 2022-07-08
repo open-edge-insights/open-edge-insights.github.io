@@ -1,0 +1,9 @@
+
+References
+----------
+
+
+* https://github.com/openvinotoolkit/dlstreamer_gst/wiki/Action-Recognition
+* https://github.com/openvinotoolkit/dlstreamer_gst/tree/master/samples/gst_launch/action_recognition
+* https://github.com/openvinotoolkit/open_model_zoo/blob/master/demos/action_recognition_demo/python/README.md
+* https://github.com/openvinotoolkit/open_model_zoo/tree/master/models/intel/action-recognition-0001

@@ -2,7 +2,7 @@
 Azure Bridge Module
 -------------------
 
-This directory contains the source code for the Azure Bridge OEI service which bridges communication from the Message bus and the Azure IoT Edge Runtime. For more information on this service, see the top level README. The purpose of this README is to cover some specifics related to the code itself, and not the usage of the module in OEI. Refer to the OEI and Azure Bridge READMEs for more information.
+This directory contains the source code for the Azure Bridge Open EII service which bridges communication from the Message bus and the Azure IoT Edge Runtime. For more information on this service, see the top level README. The purpose of this README is to cover some specifics related to the code itself, and not the usage of the module in Open EII. Refer to the Open EII and Azure Bridge READMEs for more information.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 

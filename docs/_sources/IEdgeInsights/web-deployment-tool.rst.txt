@@ -2,20 +2,19 @@
 Web Deployment Tool
 -------------------
 
-Web Deployment Tool is a GUI Tool to facilitate OEI configuration and deployment for single and multiple video streams. 
+Web Deployment Tool is a GUI tool to facilitate Open EII configuration and deployment for single and multiple video streams. 
 
-Web Deployment Tool as of now 
-
-
-* Offers GUI interface to try out EII stack for video use case
-* Supports multi-instance feature of VI/VA services​
-* Supports an easy way to try/modify existing UDFs or add in new UDFs​
-* Supports preview to visualize the analysed frames​
-* Deployment of the tested configuration on other remote nodes
-  ​
-
-To learn more about launching and using the Web Deployment Tool, refer to the following:
+Web Deployment Tool features include:
 
 
-* `Web Deployment Tool backend <https://github.com/open-edge-insights/eii-deployment-tool-backend/blob/master/README.md>`_
-* `Web Deployment Tool frontend <https://github.com/open-edge-insights/eii-deployment-tool-frontend/blob/master/README.md>`_
+* Offers GUI interface to try out Open EII stack for video use case
+* Supports multi-instance feature of VI/VA services
+* Supports an easy way to use or modify existing UDFs or add new UDFs
+* Supports preview to visualize the analysed frames
+* Supports deployment of the tested configuration on other remote nodes via ansible
+
+To learn about launching and using the Web Deployment Tool, refer to the following:
+
+
+* `Web Deployment Tool back end ReadMe <https://github.com/open-edge-insights/eii-deployment-tool-backend/blob/master/README.md>`_
+* `Web Deployment Tool front end ReadMe <https://github.com/open-edge-insights/eii-deployment-tool-frontend/blob/master/README.md>`_

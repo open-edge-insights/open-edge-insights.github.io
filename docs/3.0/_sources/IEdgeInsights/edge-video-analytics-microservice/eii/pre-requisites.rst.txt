@@ -1,0 +1,36 @@
+
+Pre-requisites
+--------------
+
+Fetch the EII source code by following the steps mentioned below:
+
+.. code-block:: sh
+
+   repo init -u "https://github.com/open-edge-insights/eii-manifests.git"
+
+   repo sync
+
+For more details, refer `here <https://github.com/open-edge-insights/eii-manifests>`_.
+
+Complete the pre-requisite of provisioning the EII stack by referring to
+`README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_
+
+Since the model files are large in size, they are not part of the repo.
+Download the required model files to be used for the pipeline mentioned in `config <https://github.com/open-edge-insights/eii-core/blob/master/home/rkamal/eii/github/applications.industrial.edge-insights.open-edge-insights-github-io/eii_repo/IEdgeInsights/edge-video-analytics-microservice/eii/config.json>`_
+by following the steps two-four mentioned in `README <https://github.com/open-edge-insights/eii-core/blob/master/home/rkamal/eii/github/applications.industrial.edge-insights.open-edge-insights-github-io/eii_repo/IEdgeInsights/edge-video-analytics-microservice/README.md#running-the-image>`_.
+
+Run the following commands to set the environment, build ia_configmgr_agent container
+and copy models to the required directory:
+
+.. code-block:: sh
+
+   cd [WORK_DIR]/IEdgeInsights/build
+
+   # Execute the builder.py script
+   python3 builder.py -f usecases/evas.yml
+
+   # Create some necessary items for the service
+   sudo mkdir -p /opt/intel/eii/models/
+
+   # Copy the downloaded model files to /opt/intel/eii
+   sudo cp -r [downloaded_model_directory]/models /opt/intel/eii/

@@ -1,8 +1,8 @@
 
-Sample apps
+Sample Apps
 ===========
 
-This section provides more information about the Open Edge Insights (OEI) sample apps and how to use the core libraries packages like Utils, Message Bus, and ConfigManager in various flavors of Linux such as Ubuntu and Alpine operating systems or docker images for programming languages such as C++, Go, and Python.
+This section provides more information about the Open Edge Insights for Industrial (Open EII) sample apps and how to use the core libraries packages like Utils, Message Bus, and ConfigManager in various flavors of Linux such as Ubuntu and Alpine operating systems or docker images for programming languages such as C++, Go, and Python.
 
 The following table shows the details for the supported flavors of Linux operating systems or docker images and programming languages that support sample apps:
 

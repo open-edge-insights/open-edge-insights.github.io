@@ -8,9 +8,9 @@ Working with Video Data
 
 .. include:: ../IEdgeInsights/using-video-accelerators-in-ingestionanalytics-containers.rst
 
-.. include:: ../IEdgeInsights/common/video/UDFLoader/oei-udfloader.rst
+.. include:: ../IEdgeInsights/common/video/UDFLoader/open-eii-udfloader.rst
 
-.. include:: ../IEdgeInsights/common/video/udfs/oei-sample-udfs.rst
+.. include:: ../IEdgeInsights/common/video/udfs/open-eii-sample-udfs.rst
 
 .. include:: ../IEdgeInsights/common/video/udfs/user-defined-function-udf.rst
 

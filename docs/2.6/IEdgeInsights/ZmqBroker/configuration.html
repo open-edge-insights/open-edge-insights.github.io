@@ -47,7 +47,7 @@
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>
@@ -183,11 +183,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id3">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id2">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id4">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id3">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -195,7 +195,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id5">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/release.html#id4">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -491,12 +491,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the Builder script with the DiscoverHistory tool</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#about-tool">About tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#eii-pre-requisites">EII pre-requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-embsubscriber">Running EmbSubscriber</a></li>
@@ -512,7 +510,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#httptestserver">HttpTestServer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#pre-requisites-for-running-the-httptestserver">Pre-requisites for running the HttpTestServer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#starting-httptestserver">Starting HttpTestServer</a></li>
 </ul>
@@ -549,6 +547,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#running-video-profiler">Running Video Profiler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../pages/tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../pages/tools.html#pre-requisites">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -686,16 +688,16 @@ knows they need to have a certain scheduling policy and priority for the broker.
 configuration is shown below. In this example, the configuration is an
 excerpt from the, ‘IEdgeInsights/build/provision/config/eii_config.json”,
 generated while using the <code class="docutils literal notranslate"><span class="pre">builder.py</span></code> script.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="c1">// ... omitted ...</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// ... omitted ...</span><span class="w"></span>
 
-    <span class="s2">&quot;/ZmqBroker/config&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;sched_policy&quot;</span><span class="o">:</span> <span class="s2">&quot;SCHED_FIFO&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;sched_priority&quot;</span><span class="o">:</span> <span class="mf">42</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="s2">&quot;/ZmqBroker/config&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;sched_policy&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;SCHED_FIFO&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;sched_priority&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">42</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
 
-    <span class="c1">// ... omitted ...</span>
-<span class="p">}</span>
+<span class="w">    </span><span class="c1">// ... omitted ...</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -721,27 +723,27 @@ publisher and subscriber sockets, the lists must only contain one element.</p>
 “Publishers”, sections is essentially the same. An example is shown below of
 the interfaces configuration for a broker instance with TCP sockets for both
 the <strong>frontend</strong> and <strong>backend</strong>.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0:60514&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0.0:60515&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;frontend&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0.0.0.0:60514&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Topics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;Publishers&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;backend&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_tcp&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;0.0.0.0:60515&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Topics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The primary difference to point out is that the, “Name”, and, “Topics”,
@@ -758,33 +760,33 @@ the, “AllowedClients”, list should be modified to contain only the app names
 the services allowed to connect.</p>
 <p>For IPC sockets, the configuration is very similar, except that the, “EndPoint”,
 and, “Type”, values are different (as shown in the example below).</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;SocketDir&quot;</span><span class="o">:</span> <span class="s2">&quot;/tmp/socks&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;SocketFile&quot;</span><span class="o">:</span> <span class="s2">&quot;frontend-socket&quot;</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;*&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="s2">&quot;Publishers&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;backend&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="p">{</span>
-                <span class="s2">&quot;SocketDir&quot;</span><span class="o">:</span> <span class="s2">&quot;/tmp/socks&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;SocketFile&quot;</span><span class="o">:</span> <span class="s2">&quot;backend-socket&quot;</span>
-            <span class="p">},</span>
-            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;frontend&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;SocketDir&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/tmp/socks&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;SocketFile&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;frontend-socket&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Topics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">],</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;Publishers&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;backend&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;SocketDir&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/tmp/socks&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;SocketFile&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;backend-socket&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">},</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Topics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;AllowedClients&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;*&quot;</span><span class="p">]</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>In the example above, note that the, “Type”, values is now <code class="docutils literal notranslate"><span class="pre">zmq_ipc</span></code> and the,
@@ -817,7 +819,7 @@ broker can use an IPC socket for the frontend and TCP for the backend).</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+    <p>&#169; Copyright (c) 2022 Intel Corporation.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
@@ -833,7 +835,7 @@ broker can use an IPC socket for the frontend and TCP for the backend).</p>
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>

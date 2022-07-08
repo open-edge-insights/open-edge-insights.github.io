@@ -59,7 +59,7 @@ Contents
 Message Bus User Guide
 ----------------------
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 Message Bus Overview
@@ -87,7 +87,7 @@ Message Bus Usage
 Compilation and Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The Message Bus utilizes the CMake build tools for compiling the ``C`` and
+The Message bus utilizes the CMake build tools for compiling the ``C`` and
 ``Python`` libraries. To compile the library execute the following commands:
 
 .. code-block:: sh
@@ -97,7 +97,7 @@ The Message Bus utilizes the CMake build tools for compiling the ``C`` and
    cmake ..
    make
 
-The Message Bus adds the following flags to CMake for the build process
+The Message bus adds the following flags to CMake for the build process
 to enable and disable features in the message bus. The table below specifies
 all of the additional flags which can be given to CMake while building the
 message bus.
@@ -121,7 +121,7 @@ message bus.
    format: ``-D<FLAG>=[ON | OFF]``. For example, ``cmake -DWITH_PYTHON=ON ..``.
 
 
-To install the message bus, execute the following command:
+To install the Message bus, execute the following command:
 
 .. code-block:: sh
 
@@ -134,7 +134,7 @@ environment.
 Configuration
 ~~~~~~~~~~~~~
 
-The Message Bus is configured through a ``key, value`` pair interface. The
+The Message bus is configured through a ``key, value`` pair interface. The
 values can be objects, arrays, integers, floating point, boolean, or strings.
 The keys that are required to be available in the configuration are largly
 determined by the underlying protocol which the message bus will use. The
@@ -151,10 +151,8 @@ TCP and IPC ZeroMQ protocols.
 ZeroMQ IPC Configuration
 """"""""""""""""""""""""
 
-The ZeroMQ IPC protocol implementation only requires one configuration
-attribute: ``socket_dir``. The value of this attribute specifies the directory
-where the message bus should create the Unix socket files to establish the IPC
-based communication.
+The ZeroMQ IPC protocol implementation only requires one configuration attribute: ``socket_dir``. The value of this attribute specifies the directory
+where the message bus should create the Unix socket files to establish the IPC based communication.
 
 ZeroMQ TCP Configuration
 """"""""""""""""""""""""
@@ -245,7 +243,7 @@ Services
 ########
 
 The configuration to host a service to receive and respond to requests is
-similar to the configuration for doing publications on a message bus context.
+similar to the configuration for doing publications on a Message bus context.
 The only difference, is the configuration for a service is placed under a key
 which is the name of the service.
 
@@ -271,7 +269,7 @@ connections (i.e. requesters and subscribers). This method utilizes the ZMQ
 ZAP protocol to verify the incoming client public keys against a list of
 whitelisted clients.
 
-The list of allowed clients is given to the message bus via the ``allowed_clients``
+The list of allowed clients is given to the Message bus via the ``allowed_clients``
 key. This key must be a list of Z85 encoded CurveZMQ keys.
 
 Python Tutorial
@@ -281,7 +279,7 @@ Publish/Subscribe
 ~~~~~~~~~~~~~~~~~
 
 The following tutorial will cover how to do publish/subscribe messaging using
-the Message Bus. The outcome of this tutorial will be two Python scripts,
+the Message bus. The outcome of this tutorial will be two Python scripts,
 one of which will publish messages and the other which will subscribe to
 messages.
 
@@ -296,8 +294,7 @@ add a few necessary imports which will be utilized later in the tutorial.
    import argparse
    import eii.msgbus as mb
 
-The last line of the imports above is where we import the Message Bus
-Python binding, which for sake of clarity will be referenced as ``mb`` in all
+The last line of the imports above is where we import the Message bus Python binding, which for sake of clarity will be referenced as ``mb`` in all
 of the code to follow.
 
 Next, we will add some more boilerplate code for parsing command line
@@ -314,12 +311,12 @@ arguments.
 The code above initializes an ``argparse.ArgumentParser()`` object to parse
 the incoming command line arguments. The arguments for the publisher will be
 one positional argument, ``config``\ , which will be the pointer to a JSON
-file configuration for the message bus, and one optional argument, ``--topic``\ ,
+file configuration for the Message bus, and one optional argument, ``--topic``\ ,
 which will give us the topic string under which to publish messages.
 
 It is important to note at this point that a JSON configuration is going to be
 used for the publisher, however, this is not required of an application using
-the Python binding. The Message Bus Python API requires that a Python
+the Python binding. The Message bus Python API requires that a Python
 ``dict`` object be used to configure the bus. For ease of use, JSON has been
 used in this example.
 
@@ -330,14 +327,14 @@ Next we will load our configuration Python dictionary from the given JSON file.
    with open(args.config, 'r') as f:
        config = json.load(f)
 
-Next we will initialize our message bus context object.
+Next we will initialize our Message bus context object.
 
 .. code-block:: python
 
    print('[INFO] Initializing message bus context')
    msgbus = mb.MsgbusContext(config)
 
-The message bus context object is the object that will be used for initializing
+The Message bus context object is the object that will be used for initializing
 all of the publisher, subscribers, services, and service requesters in your
 application. However, what you are able to initialize via the context is
 dependent on the configuration used during initialization.
@@ -349,7 +346,7 @@ Now, lets initailize our publisher.
    print(f'[INFO] Initializing publisher for topic \'{args.topic}\'')
    publisher = msgbus.new_publisher(args.topic)
 
-The message bus context object contains a method called, ``new_publisher()``.
+The Message bus context object contains a method called, ``new_publisher()``.
 This method creates a new publisher object for the topic it is given. Once
 this publisher object is obtained, the application can start publishing
 messages (as shown below).
@@ -415,7 +412,7 @@ When its all put together, the code looks as follows:
        if publisher is not None:
            publisher.close()
 
-.. note::  This code is provided in ``python/examples/publisher.py`` in the Message Bus source code.
+.. note::  This code is provided in ``python/examples/publisher.py`` in the Message bus source code.
 
 
 Request/Response
@@ -432,12 +429,9 @@ add a few necessary imports which will be utilized later in the tutorial.
    import argparse
    import eii.msgbus as mb
 
-The last line of the imports above is where we import the Message Bus
-Python binding, which for sake of clarity will be referenced as ``mb`` in all
-of the code to follow.
+The last line of the imports above is where we import the Message bus Python binding, which for sake of clarity will be referenced as ``mb`` in all of the code to follow.
 
-Next, we will add some more boilerplate code for parsing command line
-arguments.
+Next, we will add some more boilerplate code for parsing command line arguments.
 
 .. code-block:: python
 
@@ -450,12 +444,12 @@ arguments.
 The code above initializes an ``argparse.ArgumentParser()`` object to parse
 the incoming command line arguments. The arguments for the publisher will be
 one positional argument, ``config``\ , which will be the pointer to a JSON
-file configuration for the message bus, and one optional argument, ``--topic``\ ,
+file configuration for the Message bus, and one optional argument, ``--topic``\ ,
 which will give us the topic string under which to publish messages.
 
 It is important to note at this point that a JSON configuration is going to be
 used for the publisher, however, this is not required of an application using
-the Python binding. The Message Bus Python API requires that a Python
+the Python binding. The Message bus Python API requires that a Python
 ``dict`` object be used to configure the bus. For ease of use, JSON has been
 used in this example.
 
@@ -466,14 +460,14 @@ Next we will load our configuration Python dictionary from the given JSON file.
    with open(args.config, 'r') as f:
        config = json.load(f)
 
-Next we will initialize our message bus context object.
+Next we will initialize our Message bus context object.
 
 .. code-block:: python
 
    print('[INFO] Initializing message bus context')
    msgbus = mb.MsgbusContext(config)
 
-The message bus context object is the object that will be used for initializing
+The Message bus context object is the object that will be used for initializing
 all of the publisher, subscribers, services, and service requesters in your
 application. However, what you are able to initialize via the context is
 dependent on the configuration used during initialization.
@@ -485,7 +479,7 @@ Now, lets initailize our publisher.
    print(f'[INFO] Initializing publisher for topic \'{args.topic}\'')
    publisher = msgbus.new_publisher(args.topic)
 
-The message bus context object contains a method called, ``new_publisher()``.
+The Message bus context object contains a method called, ``new_publisher()``.
 This method creates a new publisher object for the topic it is given. Once
 this publisher object is obtained, the application can start publishing
 messages (as shown below).
@@ -551,7 +545,7 @@ When its all put together, the code looks as follows:
        if publisher is not None:
            publisher.close()
 
-.. note::  This code is provided in ``python/examples/publisher.py`` in the Message Bus source code.
+.. note::  This code is provided in ``python/examples/publisher.py`` in the Message bus source code.
 
 
 Now that the publisher script is finished, we will create the subscriber script
@@ -598,13 +592,13 @@ script, except that instead of calling ``new_publisher()`` we will call
        if subscriber is not None:
            subscriber.close()
 
-.. note::  This code is provided in ``python/examples/subscriber.py`` in the Message Bus source code.
+.. note::  This code is provided in ``python/examples/subscriber.py`` in the Message bus source code.
 
 
 As can be seen in the code above, the ``msgbus.new_publisher()`` call has now
 been replace with: ``msgbus.new_subscriber()``. This call connects to the given
 topic to receive publications. Depending on the underlying protocol that the
-message bus is configured to use different values will be retrieved from the
+Message bus is configured to use different values will be retrieved from the
 configuration to accomplish the creation of the subscriber.
 
 For instance, if you are using the ZeroMQ TCP protocol, then it will be
@@ -647,7 +641,7 @@ saved to the file ``ipc_config.json``.
        "socket_dir": "/tmp"
    }
 
-Using this configuration will configure the message bus to use the ZeroMQ IPC
+Using this configuration will configure the Message bus to use the ZeroMQ IPC
 protocol and to save the Unix socket files into the ``/tmp`` directory on your
 system.
 
@@ -684,8 +678,8 @@ Message Bus Development
 -----------------------
 
 This section covers various instructions and tutorials for developing new
-features for the Message Bus library. It does not cover how to use the
-message bus or its APIs, that is covered in previous sections.
+features for the Message bus library. It does not cover how to use the
+Message bus or its APIs, that is covered in previous sections.
 
 Developing Protocols
 ^^^^^^^^^^^^^^^^^^^^
@@ -693,28 +687,24 @@ Developing Protocols
 Protocols Overview
 ~~~~~~~~~~~~~~~~~~
 
-Protocols are at the bottom most layer of the Message Bus stack. They
+Protocols are at the bottom most layer of the Message bus stack. They
 provide the implementation for the messaging primitives supported by the
-Message Bus. The main tasks expected of a protocol are as follows:
+Message bus. The main tasks expected of a protocol are as follows:
 
 
 #. Initialize the state of the underlying message library (i.e. ZeroMQ, DDS, etc.)
-#. Implement methods for initializing contexts for publishers, subscribers,
-    services, and service requesters
-#. Implement base methods for sending messages from publishers, services, and
-    service requesters
-#. Implement base methods for receiving messages as blocking, non-blocking, and
-    time out base function calls
-#. Provide the translation between the underlying messaging library's messsage
-    structure to the Message Bus's ``msg_envelope_t`` structure
+#. Implement methods for initializing contexts for publishers, subscribers, services, and service requesters
+#. Implement base methods for sending messages from publishers, services, and service requesters
+#. Implement base methods for receiving messages as blocking, non-blocking, and time out base function calls
+#. Provide the translation between the underlying messaging library's messsage structure to the Message bus' ``msg_envelope_t`` structure
 
-All protocols must have a unique protocol name which the Message Bus can
+All protocols must have a unique protocol name which the Message bus can
 use to load the protocol based on the ``type`` configuration value it is provided.
 For example, the ZeroMQ TCP protocol uses the identifier ``zmq_tcp``. Using this
-type name, the Message Bus knows how to load the protocol in the
+type name, the Message bus knows how to load the protocol in the
 ``msgbus_initialize()`` method.
 
-The Message Bus has the ability to dynamically load protocol plugins. It
+The Message bus has the ability to dynamically load protocol plugins. It
 does this by searching the system's ``LD_LIBRARY_PATH`` environmental variable
 for a library following the naming scheme, "lib{TYPE}.so", where, "{TYPE}", is
 the value retrieved from the ``type`` configuration key.
@@ -766,7 +756,7 @@ can use to perform the required tasks. Additionally, the ``config`` value should
 be set to the ``config`` variable passed to the initialization function. It is
 important to note that the returned ``protocol_t`` structure is not responsible
 for freeing the memory assiciated with the ``config`` variable. This is managed
-by the message bus context object.
+by the Message bus context object.
 
 For each of the functions in the structure the first ``ctx`` parameter will
 always be the value of the ``proto_ctx`` variable.
@@ -775,7 +765,7 @@ For more information on the purpose of each of the function pointers in the
 ``protocol_t`` structure see the `\ ``protocol_t`` Function Definition <#protocol_t-function-definition>`__.
 
 The rest of this section will cover the initial setup of a project to add a new
-protocol to the Message Bus, including the ideal code structure for the C
+protocol to the Message bus, including the ideal code structure for the C
 source code file.
 
 The code will be split into a single header and C source file, ``example.h`` and
@@ -1014,7 +1004,7 @@ functions generated by the protocol macro.
 Adding a New Protocol
 ~~~~~~~~~~~~~~~~~~~~~
 
-This section will cover how to add an example dummy protcol to the Message Bus.
+This section will cover how to add an example dummy protcol to the Message bus.
 
 ``protocol_t`` Function Definition
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1024,8 +1014,7 @@ The following describes the purpose of each of the function pointers above.
 ``destroy()``
 """""""""""""""""
 
-Responsible for destroying the ``proto_ctx`` variable and freeing any memory
-used by the context.
+Responsible for destroying the ``proto_ctx`` variable and freeing any memory used by the context.
 
 ``publisher_new()``
 """""""""""""""""""""""
@@ -1040,27 +1029,22 @@ Publishes the given message value using the publisher context.
 ``publisher_destroy()``
 """""""""""""""""""""""""""
 
-Destroys a context for a publisher freeing any sockets, memory, etc. used by
-the publisher.
+Destroys a context for a publisher freeing any sockets, memory, etc. used by the publisher.
 
 ``subscriber_new()``
 """"""""""""""""""""""""
 
-Subscribe to the given topic and output a ``recv_ctx_t`` to use with the ``recv_*``
-methods to receive the publications for the topic.
+Subscribe to the given topic and output a ``recv_ctx_t`` to use with the ``recv_*`` methods to receive the publications for the topic.
 
 ``service_new()``
 """""""""""""""""""""
 
-Create a new ``recv_ctx_t`` structure which can be used to received requests
-from clients and send responses to received requests using the ``response()``
-method.
+Create a new ``recv_ctx_t`` structure which can be used to received requests from clients and send responses to received requests using the ``response()`` method.
 
 ``service_get()``
 """""""""""""""""""""
 
-Create a new ``recv_ctx_t`` structure which can be used to issue requests to and
-received responses from the specified service.
+Create a new ``recv_ctx_t`` structure which can be used to issue requests to and received responses from the specified service.
 
 ``recv_ctx_destroy()``
 """"""""""""""""""""""""""

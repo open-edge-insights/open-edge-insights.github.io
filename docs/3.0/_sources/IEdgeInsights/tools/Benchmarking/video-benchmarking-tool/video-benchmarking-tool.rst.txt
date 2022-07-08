@@ -2,7 +2,7 @@
 Video Benchmarking Tool
 -----------------------
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 These scripts are designed to automate the running of benchmarking tests and the collection of the performance data. This performance data includes the FPS of each video stream, and also the CPU %, Memory %, and Memory Read/Write bandwidth.
@@ -11,7 +11,7 @@ The Processor Counter Monitor (PCM) is required for measuring memory read/write 
 
 If you do not have PCM on your system, those columns will be blank in the output.csv.
 
-Refer `README-Using-video-accelerators <https://github.com/open-edge-insights/eii-core#using-video-accelerators-in-ingestionanalytics-containers>`_ for using video accelerators and follow the required pre-reqisities to work with GPU, MYRIAD and HDDL devices.
+Refer `README-Using-video-accelerators <https://github.com/open-edge-insights/eii-core#using-video-accelerators-in-ingestionanalytics-containers>`_ for using video accelerators and follow the required prereqisities to work with GPU, MYRIAD, and HDDL devices.
 
 .. note:: 
 
@@ -25,9 +25,7 @@ Refer `README-Using-video-accelerators <https://github.com/open-edge-insights/ei
 Steps for running a benchmarking test case:
 
 
-#. 
-   Ensure the VideoProfiler requirements are installed by following the README at `README <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/README.md>`_.
-
+#. Ensure the VideoProfiler requirements are installed by following the README at `README <https://github.com/open-edge-insights/eii-tools/blob/master/VideoProfiler/README.md>`_.
 #. 
    Start the RTSP server on a sepereate system on the network:
 
@@ -54,7 +52,7 @@ Steps for running a benchmarking test case:
            STREAMS   - The number of streams (1, 2, 4, 8, 16)
            SLEEP     - The number of seconds to wait after the containers come up
            PCM_HOME  - The absolute path to the PCM repository where pcm.x is built
-           EII_HOME - [Optional] The absolute path to OEI home directory, if running from a non-default location
+           EII_HOME - [Optional] The absolute path to Open EII home directory, if running from a non-default location
 
    For example:
 

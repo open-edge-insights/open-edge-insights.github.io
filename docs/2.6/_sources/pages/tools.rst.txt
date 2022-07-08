@@ -50,3 +50,5 @@ Creating UDF in Jupyter Notebook
 .. include:: ../IEdgeInsights/tools/TimeSeriesProfiler/README.rst
 
 .. include:: ../IEdgeInsights/tools/VideoProfiler/README.rst
+
+.. include:: ../IEdgeInsights/build/remote_logging/README.rst

@@ -2,12 +2,12 @@
 Introduction
 ------------
 
-UDFs(User Defined Function) are one of the cardinal feature of OEI framework. It enables users to adjoin any pre-processing or post-processing logic in data pipeline defined by OEI configuration. As of OEI 2.1 release, it supports UDFs to be implemented using following languages.
+UDFs(User Defined Function) are one of the cardinal feature of Open EII framework. It enables users to adjoin any pre-processing or post-processing logic in data pipeline defined by Open EII configuration. As of Open EII 2.1 release, it supports UDFs to be implemented using following languages.
 
 
-* C++  (It is also called **Native** UDF as OEI core components are implemented in C++)
+* C++  (It is also called **Native** UDF as Open EII core components are implemented in C++)
 * Python
 
-The order in which the UDFs are defined in OEI configuration file is the order in which data will flow across them. Currently there is no support for demux/mux the data flow to/fro the UDFs.
+The order in which the UDFs are defined in Open EII configuration file is the order in which data will flow across them. Currently there is no support for demux/mux the data flow to/fro the UDFs.
 
 All configs related to UDFs are to be in ``config.json`` of apps like VideoIngestion and VideoAnalytics.The UDF schema and description about keys/values in it presented in detail in the `UDF README <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_ file.

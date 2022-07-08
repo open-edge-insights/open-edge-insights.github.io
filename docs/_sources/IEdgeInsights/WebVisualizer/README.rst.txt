@@ -7,7 +7,7 @@ Contents
 
   * `Web Visualizer Module <#web-visualizer-module>`__
 
-    * `Steps to build and run web visualizer <#steps-to-build-and-run-web-visualizer>`__
+    * `Steps to Build and Run Web Visualizer <#steps-to-build-and-run-web-visualizer>`__
     * `Using Labels <#using-labels>`__
 
       * `Metadata Structure <#metadata-structure>`__
@@ -15,34 +15,33 @@ Contents
 Web Visualizer Module
 ---------------------
 
-Web Visualizer ia a web based app to view the classified images/metadata coming out of OEI.
+Web Visualizer ia a web based app to view the classified images/metadata coming out of Open Edge Insights for Industrial (Open EII).
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open EII. This is due to the product name change of EII as Open EII.
 
 
-Steps to build and run web visualizer
+Steps to Build and Run Web Visualizer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Please go through the below sections to have web visualizer service built and launch it:
+Refer to the following sections to build and launch Web Visualizer service:
 
 
 * `../README.md#generate-deployment-and-configuration-files <https://github.com/open-edge-insights/eii-core/blob/master/README.md#generate-deployment-and-configuration-files>`_
 * `../README.md#provision <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_
 * `../README.md#build-and-run-eii-videotimeseries-use-cases <https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases>`_
 
-For more details, refer `OEI core README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_
+For more details, refer to the `Open EII core README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_
 
 
 * 
-  Running WebVisualizer in Browser
+  Running WebVisualizer in a browser
 
 
-  * WebVisualizer is tested on chrome browser, so its better to use chrome browser.
-  * WebVisualizer currently supports only **6** parallel streams in the chrome
-    browser per instance.
+  * WebVisualizer is tested on chrome browser, so it's recommended to use the Chrome browser.
+  * WebVisualizer currently supports only **6** parallel streams in the Chrome browser per instance.
   * Running in DEV mode:
 
-    * Goto Browser
+    * Go to browser
         http://< host ip >:5001
 
   * 
@@ -74,20 +73,18 @@ For more details, refer `OEI core README <https://github.com/open-edge-insights/
       * Select All CheckBoxes and Click Import Button.
 
     * 
-      Now In Browser
+      Now in Browser
         https://< host ip >:5000
 
     * 
       Login Page
         You should use your defined username & password in etcd config.
 
-----
-
 .. note:: 
 
 
    #. The admin has to make sure all the necessary config is set in etcd before starting the web visualizer.
-   #. Please clear your ``browsers cache`` while switching from ``prod`` mode to ``dev`` mode on running
+   #. Clear the ``browsers cache`` while switching from ``prod`` mode to ``dev`` mode on running
       ``WebVisualizer`` in browser.
 
 
@@ -151,8 +148,8 @@ Using Labels
 Metadata Structure
 ~~~~~~~~~~~~~~~~~~
 
-OEI WebVisualizer app can decode certain types of mete-data formats for drawing the defects on the image.
-Any application wanting to use OEI WebVisualizer need to comply with the meta-data format as described below:
+Open EII WebVisualizer app can decode certain types of mete-data formats for drawing the defects on the image.
+Any application wanting to use Open EII WebVisualizer need to comply with the meta-data format as described below:
 
 A) For Ingestor's **Non-GVA** type, metadata structure sample is :
 

@@ -6,7 +6,7 @@ As a prerequisite for EVAM, complete the following steps:
 
 
 #. 
-   Run the following commands to get the OEI source code:
+   Run the following commands to get the Open EII source code:
 
    .. code-block:: sh
 
@@ -19,7 +19,7 @@ As a prerequisite for EVAM, complete the following steps:
 
 
 #. 
-   Complete the prerequisite for provisioning the OEI stack by referring to the
+   Complete the prerequisite for provisioning the Open EII stack by referring to the
    `README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_.
 
 #. Download the required model files to be used for the pipeline mentioned in the `README <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/README.md#running-the-image>`_ file by completing step 2 to step 4 as mentioned in the `README <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/README.md#running-the-image>`_.
@@ -29,8 +29,7 @@ As a prerequisite for EVAM, complete the following steps:
 
 
 #. 
-   Run the following commands to set the environment, build the ``ia_configmgr_agent`` container
-   and copy models to the required directory:
+   Run the following commands to set the environment, build the ``ia_configmgr_agent`` container and copy models to the required directory:
 
    .. code-block:: sh
 

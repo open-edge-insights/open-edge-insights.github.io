@@ -14,9 +14,9 @@ Contents
 Native Visualizer Module
 ------------------------
 
-Native Visualizer ia a native app to view the classified images/metadata coming out of OEI.
+Native Visualizer ia a native app to view the classified images or metadata coming out of Open Edge Insights for Industrial (Open EII).
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open EII. This is due to the product name change of EII as Open EII.
 
 
 Steps to build and run visualizer
@@ -29,7 +29,7 @@ Please go through the below sections to have visualizer service built and launch
 * `../README.md#provision <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_
 * `../README.md#build-and-run-eii-videotimeseries-use-cases <https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases>`_
 
-For more details, refer `OEI core README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_
+For more details, refer `Open EII core README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_
 
 .. note:: 
 
@@ -121,7 +121,7 @@ Using Labels
          "1": "SHORT"
      }
 
-.. note::  These labels are the mapping for the PCB demo provided in OEI's visualizer directory. Currently camera1_stream_results consists of pcb demo labeling and camera2_stream_results consists of safety demo labeling.
+.. note::  These labels are the mapping for the PCB demo provided in Open EII's visualizer directory. Currently camera1_stream_results consists of pcb demo labeling and camera2_stream_results consists of safety demo labeling.
      Hence, in `config.json <https://github.com/open-edge-insights/video-native-visualizer/blob/master/config.json>`_ proper mapping of all the subscribed topics should be done with pcb demo labeling and safety demo labeling respectively.
 
 
@@ -160,8 +160,8 @@ Using Labels
 Metadata Structure
 ^^^^^^^^^^^^^^^^^^
 
-OEI Visualizer app can decode certain types of mete-data formats for drawing the defects on the image.
-Any application wanting to use OEI visualizer need to comply with the meta-data format as described below:
+Open EII Visualizer app can decode certain types of mete-data formats for drawing the defects on the image.
+Any application wanting to use Open EII visualizer need to comply with the meta-data format as described below:
 
 A) For Ingestor's **Non-GVA** type, metadata structure sample is :
 

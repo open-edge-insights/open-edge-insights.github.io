@@ -9,19 +9,18 @@ Contents
   * `Prerequisites and Setup <#prerequisites-and-setup>`__
 
     * `Azure Cloud Setup <#azure-cloud-setup>`__
+    * `Setting up AzureML <#setting-up-azureml>`__
+    * `Important <#important>`__
 
-      * `Setting up AzureML <#setting-up-azureml>`__
-      * `Important <#important>`__
-
-        * `Pushing a Model to AzureML <#pushing-a-model-to-azureml>`__
+      * `Pushing a Model to AzureML <#pushing-a-model-to-azureml>`__
 
     * `Development System Setup <#development-system-setup>`__
 
-  * `Build and Push OEI Containers <#build-and-push-oei-containers>`__
+  * `Build and Push Open Edge Insights for Industrial Containers <#build-and-push-open-edge-insights-for-industrial-containers>`__
   * `Single-Node Azure IoT Edge Deployment <#single-node-azure-iot-edge-deployment>`__
 
     * `Step 1 - Provisioning <#step-1-provisioning>`__
-    * `Step 2 - Configuring OEI <#step-2-configuring-oei>`__
+    * `Step 2 - Configuring Open Edge Insights for Industrial <#step-2-configuring-open-edge-insights-for-industrial>`__
     * `Step 3 - Configuring Azure IoT Deployment Manifest <#step-3-configuring-azure-iot-deployment-manifest>`__
     * `Step 4 - Deployment <#step-4-deployment>`__
     * `Helpful Debugging Commands <#helpful-debugging-commands>`__
@@ -32,14 +31,14 @@ Contents
     * `Azure Bridge <#azure-bridge>`__
     * `ZeroMQ TCP Subscription Implications <#zeromq-tcp-subscription-implications>`__
     * `ZeroMQ IPC Subscription Implications <#zeromq-ipc-subscription-implications>`__
-    * `Sample OEI ONNX UDF <#sample-oei-onnx-udf>`__
+    * `Sample Open Edge Insights for Industrial ONNX UDF <#sample-open-edge-insights-for-industrial-onnx-udf>`__
     * `Simple Subscriber <#simple-subscriber>`__
-    * `OEI ETCD Pre-Load <#oei-etcd-pre-load>`__
+    * `Open Edge Insights for Industrial ETCD Pre-Load <#open-edge-insights-for-industrial-etcd-pre-load>`__
     * `Azure Blob Storage <#azure-blob-storage>`__
     * `Azure Deployment Manifest <#azure-deployment-manifest>`__
 
   * `Azure IoT Edge Simulator <#azure-iot-edge-simulator>`__
-  * `Supported OEI Services <#supported-oei-services>`__
+  * `Supported Open Edge Insights for Industrial Services <#supported-open-edge-insights-for-industrial-services>`__
   * `Additional Resources <#additional-resources>`__
 
 Introduction
@@ -48,30 +47,30 @@ Introduction
 .. note:: 
 
 
-   * In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
-   * For the various scripts and commands mentioned in this document to work, place the source code for this project in the ``IEdgeInsights`` directory in the source code for OEI.
+   * In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
+   * For the various scripts and commands mentioned in this document to work, place the source code for this project in the ``IEdgeInsights`` directory in the source code for Open EII.
 
 
-The Azure Bridge serves as a connector between OEI and the Microsoft Azure IoT Edge Runtime ecosystem. It does this by allowing the following forms of bridging:
+The Azure Bridge serves as a connector between Open EII and the Microsoft Azure IoT Edge Runtime ecosystem. It does this by allowing the following forms of bridging:
 
 
-* Publishing of incoming data from OEI onto the Azure IoT Edge Runtime bus
-* Storage of incoming images from the OEI video analytics pipeline into a local instance of the Azure Blob Storage service
-* Translation of configuration for OEI from the Azure IoT Hub digital twin for the bridge into ETCD via the OEI Configuration Manager APIs
+* Publishing of incoming data from Open EII onto the Azure IoT Edge Runtime bus
+* Storage of incoming images from the Open EII video analytics pipeline into a local instance of the Azure Blob Storage service
+* Translation of configuration for Open EII from the Azure IoT Hub digital twin for the bridge into ETCD via the Open EII Configuration Manager APIs
 
 This code base is structured as an Azure IoT Edge Runtime module. It includes the following:
 
 
-* Deployment templates for deploying the OEI video analytics pipeline with the bridge on top of the Azure IoT Edge Runtime
+* Deployment templates for deploying the Open EII video analytics pipeline with the bridge on top of the Azure IoT Edge Runtime
 * The Azure Bridge module
 * A simple subscriber on top of the Azure IoT Edge Runtime for showcasing the end-to-end transmission of data
 * Various utilities and helper scripts for deploying and developing on the Azure Bridge
 
-The following sections will cover the configuration/usage of the Azure Bridge, the deployment of OEI on the Azure IoT Edge Runtime, as well as the usage of the tools and scripts included in this code base for development.
+The following sections will cover the configuration/usage of the Azure Bridge, the deployment of Open EII on the Azure IoT Edge Runtime, as well as the usage of the tools and scripts included in this code base for development.
 
 .. note::  The following sections assume an understanding of the configuration
-   for OEI. It is recommended that you read the main README and User Guide for
-   OEI prior to using this service.
+   for Open EII. It is recommended that you read the main README and User Guide for
+   Open EII prior to using this service.
 
 
 Prerequisites and Setup
@@ -84,7 +83,7 @@ Setting up your system for a single-node deployment will be covered in the
 `Single-Node Azure IoT Edge Deployment <#single-node-azure-iot-edge-deployment>`__ section below.
 
 .. note::  When you deploy with Azure IoT Hub you will also need to configure
-   the Azure IoT Edge Runtime and OEI on your target device.
+   the Azure IoT Edge Runtime and Open EII on your target device.
 
 
 Azure Cloud Setup
@@ -95,7 +94,7 @@ which must be initialized.
 
 Primarily, you need an Azure Containter Registry instance, an Azure IoT Hub,
 as well as an Azure IoT Device. Additionally, if you wish to use the sample ONNX
-UDF in OEI to download a ML/DL model from AzureML, then you must follow a few
+UDF in Open EII to download a ML/DL model from AzureML, then you must follow a few
 steps to get this configured as well. For these steps, see the `Setting up AzureML <#setting-up-azureml>`__
 section below.
 
@@ -128,7 +127,7 @@ instructions below.
 Setting up AzureML
 ~~~~~~~~~~~~~~~~~~
 
-To use the sample OEI ONNX UDF, you must do the following:
+To use the sample Open EII ONNX UDF, you must do the following:
 
 
 #. Create an AzureML Workspace (see `these <https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace>`_
@@ -148,7 +147,7 @@ to the following:
 
 After executing this command you will see a JSON blob printed to your console
 window. Save the ``clientId``\ , ``clientSecret``\ , ``subscriptionId``\ , and ``tenantId``
-for configuring the sample ONNX OEI UDF later.
+for configuring the sample ONNX Open EII UDF later.
 
 Pushing a Model to AzureML
 """"""""""""""""""""""""""
@@ -169,7 +168,7 @@ Development System Setup
 The development system will be used for the following actions:
 
 
-* Building and pushing the OEI containers (including the bridge) to your Azure Container Registry
+* Building and pushing the Open EII containers (including the bridge) to your Azure Container Registry
 * Creating your Azure IoT Hub deployment manifest
 * Deploying your manifest to a single node
 
@@ -178,9 +177,9 @@ above, as well as being the device you use for your single-node deployment. This
 should not be done in a production environment, but it can be helpful when
 familiarizing yourself with the Azure Bridge.
 
-First, setup your system for building OEI. To do this, follow the instructions
-detailed in the main OEI README and the OEI User Guide. At the end, you should
-have installed Docker, Docker Compose, and other OEI Python dependencies for
+First, setup your system for building Open EII. To do this, follow the instructions
+detailed in the main Open EII README and the Open EII User Guide. At the end, you should
+have installed Docker, Docker Compose, and other Open EII Python dependencies for
 the Builder script in the ``../build/`` directory.
 
 Once this is completed, install the required components to user the Azure CLI
@@ -242,25 +241,22 @@ Next, login to your Azure Container Registry with the following command:
 **IMPORTANT NOTE:**
 
 Please see the list of supported services at the end of this README for the
-services which can be pushed to an ACR instance. Not all OEI services are
+services which can be pushed to an ACR instance. Not all Open EII services are
 supported by and validated to work with the Azure Bridge.
 
-Build and Push OEI Containers
------------------------------
+Build and Push Open Edge Insights for Industrial Containers
+-----------------------------------------------------------
 
 .. note::  By following the steps below, the Azure Bridge and Simple
    Subscriber Azure IoT Modules will be pushed to your ACR instance as well.
 
 
-After setting up your development system, build and push the OEI containers
+After setting up your development system, build and push the Open EII containers
 to your Azure Contianer Registry instance. Note that the Azure Bridge only
-supports a few of the OEI services currently. Before building and pushing your
-OEI containers, be sure to look at the `Supported OEI Services <#supported-oei-services>`__
-section below, so as to not build/push uneeded containers to your registry.
+supports a few of the Open EII services currently. Before building and pushing your
+Open EII containers, be sure to look at the `Supported Open Edge Insights for Industrial Services <#supported-open-edge-insights-for-industrial-services>`__ section below, so as to not build/push uneeded containers to your registry.
 
-To do this go to the ``../build/`` directory in the OEI source code, modify the
-``DOCKER_REGISTRY`` variable in the ``../build/.env`` file to point to your Azure
-Container Registry.
+To do this go to the ``../build/`` directory in the Open EII source code, modify the ``DOCKER_REGISTRY`` variable in the ``../build/.env`` file to point to your Azure Container Registry.
 
 Next, execute the following commands:
 
@@ -270,15 +266,15 @@ Next, execute the following commands:
    docker-compose -f docker-compose-build.yml build
    docker-compose -f docker-compose-push.yml push
 
-For more detailed instructions on this process, see the OEI README and User Guide.
+For more detailed instructions on this process, see the Open EII README and User Guide.
 
 Single-Node Azure IoT Edge Deployment
 -------------------------------------
 
-.. note::  Outside of the Azure ecosystem, OEI can be deployed and communicate
-   across nodes. In the Azure IoT Edge ecosystem this is not possible with OEI.
-   All OEI services must be running on the same edge node. However, you can
-   deploy OEI on multiple nodes, but intercommunication between the nodes will
+.. note::  Outside of the Azure ecosystem, Open EII can be deployed and communicate
+   across nodes. In the Azure IoT Edge ecosystem this is not possible with Open EII.
+   All Open EII services must be running on the same edge node. However, you can
+   deploy Open EII on multiple nodes, but intercommunication between the nodes will
    not work.
    **Important Note:**
    If you are using TCP communication between VI or VA and the Azure Bridge,
@@ -288,33 +284,28 @@ Single-Node Azure IoT Edge Deployment
    be generated to encrypt/authenticate connections.
 
 
-In the Azure IoT ecosystem you can deploy to single-nodes and you can do bulk
-deployments. This section will cover how to deploy the Azure Bridge and
-associated OEI services to a single Linux edge node. For more details on deploying
-modules at scale with the Azure IoT Edge Runtime, see
-`this guide <https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-monitor>`_
+In the Azure IoT ecosystem you can deploy to single-nodes and you can do bulk deployments. This section will cover how to deploy the Azure Bridge and associated Open EII services to a single Linux edge node. For more details on deploying modules at scale with the Azure IoT Edge Runtime, see `this guide <https://docs.microsoft.com/en-us/azure/iot-edge/how-to-deploy-monitor>`_
 
 Note that this section will give a high-level overview of how to deploy the
 modules with the Azure CLI. For more information on developing and deploying
 Azure modules, see `this guide <https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-develop-for-linux>`_.
 
-The deloyment of the Azure IoT Edge and the OEI modules can be broken down into
+The deloyment of the Azure IoT Edge and the Open EII modules can be broken down into
 the following steps:
 
 
 #. Provisioning
-#. Configuring OEI
+#. Configuring Open EII
 #. Configuring Azure IoT Deployment Manifest
 #. Deployment
 
 Prior to deploying a single Azure IoT Edge node you must have already
 configured your Azure cloud instance (see instructions in the `Azure Cloud Setup <#azure-cloud-setup>`__
-section). Additionally, you need to have already built and pushed the OEI services to your
-Azure Container Registry (follow the instructions in the `Build and Push OEI Containers <#build-and-push-eii-containers>`__
+section). Additionally, you need to have already built and pushed the Open EII services to your
+Azure Container Registry (follow the instructions in the `Build and Push Open Edge Insights for Industrial Containers <#build-and-push-open-edge-insights-for-industrial-containers>`__
 section).
 
-Provided you have met these two prerequisites, follow the steps below to do a
-single node deployment with the Azure Bridge on the Azure IoT Edge Runtime.
+Provided you have met these two prerequisites, follow the steps below to do a single node deployment with the Azure Bridge on the Azure IoT Edge Runtime.
 
 Step 1 - Provisioning
 ^^^^^^^^^^^^^^^^^^^^^
@@ -339,41 +330,41 @@ Video Ingesiton and/or the Video Analytics containers. All other services are
 not supported by the Azure Bridge currently.
 
 Be sure to note down which directory you generate your certificates into, this
-will be important later. Unless, you are running OEI in dev mode, in that case
+will be important later. Unless, you are running Open EII in dev mode, in that case
 you will have no certificates generated.
 
 **IMPORTANT NOTE:**
 
-If you previously installed OEI outside of Azure on your system, then make sure
-that all of the OEI containers have been stopped. You can do this by going to
-the ``build/`` directory in the OEI source code and running the following command:
+If you previously installed Open EII outside of Azure on your system, then make sure
+that all of the Open EII containers have been stopped. You can do this by going to
+the ``build/`` directory in the Open EII source code and running the following command:
 
 .. code-block:: sh
 
    docker-compose down
 
-This will stop and remove all of the previously running OEI containers, allowing
+This will stop and remove all of the previously running Open EII containers, allowing
 the Azure Bridge to run successfully.
 
-Step 2 - Configuring OEI
-^^^^^^^^^^^^^^^^^^^^^^^^
+Step 2 - Configuring Open Edge Insights for Industrial
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This step should be done from your development system, and not the edge node you
-are deploying OEI onto. The configuration you will do during this setup will
-allow your system to deploy OEI to your edge node. As noted earlier, for development
+are deploying Open EII onto. The configuration you will do during this setup will
+allow your system to deploy Open EII to your edge node. As noted earlier, for development
 and testing purposes this could be the same system as your targeted edge device,
 but this is not recommended in a production environment.
 
-To configure OEI, modify the ``build/eii_config.json`` file. This
+To configure Open EII, modify the ``build/eii_config.json`` file. This
 should have been generated when the ``build/builder.py`` script was executed
-when building/pushing the OEI containers to your ACR instance. If it does not
-exist, run this script based on the instructions provided in the OEI README.
+when building/pushing the Open EII containers to your ACR instance. If it does not
+exist, run this script based on the instructions provided in the Open EII README.
 
 Next, configure the ``build/.env`` file. You must make sure to modify the following
 values in the ``.env`` file:
 
 
-* ``DOCKER_REGISTRY`` - This should have been set when building/pushing the OEI
+* ``DOCKER_REGISTRY`` - This should have been set when building/pushing the Open EII
     containers to your ACR instance. Make sure it is set to the URL for your
     ACR instance.
 * ``HOST_IP`` - This must be the IP address of the edge node you are deploying
@@ -386,7 +377,7 @@ Next, in the ``AzureBridge/`` source directory, modify the ``.env`` file. Make
 sure to set the following values:
 
 
-* ``EII_CERTIFICATES``              - The directory with the OEI certificates on your edge system
+* ``EII_CERTIFICATES``              - The directory with the Open EII certificates on your edge system
 * ``AZ_CONTAINER_REGISTY_USERNAME`` - User name for the container registry login (obtained during creation)
 * ``AZ_CONTAINER_REGISTY_PASSWORD`` - Password for the container registry login (obtained during creation)
 
@@ -406,18 +397,18 @@ your deployment manifest leading to configuration errors.
 
 **IMPORTANT NOTE #2:**
 
-If you wish to use the sample OEI ONNX UDF, now is the time to configure the UDF
-to run. See the `Sample OEI ONNX UDF <#sample-oei-onnx-udf>`__ configuration section
+If you wish to use the sample Open EII ONNX UDF, now is the time to configure the UDF
+to run. See the `Sample Open Edge Insights for Industrial ONNX UDF <#sample-open-edge-insights-for-industrial-onnx-udf>`__ configuration section
 below for how to configure the UDF.
 
 Once the following step has been completed, then you should have correctly configured
-``.env`` files to deploying OEI via Azure. If some of the values were incorrect, then
+``.env`` files to deploying Open EII via Azure. If some of the values were incorrect, then
 you will encounter issues in the proceeding steps.
 
 Step 3 - Configuring Azure IoT Deployment Manifest
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once you have your target edge system provisioned and OEI configured, you need to
+Once you have your target edge system provisioned and Open EII configured, you need to
 create your Azure IoT Hub deployment manifest. The Azure Bridge provides some
 convenience scripts to ease this process.
 
@@ -436,10 +427,10 @@ To generate your deployment manifest template, execute the following command:
 
 
    * If you are using Azure Blob Storage, include ``AzureBlobStorageonIoTEdge`` in the argument list above.
-   * When you run the command above, it will pull some values from your OEI ``build/.env`` file. If the ``build/.env`` file is configured incorrectly, you may run into issues.
+   * When you run the command above, it will pull some values from your Open EII ``build/.env`` file. If the ``build/.env`` file is configured incorrectly, you may run into issues.
 
 
-The above command will generate two files: ``./example.template.json`` and ``config/example.amd64.json``. The first is a deployment template, and the second is the fully populated/generated configuration for Azure IoT Hub. In executing the script above, you should have a manifest which includes the Azure Bridge, Simple Subscriber, as well as the OEI video ingestion service.
+The above command will generate two files: ``./example.template.json`` and ``config/example.amd64.json``. The first is a deployment template, and the second is the fully populated/generated configuration for Azure IoT Hub. In executing the script above, you should have a manifest which includes the Azure Bridge, Simple Subscriber, as well as the Open EII video ingestion service.
 
 The list of services given to the bash script can be changed if you wish to run different services.
 
@@ -484,7 +475,7 @@ failed, then the Azure CLI will output information on the potential reason for t
 failure.
 
 Provided all of the setups above ran correctly, your edge node should now be running
-your Azure IoT Edge modules, the Azure Bridge, and the OEI services you
+your Azure IoT Edge modules, the Azure Bridge, and the Open EII services you
 selected.
 
 It is possible that for the Azure Bridge (and any Python Azure IoT Edge modules)
@@ -548,7 +539,7 @@ Configuration
 -------------
 
 The configuration of the Azure Bridge is a mix of the configuration for the
-OEI services, the Azure Bridge module, and configuration for the other
+Open EII services, the Azure Bridge module, and configuration for the other
 Azure IoT Edge Modules (i.e. the Simple Subscriber, and the Azure Blob Storage
 modules). All of this configuration is wrapped up into your deployment manifest
 for Azure IoT Hub.
@@ -559,16 +550,16 @@ and then the generation of your Azure Deployment manifest.
 Azure Bridge
 ^^^^^^^^^^^^
 
-The Azure Bridge spans OEI and Azure IoT Edge Runtime environments, as such
-its configuration is a mix of OEI configuration and Azure IoT Edge module configuration
+The Azure Bridge spans Open EII and Azure IoT Edge Runtime environments, as such
+its configuration is a mix of Open EII configuration and Azure IoT Edge module configuration
 properties. The configuration of the bridge is split between environmental
 variables specified in your Azure IoT Hub deployment manifest and the module's
 digital twin. Additionally, the digital twin for the Azure Bridge module
-contains the entire configuration for the OEI services running in your edge
+contains the entire configuration for the Open EII services running in your edge
 environment.
 
-The configuration of the OEI Message Bus is done in a method similar to that of
-the other OEI services, such as the Video Analytics service. To provided the
+The configuration of the Open EII Message Bus is done in a method similar to that of
+the other Open EII services, such as the Video Analytics service. To provided the
 configuration for the topics which the bridge should subscribe to,
 you must set the ``Subscribers`` list in the `modules/AzureBridge/config.json <https://github.com/open-edge-insights/eii-azure-bridge/blob/master/modules/AzureBridge/config.json>`_
 file. The list is comprised of JSON objects for every subscription you wish the
@@ -607,7 +598,7 @@ subscribing to the the publications coming from the Video Analytics container.
    }
 
 There are a few important implications to be aware of for both ZeroMQ TCP and IPC
-subscribers over the OEI Message Bus. These implications are specified below.
+subscribers over the Open EII Message Bus. These implications are specified below.
 
 ZeroMQ TCP Subscription Implications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -616,7 +607,7 @@ For ZeroMQ TCP subscribers, like the example shown above, the ``EndPoint`` in
 the subscriber's configuration object has to be overridden through an
 environmental variable. The reason for this, is that the Azure Bridge
 service runs attached to a bridged Docker network created by the Azure IoT
-Edge Runtime, whereas the other OEI services run on the different bridged network.
+Edge Runtime, whereas the other Open EII services run on the different bridged network.
 In order to subscribe, the Azure Bridge must use the host's IP address to
 connect.
 
@@ -636,7 +627,7 @@ IP address is the variable ``$HOST_IP``. This will be pulled from the ``.env`` f
 when generating your deployment manifest.
 
 The final implication is on the configuration of the services which the
-Azure Bridge is subscribing to. Most OEI services publishing over TCP set
+Azure Bridge is subscribing to. Most Open EII services publishing over TCP set
 their host to ``127.0.0.1``. This keeps the communication only available to
 subscribers which are on the local host network on the system. In order for
 the Azure Bridge to subscribe to these publications this must be changed
@@ -736,21 +727,21 @@ Each key in the configuration above is described in the table below.
    * - ``log_level``
      - This is the logging level for the Azure Bridge module, must be INFO, DEBUG, WARN, or ERROR
    * - ``topics``
-     - Configuration for the topics to map from the OEI Message Bus into the Azure IoT Edge Runtime
+     - Configuration for the topics to map from the Open EII Message Bus into the Azure IoT Edge Runtime
    * - ``eii_config``
-     - Entire serialized configuration for OEI; this configuration will be placed in ETCD
+     - Entire serialized configuration for Open EII; this configuration will be placed in ETCD
 
 
-You will notice that the ``eii_config`` is a serialized JSON string. This is due to a limitation with the Azure IoT Edge Runtime. Currently, module digital twins do not support arrays; however, the OEI configuration requires array support. To workaround this limitation, the OEI configuration must be a serialized JSON string in the digital twin for the Azure Bridge module.
+You will notice that the ``eii_config`` is a serialized JSON string. This is due to a limitation with the Azure IoT Edge Runtime. Currently, module digital twins do not support arrays; however, the Open EII configuration requires array support. To workaround this limitation, the Open EII configuration must be a serialized JSON string in the digital twin for the Azure Bridge module.
 
-The ``topics`` value is a JSON object, where each key is a topic from the OEI Message Bus which will be re-published onto the Azure IoT Edge Runtime. The value for the topic key will be an additional JSON object, where there is one required key, ``az_output_topic``\ , which is the topic on Azure IoT Edge Runtime to use and then an optional key, ``az_blob_container_name``.
+The ``topics`` value is a JSON object, where each key is a topic from the Open EII Message Bus which will be re-published onto the Azure IoT Edge Runtime. The value for the topic key will be an additional JSON object, where there is one required key, ``az_output_topic``\ , which is the topic on Azure IoT Edge Runtime to use and then an optional key, ``az_blob_container_name``.
 
-Sample OEI ONNX UDF
-^^^^^^^^^^^^^^^^^^^
+Sample Open Edge Insights for Industrial ONNX UDF
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-OEI provides a sample UDF which utilizes the ONNX RT to execute your machine learning or deep learning model. It also supports connecting to an AzureML Workspace to download the model and then run it. The source code for this UDF is in ``[WORKDIR]/IEdgeInsights/common/video/udfs/python/sample_onnx/``\ , also refer ``Sample ONNX UDF`` section in ``[WORKDIR]/IEdgeInsights/common/video/udfs/README.md`` for doing the required configuration for running this UDF.
+Open EII provides a sample UDF which utilizes the ONNX RT to execute your machine learning or deep learning model. It also supports connecting to an AzureML Workspace to download the model and then run it. The source code for this UDF is in ``[WORKDIR]/IEdgeInsights/common/video/udfs/python/sample_onnx/``\ , also refer ``Sample ONNX UDF`` section in ``[WORKDIR]/IEdgeInsights/common/video/udfs/README.md`` for doing the required configuration for running this UDF.
 
-To use this UDF with OEI, you need to modify your ``build/eii_config.json``\ configuration file to run the UDF in either your Video Ingesiton or Video Analytics instance. Ensure to remove the existing PCB filter or classifier UDFs or any other UDFs in Video Ingestion and Video Analytics config keys in ``build/eii_config.json`` aswe are doing some basic pre-processing, inferencing and post-processing in the ONNX UDF itself. Then, you need to modify the environmental variables in the ``AzureBridge/.env`` file to provide the connection
+To use this UDF with Open EII, you need to modify your ``build/eii_config.json``\ configuration file to run the UDF in either your Video Ingesiton or Video Analytics instance. Ensure to remove the existing PCB filter or classifier UDFs or any other UDFs in Video Ingestion and Video Analytics config keys in ``build/eii_config.json`` aswe are doing some basic pre-processing, inferencing and post-processing in the ONNX UDF itself. Then, you need to modify the environmental variables in the ``AzureBridge/.env`` file to provide the connection
 information to enable the UDF to download your model from AzureML. Make sure to follow the instructions provided in the `Setting up AzureML <#setting-up-azureml>`__ section above to configure your workspace correctly so that the UDF can download your model.
 
 The sample ONNX UDF requires that the following configuration values be set for the UDF in your ``eii_config.json`` file:
@@ -778,7 +769,7 @@ This should be added into the ``udfs`` list for your Video Ingestion or Video An
 .. code-block:: javascript
 
    {
-       // ... omited rest of OEI configuration ...
+       // ... omited rest of Open EII configuration ...
 
        "udfs": [
            {
@@ -791,7 +782,7 @@ This should be added into the ``udfs`` list for your Video Ingestion or Video An
            }
        ]
 
-       // ... omited rest of OEI configuration ...
+       // ... omited rest of Open EII configuration ...
    }
 
 The following environmental variables must be set in the ``AzureBridge/.env`` file in order to have the sample ONNX UDF download your model from an AzureML Workspace:
@@ -886,22 +877,17 @@ The Simple Subscriber module provided with the Azure Bridge is a very simple ser
 
 For more information on establishing routes in the Azure IoT Edge Runtime, see `this documentation <https://docs.microsoft.com/en-us/azure/iot-edge/module-composition#declare-routes>`_.
 
-OEI ETCD Pre-Load
-^^^^^^^^^^^^^^^^^
+Open Edge Insights for Industrial ETCD Pre-Load
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The configuration for OEI is given to the Azure Bridge via the ``eii_config`` key in the module's digital twin. As specified in the Azure Bridge configuration
-section, this must be a serialized string. For the scripts included with the
-Azure Bridge for generating your deployment manifest the ETCD pre-load
-configuration is stored at ``config/eii_config.json``. See the OEI documentation
-for more information on populating this file with your desired OEI configuration.
-The helper scripts will automatically serialize this JSON file and add it to your
+The configuration for Open EII is given to the Azure Bridge via the ``eii_config`` key in the module's digital twin. As specified in the Azure Bridge configuration section, this must be a serialized string. For the scripts included with the Azure Bridge for generating your deployment manifest the ETCD pre-load configuration is stored at ``config/eii_config.json``. See the Open EII documentation for more information on populating this file with your desired Open EII configuration. The helper scripts will automatically serialize this JSON file and add it to your
 deployment manifest.
 
 Azure Blob Storage
 ^^^^^^^^^^^^^^^^^^
 
 The Azure Bridge enables to use of the Azure Blob Storage edge IoT service
-from Microsoft. This service can be used to save images from OEI into the blob
+from Microsoft. This service can be used to save images from Open EII into the blob
 storage.
 
 If you wish to have the Azure Blob Storage service save the images to your
@@ -967,7 +953,7 @@ host filesystem, then you must do the following:
       }
 
 #. 
-   Add the ``az_blob_container_name`` key as below in ``example.template.json`` file, this specifies the Azure Blob Storage container to store the images from the OEI video analytics pipeline in. If the ``az_blob_container_name`` key is not specified, then the images will not be saved.
+   Add the ``az_blob_container_name`` key as below in ``example.template.json`` file, this specifies the Azure Blob Storage container to store the images from the Open EII video analytics pipeline in. If the ``az_blob_container_name`` key is not specified, then the images will not be saved.
 
    .. code-block:: javascript
 
@@ -1092,8 +1078,8 @@ You *cannot* run both the Azure IoT Edge Runtime and the simulator simultaneousl
 
 Then, run the simulator as specified above.
 
-Supported OEI Services
-----------------------
+Supported Open Edge Insights for Industrial Services
+----------------------------------------------------
 
 Azure Bridge supports the following services:
 
@@ -1105,7 +1091,7 @@ Azure Bridge supports the following services:
 .. note:: 
 
 
-   * As ``Config Manager Agent`` responsible for OEI provisioning is deployed as azure module, it becomes essential to have other OEI services to be deployed as azure modules to talk to other OEI azure modules.
+   * As ``Config Manager Agent`` responsible for OOpen EII provisioning is deployed as azure module, it becomes essential to have other Open EII services to be deployed as azure modules to talk to other Open EII azure modules.
    * Ensure to add the app names to the ``SERVICES`` environment key of ``Config Manager Agent`` module template file at `ia_configmgr_agent.template.json <https://github.com/open-edge-insights/eii-core/blob/master/ia_configmgr_agent.template.json>`_.
 
 

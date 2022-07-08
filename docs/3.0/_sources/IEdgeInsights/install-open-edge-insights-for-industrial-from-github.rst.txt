@@ -1,0 +1,689 @@
+
+Install Open Edge Insights for Industrial from GitHub
+-----------------------------------------------------
+
+You can download and install Open EII from the `Open EII GitHub repository <https://github.com/open-edge-insights/>`_. For more information on manifest files, refer `Readme <https://github.com/open-edge-insights/eii-manifests/blob/master/README.md>`_.
+
+To install Open EII, perform the tasks in the following order:
+
+
+* `Task 1: Get Open EII codebase from GitHub <#task-1-get-open-eii-codebase-from-github>`__
+* `Task 2: Install prerequisites <#task-2-install-prerequisites>`__
+* `Task 3: Generate deployment and configuration files <#task-3-generate-deployment-and-configuration-files>`__
+* `Task 4: Build and run the Open EII video and time series use cases <#task-4-build-and-run-the-open-eii-video-and-time-series-use-cases>`__
+
+Task 1: Get Open Edge Insights for Industrial Codebase from GitHub
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To get the Open EII codebase, complete the following steps:
+
+
+#. 
+   To install the repo tool, run the following commands:
+
+   .. code-block:: sh
+
+       curl https://storage.googleapis.com/git-repo-downloads/repo > repo
+       sudo mv repo /bin/repo
+       sudo chmod a+x /bin/repo
+
+#. 
+   To create a working directory, run the following command:
+
+   .. code-block:: sh
+
+       mkdir -p <work-dir>
+
+#. 
+   To initialize the working directory using the repo tool, run the following commands:
+
+   .. code-block:: sh
+
+       cd <work-dir>
+       repo init -u "https://github.com/open-edge-insights/eii-manifests.git"
+
+#. 
+   To pull all the projects mentioned in the manifest xml file, with the default or specific revision mentioned for each project, run the following command:
+
+   .. code-block:: sh
+
+       repo sync
+
+Task 2: Install Prerequisites
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ``pre_requisites.sh`` script automates the installation and configuration of all the prerequisites required for building and running the Open EII stack. The prerequisites are as follows:
+
+
+* docker daemon
+* docker client
+* docker-compose
+* Python packages
+
+The ``pre-requisites.sh`` script performs the following:
+
+
+* Checks if docker and docker-compose is installed in the system. If required, it uninstalls the older version and installs the correct version of docker and docker-compose.
+* Configures the proxy settings for the docker client and docker daemon to connect to the internet.
+* Configures the proxy settings system-wide (/etc/environment) and for docker. If a system is running behind a proxy, then the script prompts users to enter the proxy address to configure the proxy settings.
+* Configures proxy setting for /etc/apt/apt.conf to enable apt updates and installations.
+
+.. note:: 
+
+
+   * The recommended version of the docker-compose is ``1.29.0``. In versions older than 1.29.0, the video use case docker-compose.yml files and the device_cgroup_rules command may not work.
+   * To use versions older than docker-compose 1.29.0, in the ``ia_video_ingestion`` and ``ia_video_analytics`` services, comment out the ``device_cgroup_rules`` command.
+   * 
+     You can comment out the ``device_cgroup_rules`` command in the ``ia_video_ingestion`` and ``ia_video_analytics`` services to use versions older than 1.29.0 of docker-compose. This can result in limited inference and device support. The following code sample shows how the ``device_cgroup_rules`` commands are commented out:
+
+     .. code-block:: sh
+
+         ia_video_ingestion:
+          ...
+           #device_cgroup_rules:
+              #- 'c 189:* rmw'
+              #- 'c 209:* rmw'
+
+   After modifying the ``docker-compose.yml`` file, refer to the ``Using the Builder script`` section. Before running the services using the ``docker-compose up`` command, rerun the ``builder.py`` script.
+
+
+Run the Prerequisites Script
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To run the prerequisite script, execute the following commands:
+
+.. code-block:: sh
+
+       cd [WORKDIR]/IEdgeInsights/build
+       sudo -E ./pre_requisites.sh --help
+         Usage :: sudo -E ./pre_requisites.sh [OPTION...]
+         List of available options...
+         --proxy         proxies, required when the gateway/edge node running Open EII (or any of Open EII profile) is connected behind proxy
+         --help / -h         display this help and exit
+
+.. note:: 
+
+   If the --proxy option is not provided, then script will run without proxy. Different use cases are as follows:
+
+
+   * 
+     Runs without proxy
+
+     .. code-block:: sh
+
+           sudo -E ./pre_requisites.sh
+
+   * 
+     Runs with proxy
+
+     .. code-block:: sh
+
+          sudo -E ./pre_requisites.sh --proxy="proxy.intel.com:891"
+
+
+Optional Steps
+~~~~~~~~~~~~~~
+
+
+* If required, you can enable full security for production deployments. Ensure that the host machine and docker daemon are configured per the security recommendation. For more info, see `build/docker_security_recommendation.md <https://github.com/open-edge-insights/eii-core/blob/master/build/docker_security_recommendation.md>`_.
+* If required, you can enable log rotation for docker containers using any of the following methods:
+
+Method 1
+""""""""
+
+Set the logging driver as part of the docker daemon. This applies to all the docker containers by default.
+
+
+#. 
+   Configure the json-file driver as the default logging driver. For more info, see `JSON File logging driver <https://docs.docker.com/config/containers/logging/json-file/>`_. The sample json-driver configuration that can be copied to ``/etc/docker/daemon.json`` is as follows:
+
+   .. code-block:: json
+
+               {
+                 "log-driver": "json-file",
+                 "log-opts": {
+                 "max-size": "10m",
+                 "max-file": "5"
+                 }
+             }
+
+#. 
+   Run the following command to reload the docker daemon:
+
+   .. code-block:: sh
+
+       sudo systemctl daemon-reload
+
+#. 
+   Run the following command to restart docker:
+
+   .. code-block:: sh
+
+       sudo systemctl restart docker
+
+Method 2
+""""""""
+
+Set logging driver as part of docker compose which is container specific. This overwrites the first option (i.e /etc/docker/daemon.json). The following example shows how to enable the logging driver only for the video_ingestion service:
+
+.. code-block:: json
+
+       ia_video_ingestion:
+         ...
+         ...
+         logging:
+           driver: json-file
+           options:
+           max-size: 10m
+     max-file: 5
+
+Task 3: Generate Deployment and Configuration Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+After downloading Open EII from the release package or git, run the commands mentioned in this section from the ``[WORKDIR]/IEdgeInsights/build/`` directory.
+
+Use the Builder Script
+~~~~~~~~~~~~~~~~~~~~~~
+
+To use the Builder script, run the following command:
+
+.. code-block:: sh
+
+       python3 builder.py -h
+       usage: builder.py [-h] [-f YML_FILE] [-v VIDEO_PIPELINE_INSTANCES]
+                           [-d OVERRIDE_DIRECTORY]
+       optional arguments:
+           -h, --help            show this help message and exit
+           -f YML_FILE, --yml_file YML_FILE
+                               Optional config file for list of services to include.
+                               Eg: python3 builder.py -f video-streaming.yml
+                               (default: None)
+           -v VIDEO_PIPELINE_INSTANCES, --video_pipeline_instances VIDEO_PIPELINE_INSTANCES
+                               Optional number of video pipeline instances to be
+                               created. Eg: python3 builder.py -v 6 (default:
+                               1)
+           -d OVERRIDE_DIRECTORY, --override_directory OVERRIDE_DIRECTORY
+                               Optional directory consisting of benchmarking
+                               configs to be present in each app directory. Eg:
+                               python3 builder.py -d benchmarking (default:
+                               None)
+
+Generate Consolidated Files for All Applicable Services of Open Edge Insights for Industrial
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using the Builder tool, Open EII auto-generates the configuration files that are required for deploying the Open EII services on a single node or multiple nodes. The Builder tool auto-generates the consolidated files by getting the relevant files from the Open EII service directories that are required for different Open EII use-cases. The Builder tool parses the top-level directories under the ``IEdgeInsights`` directory to generate the consolidated files.
+
+The following table shows the list of consolidated files and their details:
+
+Table: Consolidated files
+
+.. list-table::
+   :header-rows: 1
+
+   * - file name
+     - Description
+   * - docker-compose.yml
+     - Consolidated ``docker-compose.yml`` file used to launch Open EII docker containers in each single node using the ``docker-compose`` tool
+   * - docker-compose.override.yml
+     - Consolidated ``docker-compose-dev.override.yml`` of every app that is generated only in DEV mode for Open EII deployment on a given single node using ``docker-compose`` tool
+   * - docker-compose-build.yml
+     - Consolidated ``docker-compose-build.yml`` file having Open EII base images and ``depends_on`` and ``build`` keys required for building Open EII services
+   * - docker-compose-push.yml
+     - Consolidated ``docker-compose-push.yml`` file (same as ``docker-compose.yml`` file with just dummy ``build`` key added), used for pushing Open EII services to docker registry
+   * - eii_config.json
+     - Consolidated ``config.json`` of every app which will be put into etcd during provisioning
+   * - values.yaml
+     - Consolidated ``values.yaml`` of every app inside helm-eii/eii-deploy directory, which is required to deploy Open EII services via helm
+   * - Template yaml files
+     - Files copied from helm/templates directory of every app to helm-eii/eii-deploy/templates directory, which are required to deploy Open EII services via helm
+
+
+.. note:: 
+
+
+   * If you modify an individual Open EII app/service directory files, make sure to re-run the ``builder.py`` script before running the Open EII stack to regenerate the updated consolidated files as above.
+   * Manual editing of consolidated files is not recommended. Instead make changes to the respective files in the Open EII app/service directories and use the ``builder.py`` script to generate the consolidated files.
+   * Enter the secret credentials in the ``# Service credentials`` section of the `.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file if you are trying to run that Open EII app/service. In case the required credentials are not present, the ``builder.py`` script would be prompting till all the required credentails are entered. Please protect this `.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file from being read by other users by applying a suitable file access mask.
+   * The `builder_config.json <https://github.com/open-edge-insights/eii-core/blob/master/build/builder_config.json>`_ is the config file for the ``builder.py`` script and it contains the following keys:
+
+     * ``subscriber_list``\ : This key contains a list of services that act as a subscriber to the stream being published.
+     * ``publisher_list``\ : This key contains a list of services that publishes a stream of data.
+     * ``include_services``\ : This key contains the mandatory list of services. These services should be included when the Builder is run without the ``-f`` flag.
+     * ``exclude_services``\ : This key contains the mandatory list of services. These services should be excluded when the Builder is run without the ``-f`` flag.
+     * ``increment_rtsp_port``\ : This is a Boolean key. It increments the port number for the RTSP stream pipelines.
+
+
+To generate the consolidated files, run the following command:
+
+.. code-block:: sh
+
+     python3 builder.py
+
+Generate Consolidated Files for a Subset of Open Edge Insights for Industrial Services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Builder uses a yml file for configuration. The config yml file consists of a list of services to include. You can mention the service name as the path relative to ``IEdgeInsights`` or full path to the service in the config yml file.
+To include only a certain number of services in the Open EII stack, you can add the -f or yml_file flag of builder.py. You can find the examples of yml files for different use cases as follows:
+
+
+* 
+  `Azure <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming-azure.yml>`_
+
+  The following example shows running Builder with the -f flag:
+
+  .. code-block:: sh
+
+          python3 builder.py -f usecases/video-streaming.yml
+
+* 
+  **Main Use Cases**
+
+.. list-table::
+   :header-rows: 1
+
+   * - Usecase
+     - yaml file
+   * - Video + Timeseries
+     - `build/usecases/video-timeseries.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-timeseries.yml>`_
+   * - Video
+     - `build/usecases/video.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video.yml>`_
+   * - Timeseries
+     - `build/usecases/time-series.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/time-series.yml>`_
+
+
+
+* **Video Pipeline Sub Use Cases**
+
+.. list-table::
+   :header-rows: 1
+
+   * - Usecase
+     - yaml file
+   * - Video streaming
+     - `build/usecases/video-streaming.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming.yml>`_
+   * - Video streaming and historical
+     - `build/usecases/video-streaming-storage.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming-storage.yml>`_
+   * - Video streaming with AzureBridge
+     - `build/usecases/video-streaming-azure.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming-azure.yml>`_
+   * - Video streaming and custom udfs
+     - `build/usecases/video-streaming-all-udfs.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/usecases/video-streaming-all-udfs.yml>`_
+
+
+When you run the multi-instance config, a ``build/multi_instance`` directory is created in the build directory. Based on the number of ``video_pipeline_instances`` specified, that many directories of VideoIngestion and VideoAnalytics are created in the ``build/multi_instance`` directory.
+
+The following section provides an example for running the Builder to generate the multi-instance boiler plate config for 3 streams of **video-streaming** use case.
+
+Generate Multi-instance Config Using the Builder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If required, you can generate the multi-instance ``docker-compose.yml`` and ``config.json`` files using the Builder. You can use the ``-v`` or ``video_pipeline_instances`` flag of the Builder to generate boiler plate config for the multiple-stream use cases. The ``-v`` or ``video_pipeline_instances`` flag creates the multi-stream boiler plate config for the ``docker-compose.yml`` and ``eii_config.json`` files.
+
+The following example shows running builder to generate the multi-instance boiler plate config for 3 streams of video-streaming use case:
+
+.. code-block:: sh
+
+       python3 builder.py -v 3 -f usecases/video-streaming.yml
+
+Using the previous command for 3 instances, the ``build/multi_instance`` directory consists of the following directories
+
+
+* VideoIngestion1
+* VideoIngestion2
+* VideoIngestion3
+* VideoAnalytics1
+* VideoAnalytics2
+* VideoAnalytics3
+
+Initially each directory will have the default ``config.json`` and the ``docker-compose.yml`` files that are present within the ``VideoIngestion`` and the ``VideoAnalytics`` directories.
+
+.. code-block:: example
+
+       ./build/multi_instance/
+       |-- VideoAnalytics1
+       |   |-- config.json
+       |   `-- docker-compose.yml
+       |-- VideoAnalytics2
+       |   |-- config.json
+       |   `-- docker-compose.yml
+       |-- VideoAnalytics3
+       |   |-- config.json
+       |   `-- docker-compose.yml
+       |-- VideoIngestion1
+       |   |-- config.json
+       |   `-- docker-compose.yml
+       |-- VideoIngestion2
+       |   |-- config.json
+       |   `-- docker-compose.yml
+       `-- VideoIngestion3
+           |-- config.json
+           `-- docker-compose.yml
+
+ You can edit the config of each of these streams within the ``build/multi_instance`` directory. To generate the consolidated ``docker compose`` and ``eii_config.json`` file, rerun the ``builder.py`` command.
+
+.. note:: 
+
+
+   * The multi-instance feature support of Builder works only for the video pipeline i.e., **usecases/video-streaming.yml** use case alone and not with any other use case yml files like **usecases/video-streaming-storage.yml** and so on. Also, it doesn't work for cases without the ``-f`` switch. The previous example will work with any positive number for ``-v``. To learn more about using the multi-instance feature with the DiscoverHistory tool, see `Multi-instance feature support for the builder script with the DiscoverHistory tool <https://github.com/open-edge-insights/eii-tools/blob/master/DiscoverHistory/README.md#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool>`_.
+   * If you are running the multi-instance config for the first time, it is recommended not to change the default ``config.json`` file and the ``docker-compose.yml`` file in the ``VideoIngestion`` and ``VideoAnalytics`` directories.
+   * If you are not running the multi-instance config for the first time, the existing ``config.json`` and ``docker-compose.yml`` files in the ``build/multi_instance`` directory will be used to generate the consolidated ``eii-config.json`` and ``docker-compose`` files.
+   * The docker-compose.yml files present within the ``build/multi_instance`` directory will have the updated service_name, container_name, hostname, AppName, ports and secrets for that respective instance.
+   * The config.json file in the ``build/multi_instance`` directory will have the updated Name, Type, Topics, Endpoint, PublisherAppname, ServerAppName, and AllowedClients for the interfaces section and incremented RTSP port number for the config section of that respective instance.
+   * Ensure that all the containers are down before running the multi-instance configuration. Run the ``docker-compose down`` command before running ``builder.py`` for the multi-instance configuration.
+
+
+Generate Benchmarking Config Using Builder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Use the ``-d`` or the ``override_directory`` flag to provide a different set of ``docker-compose.yml`` and ``config.json`` files other than the existing files in every service directory. The ``-d`` or the ``override_directory`` flag indicates to search for the required set of files within a directory provided by the flag.
+
+For example, to pick files from a directory named benchmarking, you can run the following command:
+
+.. code-block:: sh
+
+        python3 builder.py -d benchmarking
+
+.. note:: 
+
+
+   * If you use the override directory feature of the builder then include all the 3 files mentioned in the previous example. If you do not include a file in the override directory, then the Builder will omit that service in the final config that is generated.
+   * Adding the ``AppName`` of the subscriber container or client container in the ``subscriber_list of builder_config.json`` allows you to spawn a single subscriber container or client container that is subscribing or receiving on multiple publishers or server containers.
+   * Multiple containers specified by the ``-v`` flag is spawned for services that are not mentioned in the ``subscriber_list``. For example, if you run Builder with ``–v 3`` option and ``Visualizer`` is not added in the ``subscriber_list`` of ``builder_config.json`` then 3 instances of Visualizer are spawned. Each instance subscribes to 3 VideoAnalytics services. If Visualizer is added in the ``subscriber_list`` of ``builder_config.json``\ , a single Visualizer instance subscribing to 3 multiple VideoAnalytics is spawned.
+
+
+Add the Open Edge Insights for Industrial Services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This section provides information about adding a new service, subscribing to the `VideoAnalytics <https://github.com/open-edge-insights/video-analytics>`_\ , and publishing it on a new port.
+Add a service to the Open EII stack as a new directory in the `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory. The Builder registers and runs any service present in its own directory in the `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory. The directory should contain the following:
+
+
+* A ``docker-compose.yml`` file to deploy the service as a docker container. The ``AppName`` is present in the ``environment`` section in the ``docker-compose.yml`` file. Before adding the ``AppName`` to the main ``build/eii_config.json``\ , it is appended to the ``config`` and ``interfaces`` as ``/AppName/config`` and ``/AppName/interfaces``.
+* A ``config.json`` file that contains the required config for the service to run after it is deployed. The ``config.json`` consists of the following:
+
+  * A ``config`` section, which includes the configuration-related parameters that are required to run the application.
+  * An ``interfaces`` section, which includes the configuration of how the service interacts with other services of the Open EII stack.
+
+.. note:: 
+   For more information on adding new Open EII services, refer to the Open EII sample apps at `Samples <https://github.com/open-edge-insights/eii-samples/blob/master/README.md>`_ written in C++, Python, and Golang using the Open EII core libraries.
+
+
+The following example shows:
+
+
+* How to write the **config.json** for any new service
+* Subscribe to **VideoAnalytics**
+* Publish on a new port
+
+.. code-block:: javascript
+
+       {
+           "config": {
+               "paramOne": "Value",
+               "paramTwo": [1, 2, 3],
+               "paramThree": 4000,
+               "paramFour": true
+           },
+           "interfaces": {
+               "Subscribers": [
+                   {
+                       "Name": "default",
+                       "Type": "zmq_tcp",
+                       "EndPoint": "127.0.0.1:65013",
+                       "PublisherAppName": "VideoAnalytics",
+                       "Topics": [
+                           "camera1_stream_results"
+                       ]
+                   }
+               ],
+               "Publishers": [
+                   {
+                       "Name": "default",
+                       "Type": "zmq_tcp",
+                       "EndPoint": "127.0.0.1:65113",
+                       "Topics": [
+                           "publish_stream"
+                       ],
+                       "AllowedClients": [
+                           "ClientOne",
+                           "ClientTwo",
+                           "ClientThree"
+                       ]
+                   }
+               ]
+           }
+       }
+
+The ``config.json`` file consists of the following key and values:
+
+
+* value of the ``config`` key is the config required by the service to run.
+* value of the ``interfaces`` key is the config required by the service to interact with other services of Open EII stack over the Message Bus.
+* the ``Subscribers`` value in the ``interfaces`` section denotes that this service should act as a subscriber to the stream being published by the value specified by ``PublisherAppName`` on the endpoint mentioned in value specified by ``EndPoint`` on topics specified in value of ``Topic`` key.
+* the ``Publishers`` value in the ``interfaces`` section denotes that this service publishes a stream of data after obtaining and processing it from ``VideoAnalytics``. The stream is published on the endpoint mentioned in value of ``EndPoint`` key on topics mentioned in the value of ``Topics`` key.
+* the services mentioned in the value of ``AllowedClients`` are the only clients that can subscribe to the published stream, if it is published securely over the Message Bus.
+
+.. note:: 
+
+
+   * Like the interface keys, Open EII services can also have ``Servers`` and ``Clients`` interface keys. For more information, refer `config.json <https://github.com/open-edge-insights/video-ingestion/blob/master/config.json>`_ of the ``VideoIngestion`` service and `config.json <https://github.com/open-edge-insights/eii-tools/blob/master/SWTriggerUtility/config.json>`_ of SWTriggerUtility tool.
+   * For more information on the ``interfaces`` key responsible for the Message Bus endpoint configuration, refer `common/libs/ConfigMgr/README.md#interfaces <https://github.com/open-edge-insights/eii-configmgr/blob/master/README.md#interfaces>`_.
+   * For the etcd secrets configuration, in the new Open EII service or app ``docker-compose.yml`` file, add the following volume mounts with the right ``AppName`` env value:
+
+   .. code-block:: yaml
+
+      ...
+       volumes:
+         - ./Certificates/[AppName]:/run/secrets/[AppName]:ro
+         - ./Certificates/rootca/cacert.pem:/run/secrets/rootca/cacert.pem:ro
+
+
+Distribute the Open Edge Insights for Industrial Container Images
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Open EII services are available as pre-built container images in the Docker Hub at https://hub.docker.com/u/openedgeinsights. To access the services that are not available in the Docker Hub, build from source before running the ``docker-compose up -d`` command.
+For example:
+
+.. code-block:: sh
+
+   # Update the DOCKER_REGISTRY value in [WORKDIR]/IEdgeInsights/build/.env as DOCKER_RESISTRY=<docker_registry> (Make sure `docker login <docker_registry>` to the docker registry works)
+   cd [WORKDIR]/IEdgeInsights/build
+   # Base images that need to be built
+   docker-compose -f docker-compose-build.yml build ia_eiibase
+   docker-compose -f docker-compose-build.yml build ia_common
+   # Assuming here that the `python3 builder.py` step has been executed and ia_kapacitor
+   # Service exists in the generated compose files
+   docker-compose -f docker-compose-build.yml build ia_kapacitor
+   docker-compose up -d
+   # Push all the applicable Open EII images to <docker_registry>. Ensure to use the same DOCKER_REGISTRY value on the deployment machine while deployment
+   docker-compose -f docker-compose-push.yml push
+
+The list of pre-built container images that are accessible at https://hub.docker.com/u/openedgeinsights is as follows:
+
+
+* **Provisioning images**
+
+  * openedgeinsights/ia_configmgr_agent
+
+* **Common Open EII images applicable for video and time series use cases**
+
+  * openedgeinsights/ia_etcd_ui
+  * openedgeinsights/ia_influxdbconnector
+  * openedgeinsights/ia_rest_export
+  * openedgeinsights/ia_opcua_export
+
+* **Video pipeline images**
+
+  * openedgeinsights/ia_video_ingestion
+  * openedgeinsights/ia_video_analytics
+  * openedgeinsights/ia_web_visualizer
+  * openedgeinsights/ia_visualizer
+  * openedgeinsights/ia_imagestore
+  * openedgeinsights/ia_azure_bridge
+  * openedgeinsights/ia_azure_simple_subscriber
+
+* **Time series pipeline images**
+
+  * openedgeinsights/ia_grafana
+  * openedgeinsights/ia_telegraf
+  * openedgeinsights/ia_kapacitor
+
+.. note:: 
+   Additionally, we have ``openedgeinsights/ia_edgeinsights_src`` image available at https://hub.docker.com/u/openedgeinsights which consists of source code of the GPL/LGPL/AGPL components of the Open EII stack.
+
+
+List of Open Edge Insights for Industrial Services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Based on requirement, you can include or exclude the following Open EII services in the ``[WORKDIR]/IEdgeInsights/build/docker-compose.yml`` file:
+
+
+* Provisioning Service - This service is a prerequisite and cannot be excluded from the ``docker-compose.yml`` file.
+
+  * `ConfigMgrAgent <https://github.com/open-edge-insights/eii-configmgr-agent/blob/master/README.md>`_
+
+* Common Open EII services
+
+  * `EtcdUI <https://github.com/open-edge-insights/eii-etcd-ui/blob/master/README.md>`_
+  * `InfluxDBConnector <https://github.com/open-edge-insights/eii-influxdb-connector/blob/master/README.md>`_
+  * `OpcuaExport <https://github.com/open-edge-insights/eii-opcua-export/blob/master/README.md>`_ - Optional service to read from the VideoAnalytics container to publish data to opcua clients.
+  * `RestDataExport <https://github.com/open-edge-insights/eii-rest-data-export/blob/master/README.md>`_ - Optional service to read the metadata and image blob from the InfluxDBConnector and ImageStore services respectively.
+
+* Video related services
+
+  * `VideoIngestion <https://github.com/open-edge-insights/video-ingestion/blob/master/README.md>`_
+  * `VideoAnalytics <https://github.com/open-edge-insights/video-analytics/blob/master/README.md>`_
+  * `Visualizer <https://github.com/open-edge-insights/video-native-visualizer/blob/master/README.md>`_
+  * `WebVisualizer <https://github.com/open-edge-insights/video-web-visualizer/blob/master/README.md>`_
+  * `ImageStore <https://github.com/open-edge-insights/video-imagestore/blob/master/README.md>`_
+  * `AzureBridge <https://github.com/open-edge-insights/eii-azure-bridge/blob/master/README.md>`_
+  * `FactoryControlApp <https://github.com/open-edge-insights/eii-factoryctrl/blob/master/README.md>`_ - Optional service to read from the VideoAnalytics container if you want to control the light based on the defective or non-defective data
+
+* Time series-related services
+
+  * `Telegraf <https://github.com/open-edge-insights/ts-telegraf/blob/master/README.md>`_
+  * `Kapacitor <https://github.com/open-edge-insights/ts-kapacitor/blob/master/README.md>`_
+  * `Grafana <https://github.com/open-edge-insights/ts-grafana/blob/master/README.md>`_
+  * `ZMQ Broker <https://github.com/open-edge-insights/eii-zmq-broker/blob/master/README.md>`_
+
+Task 4: Build and Run the Open Edge Insights for Industrial Video and Time Series Use Cases
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: 
+
+
+   * For running the Open EII services in the IPC mode, ensure that the same user is mentioned in the publisher services and subscriber services.
+   * If the publisher service is running as root such as ``VI``\ , ``VA``\ , then the subscriber service should also run as root. For example, in the ``docker-compose.yml``\ file, if you have specified ``user: ${EII_UID}`` in the publisher service, then specify the same ``user: ${EII_UID}`` in the subscriber service. If you have not specified a user in the publisher service, then don't specify the user in the subscriber service.
+   * If services need to be running in multiple nodes in the TCP mode of communication, msgbus subscribers, and clients of ``AppName`` are required to configure the "EndPoint" in ``config.json`` with the ``HOST_IP`` and the ``PORT`` under ``Subscribers/Publishers`` or ``Clients/Servers`` interfaces section.
+   * Ensure that the port is being exposed in the ``docker-compose.yml`` of the respective ``AppName``.
+     For example, if the ``"EndPoint": <HOST_IP>:65012`` is configured in the ``config.json`` file, then expose the port ``65012`` in the ``docker-compose.yml`` file of the ``ia_video_ingestion`` service.
+
+
+.. code-block:: yaml
+
+       ia_video_ingestion:
+         ...
+         ports:
+           - 65012:65012
+
+Run all the following Open EII build and commands from the ``[WORKDIR]/IEdgeInsights/build/`` directory.
+Open EII supports the following use cases to run the services mentioned in the ``docker_compose.yml`` file. Refer to Task 2 to generate the docker_compose.yml file based on a specific use case. For more information and configuration, refer to the ``[WORK_DIR]/IEdgeInsights/README.md`` file.
+
+Build the Open Edge Insights for Industrial Stack
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: 
+
+
+   * This is an optional step if you want to use the Open EII pre-built container images and don't want to build from source. For more details, refer: `Distribution of Open EII container images <#distribution-of-open-eii-container-images>`__
+   * Base Open EII services like ``ia_eiibase``\ , ``ia_video_common``\ , and so on, are needed only at the build time and not at the runtime.
+
+
+Run the following command to build all Open EII services in the ``build/docker-compose-build.yml`` along with the base Open EII services.
+
+.. code-block:: sh
+
+   docker-compose -f docker-compose-build.yml build
+
+If any of the services fails during the build, then run the following command to build the service again:
+
+.. code-block:: sh
+
+   docker-compose -f docker-compose-build.yml build --no-cache <service name>
+
+Run Open Edge Insights for Industrial Services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: 
+   Ensure to run ``docker-compose down`` from the `build <https://github.com/open-edge-insights/eii-core/blob/master/build>`_ directory before you bring up the Open EII stack. This helps to remove running containers and avoid any sync issues where other services have come up before ``ia_configmgr_agent`` container has completed the provisioning step.
+   If the images tagged with the ``EII_VERSION`` label, as in the `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ do not exist locally in the system but are available in the Docker Hub, then the images will be pulled during the ``docker-compose up``\ command.
+
+
+Open Edge Insights for Industrial Provisioning
+""""""""""""""""""""""""""""""""""""""""""""""
+
+The Open EII provisioning is taken care by the ``ia_configmgr_agent`` service that gets launched as part of the Open EII stack. For more details on the ConfigMgr Agent component, refer to the `Readme <https://github.com/open-edge-insights/eii-configmgr-agent/blob/master/README.md>`_.
+
+Start Open Edge Insights for Industrial in Dev Mode
+###################################################
+
+.. note:: 
+
+
+   * By default, Open EII is provisioned in the secure mode.
+   * It is recommended not to use Open EII in the Dev mode in a production environment. In the Dev mode, all security features, communication to and from the etcd server over the gRPC protocol, and the communication between the Open EII services/apps over the ZMQ protocol are disabled.
+   * By default, the Open EII empty certificates folder `Certificates <https://github.com/open-edge-insights/eii-core/blob/master/Certificates]>`_ will be created in the DEV mode. This happens because of docker bind mounts but it is not an issue.
+   * The ``EII_INSTALL_PATH`` in the `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ remains protected both in the DEV and the PROD mode with the Linux group permissions.
+
+
+Starting Open EII in the Dev mode eases the development phase for System Integrators (SI). In the Dev mode, all components communicate over non-encrypted channels. To enable the Dev mode, set the environment variable ``DEV_MODE`` to ``true`` in the ``[WORK_DIR]/IEdgeInsights/build/.env`` file. The default value of this variable is ``false``.
+
+To provision Open EII in the developer mode, complete the following steps:
+
+
+#. Update ``DEV_MODE=true`` in ``[WORK_DIR]/IEdgeInsights/build/.env``.
+#. Rerun the ``build/builder.py`` to regenerate the consolidated files.
+
+Start Open Edge Insights for Industrial in Profiling Mode
+#########################################################
+
+The Profiling mode is used for collecting the performance statistics in Open EII. In this mode, each Open EII component makes a record of the time needed for processing any single frame. These statistics are collected in the visualizer where System Integrators (SIs) can see the end-to-end processing time and the end-to-end average time for individual frames.
+
+To enable the Profiling mode, in the ``[WORK_DIR]/IEdgeInsights/build/.env`` file, set the environment variable ``PROFILING`` to ``true``.
+
+Run Provisioning Service and Rest of the Open Edge Insights for Industrial Stack Services
+#########################################################################################
+
+.. note:: 
+
+
+   * Use the `Etcd UI <https://github.com/open-edge-insights/eii-etcd-ui/blob/master/README.md>`_ to modify the service configs post starting the Open EII services.
+   * As seen in the `build/eii_start.sh <https://github.com/open-edge-insights/eii-core/blob/master/build/eii_start.sh>`_\ , Open EII provisioning and deployment happens in a 2 step process where you need to wait for the initialization of the provisioning container (\ ``ia_configmgr_agent``\ ) before bringing up the rest of the stack. Don't use commands like ``docker-compose restart`` as it will randomly restart all the services leading to issues. To restart any service, use command like ``docker-compose restart [container_name]`` or ``docker restart [container_name]``.
+
+
+.. code-block:: sh
+
+   # The optional TIMEOUT argument passed below is in seconds and if not provided it will wait
+   # till the "Provisioning is Done" message show up in `ia_configmgr_agent` logs before
+   # bringing up rest of the Open EII stack
+   cd [WORK_DIR]/IEdgeInsights/build
+   ./eii_start.sh [TIMEOUT]
+
+.. code-block:: sh
+
+   # To start the built-in visualizer service, run this command once in the terminal
+   xhost +
+
+On successful run, the Visualizer UI displays the results of video analytics for all video use cases.
+
+Push the Required Open Edge Insights for Industrial Images to Docker Registry
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: 
+   By default, if ``DOCKER_REGISTRY`` is empty in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ then the images are published to hub.docker.com. Ensure to remove ``openedgeinsights/`` org from the image names while pushing to Docker Hub. Repository names or image names with multiple slashes are not supported. This limitation doesn't exist in other docker registries like the Azure Container Registry (ACR), Harbor registry, and so on.
+
+
+Run the following command to push all the Open EII service docker images in the ``build/docker-compose-push.yml``. Ensure to update the ``DOCKER_REGISTRY`` value in the `.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ file.
+
+.. code-block:: sh
+
+   docker-compose -f docker-compose-push.yml push

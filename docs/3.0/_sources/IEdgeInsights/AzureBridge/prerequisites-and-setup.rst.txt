@@ -9,7 +9,7 @@ Setting up your system for a single-node deployment will be covered in the
 `Single-Node Azure IoT Edge Deployment <#single-node-azure-iot-edge-deployment>`__ section below.
 
 .. note::  When you deploy with Azure IoT Hub you will also need to configure
-   the Azure IoT Edge Runtime and OEI on your target device.
+   the Azure IoT Edge Runtime and Open EII on your target device.
 
 
 Azure Cloud Setup
@@ -20,7 +20,7 @@ which must be initialized.
 
 Primarily, you need an Azure Containter Registry instance, an Azure IoT Hub,
 as well as an Azure IoT Device. Additionally, if you wish to use the sample ONNX
-UDF in OEI to download a ML/DL model from AzureML, then you must follow a few
+UDF in Open EII to download a ML/DL model from AzureML, then you must follow a few
 steps to get this configured as well. For these steps, see the `Setting up AzureML <#setting-up-azureml>`__
 section below.
 
@@ -53,7 +53,7 @@ instructions below.
 Setting up AzureML
 ~~~~~~~~~~~~~~~~~~
 
-To use the sample OEI ONNX UDF, you must do the following:
+To use the sample Open EII ONNX UDF, you must do the following:
 
 
 #. Create an AzureML Workspace (see `these <https://docs.microsoft.com/en-us/azure/machine-learning/how-to-manage-workspace>`_
@@ -73,7 +73,7 @@ to the following:
 
 After executing this command you will see a JSON blob printed to your console
 window. Save the ``clientId``\ , ``clientSecret``\ , ``subscriptionId``\ , and ``tenantId``
-for configuring the sample ONNX OEI UDF later.
+for configuring the sample ONNX Open EII UDF later.
 
 Pushing a Model to AzureML
 """"""""""""""""""""""""""
@@ -94,7 +94,7 @@ Development System Setup
 The development system will be used for the following actions:
 
 
-* Building and pushing the OEI containers (including the bridge) to your Azure Container Registry
+* Building and pushing the Open EII containers (including the bridge) to your Azure Container Registry
 * Creating your Azure IoT Hub deployment manifest
 * Deploying your manifest to a single node
 
@@ -103,9 +103,9 @@ above, as well as being the device you use for your single-node deployment. This
 should not be done in a production environment, but it can be helpful when
 familiarizing yourself with the Azure Bridge.
 
-First, setup your system for building OEI. To do this, follow the instructions
-detailed in the main OEI README and the OEI User Guide. At the end, you should
-have installed Docker, Docker Compose, and other OEI Python dependencies for
+First, setup your system for building Open EII. To do this, follow the instructions
+detailed in the main Open EII README and the Open EII User Guide. At the end, you should
+have installed Docker, Docker Compose, and other Open EII Python dependencies for
 the Builder script in the ``../build/`` directory.
 
 Once this is completed, install the required components to user the Azure CLI
@@ -167,5 +167,5 @@ Next, login to your Azure Container Registry with the following command:
 **IMPORTANT NOTE:**
 
 Please see the list of supported services at the end of this README for the
-services which can be pushed to an ACR instance. Not all OEI services are
+services which can be pushed to an ACR instance. Not all Open EII services are
 supported by and validated to work with the Azure Bridge.

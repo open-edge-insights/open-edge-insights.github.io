@@ -7,6 +7,6 @@ Contents
 
   * `EmbPublisher <#embpublisher>`__
 
-    * `How to integrate this tool with video/timeseries use case <#how-to-integrate-this-tool-with-videotimeseries-use-case>`__
-    * `Configuration of the tool <#configuration-of-the-tool>`__
+    * `How to Integrate this Tool with Video/Time Series Use Case <#how-to-integrate-this-tool-with-videotime-series-use-case>`__
+    * `Configuration of the Tool <#configuration-of-the-tool>`__
     * `Running EmbPublisher in IPC mode <#running-embpublisher-in-ipc-mode>`__

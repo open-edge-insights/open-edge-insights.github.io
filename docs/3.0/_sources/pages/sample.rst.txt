@@ -1,5 +1,5 @@
-============
-OEI Samples
-============
+================
+Open EII Samples
+================
 
 .. include:: ../IEdgeInsights/Samples/README.rst

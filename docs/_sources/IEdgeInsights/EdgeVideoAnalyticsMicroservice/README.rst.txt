@@ -7,16 +7,16 @@ Contents
 
   * `Edge Video Analytics Microservice <#edge-video-analytics-microservice>`__
 
-    * `Build the base image <#build-the-base-image>`__
-    * `Run the base image <#run-the-base-image>`__
-    * `Run EVAM in OEI mode <#run-evam-in-oei-mode>`__
+    * `Build the Base Image <#build-the-base-image>`__
+    * `Run the Base Image <#run-the-base-image>`__
+    * `Run EVAM in Open EII Mode <#run-evam-in-open-eii-mode>`__
 
 Edge Video Analytics Microservice
 ---------------------------------
 
 This repository contains the source code for Edge Video Analytics Microservice (EVAM) used for the `Video Analytics Use Case <https://www.intel.com/content/www/us/en/developer/articles/technical/video-analytics-service.html>`_. For information on how to build the use case, refer to the `Get Started <https://www.intel.com/content/www/us/en/developer/articles/technical/video-analytics-service.html#inpage-nav-3>`_ guide.
 
-Build the base image
+Build the Base Image
 ^^^^^^^^^^^^^^^^^^^^
 
 Complete the following steps to build the base image:
@@ -32,7 +32,7 @@ Complete the following steps to build the base image:
 #. 
    If required, download the pre-built container image for Edge Video Analytics Microservice from `Docker Hub <https://hub.docker.com/r/intel/edge_video_analytics_microservice>`_.
 
-Run the base image
+Run the Base Image
 ^^^^^^^^^^^^^^^^^^
 
 Complete the following steps to run the base image:
@@ -81,7 +81,7 @@ Complete the following steps to run the base image:
 .. note::  For more details, refer to `Run the Edge Video Analytics Microservice <https://www.intel.com/content/www/us/en/developer/articles/technical/video-analytics-service.html#inpage-nav-3-1>`_.
 
 
-Run EVAM in OEI mode
-^^^^^^^^^^^^^^^^^^^^
+Run EVAM in Open EII Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To run EVAM in the OEI mode, refer to the `README <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/README.md>`_.
+To run EVAM in the Open EII mode, refer to the `README <https://github.com/open-edge-insights/edge-video-analytics-microservice/blob/master/eii/README.md>`_.

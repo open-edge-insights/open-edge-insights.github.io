@@ -7,7 +7,7 @@ Contents
 
   * `Software Trigger Utility for VideoIngestion Module <#software-trigger-utility-for-videoingestion-module>`__
 
-    * `Software Trigger Utilily pre-requisites <#software-trigger-utilily-pre-requisites>`__
+    * `Software Trigger Utilily Prerequisites <#software-trigger-utilily-prerequisites>`__
     * `Configuration file <#configuration-file>`__
     * `Running Software Trigger Utility <#running-softwaretriggerutility>`__
     * `Usage of Software Trigger Utility <#usageofsoftwaretriggerutility>`__
@@ -22,13 +22,13 @@ This utility is used for invoking various software trigger features of VideoInge
 #. STOP_INGESTION - to stop the ingestor
 #. SNAPSHOT - to get frame snapshot which feeds one only frame into the video data pipeline.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
-Software Trigger Utilily pre-requisites
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Software Trigger Utilily Prerequisites
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-SWTriggerUtility expects a set of config, interfaces & public private keys to be present in ETCD as a pre-requisite.
+SWTriggerUtility expects a set of config, interfaces & public private keys to be present in ETCD as a prerequisite.
 
 To achieve this, please ensure an entry for SWTriggerUtility with its relative path from `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory is set in any of the .yml files present in `IEdgeInsights <https://github.com/open-edge-insights/>`_ directory.
 
@@ -97,7 +97,7 @@ Running Software Trigger Utility
 
 
 #. 
-   OEI services can be running in prod or dev mode by setting ``DEV_MODE`` value accordingly in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_
+   Open EII services can be running in prod or dev mode by setting ``DEV_MODE`` value accordingly in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_
 
 #. 
    Execute builder.py script:

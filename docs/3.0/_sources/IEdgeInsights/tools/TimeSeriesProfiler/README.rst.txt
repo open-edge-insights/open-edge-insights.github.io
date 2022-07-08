@@ -5,18 +5,18 @@ Contents
 
 * `Contents <#contents>`__
 
-  * `OEI TimeSeriesProfiler <#oei-timeseriesprofiler>`__
+  * `Open EII TimeSeriesProfiler <#open-eii-timeseriesprofiler>`__
 
     * `Prerequisites <#prerequisites>`__
-    * `OEI TimeSeriesProfiler modes <#oei-timeseriesprofiler-modes>`__
-    * `OEI TimeSeriesProfiler configurations <#oei-timeseriesprofiler-configurations>`__
+    * `Open EII TimeSeriesProfiler modes <#open-eii-timeseriesprofiler-modes>`__
+    * `Open EII TimeSeriesProfiler configurations <#open-eii-timeseriesprofiler-configurations>`__
     * `Running TimeSeriesProfiler <#running-timeseriesprofiler>`__
 
-OEI TimeSeriesProfiler
-----------------------
+Open EII TimeSeriesProfiler
+---------------------------
 
 
-#. This module calculates the SPS(samples per second) of any OEI time-series modules based on the stream published by that respective module.
+#. This module calculates the SPS(samples per second) of any Open EII time-series modules based on the stream published by that respective module.
 #. 
    This module calculates the average e2e time for every sample data to process and it's breakup. The e2e time end to end time required
    for a metric from mqtt-publisher to TimeSeriesProfiler (mqtt-publisher->telegraf->influx->kapacitor->influx->influxdbconnector->
@@ -24,7 +24,7 @@ OEI TimeSeriesProfiler
 
    ..
 
-      **Note:** In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+      **Note:** In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 Prerequisites
@@ -51,17 +51,17 @@ Prerequisites
 
            python3 builder.py -f ./usecases/time-series.yml
 
-OEI TimeSeriesProfiler modes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open EII TimeSeriesProfiler modes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default the OEI TimeSeriesProfiler supports two modes, which are 'sps' & 'monitor' mode.
+By default the Open EII TimeSeriesProfiler supports two modes, which are 'sps' & 'monitor' mode.
 
 
 #. 
    SPS mode
 
    Enabled by setting the 'mode' key in `config <https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json>`_ to 'sps', this mode calculates the samples
-   per second of any OEI module by subscribing to that module's respective stream.
+   per second of any Open EII module by subscribing to that module's respective stream.
 
    .. code-block:: sh
 
@@ -105,8 +105,8 @@ By default the OEI TimeSeriesProfiler supports two modes, which are 'sps' & 'mon
    * For running TimeSeriesProfiler in SPS mode, it is recommended to keep PROFILING_MODE set to false in `.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_ for better performance.
 
 
-OEI TimeSeriesProfiler configurations
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open EII TimeSeriesProfiler configurations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 #. 
@@ -247,7 +247,7 @@ Running TimeSeriesProfiler
          }
 
 #. 
-   Refer `README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ to provision, build and run the tool along with the OEI time-series recipe/stack.
+   Refer `README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ to provision, build and run the tool along with the Open EII time-series recipe/stack.
 
 #. 
    Run the following command to see the logs:

@@ -19,7 +19,7 @@ For more information on how to write and modify an OpenCV UDF, refer to the `ope
 
 
    * Custom UDFs like the ``GVASafetyGearIngestion`` are specific to certain use cases only. Do not use Jupyter Notebook with these custom UDFs. Instead, modify the ``VideoIngestion`` pipeline to use the ``GVA ingestor`` pipeline and modify the config to use the ``jupyter_connector UDF``.
-   * In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+   * In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 Prerequisites for using Jupyter Notebooks
@@ -87,7 +87,7 @@ Perform the following steps to develop UDF using the Jupyter Notebook from a web
            python3 builder.py -f usecases/video-streaming.yml
 
 #. 
-   Refer the `IEdgeInsights/README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ to provision, build and run the tool along with the OEI recipe or stack.
+   Refer the `IEdgeInsights/README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ to provision, build and run the tool along with the Open EII recipe or stack.
 
 #. 
    To see the logs, run the following command:
@@ -151,7 +151,7 @@ Perform the following steps to use Visual Studio Code (VS Code) to develop a UDF
            python3 builder.py -f usecases/video-streaming.yml
 
 #. 
-   Refer the `IEdgeInsights/README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ to provision, build and run the tool along with the OEI recipe or stack.
+   Refer the `IEdgeInsights/README.md <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_ to provision, build and run the tool along with the Open EII recipe or stack.
 
 #. 
    To see the logs, run the following command:

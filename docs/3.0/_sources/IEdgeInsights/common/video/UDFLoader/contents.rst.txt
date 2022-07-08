@@ -5,7 +5,7 @@ Contents
 
 * `Contents <#contents>`__
 
-  * `OEI UDFLoader <#oei-udfloader>`__
+  * `Open EII UDFLoader <#open-eii-udfloader>`__
   * `Dependency Installation <#dependency-installation>`__
   * `Compilation <#compilation>`__
   * `Installation <#installation>`__

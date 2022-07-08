@@ -7,6 +7,6 @@ Contents
 
   * `Edge Video Analytics Microservice <#edge-video-analytics-microservice>`__
 
-    * `Build the base image <#build-the-base-image>`__
-    * `Run the base image <#run-the-base-image>`__
-    * `Run EVAM in OEI mode <#run-evam-in-oei-mode>`__
+    * `Build the Base Image <#build-the-base-image>`__
+    * `Run the Base Image <#run-the-base-image>`__
+    * `Run EVAM in Open EII Mode <#run-evam-in-open-eii-mode>`__

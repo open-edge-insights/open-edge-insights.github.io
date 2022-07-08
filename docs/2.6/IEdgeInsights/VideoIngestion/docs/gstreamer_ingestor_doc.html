@@ -47,7 +47,7 @@
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>
@@ -183,11 +183,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id3">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id2">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id4">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id3">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -195,7 +195,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id5">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id4">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -491,12 +491,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the Builder script with the DiscoverHistory tool</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#about-tool">About tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#eii-pre-requisites">EII pre-requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-embsubscriber">Running EmbSubscriber</a></li>
@@ -512,7 +510,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#httptestserver">HttpTestServer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#pre-requisites-for-running-the-httptestserver">Pre-requisites for running the HttpTestServer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#starting-httptestserver">Starting HttpTestServer</a></li>
 </ul>
@@ -549,6 +547,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-video-profiler">Running Video Profiler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#pre-requisites">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -655,10 +657,10 @@ media decoders (like in Xeon m/c) it is recommended to use <code class="docutils
 <li><p><code class="docutils literal notranslate"><span class="pre">poll_interval</span></code> key is not applicable for <code class="docutils literal notranslate"><span class="pre">gstreamer</span></code> ingestor. Refer the usage of <code class="docutils literal notranslate"><span class="pre">videorate</span></code> element in the below section to control the framerate in case of <code class="docutils literal notranslate"><span class="pre">gstreamer</span></code> ingestor.</p></li>
 <li><p>In case one wants to reduce the ingestion rate with <code class="docutils literal notranslate"><span class="pre">gstreamer</span></code> ingestor the <code class="docutils literal notranslate"><span class="pre">videorate</span></code> element can be used to control the framerate in the gstreamer pipeline.</p>
 <p><strong>Example pipeline to use the ``videorate`` element</strong>:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-<span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
-<span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;multifilesrc loop=TRUE stop-index=0 location=./test_videos/pcb_d2000.avi ! h264parse ! decodebin ! videoconvert ! video/x-raw,format=BGR ! videorate ! video/x-raw,framerate=5/1 ! appsink&quot;</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;multifilesrc loop=TRUE stop-index=0 location=./test_videos/pcb_d2000.avi ! h264parse ! decodebin ! videoconvert ! video/x-raw,format=BGR ! videorate ! video/x-raw,framerate=5/1 ! appsink&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <blockquote>
@@ -669,10 +671,10 @@ media decoders (like in Xeon m/c) it is recommended to use <code class="docutils
 </li>
 <li><p>In case of extended run with gstreamer ingestor one can consider the properties of <code class="docutils literal notranslate"><span class="pre">appsink</span></code> element such as <code class="docutils literal notranslate"><span class="pre">max-buffers</span></code> and <code class="docutils literal notranslate"><span class="pre">drop</span></code> to overcome issues like ingestion of frames getting blocked. The <code class="docutils literal notranslate"><span class="pre">appsink</span></code> element internally uses a queue to collect buffers from the streaming thread. The <code class="docutils literal notranslate"><span class="pre">max-buffers</span></code> property can be used to limit the queue size. The <code class="docutils literal notranslate"><span class="pre">drop</span></code> property is used to specify whether to block the streaming thread or to drop the old buffers when maximum size of queue is reached.</p>
 <p><strong>Example pipline to use ``max-buffers`` and ``drop`` properties of ``appsink`` element</strong>:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;rtspsrc location=\&quot;rtsp://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;RTSP_CAMERA_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! videoconvert ! video/x-raw,format=BGR ! appsink max-buffers=10 drop=TRUE&quot;</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;rtspsrc location=\&quot;rtsp://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;RTSP_CAMERA_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! videoconvert ! video/x-raw,format=BGR ! appsink max-buffers=10 drop=TRUE&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <blockquote>
@@ -681,10 +683,10 @@ media decoders (like in Xeon m/c) it is recommended to use <code class="docutils
 </li>
 <li><p>In case one notices the VideoIngestion not publishing any frames when working with GVA use case the <code class="docutils literal notranslate"><span class="pre">queue</span></code> element of Gstramer can be used to limit the     max size of the buffers and the upstreaming/downstreaming can be set to leak to drop the buffers</p>
 <p><strong>Example pipeline to use the ``queue`` element</strong>:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-  <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span>
-  <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;rtspsrc location=\&quot;rtsp://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;RTSP_CAMERA_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! queue max-size-buffers=10 leaky=downstream ! gvadetect model=&lt;DETECTION_MODEL&gt; ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span><span class="p">,</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;gstreamer&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;rtspsrc location=\&quot;rtsp://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;RTSP_CAMERA_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;\&quot; latency=100 ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx ! queue max-size-buffers=10 leaky=downstream ! gvadetect model=&lt;DETECTION_MODEL&gt; ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>For more information reagarding the queue element refer the below link:
@@ -717,7 +719,7 @@ https://gstreamer.freedesktop.org/documentation/tutorials/basic/debugging-tools.
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+    <p>&#169; Copyright (c) 2022 Intel Corporation.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
@@ -733,7 +735,7 @@ https://gstreamer.freedesktop.org/documentation/tutorials/basic/debugging-tools.
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>

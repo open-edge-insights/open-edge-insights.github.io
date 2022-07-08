@@ -7,7 +7,7 @@ Contents
 
   * `Web Visualizer Module <#web-visualizer-module>`__
 
-    * `Steps to build and run web visualizer <#steps-to-build-and-run-web-visualizer>`__
+    * `Steps to Build and Run Web Visualizer <#steps-to-build-and-run-web-visualizer>`__
     * `Using Labels <#using-labels>`__
 
       * `Metadata Structure <#metadata-structure>`__

@@ -8,7 +8,7 @@ Complete the following steps to run Grafana:
 
 
 #. Open the `docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/docker-compose.yml>`_ file.
-#. In the ``docker-compose.yml``\ , uncomment ia_grafana.
+#. In the ``docker-compose.yml`` file, uncomment ``ia_grafana``.
 #. Check if the ``ia_influxdbconnector``\ , ``ia_kapacitor``\ , and ``ia_telegraph`` services are running for the time-series data.
 #. Check if the `publisher <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/publisher_temp.sh>`_ service is running.
 #. Run the ``docker-compose build`` command to build image.
@@ -37,7 +37,7 @@ To run Grafana in the PROD mode, import ``cacert.pem`` from the ``build/Certific
 #. Select the **cacert.pem** file.
 #. Select all checkboxes and then, click **Import**.
 
-Run Grafana in the DEV mode
+Run Grafana in the DEV Mode
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To run Grafana in the DEV mode, complete the following steps:
@@ -50,3 +50,50 @@ To run Grafana in the DEV mode, complete the following steps:
 #. From the list of preconfigured dashboards, click **Point_Data_Dashboard**.
 #. Click **Panel Title** and then, select **Edit**.
 #. On the **Point_Data_Dashboard** page, if required make modifications to the query.
+
+Execute Queries
+^^^^^^^^^^^^^^^
+
+On the ``Point_Data_Dashboard``\ , the green spikes visible in the graph are the results of the default query. To run queries, perform the following steps:
+
+
+#. 
+   In the **FROM** section of query, click **default_classifier_results**. A list is displayed with the name of measurements present in InfluxDB.
+
+   ..
+
+      **Note:** If any other measurement is set the graph will switch to the measurement query results.
+      By default, the **FROM** section will have **default point_classifier_results WHERE +**.
+
+
+#. 
+   In the **SELECT** section, click **temperature**. A list will display the fields tags present in the schema of the measurements set in the **FROM** section.
+
+   ..
+
+      **Note:** By default the **SELECT** section will have **field(temperature) mean() +**.
+      The graph will change according to the values you select.
+
+
+Run Grafana for Video Use Cases
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Perform the following steps to run Grafana for a video use case:
+
+
+#. Ensure that the endpoint of the publisher, that you want to subscribe to, is mentioned in the **Subscribers** section of the `config <https://github.com/open-edge-insights/ts-grafana/blob/master/config.json>`_ file.
+#. On the **Home Dashboard** page, on the left corner, click the Dashboards icon.
+#. Click the **Manage Dashboards** tab, to view the list of all the preconfigured dashboards.
+#. Select **Open EII Video and Time Series Dashboard**\ , to view multiple panels with topic names of the subscriber as the panel names along with a time-series panel named ``Time Series``.
+#. Hover over the topic name. The panel title will display multiple options.
+#. Click **View** to view the subscribed frames for each topic.
+
+.. note:: 
+
+
+   #. The only supported browser for Grafana support for video use case is **Google Chrome**.
+   #. Changing gridPos for the video frame panels is prohibited since these values are altered internally to support multi instance.
+   #. Grafana does not support visualization for GVA, CustomUDF streams
+   #. Grafana currently supports running a maximum number of **12 streams** only.
+   #. Helm chart for Grafana video use case is not supported.
+

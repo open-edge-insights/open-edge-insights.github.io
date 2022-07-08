@@ -1,2 +1,2 @@
 
-Python binding for the EII Message Bus.
+Python binding for the Open EII Message Bus.

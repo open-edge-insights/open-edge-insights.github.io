@@ -13,7 +13,7 @@ Contents
 Introduction to samples of multiple UDFs in a single task and multiple tasks with single UDF
 --------------------------------------------------------------------------------------------
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 Implementation of 2 simple examples to showcase the use of a single task with multiple UDFs and multiple tasks with single UDF in Kapacitor.
@@ -45,9 +45,9 @@ Steps to run the samples
 
 
   #. 
-     Copy the sample `config <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config>`_ or `config <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config>`_ files based on prod or dev mode configuration of OEI in the `config <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config>`_ directory.
+     Copy the sample `config <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config>`_ or `config <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config>`_ files based on prod or dev mode configuration of Open EII in the `config <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config>`_ directory.
 
-     .. code-block::
+     .. code-block:: sh
 
         cp kapacitor_config/kapacitor.conf kapacitor_config/kapacitor_devmode.conf ../config/
 
@@ -89,7 +89,7 @@ Steps to run the samples
 
 
   #. 
-     Please go through the below sections to bring up OEI stack:
+     Please go through the below sections to bring up Open EII stack:
 
 
      * `../README.md#generate-deployment-and-configuration-files <https://github.com/open-edge-insights/eii-core/blob/master/README.md#generate-deployment-and-configuration-files>`_

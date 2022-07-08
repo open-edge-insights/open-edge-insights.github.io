@@ -5,55 +5,55 @@ Contents
 
 * `Contents <#contents>`__
 
-  * `How-To guide for writing UDF for OEI <#how-to-guide-for-writing-udf-for-oei>`__
+  * `How-To Guide for Writing UDF <#how-to-guide-for-writing-udf>`__
   * `Introduction <#introduction>`__
-  * `Steps for writing native(c++) UDFs <#steps-for-writing-nativec-udfs>`__
+  * `Steps for Writing Native (C++) UDFs <#steps-for-writing-native-c-udfs>`__
 
-    * `OEI APIs for Writing Native UDFs (C++) <#oei-apis-for-writing-native-udfs-c>`__
-    * `OEI APIs for Writing Raw Native UDFs(c++) for Multi Frame Support <#oei-apis-for-writing-raw-native-udfsc-for-multi-frame-support>`__
-    * `OEI Infrastructure Related Changes <#oei-infrastructure-related-changes>`__
+    * `Open EII APIs for Writing Native UDFs (C++) <#open-eii-apis-for-writing-native-udfs-c>`__
+    * `Open EII APIs for Writing Raw Native UDFs(c++) for Multi Frame Support <#open-eii-apis-for-writing-raw-native-udfsc-for-multi-frame-support>`__
+    * `Open EII Infrastructure Related Changes <#open-eii-infrastructure-related-changes>`__
 
-  * `Steps for writing Python UDFs <#steps-for-writing-python-udfs>`__
+  * `Steps for Writing Python UDFs <#steps-for-writing-python-udfs>`__
 
-    * `Python APIs for writing UDF for OEI <#python-apis-for-writing-udf-for-oei>`__
-    * `OEI Infrastructure changes <#oei-infrastructure-changes>`__
+    * `Python APIs for writing UDF for Open EII <#python-apis-for-writing-udf-for-open-eii>`__
+    * `Open EII Infrastructure Changes <#open-eii-infrastructure-changes>`__
     * `Conclusion <#conclusion>`__
 
-How-To guide for writing UDF for OEI
-------------------------------------
+How-To Guide for Writing UDF
+----------------------------
 
-This document describes stepwise instruction for writing a User defined Function(UDF) in C++/Python in order to make it deployable in OEI environment. It  explains APIs and configurational changes required in order to write an UDF for OEI.
+This document describes stepwise instruction for writing a User defined Function (UDF) in C++/Python to make it deployable in the Open Edge Insights for Industrial (Open EII) environment. It explains APIs and configurational changes required in order to write an UDF for Open EII.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open EII. This is due to the product name change of EII as Open EII.
 
 
 Introduction
 ------------
 
-UDFs(User Defined Function) are one of the cardinal feature of OEI framework. It enables users to adjoin any pre-processing or post-processing logic in data pipeline defined by OEI configuration. As of OEI 2.1 release, it supports UDFs to be implemented using following languages.
+UDFs(User Defined Function) are one of the cardinal feature of Open EII framework. It enables users to adjoin any pre-processing or post-processing logic in data pipeline defined by Open EII configuration. As of Open EII 2.1 release, it supports UDFs to be implemented using following languages.
 
 
-* C++  (It is also called **Native** UDF as OEI core components are implemented in C++)
+* C++  (It is also called **Native** UDF as Open EII core components are implemented in C++)
 * Python
 
-The order in which the UDFs are defined in OEI configuration file is the order in which data will flow across them. Currently there is no support for demux/mux the data flow to/fro the UDFs.
+The order in which the UDFs are defined in Open EII configuration file is the order in which data will flow across them. Currently there is no support for demux/mux the data flow to/fro the UDFs.
 
 All configs related to UDFs are to be in ``config.json`` of apps like VideoIngestion and VideoAnalytics.The UDF schema and description about keys/values in it presented in detail in the `UDF README <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_ file.
 
-Steps for writing native(c++) UDFs
-----------------------------------
+Steps for Writing Native (C++) UDFs
+-----------------------------------
 
 Every UDF writing has two major part to it.
 
 
 * 
-  Writing actual pre/post processing logic using OEI exposed APIs.
+  Writing actual pre/post processing logic using Open EII exposed APIs.
 
 * 
-  Adding OEI infra specific configuration component for deploying it
+  Adding Open EII infra specific configuration component for deploying it
 
-OEI APIs for Writing Native UDFs (C++)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open EII APIs for Writing Native UDFs (C++)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are three APIs defined semantically to add the pre/post processing logic. These APIs must be implemented as method of a user defined class inherited from the Udf class named **\ *BaseUdf*\ **.
 
@@ -128,8 +128,8 @@ There are three APIs defined semantically to add the pre/post processing logic. 
 
 ----
 
-OEI APIs for Writing Raw Native UDFs(c++) for Multi Frame Support
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open EII APIs for Writing Raw Native UDFs(c++) for Multi Frame Support
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are three APIs defined semantically to add the pre/post processing logic. These APIs must be implemented as method of a user defined class inherited from the Udf class named **\ *RawUdf*\ **.
 
@@ -195,8 +195,8 @@ There are three APIs defined semantically to add the pre/post processing logic. 
 
   The **"RealSenseUdf"** is the class name of the user defined custom UDF.
 
-OEI Infrastructure Related Changes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open EII Infrastructure Related Changes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section describes the check-list one has to ensure to be completed before exercising C++ UDF.
 
@@ -215,22 +215,22 @@ This section describes the check-list one has to ensure to be completed before e
    If the OpenVINO is used kindly follow the `safety_gear_demo <https://github.com/open-edge-insights/eii-core/blob/master/safety_gear_demo>`_ example for proper linking of  **cpu_extension.so** shared object.
 
 #. 
-   An appropriate entry must exist for each UDF that need to be loaded as part of OEI deployment. The UDF entry syntax is explained in detail in the following document `UDF README <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_
+   An appropriate entry must exist for each UDF that need to be loaded as part of Open EII deployment. The UDF entry syntax is explained in detail in the following document `UDF README <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_
 
-Steps for writing Python UDFs
+Steps for Writing Python UDFs
 -----------------------------
 
 This section describes the process of writing a Python UDF. As discussed in the aforementioned scenario, it also has two aspects to it.
 
 
 * 
-  Writing the actual UDF. It needs knowledge OEI exposed python APIs
+  Writing the actual UDF. It needs knowledge Open EII exposed python APIs
 
 * 
-  Adding the UDF to OEI framework by altering different configs.
+  Adding the UDF to Open EII framework by altering different configs.
 
-Python APIs for writing UDF for OEI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Python APIs for writing UDF for Open EII
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 * 
@@ -287,10 +287,10 @@ For reference user can find example UDFs code in below mentioned links
 * 
   `Dummy UDF <https://github.com/open-edge-insights/video-common/blob/master/udfs/python/dummy.py>`_
 
-OEI Infrastructure changes
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Open EII Infrastructure Changes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For any UDF to be utilized by the OEI infrastructure, user must follow the below steps.
+For any UDF to be utilized by the Open EII infrastructure, user must follow the below steps.
 
 
 * 

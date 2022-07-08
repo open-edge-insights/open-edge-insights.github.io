@@ -2,7 +2,7 @@
 Installation
 ------------
 
-.. note::  This is a mandatory step to use this library in C/C++ OEI modules.
+.. note::  This is a mandatory step to use this library in C/C++ Open EII modules.
 
 
 If you wish to install this library on your system, execute the

@@ -1,0 +1,6 @@
+
+Downloading Models
+==================
+
+The model downloader can be run either as a standalone tool or as part
+of the Video Analytics Serving build process.

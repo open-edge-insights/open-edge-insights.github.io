@@ -5,14 +5,14 @@ Contents
 
 * `Contents <#contents>`__
 
-  * `OEI UDFLoader <#oei-udfloader>`__
+  * `Open EII UDFLoader <#open-eii-udfloader>`__
   * `Dependency Installation <#dependency-installation>`__
   * `Compilation <#compilation>`__
   * `Installation <#installation>`__
   * `Running Unit Tests <#running-unit-tests>`__
 
-OEI UDFLoader
--------------
+Open EII UDFLoader
+------------------
 
 UDFLoader is a library providing APIs for loading and executing native and python UDFs.
 
@@ -23,15 +23,14 @@ UDFLoader depends on the below libraries. Follow their documentation to install 
 
 
 * OpenCV - Run ``source /opt/intel/openvino/bin/setupvars.sh`` command
-* `OEIUtils <https://github.com/open-edge-insights/eii-c-utils/blob/master/README.md>`_
+* `OpenEII Utils <https://github.com/open-edge-insights/eii-c-utils/blob/master/README.md>`_
 * `IntelSafeString <https://github.com/open-edge-insights/eii-c-utils/blob/master/IntelSafeString/README.md>`_
 * Python3 Numpy package
 
 Compilation
 -----------
 
-Utilizes CMake as the build tool for compiling the library. The simplest sequence of commands for building the library are
-shown below.
+Utilizes CMake as the build tool for compiling the library. The simplest sequence of commands for building the library are shown below.
 
 .. code-block:: sh
 
@@ -40,9 +39,7 @@ shown below.
    cmake ..
    make
 
-If you wish to compile in debug mode, then you can set
-the ``CMAKE_BUILD_TYPE`` to ``Debug`` when executing the ``cmake`` command (as shown
-below).
+If you wish to compile in debug mode, then you can set the ``CMAKE_BUILD_TYPE`` to ``Debug`` when executing the ``cmake`` command (as shown below).
 
 .. code-block:: sh
 
@@ -51,7 +48,7 @@ below).
 Installation
 ------------
 
-.. note::  This is a mandatory step to use this library in C/C++ OEI modules.
+.. note::  This is a mandatory step to use this library in C/C++ Open EII modules.
 
 
 If you wish to install this library on your system, execute the

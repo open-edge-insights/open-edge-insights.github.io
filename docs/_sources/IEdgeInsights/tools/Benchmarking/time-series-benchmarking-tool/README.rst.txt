@@ -10,10 +10,10 @@ Contents
 Time Series Benchmarking Tool
 -----------------------------
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
-These scripts are designed to automate the running of benchmarking tests and the collection of the performance data. This performance data includes the Average Stats of each data stream, and also the CPU%, Memory%, and Memory Read/Write bandwidth.
+These scripts are designed to automate the running of benchmarking tests and the collection of the performance data. This performance data includes the Average Stats of each data stream, and also the CPU %, Memory %, and Memory read/write bandwidth.
 
 The Processor Counter Monitor (PCM) is required for measuring memory read/write bandwidth, which can be downloaded and built `here <https://github.com/opcm/pcm>`_
 
@@ -54,7 +54,7 @@ Steps for running a benchmarking test case:
        PORT      - MQTT broker port
        SLEEP     - The number of seconds to wait after the containers come up
        PCM_HOME  - The absolute path to the PCM repository where pcm.x is built
-       [EII_HOME] - [Optional] Absolut path to OEI home directory, if running from a non-default location
+       [EII_HOME] - [Optional] Absolute path to Open EII home directory, if running from a non-default location
 
    For example:
 

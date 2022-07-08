@@ -2,18 +2,14 @@
 Publish/Subscribe Tutorial
 ==========================
 
-The following tutorial will cover how to do publish/subscribe messaging using
-the Message Bus. The outcome of this tutorial will be two Python scripts,
-one of which will publish messages and the other which will subscribe to
-messages.
+The following tutorial will cover how to publish/subscribe messaging using the Message bus. The outcome of this tutorial will be two Python scripts. One script will publish messages and the other will subscribe to messages.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights. This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
-To start, we will create a script named, ``publisher.py``. To start, we will
-add a few necessary imports which will be utilized later in the tutorial.
+To start, we will create a script named, ``publisher.py``. To start, we will add a few necessary imports that will be utilized later in the tutorial.
 
-.. code-block:: python
+.. code-block:: Python
 
    import os
    import time
@@ -21,14 +17,12 @@ add a few necessary imports which will be utilized later in the tutorial.
    import argparse
    import eii.msgbus as mb
 
-The last line of the imports above is where we import the Message Bus
-Python binding, which for sake of clarity will be referenced as ``mb`` in all
-of the code to follow.
+.. note:: \ ``import eii.msgbus as mb`` imports the Message bus Python binding, which is be referenced as ``mb`` in all of the code to follow.
 
-Next, we will add some more boilerplate code for parsing command line
-arguments.
 
-.. code-block:: python
+Next, we will add some more boilerplate code for parsing the command-line arguments.
+
+.. code-block:: Python
 
    # Argument parsing
    ap = argparse.ArgumentParser()
@@ -36,48 +30,36 @@ arguments.
    ap.add_argument('-t', '--topic', default='publish_test', help='Topic')
    args = ap.parse_args()
 
-The code above initializes an ``argparse.ArgumentParser()`` object to parse
-the incoming command line arguments. The arguments for the publisher will be
-one positional argument, ``config``\ , which will be the pointer to a JSON
-file configuration for the message bus, and one optional argument, ``--topic``\ ,
+The boilerplate code initializes an ``argparse.ArgumentParser()`` object to parse the incoming command-line arguments. The arguments for the publisher will be
+one positional argument, ``config``\ , which will be the pointer to a JSON file configuration for the message bus, and one optional argument, ``--topic``\ ,
 which will give us the topic string under which to publish messages.
 
-It is important to note at this point that a JSON configuration is going to be
-used for the publisher, however, this is not required of an application using
-the Python binding. The Message Bus Python API requires that a Python
-``dict`` object be used to configure the bus. For ease of use, JSON has been
-used in this example.
+Note that at this point a JSON configuration is going to be used for the publisher, however, this is not required of an application using the Python binding. The Message bus Python API requires that a Python ``dict`` object is used to configure the bus. For ease of use, JSON has been used in this example.
 
-Next we will load our configuration Python dictionary from the given JSON file.
+Next, we will load our configuration Python dictionary from the given JSON file.
 
 .. code-block:: python
 
    with open(args.config, 'r') as f:
        config = json.load(f)
 
-Next we will initialize our message bus context object.
+Next, we will initialize our message bus context object.
 
 .. code-block:: python
 
    print('[INFO] Initializing message bus context')
    msgbus = mb.MsgbusContext(config)
 
-The message bus context object is the object that will be used for initializing
-all of the publisher, subscribers, services, and service requesters in your
-application. However, what you are able to initialize via the context is
-dependent on the configuration used during initialization.
+The Message bus context object initializes all of the publisher, subscribers, services, and service requesters in your application. However, what you can initialize via the context depends on the configuration of initialization.
 
-Now, lets initailize our publisher.
+Now, let's initialize publisher.
 
 .. code-block:: python
 
    print(f'[INFO] Initializing publisher for topic \'{args.topic}\'')
    publisher = msgbus.new_publisher(args.topic)
 
-The message bus context object contains a method called, ``new_publisher()``.
-This method creates a new publisher object for the topic it is given. Once
-this publisher object is obtained, the application can start publishing
-messages (as shown below).
+The Message bus context object contains a method called, ``new_publisher()``. This method creates a new publisher object for the topic it is given. After the publisher object is obtained, the application can start publishing messages as follows
 
 .. code-block:: python
 
@@ -86,23 +68,16 @@ messages (as shown below).
        publisher.publish(({'hello': 123}, b'HELLO',))
        time.sleep(1)
 
-The ``publisher.publish()`` method called above publishes the given values on the
-topic given during the ``new_publisher()`` call. The ``publish()`` method can be
-called one of three ways:
+The ``publisher.publish()`` method called above publishes the given values on the topic given during the ``new_publisher()`` call. The ``publish()`` method in any of the following ways:
 
 
 #. ``publisher.publish({'hello': 123'})`` - Publishes a JSON blob for the dictionary
 #. ``publisher.publish(b'HELLO')`` - Publishes the arbitrary binary blob it was given
 #. ``publisher.publish(({'hello': 123}, b'HELLO',))`` - Publishes the dictionary and blob together
 
-The publisher object has a ``close()`` method which MUST be called on it prior to
-the exit of your application. If this method is not called, then you application
-may hang indefinitley. In order to make sure this happens, we'll wrap all of the
-code in a ``try...finally...`` block in Python. Note that this is just the solution
-for this simple application. Other applications may need to get more creative
-in making sure the ``close()`` method is called.
+The publisher object has a ``close()`` method, which must be called on it prior to the exit of your application. If this method is not called, then the application may hang indefinitley. To avoid this issue, wrap all of the code in a ``try...finally...`` block in Python. Note that this is just the solution for a simple application. Other applications may need different approaches to esure the ``close()`` method is called.
 
-When its all put together, the code looks as follows:
+The complete code looks as follows:
 
 .. code-block:: python
 
@@ -140,13 +115,10 @@ When its all put together, the code looks as follows:
        if publisher is not None:
            publisher.close()
 
-.. note::  This code is provided in ``python/examples/publisher.py`` in the Message Bus source code.
+.. note::  This code is provided in ``python/examples/publisher.py`` in the Message bus source code.
 
 
-Now that the publisher script is finished, we will create the subscriber script
-called ``subscriber.py``. The script will essentially be the same as the publiser
-script, except that instead of calling ``new_publisher()`` we will call
-``new_subscriber()``.
+Now, that the publisher script is finished, we will create the subscriber script called ``subscriber.py``. The script will essentially be the same as the publiser script, except that instead of calling ``new_publisher()`` we will call ``new_subscriber()``.
 
 .. code-block:: python
 
@@ -187,20 +159,12 @@ script, except that instead of calling ``new_publisher()`` we will call
        if subscriber is not None:
            subscriber.close()
 
-.. note::  This code is provided in ``python/examples/subscriber.py`` in the Message Bus source code.
+.. note::  This code is provided in ``python/examples/subscriber.py`` in the Message bus source code.
 
 
-As can be seen in the code above, the ``msgbus.new_publisher()`` call has now
-been replace with: ``msgbus.new_subscriber()``. This call connects to the given
-topic to receive publications. Depending on the underlying protocol that the
-message bus is configured to use different values will be retrieved from the
-configuration to accomplish the creation of the subscriber.
+In the code, the ``msgbus.new_publisher()`` call is replaced with ``msgbus.new_subscriber()``. This call connects to the given topic to receive publications. Depending on the underlying protocol that the message bus is configured to use different values will be retrieved from the configuration to accomplish the creation of the subscriber.
 
-For instance, if you are using the ZeroMQ TCP protocol, then it will be
-required that the configuration contains a key for the topic given to the
-``msgbus.new_subscriber()`` function call. For the purposes of this tutorial,
-if the topic is the default topic (\ ``publish_test``\ ), then the configuration
-must contain a JSON object similar to the following:
+For instance, if you are using the ZeroMQ TCP protocol, then it will be required that the configuration contains a key for the topic given to the ``msgbus.new_subscriber()`` function call. For the purposes of this tutorial, if the topic is the default topic (\ ``publish_test``\ ), then the configuration must contain a JSON object similar to the following:
 
 .. code-block:: json
 
@@ -212,21 +176,14 @@ must contain a JSON object similar to the following:
        }
    }
 
-The other major difference between the ``publisher.py`` and ``subscriber.py``
-scripts is in the while loop at the end. In the ``subscriber.py`` script you'll
-see that there is a call to ``subscriber.recv()``. This method waits to receive
-an incoming publication on the subscriber's topic. The ``recv()`` method has
-three ways of being called.
+The other major difference between the ``publisher.py`` and ``subscriber.py`` scripts is in the while loop at the end. In the ``subscriber.py`` script you'll see that there is a call to ``subscriber.recv()``. This method waits to receive an incoming publication on the subscriber's topic. The ``recv()`` method has three ways of being called.
 
 
-#. ``recv()``\ /\ ``recv(-1)`` - Blocks indefinitley until a new message is received.
-#. ``recv(0)`` - Returns immediates if not message has been received.
-#. ``recv(timeout)`` - Waits for the specified timeout to receive a message. ``timeout``
-    is assumed to be an integer that represents the time to wait in milliseconds.
+#. ``recv(timeout=-1)`` - Blocks indefinitley until a new message is received. If the timeout is set to -1, then this method will operate based on whether blocking is set to True or False (i.e. block or do not block)
+#. ``recv(timeout=0)`` - Returns immediates, if no message has been received.
+#. ``recv(timeout=[timeout in ms])`` - Waits for the specified timeout to receive a message. ``timeout`` is assumed to be an integer that represents the time to wait in milliseconds.
 
-To put this all together we need to first define the configuration we are going
-to load for the publisher and subscriber. We will use the configuration below
-saved to the file ``ipc_config.json``.
+First define the configuration to load for the publisher and subscriber. Use the following configuration saved in the ``ipc_config.json`` file:
 
 .. code-block:: json
 
@@ -235,23 +192,22 @@ saved to the file ``ipc_config.json``.
        "socket_dir": "/tmp"
    }
 
-Using this configuration will configure the message bus to use the ZeroMQ IPC
-protocol and to save the Unix socket files into the ``/tmp`` directory on your
-system.
+This configuration will do the following:
 
-Once this configuration is saved to the file ``ipc_config.json``\ , start the
-publisher in one Terminal window with the following command:
+
+* Configure the Message bus to use the ZeroMQ IPC protocol
+* Save the Unix socket files in the ``/tmp`` directory on your system
+
+After the configuration is saved to the ``ipc_config.json`` file, run the following command to start the publisher in a terminal window:
 
 .. code-block:: sh
 
    python3 publisher.py ipc_config.json
 
-Next, start the subscriber in a different Terminal window with the command
-shown below.
+Next, run the following command in a different terminal window to start the subscriber:
 
 .. code-block:: sh
 
    python3 subscriber.py ipc_config.json
 
-At this point you should see the messages being published by the publisher
-being printed to the console by the subscriber.
+At this point, you should see the messages being published by the publisher being printed to the console by the subscriber.

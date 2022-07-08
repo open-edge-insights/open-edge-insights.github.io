@@ -1,8 +1,8 @@
-==========
-OEI Tools
-==========
+##############
+Open EII Tools
+##############
 
-Open Edge Insights (OEI) stack has the following set of tools that also run as containers:
+Open Edge Insights for Industrial (Open EII) stack has the following set of tools that also run as containers:
 
 .. include:: ../IEdgeInsights/tools/Benchmarking/time-series-benchmarking-tool/time-series-benchmarking-tool.rst
 
@@ -26,6 +26,6 @@ Open Edge Insights (OEI) stack has the following set of tools that also run as c
 
 .. include:: ../IEdgeInsights/tools/SWTriggerUtility/software-trigger-utility-for-videoingestion-module.rst
 
-.. include:: ../IEdgeInsights/tools/TimeSeriesProfiler/oei-timeseriesprofiler.rst
+.. include:: ../IEdgeInsights/tools/TimeSeriesProfiler/open-eii-timeseriesprofiler.rst
 
-.. include:: ../IEdgeInsights/tools/VideoProfiler/oei-video-profiler.rst
+.. include:: ../IEdgeInsights/tools/VideoProfiler/open-eii-video-profiler.rst

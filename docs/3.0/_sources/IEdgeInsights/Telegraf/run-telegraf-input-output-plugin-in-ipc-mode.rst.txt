@@ -1,11 +1,11 @@
 
-Run Telegraf Input output plugin in IPC mode
+Run Telegraf Input Output Plugin in IPC Mode
 --------------------------------------------
 
 
 * User needs to modify interfaces section of **\ `config.json <https://github.com/open-edge-insights/ts-telegraf/blob/master/config.json>`_\ ** to run in IPC mode as following:
 
-.. code-block::
+.. code-block:: sh
 
        "interfaces": {
            "Subscribers": [

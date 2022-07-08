@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>USB (V4l2) Camera &mdash; EII Documentation v1.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <title>RTSP Camera &mdash; EII Documentation v1.0 documentation</title><link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/copybutton.css" type="text/css" />
@@ -47,7 +47,7 @@
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>
@@ -183,11 +183,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id3">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id2">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id4">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id3">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -195,7 +195,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id5">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id4">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -491,12 +491,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the Builder script with the DiscoverHistory tool</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#about-tool">About tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#eii-pre-requisites">EII pre-requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-embsubscriber">Running EmbSubscriber</a></li>
@@ -512,7 +510,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#httptestserver">HttpTestServer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#pre-requisites-for-running-the-httptestserver">Pre-requisites for running the HttpTestServer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#starting-httptestserver">Starting HttpTestServer</a></li>
 </ul>
@@ -549,6 +547,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-video-profiler">Running Video Profiler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#pre-requisites">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -600,7 +602,7 @@
 
   <li><a href="../../../index.html">2.6</a> &raquo;</li>
   
-  <li>USB (V4l2) Camera</li>
+  <li>RTSP Camera</li>
 
       <li class="wy-breadcrumbs-aside">
             <a href="../../../_sources/IEdgeInsights/VideoIngestion/docs/none.rst.txt" rel="nofollow"> View page source</a>
@@ -613,26 +615,114 @@
              
   <p><strong>Contents</strong></p>
 <ul class="simple">
-<li><p><a class="reference external" href="#usb-v4l2-camera">USB (V4l2) Camera</a></p></li>
+<li><p><a class="reference external" href="#rtsp-camera">RTSP Camera</a></p></li>
+<li><p><a class="reference external" href="#rtsp-simulated-camera">RTSP Simulated Camera</a></p></li>
 </ul>
-<section id="usb-v4l2-camera">
-<h1>USB (V4l2) Camera<a class="headerlink" href="#usb-v4l2-camera" title="Permalink to this headline">¶</a></h1>
+<section id="rtsp-camera">
+<h1>RTSP Camera<a class="headerlink" href="#rtsp-camera" title="Permalink to this headline">¶</a></h1>
 <p><strong>NOTE</strong>:</p>
 <ul>
-<li><p>In case you want to enable resizing with USB camera use the
-<code class="docutils literal notranslate"><span class="pre">videoscale</span></code> element and specify the <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">width</span></code>  parameter in the gstreamer pipeline.</p>
+<li><p>For more information on the RTSP URI please refer the website/tool of the camera software which is used to configure the RTSP camera. For information on RTSP protocol refer <a class="reference external" href="https://en.wikipedia.org/wiki/Real_Time_Streaming_Protocol">https://en.wikipedia.org/wiki/Real_Time_Streaming_Protocol</a></p></li>
+<li><p>In case you want to enable resizing with RTSP camera use the
+<code class="docutils literal notranslate"><span class="pre">vaapipostproc</span></code> element and specifiy the <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">width</span></code>
+parameter in the          gstreamer pipeline.</p>
 <blockquote>
-<div><p><strong>Example pipeline to enable resizing with USB camera:</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">&quot;pipeline&quot;:&quot;v4l2src</span> <span class="pre">!</span> <span class="pre">videoscale</span> <span class="pre">!</span> <span class="pre">video/x-raw,format=YUY2,height=600,width=600</span> <span class="pre">!</span> <span class="pre">videoconvert</span> <span class="pre">!</span> <span class="pre">video/x-raw,format=BGR</span> <span class="pre">!</span> <span class="pre">appsink&quot;</span></code></p>
+<div><p><strong>Example pipeline to enable resizing with RTSP camera:</strong></p>
+</div></blockquote>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="sb">`&quot;pipeline&quot;: &quot;rtspsrc location=\&quot;rtsp://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;RTSP_CAMERA_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;\&quot; latency=100  ! rtph264depay ! h264parse ! vaapih264dec ! vaapipostproc format=bgrx height=600 width=600 ! videoconvert ! video/x-raw,format=BGR ! appsink&quot;`</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>If working behind a proxy, RTSP_CAMERA_IP/simulated SOURCE_IP need to be updated to RTSP_CAMERA_IP in <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/.env">../../build/.env</a> and <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/build/builder.py">../../build/builder.py</a> needs to be executed.</p></li>
+<li><p>For working both with simulated RTSP server via cvlc or
+direct streaming from RTSP camera, we can use the below Gstreamer
+MediaSDK parsers and decoders based on the input stream type</p>
+<blockquote>
+<div><p><strong>Eg</strong>: parsers and decoders:</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>h264parse !  vaapih264dec</p></li>
+<li><p>h265parse ! vaapih265dec</p></li>
+</ul>
+<blockquote>
+<div><blockquote>
+<div><dl class="simple">
+<dt><strong>NOTE</strong><span class="classifier">If running on non-gfx systems or older systems where we don’t</span></dt><dd><p>have hardware media decoders, the above parsers and decoders may not
+work. In those cases, one can use <code class="docutils literal notranslate"><span class="pre">opencv</span></code> ingestor and refer the below steps.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>In case RTSP stream ingestion needs to be used on Xeon machine with no
+GPU then refer the following ingestor config,</p>
+</div></blockquote>
+<ul>
+<li><p>If a physical RTSP camera is used use the below config:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;rtsp://&lt;USERNAME&gt;:&lt;PASSWORD&gt;@&lt;RTSP_CAMERA_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;&quot;</span><span class="w"></span>
+</pre></div>
+</div>
+</li>
+<li><p>If a simulated RTSP stream needs to be used:</p>
+<ul>
+<li><p>Run the following command to create a RTSP stream:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>   $ docker run --rm -e <span class="nv">RTSP_RESOLUTION</span><span class="o">=</span><span class="s1">&#39;1920&#39;</span>x<span class="s1">&#39;1080&#39;</span> -e <span class="nv">RTSP_FRAMERATE</span><span class="o">=</span><span class="m">25</span> -p <span class="m">8554</span>:8554 ullaakut/rtspatt:latest
+
+If more options are required to generate a RTSP stream refer
+the following link:
+https://hub.docker.com/r/ullaakut/rtspatt/
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  * Use the following config to read from the RTSP stream generated
+    from the above command&quot;
+      ```javascript
+      &quot;pipeline&quot;: &quot;rtsp://&lt;SOURCE_IP&gt;:8554/live.sdp&quot;
+      ```
+
+&gt;**NOTE** : Some issues are observed with cvlc based camera simulation
+on a Xeon Machine with no GPU. In that case refer the above
+commands to generate a RTSP stream.
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="rtsp-simulated-camera">
+<h1>RTSP Simulated Camera<a class="headerlink" href="#rtsp-simulated-camera" title="Permalink to this headline">¶</a></h1>
+<p><strong>NOTE</strong>:</p>
+<ul>
+<li><p>It has been observed that VI is unable to read frames from cvlc rtsp server with
+opencv ingestor over long runs.</p></li>
+<li><p>If VI is unable to read frames from cvlc rtsp server with gstreamer
+ingestor, then we need to force <code class="docutils literal notranslate"><span class="pre">appsink</span></code> to drop the queued buffers. This
+can be achieved by using <code class="docutils literal notranslate"><span class="pre">max-buffers</span></code> and <code class="docutils literal notranslate"><span class="pre">drop</span></code> properties for <code class="docutils literal notranslate"><span class="pre">appsink</span></code>.</p></li>
+<li><p>Start cvlc based RTSP stream</p>
+<ul>
+<li><p>Install VLC if not installed already: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">install</span> <span class="pre">vlc</span></code></p></li>
+<li><dl>
+<dt>In order to use the RTSP stream from cvlc, the RTSP server</dt><dd><p>must be started using VLC with the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">cvlc</span> <span class="pre">-vvv</span> <span class="pre">file://&lt;absolute_path_to_video_file&gt;</span> <span class="pre">--sout</span> <span class="pre">'#gather:rtp{sdp=rtsp://&lt;SOURCE_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;}'</span> <span class="pre">--loop</span> <span class="pre">--sout-keep</span></code></p>
+<p><strong>Note:</strong> <code class="docutils literal notranslate"><span class="pre">&lt;FEED&gt;</span></code> in the cvlc command can be <code class="docutils literal notranslate"><span class="pre">live.sdp</span></code> or it can also be avoided. But make sure the same RTSP URI given here is
+used in the ingestor pipeline config.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+<li><p>RTSP cvlc based camera simulation</p>
+<ul>
+<li><p>In case you want to enable resizing with RTSP cvlc based camera use the
+<code class="docutils literal notranslate"><span class="pre">vaapipostproc</span></code> element and specifiy the <code class="docutils literal notranslate"><span class="pre">height</span></code> and <code class="docutils literal notranslate"><span class="pre">width</span></code> parameter</p>
+<blockquote>
+<div><p>in the gstreamer pipeline.</p>
+<p><strong>Example pipeline to enable resizing with RTSP camera:</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;pipeline&quot;:</span> <span class="pre">&quot;rtspsrc</span> <span class="pre">location=\&quot;rtsp://&lt;SOURCE_IP&gt;:&lt;PORT&gt;/&lt;FEED&gt;\&quot;</span> <span class="pre">latency=100</span> <span class="pre">!</span> <span class="pre">rtph264depay</span> <span class="pre">!</span> <span class="pre">h264parse</span> <span class="pre">!</span> <span class="pre">vaapih264dec</span> <span class="pre">!</span> <span class="pre">vaapipostproc</span> <span class="pre">format=bgrx</span> <span class="pre">height=600</span> <span class="pre">width=600</span> <span class="pre">!</span> <span class="pre">videoconvert</span> <span class="pre">!</span> <span class="pre">video/x-raw,format=BGR</span> <span class="pre">!</span> <span class="pre">appsink&quot;</span></code></p>
 </div></blockquote>
 </li>
-<li><p>In case, multiple USB cameras are connected specify the
-camera using the <code class="docutils literal notranslate"><span class="pre">device</span></code> property in the configuration file.</p>
-<blockquote>
-<div><p><strong>Example pipeline to use the device property:</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">&quot;pipeline&quot;:</span> <span class="pre">&quot;v4l2src</span> <span class="pre">device=/dev/video0</span> <span class="pre">!</span> <span class="pre">video/x-raw,format=YUY2</span> <span class="pre">!</span> <span class="pre">videoconvert</span> <span class="pre">!</span> <span class="pre">video/x-raw,format=BGR</span> <span class="pre">!</span> <span class="pre">appsink&quot;</span></code></p>
-<p><strong>Note</strong>: Typically a device node gets created when a USB device is connected to the system. When multiple USB cameras are connected then one needs to identify which device node is mapped to the camera and use that with the <code class="docutils literal notranslate"><span class="pre">device</span></code> property. Device nodes for the cameras usually gets created in sequence of video0, video1, video2 etc.</p>
-</div></blockquote>
+</ul>
 </li>
 </ul>
 </section>
@@ -645,7 +735,7 @@ camera using the <code class="docutils literal notranslate"><span class="pre">de
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+    <p>&#169; Copyright (c) 2022 Intel Corporation.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
@@ -661,7 +751,7 @@ camera using the <code class="docutils literal notranslate"><span class="pre">de
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>

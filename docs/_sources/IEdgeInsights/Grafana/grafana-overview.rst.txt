@@ -1,0 +1,11 @@
+
+Grafana Overview
+----------------
+
+Grafana is an open-source metric analytics and visualization suite. Its uses include:
+
+
+* Visualizing time series data for infrastructure and application analytics
+* Industrial sensors, home automation, weather, and process control
+
+Grafana supports various storage backends for the time-series data (data source). Open Edge Insights for Industrial (Open EII) uses InfluxDB as the data source. Grafana connects to the InfluxDB data source which has been preconfigured as a part of the Grafana setup. The ``ia_influxdbconnector`` service must be running for Grafana to be able to collect the time-series data. After the data source starts working, you can use the preconfigured dashboard to visualize the incoming data. You can also edit the dashboard as required.

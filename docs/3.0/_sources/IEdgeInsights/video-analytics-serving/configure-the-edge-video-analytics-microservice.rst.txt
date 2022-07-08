@@ -1,0 +1,64 @@
+
+Configure the Edge Video Analytics Microservice
+-----------------------------------------------
+
+Refer to the `config <https://github.com/open-edge-insights/eii-core/blob/master/home/rkamal/eii/github/applications.industrial.edge-insights.open-edge-insights-github-io/eii_repo/IEdgeInsights/video-analytics-serving/config.json>`_ file for the configuration of the Edge Video Analytics Microservice. The default configuration will start the ``object_detection`` demo for OEI. The following table describes the configuration attributes that are currently supported.
+
+.. list-table::
+   :header-rows: 1
+
+   * - Parameter
+     - Description
+   * - ``source``
+     - The source of the frames. This must be ``"gstreamer"`` or ``"msgbus"``.
+   * - ``source_parameters``
+     - The parameters for the source element. The provided object is the typical parameters.
+   * - ``pipeline``
+     - The name of the DL Streamer pipeline to use. This should correspond to a directory in the ``pipelines`` directory.
+   * - ``pipeline_version``
+     - The version of the pipeline to use. This is a sub-directory of a pipeline in the ``pipelines`` directory.
+   * - ``publish_frame``
+     - Boolean flag for whether to publish the metadata and the analyzed frame, or only the metadata.
+   * - ``model_parameters``
+     - Provides the parameters for the model used for inference.
+
+
+Configure the interfaces
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+In OEI mode, currently the Edge Video Analytics Microservice only supports launching a single pipeline and publishing on a single topic. This means, in the configuration file (\ ``config.json``\ ),
+the single JSON object in the ``Publisher`` list is where the configuration resides for the published data. See the OEI documentation for more details on the structure of this.
+
+Configure OEI subscriber and publisher
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Edge Video Analytics Microservice also supports subscribing and publishing messages or frames using the MessageBus. Specify the following details in the ``config.json`` file:
+
+
+* In the **Subscribers** section, specify the endpoint details for the OEI service that you want to subscribe from.
+* In the **Publishers** section, specify the endpoint details where you want to publish.
+
+Make the following changes to enable the injection of frames into the GStreamer pipeline obtained from the MessageBus
+
+
+* 
+  Set the source parameter in the ``config.json`` file to ``msgbus`` as follows:
+
+  .. code-block:: javascript
+
+       "config": {
+           "source": "msgbus"
+       }
+
+* 
+  Set the template of respective pipeline to ``appsrc`` as source instead of ``uridecodebin`` as follows:
+
+.. code-block:: javascript
+
+       {
+           "type": "GStreamer",
+           "template": ["appsrc name=source",
+                        " ! rawvideoparse",
+                        " ! appsink name=destination"
+                       ]
+       }

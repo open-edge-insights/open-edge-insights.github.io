@@ -49,7 +49,7 @@
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>
@@ -185,11 +185,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id3">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id2">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id4">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id3">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -197,7 +197,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="release.html#id5">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="release.html#id4">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -493,12 +493,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the Builder script with the DiscoverHistory tool</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#embpublisher">EmbPublisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration-of-the-tool">Configuration of the tool.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#about-tool">About tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-of-the-tool">Configuration of the tool.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#embsubscriber">EmbSubscriber</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#eii-pre-requisites">EII pre-requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#running-embsubscriber">Running EmbSubscriber</a></li>
@@ -514,7 +512,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#httptestserver">HttpTestServer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pre-requisites-for-running-the-httptestserver">Pre-requisites for running the HttpTestServer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#starting-httptestserver">Starting HttpTestServer</a></li>
 </ul>
@@ -551,6 +549,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#running-video-profiler">Running Video Profiler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pre-requisites">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -811,14 +813,15 @@ Include the following parameters in the query to get the good and the bad frames
 </ul>
 </section>
 </section>
-<section id="embpublisher">
-<h2>EmbPublisher<a class="headerlink" href="#embpublisher" title="Permalink to this headline">¶</a></h2>
+<section id="about-tool">
+<h2>About tool<a class="headerlink" href="#about-tool" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>This tool acts as a brokered publisher of EII messagebus.</p></li>
 <li><p>Telegaf’s eii messagebus input plugin acts as a subscriber to the EII broker.</p></li>
 </ul>
+</section>
 <section id="how-to-integrate-this-tool-with-video-timeseries-use-case">
-<h3>How to integrate this tool with video/timeseries use case.<a class="headerlink" href="#how-to-integrate-this-tool-with-video-timeseries-use-case" title="Permalink to this headline">¶</a></h3>
+<h2>How to integrate this tool with video/timeseries use case.<a class="headerlink" href="#how-to-integrate-this-tool-with-video-timeseries-use-case" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>In ‘time-series.yml’/’video-streaming.yml’ file, please add ‘ZmqBroker’ and ‘tools/EmbPublisher’ components.</p></li>
 <li><p>Use the modified  ‘time-series.yml’/’video-streaming.yml’ file as an argument while generating the docker-compose.yml file using the ‘builder.py’ utility.</p></li>
@@ -826,7 +829,7 @@ Include the following parameters in the query to get the good and the bad frames
 </ul>
 </section>
 <section id="configuration-of-the-tool">
-<h3>Configuration of the tool.<a class="headerlink" href="#configuration-of-the-tool" title="Permalink to this headline">¶</a></h3>
+<h2>Configuration of the tool.<a class="headerlink" href="#configuration-of-the-tool" title="Permalink to this headline">¶</a></h2>
 <p>Let us look at the sample configuration</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="s2">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -867,7 +870,7 @@ Include the following parameters in the query to get the good and the bad frames
 </ul>
 </section>
 <section id="running-embpublisher-in-ipc-mode">
-<h3>Running EmbPublisher in IPC mode<a class="headerlink" href="#running-embpublisher-in-ipc-mode" title="Permalink to this headline">¶</a></h3>
+<h2>Running EmbPublisher in IPC mode<a class="headerlink" href="#running-embpublisher-in-ipc-mode" title="Permalink to this headline">¶</a></h2>
 <p>User needs to modify interface section of <a href="#id27"><span class="problematic" id="id28">**</span></a><a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/EmbPublisher/config.json">config.json</a>** to run in IPC mode as following</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
   <span class="s2">&quot;Publishers&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -904,7 +907,6 @@ Include the following parameters in the query to get the good and the bad frames
 </ul>
 </li>
 </ul>
-</section>
 </section>
 <section id="embsubscriber">
 <h2>EmbSubscriber<a class="headerlink" href="#embsubscriber" title="Permalink to this headline">¶</a></h2>
@@ -1161,7 +1163,7 @@ Before running in PROD mode please change the permissions of the certificates i.
 </section>
 </section>
 <section id="httptestserver">
-<h2>HttpTestServer<a class="headerlink" href="#httptestserver" title="Permalink to this headline">¶</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code><a class="headerlink" href="#httptestserver" title="Permalink to this headline">¶</a></h2>
 <p>HttpTestServer runs a simple HTTP Test server with security being optional.</p>
 <section id="pre-requisites-for-running-the-httptestserver">
 <h3>Pre-requisites for running the HttpTestServer<a class="headerlink" href="#pre-requisites-for-running-the-httptestserver" title="Permalink to this headline">¶</a></h3>
@@ -1230,32 +1232,32 @@ Jupyter Notebook is an open-source web application that allows you to create and
 </ul>
 </li>
 <li><p>Ensure the <a class="reference external" href="https://github.com/open-edge-insights/video-common/tree/master/udfs/python/jupyter_connector.py">jupyter_connector</a> UDF is enabled in the config of either <strong>VideoIngestion</strong> or <strong>VideoAnalytics</strong> to be connected to JupyterNotebook. An example has been provided here for connecting <strong>VideoIngestion</strong> to <strong>JupyterNotebook</strong>, the config to be changed being present at <a class="reference external" href="https://github.com/open-edge-insights/video-ingestion/blob/master/config.json">config.json</a>:</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;encoding&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;jpeg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;level&quot;</span><span class="o">:</span> <span class="mf">95</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;ingestor&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;opencv&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;./test_videos/pcb_d2000.avi&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;loop_video&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="s2">&quot;queue_size&quot;</span><span class="o">:</span> <span class="mf">10</span><span class="p">,</span>
-            <span class="s2">&quot;poll_interval&quot;</span><span class="o">:</span> <span class="mf">0.2</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;sw_trigger&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;init_state&quot;</span><span class="o">:</span> <span class="s2">&quot;running&quot;</span>
-        <span class="p">},</span>
-        <span class="s2">&quot;max_workers&quot;</span><span class="o">:</span><span class="mf">4</span><span class="p">,</span>
-        <span class="s2">&quot;udfs&quot;</span><span class="o">:</span> <span class="p">[{</span>
-            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jupyter_connector&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;python&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;param1&quot;</span><span class="o">:</span> <span class="mf">1</span><span class="p">,</span>
-            <span class="s2">&quot;param2&quot;</span><span class="o">:</span> <span class="mf">2.0</span><span class="p">,</span>
-            <span class="s2">&quot;param3&quot;</span><span class="o">:</span> <span class="s2">&quot;str&quot;</span>
-        <span class="p">}]</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;config&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;encoding&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;jpeg&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;level&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">95</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;ingestor&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;opencv&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;./test_videos/pcb_d2000.avi&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;loop_video&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;queue_size&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;poll_interval&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;sw_trigger&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;init_state&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;running&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">},</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;max_workers&quot;</span><span class="o">:</span><span class="mf">4</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;udfs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;jupyter_connector&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;param1&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;param2&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;param3&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;str&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}]</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
@@ -1635,16 +1637,16 @@ per second of any EII module by subscribing to that module’s respective stream
 <div><p>Enabled by setting the ‘mode’ key in <a class="reference external" href="https://github.com/open-edge-insights/eii-tools/blob/master/TimeSeriesProfiler/config.json">config</a> to ‘monitor’, this mode calculates average &amp; per sample stats</p>
 <p>Refer the below exmaple config where TimeSeriesProfiler is used in monitor mode.</p>
 </div></blockquote>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;monitor&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;monitor_mode_settings&quot;</span><span class="o">:</span> <span class="p">{</span>
-                                <span class="s2">&quot;display_metadata&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-                                <span class="s2">&quot;per_sample_stats&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
-                                <span class="s2">&quot;avg_stats&quot;</span><span class="o">:</span> <span class="kc">true</span>
-                            <span class="p">},</span>
-    <span class="s2">&quot;total_number_of_samples&quot;</span> <span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
-    <span class="s2">&quot;export_to_csv&quot;</span> <span class="o">:</span> <span class="kc">false</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="s2">&quot;config&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;mode&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;monitor&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;monitor_mode_settings&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                                </span><span class="s2">&quot;display_metadata&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="s2">&quot;per_sample_stats&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="s2">&quot;avg_stats&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">                            </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;total_number_of_samples&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;export_to_csv&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>       <span class="s2">&quot;mode&quot;</span>: <span class="s2">&quot;monitor&quot;</span>
@@ -1877,18 +1879,18 @@ To be performant in profiling scenarios, VideoProfiler is enabled to work when s
 <p>User must ensure that <code class="docutils literal notranslate"><span class="pre">ingestion_appname</span></code> and <code class="docutils literal notranslate"><span class="pre">analytics_appname</span></code> fields of the <code class="docutils literal notranslate"><span class="pre">monitor_mode_settings</span></code> need to be set accordingly for monitor mode.</p>
 <p>Refer the below exmaple config where VideoProfiler is used in monitor mode to subscribe PySafetyGearAnalytics CustomUDF results.</p>
 </div></blockquote>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span>    <span class="s2">&quot;config&quot;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;mode&quot;</span><span class="o">:</span> <span class="s2">&quot;monitor&quot;</span><span class="p">,</span>
-    <span class="s2">&quot;monitor_mode_settings&quot;</span><span class="o">:</span> <span class="p">{</span>
-                                <span class="s2">&quot;ingestion_appname&quot;</span><span class="o">:</span> <span class="s2">&quot;PySafetyGearIngestion&quot;</span><span class="p">,</span>
-                                <span class="s2">&quot;analytics_appname&quot;</span><span class="o">:</span> <span class="s2">&quot;PySafetyGearAnalytics&quot;</span><span class="p">,</span>
-                                <span class="s2">&quot;display_metadata&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
-                                <span class="s2">&quot;per_frame_stats&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span>
-                                <span class="s2">&quot;avg_stats&quot;</span><span class="o">:</span> <span class="kc">true</span>
-                            <span class="p">},</span>
-    <span class="s2">&quot;total_number_of_frames&quot;</span> <span class="o">:</span> <span class="mf">5</span><span class="p">,</span>
-    <span class="s2">&quot;export_to_csv&quot;</span> <span class="o">:</span> <span class="kc">false</span>
-<span class="p">}</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="s2">&quot;config&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;mode&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;monitor&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;monitor_mode_settings&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                                </span><span class="s2">&quot;ingestion_appname&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PySafetyGearIngestion&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="s2">&quot;analytics_appname&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PySafetyGearAnalytics&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="s2">&quot;display_metadata&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="s2">&quot;per_frame_stats&quot;</span><span class="o">:</span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">                                </span><span class="s2">&quot;avg_stats&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">                            </span><span class="p">},</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;total_number_of_frames&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;export_to_csv&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>       <span class="s2">&quot;mode&quot;</span>: <span class="s2">&quot;monitor&quot;</span>
@@ -1956,19 +1958,19 @@ are based on the the following precdence: avg_stats, per_frame_stats, display_me
 <p>Caution: This step will make the streams insecure. Please do not do it on a production machine.</p>
 </li>
 <li><p>Refer the below VideoProfiler interface example to subscribe to PyMultiClassificationIngestion CutomUDF results in fps mode.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;/VideoProfiler/interfaces&quot;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span> <span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Name&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span> <span class="s2">&quot;PyMultiClassificationIngestion&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;Topics&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="s2">&quot;py_multi_calssification_results_stream&quot;</span>
-            <span class="p">],</span>
-            <span class="s2">&quot;Type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-<span class="p">},</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;/VideoProfiler/interfaces&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;Subscribers&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;EndPoint&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/EII/sockets&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;PublisherAppName&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PyMultiClassificationIngestion&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Topics&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                </span><span class="s2">&quot;py_multi_calssification_results_stream&quot;</span><span class="w"></span>
+<span class="w">            </span><span class="p">],</span><span class="w"></span>
+<span class="w">            </span><span class="s2">&quot;Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_ipc&quot;</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
@@ -2091,6 +2093,98 @@ the frames when the queue is full or switching to IPC mode of communication.</p>
 </ol>
 </section>
 </section>
+<section id="eii-distributed-services-centralized-logging-using-elk">
+<h2>EII distributed services centralized logging using ELK<a class="headerlink" href="#eii-distributed-services-centralized-logging-using-elk" title="Permalink to this headline">¶</a></h2>
+<p>“ELK” is the acronym for three open source projects: Elasticsearch, Logstash, and Kibana. Elasticsearch is a search and analytics engine. Logstash is a server‑side data processing pipeline that ingests data from multiple sources simultaneously, transforms it, and then sends it to a “stash” like Elasticsearch. Kibana lets users visualize data with charts and graphs in Elasticsearch.</p>
+<p>The guide below demonstrates how the logs of EII services running in distributed environment can be centralized via ELK stack. It allows you to search all the logs in a single place.</p>
+<section id="pre-requisites">
+<h3>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>EII centralized logging using ELK expects a set of config, interfaces &amp; public private keys to be present in ETCD as a pre-requisite.
+To achieve this, please ensure an entry for <code class="docutils literal notranslate"><span class="pre">remote_logging</span></code> with its relative path from <a class="reference external" href="https://github.com/open-edge-insights/">IEdgeInsights</a> directory is set in the use-case yml file present in <a class="reference external" href="https://github.com/open-edge-insights/">IEdgeInsights</a> directory. An example has been provided below:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>AppContexts:
+- Grafana
+- InfluxDBConnector
+- Kapacitor
+- Telegraf
+- build/remote_logging
+</pre></div>
+</div>
+</li>
+<li><p>With the above pre-requisite done, please run the below command:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>python3 builder.py -f ./usecases/&lt;use-case&gt;.yml
+</pre></div>
+</div>
+</li>
+<li><p>Generate the certificates required to run the Kibana Server using the following command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ./generate_kibana_certs.sh test-server-ip
+</pre></div>
+</div>
+</li>
+<li><p>The EII centralized logging architecture can be visualized as eii-containers—&gt;rsyslog—&gt;logstash—&gt;elasticsearch—&gt;kibana</p></li>
+<li><p>The eii-containers logs has to be forwarded to the rsyslog, running onto the local system.
+For that, the eii-container’s logging driver need to be syslog.
+Anyone wants to forward the eii-container’s log to the local rsyslog has to modify the file named ‘/etc/docker/daemon.json’.
+The sample ‘daemon.json’ is availale in the directory.
+After the modification of ‘daemon.json’ docker daemon has to be restarted using the below command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl restart docker
+</pre></div>
+</div>
+<p>In case of sending the logs over a secure channel from docker daemon to rsyslog, please refer the ‘daemon.json.secure’.
+In this sample configuration, please replace
+CA_CERT_PATH : CA certificate path
+DOCKER_CERT_PATH : Docker certificate path
+DOCKER_KEY_PATH : Docker key path</p>
+</li>
+<li><p>The rsyslog has to forward the received logs from containers to logstash.
+The file named ‘eii.conf’ has to be copied into the directory name ‘/etc/rsyslog.d/’
+After copying this file, install rsyslog module using the below command(The rsyslog module
+installation is one time activity).</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install rsyslog-gnutls
+</pre></div>
+</div>
+<p>Then rsyslog service need to restarted using the below command</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo systemctl restart rsyslog
+</pre></div>
+</div>
+<p>For more information on the rsyslog,please refer <a class="reference external" href="https://www.rsyslog.com/plugins/">https://www.rsyslog.com/plugins/</a></p>
+<p>In case of receiving the logs from docker over the secure channel, please refer the sample config file ‘eii.conf.secure’
+In this sample configuration, please replace
+CA_CERT_PATH : CA certificate path
+DOCKER_CERT_PATH : Docker certificate path
+DOCKER_KEY_PATH : Docker key path
+If case of docker daemon sending logs to remote rsyslog agent, then replace ‘127.0.0.1’ (address=”127.0.0.1”) with the
+actual IP address of the machine where rsyslog is running.</p>
+</li>
+<li><p>To start ELK containers Please follow below commands</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo sysctl -w vm.max_map_count<span class="o">=</span><span class="m">262144</span>
+</pre></div>
+</div>
+</li>
+<li><p>Refer <a class="reference external" href="https://github.com/open-edge-insights/eii-core/blob/master/README.md">README.md</a> to provision and run the services</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ docker-compose -f docker-compose-build.yml build
+$ docker-compose -f docker-compose.yml up -d <span class="c1"># this will work in both DEV or PROD mode automatically</span>
+</pre></div>
+</div>
+<p>Please visit <a class="reference external" href="https://host-ip:5601">https://host-ip:5601</a> for viewing the logs in KIBANA UI.
+Create new index pattern with the elasticsearch indices<code class="docutils literal notranslate"><span class="pre">logstash</span></code> pattern</p>
+<blockquote>
+<div><p><strong>NOTE</strong>: The certificate attached to kibana is self signed and has to be accepted in
+browser as an exception. The attached certificates are sample certificates only and need to
+be replaced for production environment.
+host-ip : Actual IP address of the machine where kibana is running</p>
+</div></blockquote>
+</li>
+<li><p>After above 4 steps, please start/restart the EII services.
+Note:</p>
+<blockquote>
+<div><p><strong>NOTE</strong>: In case of logs are not showing in the KIBANA UI, restart the rsyslog service
+using the command <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">systemctl</span> <span class="pre">restart</span> <span class="pre">rsyslog</span></code></p>
+</div></blockquote>
+</li>
+</ol>
+</section>
+</section>
 </section>
 
 
@@ -2101,7 +2195,7 @@ the frames when the queue is full or switching to IPC mode of communication.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+    <p>&#169; Copyright (c) 2022 Intel Corporation.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
@@ -2117,7 +2211,7 @@ the frames when the queue is full or switching to IPC mode of communication.</p>
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>

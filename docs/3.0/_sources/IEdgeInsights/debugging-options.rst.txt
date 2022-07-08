@@ -1,19 +1,19 @@
 
-Debugging options
+Debugging Options
 -----------------
 
 Perform the following steps for debugging:
 
 
 #. 
-   Run the following command to check if all the OEI images are built successfully:
+   Run the following command to check if all the Open EII images are built successfully:
 
    .. code-block:: sh
 
        docker images|grep ia
 
 #. 
-   You can view all the dependency containers and the OEI containers that are up and running. Run the following command to check if all containers are running:
+   You can view all the dependency containers and the Open EII containers that are up and running. Run the following command to check if all containers are running:
 
    .. code-block:: sh
 
@@ -23,8 +23,8 @@ Perform the following steps for debugging:
    Ensure that the proxy settings are correctly configured and restart the docker service if the build fails due to no internet connectivity.
 
 #. Run the ``docker ps`` command to list all the enabled containers that are included in the ``docker-compose.yml`` file.
-#. From video ingestion>video analytics>visualizer, check if the default video pipeline with OEI is working fine.
-#. The ``/opt/intel/eii`` root directory gets created - This is the installation path for OEI:
+#. From video ingestion>video analytics>visualizer, check if the default video pipeline with Open EII is working fine.
+#. The ``/opt/intel/eii`` root directory gets created - This is the installation path for Open EII:
 
    * ``data/`` - stores the backup data for persistent imagestore and influxdb
    * ``sockets/`` - stores the IPC ZMQ socket files

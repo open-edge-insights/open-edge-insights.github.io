@@ -1,0 +1,33 @@
+
+Run Edge Video Analytics Microservice
+-------------------------------------
+
+You can download the required model file to use it for the pipeline that is mentioned in the `Readme <https://github.com/open-edge-insights/eii-core/blob/master/home/rkamal/eii/github/applications.industrial.edge-insights.open-edge-insights-github-io/eii_repo/IEdgeInsights/README.md#running-the-image>`_ file. For more information, refer to the `Readme <https://github.com/open-edge-insights/eii-core/blob/master/home/rkamal/eii/github/applications.industrial.edge-insights.open-edge-insights-github-io/eii_repo/IEdgeInsights/README.md#running-the-image>`_.
+
+After provisioning the OEI stack, complete the following steps to run the Video Analytics Microservice in OEI context. For more information on OEI provisioning, refer to the `Readme <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_.
+
+.. code-block:: sh
+
+   cd [WORK_DIR]/IEdgeInsights/build
+
+   # Execute the builder.py script
+   python3 builder.py -f usecases/evas.yml
+
+   # Create the necessary items for the service
+   sudo mkdir -p /opt/intel/eii/models/
+
+   # Copy the downloaded model files to /opt/intel/eii
+   sudo cp -r models /opt/intel/eii/
+
+   # Build the docker containers
+   docker-compose -f docker-compose-build.yml build
+
+   # Start the docker containers
+   docker-compose up -d ia_configmgr_agent # workaround for now, we are exploring on getting this and the sleep avoided
+   sleep 30 # If any failures like configmgr data store client certs or msgbus certs failures, please increase this time to a higher value
+   docker-compose up -d
+
+.. note:: 
+   If the prebuilt container image for the Edge `Video Analytics Microservice <https://hub.docker.com/r/intel/edge_video_analytics_microservice>`_ is not available on the host system, then you can run the ``docker-compose up -d`` command to download the image.
+   This repository provides the Deep Learning Streamer (DL Streamer) pipelines that are required to use a URI source and send the ingested frames using the OEI MsgBus Publisher. The commands mentioned above that creates the ``models/`` directory and the ``pipelines/``\ , installs the required directories for the Edge Video Analytics Microservice to run the DL Streamer pipelines.
+

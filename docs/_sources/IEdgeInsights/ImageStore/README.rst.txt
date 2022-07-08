@@ -14,12 +14,12 @@ Contents
 ImageStore Module
 -----------------
 
-The Image Store component of Open Edge Insights (OEI) comes as a separate container which primarily subscribes to the stream that comes out of the VideoAnalytics app via MessageBus and stores the frame into minio for historical analysis.
+The Image Store component of Open Edge Insights for Industrial (Open EII) comes as a separate container which primarily subscribes to the stream that comes out of the VideoAnalytics app via MessageBus and stores the frame into minio for historical analysis.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
-The high level logical flow of ImageStore is as follows:
+The high-level logical flow of ImageStore is as follows:
 
 
 #. The messagebus subscriber in ImageStore will subscribe to the VideoAnalytics

@@ -1,7 +1,7 @@
 
-****************************
-OEI Configuration Management
-****************************
+##########################################################
+Open Edge Insights for Industrial Configuration Management
+##########################################################
 
 .. include:: ../IEdgeInsights/common/libs/ConfigMgr/configmgr.rst
 

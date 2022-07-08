@@ -2,7 +2,7 @@
 Running Examples
 ----------------
 
-The ConfigMgr library also supports Cpp APIs and Python & Go bindings. These APIs/bindings can be used in Cpp and Python/Go services in the OEI stack to fetch required config/interfaces/msgbus config.
+The ConfigMgr library also supports Cpp APIs and Python & Go bindings. These APIs/bindings can be used in Cpp and Python/Go services in the Open EII stack to fetch required config/interfaces/msgbus config.
 
 Examples will only be compiled if the ``WITH_EXAMPLES=ON`` option is specified while running CMake.
 Please refer `Examples installation <#-install-configmgr-with-examples,-test-suits-and-debug-build-enabled.>`__
@@ -44,8 +44,8 @@ There are currently 5 CPP examples:
 #. ``examples/sample_client.cpp``
 #. ``examples/sample_getvalue.cpp``
 
-All of the Cpp example executables are in the ``build/examples/`` directory. To run
-them, execute the following command:
+All of the CPP example executables are in the ``build/examples/`` directory. To run
+them, run the following command:
 
 Before executing any of the examples, please run below command from ``build/examples/``
 

@@ -47,7 +47,7 @@
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>
@@ -183,11 +183,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id3">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id2">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id4">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id3">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -195,7 +195,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id5">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/release.html#id4">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -491,12 +491,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the Builder script with the DiscoverHistory tool</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#about-tool">About tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#eii-pre-requisites">EII pre-requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#running-embsubscriber">Running EmbSubscriber</a></li>
@@ -512,7 +510,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#httptestserver">HttpTestServer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#pre-requisites-for-running-the-httptestserver">Pre-requisites for running the HttpTestServer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#starting-httptestserver">Starting HttpTestServer</a></li>
 </ul>
@@ -549,6 +547,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#running-video-profiler">Running Video Profiler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pages/tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pages/tools.html#pre-requisites">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -962,25 +964,25 @@ will still be created in the specified <code class="docutils literal notranslate
 <p>Also, both the <code class="docutils literal notranslate"><span class="pre">socket_file</span></code> and <code class="docutils literal notranslate"><span class="pre">brokered</span></code> values must be specified in the
 configuration under an object with its key being the topic or service name.
 An example of this is shown below.</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
-    <span class="c1">// Specifies the ZeroMQ IPC protocol</span>
-    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// Specifies the ZeroMQ IPC protocol</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;zmq_ipc&quot;</span><span class="p">,</span><span class="w"></span>
 
-    <span class="c1">// Specifies the socket directory</span>
-    <span class="s2">&quot;socket_dir&quot;</span><span class="o">:</span> <span class="s2">&quot;/tmp/socks&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// Specifies the socket directory</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;socket_dir&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;/tmp/socks&quot;</span><span class="p">,</span><span class="w"></span>
 
-    <span class="c1">// The key, &quot;example-topic&quot;, is the topic which the publisher shall publish</span>
-    <span class="c1">// on. This could also be a service name.</span>
-    <span class="s2">&quot;example-topic&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="c1">// For the example-topic, the below property specifies the socket file</span>
-        <span class="c1">// to use</span>
-        <span class="s2">&quot;socket_file&quot;</span><span class="o">:</span> <span class="s2">&quot;socket-filename&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="c1">// The key, &quot;example-topic&quot;, is the topic which the publisher shall publish</span><span class="w"></span>
+<span class="w">    </span><span class="c1">// on. This could also be a service name.</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;example-topic&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// For the example-topic, the below property specifies the socket file</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// to use</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;socket_file&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;socket-filename&quot;</span><span class="p">,</span><span class="w"></span>
 
-        <span class="c1">// The below property is only supported by publishers, this specifies</span>
-        <span class="c1">// that the given publisher will be brokered through the ZeroMQ Broker</span>
-        <span class="s2">&quot;brokered&quot;</span><span class="o">:</span> <span class="kc">true</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+<span class="w">        </span><span class="c1">// The below property is only supported by publishers, this specifies</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// that the given publisher will be brokered through the ZeroMQ Broker</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;brokered&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The example above uses JSON to represent the EII Message Bus configuration.
@@ -1672,7 +1674,7 @@ is provided below:</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+    <p>&#169; Copyright (c) 2022 Intel Corporation.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
@@ -1688,7 +1690,7 @@ is provided below:</p>
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>

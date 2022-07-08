@@ -10,17 +10,17 @@ Contents
 
   * `NodeRedHttpClientApp <#noderedhttpclientapp>`__
 
-    * `Setting Up NodeRed <#setting-up-nodered>`__
-    * `Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient <#getting-oei-udf-classifier-results-data-to-node-red-environment-using-node-red-httpclient>`__
+    * `Configure NodeRed <#configure-nodered>`__
+    * `Getting Open EII UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient <#getting-open-eii-udf-classifier-results-data-to-node-red-environment-using-node-red-httpclient>`__
     * `Sample Workflow <#sample-workflow>`__
 
 NodeRedHttpClientApp
 --------------------
 
-This Node-RED in-built http node based client App acts as client for the OEI RestDataExport and brings the OEI Classifier data to Node-RED ecosystem.
+This Node-RED in-built http node based client App acts as client for the Open EII RestDataExport and brings the Open EII Classifier data to Node-RED ecosystem.
 
-Setting Up NodeRed
-^^^^^^^^^^^^^^^^^^
+Configure NodeRed
+^^^^^^^^^^^^^^^^^
 
   Node-RED provides various options to install and set up Node-RED in your environment. For more information on installation and setup, refer to the `Node-RED documenation <https://nodered.org/docs/getting-started/local>`_.
 
@@ -31,8 +31,8 @@ Setting Up NodeRed
          docker run -it -p 1880:1880 --name myNodeRed nodered/node-red
 
 
-Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Getting Open EII UDF Classifier results data to Node-RED Environment Using Node-RED HTTPClient
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: \ : RestDataExport should be running already as a prerequisite.\ :raw-html-m2r:`<br>`
    Refer to the RestDataExport `Readme <https://github.com/open-edge-insights/eii-rest-data-export>`_
@@ -76,7 +76,7 @@ Getting OEI UDF Classifier results data to Node-RED Environment Using Node-RED H
 
 
    For Prod Mode TLS ``ca_cert.pem`` import.
-   **Note:** This ``ca_cert.pem`` will be part of the OEI certificate bundle. Refer the ``[WORKDIR]/IEdgeInsights/build/Certificates/`` directory.
+   **Note:** This ``ca_cert.pem`` will be part of the Open EII certificate bundle. Refer the ``[WORKDIR]/IEdgeInsights/build/Certificates/`` directory.
 
 
    .. image:: https://raw.githubusercontent.com/open-edge-insights/eii-tools/master/NodeRedHttpClientApp/images/imageprodmodetlscert.png

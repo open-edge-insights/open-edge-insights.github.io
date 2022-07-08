@@ -14,7 +14,7 @@ MQTT publisher
 
 MQTT publisher is a tool to help publish the sample sensor data.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 Usage
@@ -24,7 +24,7 @@ Usage
 
 
 
-#. Provision, build and bring up the OEI stack by following in the steps in the `README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_.
+#. Provision, build and bring up the Open EII stack by following in the steps in the `README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_.
 
 **Note** By default the tool publishes temperature data. If the user wants to publish other data, he/she needs to modify the command option in "ia_mqtt_publisher" service in `build/docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/build/docker-compose.yml>`_ accordingly and recreate the container using ``docker-compose up -d`` command from build directory.
 

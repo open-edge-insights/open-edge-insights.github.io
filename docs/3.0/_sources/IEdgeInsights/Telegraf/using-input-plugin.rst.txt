@@ -1,0 +1,61 @@
+
+Using Input Plugin
+------------------
+
+By default, the message bus input plugin is disabled. To configure the Open EII input plugin, uncomment the following lines in **\ `config/Telegraf/Telegraf_devmode.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf_devmode.conf>`_\ ** and **\ `config/Telegraf/Telegraf_devmode.conf <https://github.com/open-edge-insights/ts-telegraf/blob/master/config/Telegraf/Telegraf_devmode.conf>`_\ **
+
+.. code-block::
+
+   ```sh
+   [[inputs.eii_msgbus]]
+   instance_name = "default"
+   data_format = "json"
+   json_strict = true
+   tag_keys = [
+     "my_tag_1",
+     "my_tag_2"
+   ]
+   json_string_fields = [
+     "field1",
+     "field2"
+   ]
+   json_name_key = ""
+   ```
+
+
+
+* 
+  Edit `config.json <https://github.com/open-edge-insights/ts-telegraf/blob/master/config.json>`_ to add message bus input plugin.
+
+  .. code-block:: sh
+
+     {
+         "config": {
+             ...
+             "default": {
+                 "topics_info": [
+                     "topic-pfx1:temperature:10:2",
+                     "topic-pfx2:pressure::",
+                     "topic-pfx3:humidity"
+                 ],
+                 "queue_len": 10,
+                 "num_worker": 2,
+                 "profiling": "false"
+             },
+             ...
+         },
+         "interfaces": {
+             "Subscribers": [
+                 {
+                     "Name": "default",
+                     "Type": "zmq_tcp",
+                     "EndPoint": "ia_zmq_broker:60515",
+                     "Topics": [
+                         "*"
+                     ],
+                     "PublisherAppName": "ZmqBroker"
+                 }
+             ],
+             ...
+         }
+     }

@@ -6,18 +6,22 @@ Contents
 * `Contents <#contents>`__
 
   * `RestDataExport service <#restdataexport-service>`__
-  * `Configuration <#configuration>`__
-  * `HTTP GET API of RDE <#http-get-api-of-rde>`__
 
-    * `Get the classifier results metadata <#get-the-classifier-results-metadata>`__
+    * `Configuration <#configuration>`__
+    * `HTTP GET API of RDE <#http-get-api-of-rde>`__
 
-      * `Request to get metadata <#request-to-get-metadata>`__
+      * `Get the classifier results metadata <#get-the-classifier-results-metadata>`__
 
-    * `Get images using the image handle <#get-images-using-the-image-handle>`__
+        * `Request to get metadata <#request-to-get-metadata>`__
 
-      * `Request to get images <#request-to-get-images>`__
+      * `Get images using the image handle <#get-images-using-the-image-handle>`__
 
-    * `Prerequisites for running RestDataExport to POST on HTTP Servers <#prerequisites-for-running-restdataexport-to-post-on-http-servers>`__
+        * `Request to get images <#request-to-get-images>`__
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+      * `Prerequisites for running RestDataExport to POST on HTTP Servers <#prerequisites-for-running-restdataexport-to-post-on-http-servers>`__
+
+    * `Launch RestDataExport service <#launch-restdataexport-service>`__
+    * `Setting environment proxy settings <#setting-environment-proxy-settings>`__
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 

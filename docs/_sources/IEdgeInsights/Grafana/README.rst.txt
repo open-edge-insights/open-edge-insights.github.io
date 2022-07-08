@@ -5,19 +5,17 @@ Contents
 
 * `Contents <#contents>`__
 
-  * `Grafana <#grafana>`__
+  * `Grafana Overview <#grafana-overview>`__
+  * `Configuration <#configuration>`__
+  * `Run Grafana <#run-grafana>`__
 
-    * `Configuration <#configuration>`__
-    * `Run Grafana <#run-grafana>`__
-
-      * `Run Grafana in the PROD mode <#run-grafana-in-the-prod-mode>`__
-      * `Run Grafana in the DEV mode <#run-grafana-in-the-dev-mode>`__
-
+    * `Run Grafana in the PROD mode <#run-grafana-in-the-prod-mode>`__
+    * `Run Grafana in the DEV mode <#run-grafana-in-the-dev-mode>`__
     * `Execute queries <#execute-queries>`__
     * `Run Grafana for video use cases <#run-grafana-for-video-use-cases>`__
 
-Grafana
--------
+Grafana Overview
+----------------
 
 Grafana is an open-source metric analytics and visualization suite. Its uses include:
 
@@ -25,10 +23,10 @@ Grafana is an open-source metric analytics and visualization suite. Its uses inc
 * Visualizing time series data for infrastructure and application analytics
 * Industrial sensors, home automation, weather, and process control
 
-Grafana supports various storage backends for the time-series data (data source). Open Edge Insights (OEI) uses InfluxDB as the data source. Grafana connects to the InfluxDB data source which has been preconfigured as a part of the Grafana setup. The 'ia_influxdbconnector' service must be running for Grafana to be able to collect the time-series data. After the data source starts working, you can use the preconfigured dashboard to visualize the incoming data. You can also edit the dashboard as required.
+Grafana supports various storage backends for the time-series data (data source). Open Edge Insights for Industrial (Open EII) uses InfluxDB as the data source. Grafana connects to the InfluxDB data source which has been preconfigured as a part of the Grafana setup. The ``ia_influxdbconnector`` service must be running for Grafana to be able to collect the time-series data. After the data source starts working, you can use the preconfigured dashboard to visualize the incoming data. You can also edit the dashboard as required.
 
 Configuration
-^^^^^^^^^^^^^
+-------------
 
 The following are the configuration details for Grafana:
 
@@ -49,7 +47,7 @@ The following are the configuration details for Grafana:
 
 
 Run Grafana
-^^^^^^^^^^^
+-----------
 
 Based on requirement, you can run Grafana in the ``Prod mode`` or the ``DEV mode``.
 
@@ -57,7 +55,7 @@ Complete the following steps to run Grafana:
 
 
 #. Open the `docker-compose.yml <https://github.com/open-edge-insights/eii-core/blob/master/docker-compose.yml>`_ file.
-#. In the ``docker-compose.yml``\ , uncomment ia_grafana.
+#. In the ``docker-compose.yml`` file, uncomment ``ia_grafana``.
 #. Check if the ``ia_influxdbconnector``\ , ``ia_kapacitor``\ , and ``ia_telegraph`` services are running for the time-series data.
 #. Check if the `publisher <https://github.com/open-edge-insights/eii-tools/blob/master/mqtt-publisher/publisher_temp.sh>`_ service is running.
 #. Run the ``docker-compose build`` command to build image.
@@ -66,7 +64,7 @@ Complete the following steps to run Grafana:
 Complete the previous steps and based on the mode that you want to run Grafana refer to the following sections:
 
 Run Grafana in the PROD mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note::  Skip this section, if you are running Grafana in the DEV mode.
 
@@ -86,8 +84,8 @@ To run Grafana in the PROD mode, import ``cacert.pem`` from the ``build/Certific
 #. Select the **cacert.pem** file.
 #. Select all checkboxes and then, click **Import**.
 
-Run Grafana in the DEV mode
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Run Grafana in the DEV Mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To run Grafana in the DEV mode, complete the following steps:
 
@@ -100,7 +98,7 @@ To run Grafana in the DEV mode, complete the following steps:
 #. Click **Panel Title** and then, select **Edit**.
 #. On the **Point_Data_Dashboard** page, if required make modifications to the query.
 
-Execute queries
+Execute Queries
 ^^^^^^^^^^^^^^^
 
 On the ``Point_Data_Dashboard``\ , the green spikes visible in the graph are the results of the default query. To run queries, perform the following steps:
@@ -124,7 +122,7 @@ On the ``Point_Data_Dashboard``\ , the green spikes visible in the graph are the
       The graph will change according to the values you select.
 
 
-Run Grafana for video use cases
+Run Grafana for Video Use Cases
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Perform the following steps to run Grafana for a video use case:
@@ -133,14 +131,14 @@ Perform the following steps to run Grafana for a video use case:
 #. Ensure that the endpoint of the publisher, that you want to subscribe to, is mentioned in the **Subscribers** section of the `config <https://github.com/open-edge-insights/ts-grafana/blob/master/config.json>`_ file.
 #. On the **Home Dashboard** page, on the left corner, click the Dashboards icon.
 #. Click the **Manage Dashboards** tab, to view the list of all the preconfigured dashboards.
-#. Select **EII Video and Time Series Dashboard**\ , to view multiple panels with topic names of the subscriber as the panel names along with a time-series panel named ``Time Series``.
+#. Select **Open EII Video and Time Series Dashboard**\ , to view multiple panels with topic names of the subscriber as the panel names along with a time-series panel named ``Time Series``.
 #. Hover over the topic name. The panel title will display multiple options.
 #. Click **View** to view the subscribed frames for each topic.
 
 .. note:: 
 
 
-   #. The only supported browser for Grafana support for video usecase is **Google Chrome**.
+   #. The only supported browser for Grafana support for video use case is **Google Chrome**.
    #. Changing gridPos for the video frame panels is prohibited since these values are altered internally to support multi instance.
    #. Grafana does not support visualization for GVA, CustomUDF streams
    #. Grafana currently supports running a maximum number of **12 streams** only.

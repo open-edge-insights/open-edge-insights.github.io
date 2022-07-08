@@ -8,7 +8,7 @@ Contents
 
 * `Contents <#contents>`__
 
-  * `OEI Sample UDFs <#oei-sample-udfs>`__
+  * `Open EII Sample UDFs <#open-eii-sample-udfs>`__
   * `User Defined Function (UDF) <#user-defined-function-udf>`__
   * `UDF Configuration <#udf-configuration>`__
   * `UDF Writing Guide <#udf-writing-guide>`__
@@ -22,20 +22,20 @@ Contents
 
     * `Combination of UDFs with ingestors <#combination-of-udfs-with-ingestors>`__
 
-OEI Sample UDFs
----------------
+Open EII Sample UDFs
+--------------------
 
-Open Edge Insights (OEI) supports loading and executing of native(c++) and python UDFs. In here,
-one can find the sample native and python UDFs(User Defined Functions) to be used with OEI components
+Open Edge Insights for Industrial (Open EII) supports loading and executing of native (C++) and python UDFs. In here,
+you can find the sample native and python UDFs (User Defined Functions) to be used with Open EII components
 like VideoIngestion and VideoAnalytics. The UDFs can modify the frame, drop the frame and generate meta-data from the frame.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open EII. This is due to the product name change of EII as Open EII.
 
 
 User Defined Function (UDF)
 ---------------------------
 
-An UDF is a chunk of user code that acts as a filter, preprocessor, or classifier for a given data input coming from the OEI. The User Defined Function (UDF) Loader Library provides a common API for loading C++ and Python UDFs.
+An UDF is a chunk of user code that acts as a filter, preprocessor, or classifier for a given data input coming from the Open EII. The User Defined Function (UDF) Loader Library provides a common API for loading C++ and Python UDFs.
 
 The library itself is written in C++ and provides an abstraction layer for loading and calling UDFs. Additionally, the library defines a common interface inheritable by all UDFs (whether written in C++ or Python).
 
@@ -292,7 +292,7 @@ Python UDFs
 * 
   **Jupyter Connector UDF**
 
-  Accepts the frame and publishes it to the OEI JupyterNotebook service which processes the frame and publishes it back to the jupyter_connector UDF.
+  Accepts the frame and publishes it to the Open EII JupyterNotebook service which processes the frame and publishes it back to the jupyter_connector UDF.
 
   ``UDF config``\ :
 
@@ -371,7 +371,7 @@ Python UDFs
 Construction of Metadata in UDF
 -------------------------------
 
-If OEI Visualizer/WebVisualizer clients are used for visualizing the classified frames, then please follow the metadata guidelines mentioned in **\ ``Metadata Structure``\ ** in `Visualizer <https://github.com/open-edge-insights/video-native-visualizer/blob/master/README.md>`_ / `WebVisualizer <https://github.com/open-edge-insights/video-web-visualizer/blob/master/README.md>`_ README respectively.
+If Open EII Visualizer/WebVisualizer clients are used for visualizing the classified frames, then please follow the metadata guidelines mentioned in **\ ``Metadata Structure``\ ** in `Visualizer <https://github.com/open-edge-insights/video-native-visualizer/blob/master/README.md>`_ / `WebVisualizer <https://github.com/open-edge-insights/video-web-visualizer/blob/master/README.md>`_ README respectively.
 
 **Note**\ : User has to make sure that the data with in meta data should be of type list, tuple, dict or primitive data types (int, float, string or bool). Also, data with in list, tuple, dict
 must contain only primitive data types.

@@ -11,9 +11,9 @@ Contents
 Azure Bridge Module
 -------------------
 
-This directory contains the source code for the Azure Bridge OEI service which bridges communication from the Message bus and the Azure IoT Edge Runtime. For more information on this service, see the top level README. The purpose of this README is to cover some specifics related to the code itself, and not the usage of the module in OEI. Refer to the OEI and Azure Bridge READMEs for more information.
+This directory contains the source code for the Azure Bridge Open EII service which bridges communication from the Message bus and the Azure IoT Edge Runtime. For more information on this service, see the top level README. The purpose of this README is to cover some specifics related to the code itself, and not the usage of the module in Open EII. Refer to the Open EII and Azure Bridge READMEs for more information.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 Running Unit Tests
@@ -23,16 +23,16 @@ The Azure Bridge contains unit tests for various utility functions in the servic
 
 To run the unit tests for the Azure Bridge, first install the Azure Bridge python dependencies:
 
-.. note::  It is highly recommended that you use a python virtual environment to install the python packages, so that the system python installation doesn't get altered. Details on setting up and using python virtual environment can be found `here <https://www.geeksforgeeks.org/python-virtual-environment/>`_
+.. note::  It is highly recommended that you use a python virtual environment to install the python packages, so that the system python installation doesn't get altered. Details on setting up and using python virtual environment can be found `here <https://www.geeksforgeeks.org/python-virtual-environment/>`_.
 
 
 .. code-block:: sh
 
     sudo -H -E pip3 install -r requirements.txt
 
-Next, set up your ``PYTHONPATH`` to contian the necessary OEI Python libraries for the test:
+Next, set up your ``PYTHONPATH`` to contian the necessary Open EII Python libraries for the test:
 
-.. note::  This can be skipped if you have installed the OEI libraries on your system already. This step assumes none of the OEI libraries for Python, Go, or C have been installed on your system.
+.. note::  This can be skipped if you have installed the Open EII libraries on your system already. This step assumes none of the Open EII libraries for Python, Go, or C have been installed on your system.
 
 
 .. code-block:: sh

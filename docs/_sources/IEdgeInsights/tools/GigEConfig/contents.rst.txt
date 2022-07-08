@@ -5,7 +5,7 @@ Contents
 
 * `Contents <#contents>`__
 
-  * `GigEConfig tool <#gigeconfig-tool>`__
+  * `GigEConfig Tool <#gigeconfig-tool>`__
 
     * `Generating PFS (Pylon Feature Stream) File <#generating-pfs-pylon-feature-stream-file>`__
     * `Running GigEConfig Tool <#running-gigeconfig-tool>`__

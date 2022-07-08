@@ -7,28 +7,28 @@ Contents
 
   * `DiscoverHistory Tool <#discoverhistory-tool>`__
 
-    * `Build and run the DiscoverHistory tool <#build-and-run-the-discoverhistory-tool>`__
+    * `Build and Run the DiscoverHistory Tool <#build-and-run-the-discoverhistory-tool>`__
 
       * `Prerequisites <#prerequisites>`__
       * `Run the DiscoverHistory tool in the PROD mode <#run-the-discoverhistory-tool-in-the-prod-mode>`__
-      * `Run the DiscoverHistory tool in the DEV mode <#run-the-discoverhistory-tool-in-the-dev-mode>`__
-      * `Run the DiscoverHistory tool in the zmq_ipc mode <#run-the-discoverhistory-tool-in-the-zmq_ipc-mode>`__
+      * `Run the DiscoverHistory tool in the DEV Mode <#run-the-discoverhistory-tool-in-the-dev-mode>`__
+      * `Run the DiscoverHistory tool in the zmq_ipc Mode <#run-the-discoverhistory-tool-in-the-zmq_ipc-mode>`__
 
-    * `Sample select queries <#sample-select-queries>`__
-    * `Multi-instance feature support for the Builder script with the DiscoverHistory tool <#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool>`__
+  * `Sample Select Queries <#sample-select-queries>`__
+  * `Multi-instance Feature Support for the Builder Script with the DiscoverHistory Tool <#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool>`__
 
 DiscoverHistory Tool
 --------------------
 
 You can get history metadata and images from the InfluxDB and ImageStore containers using the DiscoverHistory tool.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
-Build and run the DiscoverHistory tool
+Build and Run the DiscoverHistory Tool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This section provides information for building and running DiscoverHistory tool in various modes such as the PROD mode and the DEV mode. To run the DiscoverHistory tool base images should be on the same node. Ensure that on the node where the DiscoverHistory tool is running, the ``ia_common`` and ``ia_eiibase`` base images are also available. For scenario, where OEI and DiscoverHistory tool are not running on the same node, then you must build the base images, ``ia_common`` and ``ia_eiibase``.
+This section provides information for building and running DiscoverHistory tool in various modes such as the PROD mode and the DEV mode. To run the DiscoverHistory tool base images should be on the same node. Ensure that on the node where the DiscoverHistory tool is running, the ``ia_common`` and ``ia_eiibase`` base images are also available. For scenario, where Open EII and DiscoverHistory tool are not running on the same node, then you must build the base images, ``ia_common`` and ``ia_eiibase``.
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -62,7 +62,7 @@ After completing the prerequisites, perform the following steps to run the Disco
           python3 builder.py -f usecases/video-streaming-storage.yml
 
 #. 
-   Provision, build, and run the DiscoverHistory tool along with the OEI video-streaming-storage recipe or stack. For more information, refer to the `OEI README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_.
+   Provision, build, and run the DiscoverHistory tool along with the Open EII video-streaming-storage recipe or stack. For more information, refer to the `Open EII README <https://github.com/open-edge-insights/eii-core/blob/master/README.md>`_.
 
 #. Check if the ``imagestore`` and ``influxdbconnector`` services are running.
 #. Locate the ``data`` and the ``frames`` directories from the following path:
@@ -80,7 +80,7 @@ After completing the prerequisites, perform the following steps to run the Disco
 
          docker restart ia_discover_history
 
-Run the DiscoverHistory tool in the DEV mode
+Run the DiscoverHistory tool in the DEV Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 After completing the prerequisites, perform the following steps to run the DiscoverHistory tool in the DEV mode:
@@ -89,7 +89,7 @@ After completing the prerequisites, perform the following steps to run the Disco
 #. Open the [.env] file from the ``[WORK_DIR]/IEdgeInsights/build`` directory.
 #. Set the ``DEV_MODE`` variable as ``true``.
 
-Run the DiscoverHistory tool in the zmq_ipc mode
+Run the DiscoverHistory tool in the zmq_ipc Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 After completing the prerequisites, to run the DiscoverHistory tool in the zmq_ipc mode, modify the interface section of the ``config.json`` file as follows:
@@ -101,7 +101,7 @@ After completing the prerequisites, to run the DiscoverHistory tool in the zmq_i
            "EndPoint": "/EII/sockets"
        }
 
-Sample select queries
+Sample Select Queries
 ^^^^^^^^^^^^^^^^^^^^^
 
 The following table shows the samples for the select queries and its details:
@@ -141,10 +141,10 @@ The following table shows the samples for the select queries and its details:
    * "select * from camera1_stream_results order by desc limit 10"
 
 
-Multi-instance feature support for the Builder script with the DiscoverHistory tool
+Multi-instance Feature Support for the Builder Script with the DiscoverHistory Tool
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The multi-instance feature support of Builder works only for the video pipeline (\ ``[WORK_DIR]/IEdgeInsights/build/usecase/video-streaming.yml``\ ). For more details, refer to the `OEI core readme <https://github.com/open-edge-insights/eii-core/blob/master/README.md#running-builder-to-generate-multi-instance-configs>`_
+The multi-instance feature support of Builder works only for the video pipeline (\ ``[WORK_DIR]/IEdgeInsights/build/usecase/video-streaming.yml``\ ). For more details, refer to the `Open EII core Readme <https://github.com/open-edge-insights/eii-core/blob/master/README.md#running-builder-to-generate-multi-instance-configs>`_
 
 In the following example you can view how to change the configuration to use the builder.py script -v 2 feature with 2 instances of the DiscoverHistory tool enabled:
 

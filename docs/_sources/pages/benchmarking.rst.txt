@@ -1,6 +1,6 @@
-=======================================
-Video and Time-series Benchmarking Tool
-=======================================
+#######################################
+Video and Time Series Benchmarking Tool
+#######################################
 
 .. include:: ../IEdgeInsights/tools/Benchmarking/video-benchmarking-tool/README.rst
 

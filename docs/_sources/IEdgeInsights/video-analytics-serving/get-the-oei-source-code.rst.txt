@@ -1,0 +1,13 @@
+
+Get the OEI source code
+-----------------------
+
+To set up the Edge Video Analytics Microservice, get the OEI source code. The Edge Video Analytics Microservice depends on the OEI provisioning, so you need to build it in the OEI context. Run the following commands to get the OEI source code:
+
+.. code-block:: sh
+
+   repo init -u "https://github.com/open-edge-insights/eii-manifests.git"
+   repo sync
+
+.. note::  To learn more about OEI manifests, refer to `eii-manifests <https://github.com/open-edge-insights/eii-manifests>`_.
+

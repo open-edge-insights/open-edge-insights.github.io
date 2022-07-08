@@ -23,7 +23,7 @@ Contents
 Point-data (Time series data) analytics introduction
 ----------------------------------------------------
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 Any integral value that gets generated over time, we can say it is a point data.
@@ -64,8 +64,8 @@ Starting the example
    then comment Video use case containers ia_video_ingestion and ia_video_analytics in ``../build/docker-compose.yml``
 
 #. 
-   Starting the OEI.
-   To start the OEI in production mode, provisioning is required. After provisioning, please follow the below commands
+   Starting the Open EII.
+   To start the Open EII in production mode, provisioning is required. After provisioning, please follow the below commands
 
    .. code-block:: sh
 
@@ -73,7 +73,7 @@ Starting the example
       docker-compose -f docker-compose-build.yml build
       eii_start.sh
 
-   To start the OEI in developer mode, please refer to the `README <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_.
+   To start the Open EII in developer mode, please refer to the `README <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_.
 
 #. 
    To verify the output please check the output of below command
@@ -310,7 +310,7 @@ Steps to configure the UDFs in Kapacitor
               PYTHONPATH = "/go/src/github.com/influxdata/kapacitor/udf/agent/py/"
 
 * 
-  Do the `provisioning <8https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ and run the OEI stack.
+  Do the `provisioning <8https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ and run the Open EII stack.
 
 Steps to run the samples of multiple UDFs in a single task and multiple tasks using single UDF
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -323,7 +323,7 @@ Kapacitor input and output plugins
 Purpose of plugins
 ~~~~~~~~~~~~~~~~~~
 
-The plugins allow Kapacitor to interact directly with OEI message bus. They use message bus publisher/subscriber interface. Using these plugins Kapacitor can now receive data from various OEI publishers and send data to various OEI subscribers. Hence, it's possible to have a time-series use case without InfluxDB and Kapacitor can act as an independent analytical engine.
+The plugins allow Kapacitor to interact directly with Open EII Message bus. They use message bus publisher/subscriber interface. Using these plugins Kapacitor can now receive data from various Open EII publishers and send data to various Open EII subscribers. Hence, it's possible to have a time-series use case without InfluxDB and Kapacitor can act as an independent analytical engine.
 
 A simple use case flow can be as follows:
 
@@ -334,7 +334,7 @@ Using input plugin
 
 
 * 
-  Configure the OEI input plugin in `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_ and `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_
+  Configure the Open EII input plugin in `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_ and `config/kapacitor_devmode.conf <https://github.com/open-edge-insights/ts-kapacitor/blob/master/config/kapacitor_devmode.conf>`_
   For example:
 
   .. code-block:: sh
@@ -410,7 +410,7 @@ Using input plugin
          ]
 
 * 
-  Do the `provisioning <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ and run the OEI stack.
+  Do the `provisioning <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ and run the Open EII stack.
 
   The subscribed data will now be available in the above logs file which can be viewed with the
   command below:
@@ -483,7 +483,7 @@ Using output plugin
          ]
 
 * 
-  Do the `provisioning <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ and run the OEI stack.
+  Do the `provisioning <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ and run the Open EII stack.
 
 Using input/output plugin with RFC UDF
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -573,4 +573,4 @@ Using input/output plugin with RFC UDF
          ]
 
 * 
-  Do the `provisioning <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ and run the OEI stack.
+  Do the `provisioning <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_ and run the Open EII stack.

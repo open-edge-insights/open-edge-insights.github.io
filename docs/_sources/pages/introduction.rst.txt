@@ -1,20 +1,20 @@
 
-===================
-Introduction to OEI
-===================
+=================================================
+Introduction to Open Edge Insights for Industrial
+=================================================
 
-.. note:: Open Edge Insights (OEI) was previously named as Intel® Edge Insights for Industrial (EII) and Intel® Edge Insights Software (EIS). Remnants of the previous names still exist in some components. The name replacement is ongoing and will be completed in future releases.
+.. note:: Open Edge Insights for Industrial (Open EII) was previously named as Intel® Edge Insights for Industrial (EII) and Intel® Edge Insights Software (EIS). Remnants of the previous names still exist in some components. The name replacement is ongoing and will be completed in future releases.
 
-Since its inception in early 2018, OEI has been focused on enabling the rapid deployment of solutions aimed at finding and revealing insights on compute devices outside data centers. The title of the software itself alludes to its intended purposes: 
+Since its inception in early 2018, Open EII has been focused on enabling the rapid deployment of solutions aimed at finding and revealing insights on compute devices outside data centers. The title of the software itself alludes to its intended purposes: 
 
    **Edge** :- systems existing outside of a data center.
 
    **Insights** :- understanding relationships. 
 
 This software consists of a set of pre-integrated ingredients optimized for Intel® architecture. It includes modules that enable data collection, storage, and analytics for both time-series and video data, as well as the ability to act on these insights by sending downstream commands to tools or devices. 
-To learn more about the OEI v3.0 key features and improvements, refer to the Release Notes.
+To learn more about the Open EII v3.0 key features and improvements, refer to the Release Notes.
 
-This guide will detail the capabilities of OEI ingredients and will serve as a reference for developers working with them. This guide is designed to enable developers to create custom solutions for their end customers. In this document, all the terminology will use Open Edge Insights (OEI), Intel® Edge Insights for Industrial (EII), and Edge Insights software (EIS) interchangeably to refer to the same software, and will be fully updated in the next release.  
+This guide will detail the capabilities of Open EII ingredients and will serve as a reference for developers working with them. This guide is designed to enable developers to create custom solutions for their end customers. In this document, all the terminology will use Open Edge Insights for Industrial (Open EII), Intel® Edge Insights for Industrial (EII), and Edge Insights software (EIS) interchangeably to refer to the same software, and will be fully updated in the next release.  
 
 Terminology
 ===========
@@ -45,7 +45,7 @@ General Terminology
       +------------+------------------------------------------------------------------------------------------------------------+
       |MQTT        |Message Queuing Telemetry Transport - Standard publish-subscribe-based messaging protocol                   |
       +------------+------------------------------------------------------------------------------------------------------------+
-      |OEI         |Open Edge Insights                                                                                          |
+      |Open EII    |Open Edge Insights for Industrial                                                                           |
       +------------+------------------------------------------------------------------------------------------------------------+
       |OPC-UA      |OPC Unified Architecture - A popular protocol for communication between machines in industrial applications |
       +------------+------------------------------------------------------------------------------------------------------------+

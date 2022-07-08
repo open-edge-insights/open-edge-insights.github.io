@@ -1,0 +1,8 @@
+
+Edge Video Analytics Microservice for OEI
+=========================================
+
+The Edge Video Analytics Microservice combines the video ingestion and analytics capabilities provided by the Open Edge Insights' (OEI) visual ingestion and analytics modules. In the following sections, you will find information related to setting up the Edge Video Analytics Microservice and its configuration details.
+
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.
+

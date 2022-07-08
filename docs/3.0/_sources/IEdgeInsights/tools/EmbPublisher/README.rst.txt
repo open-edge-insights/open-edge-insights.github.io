@@ -7,29 +7,29 @@ Contents
 
   * `EmbPublisher <#embpublisher>`__
 
-    * `How to integrate this tool with video/timeseries use case <#how-to-integrate-this-tool-with-videotimeseries-use-case>`__
-    * `Configuration of the tool <#configuration-of-the-tool>`__
+    * `How to Integrate this Tool with Video/Time Series Use Case <#how-to-integrate-this-tool-with-videotime-series-use-case>`__
+    * `Configuration of the Tool <#configuration-of-the-tool>`__
     * `Running EmbPublisher in IPC mode <#running-embpublisher-in-ipc-mode>`__
 
 EmbPublisher
 ------------
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 
 * This tool acts as a brokered publisher of message bus.
-* Telegaf's message bus input plugin acts as a subscriber to the OEI broker.
+* Telegaf's message bus input plugin acts as a subscriber to the Open EII broker.
 
-How to integrate this tool with video/timeseries use case
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How to Integrate this Tool with Video/Time Series Use Case
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-* In 'time-series.yml'/'video-streaming.yml' file, please add 'ZmqBroker' and 'tools/EmbPublisher' components.
-* Use the modified 'time-series.yml'/'video-streaming.yml' file as an argument while generating the docker-compose.yml file using the 'builder.py' utility.
+* In the ``time-series.yml``\ /\ ``video-streaming.yml`` file, add the ``ZmqBroker`` and ``tools/EmbPublisher`` components.
+* Use the modified ``time-series.yml``\ /\ ``video-streaming.yml`` file as an argument while generating the docker-compose.yml file using the ``builder.py`` utility.
 * Follow usual provisioning and starting process.
 
-Configuration of the tool
+Configuration of the Tool
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Let us look at the sample configuration

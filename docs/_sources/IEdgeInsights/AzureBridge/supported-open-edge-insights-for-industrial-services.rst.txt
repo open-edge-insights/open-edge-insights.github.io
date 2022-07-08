@@ -1,0 +1,17 @@
+
+Supported Open Edge Insights for Industrial Services
+----------------------------------------------------
+
+Azure Bridge supports the following services:
+
+
+* Config Manager Agent
+* Video Ingestion
+* Video Analytics
+
+.. note:: 
+
+
+   * As ``Config Manager Agent`` responsible for OOpen EII provisioning is deployed as azure module, it becomes essential to have other Open EII services to be deployed as azure modules to talk to other Open EII azure modules.
+   * Ensure to add the app names to the ``SERVICES`` environment key of ``Config Manager Agent`` module template file at `ia_configmgr_agent.template.json <https://github.com/open-edge-insights/eii-core/blob/master/ia_configmgr_agent.template.json>`_.
+

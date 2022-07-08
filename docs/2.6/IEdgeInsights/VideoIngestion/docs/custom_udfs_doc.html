@@ -47,7 +47,7 @@
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>
@@ -183,11 +183,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-3">EII v2.5.3</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id3">Fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id2">Fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-2">EII v2.5.2</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id4">Bug fixes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id3">Bug fixes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5-1">EII v2.5.1</a><ul>
@@ -195,7 +195,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/release.html#eii-v2-5">EII v2.5</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id5">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/release.html#id4">Features</a></li>
 </ul>
 </li>
 </ul>
@@ -491,12 +491,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#multi-instance-feature-support-for-the-builder-script-with-the-discoverhistory-tool">Multi-instance feature support for the Builder script with the DiscoverHistory tool</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#embpublisher">EmbPublisher</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#about-tool">About tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#how-to-integrate-this-tool-with-video-timeseries-use-case">How to integrate this tool with video/timeseries use case.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#configuration-of-the-tool">Configuration of the tool.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#running-embpublisher-in-ipc-mode">Running EmbPublisher in IPC mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#embsubscriber">EmbSubscriber</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#eii-pre-requisites">EII pre-requisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-embsubscriber">Running EmbSubscriber</a></li>
@@ -512,7 +510,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#httptestserver">HttpTestServer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#httptestserver"><code class="docutils literal notranslate"><span class="pre">HttpTestServer</span></code></a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#pre-requisites-for-running-the-httptestserver">Pre-requisites for running the HttpTestServer</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#starting-httptestserver">Starting HttpTestServer</a></li>
 </ul>
@@ -549,6 +547,10 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#running-video-profiler">Running Video Profiler</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#optimizing-eii-video-pipeline-by-analysing-video-profiler-results">Optimizing EII Video pipeline by analysing Video Profiler results</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#benchmarking-with-multi-instance-config">Benchmarking with multi instance config</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../pages/tools.html#eii-distributed-services-centralized-logging-using-elk">EII distributed services centralized logging using ELK</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../pages/tools.html#pre-requisites">Pre-requisites</a></li>
 </ul>
 </li>
 </ul>
@@ -639,14 +641,14 @@ $ cp -r &lt;PATH&gt;/safety_gear [WORKDIR]/IEdgeInsights/common/video/udfs/nativ
 <p>$ cp -r <span class="raw-html-m2r"><PATH></span>Safety_Full_Hat_and_Vest.avi [WORKDIR]/IEdgeInsights/VideoIngestion/test_videos</p>
 <p>In [WORKDIR]/IEdgeInsights/VideoIngestion/config.json make the below changes to use <code class="docutils literal notranslate"><span class="pre">Safety_Full_Hat_and_Vest.avi</span></code> video file for safety_gear udf</p>
 </div></blockquote>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">----</span><span class="nx">snip</span><span class="o">----</span>
- <span class="s2">&quot;ingestor&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;opencv&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="s2">&quot;./test_videos/Safety_Full_Hat_and_Vest.avi&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;loop_video&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s2">&quot;queue_size&quot;</span><span class="o">:</span> <span class="mf">10</span><span class="p">,</span>
-        <span class="s2">&quot;poll_interval&quot;</span><span class="o">:</span> <span class="mf">0.2</span>
-    <span class="p">},</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">----</span><span class="nx">snip</span><span class="o">----</span><span class="w"></span>
+<span class="w"> </span><span class="s2">&quot;ingestor&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;opencv&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;pipeline&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;./test_videos/Safety_Full_Hat_and_Vest.avi&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;loop_video&quot;</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;queue_size&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">10</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="s2">&quot;poll_interval&quot;</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span><span class="w"></span>
+<span class="w">    </span><span class="p">},</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
@@ -654,33 +656,33 @@ $ cp -r &lt;PATH&gt;/safety_gear [WORKDIR]/IEdgeInsights/common/video/udfs/nativ
 <p><strong>For python udfs:</strong></p>
 <p>Refer the below example to make the required config changes for python safety gear udf:</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/VideoIngestion/config.json</span></code> or <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/VideoAnalytics/config.json</span></code> make the below changes to use safety_gear udf</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">----</span><span class="nx">snip</span><span class="o">----</span>
-  <span class="s2">&quot;udfs&quot;</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-         <span class="s2">&quot;device&quot;</span><span class="o">:</span> <span class="s2">&quot;CPU&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;model_bin&quot;</span><span class="o">:</span> <span class="s2">&quot;common/video/udfs/python/safety_gear/ref/frozen_inference_graph.bin&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;model_xml&quot;</span><span class="o">:</span> <span class="s2">&quot;common/video/udfs/python//safety_gear/ref/frozen_inference_graph.xml&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;safety_gear.safety_classifier&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;python&quot;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">----</span><span class="nx">snip</span><span class="o">----</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;udfs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;device&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;CPU&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;model_bin&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;common/video/udfs/python/safety_gear/ref/frozen_inference_graph.bin&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;model_xml&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;common/video/udfs/python//safety_gear/ref/frozen_inference_graph.xml&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;safety_gear.safety_classifier&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="w"></span>
 
-     <span class="p">}</span>
-  <span class="p">]</span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 <p><strong>For native udfs:</strong></p>
 <p>Refer the below example to make the required config changes for native safety gear udf:</p>
 <p>In <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/VideoIngestion/config.json</span></code> or <code class="docutils literal notranslate"><span class="pre">[WORKDIR]/IEdgeInsights/VideoAnalytics/config.json</span></code> make the below changes to use safety_gear udf</p>
-<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">----</span><span class="nx">snip</span><span class="o">----</span>
-  <span class="s2">&quot;udfs&quot;</span><span class="o">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-         <span class="s2">&quot;device&quot;</span><span class="o">:</span> <span class="s2">&quot;CPU&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;model_bin&quot;</span><span class="o">:</span> <span class="s2">&quot;common/video/udfs/native/safety_gear_demo/ref/frozen_inference_graph.bin&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;model_xml&quot;</span><span class="o">:</span> <span class="s2">&quot;common/video/udfs/native/safety_gear_demo/ref/frozen_inference_graph.xml&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;safety_gear_demo&quot;</span><span class="p">,</span>
-         <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;native&quot;</span>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="o">----</span><span class="nx">snip</span><span class="o">----</span><span class="w"></span>
+<span class="w">  </span><span class="s2">&quot;udfs&quot;</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;device&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;CPU&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;model_bin&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;common/video/udfs/native/safety_gear_demo/ref/frozen_inference_graph.bin&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;model_xml&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;common/video/udfs/native/safety_gear_demo/ref/frozen_inference_graph.xml&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;name&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;safety_gear_demo&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;native&quot;</span><span class="w"></span>
 
-     <span class="p">}</span>
-  <span class="p">]</span>
+<span class="w">     </span><span class="p">}</span><span class="w"></span>
+<span class="w">  </span><span class="p">]</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Note: The IR model files must be copied along with udfs</p>
@@ -707,7 +709,7 @@ add_subdirectory(safety_gear_demo/)
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright (c) 2021 Intel Corporation.</p>
+    <p>&#169; Copyright (c) 2022 Intel Corporation.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
@@ -723,7 +725,7 @@ add_subdirectory(safety_gear_demo/)
   
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> OEI</span>
+      <span class="fa fa-book">EII</span>
       v: 2.6
       <span class="fa fa-caret-down"></span>
     </span>

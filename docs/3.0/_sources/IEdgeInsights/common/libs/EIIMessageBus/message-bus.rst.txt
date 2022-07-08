@@ -2,17 +2,15 @@
 Message Bus
 -----------
 
-Message bus used between containers inside of Open Edge Insights (OEI).
+Message bus allows the containers in Open Edge Insights for Industrial (Open EII) to communicate with each other.
 
-.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as OEI. This is due to the product name change of EII as OEI.
+.. note::  In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open EII. This is due to the product name change of EII as Open EII.
 
 
 Dependency Installation
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The OEI Message Bus depends on CMake version 3.11+. For Ubuntu 18.04 this is not
-the default version installed via ``apt-get``. To install the correct version
-of CMake, execute the following commands:
+The Message bus depends on CMake version 3.11+. For Ubuntu 18.04, this is not the default version that is installed via ``apt-get``. To install the correct version of CMake, run the following commands:
 
 .. code-block:: sh
 
@@ -30,13 +28,10 @@ of CMake, execute the following commands:
    # Make the command available to all users
    sudo update-alternatives --install /usr/bin/cmake cmake /opt/cmake/bin/cmake 1 --force
 
-To install the remaining dependencies for the message bus execute the following
-command:
+To install the remaining dependencies for the Message bus, run the following command:
 
-**Note**\ : It is highly recommended that you use a python virtual environment to
-install the python packages, so that the system python installation doesn't
-get altered. Details on setting up and using python virtual environment can
-be found here: https://www.geeksforgeeks.org/python-virtual-environment/
+**Note**\ : To avoid alterations to the Python installation in the system, it is recommended to use a Python virtual environment to
+install Python packages. Refer the following link for more details on setting up and using the python virtual environment https://www.geeksforgeeks.org/python-virtual-environment/.
 
 .. code-block:: sh
 
@@ -46,8 +41,7 @@ be found here: https://www.geeksforgeeks.org/python-virtual-environment/
    Alpine it is ``cjson-dev zeromq-dev``.
 
 
-If you wish to compile the Python binding as well, then you must also install
-the Python requirements. To do this, execute the following ``pip`` command:
+If you wish to compile the Python binding as well, then you must also install the Python requirements. To do this, execute the following ``pip`` command:
 
 .. code-block:: sh
 
@@ -56,8 +50,7 @@ the Python requirements. To do this, execute the following ``pip`` command:
 Compilation
 ^^^^^^^^^^^
 
-The OEI Message Bus utilizes CMake as the build tool for compiling the library.
-The simplest sequence of commands for building the library are shown below.
+The Message bus utilizes CMake as the build tool for compiling the library. The simplest sequence of commands for building the library are as follows:
 
 .. code-block:: sh
 
@@ -66,30 +59,21 @@ The simplest sequence of commands for building the library are shown below.
    cmake ..
    make
 
-This will compile only the C library for the OEI Message Bus. If you wish to
-build with the Python binding, then specify the ``WITH_PYTHON`` flag when
-executing the ``cmake`` command (as shown below).
+These commands will compile only the C library for the Message bus. To build with Python binding, specify the ``WITH_PYTHON`` flag while running the ``cmake`` command as follows:
 
 .. code-block:: sh
 
    cmake -DWITH_PYTHON=ON ..
 
-If you wish to include installation of the Go binding with the installation of
-the OEI library, then specify the ``WITH_GO`` flag when executing the ``cmake``
-command (as shown below).
+To include installation of the GO binding with the installation of the Open EII library, specify the ``WITH_GO`` flag while running the ``cmake`` command as follows:
 
 .. code-block:: sh
 
    cmake -DWITH_GO=ON ..
 
-Note that this only copies the Go binding library to your system's ``$GOPATH``.
-If you do not have your ``$GOPATH`` specified in your system's environmental
-variables then an error will occur while executing the ``cmake`` command.
+**Note**\ : This command only copies the GO binding library to your system's ``$GOPATH``. Specify the ``$GOPATH`` in your system's environmental variables to avoid the error while running the ``cmake`` command.
 
-In addition to the ``WITH_PYTHON`` and ``WITH_GO`` flags, the Message Bus
-CMake files add flags for building the C examples and the unit tests associated
-with the library. The table below specifies all of the available flags that can
-be given to CMake for building the Message Bus.
+In addition to the ``WITH_PYTHON`` and ``WITH_GO`` flags, the Message bus CMake files, add flags for building the C examples and the unit tests associated with the library. The following table specifies the flags that you can set with the ``cmake`` command for building the Message bus.
 
 .. list-table::
    :header-rows: 1
@@ -111,13 +95,11 @@ be given to CMake for building the Message Bus.
 .. note:: 
 
 
-   * These flags are in addition to any and all flags that are available for the ``cmake`` command. See the CMake documentation for additional flags.
+   * These flags are in addition to any flags that are available for the ``cmake`` command. Refer to the CMake documentation for more information on additional flags.
    * See the `Generating Documentation <#generating-documentation>`__ section.
 
 
-If you wish to compile the Message Bus in debug mode, then you can set the
-the ``CMAKE_BUILD_TYPE`` to ``Debug`` when executing the ``cmake`` command (as shown
-below).
+To compile the Message bus in debug mode, set the the ``CMAKE_BUILD_TYPE`` to ``Debug`` when executing the ``cmake`` command as follows:
 
 .. code-block:: sh
 
@@ -126,66 +108,50 @@ below).
 Generating Documentation
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Generating the documentation has several dependencies which are not installed
-by the ``install.sh`` script. You must install the following packages in order
-to generate the documentation:
+Generating the documentation has several dependencies that are not installed by the ``install.sh`` script. You must install the following packages to generate the documentation:
 
 .. code-block:: sh
 
    sudo apt install doxygen texlive-full
 
-**WARNING:** This install way take a very long time. It will install > ``4GB`` of
-packages.
+**WARNING:** Packages of size more than 4 GB is installed during the installation. This process may take a long time.
 
-If you are building the Python binding (by using the ``WITH_PYTHON`` flag), then
-you must also install Sphinx and an extension for Sphinx. This can be
-accomplished with the following commands:
+If you are building the Python binding using the ``WITH_PYTHON`` flag, then you must also install Sphinx and an extension for Sphinx. To do this, run the following commands:
 
 .. code-block:: sh
 
    sudo apt install python3-sphinx
    sudo -H -E pip3 install m2r
 
-.. note::  The commands above assume you already have Python 3.6 and pip
-   installed on your system.
+.. note::  As a prerequistes for these commands, you should have Python 3.6 and pip installed on your system.
 
 
-**Go documentation generation is WIP.**
+**GO documentation generation is work in progress (WIP).**
 
-Once you have completed these steps, the documentation can be generated by
-running the following make command:
+After completing these steps, run the following command to generate the documentation:
 
 .. code-block:: sh
 
    make docs && make docs
 
-Note that currently you need to run ``make docs`` twice so that the table of
-contents is generated correctly for each of the documents. This will be fixed
-in the future.
+.. note::  You need to run the ``make docs`` command two times so that the Table of Contents is generated correctly for each document. This will be fixed in the future.
 
-The PDF documents will be in the ``docs/pdfs/`` directory within your ``build``
-directory. There will be other log files and output files associated with the
-building of the PDFs. Any file that does not end in ``.pdf`` can be ignored.
+
+The PDF documents is available in the ``docs/pdfs/`` directory within your ``build`` directory. Ignore other log files and output files associated with the building of the PDFs in the ``docs/pdfs/`` directory.
 
 Potential Compilation Issues
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+You can encounter the following issues during compilation:
 
-* **CMake Python Version Issue:** If CMake raises an error for finding the
-    incorrect Python version, then add the following flag to the CMake
-    command: ``-DPYTHON_EXECUTABLE=/usr/bin/python3``
-* **Python Binding Changes Not Compiling:** If a change is made to the Python
-    binding and make has already been previously ran, then you must run
-    ``make clean`` before running make again to compile the changes in the
-    Python binding. This will need to be fixed later.
+
+* **CMake Python Version Issue:** If you get CMake error related to incorrect Python version, then add the following flag to the CMake command: ``-DPYTHON_EXECUTABLE=/usr/bin/python3``
+* **Python Binding Changes Not Compiling:** If the Python binding is changed, and the ``make`` command has been executed run previously, then you must run the ``make clean`` before running the ``make`` command to compile the changes in the Python binding. This will be fixed later.
 
 Packaging
 ^^^^^^^^^
 
-This library supports being packaged as a Debian, RPM, or Alpine APK packages.
-This is all accomplished via CMake. By default, packaging is disabled. To
-enable packaging, add the ``-DPACKAGING=ON`` flag to your CMake command (see
-Compilation section above). This command will look something like:
+This library supports being packaged as a Debian, RPM, or Alpine APK packages. You can do this using the the ``cmake`` command. By default, packaging is disabled. To enable packaging, add the ``-DPACKAGING=ON`` flag to the ``cmake`` command. Refer to the Compilation section. This command will look something like:
 
 .. code-block:: sh
 
@@ -199,7 +165,7 @@ supported package types. If a given package type, ex. APK, is set to be enabled
 manually by its CMake flag and its required packaging toolchain does not exist,
 then CMake will raise a fatal error.
 
-The table below provides the required toolchains for each package type as well
+The following table provides the required toolchains for each package type as well
 as the CMake flag to set to ``ON`` to manually enable a packaging type:
 
 .. list-table::
@@ -242,47 +208,32 @@ To build the Alpine APK package, execute the following command:
 
 **IMPORTANT:**
 
-The Message Bus depends on the OEI Utils library. In order to compile the
-Alpine APK package for the Message Bus it must have the APK package for the
-OEI Utils module.
-
-To provide this, you must first build or download the Alpine APK package for the
-OEI Utils library (see it's repo `here <https://github.com/open-edge-insights/eii-c-utils>`_
-to obtain the library).
-
-Once you have the APK, create an, "apks" directory at the top level of this
-repository.
+The Message bus depends on the Open EII Utils library. To compile the Alpine APK package for the Message bus it must have the APK package for the Open EII Utils module. To provide this, you must first build or download the Alpine APK package for the Open EII Utils library (see it's repo `here <https://github.com/open-edge-insights/eii-c-utils>`_
+to obtain the library). After you have the APK, create ``apks`` directory at the top level of this repository.
 
 .. code-block:: sh
 
    mkdir apks/
 
-Next, place the OEI Utils APK package into the, "apks", directory. Then execute
-the ``make package-apk`` command. If this is not done, then the build will fail.
+Next, place the Open EII Utils APK package into the ``apks`` directory. Then run the ``make package-apk`` command. The build will fail if don't do this.
 
 A Note on Alpine APK Packaging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-In order to package the library as an Alpine APK package, the packaging utility
-must use a Docker container to have access to the proper Alpine APK toolchains.
-This container will automatically be built when the CMake command is ran to
-configure your build environment.
+To package the library as an Alpine APK package, the packaging utility must use a Docker container to have access to the proper Alpine APK toolchains. This container will automatically be built when the CMake command is ran to configure your build environment.
 
-By default, Alpine 3.14 is used to build the package. However, this version
-can be changed by setting the ``APKBUILD_ALPINE_VERSION`` CMake flag to the
-version of Alpine you wish to use (ex. ``-DAPKBUILD_ALPINE_VERSION=3.12``\ ).
+By default, Alpine 3.14 is used to build the package. However, this version can be changed by setting the ``APKBUILD_ALPINE_VERSION`` CMake flag to the version of Alpine you wish to use For example, ``-DAPKBUILD_ALPINE_VERSION=3.12``.
 
 Installation
 ^^^^^^^^^^^^
 
-The OEI Messsage Bus library can be installed in two different ways.
+The Messsage bus library can be installed in two different ways.
 
 
 #. Through published Debian, Fedora, or Alpine APK packages
-#. Installing form source
+#. Installing from source
 
-If you are installing from one of the packages, select the package you wish to
-install from the releases assets, and then run one of the following depending
+If you are installing from one of the packages, select the package you wish to install from the releases assets, and then run one of the following depending
 on the OS you are installing on:
 
 .. code-block:: sh
@@ -917,7 +868,7 @@ run any of the Go examples as specified in the previous section.
 Brokered Publish/Subscribe
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-OEI provides a ZeroMQ Broker. Any of the publisher and subscriber examples can
+Open EII provides a ZeroMQ Broker. Any of the publisher and subscriber examples can
 be used with this broker. There are three example JSON configuration provided
 to showcase the required configuration of the publishers/subscribers to connect
 to the broker. These examples are listed below:

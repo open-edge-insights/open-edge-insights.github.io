@@ -1,31 +1,32 @@
 
-Video pipeline analytics
+Video Pipeline Analytics
 ------------------------
 
 This section provides more information about working with the video pipeline.
 
-Enable camera-based video ingestion
+Enable Camera-based Video Ingestion
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For detailed description on configuring different types of cameras and filter algorithms, refer to the `VideoIngestion/README.md <https://github.com/open-edge-insights/video-ingestion/blob/master/README.md>`_.
 
-Use video accelerators in ingestion and analytics containers
+Use Video Accelerators in Ingestion and Analytics Containers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-OEI supports running inference on ``CPU``\ , ``GPU``\ , ``MYRIAD (NCS2)``\ , and ``HDDL`` devices by accepting the ``device`` value ("CPU"|"GPU"|"MYRIAD"|"HDDL"),
+Open EII supports running inference on ``CPU``\ , ``GPU``\ , ``MYRIAD (NCS2)``\ , and ``HDDL`` devices by accepting the ``device`` value ("CPU"|"GPU"|"MYRIAD"|"HDDL"),
 part of the ``udf`` object configuration in the ``udfs`` key. The ``device`` field in the UDF config of ``udfs`` key in the ``VideoIngestion`` and ``VideoAnalytics``
 configs can be updated at runtime via `EtcdUI <https://github.com/open-edge-insights/eii-etcd-ui>`_ interface, the ``VideoIngestion`` and ``VideoAnalytics``
 services will auto-restart.
 For more details on the UDF config, refer `common/udfs/README.md <https://github.com/open-edge-insights/video-common/blob/master/udfs/README.md>`_.
 
 .. note:: 
-   There is an initial delay of upto ~30 seconds while running inference on ``GPU`` (only for the first frame) as dynamically certain packages get created during runtime.
+   There is an initial delay of up to ~30 seconds while running inference on ``GPU`` (only for the first frame) as dynamically certain packages get created during runtime.
 
 
-To run on USB devices
-~~~~~~~~~~~~~~~~~~~~~
+To Run on the USB Devices
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For actual deployment in case USB camera is required then mount the device node of the USB camera for ``ia_video_ingestion`` service. When multiple USB cameras are connected to host m/c the required camera should be identified with the device node and mounted.
+For actual deployment if USB camera is required then mount the device node of the USB camera for ``ia_video_ingestion`` service. When multiple USB cameras are connected to host machine, the required camera should be identified with the device node and mounted.
+
 For example, mount the two USB cameras connected to the host machine with device node as ``video0`` and ``video1``.
 
 .. code-block:: yaml
@@ -41,14 +42,14 @@ For example, mount the two USB cameras connected to the host machine with device
    ``/dev/dri`` is required for graphic drivers.
 
 
-To run on MYRIAD devices
-~~~~~~~~~~~~~~~~~~~~~~~~
+To Run on the MYRIAD Devices
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note:: 
-   In the IPC mode when publisher (example, ia_video_ingestion, ia_video_analytics, or custom_udfs) is running with the ``root`` user permissions then the subscribers (example, ia_visualizer,  ia_imagestore, or ia_influxdbconnector) should also run as root.
+   In the IPC mode, when publisher such as ia_video_ingestion, ia_video_analytics, or custom_udfs is running with the ``root`` user permissions then the subscribers such as ia_visualizer, ia_imagestore, or ia_influxdbconnector should also run as root.
 
 
-At runtime, use the ``root`` user permissions to run inference on a ``MYRIAD`` device. To enable the root user at runtime in ``ia_video_ingestion``\ , ``ia_video_analytics``\ , or custom UDF services, add ``user: root`` in the respective ``docker-compose.yml`` file. Refer the following example:
+At runtime, use the ``root`` user permissions to run inference on a ``MYRIAD`` device. To enable the root user at runtime in ``ia_video_ingestion``\ , ``ia_video_analytics``\ , or custom UDF services, add ``user: root`` in the respective ``docker-compose.yml`` file. Refer to the following example:
 
 .. code-block:: yaml
 
@@ -68,10 +69,10 @@ At runtime, use the ``root`` user permissions to run inference on a ``MYRIAD`` d
          ...
          user: root
 
-Troubleshooting issues for MYRIAD (NCS2) devices
-""""""""""""""""""""""""""""""""""""""""""""""""
+Troubleshooting Issues for the MYRIAD (NCS2) Devices
+""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-If the ``NC_ERROR`` occurs during device initialization of NCS2 stick then use the following workaround. Replug the device for the init, if the NCS2 devices fails to initialize during running OEI. To check if initialization is successful, run **\ *dmesg*\ ** and **\ *lsusb*\ ** as follows:
+If the ``NC_ERROR`` occurs during device initialization of NCS2 stick then use the following workaround. Replug the device for the init, if the NCS2 devices fails to initialize during running Open EII. To check if initialization is successful, run **\ *dmesg*\ ** and **\ *lsusb*\ ** as follows:
 
 .. code-block:: sh
 
@@ -99,8 +100,8 @@ If the ``NC_ERROR`` occurs during device initialization of NCS2 stick then use t
 * If you notice ``global mutex initialization failed`` during device initialization of NCS2 stick, then refer to the following link: https://www.intel.com/content/www/us/en/support/articles/000033390/boards-and-kits.html
 * For VPU troubleshooting, refer the following link: https://docs.openvinotoolkit.org/2021.4/openvino_docs_install_guides_installing_openvino_linux_ivad_vpu.html#troubleshooting
 
-To run on HDDL devices
-~~~~~~~~~~~~~~~~~~~~~~
+To run on the HDDL Devices
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Complete the following steps to run inference on HDDL devices:
 
@@ -118,7 +119,7 @@ Complete the following steps to run inference on HDDL devices:
      ..
 
         **Note:**
-        OpenVINO 2021.4 installation creates a symbolic link to the latest installation with filename as ``openvino_2021`` instead of ``openvino``. You can create a symbolic link with filename as ``openvino`` to the latest installation as follows:
+        OpenVINO 2021.4 installation creates a symbolic link to the latest installation with file name as ``openvino_2021`` instead of ``openvino``. You can create a symbolic link with file name as ``openvino`` to the latest installation as follows:
 
         .. code-block:: sh
 
@@ -131,13 +132,13 @@ Complete the following steps to run inference on HDDL devices:
 
 
 #. 
-   Refer the below link and configure HDDL with ``root`` user rights
+   Refer to the following link to configure HDDL with ``root`` user rights
 
 
    * HDDL daemon setup: https://docs.openvinotoolkit.org/2021.4/_docs_install_guides_installing_openvino_linux_ivad_vpu.html
 
 #. 
-   Once HDDL setup is complete run the below command with ``root`` user rights.
+   After completing the HDDL setup, run the following commands with ``root`` user rights.
 
    .. code-block:: sh
 
@@ -148,9 +149,9 @@ Complete the following steps to run inference on HDDL devices:
 
 
    * HDDL Daemon should run in a different terminal or in the background on the host system where inference performed.
-   * HDDL usecases was tested on hostsystem with Ubuntu 20.04 kernel 5.13.0-27-generic by configuring and running HDDL daemon with ``root`` user rights.
-   * HDDL plugin can have the ION driver compatibility issues with some versions of the Ubuntu kernel. If there are compatibility issues then ION driver may not be installed and hddldaemon will make use of shared memory. In order to work with shared memory in docker environment we need to configure and run HDDL with ``root`` user rights.
-   * To check the supported Ubuntu kernel versions, refer the `OpenVINO-Release-Notes <https://www.intel.com/content/www/us/en/developer/articles/release-notes/openvino-relnotes.html>`_.
+   * HDDL use cases were tested on host system with Ubuntu 20.04 kernel 5.13.0-27-generic by configuring and running HDDL daemon with ``root`` user rights.
+   * HDDL plugin can have the ION driver compatibility issues with some versions of the Ubuntu kernel. If there are compatibility issues, then ION driver may not be installed and hddldaemon will use shared memory. To work with shared memory in docker environment, configure and run HDDL with ``root`` user rights.
+   * To check the supported Ubuntu kernel versions, refer to the `OpenVINO-Release-Notes <https://www.intel.com/content/www/us/en/developer/articles/release-notes/openvino-relnotes.html>`_.
    * For actual deployment, mount only the required devices for services using OpenVINO with HDDL (\ ``ia_video_analytics`` or ``ia_video_ingestion``\ ) in ``docker-compose.yml`` file.
    * For example, mount only the Graphics and HDDL ion device for the ``ia_video_anaytics`` service. Refer to the following code snippet:
 
@@ -163,8 +164,8 @@ Complete the following steps to run inference on HDDL devices:
                  - "/dev/dri"
                  - "/dev/ion:/dev/ion"
 
-Troubleshooting issues for HDDL devices
-"""""""""""""""""""""""""""""""""""""""
+Troubleshooting Issues for the HDDL Devices
+"""""""""""""""""""""""""""""""""""""""""""
 
 
 * Check if the HDDL Daemon is running on the host machine. This is to check if the HDDL Daemon is using the correct version of OpenVINO libraries in `build/.env <https://github.com/open-edge-insights/eii-core/blob/master/build/.env>`_. Enable the ``device_snapshot_mode`` to ``full`` in ``$HDDL_INSTALL_DIR/config/hddl_service.config`` on the host machine to get the complete snapshot of the HDDL device.
@@ -175,7 +176,7 @@ Troubleshooting issues for HDDL devices
 * For more details on the Known issues, limitations, and troubleshooting, refer to the OpenVINO website from the following link:
   https://docs.openvinotoolkit.org/2021.4/index.html
 
-To run on Intel(R) Processor Graphics (GPU/iGPU)
+To Run on Intel(R) Processor Graphics (GPU/iGPU)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 At runtime, use the ``root`` user permissions to run inference on a ``GPU`` device. To enable root user at runtime in ``ia_video_ingestion``\ , ``ia_video_analytics``\ , or custom UDF services, add ``user: root`` in the respective ``docker-compose.yml`` file. Refer the following example:
@@ -199,19 +200,5 @@ For example, refer to the following:
 
 
    * In the IPC mode, when the publisher (example, ia_video_ingestion or ia_video_analytics) is running as root then the subscriber (For example ia_visualizer, ia_imagestore, ia_influxdbconnectorm, ia_video_profiler etc.) should also run as root by adding ``user: root`` in the respective docker-compose.yml file.
-   * If you get a ``Failed to create plugin for device GPU/ clGetPlatformIDs error`` message then check if the hostsystem supports GPU device. Try installing the required drivers from `OpenVINO-steps-for-GPU <https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps>`_. Certain platforms like TGL can have compatibility issus with the Ubuntu kernel version. Esure the compatible kernel version is installed.
+   * If you get a ``Failed to create plugin for device GPU/ clGetPlatformIDs error`` message, then check if the host system supports GPU device. Try installing the required drivers from `OpenVINO-steps-for-GPU <https://docs.openvinotoolkit.org/latest/openvino_docs_install_guides_installing_openvino_linux.html#additional-GPU-steps>`_. Certain platforms like TGL can have compatibility issues with the Ubuntu kernel version. Ensure the compatible kernel version is installed.
 
-
-Custom User Defined Functions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-OEI supports the following custom User Defined Functions (UDFs):
-
-
-* Build or run custom UDFs as standalone applications:
-
-  * For running a custom UDF as a standalone application, download the ``video-custom-udfs`` repo and refer to the `CustomUdfs/README.md <https://github.com/open-edge-insights/video-custom-udfs/blob/master/README.md>`_.
-
-* Build or run custom UDFs in VI or VA:
-
-  * For running custom UDFs either in VI or VA, refer to the `VideoIngestion/docs/custom_udfs_doc.md <https://github.com/open-edge-insights/video-ingestion/blob/master/docs/custom_udfs_doc.md>`_.

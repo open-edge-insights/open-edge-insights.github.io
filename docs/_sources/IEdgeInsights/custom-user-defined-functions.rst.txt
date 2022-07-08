@@ -2,15 +2,13 @@
 Custom User Defined Functions
 -----------------------------
 
-EII supports the following custom User Defined Functions (UDFs):
+Open EII supports the following custom User Defined Functions (UDFs):
 
 
-#. 
-   Build or run custom UDFs as standalone applications
+* Build or run custom UDFs as standalone applications:
 
-   For running custom udfs as standalone application one must download the video-custom-udfs repo and refer `CustomUdfs/README.md <https://github.com/open-edge-insights/video-custom-udfs/blob/master/README.md>`_
+  * For running a custom UDF as a standalone application, download the ``video-custom-udfs`` repo and refer to the `CustomUdfs/README.md <https://github.com/open-edge-insights/video-custom-udfs/blob/master/README.md>`_.
 
-#. 
-   Build or run custom UDFs in VI or VA
+* Build or run custom UDFs in VI or VA:
 
-   For running custom UDFs either in VI or VA, refer to `VideoIngestion/docs/custom_udfs_doc.md <https://github.com/open-edge-insights/video-ingestion/blob/master/docs/custom_udfs_doc.md>`_
+  * For running custom UDFs either in VI or VA, refer to the `VideoIngestion/docs/custom_udfs_doc.md <https://github.com/open-edge-insights/video-ingestion/blob/master/docs/custom_udfs_doc.md>`_.

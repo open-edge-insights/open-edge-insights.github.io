@@ -1,5 +1,5 @@
 
-RestDataExport service
+RestDataExport Service
 ----------------------
 
 RestDataExport (RDE) service is a data service that serves GET and POST APIs. By default, the RDE service subscribes to a topic from the Message Bus and serves as GET API Server to respond to any GET requests for required metadata and frames. By enabling the POST API, the RDE service can publish the subscribed metadata to an external HTTP server.
@@ -7,7 +7,7 @@ RestDataExport (RDE) service is a data service that serves GET and POST APIs. By
 ..
 
    **Important:**
-   RestDataExport service can subscribe classified results from the VideoAnalytics(video) or the InfluxDBConnector(time-series) use cases. In the Subscribers configuration of the `config.json <https://github.com/open-edge-insights/eii-rest-data-export/blob/master/config.json>`_ file, specify the required service to subscribe from.
+   RestDataExport service can subscribe classified results from the VideoAnalytics (video) or the InfluxDBConnector (Time Series) use cases. In the Subscribers configuration of the `config.json <https://github.com/open-edge-insights/eii-rest-data-export/blob/master/config.json>`_ file, specify the required service to subscribe from.
 
 
 Configuration
@@ -24,12 +24,12 @@ HTTP GET API of RDE
 
 The HTTP GET API of RDE allows you to get metadata and images. The following sections provide information about how to request metadata and images using the curl commands.
 
-Get the classifier results metadata
+Get the Classifier Results Metadata
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To get the classifier results metadata, refer to the following:
 
-Request to get metadata
+Request to GET Metadata
 """""""""""""""""""""""
 
 You can get the metadata for DEV mode and PROD mode.
@@ -78,13 +78,13 @@ The output for the previous command is as follows:
    Content-Length: 175
    {"channels":3,"defects":[],"encoding_level":95,"encoding_type":"jpeg","frame_number":558,"height":1200,"img_handle":"21af429f85","topic":"camera1_stream_results","width":1920}
 
-Get images using the image handle
+Get Images Using the Image Handle
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::  For the ``image`` API, the ``imagestore`` module is mandatory. From the ``imagestore``\ , the server fetches the data, and returns it over the REST API. Include the ``imagestore`` module as a part of your use case.
 
 
-Request to get images
+Request to GET Images
 """""""""""""""""""""
 
 ``GET /image``
@@ -108,8 +108,8 @@ Refer to the following example to store image to the disk using curl along with 
 .. note::  You can find the ``imageid`` of the image in the ``metadata`` API response.
 
 
-Prerequisites for running RestDataExport to POST on HTTP Servers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Prerequisites to Run RestDataExport to POST on HTTP Servers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::  By default, RDE will serve the metadata as ``GET`` *only* request server. By Enabling this, you can get the metadata using the ``GET`` request. Also, RDE will post the metadata to an HTTP server.
 
@@ -151,7 +151,7 @@ As a prerequisites, complete the following steps:
       pip3 install -r requirements.txt
 
 #. 
-   Build and provision OEI.
+   Build and provision Open EII.
 
 #. 
    Ensure the prerequisites for starting the TestServer application are enabled. For more information, refer to the `README.md <https://github.com/open-edge-insights/eii-tools/blob/master/HttpTestServer/README.md#Pre-requisites-for-running-the-HttpTestServer>`_.
@@ -209,7 +209,7 @@ As a prerequisites, complete the following steps:
       **Note**\ : Ensure to rerun the `builder.py' script to generate the updated deployment yml files.
 
 
-Launch RestDataExport service
+Launch RestDataExport Service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To build and launch the RestDataExport service, refer to the following:
@@ -219,10 +219,10 @@ To build and launch the RestDataExport service, refer to the following:
 * `../README.md#provision <https://github.com/open-edge-insights/eii-core/blob/master/README.md#provision>`_
 * `../README.md#build-and-run-eii-videotimeseries-use-cases <https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases>`_
 
-Setting environment proxy settings
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Configure Environment Proxy Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To set the environment proxy settings for RDE, refer to the following:
+To configure the environment proxy settings for RDE, refer to the following:
 
 
 #. 

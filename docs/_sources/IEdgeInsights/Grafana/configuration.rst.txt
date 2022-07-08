@@ -2,21 +2,20 @@
 Configuration
 -------------
 
+The following are the configuration details for Grafana:
 
-#. 
-   `dashboard.json <https://github.com/open-edge-insights/ts-grafana/blob/master/dashboard.json>`_
-    This is the dashboard json file that is loaded when grafana starts. It has been preconfigured to display time-series data. 
 
-#. 
-   `dashboard_sample.yml <https://github.com/open-edge-insights/ts-grafana/blob/master/dashboard_sample.yml>`_
-    This is the config file for all the dashboards. It specifies the path where all the dashboard json files will be looked for.
+* 
+  `dashboard.json <https://github.com/open-edge-insights/ts-grafana/blob/master/dashboard.json>`_\ : This is the dashboard json file that is loaded when Grafana starts. It is preconfigured to display the time-series data.
 
-#. 
-   `datasource_sample.yml <https://github.com/open-edge-insights/ts-grafana/blob/master/datasource_sample.yml>`_
-    This is the config file for setting up the datasource. It has got various fields for datasource configuration.
+* 
+  `dashboard_sample.yml <https://github.com/open-edge-insights/ts-grafana/blob/master/dashboard_sample.yml>`_\ : This is the config file for all the dashboards. It specifies the path to locate all the dashboard json files.
 
-#. 
-   `grafana_template.ini <https://github.com/open-edge-insights/ts-grafana/blob/master/grafana_template.ini>`_
-    This is the config for Grafana itself. It specifies how grafana should start up, once it has been configured.
+* 
+  `datasource_sample.yml <https://github.com/open-edge-insights/ts-grafana/blob/master/datasource_sample.yml>`_\ : This is the config file for setting up the data source. It has various fields for data source configuration.
 
-NOTE: The contents of these files can be edited according to the requirement.
+* 
+  `grafana_template.ini <https://github.com/open-edge-insights/ts-grafana/blob/master/grafana_template.ini>`_\ : This is the config file for Grafana. It specifies how Grafana should start after it is configured.
+
+.. note::  You can edit the contents of these files based on your requirement.
+

@@ -9,9 +9,9 @@ OpcuaExport service serves as as OPCUA server subscribring to classified results
 
 ..
 
-   IMPORTANT:
-   OpcuaExport service can subscribe classified results from both VideoAnalytics(video) or InfluxDBConnector(time-series) use cases. Please ensure the required service to subscribe from is mentioned in the Subscribers configuration in `config.json <https://github.com/open-edge-insights/eii-opcua-export/blob/master/config.json>`_.
-   In this document, you will find labels of 'Edge Insights for Industrial (EII)' for filenames, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights (OEI). This is due to the product name change of EII as OEI.
+   **Important**\ :
+   OpcuaExport service can subscribe classified results from both VideoAnalytics (video) or InfluxDBConnector (time-series) use cases. Ensure the required service to subscribe from is mentioned in the Subscribers configuration in `config.json <https://github.com/open-edge-insights/eii-opcua-export/blob/master/config.json>`_.
+   In this document, you will find labels of 'Edge Insights for Industrial (EII)' for file names, paths, code snippets, and so on. Consider the references of EII as Open Edge Insights for Industrial (Open EII). This is due to the product name change of EII as Open EII.
 
 
 Configuration
@@ -20,17 +20,16 @@ Configuration
 For more details on Etcd secrets and messagebus endpoint configuration, visit `Etcd_Secrets_Configuration.md <https://github.com/open-edge-insights/eii-core/blob/master/Etcd_Secrets_Configuration.md>`_ and
 `MessageBus Configuration <https://github.com/open-edge-insights/eii-core/blob/master/common/libs/ConfigMgr/README.md#interfaces>`_ respectively.
 
-Service bring up
+Service Bring Up
 ^^^^^^^^^^^^^^^^
 
 
 * 
-  Please use below steps to generate opcua client certificates before running test client subscriber for production mode.
+  Complete the following steps to generate Opcua client certificates before running test client subscriber for production mode.
 
 
   #. 
-     Please go through the below sections to have OpcuaExport
-     service built and launch it:
+     Refer to the following sections to build and launch OpcuaExport
 
 
      * `../README.md#generate-deployment-and-configuration-files <https://github.com/open-edge-insights/eii-core/blob/master/README.md#generate-deployment-and-configuration-files>`_
@@ -38,8 +37,7 @@ Service bring up
      * `../README.md#build-and-run-eii-videotimeseries-use-cases <https://github.com/open-edge-insights/eii-core/blob/master/README.md#build-and-run-eii-videotimeseries-use-cases>`_
 
   #. 
-     Update opcua client certificate access so that sample test program
-     can access the certificates.
+     Update Opcua client certificate access so that sample test program can access the certificates.
 
      .. code-block:: sh
 
@@ -47,17 +45,17 @@ Service bring up
 
      ..
 
-        **Caution**\ : This step will make the certs insecure. Please do not do it on a production machine.
+        **Caution**\ : This step will make the certs insecure. Do not do this step on a production machine.
 
 
 * 
-  To run a test subscriber follow README at `OpcuaExport/OpcuaBusAbstraction/c/test <https://github.com/open-edge-insights/eii-opcua-export/blob/master/OpcuaBusAbstraction/c/test>`_
+  To run a test subscriber follow the README at `OpcuaExport/OpcuaBusAbstraction/c/test <https://github.com/open-edge-insights/eii-opcua-export/blob/master/OpcuaBusAbstraction/c/test>`_
 
-OPCUA client apps
+OPCUA Client Apps
 ^^^^^^^^^^^^^^^^^
 
 
-* OpcuaExport service has been validated with below 3rd party OPCUA client apps:
+* OpcuaExport service has been validated with the following third party OPCUA client apps:
 
   * OPCUA CTT tool (https://opcfoundation.org/developer-tools/certification-test-tools/opc-ua-compliance-test-tool-uactt/)
   * UaExpert (https://www.unified-automation.com/downloads/opc-ua-clients.html)
@@ -73,10 +71,10 @@ OPCUA client apps
        sudo chmod -R 755 ../../build/Certificates
        cp <OPCUA client apps certificate> ../build/Certificates/opcua/opcua_client_certificate.der
 
-Make sure not to bring down ConfigMgrAgent(ia_configmgr_agent) service, however restart necessary services like ia_opcua_export to reflect the changes.
+Ensure not to bring down ConfigMgrAgent(ia_configmgr_agent) service, however restart necessary services like ia_opcua_export to reflect the changes.
 
 
-* Running in Kubernetes Environment
+* Running in Kubernetes environment
 
 Install provision and deploy helm chart
 

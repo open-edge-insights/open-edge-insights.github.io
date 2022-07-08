@@ -1,60 +1,22 @@
-=============
+############
 Azure Bridge
-=============   
+############
 
 .. include:: ../IEdgeInsights/AzureBridge/introduction.rst
 
 .. include:: ../IEdgeInsights/AzureBridge/prerequisites-and-setup.rst
 
-.. include:: ../IEdgeInsights/AzureBridge/azure-cloud-setup.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/setting-up-azureml.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/important.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/pushing-a-model-to-azureml.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/development-system-setup.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/build-and-push-oei-containers.rst
+.. include:: ../IEdgeInsights/AzureBridge/build-and-push-open-edge-insights-containers.rst
 
 .. include:: ../IEdgeInsights/AzureBridge/single-node-azure-iot-edge-deployment.rst
 
-.. include:: ../IEdgeInsights/AzureBridge/step-1---provisioning.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/step-2---configuring-oei.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/step-3---configuring-azure-iot-deployment-manifest.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/step-4---deployment.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/helpful-debugging-commands.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/final-notes.rst
-
 .. include:: ../IEdgeInsights/AzureBridge/configuration.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/azure-bridge.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/zeromq-tcp-subscription-implications.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/zeromq-ipc-subscription-implications.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/sample-oei-onnx-udf.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/simple-subscriber.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/oei-etcd-pre-load.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/azure-blob-storage.rst
-
-.. include:: ../IEdgeInsights/AzureBridge/azure-deployment-manifest.rst
 
 .. include:: ../IEdgeInsights/AzureBridge/azure-iot-edge-simulator.rst
 
-.. include:: ../IEdgeInsights/AzureBridge/supported-oei-services.rst
+.. include:: ../IEdgeInsights/AzureBridge/supported-open-edge-insights-for-industrial-services.rst
 
-.. include:: ../IEdgeInsights/AzureBridge/additional-resources.rst   
+.. include:: ../IEdgeInsights/AzureBridge/additional-resources.rst
 
 
 
